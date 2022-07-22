@@ -1,0 +1,66 @@
+{
+	"metaDataVersion": "1.0.0",
+	"category": "com.microchip.ide.project",
+	"content": {
+		"metaDataVersion": "1.3.0",
+		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_deep_sleep_adv",
+		"version": "1.0.0",
+		"displayName": "BLE MultiRole MultiLink Transparent UART Application",
+		"projectName": "mr_ml_trp_uart",
+		"shortDescription": "This example application demonstrates the functionality of BLE multil-role multi-link support on WBZ451 Curiosity Board. Multilink device will send/receive characters between connected BLE devices over Microchip proprietary Transparent UART Profile.The multilink central will enable users to connect multiple peripheral devices and also another central device.
+",
+		"ide": {
+			"name": "MPLABX",
+			"semverRange": ">=6.00"
+		},
+		"compiler": [
+			{
+				"name": "XC32",
+				"semverRange": ">=4.0.0"
+			}
+		],
+		"dfp": {
+			"name": "PIC32CXBZ2_DFP",
+			"semverRange": "^1.0.107"
+		},
+		"configurator": {
+			"name": "MCC",
+			"semverRange": ">=5.1.4"
+		},
+		"device": {
+			"metaDataVersion": "1.0.0",
+			"category": "com.microchip.portal.contentRef",
+			"content": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.device",
+				"name": "PIC32CX1012BZ20548",
+				"versionRange": "*"
+			}
+		},
+		"author": "Microchip",
+		"peripherals": [
+			"SERCOM"
+		],
+		"keywords": [
+			"MCC",
+			"Harmony",
+			"PIC32CX1012BZ20548",
+			"WBZ451",
+			"PIC32CXBZ2 Family",
+			"wireless",
+			"BLE",
+			"Multi-role and Multi-link"
+		],
+		"additionalData": {
+			"longDescription": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.portal.fileRef",
+				"content": {
+					"metaDataVersion": "1.0.0",
+					"fileName": "./../../readme.md",
+					"mimeType": "text/markdown"
+				}
+			}
+		}
+	}
+}

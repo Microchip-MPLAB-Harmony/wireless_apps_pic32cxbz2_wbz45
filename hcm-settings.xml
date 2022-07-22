@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<downloader>
+    <remotes>
+        <!--        <remote name='bb'>https://bit</remote> -->
+        <remote name="github">https://github.com/Microchip-MPLAB-Harmony</remote>
+        <remote name="bitbucket">https://bitbucket.microchip.com/scm/mh3</remote>
+        <remote name="gitee">https://gitee.com/Microchip-MPLAB-Harmony</remote>
+    </remotes>
+    <default>
+        <remote_default>https://github.com/Microchip-MPLAB-Harmony</remote_default>
+    </default>
+</downloader>
