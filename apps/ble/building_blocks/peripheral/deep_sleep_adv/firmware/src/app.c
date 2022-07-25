@@ -125,13 +125,11 @@ void APP_Tasks ( void )
         {
             bool appInitialized = true;
             //appData.appQueue = xQueueCreate( 10, sizeof(APP_Msg_T) );
-            bool flag=false;
 
-            flag=APP_BleDsadvIsEnable();
             DEVICE_DeepSleepWakeSrc_T wakeSrc;
             DEVICE_GetDeepSleepWakeUpSrc(&wakeSrc);
             
-            if (flag == false)
+            if ((wakeSrc != DEVICE_DEEP_SLEEP_WAKE_INT0) && (wakeSrc != DEVICE_DEEP_SLEEP_WAKE_RTC))
             {
                 RTC_Timer32Start();
                 DEVICE_EnterDeepSleep(false,0);
@@ -143,7 +141,7 @@ void APP_Tasks ( void )
                 APP_BleDsadvStart(false);
                 GPIO_RB3_Set();
             }
-            else   //Wake up from deep sleep by RTC/INT0/Watch dog
+            else   
             {
                 GPIO_RB3_Set();
                 APP_BleDsadvStart(true);

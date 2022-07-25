@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Harmony_WBZ_RTP_Repo/wireless_apps_pic32cxbz2_wbz45_release_repo/apps/ble/building_blocks/peripheral/deep_sleep_adv/firmware/src/app.c</file>
+            <file>file:/D:/Harmony_WBZ_RTP_Repo/wireless_apps_pic32cxbz2_wbz45_release_repo/apps/ble/building_blocks/peripheral/deep_sleep_adv/firmware/src/config/default/device_deep_sleep.c</file>
+            <file>file:/D:/Harmony_WBZ_RTP_Repo/wireless_apps_pic32cxbz2_wbz45_release_repo/apps/ble/building_blocks/peripheral/deep_sleep_adv/firmware/src/config/default/device_deep_sleep.h</file>
+        </group>
     </open-files>
 </project-private>
