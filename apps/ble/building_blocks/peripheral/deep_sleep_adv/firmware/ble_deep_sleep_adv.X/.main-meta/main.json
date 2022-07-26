@@ -1,0 +1,67 @@
+{
+	"metaDataVersion": "1.0.0",
+	"category": "com.microchip.ide.project",
+	"content": {
+		"metaDataVersion": "1.3.0",
+		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_deep_sleep_adv",
+		"version": "1.0.0",
+		"displayName": "BLE Peripheral Deep Sleep Advertisment Application",
+		"projectName": "ble_deep_sleep_adv",
+		"shortDescription": "This example application demonstrates the functionality of Deep Sleep Advertisements on WBZ451 Curiosity Board. The WBZ451 device will be put to deep sleep mode upon power on reset followed by periodic deep sleep + advertisement upon device wake up through INT0(Button interrupt).",
+		"ide": {
+			"name": "MPLABX",
+			"semverRange": ">=6.00"
+		},
+		"compiler": [
+			{
+				"name": "XC32",
+				"semverRange": ">=4.0.0"
+			}
+		],
+		"dfp": {
+			"name": "PIC32CXBZ2_DFP",
+			"semverRange": "^1.0.107"
+		},
+		"configurator": {
+			"name": "MCC",
+			"semverRange": ">=5.1.4"
+		},
+		"device": {
+			"metaDataVersion": "1.0.0",
+			"category": "com.microchip.portal.contentRef",
+			"content": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.device",
+				"name": "PIC32CX1012BZ20548",
+				"versionRange": "*"
+			}
+		},
+		"author": "Microchip",
+		"peripherals": [
+			"RCON",
+			"GPIO",
+			"RTC"
+		],
+		"keywords": [
+			"MCC",
+			"Harmony",
+			"PIC32CX1012BZ20548",
+			"WBZ451",
+			"PIC32CXBZ2 Family",
+			"wireless",
+			"BLE",
+			"Deep Sleep Advertisement"
+		],
+		"additionalData": {
+			"longDescription": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.portal.fileRef",
+				"content": {
+					"metaDataVersion": "1.0.0",
+					"fileName": "./../../readme.md",
+					"mimeType": "text/markdown"
+				}
+			}
+		}
+	}
+}
