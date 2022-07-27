@@ -261,7 +261,7 @@ uint16_t BLE_DM_InfoGetFilterAcceptList(uint8_t *p_devCnt, BLE_GAP_Addr_T *p_add
 
 uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uint8_t const *p_privacyMode)
 {
-    uint16_t                        result;
+    uint16_t                        result = MBA_RES_SUCCESS;
     uint8_t                         i;
     BLE_GAP_ResolvingListParams_T   *p_resolvingList;
     BLE_GAP_LocalPrivacyParams_T    privacy;

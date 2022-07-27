@@ -426,7 +426,7 @@ void APP_TRPS_SendUpConnParaStatusToClient(uint16_t connHandle, uint8_t upConnPa
 
 void APP_TRPS_TxBufValidEvtProc(void) {
     uint16_t status;
-    uint8_t grpId[] = {TRP_GRPID_NULL, TRP_GRPID_CHECK_SUM, TRP_GRPID_LOOPBACK, TRP_GRPID_FIX_PATTERN};
+    uint8_t grpId[4] = {TRP_GRPID_NULL, TRP_GRPID_CHECK_SUM, TRP_GRPID_LOOPBACK, TRP_GRPID_FIX_PATTERN};
 
     if ((s_trpsConnList_t.workMode == TRP_WMODE_LOOPBACK) && (s_trpsConnList_t.leCircQueue_t.usedNum > 0)) {
         s_trpsConnList_t.srcType = APP_TRP_SRC_TYPE_LE;
