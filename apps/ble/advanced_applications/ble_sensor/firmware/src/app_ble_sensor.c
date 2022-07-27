@@ -48,8 +48,8 @@
 // *****************************************************************************
 #include <stdint.h>
 #include "app_trps.h"
-#include "Sensors/inc/rgb_led.h"
-#include "Sensors/inc/temp_sensor.h"
+#include "sensors/inc/rgb_led.h"
+#include "sensors/inc/temp_sensor.h"
 #include "app_timer/app_timer.h"
 #include "peripheral/eic/plib_eic.h"
 #include "system/console/sys_console.h"
