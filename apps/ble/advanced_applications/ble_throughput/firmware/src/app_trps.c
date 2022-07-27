@@ -51,6 +51,7 @@
 #include "ble_util/byte_stream.h"
 #include "stack_mgr.h"
 
+#include "app_trp_common.h"
 #include "app_trps.h"
 #include "app_timer.h"
 #include "app_ble.h"
@@ -426,7 +427,7 @@ void APP_TRPS_SendUpConnParaStatusToClient(uint16_t connHandle, uint8_t upConnPa
 
 void APP_TRPS_TxBufValidEvtProc(void) {
     uint16_t status = APP_RES_SUCCESS;
-    uint8_t grpId[4] = {(uint8_t)(TRP_GRPID_NULL), (uint8_t)(TRP_GRPID_CHECK_SUM), (uint8_t)(TRP_GRPID_LOOPBACK), (uint8_t)(TRP_GRPID_FIX_PATTERN)};
+    uint8_t grpId[] = {(uint8_t)(TRP_GRPID_NULL), (uint8_t)(TRP_GRPID_CHECK_SUM), (uint8_t)(TRP_GRPID_LOOPBACK), (uint8_t)(TRP_GRPID_FIX_PATTERN)};
 
     if ((s_trpsConnList_t.workMode == TRP_WMODE_LOOPBACK) && (s_trpsConnList_t.leCircQueue_t.usedNum > 0)) {
         s_trpsConnList_t.srcType = APP_TRP_SRC_TYPE_LE;
