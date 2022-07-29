@@ -43,6 +43,14 @@ BLE Peripheral devices send advertisement packets and accept connection requests
 
     -   Connection between Peripheral and Central Device
 
+-   [Deep Sleep Advertisements](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78)
+
+    -   Transmit Data Payload using BLE Legact Adv
+
+    -   System enters "Deep Sleep" mode in between ADV interval
+
+    -   If a central device initiates connection, system enters "Sleep" mode and maintains connection
+
 -   Profiles and services
 
     -   [Transparent UART Peripheral \(Legacy Adv + Connection + Data Exchange\)](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36)

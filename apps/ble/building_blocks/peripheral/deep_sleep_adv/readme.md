@@ -226,7 +226,7 @@ The following code modifications needs to be done to utilize the deep sleep Adve
           // clear PFMWS and ADRWS
           PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                           | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
-         
+
           // write completion delay
           for(int i=1; i<10; i++)
           {
@@ -254,12 +254,21 @@ The following code modifications needs to be done to utilize the deep sleep Adve
 
         ```
         static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ]; --> Original Code
-         
+
         static uint8_t  __attribute__((section (".bss.ucHeap"), noload)) ucHeap[ configTOTAL_HEAP_SIZE ]; -->Modified Code
         ```
 
         ![](media/GUID-20B62661-50E1-4754-ABB6-25769C3E53F5-low.png)
 
+       **Step 4 - device_deep_sleep.c** (Optional)
+
+      Include the Below code inside device_deep_sleep.c to configure the GPIO setting for deep sleep.
+
+      ```
+      Device_GpioConfig();
+      ```
+
+      ![](media/GUID-6CD93BB0-D1F9-4DE6-A5C4-BF34EB0E62B9-low.png)
 
 ## User Application Development {#GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2 .section}
 
@@ -293,6 +302,19 @@ The following code modifications needs to be done to utilize the deep sleep Adve
 
     Users can exercise various other BLE Advertisement functionalities by using [BLE Stack API](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html).
 
+**Known Issues**
+
+In the DeepSleep application, System sleep Implementation source(device_sleep.c) and header(device_sleep.h) files are may not be included sometimes when regenerating the project through MCC.
+
+**Note:** It is recommended to follow the below steps to avoid the mentioned known issue whenever deep sleep project is opened through MCC.
+
+**Step-1:** Please uncheck and re-enable the **Enable Sleep Mode** and **Enable Deep Sleep Advertising** option inside BLE stack Component Configuration Options as shown in the figure below and accept the dependencies requested.
+
+![](media/GUID-5D00C338-5E5D-4AD9-8C66-C787111201D5-low.png)
+
+**Step-2**Enable force update option and press Generate.
+
+![](media/GUID-564A573A-A4C5-4FFC-92D4-A5261D5490C8-low.png)
 
 ## Where to go from here {#GUID-CA011F22-EC45-4B7C-A12C-4BAF0C6BC04A .section}
 
@@ -300,4 +322,3 @@ The following code modifications needs to be done to utilize the deep sleep Adve
 
 
 **Parent topic:**[Peripheral](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-B3B46369-F5B4-401B-8405-658BE34988F4)
-

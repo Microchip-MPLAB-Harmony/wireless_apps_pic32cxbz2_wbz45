@@ -27,7 +27,7 @@ Following table provides number of Wireless examples available for different dev
 
 
 ### Known Issues
-- None.
+- In the DeepSleep application, System sleep Implementation source(device_sleep.c) and header(device_sleep.h) files are may not be included sometimes when regenerating the project through MCC. Work Around is provided in the DeepSleep application document.
 
 ### Development Tools
 
