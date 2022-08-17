@@ -134,7 +134,7 @@ This section explains the steps required by a user to develop this application e
 
 1.  Create a new MCC Harmony Project -- [link](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-B86E8493-D00D-46EF-8624-D412342147F0) for instructions
 
-2.  Import component configuration -- This step helps users setup the basic components required to start their Application Development component configuration related to this Application is available. The imported file is of format .mc3 and is located in the path "<Harmony Content Path\>/wireless\_apps\_pic32cxbz2\_wbz45\\apps\\ble\\building\_blocks\\peripheral\\profiles\_services\\custom\_service\\firmware\\custom\_service.X". Users should follow the instructions mentioned [here](https://microchipdeveloper.com/mcc:peripheralconfig) to import the component configuration.
+2.  Import component configuration -- This step helps users setup the basic components and configuration required to develop this application. The imported file is of format .mc3 and is located in the path "<Harmony Content Path>\wireless_apps_pic32cxbz2_wbz45\apps\ble\building_blocks\peripheral\profiles_services\custom_service\firmware\custom_service.X". Users should follow the instructions mentioned [here](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162) to import the component configuration.
 
 3.  Accept Dependencies or satisfiers, select "Yes"
 
@@ -235,7 +235,7 @@ Add the RGB and button handlers to the function APP\_Tasks\(\) in app.c file.
 
 ```
  case APP_STATE_SERVICE_TASKS:
- { 
+ {
     if (OSAL_QUEUE_Receive(&appData.appQueue, &appMsg, OSAL_WAIT_FOREVER))
     {
      // if(p_appMsg->msgId==APP_MSG_BLE_STACK_EVT)
@@ -298,7 +298,7 @@ Add the msg ids for the button and RGB LED events in file app.h
 
 ```
 void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
-{ 
+{
     switch(p_event->eventId)
     {
         case BLE_GAP_EVT_CONNECTED:
@@ -336,7 +336,7 @@ void APP_GattSEvtReadHandler(GATT_EvtRead_T p_event)
     uint8_t error = 0;
     uint16_t status;
     SYS_CONSOLE_PRINT("[BLE] GATT Read ATTR Handle 0x%X \r\n",p_event.attrHandle);
-    
+
     if ((p_event.attrHandle <= BUTTON_LED_START_HDL) ||
         (p_event.attrHandle > BUTTON_LED_END_HDL))
     {
@@ -410,7 +410,7 @@ void APP_GattSEvtWriteHandler(GATT_EvtWrite_T p_event)
     uint8_t error = 0;
     uint16_t status;
     SYS_CONSOLE_PRINT("[BLE] GATT Write ATTR Handle 0x%X \r\n",p_event.attrHandle);
-    
+
     if ((p_event.attrHandle <= BUTTON_LED_START_HDL) ||
         (p_event.attrHandle > BUTTON_LED_END_HDL))
     {
@@ -418,7 +418,7 @@ void APP_GattSEvtWriteHandler(GATT_EvtWrite_T p_event)
         error = ATT_ERRCODE_INVALID_HANDLE;
         return;
     }
-    
+
         switch(p_event.attrHandle)
         {
             case BUTTON_LED_HDL_CHAR_0:                            /**< Handle of characteristic 0. */
@@ -480,4 +480,3 @@ void APP_GattSEvtWriteHandler(GATT_EvtWrite_T p_event)
 Users can exercise various other BLE functionalities by using[BLE Stack API](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html)
 
 **Parent topic:**[Peripheral](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-B3B46369-F5B4-401B-8405-658BE34988F4)
-
