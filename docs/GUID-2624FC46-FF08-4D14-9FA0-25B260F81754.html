@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="MCC Component and Code Generation" />
+<meta name="DC.relation" scheme="URI" content="GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>MCC Component and Code Generation</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-2624FC46-FF08-4D14-9FA0-25B260F81754" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F" />
+<meta name="Microsoft.Help.TocOrder" content="0" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-2624FC46-FF08-4D14-9FA0-25B260F81754"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754">
+<h1 class="title topictitle1" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-9F752405-6FCA-4407-B617-1C0AD2D1DC18">MCC Component and Code Generation</h1><div class="body"><div class="section" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-488BE45A-325E-418A-95F6-922D38103699"><h2 class="title sectiontitle"><strong class="ph b">Pre-requisite</strong></h2></div>
+<ol class="ol" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-11CC9DAD-A609-4BA1-94F0-C88622A4494C"><li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-167330EC-CAB6-447A-A9C9-2C0670873208"><span class="indent-level-default">1.</span><p class="p">Open any BLE application based on MCC (Example project/ Custom created project)</p>
+</li>
+<li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-11D041A4-98DE-4CF0-9EF1-C6EBB691EADF"><span class="indent-level-default">2.</span><p class="p">Launch MPLABx Code Configurator (MCC)</p>
+</li>
+</ol>
+<div class="p"><div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-33CDA3E9-9503-4A48-A466-2D10639A0922"><div class="figcap"><span class="fig--title-label">Figure 1. </span>MPLABx Code Configurator</div><br /><img class="image" src="GUID-834B862A-2111-4FAD-8720-1718B1C16365-low.png" /><br /></div>
+</div>
+<div class="section" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-007F1831-6D31-48BC-85D7-C94A1421A56C"><p class="p"><strong class="ph b">Pull-in MCC Components</strong></p>
+</div>
+<p class="p">The below steps explains the components/configurations needed for OTA functionality alone.</p>
+<div class="p">Click on "+" symbol "BLE OTA APP SERVICE" component from "Device Resources" of MCC to project graph. When the component is added, the dependent components also getting added automatically. Accept Dependencies or satisfiers, select "Yes" inorder to add the dependent components. <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-C68159A9-3602-4E70-9F90-967FD7367741"><br /><img class="image" src="GUID-384C7C7D-D080-441A-B264-8DD12AACA9CA-low.png" /><br /></div>
+</div>
+<ol class="ol" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-074A4F68-A915-4A58-8C6A-8D5AD7975324"><li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-850EBD93-8C59-43DA-91FF-DFB4C2DD2C6A"><span class="indent-level-default">1.</span>
+                <p class="p">Configure "BLE OTA APP SERVICE" component as below based on the need</p>
+
+                <ol class="ol" type="a" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__OL_BQ4_C4D_25B">
+                    <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-872CCCCC-52E4-44AA-AF30-FDECCBB139BA"><span class="indent-level-default">a.</span>Enable Flash Image ID - This option checks for Image ID. If this option is
+                        enabled the upgradable image should have the same ID of current image, only
+                        then OTA upgrade procedure will happen. Use the same value as in BLE OTA DFU
+                        bin file generation configuration as shown below.</li>
+
+                    <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-8DEAE098-34DA-4946-8741-3C32BAF34375"><span class="indent-level-default">b.</span>Enable Image Decryption - If the upgradable image is secured (encrypted
+                        using AES128 CBC), this configuration has to be enabled to do decryption of
+                        the received image. The AES Key should match with the Key in BLE OTA DFU bin
+                        file generation configuration as shown below.</li>
+
+                </ol>
+
+                <div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-22CA2F9B-7A63-4031-B2B3-DE1EE6F2C0A6">
+                        <br /><img class="image" src="GUID-654AFB2D-91D9-41F5-87AF-5F944932D646-low.png" /><br />
+                    </div>
+
+                </div>
+
+            </li>
+<li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-214C230C-8336-43D4-B682-6DA9B9D20205"><span class="indent-level-default">2.</span><p class="p">When the Image decryption option is enabled in the above step, the dependent crypto components will get added (if not already present in project graph). Accept Dependencies or satisfiers, select "Yes" in order to add the dependent components.</p>
+<div class="p"><div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-F689B75A-AB41-496E-8700-84ED3643A85F"><br /><img class="image" src="GUID-CF1CC8E0-304E-45DF-92E6-8384A335C929-low.png" /><br /></div>
+</div>
+<ol class="ol" type="a" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-A52C1A3E-E0E2-44E8-9F13-D476026D6FA1"><li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-AF21E172-6BE1-4B01-BE95-E7B4FA2A9A63"><span class="indent-level-default">a.</span><p class="p">Verify the below configurations:</p>
+<ol class="ol" type="i" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-CE10137A-684A-41C5-A974-542A2D4C7DF5"><li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-190A9FF3-4A61-466D-BD71-3E3B80C5F8EA"><span class="indent-level-default">i.</span><p class="p">wolfCrypto Library component - AES-CBC mode is enabled.</p>
+<div class="p"><div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-5798D349-DBE1-4388-91CE-9B49F9CEEBC1"><br /><img class="image" src="GUID-546A52D6-47E2-4F13-8C9F-196B5F1537AA-low.png" /><br /></div>
+</div>
+</li>
+
+                            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-5EAB8D56-464C-42AB-8732-C3B69D23ABDB"><span class="indent-level-default">ii.</span>System component - AES Hardware engine clock is enabled.<div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-D00B84A1-06FC-4ACA-AD75-2BFC4640EB57">
+                                    <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_AGX_K4D_25B" src="GUID-6F2767A4-E1B6-4801-B7C7-AA8CD153030E-low.png" /><br />
+                                </div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="section" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-69B03FD4-E699-4FC7-95E2-8668F09E84FB"><h2 class="title sectiontitle"><strong class="ph b">Verify Configurations</strong></h2></div>
+<p class="p">All the required configurations are automatically done when the "BLE OTA APP SERVICE" component is added. Verify if the Project Graph window has all the expected MCC configurations</p>
+<ol class="ol" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-0FA4F7D9-FAB6-4E0C-A720-5CA1FC0E99EC"><li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-C42A6EB4-C62C-4482-AE26-A6873004F404"><span class="indent-level-default">1.</span>
+                <p class="p"><strong class="ph b">BLE OTA profile and OTA Service Components</strong> - Enable Server Role. This
+                    module generates the code needed for MCHP defined BLE OTA profile and
+                    service.</p>
+
+                <div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-09A3AD2C-1285-4633-9016-F235D6BB884F">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_GQ4_Q4D_25B" src="GUID-FEBD5AB3-EB69-4142-96F0-55488FCF82CB-low.png" /><br />
+                    </div>
+
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-F1FA83D6-B9F1-4610-AA1D-30605F2F24E1">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_HQ4_Q4D_25B" src="GUID-31DDF1A5-EF8D-495C-AE4E-A259345E5176-low.png" /><br />
+                    </div>
+
+                </div>
+
+            </li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-65C56D96-EE9A-44F4-8555-D8F564CD0843"><span class="indent-level-default">2.</span><strong class="ph b">BLE_Stack component - DFU Module enable</strong> - This module generates the code
+                needed for device firmware upgrade middleware for writing the OTA image into
+                Embedded Flash.<div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-EC4ED031-DA79-4EC3-9BCC-44D64B2C8075">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_UMK_Q4D_25B" src="GUID-62D11F10-4AA4-4A2B-A9A8-6B227FD25463-low.png" /><br />
+                    </div>
+
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-10666962-0EB2-427C-A20D-540C4BD0711D"><span class="indent-level-default">3.</span><strong class="ph b">BLE_Stack component</strong> - Advertising and Scan data payload is configured for
+                manufacturer specific service UUID and local name. BLE OTA Microchip Data (MBD)
+                mobile app expects service UUID as "0xFEDA" to filter the devices. <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-96C25FE0-23E3-41E4-858E-B08489D9AC9E">
+                    <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_Y2S_R4D_25B" src="GUID-37B44B7D-E613-4A7A-A1C3-3939153BB034-low.png" /><br />
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-0C806659-CE74-4AFE-91F6-D411230A9287"><span class="indent-level-default">4.</span><strong class="ph b">FreeRTOS stack size -</strong> The minimum stack size required by OTA feature is 3584
+                bytes. For example if the original stack size needed for user application is 1024
+                bytes, then set the total stack size as 1024 + 3584 = 4608 bytes.<div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-037E189E-CB99-4ED1-A55C-0D810ED771E6">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_VVS_T4D_25B" src="GUID-2D73E967-8EC7-4850-A056-56FF26E50808-low.png" /><br />
+                    </div>
+
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-64984C75-BEE3-4A76-B33C-339CFFFF7E37"><span class="indent-level-default">5.</span><strong class="ph b">Bootloader Services component</strong> - This component generates the supporting
+                linker file and MPLABX script needed for <a class="xref" href="GUID-6816EA2C-EDCC-48EC-9D99-BF8EAF56C5A1.html">Upgradable image .bin file generation</a>. Also, the
+                crypto API's in bootloader section is called to verify the authenticity (signature
+                verification) of the received image before performing device reset.<div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-6C4E5B5A-F360-49D3-9E0B-C4ADBC4B263F">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_RLG_W4D_25B" src="GUID-E7DED261-8F12-462F-8516-C25FC36250E3-low.png" /><br />
+                    </div>
+
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-A883E5F3-66DF-4088-9717-0B6AEBCE2801">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_SLG_W4D_25B" src="GUID-4C1FEA6A-7A1C-47A9-AA18-9FF5B0DCF59D-low.png" /><br />
+                    </div>
+
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-EDFE237B-E055-49EE-BE23-94F8FBD8307D"><span class="indent-level-default">6.</span><strong class="ph b">App Timer Service component</strong> - The BLE OTA procedure requires error handling
+                and initializing the state in case of failure in receiving the image. There are 2
+                software timers based on FreeRTOS systick is used. APP_TIMER_OTA_TIMEOUT for error
+                handling. APP_TIMER_OTA_REBOOT for resetting the device after successful image reception.<div class="p">
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-C210C68C-0231-4189-A1A6-7DC9B92A8771">
+                        <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_C2M_Y4D_25B" src="GUID-E692610E-1A7D-46A6-A96B-48D20DF08F0D-low.png" /><br />
+                    </div>
+
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-35476363-4F49-453F-AF52-0F2D02580E0A"><span class="indent-level-default">7.</span><strong class="ph b">RCON component</strong> - As mentioned above APP_TIMER_OTA_REBOOT timer is used for
+                resetting the device after successful image reception. Device reset is performed
+                using SW reset in RCON module. <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-DBDB8B22-E4EB-44A4-AD87-C0CBED22A31C">
+                    <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_XTM_Z4D_25B" src="GUID-E4F37883-B1C2-4DDD-871D-C4CAC0A1A89A-low.png" /><br />
+                </div>
+</li>
+
+            <li class="li" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-54A31945-910E-4179-B4FE-8BDC23784553"><span class="indent-level-default">8.</span><strong class="ph b">DIS BLE Service</strong> - Device Info Service is BT SIG defined service. This service
+                can be used to hold the firmware version. When upgrading the Image, OTAU manager
+                gets the current running image version. OTA server in device can use firmware
+                version from DIS and send to OTAU manager. Using the FW from DIS is just optional.
+                    <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-79AB3C99-20C7-46D0-B374-44317809A339">
+                    <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_AGL_1PD_25B" src="GUID-14B20BE5-4D6B-4D4F-9D85-96054807F09A-low.png" /><br />
+                </div>
+If DIS is not needed for customer application, DIS component can be removed
+                and the below code for sending firmware version should be modified. <div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-D5AA96F0-97AE-48C1-BA09-E25322ABCCC6">
+                    <br /><img class="image" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__IMAGE_OZL_BPD_25B" src="GUID-E9001D02-E63A-4AEC-B07B-FB8F532489C4-low.png" /><br />
+                </div>
+</li>
+</ol>
+<div class="section" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-DE5D19D8-B219-4571-951F-3F7614EF9797"><h2 class="title sectiontitle"><strong class="ph b">Generate Code</strong></h2></div>
+<p class="p">Generate Code by Clicking on "<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">Generate</a>" button</p>
+<div class="p"><div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-48C94742-4C69-4150-AC63-4DB456B16520"><br /><img class="image" src="GUID-0A951584-D332-4D40-9CCE-F326CC157F00-low.png" /><br /></div>
+</div>
+<div class="section" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-9AA8F313-5753-483D-9E47-367D9FADD90E"><h2 class="title sectiontitle"><strong class="ph b">Files and Routines Automatically generated by MCC</strong></h2></div>
+<p class="p">After generating the code from MCC tool by clicking Generate button, below is the project folder structure.</p>
+<div class="p"><div class="fig fignone" id="GUID-2624FC46-FF08-4D14-9FA0-25B260F81754__GUID-5E56D9C4-3590-441E-AA4E-8CCD34A750FB"><br /><img class="image" src="GUID-4ED6B99C-794D-4FF1-9600-83AC5233213D-low.png" /><br /></div>
+</div>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html">BLE OTA DFU Implementation</a></div>
+</div>
+</div></body>
+</html>

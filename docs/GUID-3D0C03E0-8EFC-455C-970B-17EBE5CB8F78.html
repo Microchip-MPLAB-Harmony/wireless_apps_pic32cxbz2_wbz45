@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="BLE Deep Sleep Advertising" />
+<meta name="DC.relation" scheme="URI" content="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>BLE Deep Sleep Advertising</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-B3B46369-F5B4-401B-8405-658BE34988F4" />
+<meta name="Microsoft.Help.TocOrder" content="3" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78">
+<h1 class="title topictitle1" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-2063798D-0C60-4BD2-B8DE-96FFA46017C0">BLE Deep Sleep Advertising</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
+<p class="p"><strong class="ph b"><a class="xref" href="#GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78">BLE Deep Sleep Advertising</a></strong></p>
+<p class="p"></p>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-E5A5126A-BEC8-4541-9415-F6005C391E89"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users to enable "Deep sleep" mode with BLE Advertisements on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the Deep Sleep advertisement interval will be set to 960 millisecond. The advertisement interval will dictate the application Deep sleep time.</p>
+<p class="p">Users of this document can choose to just run the precompiled Application Example hex file on the <span class="ph">WBZ451</span> Curiosity Board and experience the demo or can go through the steps involved in developing this Application from scratch.</p>
+<p class="p">These examples each build on top on one and other. We strongly recommend that you follow the examples in order, to learn the basics concepts before progressing to the more advanced topics.</p>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-F90C9AF2-9298-4F77-908D-493BCF52E866"><h2 class="title sectiontitle">Recommended Reads</h2><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-0FDC7D3C-A2C7-4E26-8B55-6DED37A0837B"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-F4E594AF-3505-4731-B020-7CC914D9F770"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank">BLE Software Specification</a></p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-F4E594AF-3505-4731-B020-7CC914D9F770"><span class="indent-level-default">2.</span><a class="xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize</a></li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-08004E28-D962-4C38-8922-0966276D8552"><span class="indent-level-default">3.</span><a class="xref" href="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.html">Low Power Notes</a><p class="p"></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-7EA51B0D-8E4A-4555-BD4B-0D1B90A07BB1"><h2 class="title sectiontitle">Hardware Required</h2><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 1. </span></span></caption><col style="width:50%" /><col style="width:50%" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d15539e75"><span>Tool</span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d15539e77"><span>Qty</span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e75 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e77 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e75 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e77 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e75 "><span><a class="xref" href="https://www.microchip.com/en-us/development-tool/ATPOWERDEBUGGER" target="_blank">Power Debugger</a>/Multimeter</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e77 "><span>1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p class="p"></p>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-21D0FA9A-083B-41A6-8D3F-BE24E852031A"><h2 class="title sectiontitle">SDK Setup</h2><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-949EBFC3-9B6F-4ECA-81D5-697770A33391"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-D9769041-9371-410D-ACE1-60CE6935B3AA"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Getting Started with Software Development</a></p>
+<p class="p"></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-C2836D07-01B1-49EF-AAC2-CE48326BC119"><h2 class="title sectiontitle">Software</h2><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-3D55523A-68C6-4AFB-92B8-A0254DE87FA8"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-6E8CE911-B215-4859-8547-D0E9DC32E3B3"><span class="indent-level-default">1.</span><p class="p"> <a class="xref" href="https://ttssh2.osdn.jp/index.html.en" target="_blank">TeraTerm</a></p>
+<p class="p"></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-6BE272DC-6424-4165-B344-CBF5ECDA37D7"><h2 class="title sectiontitle">Smartphone App</h2><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-D0E22E80-27E9-4CD4-817B-0AA74AC5FCAB"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-68DAA3DD-7158-4AF9-8991-C2AF11D8E7F7"><span class="indent-level-default">1.</span><p class="p">Light Blue</p>
+<p class="p"></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-223374A9-C495-4FB3-B331-1874CE132816"><h2 class="title sectiontitle">Programming the precompiled hex file or Application Example</h2><p class="p"><strong class="ph b">Programming the hex file using MPLABX IPE</strong></p>
+<ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><span class="indent-level-default">1.</span><p class="p">Precompiled Hex file is located in "&lt;Harmony Content Path&gt;\wireless_apps_pic32cxbz2_wbz45\apps\ble\building_blocks\peripheral\deep_sleep_adv\hex" folder</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><span class="indent-level-default">2.</span><p class="p">Follow the steps mentioned <a class="xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank">here</a></p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Caution:</strong> Users should choose the correct Device and Tool information</p>
+<p class="p"><strong class="ph b">Programming the Application using MPLABX IDE</strong></p>
+<ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><span class="indent-level-default">1.</span><p class="p">Follow steps mentioned in of <a class="xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="Here is how to open, build and program an existing application example">Running a Precompiled Example</a> document</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><span class="indent-level-default">2.</span><p class="p">Open and program the Application Example "ble_deep_sleep_adv.x" located in "&lt;Harmony Content Path&gt;\wireless_apps_pic32cxbz2_wbz45\apps\ble\building_blocks\peripheral\deep_sleep_adv\firmware" using MPLABX IDE</p>
+</li>
+</ol>
+<p class="p"><dfn class="term">&lt;Harmony Content Path&gt;</dfn> <a class="xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p>
+<p class="p"></p>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-7AEB4551-8490-4AF3-AAD0-B605BC8A1DD8"><h2 class="title sectiontitle">Demo Description</h2><p class="p">This Application Example enables users to enter Deep sleep mode while transmitting Connectable, Undirected BLE Advertisements. On power on reset demo will enter "Deep Sleep Mode", when the USR_BTN(SW2) is pressed the device onboard led(green) starts blinking which denotes start of advertisements, Device will enter Deep sleep mode periodically based on the advertisement interval which is set to 960 milliseconds for this example. When device connects with the mobile App the onboard led start to glow solid, which indicates the connection established and the device will enter Standby Sleep Mode during Idle state.</p>
+<p class="p"></p>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-137E096D-51A6-4909-A4B9-DB6AD83C8AD7"><h2 class="title sectiontitle">Testing</h2><p class="p">Connect the <span class="ph">WBZ451</span> Curiosity board to PC, program the precompiled hex file or application example as mentioned. Upon flashing, there will not be any indication on the board, since the device enters deep sleep mode. User can press the USR_BTN(SW2) available on the board to start Deep sleep Advertising. To connect to the <span class="ph">WBZ451</span>, User can open the Light Blue App on Smartphone to scan for Advertisements. Device name "BLE_DSADV" will appear.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_VDM_JVD_C5B" src="GUID-D4315947-A500-4F3A-8283-2FE14C82BE37-low.png" /><br /></div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-48F0CD47-35F7-4174-9EB7-2F5D4C925553"><h2 class="title sectiontitle">Current Consumption Measurement</h2><p class="p">Connect the Multimeter/Power Debugger to Power Measurement Header J6. Power on the Board. If using Power Debugger, users can use Data Visualizer to measure the current consumption.</p>
+<p class="p">Current measured in <strong class="ph b">Deep sleep</strong> mode is around 1.6 uA.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_H2B_MVD_C5B" src="GUID-45F144CA-25F6-4A21-BAD4-25F1B60961C3-low.png" /><br /></div>
+<p class="p">Current measured in <strong class="ph b">Deep sleep + Advertising</strong> mode is around 225.3 uA average.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_ST3_NVD_C5B" src="GUID-15564CBA-64A0-4FD3-A304-04CEDB06C26A-low.png" /><br /></div>
+<p class="p">Current measured in <strong class="ph b">connected + standby sleep</strong> mode is 626.1uA and average current consumption is around 1.26mA.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_XC3_4VD_C5B" src="GUID-83DEFCDE-3F55-4EE1-A6B2-AF240FED626A-low.png" /><br /></div>
+<p class="p">Users of this Early adopter package should go through the known issues document and understand the limitations if any with the current low power mode implementation.</p>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-49D50497-1913-485A-9D9B-F744A1C9AC9C"><h2 class="title sectiontitle">Developing this Application from scratch using MPLAB Code Configurator</h2><p class="p">This section explains the steps required by a user to develop this application example from scratch using MPLABx Code Configurator.</p>
+<strong class="ph b">Tip:</strong> New users of MPLAB Code Configurator are recommended to go through the <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank">overview</a><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-813E21EC-C440-4BF4-9129-D1E7F977859F"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-3F0533A3-5200-445C-8D92-89F730507BFA"><span class="indent-level-default">1.</span><p class="p">Create a new MCC Harmony Project -- <a class="xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html">link</a> for instructions</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-6FE7EE72-BC39-48D1-A4D1-0404D6CA9A2A"><span class="indent-level-default">2.</span><p class="p">Import component configuration --This step helps users setup the basic components and configuration required to develop this application. Users should follow the instructions mentioned <a class="xref" href="GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162.html">here</a> to import the component configuration.</p>
+<p class="p"><strong class="ph b">Tip:</strong> Import and Export functionality of component configuration will help users to start from a known working setup of configuration</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-264372A8-447A-44ED-9A57-8993B38DF10B"><span class="indent-level-default">3.</span><p class="p">Accept Dependencies or satisfiers, select "Yes".</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-B5F57CD6-89DE-4D44-B0B3-A65BE753685C"><span class="indent-level-default">4.</span>Verify if the Project Graph window has all the expected configuration.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_NN5_RVD_C5B" src="GUID-B933E65B-7842-464F-B51D-6442CC3FE26E-low.png" /><br /></div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-A4C19FCA-2304-42E3-A5A6-5C550A9F715E"><h2 class="title sectiontitle">Verify Deep Sleep, Advertisement, system sleep and RTC Clock Source Configuration</h2><div class="p"><ol class="ol" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-3651E909-11A4-4C2C-9486-97BC0592275A"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-6DE73596-DA7E-4921-AF76-10200F1ACC9C"><span class="indent-level-default">1.</span>Select <strong class="ph b">BLE_Stack</strong> component in project graph.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_EWG_TVD_C5B" src="GUID-8B5DD242-65A6-45B4-9F35-23647DF66FBF-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Note:</strong> Advertising Interval Min can be modified to adjust Deep Sleep Advertising interval.</p>
+<p class="p"><strong class="ph b">Tip:</strong> Advertisement payload can be configured by user here.</p>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-4AADFD0F-73D7-4AE0-A47E-31ED8827E68E"><span class="indent-level-default">2.</span>Select clock configuration.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_S51_XVD_C5B" src="GUID-94CABEBF-0765-429A-BD41-9831F2CE23FF-low.png" /><br /></div>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-E933B4EE-953F-45E1-834F-EDE96F1ED780"><span class="indent-level-default">3.</span>Configure RTC clock configuration.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_KQL_YVD_C5B" src="GUID-974FBA3F-C066-4161-91A4-770126A2EE5B-low.png" /><br /></div>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-E50645DA-57FD-49F0-AEA2-44913CDCEE43"><span class="indent-level-default">4.</span>Select Device Support Configure PMU Mode configuration.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_QDL_ZVD_C5B" src="GUID-786994CD-EC90-418A-AF74-36F782ACC3F8-low.png" /><br /></div>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-305D3B29-E07D-4DE1-83E1-7CFB7DCF6AD1"><span class="indent-level-default">5.</span>Configure LED GPIO Configuration.<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_J2W_ST2_C5B" src="GUID-8CBA8E7E-45B5-45EA-A5FA-E09296213194-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Note:</strong> The above GPIO configuration is used for indication of the device state in this example and is optional.</p>
+<p class="p"><strong class="ph b">Tip:</strong> The configuration bits will be generated after user Generates code.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-76B31218-70DA-4848-9E20-56E6BE9063C7"><h2 class="title sectiontitle">Generate Code</h2><p class="p">Instructions on<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">how to Generate Code</a></p>
+<p class="p">After generating the program source from MCC interface by clicking Generate Code, the BLE configuration can be found in the following project directories.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_KYW_WT2_C5B" src="GUID-F8F3D8BD-13AE-423D-9A10-965276610B54-low.png" /><br /></div>
+<p class="p">The <a class="xref" href="http://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20Harmony%20OSAL%20Libraries%20Help%20v2.06.pdf" target="_blank">OSAL</a>, RF System, BLE System initialization routine executed during program initialization can be found in the project files. This initialization routine is automatically generated by the MCC.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_VZV_152_C5B" src="GUID-C6E92089-B51F-4489-87AA-EC814F45BF9F-low.png" /><br /></div>
+<p class="p">The BLE stack initialization routine excuted during Application Initialization can be found in project files. This intitialization routine is automatically generated by the MCC. This call initializes and configures the GAP, GATT, SMP, L2CAP and BLE middleware layers.</p>
+<p class="p">During system sleep, clock (system PLL) will be disabled and system tick will be turned off. FreeRTOS timer needs to be componsated for the time spent in sleep. RTC timer which works in the sleep mode is used to accomplish this. RTC timer will be initialized after BLE stack initialization.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_JKB_C52_C5B" src="GUID-0E47FC35-2F24-4C1B-95EC-1E2DA4E7B67A-low.png" /><br /></div>
+<div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 2. </span></span></caption><col style="width:50%" /><col style="width:50%" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d15539e346"><span>Source Files</span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d15539e348"><span>Usage</span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e346 "><span>app.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e348 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e346 "><span>app_ble.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e348 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e346 "><span>app_ble_handler.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e348 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e346 "><span>app_ble_dsadv.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e348 "><span>Source Code for utilizing the deep sleep advertising functionality</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e346 "><span>device_deep_sleep.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d15539e348 "><span>Source Code for deep Sleep and wake up related system configurations</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p class="p"><strong class="ph b">Tip:</strong> app.c is autogenerated and has a state machine based Application code sample, users can use this template to develop their application. </p>
+<p class="p"></p>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-E7CB9B27-75A9-4A03-B60C-658DE8722A06"><p class="p"><strong class="ph b">Header Files</strong></p>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-C46D1A9F-8D63-485C-95E8-1E44796A1B9D"><p class="p">ble_gap.h- This header file contains BLE GAP functions and is automatically included in the app.c file</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Function Calls</strong></p>
+MCC generates and adds the following code to initialize the BLE Stack GAP, GATT, L2CAP and SMP in APP_BleStackInit() and Deep Sleep Advertising Functionality in APP_BleDsadvStart(flag) function<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-8B597AE8-C842-4C1D-A6BD-A4A713177F0C"><p class="p">APP_BleStackInit() and APP_BleDsadvStart(flag) are the API's that will be called inside the Applications Initial State -- APP_STATE_INIT in app.c.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-AF8A2E92-D354-4BEA-B4D7-2DE10A0FE36D"><h2 class="title sectiontitle">System Manual Configurations</h2><p class="p">The following code modifications needs to be done to utilize the deep sleep Advertising functionality.</p>
+<p class="p"><strong class="ph b">Step 1 - Initialization.c</strong></p>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-9B02262A-8105-4EEE-8004-D852E1D86F4F">CLK_Initialize();<p class="p">This API call will be originally available in SYS_Initialize function and should be called part of _on_reset() function inside initialization.c file.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_KPN_F52_C5B" src="GUID-491D46B9-A709-4ABA-8CD8-4E0C514148E2-low.png" /><br /></div>
+</li>
+<li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-291C802C-0FF7-475F-BBA9-A8F700507840"><p class="p">void SYS_Initialize (void* data)</p>
+<p class="p">The below generated code should be removed from the SYS_Initialize Function.</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_W3R_G52_C5B" src="GUID-94DED3BC-5C0F-4FE6-8FE6-40BB05D641E2-low.png" /><br /></div>
+<p class="p">Add the below code inside <strong class="ph b">SYS_Initialize</strong> Function.</p>
+<div class="p"><pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d15539e425', this);">Copy</button><code id="d15539e425" content="DEVICE_DeepSleepWakeSrc_T wakeSrc;&#xA;DEVICE_GetDeepSleepWakeUpSrc(&amp;wakeSrc);&#xA;if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE) //Initialize RTC if wake source is none(i.e power on reset)&#xA;{&#xA; RTC_Initialize();&#xA;}">DEVICE_DeepSleepWakeSrc_T wakeSrc;
+DEVICE_GetDeepSleepWakeUpSrc(&amp;wakeSrc);
+if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE) //Initialize RTC if wake source is none(i.e power on reset)
+{
+ RTC_Initialize();
+}</code></pre></div>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_MFT_H52_C5B" src="GUID-082242A3-2F5B-44B7-A79B-244D7749F3FE-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Step 2 - startup_xc32.c</strong></p>
+<ul class="ul"><li class="li with-image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-3C4BE3E1-F4CE-47CF-9BC4-BD41D35D6D2B">PCHE_SetupRam()<p class="p">Copy the below code into the startup_xc32.c</p>
+<div class="p"><pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d15539e438', this);">Copy</button><code id="d15539e438" content="__attribute__((ramfunc, long_call, section(&#34;.ramfunc&#34;),unique_section)) void PCHE_SetupRam(void)&#xA;{&#xA;  // Set Flash Wait states and enable pre-fetch&#xA;  // clear PFMWS and ADRWS&#xA;  PCHE_REGS-&gt;PCHE_CHECON = (PCHE_REGS-&gt;PCHE_CHECON &amp; (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))&#xA;                                  | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));&#xA; &#xA;  // write completion delay&#xA;  for(int i=1; i&lt;10; i++)&#xA;  {&#xA;      asm (&#34;NOP&#34;);&#xA;  }&#xA;}">__attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCHE_SetupRam(void)
+{
+  // Set Flash Wait states and enable pre-fetch
+  // clear PFMWS and ADRWS
+  PCHE_REGS-&gt;PCHE_CHECON = (PCHE_REGS-&gt;PCHE_CHECON &amp; (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                  | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+ 
+  // write completion delay
+  for(int i=1; i&lt;10; i++)
+  {
+      asm ("NOP");
+  }
+}</code></pre></div>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_BRY_J52_C5B" src="GUID-1702FD90-4C7B-4EAC-9249-C109B92106BB-low.png" /><br /></div>
+<p class="p">Copy the below code into the Reset_Handler Handler Function after __pic32c_data_initialization() Function Call.</p>
+<div class="p"><pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d15539e445', this);">Copy</button><code id="d15539e445" content="if (!(DSU_REGS-&gt;DSU_DID &amp; DSU_DID_REVISION_Msk))   //HW A0 version&#xA;   {&#xA;       PCHE_SetupRam();&#xA;   }">if (!(DSU_REGS-&gt;DSU_DID &amp; DSU_DID_REVISION_Msk))   //HW A0 version
+   {
+       PCHE_SetupRam();
+   }</code></pre></div>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_UJD_L52_C5B" src="GUID-083F9A8A-2070-4A8F-B0D0-C048DDA15BAD-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Step 3 - heap_4.c</strong></p>
+<p class="p">Modify with the below code inside heap_4.c (available as part of FreeRTOS--&gt;MemMang)</p>
+<div class="p"><pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d15539e455', this);">Copy</button><code id="d15539e455" content="static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt; Original Code&#xA; &#xA;static uint8_t  __attribute__((section (&#34;.bss.ucHeap&#34;), noload)) ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt;Modified Code">static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt; Original Code
+ 
+static uint8_t  __attribute__((section (".bss.ucHeap"), noload)) ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt;Modified Code</code></pre></div>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_J4S_M52_C5B" src="GUID-20B62661-50E1-4754-ABB6-25769C3E53F5-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Step 4 - device_deep_sleep.c</strong>(optional)</p>
+<p class="p">Include the Below code inside device_deep_sleep.c to configure the GPIO setting for deep sleep.</p>
+<div class="p"><pre class="pre codeblock" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__CODEBLOCK_YHV_KCQ_35B"><button title="Copy Code" class="copy-code" onclick="cpy('d15539e467', this);">Copy</button><code id="d15539e467" content="Device_GpioConfig();">Device_GpioConfig();</code></pre></div>
+<br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_M52_NCQ_35B" src="GUID-6CD93BB0-D1F9-4DE6-A5C4-BF34EB0E62B9-low.png" /><br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2"><h2 class="title sectiontitle">User Application Development</h2><p class="p"><strong class="ph b">Include</strong></p>
+<div class="p"><ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-E625729E-B9FE-4B1C-BAEE-4F6DDED32152">user action is required as mentioned here</li>
+</ul>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-AE459E11-03FE-4D2B-81AC-666050F36652">app_ble_dsadv.h into app.c file</li>
+</ul>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-3D45720F-8DD9-4AF9-A365-163B482E06E2">definitions.h in all the files where port pin macros are used.<p class="p"><strong class="ph b">Tip:</strong> definitions.h is not specific to just port peripheral, instead it should be included in all application source files where peripheral functionality will be exercised.</p>
+</li>
+</ul>
+</div>
+<p class="p"><strong class="ph b">Enter Deep Sleep mode</strong></p>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-6E21895C-31E9-4AA4-989A-D6D8D8F93210"><p class="p">DEVICE_EnterDeepSleep(false,0);</p>
+<p class="p">This API can be called to put the device to deep sleep mode.</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Start Deep Sleep Advertisement</strong></p>
+<ul class="ul"><li class="li" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__GUID-87B9BFC8-3A75-4445-82D7-4AA735222D25">APP_BleDsadvStart(false);<p class="p">This API can be called to start the Deep sleep Advertising.</p>
+<p class="p">This API is called in the Applications initialstate - APP_STATE_INIT in app.c</p>
+<div class="p"><br /><img class="image" id="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78__IMAGE_IPD_452_C5B" src="GUID-1A9C0E95-88C0-4646-9091-840E2A6B545E-low.png" /><br /></div>
+<p class="p">Users can exercise various other BLE Advertisement functionalities by using <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html" target="_blank">BLE Stack API</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Peripheral</a></div>
+</div>
+</div><div class="topic nested1" aria-labelledby="TOPIC_V5L_VXP_35B__GUID-3C9874E0-EF12-49BB-863B-8BA89D3F636F" id="TOPIC_V5L_VXP_35B"><h2 class="title topictitle2" id="TOPIC_V5L_VXP_35B__GUID-3C9874E0-EF12-49BB-863B-8BA89D3F636F">Known Issue:</h2><div class="body"><p class="p">System sleep Implementation source(device_sleep.c) and header(device_sleep.h) files may not include sometimes when regenerated the project through MCC.</p>
+<p class="p"><strong class="ph b">Note:</strong> It is recommended to follow the below steps to avoid the mentioned known issue whenever deep sleep project is opened through MCC.</p>
+<p class="p"><strong class="ph b">Step1:</strong> Please uncheck and re-enable the <strong class="ph b">Enable Sleep Mode</strong> and <strong class="ph b">Enable Deep Sleep Advertising</strong> option inside BLE stack Component Configuration Options as shown in the figure below and accept the dependencies requested.</p>
+<div class="p"><br /><img class="image" id="TOPIC_V5L_VXP_35B__IMAGE_H5D_YZP_35B" src="GUID-5D00C338-5E5D-4AD9-8C66-C787111201D5-low.png" /><br /></div>
+<p class="p"><strong class="ph b">Step2:</strong> Enable force update option and press Generate.</p>
+<div class="p"><br /><img class="image" id="TOPIC_V5L_VXP_35B__IMAGE_RBP_X1Q_35B" src="GUID-564A573A-A4C5-4FFC-92D4-A5261D5490C8-low.png" /><br /></div>
+<p class="p"></p>
+<div class="section" id="TOPIC_V5L_VXP_35B__GUID-8FC495BA-2541-49CD-B7EE-627DF0EFA7DA"><h3 class="title sectiontitle">Where to go from here</h3><ul class="ul" id="TOPIC_V5L_VXP_35B__UL_BMS_CBQ_35B"><li class="li" id="TOPIC_V5L_VXP_35B__GUID-690A7369-A200-4256-A619-EF22E39E02A7"><p class="p"> <a class="xref" href="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html">BLE Connection</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

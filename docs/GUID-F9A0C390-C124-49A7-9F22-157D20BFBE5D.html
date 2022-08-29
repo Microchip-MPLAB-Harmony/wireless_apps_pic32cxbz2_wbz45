@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="BLE Connection" />
+<meta name="DC.relation" scheme="URI" content="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>BLE Connection</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-B3B46369-F5B4-401B-8405-658BE34988F4" />
+<meta name="Microsoft.Help.TocOrder" content="4" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D">
+<h1 class="title topictitle1" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-F58D110D-7046-4982-8520-FCD1334D1BE9">BLE Connection</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
+<p class="p"><a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">Legacy Advertisements</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="#GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D">BLE Connection</a> <strong class="ph b">--&gt;</strong><a class="xref" href="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html">BLE Transparent UART</a></p>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users enable advertisements and connection on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC) BLE Advertisement is Broadcasting of small packets to peer devices. In BLE a peripheral device always starts with advertisements.Advertisement packets enable a central or observer to discover and connect to a peripheral.</p>
+<p class="p">Users of this document can choose to just run the precompiled Application Example hex file on the <span class="ph">WBZ451</span> Curiosity Board and experience the demo or can go through the steps involved in developing this Application from scratch</p>
+<p class="p">These examples each build on top on one and other. We strongly recommend that you follow the examples in order, to learn the basics concepts before progressing to the more advanced topics.</p>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__RECOMMENDED-READS"><h2 class="title sectiontitle">Recommended Reads</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-9C0C2CB8-C7DF-40FB-8026-371CA6FE8336"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-4711E82E-7137-4503-B763-63A0A4E2726B"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank">BLE Software Specification</a></p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-4711E82E-7137-4503-B763-63A0A4E2726B"><span class="indent-level-default">2.</span><p class="p"><a class="xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize</a></p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-EE104185-49C5-467A-97DE-8882B7F5BAB9"><span class="indent-level-default">3.</span><p class="p"> <a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">BLE Legacy Advertisements</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-7901CA15-28A1-451A-B81A-168194CA36C2" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e84"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e88"><span> <strong class="ph b">Qty</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e84 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e88 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e84 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e88 "><span>1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-BC250753-8F17-4079-9977-31F8A2C5C790"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-07DD62AA-2B42-462C-8DC0-D87A4B7EB9B3"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Getting started with Software Development</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__SOFTWARE"><h2 class="title sectiontitle">Software</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-62F35CF9-5B99-46E6-9C66-3ED8E5869E6A"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-B576E82D-7CB5-4C95-8BB4-13A735196E37"><span class="indent-level-default">1.</span><p class="p"> <a class="xref" href="https://ttssh2.osdn.jp/index.html.en" target="_blank">TeraTerm</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__SMARTPHONE-APP"><h2 class="title sectiontitle">Smartphone App</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-CA0802DD-2461-4D6A-9C84-ACBDE0D5B847"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-821EAFDB-494A-4CBE-87C4-5DC46B1F3175"><span class="indent-level-default">1.</span><p class="p">Light Blue</p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE"><h2 class="title sectiontitle">Programming the precompiled hex file or Application Example</h2><p class="p"><strong class="ph b">Programming the hex file using MPLABX IPE</strong></p>
+<ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><span class="indent-level-default">1.</span><p class="p">Precompiled Hex file is located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\peripheral_conn\hex" folder</p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><span class="indent-level-default">2.</span><p class="p">Follow the steps mentioned <a class="xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank">here</a></p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Caution:</strong> Users should choose the correct Device and Tool information</p>
+<p class="p"><strong class="ph b">Programming the Application using MPLABX IDE</strong></p>
+<ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><span class="indent-level-default">1.</span><p class="p">Follow steps mentioned in of <a class="xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="Here is how to open, build and program an existing application example">Running a Precompiled Example</a> document</p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><span class="indent-level-default">2.</span><p class="p">Open and program the Application Example "peripheral_conn.x" located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\peripheral_conn\firmware" using MPLABX IDE</p>
+</li>
+</ol>
+<p class="p"><dfn class="term">&lt;Harmony Content Path&gt;</dfn> <a class="xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__DEMO-DESCRIPTION"><h2 class="title sectiontitle">Demo Description</h2><p class="p">This Application Example enables users to transmit Connectable and Scannable Undirected BLE Advertisements.On reset demo will print "Advertising" on a terminal emulator like TeraTerm, this denotes start of advertisements. Central device scanning these advertisements can issue connection request and get connected with this device. Upon connection demo prints "Connected" message on terminal window</p>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__TESTING"><h2 class="title sectiontitle">Testing</h2><div class="p">Connect the <span class="ph">WBZ451</span> Curiosity board to PC, program the precompiled hex file or application example as mentioned. Open TeraTerm @ (Speed: 115200, Data: 8-bit, Parity: none, stop bits: 1 bit, Flow control: none). Reset the board. Upon reset, "Advertising" message is displayed on the TeraTerm. User can open the LightBlue App on Smartphone to scan for Advertisements. Device with device name "Microchip" will appear. <div class="fig fignone" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-319E378E-BB6F-469A-AA18-CD1E9140E88A"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-0BB10F7A-1CA9-4D6C-9474-B48063466B0E-low.png" /></div>
+ Select the device to get connected, after successful connection user can view the advertisement data. <div class="fig fignone" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-CBA571D2-DDF9-4743-9B90-14089302DEA9"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-51617AC8-5266-45A2-88A5-93372201F92F-low.png" /></div>
+</div>
+<p class="p">Terminal output</p>
+<br /><img class="image" src="GUID-015BB5D7-D6D0-4E7D-9A2D-3292AD8E116D-low.png" /><br /><p class="p">Users can use another <span class="ph">WBZ451</span> Curiosity Board configured as <a class="xref" href="GUID-7C948236-7D8E-45CA-9511-AB244B44BE64.html">BLE Connection(central)</a> instead of using a Smartphone App</p>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__DEVELOPING-THIS-APPLICATION-FROM-SCRATCH-USING-MPLAB-CODE-CONFIGURATOR"><h2 class="title sectiontitle">Developing this Application from scratch using MPLAB Code Configurator</h2><p class="p">This section explains the steps required by a user to develop this application example from scratch using MPLABx Code Configurator</p>
+<p class="p"><strong class="ph b">Tip:</strong> New users of MPLAB Code Configurator are recommended to go through the <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank">overview</a>.</p>
+<ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-BB8E9F01-D4B2-4B1F-89F9-3243B3AE91B1"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-95F7B392-BA9E-489C-82E3-994C13D4C568"><span class="indent-level-default">1.</span><p class="p">Create a new MCC Harmony Project -- <a class="xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html">link</a> for instructions</p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-63C7A4C8-2764-45A3-9FA8-7AA7920D2650"><span class="indent-level-default">2.</span><p class="p">Import component configuration --This step helps users setup the basic components and configuration required to develop this application. The imported file is of format .mc3 and is located in the path "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\peripheral_conn\firmware\peripheral_conn.X". Users should follow the instructions mentioned <a class="xref" href="GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162.html">here</a> to import the component configuration.</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Tip:</strong> Import and Export functionality of Harmony component configuration will help users to start from a known working setup of MCC configuration</p>
+<ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-BB8E9F01-D4B2-4B1F-89F9-3243B3AE91B1"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-7008BBE9-031F-450B-957A-65E9A2BEDB64"><span class="indent-level-default">1.</span><p class="p">Accept Dependencies or satisfiers, select "Yes"</p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-966C832A-06C8-4303-8518-7255026FD3F0"><span class="indent-level-default">2.</span><div class="p">Verify if the Project Graph window has all the expected configuration <div class="fig fignone" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-2EECC471-745D-46FA-9C20-698B0C2DED0D"><div class="figcap"><span class="fig--title-label">Figure 3. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-BE31CC3C-C54C-4BC3-84A0-6CC0731E77F3-low.png" /></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__VERIFY-ADVERTISEMENT-AND-CONNECTION-CONFIGURATION"><h2 class="title sectiontitle">Verify Advertisement and Connection Configuration</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-8599B622-2AFB-4463-8350-BE6208165D5E"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-6909E439-1082-46A1-9CB9-21FD5D18A5A2"><span class="indent-level-default">1.</span><div class="p">Select <strong class="ph b">BLE_Stack</strong> component in project graph <div class="fig fignone" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-7D3C0459-F968-4572-A663-EF0C28701E39"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-8B4AB762-1809-4FBD-8799-5930C918DBE2-low.png" /></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GENERATE-CODE-LINK-FOR-INSTRUCTIONS"><h2 class="title sectiontitle">Generate Code</h2>Instructions on<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">how to Generate Code</a></div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__FILES-AND-ROUTINES-AUTOMATICALLY-GENERATED-BY-THE-MCC"><h2 class="title sectiontitle">Files and Routines Automatically generated by the MCC</h2><p class="p">After generating the program source from MCC interface by clicking Generate Code, the BLE configuration can be found in the following project directories</p>
+<br /><img class="image" src="GUID-084D2DCD-2D12-4756-B995-E85612E420BA-low.png" /><br /><p class="p">The <a class="xref" href="http://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20Harmony%20OSAL%20Libraries%20Help%20v2.06.pdf" target="_blank">OSAL</a>, RF System, BLE System initialization routine executed during program initialization can be found in the project files. This initialization routine is automatically generated by the MCC</p>
+<br /><img class="image" src="GUID-C6F90FEE-3E53-4160-8FB6-DF96A1F41B0B-low.png" /><br /><div class="p">The BLE stack initialization routine excuted during Application Initialization can be found in project files. This intitialization routine is automatically generated by the MCC. This call initializes and configures the GAP, GATT, SMP, L2CAP and BLE middleware layers. <div class="fig fignone" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-329A4F1A-0D90-42C4-893E-C838C3278B61"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-692108AA-0A28-4831-B8FD-ECEA2BD9B722-low.png" /></div>
+</div>
+<p class="p">Autogenerated, advertisement data format</p>
+<br /><img class="image" src="GUID-48486BE3-FAEE-40E1-A324-54D3BFF8B8DA-low.png" /><br />
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-4147779E-0DE8-4986-AAB3-6C3AA9E7B24F" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e324"><span> <strong class="ph b">Source Files</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e328"><span> <strong class="ph b">Usage</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span>app.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span>app_ble\app_ble.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span><p class="p">app_ble\</p>
+app_ble_handler.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote class="lq"><p class="p"><strong class="ph b">Tip:</strong> app.c is autogenerated and has a state machine based Application code sample, users can use this template to develop their application |</p>
+</blockquote>
+<p class="p"><strong class="ph b">Header Files</strong></p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-30FA39A8-7CE3-491B-B2EE-956DC5A7F025"><p class="p">ble_gap.h- This header file contains BLE GAP functions and is automatically included in the app.c file</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Function Calls</strong></p>
+<p class="p">MCC generates and adds the code to initialize the BLE Stack GAP, GATT, L2CAP and SMP in <em class="ph i">APP_BleStackInit()</em> function</p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-8B2C257B-6E8E-4369-BD98-BFD6BD362025"><p class="p">APP_BleStackInit() is the API that will be called inside the Applications Initial State -- APP_STATE_INIT in app.c</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__USER-APPLICATION-DEVELOPMENT"><h2 class="title sectiontitle">User Application Development</h2><p class="p"><strong class="ph b">Include</strong></p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-2E0DE7B7-D7FA-466C-B4F0-6757ECF3081A"><p class="p">user action is required as mentioned <a class="xref" href="GUID-99583057-8B1A-42F2-84E8-CFC7717FA5D1.html">here</a></p>
+</li>
+<li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-FBE14378-39FC-4779-BF6E-05347D74E50A"><p class="p">definitions.h in all the files where UART will be used to print debug information</p>
+</li>
+</ul>
+<blockquote class="lq"><p class="p">Tip: definitions.h is not specific to just UART peripheral, instead it should be included in all application source files where peripheral functionality will be exercised</p>
+</blockquote>
+<p class="p"><strong class="ph b">Set PUBLIC Device Address</strong></p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-2AF3C6DA-AD58-4F00-A042-F0180A8E4D0C"><p class="p">BLE_GAP_SetDeviceAddr(&amp;devAddr);</p>
+</li>
+</ul>
+<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d29957e401', this);">Copy</button><code id="d29957e401" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
+    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;
+    devAddr.addr[0] = 0xA1;
+    devAddr.addr[1] = 0xA2;
+    devAddr.addr[2] = 0xA3;
+    devAddr.addr[3] = 0xA4;
+    devAddr.addr[4] = 0xA5;
+    devAddr.addr[5] = 0xA6;
+
+    // Configure device address
+    BLE_GAP_SetDeviceAddr(&amp;devAddr);</code></pre><br /><img class="image" src="GUID-0179C471-E8B5-4370-B4B5-B7C03B33A15D-low.png" /><br /><p class="p"><strong class="ph b">Start Advertisement</strong></p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-8EBADAA6-8D8F-42AD-A5BB-A4AB9254075B"><p class="p">BLE_GAP_SetAdvEnable(0x01, 0);</p>
+</li>
+</ul>
+<br /><img class="image" src="GUID-CA0439E0-0BBF-4DD2-A945-47DCD2C922D9-low.png" /><br /><p class="p"><strong class="ph b">Connected &amp; Disconnected Events</strong></p>
+<ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-3D191502-DFC7-4845-9827-F0F604A187D1"><p class="p">All the possible GAP, GATT, SMP and L2CAP Event handlers are available in file app_ble_handler.c, users can implement application code to denote Connection State here.</p>
+</li>
+</ul>
+<br /><img class="image" src="GUID-C86FF099-CBC3-4506-8290-742B24386B17-low.png" /><br /><p class="p">Users can exercise various other BLE Advertisement functionalities by using <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html" target="_blank">BLE Stack API</a></p>
+</div>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__WHERE-TO-GO-FROM-HERE"><h2 class="title sectiontitle">Where to go from here</h2><ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-65C1BDC7-AF8A-4081-AABF-0EE727EEB466"><p class="p"><a class="xref" href="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html">BLE Transparent UART</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Peripheral</a></div>
+</div>
+</div></body>
+</html>

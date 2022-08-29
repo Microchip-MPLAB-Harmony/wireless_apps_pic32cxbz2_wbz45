@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Bootloader" />
+<meta name="DC.relation" scheme="URI" content="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Bootloader</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-399616BF-E65E-43B3-9831-4B19472A5EF0" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" />
+<meta name="Microsoft.Help.TocOrder" content="0" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0">
+<h1 class="title topictitle1" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-76569EDE-DE56-4437-A0D2-7F390629F5C3">Bootloader</h1><div class="body"><div class="section" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-4600C314-6BE7-4ABC-90C1-CFB163261393"><h2 class="title sectiontitle">Introduction</h2></div>
+<p class="p">A bootloader is a small application that can be used to upgrade firmware on a target device without the need for an external programmer or debugger. For <span class="ph">PIC32CXBZ2</span> standalone bootloader, it provides below functionalities:</p>
+<div class="p"><ul class="ul"><li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-8C64D30D-A8F2-4B71-BA53-0F4FD7026C6D"><p class="p">Device Firmware Upgrade over Serial(UART) interface, this is also called DFU over Serial.</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-A6220AE1-1DDD-43B6-972C-F31FBE865205"><p class="p">Provide functionality support for wireless Over The Air Update, which is also called OTAU.</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-B7AC6154-26B5-4182-B6A8-F890CE06EA87"><p class="p">Provide various approaches to verify and authenticate firmware if enabled.</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-5BCA89F5-69F6-4E62-80FA-DA57A5E06DC0"><p class="p">Display Console message if enabled</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-881DEB27-9C11-4617-9B56-8B4E7D0E4829"><h2 class="title sectiontitle"><span class="ph">PIC32CXBZ2</span> Standalone Bootloader Component</h2></div>
+<p class="p"><span class="ph">PIC32CXBZ2</span> bootloader is a standalone Harmony component used to configure bootloader code for <span class="ph">PIC32CXBZ2</span> device. Click <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-2085FE66-A762-4CC0-B054-7F98E8AF999A-en-US-2/index.html?GUID-A04B5B1F-202B-4944-B18F-13E4857CC3CD" target="_blank">here</a> to know about <span class="ph">PIC32CXBZ2</span> standalone bootloader component, user can find more information as listed below:</p>
+<ul class="ul"><li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-54C7C89D-D04E-4F9B-9C45-F0191BC94C8E"><p class="p">Memory layout of <span class="ph">PIC32CXBZ2</span> device</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-49BA3F24-FCCF-4060-A056-85353520CF30"><p class="p">Boot memory information</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-DE51FEE1-4AF7-44DD-9D31-3E933D5FE586"><p class="p">Image metadata definition</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-F4A18F38-C1C5-4EBB-AEE1-8979E9131001"><p class="p">Working of Bootloader</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-C05D71D6-1957-4E4B-AC13-AE31432AB4FA"><p class="p">Flow diagram of Bootloader</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-1A7FED54-FB44-4576-B46C-42063A969E29"><p class="p">Bootloader configuration options</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-A48894C3-96EA-4661-BD1B-930C1BB51076"><p class="p">Bootloader and DFU API usage</p>
+</li>
+</ul>
+<div class="section" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-8BB1D890-221C-46E7-A103-BC77B130A573"><h2 class="title sectiontitle">Bootloader Example Code</h2></div>
+<p class="p">PIC32CX-BZ2/WB45 bootloader provided two methods to enter DFU mode, one is GPIO Trigger, another is Timber Based Trigger. Later section will have more detailed information about them.</p>
+<p class="p">For bootloader using GPIO Trigger method, user can find example code in <em class="ph i">wireless_apps_pic32cxbz2_wbz45\apps\bootloader\bootloader</em>, and precompiled hex file at <em class="ph i">wireless_apps_pic32cxbz2_wbz45\apps\bootloader\bootloader\precompiled_hex\bootloader.X.production.hex</em></p>
+<p class="p">For bootloader using Timer Based Trigger method, user can find a precompiled hex file at <em class="ph i">wireless_apps_pic32cxbz2_wbz45\apps\bootloader\bootloader\precompiled_hex\bootloader_timer.X.production.hex</em>. Since Timer Based Trigger bootloader creation is very similar to GPIO Trigger, there is no example code provided for it.</p>
+<div class="section" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-8A406025-673D-4A19-9E25-F3D42627031A"><h2 class="title sectiontitle">Creating Bootloader From Scratch Using MCC</h2></div>
+<p class="p">This section explains the steps required by a user to configure and generate a <span class="ph">PIC32CXBZ2</span> standalone bootloader from scratching using MCC. User can find the bootloader example code(GPIO Trigger) generated using MCC in the path <strong class="ph b">wireless_apps_pic32cxbz2_wbz45\apps\bootloader\bootloader</strong></p>
+<div class="p">Generated Bootloader example has the following configurations:<ul class="ul"><li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-889624CC-1A35-467E-9430-155A7AE5BED6"><p class="p">Enabled UART DFU</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-988A8E03-820E-4367-84A2-591F8BFC3239"><p class="p">Enabled console to display messages</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-988A8E03-820E-4367-84A2-591F8BFC3239"><p class="p">Enabled GPIO Trigger</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-0BB4E5B2-36F0-4574-98B8-AD00DA890652"><p class="p">Hardware requried is <strong class="ph b"><span class="ph">WBZ451</span> Curiosity Board,</strong> DFU mode is triggered by pressing SW2(GPIO PB4) on the board</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-0BB4E5B2-36F0-4574-98B8-AD00DA890652"><p class="p">Automatically reboot firmware after DFU is finished</p>
+</li>
+</ul>
+<strong class="ph b"><span class="ph">WBZ451</span> Curiosity Board</strong> is the hardware required to run this bootloader example, the board top view is shown in figure-1.</div>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-5D1FED83-7F2E-4FB0-A3F4-0AA9B3C4BA95"><div class="figcap"><span class="fig--title-label">Figure 1. </span><span class="ph">WBZ451</span> Curiosity Board. </div><span class="desc figdesc"><p class="p"><span class="ph">WBZ451</span> Curiosity Board Top View</p>
+</span><img class="image" src="GUID-B266746C-E9EE-414F-A0D2-B491E92E6DD8-low.jpg" /></div>
+</div>
+<p class="p">Followings are steps to create the bootloader example(GPIO Trigger) from scratch.</p>
+<p class="p"><strong class="ph b">Tip:</strong> New users of MPLAB Code Configurator are recommended to go through the <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank"><u class="ph u">overview</u></a>.</p>
+<p class="p">1. Create a new MCC Harmony Project -- <a class="xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html"><u class="ph u">link</u></a> for instructions, selecting <strong class="ph b"><span class="ph">WBZ451</span></strong> as Target Device.</p>
+<p class="p">2. After MCC is launched, in Device Resource window, expand <strong class="ph b">Harmony – Wireless – Driver</strong>, select <strong class="ph b">Bootloader</strong> and add the component. Accept all the dialog messages by clicking <strong class="ph b">Yes</strong> on message prompt. This will resolve dependencies among components and add connection in the graph.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-24C1B00A-4B54-48CB-A235-36A2BDB5CC43"><div class="figcap"><span class="fig--title-label">Figure 2. </span>Device Resources Window. </div><span class="desc figdesc"><p class="p">Harmony-Wireless-Dirver, select Bootloader</p>
+</span><img class="image" src="GUID-34199F7C-069F-4490-B8F6-1F31BFCE4E2E-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-9AC79D28-4553-4747-B030-8E2DE596C2D3"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Confirmation for Components Auto-activiation. </div><span class="desc figdesc"><p class="p">Click all YES</p>
+</span><img class="image" src="GUID-4F97B847-2A22-4FC2-BA9C-A45176346204-low.jpg" /></div>
+3. In the project graph window, select <strong class="ph b">Bootloader</strong> component to show its Configuration Options. In the Configuration Options, enable <strong class="ph b">Bootloader UART DFU</strong>, verify it is <strong class="ph b">GPIO Trigger</strong> mode and port PB4 is selected as GPIO trigger port. PB4 is chosen as it is connected to SW2 on <span class="ph">WBZ451</span> Curiosity board. Then enable Console and leave <strong class="ph b">ECC Public Key</strong> and <strong class="ph b">Supported Authentication Methods</strong> to default.</div>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-4F0773E5-A598-461F-84CA-B0327279A854"><div class="figcap"><span class="fig--title-label">Figure 4. </span>Project Graph Window. </div><span class="desc figdesc"><p class="p">Select Bootloader to Configure</p>
+</span><img class="image" src="GUID-8791D0C0-AD64-4A1F-80C2-813DDC74D800-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-8193D1EE-659A-4B1F-A5B8-DC68F74673EB"><div class="figcap"><span class="fig--title-label">Figure 5. </span>Bootloader Options for GPIO Trigger. </div><span class="desc figdesc"><p class="p">GPIO Trigger mode options</p>
+</span><img class="image" src="GUID-9A2FE934-30D4-4198-940F-9CEA18BEF039-low.jpg" /></div>
+</div>
+<p class="p"><strong class="ph b">GPIO Trigger</strong> is the option to trigger DFU mode, where user needs to hold the GPIO button during reset to put the bootloader into DFU mode. Use <strong class="ph b">GPIO Port</strong> and <strong class="ph b">GPIO Pin</strong> option to change the port and pin based on user hardware.</p>
+<p class="p"><strong class="ph b">Tip</strong>: Other than GPIO Trigger, another trigger option <strong class="ph b">Timer Based Trigger</strong> is also provided, where bootloader will be in DFU mode for amount of time before jumping to the user application. User can change the <strong class="ph b">DFU Wait Time in Milliseconds</strong> to change the amount of time. By selecting Timer Based Trigger, a 32bit timer component TC0 is asked to be activated, click <strong class="ph b">YES</strong> to accept adding TC0 and accept its connection. Following figures show Timer Based Trigger options and message prompt of adding TC0.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-5A608F8B-1281-4E96-86F3-22DBCC549FC1"><div class="figcap"><span class="fig--title-label">Figure 6. </span>Bootloader Options for Timer Based Trigger. </div><span class="desc figdesc"><p class="p">Timer Based Trigger mode options</p>
+</span><img class="image" src="GUID-33EA8A54-A465-4B9F-8B66-8744EF118988-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-A25DF8FA-CB50-4514-A51D-454D1848A111"><div class="figcap"><span class="fig--title-label">Figure 7. </span>Comfirmation for Components Auto-activiation. </div><span class="desc figdesc">Click YES to Activate TC0 Component</span><img class="image" src="GUID-C1821F14-69B6-4E6E-899A-6DC82510D69C-low.jpg" /></div>
+</div>
+<p class="p"><strong class="ph b">Tip</strong>: For Supported Authentication Methods, 3 methods are provided: <strong class="ph b">None</strong>, <strong class="ph b">SHA256</strong>, and <strong class="ph b">ECDSA256</strong>. Authentication methods with <strong class="ph b">ECC Public Key</strong> are used to configure firmware authentication methods, including verifying firmware completion status and authenticating firmware vendor. For more details about these configurations, user can refer to <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-2085FE66-A762-4CC0-B054-7F98E8AF999A-en-US-2/index.html?GUID-4552A2E4-E35C-4FD0-9C01-0EE86D4F6163" target="_blank">here</a>.</p>
+<p class="p">4. In the project graph window, selecting the Bootloader component, right click the dependency of UART, select SERCOM0 in the Satisfiers list. Then SERCOM0 component will be added into project graph.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-565A9B83-F981-4726-B19D-BB6BC35476DC"><div class="figcap"><span class="fig--title-label">Figure 8. </span>Dependency of UART. </div><span class="desc figdesc"><p class="p">Select SERCOM0 in UART Satisfiers</p>
+</span><img class="image" src="GUID-F52C7BDB-BA13-42D2-971E-ADB27F4B4693-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-76B892DC-A782-40F4-88DB-ECA36BEC3128"><div class="figcap"><span class="fig--title-label">Figure 9. </span>Project Graph Window. </div><span class="desc figdesc"><p class="p">Select SERCOM0 to Configure</p>
+</span><img class="image" src="GUID-D2CCE71F-34C9-4A8C-8286-9236478DF505-low.jpg" /></div>
+5. Select SERCOM0 component to open its Configuration Options, change <strong class="ph b">Receive Pinout</strong> and <strong class="ph b">Transmit Pinout</strong> according to <span class="ph">WBZ451</span> Curiosity board. Leave other settings to default.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-A1EBC4D7-BDB7-4D74-B868-E57416FFCDDB"><div class="figcap"><span class="fig--title-label">Figure 10. </span>SERCOM0 Options. </div><span class="desc figdesc"><p class="p">Configure Receive Pinout and Transmit Pinout</p>
+</span><img class="image" src="GUID-BA5CFB7E-27F9-4F0E-88D0-1CB8C7B62C76-low.jpg" /></div>
+6. Expand tree of Peripherals, select and add RCON component. Verify RCON options, just leaving it as default is okay.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-9231737E-A5F8-4E40-A5E6-66C3FDE95104"><div class="figcap"><span class="fig--title-label">Figure 11. </span>Device Resources Window. </div><span class="desc figdesc"><p class="p">Harmony - Peripherals - RCON</p>
+</span><img class="image" src="GUID-49D9F570-070A-4A72-9B4C-2790A73778D1-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-65CD005D-4D9A-4E2D-AD9D-11FAE0DB327B"><div class="figcap"><span class="fig--title-label">Figure 12. </span>Project Graph Window. </div><span class="desc figdesc"><p class="p">Select RCON to Check its Options</p>
+</span><img class="image" src="GUID-8911B3C3-105E-4F1C-B58D-24BB261FEE7C-low.jpg" /></div>
+</div>
+<p class="p"><strong class="ph b">Tip</strong>: RCON provides software reset function, adding RCON component is for enabling automatical firmware reboot after DFU completion.</p>
+<div class="p">7. Then press <strong class="ph b">Generate</strong> button to generate the code.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-9B1D3E00-5F62-40E1-AAC1-F73BD597AF9F"><div class="figcap"><span class="fig--title-label">Figure 13. </span>Generate Bootloader Code. </div><span class="desc figdesc"><p class="p">Press MCC Generate Button to Generate the Code</p>
+</span><img class="image" src="GUID-69A35D44-C482-4CE3-9DE5-47CEDC7B0FAB-low.jpg" /></div>
+8. To make the Bootloader code be fit into 24KB boot memory of <span class="ph">PIC32CXBZ2</span>, manually find and replace <strong class="ph b">ecc.c</strong> and <strong class="ph b">crypt_ecc_pukcl.c</strong> with files provided in <strong class="ph b">wireless_pic32cxbz_wbz\utilities\pic32cx-bz\tempBtl</strong></div>
+<p class="p">9. To enable firmware auto reboot after DFU completion, it need host end to send a new command to bootloader. This new command is device Reset command defined to 0x12. To add this command definition, open file progexec.h, add code as below:</p>
+<p class="p"><strong class="ph b">#define DEVICE_RESET_CMD 0x12</strong></p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-4E13CE1B-8FAA-469D-8ECC-64AC37595B5B"><div class="figcap"><span class="fig--title-label">Figure 14. </span>Code Change in File progexec.h. </div><span class="desc figdesc"><p class="p">Add RESET_CMD Definition</p>
+</span><img class="image" src="GUID-BDEB5CD7-193C-46FC-A10C-06E78158AFE5-low.jpg" /></div>
+Then in file progexec.c, function <strong class="ph b">program_exec_main()</strong>, add code to handle device Reset command, call <strong class="ph b">RCON_SoftwareReset()</strong> to start software reset. Code added is shown in below figure.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-136BBC41-FD04-4AC7-9F29-E6A01F56E642"><div class="figcap"><span class="fig--title-label">Figure 15. </span>Code Change in File progexec.c. </div><span class="desc figdesc"><p class="p">Add RESET_CMD Command Handler</p>
+</span><img class="image" src="GUID-6CD69C68-F7AE-4AA3-8AF1-5C367BC54493-low.jpg" /></div>
+</div>
+<p class="p"><strong class="ph b">Tip</strong>: firmware auto reboot also needs host end modification to send 0x12 command to reset device after DFU completion, so far only PC GUI tool(MicrochipUtilityTool.exe) is modified and supported it, Python scripts as another way have not been modified to support it.</p>
+<p class="p">10. On the IDE Tools bar, click <strong class="ph b">Clean and Build Main Project</strong> to build the code, <em class="ph i">bootloader.X.production.hex</em> file will be generated. User can also find precompiled hex files under folder <em class="ph i">wireless_apps_pic32cxbz2_wbz45\apps\bootloader\bootloader\precompiled_hex</em>.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-AD1950C3-C338-4FED-A675-874865A1A0FD"><div class="figcap"><span class="fig--title-label">Figure 16. </span>Build Bootloader Code. </div><span class="desc figdesc"><p class="p">Click <strong class="ph b">Clean and Build Main Project</strong> to Build Code</p>
+</span><img class="image" src="GUID-B7F7E57A-B98A-4D63-A9F1-29D08E051C1A-low.jpg" /></div>
+</div>
+<p class="p">While generated bootloader hex file should be added to user aplication as Loadable File, they shouldn't be used alone. Followings are talking about a few simple steps need to be handled at user application side.</p>
+<div class="section" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-D83B387C-C1ED-437A-9B48-F6196A8B6C8F"><h2 class="title sectiontitle">Configure User Application to Use Bootloader</h2></div>
+<p class="p">To use Bootloader with a user application, there are a few steps to be configured at user application project. These steps are common to any user application that wants to have Bootloader capability, these steps include:</p>
+<ul class="ul"><li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-C93B85FD-04BC-458C-8B0D-432DBB60DFBB"><p class="p">Add <strong class="ph b">Bootloader Services</strong> component onto user application project and generate code</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-1D28EC8B-EB9D-46B4-924B-2AC4F6D9BE3E"><p class="p">Add Bootloader as <strong class="ph b">Loadable File/Project</strong> to create unified image</p>
+</li>
+<li class="li" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-03A92717-0DA5-44D5-944F-EC67CEC50981"><p class="p">Program unified image to device.</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Add Bootloader Services Component and Generate Code</strong></p>
+<p class="p">Open any user application project with MPLAB X IDE, click on <strong class="ph b">MCC</strong> icon on Tools bar to launch MPLAB Code Configurator to open project graph.</p>
+<p class="p">In Device Resource window, expand <strong class="ph b">Harmony – Wireless – Driver</strong>, select <strong class="ph b">Bootloader Services</strong> component and add it. This component generates the supporting linker file and MPLABX script needed for adding metadata header into application image(Project Properties is added with <strong class="ph b">SignFirmware</strong> settings). <strong class="ph b">Use Firmware Signature Verification API in Bootloader</strong> is the only option in Bootloader Services component. For DFU via UART, it is not necessary to enable firmware signature and verification, although user can do so if needs. While for OTAU, user must enable firmware signature and verification, by clicking on check box to <strong class="ph b">Use Firmware Signature Verification API in Bootloader</strong>.</p>
+<p class="p">(Following project graph is just an example, user may have different graph depending on their application.)</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-FC5B44F6-4E02-4D0A-8240-C804B1F8AE93"><div class="figcap"><span class="fig--title-label">Figure 17. </span>User Application Add Bootloader Services. </div><span class="desc figdesc"><p class="p">Add Bootloader Services and Configure</p>
+</span><img class="image" src="GUID-B306A9D8-0655-461D-A496-EBF5BEABBE2B-low.jpg" /></div>
+</div>
+<p class="p">After <strong class="ph b">Bootloader Services</strong> component is added and configured, press <strong class="ph b">Generate</strong> button to generate the user application code. In the generated new code, some code about bootloader service is added, as well as project’s linker script file is also automatically changed to reflect bootloader functionality.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-497D043A-83BB-4F99-B491-05A8A091FB7A"><div class="figcap"><span class="fig--title-label">Figure 18. </span>Generate User Application Code. </div><span class="desc figdesc"><p class="p">Press <strong class="ph b">Generate</strong> button to Generate User Application Code</p>
+</span><img class="image" src="GUID-69A35D44-C482-4CE3-9DE5-47CEDC7B0FAB-low.jpg" /></div>
+Also in the updated new project, <strong class="ph b">SignFirmware</strong> setting is added into Project Properties. (if not see it, try close and open MPLABX to refresh the project.) It's strongly recommended to enable Authen Method as <strong class="ph b">SHA256</strong> or <strong class="ph b">ECDSA256-SHA256</strong> in SignFirmware setting. If user choose <strong class="ph b">None</strong>, since there is no firmware integrity check, if any issue happens during image saving into slot1, as new image may not be complete, the firmware may become non-functional at next restart. So <strong class="ph b">None</strong> option is not secure for firmware upgrade.</div>
+<p class="p"><strong class="ph b">ECDSA256-SHA256</strong>: firmware signature validation and data integrity check.</p>
+<p class="p"><strong class="ph b">SHA256</strong>: firmware data integrity check.</p>
+<p class="p"><strong class="ph b">None</strong>: no security, no integrity check.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-D085B5DC-BF08-4ECF-B06E-C64695FE972C"><div class="figcap"><span class="fig--title-label">Figure 19. </span>SignFirmware - Auth Method - ECDSA256-SHA256. </div><span class="desc figdesc"><p class="p">Firmware signature and integrity check</p>
+</span><img class="image" src="GUID-25596970-8C3C-4095-9DEB-2E32F411B8B2-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-1A8ADD3E-F777-4A94-A7A0-31FC7546B461"><div class="figcap"><span class="fig--title-label">Figure 20. </span>SignFirmware - Auth Method - SHA256. </div><span class="desc figdesc"><p class="p">Firmware integrity check</p>
+</span><img class="image" src="GUID-D006A702-54D6-45ED-B69A-9D0C3FD15617-low.jpg" /></div>
+<strong class="ph b">Tip</strong>: Sequence Number cannot be 0x00000000 or 0xffffffff, which are invalid values.</div>
+<p class="p"><strong class="ph b">Add Bootloader as Lodable File/Project to Create Unified Image</strong></p>
+<p class="p">Once the new code is generated and configured, user need to add Bootloader as a loadable project/loadable hex file in the updated project. This enables MPLAB X IDE to merge both user application and bootloader and make an unified firmware by creating an unified image file.</p>
+<p class="p">To add Bootloader as loadable file, expand application project’s tree, right click <strong class="ph b">Loadables</strong>, select <strong class="ph b">Add Loadable File</strong>, then browse and add the bootloader hex file.</p>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-D78F3E52-4EB6-44F3-AF11-3E3ADED0AC24"><div class="figcap"><span class="fig--title-label">Figure 21. </span>User Application Add Loadable File. </div><span class="desc figdesc"><p class="p">Right Click <strong class="ph b">Loadables</strong> and Add Loadable File</p>
+</span><img class="image" src="GUID-B563DEEC-85C0-49B9-A29D-7700D2F5ABCD-low.jpg" /></div>
+<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-D517AD23-4312-4B6E-B3BA-7B1687BD2579"><div class="figcap"><span class="fig--title-label">Figure 22. </span>Add Loadable File. </div><span class="desc figdesc"><p class="p">Select Bootloader Precompiled Hex File as Loadable File</p>
+</span><img class="image" src="GUID-71682126-FC22-42DD-BA17-113EAE120EFD-low.jpg" /></div>
+</div>
+<div class="p">To add bootloader as loadable project, expand application project’s tree, right click <strong class="ph b">Loadables</strong>, select <strong class="ph b">Add Loadable Project</strong>, then browse and add the bootloader project.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-DC1B89D9-C0C1-4665-9E4A-C1DA9D14642B"><div class="figcap"><span class="fig--title-label">Figure 23. </span>User Application Add Loadable Project. </div><span class="desc figdesc"><p class="p">Right Click <strong class="ph b">Loadables</strong> and Add Loadable Project</p>
+</span><img class="image" src="GUID-96158184-450B-4A70-9A40-D6090B092CB2-low.jpg" /></div>
+</div>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-FED42244-00A1-4C42-8875-955A3903A2D4"><div class="figcap"><span class="fig--title-label">Figure 24. </span>Add Loadable Project. </div><span class="desc figdesc"><p class="p">Select Bootloader Project as Loadable Project</p>
+</span><img class="image" src="GUID-CAFDC94F-CC3B-4716-99CF-B65CB0545EC9-low.jpg" /></div>
+After Loadable File or Project is added, then on the IDE Tools bar, click <strong class="ph b">Clean and Build Main Project</strong> icon to rebuild the project.</div>
+<div class="p"><div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-1DDFD749-26EE-47F4-9C1D-3C96DF4FBB6B"><div class="figcap"><span class="fig--title-label">Figure 25. </span>Build to Create Unified Image. </div><span class="desc figdesc">Click <strong class="ph b">Clean and Build Main Project</strong> to Create<p class="p">Unified Image Merged Both User Application and Bootloader</p>
+</span><img class="image" src="GUID-B7F7E57A-B98A-4D63-A9F1-29D08E051C1A-low.jpg" /></div>
+After code is built, a few files is generated under path <u class="ph u">f</u><em class="ph i">irmware\ble_sensor.X\dist\default\production</em>. The file named as <strong class="ph b">signed.unified.hex</strong> is the unified image merged with both user application and bootloader. By programing this unified image, user application will have bootloader capability. The file named as <strong class="ph b">signed.bin</strong> file is the target binary image file that bootloader use for DFU. If user has any modifications on user application firmware, user can build and generate this binary file, then use bootloader to upgrade device to new image.</div>
+<p class="p"><strong class="ph b">Program Unified Image</strong></p>
+<div class="p">As mentioned above, user need to program device with unified image to make user application to have bootloader capability, to do this, on the IDE Tools bar, click <strong class="ph b">Make and Program Device Main Project</strong> icon to program device, the unified image will be programmed into device.<div class="fig fignone" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0__GUID-77C239EA-F4D5-495B-B180-8AF4144DE6DA"><div class="figcap"><span class="fig--title-label">Figure 26. </span>Program Unified Image. </div><span class="desc figdesc"><p class="p">Click <strong class="ph b">Make And Program Device Main Project</strong> to Program Unified Image</p>
+</span><img class="image" src="GUID-6B3A91FA-69E9-4EE5-ADC5-5976897B400F-low.jpg" /></div>
+Now the device with user application will have bootloader functionality, referring the guidance in <a class="xref" href="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761.html">Device Firmware Upgrade Over Serial</a>, user can run Device Firmware Upgrade by using the bootloader.</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" title="This section documents how to enable FW updates in your design, whether its serial or over the air">How-to: Firmware and OTA Updates</a></div>
+</div>
+</div></body>
+</html>

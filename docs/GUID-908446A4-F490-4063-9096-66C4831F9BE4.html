@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Device Firmware Upgrade Over BLE" />
+<meta name="DC.relation" scheme="URI" content="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-159581BB-D157-4A79-A4B0-7C9A9692449A.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-F2D3E8B2-1470-4065-82A4-A313FCBAC126.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-DF914131-7CEA-4CF1-8F13-C5872AAB7DC6.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-894A155C-558E-45FD-AA0C-1546AE00DE53.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-03033848-F789-4EF6-845B-0C7594868889.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-5B01388B-241F-4BCF-9204-BE758BC2F97F.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-908446A4-F490-4063-9096-66C4831F9BE4" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Device Firmware Upgrade Over BLE</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-908446A4-F490-4063-9096-66C4831F9BE4" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" />
+<meta name="Microsoft.Help.TocOrder" content="2" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-908446A4-F490-4063-9096-66C4831F9BE4"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-908446A4-F490-4063-9096-66C4831F9BE4">
+<h1 class="title topictitle1" id="GUID-908446A4-F490-4063-9096-66C4831F9BE4__GUID-BC0EFE52-0514-4EB3-BFC6-BC538D4B9280">Device Firmware Upgrade Over BLE</h1><div class="body"><p class="p"><strong class="ph b">Introduction</strong></p>
+<p class="p">One of the highly important features of wirelessly-connected devices is the capability of Over-The-Air device firmware update (OTA DFU). The increasing demand by end-users for this functionality is</p>
+<ul class="ul"><li class="li" id="GUID-908446A4-F490-4063-9096-66C4831F9BE4__GUID-82B10DC1-ED0D-474B-B62F-9690B2DB0879"><p class="p">To address issues and security vulnerabilities.</p>
+</li>
+<li class="li" id="GUID-908446A4-F490-4063-9096-66C4831F9BE4__GUID-4DE5B460-2010-44D1-BBBC-AA2D2745F08E"><p class="p">To ship products to market faster and have the option of delaying lower priority features and being able to roll them out to devices in the field.</p>
+</li>
+</ul>
+<p class="p"> <span class="ph">PIC32CXBZ2</span>/<span class="ph">WBZ451</span> family of devices support Over-The-Air upgrade through BLE.</p>
+<p class="p">Microchip defined OTA profile and service enables firmware upgrade over the BLE link using Generic Attribute Profile (GATT). The BLE OTA protocol defines the communication between the OTAU target and OTAU manager. The OTAU manager can be a mobile device (iOS/Android™) or any BLE device that implements the OTA GATT client protocol that transfers the upgrade firmware to the OTAU target. The OTAU target implements the OTA GATT server protocol to receive the new firmware image.</p>
+<p class="p"><strong class="ph b">Secure BLE OTA DFU Process</strong></p>
+<p class="p">With the increasing popularity of OTA DFU capability in IoT devices, devices are getting exposed to vulnerabilities and security threats. So, it is important to make sure that the device’s OTA DFU process is secure and reliable. One of the way of sending upgradable image reliably and securely is to sign and encrypt the image.</p>
+<p class="p">Here are the basics of how an over-the-air device firmware update (OTA DFU) process works over BLE link:</p>
+<div class="p"><div class="fig fignone" id="GUID-908446A4-F490-4063-9096-66C4831F9BE4__GUID-B79ACFBE-52C6-4F80-9B2F-5AEDCB2EEBA9"><div class="figcap"><span class="fig--title-label">Figure 1. </span><strong class="ph b">BLE OTA DFU Process</strong>. </div><span class="desc figdesc"></span><img class="image" src="GUID-A9CE3E5C-33D3-47B2-95B5-50E879EAB384-low.png" /></div>
+</div>
+<p class="p">• BLE OTA DFU file (Firmware Image encrypted, signed) is uploaded to the OTAU Manager. OTAU Manager can be Smart phone or any BLE device that supports OTA Client</p>
+<p class="p">• OTAU Target ( <span class="ph">PIC32CXBZ2</span>/<span class="ph">WBZ451</span> device) queries the OTAU Manager and fetches new firmware image.</p>
+<p class="p">• The image will be decrypted, validated and applied.</p>
+</div>
+<div class="related-links">
+<ul class="ullinks">
+<li class="link ulchildlink"><strong><a href="GUID-159581BB-D157-4A79-A4B0-7C9A9692449A.html">BLE OTA DFU Firmware Architecture</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-F2D3E8B2-1470-4065-82A4-A313FCBAC126.html">Memory Management</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-DF914131-7CEA-4CF1-8F13-C5872AAB7DC6.html">Microchip defined BLE OTA DFU Profile</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-894A155C-558E-45FD-AA0C-1546AE00DE53.html">BLE OTA DFU Image File Definition</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-03033848-F789-4EF6-845B-0C7594868889.html">BLE OTA DFU Image Distribution Procedure</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html">BLE OTA DFU Implementation</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-5B01388B-241F-4BCF-9204-BE758BC2F97F.html">BLE OTA DFU Demo</a></strong><br />
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" title="This section documents how to enable FW updates in your design, whether its serial or over the air">How-to: Firmware and OTA Updates</a></div>
+</div>
+</div></body>
+</html>

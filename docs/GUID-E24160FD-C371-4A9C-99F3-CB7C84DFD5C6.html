@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Serial Bootloader Demo" />
+<meta name="DC.relation" scheme="URI" content="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Serial Bootloader Demo</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-A3F96AEA-7517-4859-9799-149B152B5BC4" />
+<meta name="Microsoft.Help.TocOrder" content="1" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6">
+<h1 class="title topictitle1" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-6ABFD384-91E1-4E64-AE8E-CF06506830B6"><strong class="ph b">Serial Bootloader Demo</strong></h1><div class="body"><p class="p">Boot loading over the serial port is discussed in this section</p>
+<p class="p"><strong class="ph b">Hardware Requirements</strong></p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-26BF3B8E-3C8E-45C4-97F7-F5FA4C8EEE07"><p class="p">One <span class="ph">WBZ451</span> Curiosity Board</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-E8A85CD8-488C-4E31-A5D0-FAEAD854AD0C"><p class="p">USB Cables</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-E4A78365-E89B-44D4-BA01-AF53DFAA0AD5"><p class="p">PC</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Software Requirements</strong></p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-54DBEF6E-0FEA-4B38-AEC9-E87225C49F9A"><p class="p">MPLABX IDE/IPE</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-8BEDA906-18EE-4BFC-84E8-511F12902EF1"><p class="p">MicrochipUtilityTool.exe</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-0FC8E0B3-B3D2-45E9-BBF0-7D977BEE4A2F"><p class="p">Bootload enabled Firmware Image (ble_sensor.signed.unified.hex, BootloaderTimerBasedxxx.hex)</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-21442412-5BC9-4707-8200-1C04F88CA494"><p class="p">Bootload enabled binary image (ble_sensor.signed_uart.bin)</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Procedure</strong></p>
+<p class="p">Device can put in DFU Mode by one of the following methods</p>
+<ol class="ol" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-D9F1B7E1-BB3E-4C92-8543-5C50CAD2344F"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-DBFC2BC5-9510-4B62-A221-F8A985E2D8E7"><span class="indent-level-default">1.</span><p class="p">GPIO (SW2 Button Press)</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-848A9AC8-B33D-445B-9890-01CEAD8C967A"><span class="indent-level-default">2.</span><p class="p">Timer Based</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">GPIO Based DFU mode</strong></p>
+<div class="p"><div class="fig fignone" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-176F2773-9791-442F-B93A-BFE5BA72A127"><div class="figcap"><span class="fig--title-label">Figure 1. </span>Figure 7: Serial Bootlod Demo Start(GPIO). </div><span class="desc figdesc"></span><img class="image" src="GUID-522CDB83-E7B2-4780-BDE3-8D7CA3164C8F-low.jpg" /></div>
+</div>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-FC2AF8B3-7FF7-4D8D-8054-8446AAFB5D8C"><p class="p">Program <span class="ph">WBZ451</span>Board with the Image
+            file(<em class="ph i">ble_sensor.signed.unified.Hex</em>)</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-FC2AF8B3-7FF7-4D8D-8054-8446AAFB5D8C"><p class="p">Start MicrochipUtilityTool.exe</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-9F4D991E-6700-44ED-9E9E-2BDA12523448"><p class="p">Follow the steps mentioned in the above picture</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-2EA9BBB2-3CCE-41C4-B63C-86D42E79AAC7"><p class="p">Select Serial BootLoader Tab</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-3E67F4DD-6379-435B-B46D-70CF398AC12D"><p class="p">Select Baud Rate as 115200 from the drop-down menu</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-54EC9F42-C23A-4AA3-B6DB-CC58CE72A8BB"><p class="p">Select the device Serial Port from the drop-down menu</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-8C7CFDD7-9E75-4A1F-9A43-DE6157D5028E"><p class="p">Click on Connect/DisConnect Button</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-8CD65B2E-11E4-47B3-BCA4-F6BA63606733"><p class="p">Press reset button on <span class="ph">WBZ451</span> board, UART Rx message appears in the log
+              window.</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-766937AB-8206-445B-990F-FBC0CA86CA62"><p class="p">Press and hold SW2 and then press and release reset Button on the <span class="ph">WBZ451</span> Board and then release SW2 button</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-1EF0F7F6-836D-4275-B982-45B35F0731F9"><p class="p"><span class="ph">WBZ451</span>Board will enter in DFU mode. The following message will appear
+              in the log</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-FD2232C0-5AF5-4673-972D-4B8209461F9C"><p class="p">DFU Now!</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-1AE52453-95D6-4FD1-B70E-9E55B90BE4E9"><p class="p">Click on Select File Button and choose <em class="ph i">ble_sensor.signed_uart.bin</em> file</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-C00ED147-7D62-492A-B9DE-256F06C986D2"><p class="p">Click on Send Image Button</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-97EDC9A5-9593-4F3F-81C8-6A52FA61004F"><p class="p">Image starts, downloading into <span class="ph">WBZ451</span> device. Progress bar keeping
+              advancing and debug status (Frame: Byte Sent: Time(hh:mm:ss)) keeps updating</p>
+</li>
+</ul>
+<div class="fig fignone" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-100F50C6-E77D-4907-98E9-05886EB7C232"><div class="figcap"><span class="fig--title-label">Figure 2. </span>Figure 8: Serial Bootalod Demo End(GPIO). </div><span class="desc figdesc"></span><img class="image" src="GUID-34C22CAD-395F-49C8-89EE-8786CC097B89-low.jpg" /></div>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-1ACA5908-ADCB-4868-81F4-7A99A005A882"><p class="p">Wait for Image download to complete (Progress bar = 100%, Status= Programming Complete)</p>
+</li>
+</ul>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-86348E2A-133E-445F-8F72-A987450D9E9A"><p class="p">Press reset button on <span class="ph">WBZ451</span> Board. Slot1 is erased and new image is
+          copied from slot0 and start executing new image.</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-520B1BAD-ADE9-4102-BF91-3B054573088E"><p class="p">A new command (0x12) has been added in the Tool. This is the last command sent during DFU
+              process. If this command is supported in Boot loader code, then the <span class="ph">WBZ451</span>device will be automatically booted into new image.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Timer Based DFU mode</strong></p>
+<div class="p"><div class="fig fignone" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-B345E269-6A97-4AF3-BBD6-8D04174E082B"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Figure 9: Serial Bootlad Demo Start (Timer). </div><span class="desc figdesc"></span><img class="image" src="GUID-9F00643F-207A-434F-91CE-4E1F1B6484AD-low.jpg" /></div>
+</div>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-71D0041D-8E78-4A30-99EA-EE545B3412C7"><p class="p">Program <span class="ph">WBZ451</span> Board with the Image file
+            <em class="ph i">(BootloaderTimerBasedxxx.hex</em>)</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-E97AF5F0-A6B7-4C2E-B519-0D6D1B206B58"><p class="p">Start MicrochipUtilityTool.exe</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-02E7BB0D-2295-4DFB-8845-28C4BC67A445"><p class="p">Follow the steps mentioned in the above picture</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-761320DB-95E0-4AEC-8211-17A3C4797F05"><p class="p">Select Serial BootLoader Tab</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-DC9CEDB0-887A-46C6-9F10-2684739A3F41"><p class="p">Select Baud Rate as 115200 from the drop-down menu</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-2C26A5DC-A3D6-42E7-808B-CA96AC4F7FA8"><p class="p">Select the device Serial Port from the drop-down menu</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-F39DCE3C-0CA8-4644-91EF-62F256410152"><p class="p">Click on Connect/DisConnect Button</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-31A0E26A-DEC1-4273-9A06-B8B578844285"><p class="p">Connection status as Connected.</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-3E5BF2CF-A68C-4A6E-BD67-111F54D7D44F"><p class="p">Click on Select File Button and choose ble_sensor.signed_uart.bin file</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-BAA9FE79-91A6-47D8-8888-5BC6536AB14A"><p class="p">Enter (Decimal Integer) Timeout period (step 7). Default is 30 sec.</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-1FBBEEDC-7BE8-4D3D-9FB4-65E55F2BCEAD"><p class="p">Check Timer</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-880BE4D5-53C2-469B-9F6E-D460E4ED9526"><p class="p">Click on Send Image Button</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-05B4EA37-CFF2-431B-83B0-66C9AEBB61A0"><p class="p">Tool will wait for <span class="ph">WBZ451</span>device to be in DFU mode for a time period
+              entered in step 7(Default 30 sec)</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-5807D95C-F910-4227-93EE-68FF0034F0D5"><p class="p">Press Reset Button. The device will enter in DFU mode. The following message will appear in the log</p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-708DA99B-1A52-4759-B88E-4A5122118CC3"><p class="p">DFU Now!</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-219FD1E1-341B-467E-90F0-1B42CB99C6C1"><p class="p">Image starts, downloading into the <span class="ph">WBZ451</span>device. Progress bar keeping
+              advancing and debug status (Frame: Byte Sent: Time(hh:mm:ss)) keeps updating</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="p"><div class="fig fignone" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-DBDDB16F-5E7E-404B-AD31-EEBD24024AE6"><div class="figcap"><span class="fig--title-label">Figure 4. </span>Figure 10: Serial Bootoad Demo End (Timer). </div><span class="desc figdesc"></span><img class="image" src="GUID-3158BA19-D013-4600-B46D-58827963D1DE-low.jpg" /></div>
+</div>
+<p class="p"></p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-061627AB-00DC-4D03-9B73-DCC4ED73EDAD"><p class="p">Wait for Image download to complete (Progress bar = 100%, Status= Programming Complete).</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-959245BE-1A44-4C4C-9751-8FAD15ADC3FE"><p class="p">The device will automatically boot into new image.</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Summary</strong></p>
+<ul class="ul"><li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-952FB7CD-6C0F-41ED-A7CB-D965A36BF29A"><p class="p">Frame size = 4096 bytes.</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-E1F74FC1-4E0F-4D9B-B5E3-BBCA7B24F78F"><p class="p">Image (size = 161920 bytes) takes 16 sec to transmit.</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-36F70A14-FC27-4125-9DBF-E6028A4032AA"><p class="p">Default Timeout (30 sec) can be changed in the tool</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-E2907236-32CF-4E09-8B57-0A3CA6E6C808"><p class="p">Timer Based Bootloading mode will automatically boots into new image after image download. No need to press reset button.</p>
+</li>
+<li class="li" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6__GUID-28C37AB1-2779-4BCE-BA3A-667C3F116FED"><p class="p">GPIO based Botloading mode can also boot automatically into new image if a new command (command #0x12) is added into bootloader code.</p>
+</li>
+</ul>
+<p class="p"></p>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4.html" title="Microchip Utility Tool is windows based GUI Tool used for firmware upgrade.">Microchip Utility Tool</a></div>
+</div>
+</div></body>
+</html>

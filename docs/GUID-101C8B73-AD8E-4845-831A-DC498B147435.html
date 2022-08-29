@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Low Power BLE Application Design" />
+<meta name="Description" content="Low Power BLE Application Design" />
+<meta name="DC.relation" scheme="URI" content="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-101C8B73-AD8E-4845-831A-DC498B147435" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Low Power BLE Application Design</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-101C8B73-AD8E-4845-831A-DC498B147435" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" />
+<meta name="Microsoft.Help.TocOrder" content="1" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-101C8B73-AD8E-4845-831A-DC498B147435"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-101C8B73-AD8E-4845-831A-DC498B147435">
+<h1 class="title topictitle1" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-DA6B5665-A1F1-40B0-BEBE-FD80862FF3BF">Low Power BLE Application Design</h1><div class="body"><p class="shortdesc">Low Power BLE Application Design</p>
+<p class="p">When designing a wireless Bluetooth Application, BLE stack advertisement/connection intervals are the driving factors determining sleep mode entries and exit. There are 2 low power/sleep modes that are supported by the BLE stack</p>
+<ul class="ul"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-55273D55-F6B5-48F8-A9B7-C46D3FE0688B"><p class="p">Sleep</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-5CF95B1F-684B-4E5B-9EC3-C51CDD3AEFEE"><p class="p">Deep Sleep</p>
+</li>
+</ul>
+<p class="p">Sleep and Deep Sleep Modes are synonymous to Standby and Backup Modes and this document may use these terminologies interchangeably.</p>
+<p class="p">The following table lists the various functionality/modules of the device that are available in the low power modes supported by BLE stack</p>
+<div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EDABDB15-10A3-4919-AB7B-E62E3F2DA945" class="table" frame="border" border="1" rules="all"><col style="width:33.33333333333333%" /><col style="width:33.33333333333333%" /><col style="width:33.33333333333333%" /><tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p"><strong class="ph b">Function</strong></p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p"><strong class="ph b">Sleep</strong></p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p"><strong class="ph b">Deep Sleep</strong></p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Legacy ADV</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Extended ADV (Coded PHY)</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Not Supported</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">BLE Connection</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Device can start with advertisement in "Deep Sleep" low power mode and post a BLE connection shift to "Sleep" low power mode</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Peripherals</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available (see product datasheet for more info)</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Limited - wakeup sources are available</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Device Wakesup from reset after exiting Sleep Mode</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">No</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Yes</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">System RAM</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Not retained</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Backup RAM</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Not used by Application or BLE stack</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Available and used by Application and BLE stack</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Timer used to manage sleep and wakeup times</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Wireless Subsystem manages time intervals based on ADV/Connection intervals setup by API calls to BLE Stack library</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">RTC</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">ADV intervals recommended</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">No min/max ADV interval</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;"><span><p class="p">Min ADV interval = 500 ms for power consumption savings</p>
+</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BDC8B1B3-C8E9-491F-A0A8-20EB5BF0AC70"><h2 class="title sectiontitle">Sleep/ Standby Low Power Mode</h2></div>
+<p class="p"><strong class="ph b"><u class="ph u">What determines Application Sleep Duration and How to control it?</u></strong></p>
+<p class="p">BLE stack allows system to enter low power mode if there is no active data tx/reception or the ble advertisement interval/connection interval. So the system sleep cannot be directly edited as a parameter/ API call.</p>
+<p class="p"><strong class="ph b"><u class="ph u">Device operation in Sleep low power mode?</u></strong></p>
+<p class="p">During system sleep, clock (system PLL) will be disabled and syatem tick will be turned off. FreeRTOS timer needs to be componsated for the time spent in low power mode. RTC timer can continue operating in the low power modes will adjust the FreeRTos timer offset.</p>
+<p class="p">So overall system sleep time is determined by the following factors - BLE activity interval, external interrupt (like GPIO) or peripheral interrupts.</p>
+<p class="p">Peripherals that are allowed to run in standby/sleep low power mode can continue to run in the "Sleep" low power mode</p>
+<p class="p">"Deep Sleep/Backup Mode" only allows for certain peripherals like RTC and INT0 to continue operating in this low power mode</p>
+<p class="p"><strong class="ph b"><u class="ph u">How to enable "Sleep/Standby" Low Power Mode ?</u></strong></p>
+<ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-82EF5944-1743-4645-9A00-10B7E3391E07"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BA224BEE-F734-4FBF-98FA-7DF038C1C73D"><span class="indent-level-default">1.</span><p class="p"><strong class="ph b">Reference application examples</strong></p>
+<ol class="ol" type="a" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-E9EE3E2B-9BBE-45D3-88BC-DB1E7796E9CD"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9871FBEB-481D-41A1-B1A0-3A10119F2EF3"><span class="indent-level-default">a.</span><p class="p"><a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">BLE Legacy Adv</a></p>
+<ol class="ol" type="i" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-1A50CD18-902D-4BA7-8C82-A8DC02A65027"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BBB9396D-D8B8-4D30-9349-8E0F1122C04C"><span class="indent-level-default">i.</span><p class="p">Implements sleep low power mode with periodic ble legacy adv</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-766D3FDB-AC4A-494A-9B76-36F1CF9764E0"><span class="indent-level-default">b.</span><p class="p"><a class="xref" href="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4.html">BLE Extended Adv</a></p>
+<ol class="ol" type="i" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-C214B0C4-111C-4BA8-BCD5-296937458CCF"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-8212BC64-20D9-4C66-8004-264270801F3F"><span class="indent-level-default">i.</span><p class="p">Implements sleep low power mode with periodic ble extended (coded PHY) adv</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-C47C986D-4CDA-4060-B4D5-B5B9DEF05CBB"><span class="indent-level-default">c.</span><p class="p"><a class="xref" href="GUID-D3F1BF46-F275-409B-A344-4DB9EAABC5E9.html">BLE Sensor App</a></p>
+<ol class="ol" type="i" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-A1741F85-89DE-4128-A525-5CA41DB9586F"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-C97E177C-CA56-4597-A1E0-92FC35D9059F"><span class="indent-level-default">i.</span><p class="p">Implements sleep low power mode in a ble connection oriented application and data exchage using Microchip Transparent UART Service. This application also has peripherals that are enabled to run in standby/sleep low power mode</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-0A726252-3087-4D89-A3E7-27D5BE85A2C2"><span class="indent-level-default">d.</span><p class="p"><a class="xref" href="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8.html">BLE Custom Service Building Block</a></p>
+<ol class="ol" type="i" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-5D6AA9CC-CE65-4A5B-8121-C482093CD19B"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-026F8DF0-69EC-43DB-93F9-3ECEB96C6C77"><span class="indent-level-default">i.</span><p class="p">Implements sleep low power mode in a ble connection oriented application and data exchage using custom service. This application does not have peripherals continuing to run in standby/sleep low power mode</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p class="p"><u class="ph u">How to use MPLAB Code Configurator to Generate Sleep Mode low power mode code?</u></p>
+<div class="p"><ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-795FF12E-58DD-4B20-AE3A-B477F1B795C4"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-402DD1B6-F029-4D04-8731-8EAD4B8E9F11"><span class="indent-level-default">1.</span><p class="p">Sytem Sleep Mode needs to be enabled in BLE stack H3 compoenent configuration, after enabling this dependant components like RTC (Timer source during sleep) will be requested to be enabled</p>
+<br /><img class="image" src="GUID-66E328FF-E660-46D7-8762-7BCE42133D5B-low.png" /><br /><p class="p"></p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-5102EF95-F90D-402E-82D8-82F628E5F386"><span class="indent-level-default">2.</span><p class="p">Upon enabling sleep mode, FreeRTOS related settings will be set automatically</p>
+<ul class="ul"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-504DC92C-FD14-4B28-9B41-DFBB8BC0F11C"><p class="p">Tick Mode will be set to Tickless_Idle</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-CD590E77-F9B6-4667-82D6-31A1ECC1C632"><div class="p">Expected idle time before sleep will be set to 5 (ms)<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9DCD4758-D1C3-4097-B0F2-43F21A1030A0"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-C4968A83-BC22-483F-B600-89CD12AB2972-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-300855C1-26E2-4480-B032-D0CBA1419D44"><div class="p">Tick Hook will be enabled (For user to add any custom code needed to be executed within each tick interrupt) <div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-085C38F7-0DC2-4ECF-A9F0-BEF7F25EBCF2"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-F1736F04-FCEC-4D8F-BF5A-8747B234D4CF-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-38F459D7-E096-4ADA-936C-7B8C3B2F6DF7"><p class="p">RTC peripheral library will be added and configured</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Note:</strong> RTC counter should not be reset (RTC_Timer32CounterSet()) arbitrarily when the system is running</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9040F4B8-3178-459B-9EFB-66378DFCCAD6"><span class="indent-level-default">3.</span><p class="p">RTC clock source should be set manually, there are 4 options to choose from</p>
+<ol class="ol" type="a" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-6D0AF061-9596-4DF8-BA03-056B23C658D0"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-780F87EB-56FA-4527-BDDE-B1F369A73CB3"><span class="indent-level-default">a.</span><p class="p">FRC (±1% offset)</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-5374A996-335F-42EF-A0A1-88671D559F33"><span class="indent-level-default">b.</span><p class="p">LPRC ( with larger offset, &lt; ±5%)</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-316913C7-B223-4516-998B-E57BB7BD6070"><span class="indent-level-default">c.</span><p class="p">POSC &lt;- Candidate of the clock source (better clock accuracy)</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-84893841-C0B7-45B8-B38C-870734CB0694"><span class="indent-level-default">d.</span><p class="p">SOSC &lt;- Candidate of the clock source (better clock accuracy)</p>
+</li>
+</ol>
+<div class="p"><strong class="ph b">Note:</strong> Users must select POSC/SOSC as the RTC clock source as choosing other clock sources will impact BLE connection stability<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-7E21C4DE-E05B-493B-808E-4FD6D39BF040"><div class="figcap"><span class="fig--title-label">Figure 3. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-F57FF631-7704-4E3E-87C7-6CC12F71422B-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-3A5A9339-D6F0-40B1-A212-33AFF06F5BC8"><span class="indent-level-default">4.</span><div class="p">Manually Setting RTC clock source - POSC, open MCC, select "Clock Configuration" and configure as highlighted <div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-E3DD0972-B244-4ABF-9E32-18DCABB8C07F"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-F14F7D84-5246-487D-9179-7E031309A979-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-E97FC3DC-BA3C-43C6-8A34-089A04D4B16D"><span class="indent-level-default">5.</span><div class="p">Manually Setting RTC clock source - SOSC, open MCC, select "Clock Configuration" and configure as highlighted <div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-776AB534-694D-4C17-8078-D1A7DD5191A4"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-A035BA64-3B6F-4AB0-904D-CB0A1ECC89EA-low.png" /></div>
+</div>
+<p class="p"><strong class="ph b">Note:</strong> Users can only select one clock source POSC or SOSC, steps are mentioned to choose either</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BF816738-2947-44A4-BAB8-4209016EDFBD"><span class="indent-level-default">6.</span><div class="p">It is recommended to use 48MHz as SYS_CLOCK for better power savings. This can be configured by setting SPLLPOSTDIV1 to <code class="ph codeph">2</code> as shown below.<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-04AA69A8-711F-45BF-9696-7732DC9308F3"><div class="figcap"><span class="fig--title-label">Figure 6. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-1FAC3597-BC0D-482D-ADED-6FF8C8B35A20-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-64088222-D554-49EE-9CFC-8DD211C08B19"><span class="indent-level-default">7.</span><p class="p">Ensure that JTAG Enable is disabled by clearing the JTAGEN bit in CFGCON0 (Configuration Control Register 0) as shown below. This code snippet can be added to SYS_Initialize()</p>
+<p class="p"><code class="ph codeph">CFG_REGS-&gt;CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;</code></p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-14D657FD-2E2C-4684-B99C-0FEFF3B57169"><span class="indent-level-default">8.</span><div class="p">All Unused pins in the application needs to be set in input mode and the pulldown should be enabled for these pins. This can be configured through pin configuration in Harmony3 Configurator as shown below. <div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-1F952E73-32BD-46DE-A956-53B2F768876B"><div class="figcap"><span class="fig--title-label">Figure 7. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-D299150C-2759-4C3F-BB1B-35163A581366-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9560A7B3-605D-4005-A43C-C8EA0ACF7571"><span class="indent-level-default">9.</span><p class="p">Generate Code <a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">link</a> for instructions</p>
+</li>
+</ol>
+<u class="ph u">Where can i find Sleep related code implementation after code generation step?</u></div>
+<div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EFBA4787-C53F-44D3-9CE9-5778FBDD7023" class="table" frame="void" border="1" rules="all"><col style="width:50%" /><col style="width:50%" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d1749e339"><span><strong class="ph b">Implementation</strong></span></th>
+<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d1749e342"><span><strong class="ph b">Location</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>BT Sleep Mode</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span>BLE Stack Library</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>System Sleep Mode</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span><p class="p">device_sleep.c</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>Execute BT/System Sleep</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span>app_idle_task.c</span></td>
+</tr>
+<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d1749e339 "><span>RTC Based Tickless Idle Mode</span></td>
+<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d1749e342 "><span>app_idle_task.c</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<u class="ph u">What is code the user has to implement after code generation for sleep/standby low power mode entry?</u></div>
+<p class="p">FreeRTOS provides Tickless IDLE Mode for power saving, this can be used to stop periodic tick interrupts during idle periods (periods when there are no application tasks that are able to excute) For the lost count on time during the IDLE mode, RTC timer is used to make a correcting adjustment to the RTOS tick count value, when it is restarted (after waking up from sleep) More information on low power tickless mode is available <a class="xref" href="https://www.freertos.org/low-power-tickless-rtos.html" target="_blank">here</a>. The Tickless Idle Mode will be executed automatically when the Idle task is the only task able to run, because all the application tasks are either in blocked or suspended state. To prevent the system from entering sleep/standby low mode and waking up immediately, the minimum sleep time(IDLE time) is automatically set to 5 ms.</p>
+<p class="p"><strong class="ph b">Note:</strong> maximum sleep time is equal to the maximum period of the RTC 32 bit counter - 134217.8 sec (around 37 hours)</p>
+<div class="p"><ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-C7F18EF1-D24A-4938-B21A-A1A1229D26DA"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EE5FC50C-CB29-4DA3-92C4-5E0C256FEF18"><span class="indent-level-default">1.</span><p class="p">In order for the system to enter sleep, system needs to request bluetooth wireless subsystem to sleep. This is accomplished by calling API - BT_SYS_EnterSleepMode() for BLE</p>
+<br /><img class="image" src="GUID-1CAFEE48-46B4-4B1F-AE8F-3C57C0271E65-low.png" /><br /><br /><img class="image" src="GUID-036A436C-35EA-43B4-94A5-A8CC5AD57EBF-low.png" /><br /></li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-D400E234-30EF-45E4-A1DD-1877B14863D7"><span class="indent-level-default">2.</span><p class="p">The API to call to ensure subsytem is sleeping (inactive) or ready for system to enter sleep mode is - BT_SYS_AllowSystemSleep</p>
+<br /><img class="image" src="GUID-9034B803-8D32-43A4-84AB-C3B43AE60D4F-low.png" /><br /></li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-83E5C13D-6413-44C7-AD5E-36FDF4D1DA48"><span class="indent-level-default">3.</span><p class="p">If the expected sleep time is greater than 5 ms, system is allowed to enter sleep mode by checking for 2 conditions</p>
+<ul class="ul"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-678682C3-E73C-47B9-82A8-FACA57EA010C"><p class="p">Bluetooth subsystem is inactive</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-7F8C6A0A-D8F2-4826-8C35-3A11727E8596"><p class="p">eTaskConfirmSleepModeStatus() returns eNoTasksWaitingTimeout, more information <a class="xref" href="https://www.freertos.org/eTaskConfirmSleepModeStatus.html" target="_blank">here</a>.</p>
+</li>
+</ul>
+<strong class="ph b">Tip:</strong> User can also add their own condition to be checked before system goes to sleep, for example, do not enter system sleep if data transmission over UART is active<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d1749e407', this);">Copy</button><code id="d1749e407" content="Pseudo code in RTC based Tickless Idle Mode:&#xA;&#xA;```&#xA;if ((BT_SYS_AllowSystemSleep() || ZB_ReadyToSleep()) &amp;&amp; ( eTaskConfirmSleepModeStatus() != eAbortSleep ) &amp;&amp; (user_condition))&#xA;{&#xA;        //Enter System Sleep Mode&#xA;        DEVICE_EnterSleepMode ();        //RTC Based Tickless Idle Mode       &#xA;}&#xA;```">Pseudo code in RTC based Tickless Idle Mode:
+
+```
+if ((BT_SYS_AllowSystemSleep() || ZB_ReadyToSleep()) &amp;&amp; ( eTaskConfirmSleepModeStatus() != eAbortSleep ) &amp;&amp; (user_condition))
+{
+        //Enter System Sleep Mode
+        DEVICE_EnterSleepMode ();        //RTC Based Tickless Idle Mode       
+}
+```</code></pre></li>
+</ol>
+<ul class="ul" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-31E66079-3195-4266-8AE4-F226491734CF"><li class="li with-image" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EEBA7D95-D922-4B7D-B3BA-6391399F339B"><p class="p">When both the conditions as mentioned in point 3 are met, we enter RTC based Tickless Idle mode (Stop the system tick, use of RTC timer to set the sleep time, disable interrupts)</p>
+<p class="p">System will enter sleep mode after setting the RTC based Tickless Idle Mode by calling API - Device_EnterSleepMode() and then wait for Interrupt (WFI) instruction is executed</p>
+<br /><img class="image" src="GUID-CE99E351-53FB-42B4-91F4-30CC1A1B7800-low.png" /><br /></li>
+</ul>
+</div>
+<p class="p"><u class="ph u">How does the system exit from sleep mode?</u></p>
+<div class="p"><ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-95AF54FA-9A9B-477C-B240-A94481C1C4ED"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-2AA596E7-ACDC-48D8-A9B7-0E5A550F0CB0"><span class="indent-level-default">1.</span><p class="p">Sytem when in sleep/standby mode can be waken up by RTC timeout, BLE or GPIO interrupt</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-DCA45B70-F286-4617-8923-C9B781AA1518"><span class="indent-level-default">2.</span><p class="p">Sleep mode exit is initiated by calling API - DEVICE_ExitSleepMode()</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-28A95FE7-4920-435A-B769-AF460BC815E6"><span class="indent-level-default">3.</span><p class="p">Upon exiting the sleep mode, interrupts need to be reenabled to allow the inteerupt service routine to be executed</p>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BC56CF4C-A2CA-4B01-8147-2A7F53CA796F"><span class="indent-level-default">4.</span><div class="p">Interrupts are disabled as the sys tick needs to be compensated (Tickless IDLE mode)<br /><img class="image" src="GUID-323C457D-1285-48EF-8D9E-ABEEF2E5FCE6-low.png" /><br /></div>
+</li>
+</ol>
+<u class="ph u">HW and FW state during System wake up and Sleep Mode</u></div>
+<div class="p"><br /><img class="image" src="GUID-2B84B21F-CD10-4A57-B29A-547EC589072A-low.png" /><br /></div>
+<div class="section" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BDC8B1B3-C8E9-491F-A0A8-20EB5BF0AC70"><h2 class="title sectiontitle">Deep Sleep/Backup Low Power Mode</h2></div>
+<p class="p"><strong class="ph b"><u class="ph u">What determines Application Sleep Duration and How to control it?</u></strong></p>
+<p class="p">User Application determines the duration application stays in Deep Sleep low power mode. When user selects an advertisement interval and enables deep sleep mode in the BLE_Stack component of Microchip Code configurator, all the necessary API's required to enter and exit deep sleep low power mode are generated. User application holds the responsibility to enable deep sleep adv and determine the sleep and wakeup duration based on the advertisement interval requirements.</p>
+<p class="p">Unlike sleep mode, which uses a timer in the wireless subsystem to determine sleep and wakeup duration, deep sleep mode does not use this timer (as it is unavailable in Deep Sleep low power mode). Hence, we utilize the RTC timer(as it is available to run in Deep Sleep) and its interrupt based on the Deep Sleep adv interval that is set in application to wakeup the device from sleep sleep. User can enter Deep Sleep low power mode post a succesful reception of "BLE_GAP_EVT_ADV_COMPL" event from BLE stack.</p>
+<p class="p"><strong class="ph b"><u class="ph u">Device operation in Deep Sleep low power mode?</u></strong></p>
+<p class="p">When the application layer initiates the BLE stack to enable Deep Sleep Advertisement, the BLE stack backs up advertising parameters and application data into backup RAM and performs a one-time advertisement event.</p>
+<p class="p">Application layer will put the system in Deep Sleep mode and control Deep Sleep wakeup time using RTC timer. User is responsible for putting the system in deep sleep mode and control the wakeup from RTC.</p>
+<p class="p">Based on the RTC Timer interval, the device wakes up from Deep Sleep low power mode. Exiting Deep Sleep mode is similar to Power on Reset. Backup RAM saves the adv parameters through a reset, upon wakeup BLE stack will be able to continue advertisements based on the data retained in backup RAM.</p>
+<p class="p"><strong class="ph b"><u class="ph u">What is the device startup and initialization time when waking up from deep sleep low power mode, since the device wakes up from reset?</u></strong></p>
+<p class="p">Device startup and initialization code is diffrent and more optimizied to enable fast completion of initialization post a reset caused by waking up from deep sleep low power mode. MPLAB code configurator generates API "DEVICE_DeepSleepIntervalCal" to calibrate the sleep duration based on the ADV interval chosen. The device's startup and initialization procedures are optimized to make the device enter deep sleep low power mode as soon as possible. Total time spent during device startup and firmware initialization is approximately 10 ms. Average device startup time is 1.5 ms. The firmware intialization time for various applications can change based on the user choice of peripherals and clocks to be initialized.</p>
+<p class="p"><u class="ph u"><strong class="ph b">How to maintain I/O state when device comes out of reset when using deep sleep low power mode?</strong></u></p>
+<p class="p"><strong class="ph b">Device needs to backup all GPIO register settings prior to entering the deep sleep mode and recover these settings when devices wakes up from deep sleep prior to clearing the Deep Sleep register "DSCON". This register is cleared by the following generated API "DEVICE_ClearDeepSleepReg()"</strong></p>
+<p class="p"><strong class="ph b"><u class="ph u">How to use MPLAB Code Configurator to Generate Deep Sleep Mode low power mode code?</u></strong></p>
+<ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-565E4D3D-1379-4C87-83DB-68EF54873AA9"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-C17519F3-C250-4FD8-8BBF-85686986ECB1"><span class="indent-level-default">1.</span><div class="p">Add the Harmony Components to project graph, some components are optional based on Application being developed<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-10469276-EA6C-4CF2-BDC4-7A895A919D13"><div class="figcap"><span class="fig--title-label">Figure 8. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-D74E417D-E065-47E7-A1E1-AF2C1AB17DBE-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9E56B87A-F4C9-4DCA-93EF-E69614E26C98"><span class="indent-level-default">2.</span><div class="p">Configuration settings for "BLE stack" component<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-3A746885-7209-4FBD-A2B6-6C0C8E99692D"><div class="figcap"><span class="fig--title-label">Figure 9. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-6694C402-141B-44D5-8957-0313EF820047-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-D5758B7D-2F94-4CFA-B9C5-16F0B6815C36"><span class="indent-level-default">3.</span><div class="p">Configuration settings for "RTC" component<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-FD575BE9-A0EB-4965-9BE0-42FDC195FFD3"><div class="figcap"><span class="fig--title-label">Figure 10. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-666AF87E-1E54-4172-A8E9-D76E02011A5D-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-FA1DE659-ADB9-4A09-B639-A5D1F5BC32BE"><span class="indent-level-default">4.</span><div class="p">"POSC" as Low Power Clock Source (LPCLK), select clock configuration<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-F6242463-CBE5-4392-A2C2-B61824094871"><div class="figcap"><span class="fig--title-label">Figure 11. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-328DBEF6-7FC2-4AB1-AC9A-B4054A4F0117-low.png" /></div>
+<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-A5D24BB2-FC0C-46D5-8BAD-23AC605AD847"><div class="figcap"><span class="fig--title-label">Figure 12. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-44C295FB-6A4D-42F3-B50B-1374B04C2953-low.png" /></div>
+<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-B2AF83CB-FEF2-4919-94E6-B38F0372609E"><div class="figcap"><span class="fig--title-label">Figure 13. </span>POSC Config bits generated after code generation. </div><span class="desc figdesc"></span><img class="image" src="GUID-F31B52BF-AF67-4569-8C38-E35CC2FF0B5F-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-9CC3DFCA-48AE-4578-8F4B-A9146E76DF26"><span class="indent-level-default">5.</span><div class="p">"SOSC" as Low Power clock source(LPCLK), select clock configuration. <div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-1738568C-9019-4660-B4D2-833AD9EC0C46"><div class="figcap"><span class="fig--title-label">Figure 14. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-6D7FC2B8-3FA5-4C2C-ADF5-FA9AB9F59651-low.png" /></div>
+<div class="fig fignone" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-147948BC-B750-459A-92BA-936ED2C89298"><div class="figcap"><span class="fig--title-label">Figure 15. </span>SOSC Config bits generated after code generation. </div><span class="desc figdesc"></span><img class="image" src="GUID-1FDC565F-B2A4-49AB-9405-272BB8B2A424-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-050951E9-75A3-4A90-A33D-D0A4F6886E85"><span class="indent-level-default">6.</span><p class="p">Clock Switching mechanism , if LPCLK source is set as POSC clock source using clock configuration, the FW switch to LPRC as LPCLK source as POSC clock source is unavailable in Deep Sleep Low Power Mode.</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b"><u class="ph u">How to enable "Deep Sleep/Backup" Low Power Mode ?</u></strong></p>
+<ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-82EF5944-1743-4645-9A00-10B7E3391E07"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BA224BEE-F734-4FBF-98FA-7DF038C1C73D"><span class="indent-level-default">1.</span><p class="p"><strong class="ph b">Reference application examples</strong></p>
+<ol class="ol" type="a" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-82EF5944-1743-4645-9A00-10B7E3391E07"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BA224BEE-F734-4FBF-98FA-7DF038C1C73D"><span class="indent-level-default">a.</span><p class="p"><a class="xref" href="GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78.html">BLE Deep Sleep Advertisement</a></p>
+<ol class="ol" type="i" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-82EF5944-1743-4645-9A00-10B7E3391E07"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-BA224BEE-F734-4FBF-98FA-7DF038C1C73D"><span class="indent-level-default">i.</span><p class="p">On reset Device starts in Deep Sleep Mode, upon press of SW1 button on curiosity board the sytem starts Deep Sleep Advertisements, once connected to a central device the device will switch to Sleep low power mode</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p class="p"><strong class="ph b"><u class="ph u">Recommendations for using Deep Sleep ADV mode</u></strong></p>
+<ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-96AC0718-8343-4F1B-BE9C-1266C2A331E5"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-6A057F4F-6D44-44C1-B842-6360CE15ADD9"><span class="indent-level-default">1.</span><p class="p">Deep Sleep ADV should be used when the ADV interval is &gt;= 500 ms</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b"><u class="ph u">What are the BLE Advertisements supported when using Deep Sleep Low Power Mode?</u></strong></p>
+<ol class="ol" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-663B35E4-1A23-47A0-8655-5394E9351363"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EB31468D-6246-4620-88A3-44BCE8E7E3F0"><span class="indent-level-default">1.</span><p class="p">BLE Legacy Advertisement types "ADV_IND", "ADV_SCAN_IND", "ADV_DIRECT_IND_LOW" and "ADV_NONCONN_IND" are supported when using Deep Sleep mode</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b"><u class="ph u">What is the procedure for retaining Application data in backup RAM?</u></strong></p>
+<p class="p">User should define the variable as persistent. Persistent variables are variables that should not be cleared by the runtime startup code, such as during a reset. User should initialize a persistent variable as follows. The data read/write into backup RAM must be single word (4 bytes)</p>
+<p class="p">uint32_t __attribute__((persistent)) backup1;</p>
+<p class="p">User firmware should not assign initial value for persistent variables.</p>
+<p class="p"><strong class="ph b"><u class="ph u">Bootloader Firmware Authentication when using deep sleep low power mode?</u></strong></p>
+<p class="p">If the bootloader has Firmware Authentication enabled, the bootloader checks for Firmware Authentication upon all types of resets like POR, BOR, etc. Firmware Authentication is skipped only when the device wakes up from Deep Sleep Low Power Mode.</p>
+<p class="p"><u class="ph u"><strong class="ph b">RTC Clock Sources that are recommended to be used when using deep sleep low power mode?</strong></u></p>
+<p class="p">SOSC or LPRC are the clock sources recommended when using deep sleep mode</p>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" title="Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design">How-to: Low Power Design</a></div>
+</div>
+</div></body>
+</html>

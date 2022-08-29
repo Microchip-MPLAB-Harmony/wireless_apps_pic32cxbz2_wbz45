@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="UART -- Hello World" />
+<meta name="DC.relation" scheme="URI" content="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-E1A0E9CA-311E-4F53-9C27-160173609975" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>UART -- Hello World</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-E1A0E9CA-311E-4F53-9C27-160173609975" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6" />
+<meta name="Microsoft.Help.TocOrder" content="0" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-E1A0E9CA-311E-4F53-9C27-160173609975"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975">
+<h1 class="title topictitle1" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-335BD374-DD0D-4175-821D-DA7C2CC7BF3D">UART -- Hello World</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
+<p class="p"> <a class="xref" href="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C.html">Getting Started with Central Building Blocks</a></p>
+<p class="p">BLE Peripheral Developers: <a class="xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRTOS and BLE Stack Setup</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="#GUID-E1A0E9CA-311E-4F53-9C27-160173609975">Adding UART</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">Legacy Advertisements</a></p>
+<p class="p">BLE Central Developers: <a class="xref" href="GUID-897B75C0-387F-4AF8-B353-1F97A3B0BEC8.html">FreeRTOS and BLE Stack Setup</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="#GUID-E1A0E9CA-311E-4F53-9C27-160173609975">Adding UART</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="GUID-950762E2-DD5E-41CD-AAB4-895439CCFBC4.html">Legacy Scan</a></p>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users to enable UART functionality on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator</p>
+<p class="p">Users of this document can choose to just run the precompiled Application Example hex on the <span class="ph">WBZ451</span> Curiosity Board and experience the demo or can go through the steps involved in enabling UART from scratch using MPLAB Code Configurator</p>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__RECOMMENDED-READS"><h2 class="title sectiontitle">Recommended Reads</h2><ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-BF84EE08-86DE-44BB-84E4-68E28990E5C8"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-12D8CB96-D193-4236-9318-E39350B444E6"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank">BLE Software Specification</a></p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-12D8CB96-D193-4236-9318-E39350B444E6"><span class="indent-level-default">2.</span><p class="p"><a class="xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize (Peripheral)</a></p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-AEF3D707-2B2C-41E2-BB6B-66F97D3CD1E1"><span class="indent-level-default">3.</span><p class="p"> <a class="xref" href="GUID-897B75C0-387F-4AF8-B353-1F97A3B0BEC8.html">FreeRtos BLE App Initialize (Central)</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-F22B5E65-BEF9-4B25-9D83-F88C123237F5" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d20067e108"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d20067e112"><span> <strong class="ph b">Qty</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d20067e108 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d20067e112 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d20067e108 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d20067e112 "><span>1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-AC4CA0EB-6D20-48D3-ADEE-FA237CABB94F"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-A69A4FDD-7AE2-4BC2-98AC-55918658FB8C"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Getting Started with Software Development</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__SOFTWARE"><h2 class="title sectiontitle">Software</h2><ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-FC2DE8EB-2AF6-4514-A33F-4224441E56A5"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-1EAB9C0E-21B6-4451-B9E3-5EEECAFF96A3"><span class="indent-level-default">1.</span><p class="p"> <a class="xref" href="https://ttssh2.osdn.jp/index.html.en" target="_blank">TeraTerm</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE"><h2 class="title sectiontitle">Programming the precompiled hex file or Application Example</h2><p class="p"><strong class="ph b">Programming the hex file using MPLABX IPE</strong></p>
+<ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><span class="indent-level-default">1.</span><p class="p">Precompiled Hex file is located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\chip_peripherals\uart_hello_world\hex"
+                        folder</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><span class="indent-level-default">2.</span><p class="p">Follow the steps mentioned <a class="xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank">here</a></p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Caution:</strong> Users should choose the correct Device and Tool information</p>
+<p class="p"><strong class="ph b">Programming the Application using MPLABX IDE</strong></p>
+<ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><span class="indent-level-default">1.</span><p class="p">Follow steps mentioned in of <a class="xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="Here is how to open, build and program an existing application example">Running a Precompiled Example</a> document</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><span class="indent-level-default">2.</span><p class="p">Open and program the Application Example "uart_hello_world.x" located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\chip_peripherals\uart_hello_world\firmware"
+                        using MPLABX IDE</p>
+</li>
+</ol>
+<p class="p"><dfn class="term">&lt;Harmony Content Path&gt;</dfn> <a class="xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__DEMO-DESCRIPTION"><h2 class="title sectiontitle">Demo Description</h2><p class="p">This Application Example enables users to print data over a terminal emulator like TeraTerm</p>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__TESTING"><h2 class="title sectiontitle">Testing</h2><p class="p">Connect the <span class="ph">WBZ451</span> Curiosity board to PC, program the application example. Open Terarerm(Speed: 115200, Data: 8-bit, Parity: none, stop bits: 1 bit, Flow control: none) and select the COM port that is enumerated when connecting the <span class="ph">WBZ451</span> Curiosity Board. Reset the board and Demo will print "Hello World"</p>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__DEVELOPING-THIS-APPLICATION-FROM-SCRATCH-USING-MPLAB-CODE-CONFIGURATOR"><h2 class="title sectiontitle">Developing this Application from scratch using MPLAB Code Configurator</h2><p class="p">This section explains the steps required by a user to develop this application example from scratch using MPLABx Code Configurator</p>
+<p class="p"><strong class="ph b">Tip:</strong> New users of MPLAB Code Configurator are recommended to go through the <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank">overview</a>.</p>
+<ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-ABD2BD3A-4F6D-4BD3-ABEF-705FA6678399"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-73943523-3BC4-4386-AD40-3C8748ABC8A5"><span class="indent-level-default">1.</span><p class="p">Create a new MCC Harmony Project -- <a class="xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html">link</a> for instructions</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-FB9A97C8-7E95-4F29-9E23-E7C794BE1481"><span class="indent-level-default">2.</span><p class="p">Import component configuration -- This step helps users setup the basic components required to
+                        start their Application Development component configuration related to this
+                        Application is available. The imported file is of format .mc3 and is located
+                        in the path "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\chip_peripherals\uart_hello_world\firmware\uart_hello_world.X".
+                        Users should follow the instructions mentioned <a class="xref" href="https://microchipdeveloper.com/mcc:peripheralconfig" target="_blank">here</a> to import the component configuration.</p>
+<p class="p"><strong class="ph b">Tip:</strong> Import and Export functionality of component configuration will help users to start from a known working setup of configuration</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-E27BAE2F-EDAF-44BA-8B54-B554AAB64534"><span class="indent-level-default">3.</span><p class="p">Accept Dependencies or satisfiers, select "Yes"</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-22EC69D3-9E38-4564-9261-81620A366F5A"><span class="indent-level-default">4.</span><p class="p">Verify if the Project Graph window has all the expected configuration</p>
+<br /><img class="image" src="GUID-FC7F18C8-E307-448A-935B-075FE681EC04-low.png" /><br /></li>
+</ol>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__VERIFY-UART-CONFIGURATION"><h2 class="title sectiontitle">Verify UART Configuration</h2><ol class="ol" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-8315DF43-1D8C-4A8B-8C9A-73C3E5A6A9AF"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-01EDB37E-E9D5-426D-BAC2-352113888DFD"><span class="indent-level-default">1.</span><p class="p">Select <strong class="ph b">SERCOM0</strong> component in project graph</p>
+<br /><img class="image" src="GUID-AADFD2BE-2B5F-474C-8070-E2C924786088-low.png" /><br /></li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-0FAF2F44-BA0B-4E3D-93B1-9E80BC4014AC"><span class="indent-level-default">2.</span><p class="p">Select <strong class="ph b">system</strong> component in project graph</p>
+<br /><img class="image" src="GUID-79479EE9-36F1-4D0E-8F60-984F6C27A404-low.png" /><br /><div class="note important" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-2FEC89E2-2DC4-48BD-80A1-C31D29F150A7"><span class="importanttitle">Important:</span> <p class="p">Direct - Digital peripheral is enabled on the default dedicated pins and can operate with Maximum Clock Frequency</p>
+<p class="p">PPS - Digital peripheral is enabled on pins selected by the MCC pin configurator and can operate with Maximum Clock Frequency/2</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GENERATE-CODE-LINK-FOR-INSTRUCTIONS"><h2 class="title sectiontitle">Generate Code</h2>Instructions on<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">how to Generate Code</a></div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__FILES-AND-ROUTINES-AUTOMATICALLY-GENERATED-BY-THE-MCC"><h2 class="title sectiontitle">Files and Routines Automatically generated by the MCC</h2><p class="p">After generating the program source from MCC interface by clicking Generate Code, the peripheral libraries (PLIBs) configuration can be found in the following project directories</p>
+<br /><img class="image" src="GUID-F4471416-7616-46EB-965A-63E9E4C993E3-low.png" /><br /><p class="p">The sercom initialization routine executed during program initialization can be found in the project files. This initialization routine is automatically generated by the MCC according to the user settings</p>
+<br /><img class="image" src="GUID-9D0ACD9F-C8B2-48A3-80CF-891B58A2F958-low.png" /><br /><p class="p"><strong class="ph b">Header Files</strong></p>
+<ul class="ul"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-3E16E5BA-8B58-4888-A15B-2EDF19084AA8"><p class="p">Header File associated with the sercom0 peripheral library or any other peripheral library for a different example is included in definitions.h file</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Tip:</strong> To use all the SERCOM0 functionality include the definitions.h file in Application code</p>
+<p class="p"><strong class="ph b">Function Calls</strong></p>
+<p class="p">MCC generates and adds the code to initialize the UART peripheral in <em class="ph i">SYS_Initialize()</em> function</p>
+<ul class="ul"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-E6DC22B1-1E5C-4451-BBAF-E6BB7CB76797"><p class="p">SERCOM0_USART_Initialize() is the API that will be called inside the SYS_Initialize() function</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__USER-APPLICATION-DEVELOPMENT"><h2 class="title sectiontitle">User Application Development</h2><p class="p"><strong class="ph b">Include</strong></p>
+<ul class="ul"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-7D37C7BF-CD15-4147-8DD4-ADC96EC56AD9"><p class="p">definitions.h in app.c (definitions.h is called to include the peripheral.h files)</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-9EDD6629-A81D-4026-8824-CC3D748DCC30"><p class="p">app_idle_task.h in app.c</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Transfer Data using UART</strong></p>
+<ul class="ul"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-0034CCB1-E122-4DD5-B1CD-FFF93A30AEBF"><p class="p">Add app_idle_task() in the function vApplicationIdleHook() in freertos_hooks.c</p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-75E6403D-78AF-416D-A680-F541BD6F6CD7"><p class="p">SERCOM0_USART_Write() is the used to submit a write buffer to the given USART peripheral to transfer data, user can call this API in APP_STATE_INIT:</p>
+</li>
+</ul>
+<p class="p">Users can exercise various other UART/SERCOM functionalities by using the peripheral library <a class="xref" href="https://microchip-mplab-harmony.github.io/csp/frames.html?frmname=topic&amp;frmfile=05544.html" target="_blank">documentation</a></p>
+</div>
+<div class="section" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__WHERE-TO-GO-FROM-HERE"><h2 class="title sectiontitle">Where to go from here</h2><ul class="ul"><li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-471D62A6-FDCA-4865-8F3A-EBBC0ACC8F80"><p class="p">Central role <a class="xref" href="GUID-950762E2-DD5E-41CD-AAB4-895439CCFBC4.html">BLE Scanner</a></p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-9F1B8C9D-A6EF-4AD3-99EC-AB6CA5497FE8"><p class="p">Peripheral Role <a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">BLE Advertisements</a></p>
+</li>
+<li class="li" id="GUID-E1A0E9CA-311E-4F53-9C27-160173609975__GUID-746C1FC0-0206-4C6D-85D3-C9DE21C214F7"><p class="p">Peripheral Role <a class="xref" href="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4.html">BLE Extended Advertisements (sleep)</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6.html" title="Application Examples that showcase BLE Stack Init + Chip Peripheral running">Chip Peripherals</a></div>
+</div>
+</div></body>
+</html>

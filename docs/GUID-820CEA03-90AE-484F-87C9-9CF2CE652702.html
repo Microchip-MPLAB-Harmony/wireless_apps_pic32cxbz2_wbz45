@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="BLE Sleep Mode Legacy Advertisements" />
+<meta name="DC.relation" scheme="URI" content="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>BLE Sleep Mode Legacy Advertisements</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-820CEA03-90AE-484F-87C9-9CF2CE652702" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-B3B46369-F5B4-401B-8405-658BE34988F4" />
+<meta name="Microsoft.Help.TocOrder" content="1" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-820CEA03-90AE-484F-87C9-9CF2CE652702"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702">
+<h1 class="title topictitle1" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-C4E00FB7-D337-4E4A-8023-3FF06E68D25F">BLE Sleep Mode Legacy Advertisements</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
+<p class="p"> <a class="xref" href="#GUID-820CEA03-90AE-484F-87C9-9CF2CE652702"><strong class="ph b">BLE Sleep Mode Legacy Advertisements</strong></a></p>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users to enable "sleep/standby" mode with BLE Advertisements on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the advertisement interval will be set to 1 sec. The advertisement interval will dictate the application sleep time.</p>
+<p class="p">Users of this document can choose to just run the precompiled Application Example hex file on the <span class="ph">WBZ451</span> Curiosity Board and experience the demo or can go through the steps involved in developing this Application from scratch</p>
+<p class="p">These examples each build on top on one and other. We strongly recommend that you follow the examples in order, to learn the basics concepts before progressing to the more advanced topics.</p>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__RECOMMENDED-READS"><h2 class="title sectiontitle">Recommended Reads</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-17001D0D-4F6A-47BA-B644-1B5B58318C00"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank">BLE Software Specification</a></p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8"><span class="indent-level-default">2.</span><p class="p"><a class="xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize</a></p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-82DAC20B-A0FB-4C94-A2B4-C4AF60D6F967"><span class="indent-level-default">3.</span><p class="p"> <a class="xref" href="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.html">Low Power Notes</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e75"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e79"><span> <strong class="ph b">Qty</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span><a class="xref" href="https://www.microchip.com/en-us/development-tool/ATPOWERDEBUGGER" target="_blank">Power Debugger</a>/Multimeter</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-4CBB6317-A2DE-486F-BCE0-42062FCF6301"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-7BE36147-8D27-4F88-939B-A394D40FC357"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Gettting Started with Software Development</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__SOFTWARE"><h2 class="title sectiontitle">Software</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-F09BDAB5-3C06-4F4D-B044-90650FC4FC6D"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-B13C9A0D-4863-4C77-AFF1-48B00D363867"><span class="indent-level-default">1.</span><p class="p"> <a class="xref" href="https://ttssh2.osdn.jp/index.html.en" target="_blank">TeraTerm</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__SMARTPHONE-APP"><h2 class="title sectiontitle">Smartphone App</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-F317D980-2111-4B14-BAE2-23D6D083CE09"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-5D61EE2D-C32C-449A-8311-2006EEC28A64"><span class="indent-level-default">1.</span><p class="p">Light Blue</p>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE"><h2 class="title sectiontitle">Programming the precompiled hex file or Application Example</h2><p class="p"><strong class="ph b">Programming the hex file using MPLABX IPE</strong></p>
+<ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><span class="indent-level-default">1.</span><p class="p">Precompiled Hex file is located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\legacy_adv\hex" folder</p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><span class="indent-level-default">2.</span><p class="p">Follow the steps mentioned <a class="xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank">here</a></p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Caution:</strong> Users should choose the correct Device and Tool information</p>
+<p class="p"><strong class="ph b">Programming the Application using MPLABX IDE</strong></p>
+<ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><span class="indent-level-default">1.</span><p class="p">Follow steps mentioned in of <a class="xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="Here is how to open, build and program an existing application example">Running a Precompiled Example</a> document</p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><span class="indent-level-default">2.</span><p class="p">Open and program the Application Example "legacy_adv.x" located in "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\legacy_adv\firmware" using MPLABX IDE</p>
+</li>
+</ol>
+<p class="p"><dfn class="term">&lt;Harmony Content Path&gt;</dfn> <a class="xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p>
+<p class="p"></p>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__DEMO-DESCRIPTION"><h2 class="title sectiontitle">Demo Description</h2><p class="p">This Application Example enables users to enable sleep mode while transmitting non Connectable, Undirected BLE Advertisements. On reset demo will print "Advertising" on a terminal emulator like TeraTerm, this denotes start of advertisements, Device will enter sleep mode periodically based on the advertisement interval which is set to 1 sec for this example</p>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__TESTING"><h2 class="title sectiontitle">Testing</h2><p class="p">Connect the <span class="ph">WBZ451</span> Curiosity board to PC, program the precompiled hex file or application example as mentioned. Open TeraTerm @ (Speed: 115200, Data: 8-bit, Parity: none, stop bits: 1 bit, Flow control: none). Reset the board. Upon reset, "Advertising" message is displayed on the TeraTerm. User can open the LightBlue App on Smartphone to scan for Advertisements. Device with device name "Microchip" will appear.</p>
+<br /><img class="image" src="GUID-D9BD2A87-9870-4828-B09C-E0DCDC42800B-low.png" alt="Light Blue App" /><br /><p class="p">users using a wireshark sniffer can examine the complete Application Payload sent</p>
+<br /><img class="image" src="GUID-690A0F47-CB73-4EAC-AE65-85C58A040B8E-low.png" alt="Light Blue App" /><br /><p class="p">Users can use another <span class="ph">WBZ451</span> Curiosity Board configured as <a class="xref" href="GUID-950762E2-DD5E-41CD-AAB4-895439CCFBC4.html">BLE scanner</a></p>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__CURRENT-CONSUMPTION-MEASUREMENT"><h2 class="title sectiontitle">Current Consumption Measurement</h2><ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-A1803E6C-198D-4D55-A8A1-4A2D626A7696"><p class="p">Connect the Multimeter/Power Debugger to Power Measurement Header J6. Power on the Board. If using Power Debugger, users can use <a class="xref" href="https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/atmel-data-visualizer" target="_blank">Data Visualizer</a> to measure the current consumption</p>
+</li>
+</ul>
+<p class="p">Current measured in sleep/standby mode is 577.9 uA and avg current consumption is around 624.8 uA Users of this Early adopter package should go through the known issues document and understand the limitations if any with the current low power mode implementation</p>
+<br /><img class="image" src="GUID-BFA872C7-D4D4-4659-A0FE-BBA203E3AEA4-low.png" alt="Light Blue App" /><br /></div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__DEVELOPING-THIS-APPLICATION-FROM-SCRATCH-USING-MPLAB-CODE-CONFIGURATOR"><h2 class="title sectiontitle">Developing this Application from scratch using MPLAB Code Configurator</h2><p class="p">This section explains the steps required by a user to develop this application example from scratch using MPLABx Code Configurator</p>
+<p class="p"><strong class="ph b">Tip:</strong> New users of MPLAB Code Configurator are recommended to go through the <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank">overview</a>.</p>
+<ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-813E21EC-C440-4BF4-9129-D1E7F977859F"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-3F0533A3-5200-445C-8D92-89F730507BFA"><span class="indent-level-default">1.</span><p class="p">Create a new MCC Harmony Project -- <a class="xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html">link</a> for instructions</p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-6FE7EE72-BC39-48D1-A4D1-0404D6CA9A2A"><span class="indent-level-default">2.</span><p class="p">Import component configuration --This step helps users setup the basic components and configuration required to develop this application. The imported file is of format .mc3 and is located in the path "<span class="ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\legacy_adv\firmware\legacy_adv.X". Users should follow the instructions mentioned <a class="xref" href="GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162.html">here</a> to import the component configuration.</p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-264372A8-447A-44ED-9A57-8993B38DF10B"><span class="indent-level-default">3.</span><p class="p">Accept Dependencies or satisfiers, select "Yes"</p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-588C684C-DFAE-4017-A296-921FBEE2392C"><span class="indent-level-default">4.</span><div class="p">Verify if the Project Graph window has all the expected configuration<br /><img class="image" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__IMAGE_IF4_TFW_K5B" src="GUID-39F0881D-2C4B-4B61-83F3-09217C1A4B6E-low.png" /><br /></div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__VERIFY-ADVERTISEMENT-SYSTEM-SLEEP-AND-RTC-CLOCK-SOURCE-CONFIGURATION"><h2 class="title sectiontitle">Verify Advertisement, system sleep and RTC Clock Source Configuration</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-7C787873-E6D7-4171-A56F-75E64B08E452"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-2CD9E5CF-1712-4FCE-82FF-B2A5141D8B91"><span class="indent-level-default">1.</span><p class="p">Select <strong class="ph b">BLE_Stack</strong> component in project graph</p>
+<br /><img class="image" src="GUID-F2CF3452-0F75-4A14-9E63-15B1E43A275E-low.png" /><br /></li>
+</ol>
+<blockquote class="lq"><p class="p"><strong class="ph b">Tip:</strong> advertisement payload can be configured by user here</p>
+</blockquote>
+<ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-D063461B-6857-4D94-BDE3-875F4CDD3990"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-C7DAB823-C38F-44FF-8CBF-9007B2744BB3"><span class="indent-level-default">1.</span><p class="p">Select <strong class="ph b">clock configuration</strong></p>
+<br /><img class="image" src="GUID-77299D78-756B-4CFE-8772-EC53D5E8848B-low.png" /><br /></li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-43057883-5684-4261-B410-5F4E4D7807EC"><span class="indent-level-default">2.</span><p class="p">Configure <strong class="ph b">RTC clock configuration</strong></p>
+<br /><img class="image" src="GUID-E82507A1-CA9B-4B87-9B8C-F9869592A50A-low.png" /><br /></li>
+</ol>
+<blockquote class="lq"><p class="p"><strong class="ph b">Tip:</strong> The configuration bits will be generated after user Generates code</p>
+</blockquote>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GENERATE-CODE-LINK-FOR-INSTRUCTIONS"><h2 class="title sectiontitle">Generate Code</h2>Instructions on<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">how to Generate Code</a></div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__FILES-AND-ROUTINES-AUTOMATICALLY-GENERATED-BY-THE-MCC"><h2 class="title sectiontitle">Files and Routines Automatically generated by the MCC</h2><p class="p">After generating the program source from MCC interface by clicking Generate Code, the BLE configuration can be found in the following project directories</p>
+<br /><img class="image" src="GUID-FF8E5DA9-EDC2-4E56-BAEC-F14CF9388E13-low.png" /><br /><p class="p">The <a class="xref" href="http://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20Harmony%20OSAL%20Libraries%20Help%20v2.06.pdf" target="_blank">OSAL</a>, RF System, BLE System initialization routine executed during program initialization can be found in the project files. This initialization routine is automatically generated by the MCC</p>
+<br /><img class="image" src="GUID-4974536B-BCDC-414F-9ABA-A1319CA4D1C3-low.png" /><br /><p class="p">The BLE stack initialization routine excuted during Application Initialization can be found in project files. This intitialization routine is automatically generated by the MCC. This call initializes and configures the GAP, GATT, SMP, L2CAP and BLE middleware layers.</p>
+<div class="p">During system sleep, clock (system PLL) will be disabled and syatem tick will be turned off. FreeRTOS timer needs to be componsated for the time spent in sleep. RTC timer which works in the sleep mode is used to accomplish this. RTC timer will be initialized after BLE stack initialization. <div class="fig fignone" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-7720B0E1-75EA-4DB2-A215-D3B78A53CBB0"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-62ECFD0E-D5AB-4001-95CD-3D55FC5F8942-low.png" /></div>
+</div>
+<p class="p">Autogenerated, adverisement Data Format</p>
+<br /><img class="image" src="GUID-14EC7C05-6327-461B-8DD5-259218F05B05-low.png" /><br />
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-D7A5321C-855F-443E-847C-287A54624F6D" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e341"><span> <strong class="ph b">Source Files</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e345"><span> <strong class="ph b">Usage</strong></span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app_ble.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app_ble_handler.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote class="lq"><p class="p"><strong class="ph b">Tip:</strong> app.c is autogenerated and has a state machine based Application code sample, users can use this template to develop their application |</p>
+</blockquote>
+<p class="p"><strong class="ph b">Header Files</strong></p>
+<ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-C46D1A9F-8D63-485C-95E8-1E44796A1B9D"><p class="p">ble_gap.h- This header file contains BLE GAP functions and is automatically included in the app.c file</p>
+</li>
+</ul>
+<p class="p"><strong class="ph b">Function Calls</strong></p>
+<p class="p">MCC generates and adds the code to initialize the BLE Stack GAP, GATT, L2CAP and SMP in <em class="ph i">APP_BleStackInit()</em> function</p>
+<ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-8B597AE8-C842-4C1D-A6BD-A4A713177F0C"><p class="p">APP_BleStackInit() is the API that will be called inside the Applications Initial State -- APP_STATE_INIT in app.c</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__USER-APPLICATION-DEVELOPMENT"><h2 class="title sectiontitle">User Application Development</h2><p class="p"><strong class="ph b">Include</strong></p>
+<ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-DE0E3F3E-ACF1-48A3-900A-A7E34B923F56"><p class="p">user action is required as mentioned <a class="xref" href="GUID-99583057-8B1A-42F2-84E8-CFC7717FA5D1.html">here</a></p>
+</li>
+<li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-11FD8045-6D06-46EC-BFDE-022BD12D3F14"><p class="p">definitions.h in all the files where UART will be used to print debug information</p>
+</li>
+</ul>
+<blockquote class="lq"><p class="p">Tip: definitions.h is not specific to just UART peripheral, instead it should be included in all application source files where peripheral functionality will be exercised</p>
+</blockquote>
+<p class="p"><strong class="ph b">Set PUBLIC Device Address</strong></p>
+<ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-DDC42AF6-6E4B-4A3D-B56F-0E4D39154D15"><p class="p">BLE_GAP_SetDeviceAddr(&amp;devAddr);</p>
+</li>
+</ul>
+<p class="p">This API can be called in APP_BleConfig() located in file app_ble.c</p>
+<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d37294e418', this);">Copy</button><code id="d37294e418" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
+    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;
+    devAddr.addr[0] = 0xA1;
+    devAddr.addr[1] = 0xA2;
+    devAddr.addr[2] = 0xA3;
+    devAddr.addr[3] = 0xA4;
+    devAddr.addr[4] = 0xA5;
+    devAddr.addr[5] = 0xA6;
+
+    // Configure device address
+    BLE_GAP_SetDeviceAddr(&amp;devAddr);</code></pre><br /><img class="image" src="GUID-5F5459A4-DE81-4C09-A6D3-084966CEE808-low.png" /><br /><p class="p"><strong class="ph b">Start Advertisement</strong></p>
+<ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-417D20FF-2B5F-4522-8580-9BC175ADCE9C"><p class="p">BLE_GAP_SetAdvEnable(0x01, 0);</p>
+</li>
+</ul>
+<p class="p">This API is called in the Applications initialstate - APP_STATE_INIT in app.c</p>
+<br /><img class="image" src="GUID-C6837DF2-8020-46AD-9B4D-F9523BAC781F-low.png" /><br /><p class="p">Users can exercise various other BLE Advertisement functionalities by using <a class="xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html" target="_blank">BLE Stack API</a></p>
+</div>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__WHERE-TO-GO-FROM-HERE"><h2 class="title sectiontitle">Where to go from here</h2><ul class="ul"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-690A7369-A200-4256-A619-EF22E39E02A7"><p class="p"> <a class="xref" href="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html">BLE Connection</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Peripheral</a></div>
+</div>
+</div></body>
+</html>

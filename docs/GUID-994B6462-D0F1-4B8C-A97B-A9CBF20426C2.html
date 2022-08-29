@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
+<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Low Power Design on PIC32CXBZ2 Devices" />
+<meta name="DC.relation" scheme="URI" content="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Low Power Design on PIC32CXBZ2 Devices</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" />
+<meta name="Microsoft.Help.TocOrder" content="0" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2">
+<h1 class="title topictitle1" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-C930528B-51D9-4C8C-B154-342F105B338E"> <strong class="ph b">Low Power Design on PIC32CXBZ2 Devices</strong></h1><div class="body"><p class="p">PIC32CXBZ2 examples and stacks supports Sleep and Deep Sleep low power modes as part of Harmony framework for <span class="ph">WBZ451</span>. Sleep and Deep Sleep Modes are synonymous to Standby and Backup Modes. Throughout this document we refer to Sleep Mode as Standby and Deep Sleep mode as Backup mode.</p>
+<p class="p">Diffrence between Sleep and Deep Sleep Low Power Mode</p>
+<ol class="ol" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-8A011626-D759-437C-9A6C-9238D6BE914D"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-BBE315E3-0910-430E-ACA5-70179B801899"><span class="indent-level-default">1.</span><p class="p">Sleep Low Power Mode</p>
+<ol class="ol" type="a" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-06D19E43-3397-41B3-B3F3-841E3792EAA9"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-8DC109E5-3D40-4D37-A211-032C648DFD14"><span class="indent-level-default">a.</span><p class="p">Application layer calls BLE stack to enable advertising, BLE stack will continue sending and receiving advertising Tx and Rx periodically until the application layer disables it</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-DAF21364-4A8D-48CC-B25C-606F070A3230"><span class="indent-level-default">b.</span><p class="p">System continues to operate between Active Mode and Sleep Mode periodically based on the ADV Tx and Rx</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-51CCF48C-B7FF-4472-AB7A-E31FEFAFE313"><span class="indent-level-default">c.</span><p class="p">Application layer can have peripherals running in sleep/standby low power mode</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-B8D42715-01DA-45FB-A89F-F56D8D29EBCE"><span class="indent-level-default">2.</span><p class="p">Deep Sleep Low Power Mode</p>
+<ol class="ol" type="a" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-07B9F2AA-FED1-4192-A7A3-92A80C7A9F8E"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-96624413-12B8-4436-8506-AA3AD235F0E6"><span class="indent-level-default">a.</span><p class="p">Application layer calls BLE stack to enable Deep Sleep Advertisement, BLE stack will backup advertisement parameters and data into backup SRAM and perform one time advertising event</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-B3DC99A8-73DF-42F6-AAE1-9EE6A9EDBA79"><span class="indent-level-default">b.</span><p class="p">After entering Deep Sleep low power mode, the system wakes up from reset, whereby all parameters are lost. Backup SRAM (retained in deep sleep low power mode)is used to save the advertisement parameters when waking up from reset.</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-907D1881-9FB1-4518-B3CA-76AC647AC161"><span class="indent-level-default">c.</span><p class="p">Application layer will put system into Deep Sleep low power mode and control the wakeup time based on RTC timer (which runs in Deep Sleep low power mode)</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-DA4D9F8C-73A1-4AB8-A7A7-F1BCA7CE367C"><span class="indent-level-default">d.</span><p class="p">Once the system wakes up from Deep Sleep low power mode, application layer triggers advertisement again by recovering the adverstisement and data partamters that are stored in backup SRAM</p>
+</li>
+</ol>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Low Power Design of a system involves optimizing power both in Hardware and Software. To name a few</strong></p>
+<ul class="ul"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-DDCEB2FB-8710-4C3C-A8E0-7EAF8F36A831"><p class="p">System Design</p>
+<ul class="ul"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-9AE7A791-593E-43A8-BD04-E4308B72B076"><p class="p">MLDO vs Buck Mode (DC\DC), Operating in Buck Mode yields to power consumption savings of about</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Board design to be able to measure the current consumed by the PIC32CXBZ2 device alone as there can be multiple components in the system</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Device Errata needs to be verified and special attention to issues that affect Device Power Consumption</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Lower System Clock speed from 64 MHz to 48 MHz, some applications can operate with a lower system clock speed of 48 MHz</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Hardware Design</p>
+<ul class="ul"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Configuring the Transmitter power - @ 0dBm with Buck Mode on @ 64 MHz, the PIC32XCBZ2 device draws 22.72 mA</p>
+<ul class="ul"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">@+12 dBm Transmitter (Buck Mode @64 MHz) current consumption is 42.82 mA</p>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">@+4 dBm Transmitter (Buck Mode @64 MHz) current consumption is 24.98 mA</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">At Power up, all GPIO's are inputs. Unused GPIOs should be configured as input and pull down configuration</p>
+</li>
+</ul>
+</li>
+<li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p">Software Design</p>
+<ul class="ul"><li class="li" id="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2__GUID-5CE8A55C-06E4-42CA-9433-6690BE7B3FCB"><p class="p"><a class="xref" href="GUID-101C8B73-AD8E-4845-831A-DC498B147435.html" title="Low Power BLE Application Design">Low Power BLE Application Design</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" title="Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design">How-to: Low Power Design</a></div>
+</div>
+</div></body>
+</html>
