@@ -32,13 +32,13 @@
 			"content": {
 				"metaDataVersion": "1.0.0",
 				"category": "com.microchip.device",
-				"name": "WBZ451",
+				"name": "PIC32CX1012BZ20548",
 				"versionRange": "*"
 			}
 		},
 		"author": "Microchip",
 		"peripherals": [
-			"ADC"
+			"ADC",
 			"UART",
 			"GPIO",
 			"TC",

@@ -267,6 +267,8 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
     BLE_GAP_LocalPrivacyParams_T    privacy;
     bool                            enable;
 
+    result = MBA_RES_SUCCESS;
+
     if (p_devId == NULL || devCnt == 0 || p_privacyMode == NULL)
     {
         result = BLE_GAP_SetResolvingList(0, NULL);
