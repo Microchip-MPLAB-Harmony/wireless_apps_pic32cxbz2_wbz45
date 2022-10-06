@@ -9,8 +9,8 @@ The BLE Application examples are divided into 2 categories There are both simple
 2.  Advanced Applications - Advanced Applications are for users who are familiar with the Microchip BLE stack running on the PIC32CXBZ2 family of devices and also with the MPLAB Code Conigurator tool chain. Advanced applications demonstrate features like OTA and serial firmware upgrade, monitoring and control of sensor and light functionality, and automatic advertisement when a connection is lost.
 
 
--   **[Building Block Examples](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-17DABF04-E5D8-4201-A746-2FC244450A19)**  
+-   **[Building Block Examples](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-17DABF04-E5D8-4201-A746-2FC244450A19)**  
 
--   **[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)**  
+-   **[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)**  
 
 

@@ -8,6 +8,7 @@
         <Dependency name="csp" version="v3.13.0"/>
         <Dependency name="dev_packs" version="v3.13.0"/>
         <Dependency name="wireless_ble" version="v1.0.0"/>
+	<Dependency name="wireless_zigbee" version="v5.0.0"/>
         <Dependency name="wireless_system_pic32cxbz_wbz" version="v1.0.0"/>
         <Dependency name="wireless_pic32cxbz_wbz" version="v3.6.1"/>
         <Dependency name="wolfssl" version="v4.7.0"/>

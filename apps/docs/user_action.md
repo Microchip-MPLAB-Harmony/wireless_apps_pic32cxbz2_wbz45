@@ -42,5 +42,5 @@ Developers are required to call app\_idle\_updateRtcCnt\(RTC\_Timer32CounterGet\
     ![](media/GUID-7964FE1B-D00D-4FF8-B63A-C6E4F18C5A05-low.png)
 
 
-**Parent topic:**[Support Documentation](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7)
+**Parent topic:**[Support Documentation](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7)
 

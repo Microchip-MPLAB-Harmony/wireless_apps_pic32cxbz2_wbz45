@@ -31,15 +31,15 @@ Peripherals that are allowed to run in standby/sleep low power mode can continue
 
 1.  **Reference application examples**
 
-    1.  [BLE Legacy Adv](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-820CEA03-90AE-484F-87C9-9CF2CE652702)
+    1.  [BLE Legacy Adv](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-820CEA03-90AE-484F-87C9-9CF2CE652702)
 
         1.  Implements sleep low power mode with periodic ble legacy adv
 
-    2.  [BLE Extended Adv](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4)
+    2.  [BLE Extended Adv](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4)
 
         1.  Implements sleep low power mode with periodic ble extended \(coded PHY\) adv
 
-    3.  [BLE Sensor App](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-D3F1BF46-F275-409B-A344-4DB9EAABC5E9)
+    3.  [BLE Sensor App](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D3F1BF46-F275-409B-A344-4DB9EAABC5E9)
 
         1.  Implements sleep low power mode in a ble connection oriented application and data exchage using Microchip Transparent UART Service. This application also has peripherals that are enabled to run in standby/sleep low power mode
 
@@ -106,7 +106,7 @@ How to use MPLAB Code Configurator to Generate Sleep Mode?
 
     ![](media/GUID-D299150C-2759-4C3F-BB1B-35163A581366-low.png "")
 
-9.  Generate Code [link](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-9C28F407-4879-4174-9963-2CF34161398E) for instructions
+9.  Generate Code [link](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-9C28F407-4879-4174-9963-2CF34161398E) for instructions
 
 
 Where can i find Sleep related code implementation after code generation step?
@@ -179,5 +179,5 @@ HW and FW state during System wake up and Sleep Mode
 
 ![](media/GUID-2B84B21F-CD10-4A57-B29A-547EC589072A-low.png)
 
-**Parent topic:**[How-to: Low Power Design](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE)
+**Parent topic:**[How-to: Low Power Design](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE)
 

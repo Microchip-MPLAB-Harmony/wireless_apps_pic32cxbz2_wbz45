@@ -303,19 +303,19 @@ The BLE\_THROUGHPUT firmware is designed for WBZ451 CURIOSITY board. The firmwar
 
 **References**
 
-\[1\] [Microchip Transparent Service\_v1.1](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-3343772E-C6A4-4195-B8E7-42568CBBDE6F)
+\[1\] [Microchip Transparent Service\_v1.1](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-2/index.html?GUID-3343772E-C6A4-4195-B8E7-42568CBBDE6F)
 
-\[2\] [Microchip Transparent Credit Based Service v1.0](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-C14BCBFE-5169-4BDB-A2F9-7B09FB4DB3F7)
+\[2\] [Microchip Transparent Credit Based Service v1.0](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-2/index.html?GUID-C14BCBFE-5169-4BDB-A2F9-7B09FB4DB3F7)
 
 \[3\] https://www.bluetooth.com/specifications/gatt/
 
-\[4\] [Microchip Transparent Profile\_v1.1](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-DBD3AFD8-6BFB-4B13-A3C0-C05ADCE92BA6)
+\[4\] [Microchip Transparent Profile\_v1.1](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-2/index.html?GUID-DBD3AFD8-6BFB-4B13-A3C0-C05ADCE92BA6)
 
-\[5\] [Microchip Transparent Credit Based Profile\_v1.0](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-A1595ACB-6522-44A3-8CF5-5C6F04A32490)
+\[5\] [Microchip Transparent Credit Based Profile\_v1.0](https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-2/index.html?GUID-A1595ACB-6522-44A3-8CF5-5C6F04A32490)
 
 \[6\] https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf
 
 \[7\] https://www.bluetooth.com/specifications/specs/core-specification-5-3/
 
-**Parent topic:**[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)
+**Parent topic:**[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)
 

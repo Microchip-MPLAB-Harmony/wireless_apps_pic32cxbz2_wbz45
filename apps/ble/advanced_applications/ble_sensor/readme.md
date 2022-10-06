@@ -31,7 +31,7 @@ Microchip Bluetooth Data \(MBD\) iOS/Android app available in stores
 
 This application demonstrates the capability of WBZ451 module to connect to a mobile phone through Bluetooth Low Energy\(BLE\). The RGB LED on the Curiosity board can be controlled by mobile app. The WBZ451 device will also report the temperature data periodically to mobile phone through Bluetooth low energy \(BLE\).
 
-1.  The WBZ451 module will be a BLE peripheral device and will advertise on startup. The user can initiate the connection through mobile application. The [advertisement payload](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE) holds the temperature information and the RGB ON/OFF status.
+1.  The WBZ451 module will be a BLE peripheral device and will advertise on startup. The user can initiate the connection through mobile application. The [advertisement payload](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE) holds the temperature information and the RGB ON/OFF status.
 
 2.  Uses "BLE Sensor" sub app from the Microchip Bluetooth Data \(MBD\) mobile app for BLE demonstration.
 
@@ -51,7 +51,7 @@ This application demonstrates the capability of WBZ451 module to connect to a mo
 
     -   When LED is switched On, the RGB color can be changed from mobile app color wheel.
 
-        -   The RGB color value is received as HSV \(Hue, Saturation, Value\) from mobile app through TRPS[transparent profile and service](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)
+        -   The RGB color value is received as HSV \(Hue, Saturation, Value\) from mobile app through TRPS[transparent profile and service](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)
         -   The HSV value is converted to RGB equivalent value in the device. The corresponding PWM duty cycle for R,G,B will be calculated and the PWM pulse is provided on R,G,B LEDs.
 
 5.  From the WBZ451 module the following actions can be performed
@@ -147,7 +147,7 @@ If want to do changes in the demo code and would like to program/debug the custo
 
 The source code of BLE Sensor demo application is available in "apps/ble/advanced\_applications/ble\_sensor/" folder. If want to do changes in the demo code and would like to program/debug the customized code follow the below instruction.
 
-1.  Complete the steps mentioned in [SDK Setup](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825)
+1.  Complete the steps mentioned in [SDK Setup](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825)
 
 2.  Open the "/firmware/ble\_sensor.X" MPLAB X project using the IDE
 
@@ -168,15 +168,15 @@ The source code of BLE Sensor demo application is available in "apps/ble/advance
 
 This application also implements Low power mode \(Standby sleep mode\), BLE DFU \(Over-The-Air upgrade\) and Serial device firmware upgrade through serial UART interface features.
 
-Low Power mode: Refer[low power configurations](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.md) for details on the configurations.
+Low Power mode: Refer[low power configurations](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.md) for details on the configurations.
 
-BLE DFU: Refer to [Device firmware update over BLE](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-908446A4-F490-4063-9096-66C4831F9BE4) for details on code, configuration and running OTA demo procedure.
+BLE DFU: Refer to [Device firmware update over BLE](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-908446A4-F490-4063-9096-66C4831F9BE4) for details on code, configuration and running OTA demo procedure.
 
-Serial DFU: Refer to[Device firmware update over serial](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-003E64BA-98A3-40EA-8417-ED7F09C14761) for details on upgrading the device over serial interface.
+Serial DFU: Refer to[Device firmware update over serial](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-003E64BA-98A3-40EA-8417-ED7F09C14761) for details on upgrading the device over serial interface.
 
 ## Protocol Exchange {#GUID-15A824DB-F219-4270-BC99-E52E02DC50E7 .section}
 
-The communication protocol exchange between BLE sensor mobile app \(BLE central\) and WBZ451 module \(BLE peripheral\) is explained [here](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)
+The communication protocol exchange between BLE sensor mobile app \(BLE central\) and WBZ451 module \(BLE peripheral\) is explained [here](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)
 
 ## Application Flow Diagram {#SECTION_WFD_CK2_25B .section}
 
@@ -256,13 +256,13 @@ MPLAB® Code Configurator \(MCC\) is a free graphical programming environment th
 
     ![](media/GUID-A5F58C96-02AE-4B86-B9D2-9A2DD4D79F31-low.png)
 
-5.  Once all the required components and configurations are done, [Generate Code](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-9C28F407-4879-4174-9963-2CF34161398E)
+5.  Once all the required components and configurations are done, [Generate Code](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-9C28F407-4879-4174-9963-2CF34161398E)
 
     ![](media/GUID-6AA89D86-BE14-4053-927A-100C7066F337-low.png)
 
 
--   **[Protocol Exchange](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)**  
+-   **[Protocol Exchange](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE)**  
 
 
-**Parent topic:**[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-1/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)
+**Parent topic:**[Advanced Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-92137358-930E-4654-9431-E8BA0E260468)
 
