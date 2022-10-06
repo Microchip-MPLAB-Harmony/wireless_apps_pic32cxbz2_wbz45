@@ -8,6 +8,39 @@ nav_order: 99
 
 # Microchip MPLABÂ® Harmony 3 Release Notes
 
+## Harmony 3 Wireless BLE application examples for PIC32CXBZ family  **v1.1.0**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board |       6            |
+
+### New Features
+- WBZ451 ZigBee applications.
+- WBZ451 BLE and ZigBee Combo applications.
+
+### Bug fixes and Improvements
+- New applications release.
+
+
+### Known Issues
+-None
+
+### Development Tools
+
+- [MPLABÂ® X IDE v6.00](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLABÂ® X IDE plug-ins:
+  - MPLABÂ® Code Configurator (MCC) `v5.1.9`
+- [MPLABÂ® XC32 C/C++ Compiler v4.10](https://www.microchip.com/mplab/compilers)
+- **DFP 1.0.107 or above version**
+
+
+--------------------------------------------------------------------------------------------------------------------
+# Microchip MPLABÂ® Harmony 3 Release Notes
+
 ## Harmony 3 Wireless BLE application examples for PIC32CXBZ family  **v1.0.0**
 
 ### Development kit and demo application support
@@ -16,7 +49,7 @@ Following table provides number of Wireless examples available for different dev
 
 | Development Kits           | MPLABx applications |
 |:--------------------------:|:-------------------:|
-| WBZ451 Curiosity Board |       22            |
+| WBZ451 Curiosity Board |       16            |
 
 ### New Features
 - WBZ451 BLE advanced applications.
