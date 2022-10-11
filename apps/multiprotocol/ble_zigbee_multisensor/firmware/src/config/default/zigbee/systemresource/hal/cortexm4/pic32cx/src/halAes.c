@@ -61,13 +61,6 @@ static DECLARE_QUEUE(halAesRequestQueue);
 HAL_AES_EncryptReq_t req;
 
 
-#if 1 //Yog Workaround as ths is undefined in Crypto , H3 should fix this.
-int _gettimeofday(void *tv, void *tz)
-{
-  (void)tv, tz;
-}
-#endif
-
 /**************************************************************************//**
 \brief HAL AES Encrypt Function Request
 

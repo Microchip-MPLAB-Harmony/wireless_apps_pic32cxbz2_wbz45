@@ -100,7 +100,7 @@ typedef struct
   } service;
   /** The requested timeout enumeration. */
   NwkEndDeviceTimeout_t timeout;
-  /** This bitmask indicates the end device?? requested configuration. */
+  /** This bitmask indicates the end deviceâ??s requested configuration. */
   uint8_t endDeviceConfiguration;
   /** Confirm callback fucntion's pointer. */
   void (*NWK_EndDeviceTimeoutConf)(NWK_EndDeviceTimeoutConf_t *conf);

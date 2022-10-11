@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Bluetooth Sys Log Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    bt_sys_log.h
-
-  Summary:
-    This file contains the BT system log definitions for the project.
-
-  Description:
-    This file contains the BT system log definitions for the project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Bluetooth Sys Log Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    bt_sys_log.h
+
+  Summary:
+    This file contains the BT system log definitions for the project.
+
+  Description:
+    This file contains the BT system log definitions for the project.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BT_SYS

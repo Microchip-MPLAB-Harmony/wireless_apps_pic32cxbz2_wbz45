@@ -4538,13 +4538,13 @@ static const __m128i MOD2_128 =
         M128_INIT(0x1, (long long int)0xc200000000000000UL);
 
 
-/* See Intel? Carry-Less Multiplication Instruction
+/* See IntelÂ® Carry-Less Multiplication Instruction
  * and its Usage for Computing the GCM Mode White Paper
  * by Shay Gueron, Intel Mobility Group, Israel Development Center;
  * and Michael E. Kounavis, Intel Labs, Circuits and Systems Research */
 
 
-/* Figure 9. AES-GCM ?? Encrypt With Single Block Ghash at a Time */
+/* Figure 9. AES-GCM â?? Encrypt With Single Block Ghash at a Time */
 
 static const __m128i ONE   = M128_INIT(0x0, 0x1);
 #ifndef AES_GCM_AESNI_NO_UNROLL

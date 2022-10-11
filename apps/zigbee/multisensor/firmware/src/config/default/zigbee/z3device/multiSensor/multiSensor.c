@@ -76,7 +76,7 @@
                         Prototypes section
 ******************************************************************************/
 static void isBusyOrPollCheck(SYS_EventId_t eventId, SYS_EventData_t data);
-static void updateSensorsAttributeValues(void);
+
 #if defined (_SLEEP_WHEN_IDLE_)
 #if (APP_ENABLE_CONSOLE == 1)
 static void sleepModeHandler(SYS_EventId_t eventId, SYS_EventData_t data);
@@ -88,7 +88,9 @@ static void ZDO_WakeUpConf(ZDO_WakeUpConf_t *conf);
 static void configureImageKeyDone(void);
 static void msAddOTAUClientCluster(void);
 #endif
-
+#if ZB_COMMISSIONING_ON_STARTUP == 1 
+static void updateSensorsAttributeValues(void);
+#endif
 /******************************************************************************
                     Local variables section
 ******************************************************************************/
@@ -109,13 +111,14 @@ static ZCL_DeviceEndpoint_t msEndpoint =
   .clientCluster = msClientClusters,
 };
 #endif  /* APP_USE_OTAU */
+#if ZB_COMMISSIONING_ON_STARTUP == 1 
 static HAL_AppTimer_t sensorAttributeUpdateTimer =
 {
   .interval = SWITCHING_PERIOD,
   .mode     = TIMER_REPEAT_MODE,
   .callback = updateSensorsAttributeValues,
 };
-
+#endif
 static SYS_EventReceiver_t zdoBusyPollCheck = { .func = isBusyOrPollCheck};
 
 //static uint8_t msClustersBoundMask = 0;

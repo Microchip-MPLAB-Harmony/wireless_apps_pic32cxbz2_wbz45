@@ -33,6 +33,394 @@
         <itemPath>../src/app_zigbee/app_zigbee.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="ble" displayName="ble" projectFiles="true">
+            <logicalFolder name="lib" displayName="lib" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="middleware_ble"
+                           displayName="middleware_ble"
+                           projectFiles="true">
+              <logicalFolder name="ble_dm" displayName="ble_dm" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_gcm" displayName="ble_gcm" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="profile_ble" displayName="profile_ble" projectFiles="true">
+              <logicalFolder name="ble_otaps" displayName="ble_otaps" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_trsps" displayName="ble_trsps" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="service_ble" displayName="service_ble" projectFiles="true">
+              <logicalFolder name="ble_dis" displayName="ble_dis" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_otas" displayName="ble_otas" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="ble_trs" displayName="ble_trs" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="device_support"
+                           displayName="device_support"
+                           projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="pds" displayName="pds" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="usart" displayName="usart" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="adchs" displayName="adchs" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="cmcc" displayName="cmcc" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="dsu" displayName="dsu" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="eic" displayName="eic" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="evsys" displayName="evsys" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="rcon" displayName="rcon" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="sercom" displayName="sercom" projectFiles="true">
+              <logicalFolder name="usart" displayName="usart" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="tcc" displayName="tcc" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="trng" displayName="trng" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="cache" displayName="cache" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="dma" displayName="dma" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
+            <logicalFolder name="lib" displayName="lib" projectFiles="true">
+              <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                <logicalFolder name="aps" displayName="aps" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="bdb" displayName="bdb" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="configserver"
+                               displayName="configserver"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="hal" displayName="hal" projectFiles="true">
+                  <logicalFolder name="cortexm4" displayName="cortexm4" projectFiles="true">
+                    <logicalFolder name="pic32cx" displayName="pic32cx" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="mac_phy" displayName="mac_phy" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                  <logicalFolder name="mac_env" displayName="mac_env" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="mac_hwd_phy" displayName="mac_hwd_phy" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                    </logicalFolder>
+                    <logicalFolder name="RF231_RF212" displayName="RF231_RF212" projectFiles="true">
+                      <logicalFolder name="MAC_HWD" displayName="MAC_HWD" projectFiles="true">
+                        <logicalFolder name="include" displayName="include" projectFiles="true">
+                        </logicalFolder>
+                      </logicalFolder>
+                      <logicalFolder name="PHY" displayName="PHY" projectFiles="true">
+                        <logicalFolder name="include" displayName="include" projectFiles="true">
+                        </logicalFolder>
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="mac_hwi" displayName="mac_hwi" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="nwk" displayName="nwk" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="pds" displayName="pds" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="security" displayName="security" projectFiles="true">
+                  <logicalFolder name="serviceprovider"
+                                 displayName="serviceprovider"
+                                 projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                      <logicalFolder name="private" displayName="private" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="TrustCentre" displayName="TrustCentre" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="systemenvironment"
+                               displayName="systemenvironment"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
+                  <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="zdo" displayName="zdo" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="zllplatform" displayName="zllplatform" projectFiles="true">
+                  <logicalFolder name="infrastructure"
+                                 displayName="infrastructure"
+                                 projectFiles="true">
+                    <logicalFolder name="N_Address" displayName="N_Address" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_ErrH" displayName="N_ErrH" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Fsm" displayName="N_Fsm" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Init" displayName="N_Init" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Log" displayName="N_Log" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Memory" displayName="N_Memory" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Task" displayName="N_Task" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Timer" displayName="N_Timer" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Types" displayName="N_Types" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Util" displayName="N_Util" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="ZLL" displayName="ZLL" projectFiles="true">
+                    <logicalFolder name="N_AddressManager"
+                                   displayName="N_AddressManager"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_AddressMap"
+                                   displayName="N_AddressMap"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Beacon" displayName="N_Beacon" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Binding" displayName="N_Binding" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Cmi" displayName="N_Cmi" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Connection"
+                                   displayName="N_Connection"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_DeviceInfo"
+                                   displayName="N_DeviceInfo"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_EndDeviceRobustness"
+                                   displayName="N_EndDeviceRobustness"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Groups" displayName="N_Groups" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_InterPan" displayName="N_InterPan" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_LinkInitiator"
+                                   displayName="N_LinkInitiator"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_LinkTarget"
+                                   displayName="N_LinkTarget"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_PacketDistributor"
+                                   displayName="N_PacketDistributor"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Radio" displayName="N_Radio" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_ReconnectHandler"
+                                   displayName="N_ReconnectHandler"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Security" displayName="N_Security" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Zcl_Framework"
+                                   displayName="N_Zcl_Framework"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                    <logicalFolder name="N_Zdp" displayName="N_Zdp" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="z3device" displayName="z3device" projectFiles="true">
+              <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="common" displayName="common" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="light" displayName="light" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="otau" displayName="otau" projectFiles="true">
+                <logicalFolder name="ofd" displayName="ofd" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="stack_interface"
+                             displayName="stack_interface"
+                             projectFiles="true">
+                <logicalFolder name="bdb" displayName="bdb" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="configServer"
+                               displayName="configServer"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="nwk" displayName="nwk" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="zdo" displayName="zdo" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="z3device_configs"
+                           displayName="z3device_configs"
+                           projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="f1"
                        displayName="wbz451_curiosity_board"
                        projectFiles="true">
@@ -1771,6 +2159,7 @@
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value="-include&quot;lib/Zigbee_AllDevice_Makerules.h&quot;"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -1829,6 +2218,7 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -1868,6 +2258,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -1896,6 +2287,7 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
+        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>

@@ -107,7 +107,7 @@ typedef struct
 typedef struct
 {
   /** Endian "[LE]" If the UseParent is TRUE, then ParentAddress parameter
-   * shall contain the extended 64-bit address of the destination device??
+   * shall contain the extended 64-bit address of the destination deviceâ??s
    * parent device; otherwise, this parameter is not used and need not be set.*/
   ExtAddr_t parentAddress;
   /** A sequence number assigned to a network key by the Trust Center and used

@@ -56,10 +56,8 @@
 #else  // defined(_USE_KF_MAC_)
 #endif // defined(_USE_KF_MAC_)
 
-#ifdef _PIC32CX_
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyPic32cx.h>
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyInit.h>
-#endif
 
 #ifdef SIMULATOR
   #include <halMedium.h>

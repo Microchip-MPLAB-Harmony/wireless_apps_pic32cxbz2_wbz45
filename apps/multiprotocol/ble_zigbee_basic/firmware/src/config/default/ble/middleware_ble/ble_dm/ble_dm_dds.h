@@ -1,24 +1,5 @@
 /*******************************************************************************
-  Device Information Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dm_dds.h
-
-  Summary:
-    This file contains the Device Data Storage functions for 
-    BLE Device Manager module internal use.
-
-  Description:
-    This file contains the Device Data Storage functions for 
-    BLE Device Manager module internal use.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,7 +20,25 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Device Information Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dm_dds.h
+
+  Summary:
+    This file contains the Device Data Storage functions for 
+    BLE Device Manager module internal use.
+
+  Description:
+    This file contains the Device Data Storage functions for 
+    BLE Device Manager module internal use.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BLE_DM_PDB BLE_DM_PDB

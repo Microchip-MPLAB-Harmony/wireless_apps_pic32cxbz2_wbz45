@@ -45,8 +45,8 @@
 /**//**
  *  The mutex is similar to binary semaphore with one significant difference:
  * the mutex has an owner. It means that a module (a component) locks a mutex only
- * it can unlock it. If a module tries to unlock a mutex it hasn?? locked
- * (thus doesn?? own) then an error condition is encountered and, most importantly,
+ * it can unlock it. If a module tries to unlock a mutex it hasn�t locked
+ * (thus doesn�t own) then an error condition is encountered and, most importantly,
  * the mutex is not unlocked.
  **/
 /******************************************************************************

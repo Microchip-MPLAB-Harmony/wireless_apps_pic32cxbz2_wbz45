@@ -82,7 +82,7 @@
 
 #define LIGHTING_DEVICE_CLASS                    0x00 // lighting device
 
-// Table 68 ?? Values of the GenericDeviceType attribute for the lighting class form
+// Table 68 â?? Values of the GenericDeviceType attribute for the lighting class form
 // ZigBee Lighting & Occupancy Device Specification, v0.9
 // ZigBee Document 15-0014-04, December 4th, 2015
 #define INCANDESCENT_DEVICE_TYPE                             0x00

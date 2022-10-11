@@ -10680,7 +10680,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;671&quot; canvasWidth=&quot;887&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BLE_STACK_LIB&quot; x=&quot;209&quot; y=&quot;283&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;562&quot; y=&quot;20&quot;/&gt;
@@ -10703,7 +10704,6 @@
         &lt;ElementPosition dnOrder=&quot;18&quot; id=&quot;trng&quot; x=&quot;395&quot; y=&quot;24&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;671&quot; canvasWidth=&quot;887&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -17716,8 +17716,12 @@
          <hash>657b80b63aa483e428880492c987a749cfb72ad56860d676498d1c9d2a218f65</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\system\cache\sys_cache.h</file>
+         <hash>3407ecac4da455d4b8ba70043f10c20b10e1304e92402db824ca5efa6a2f8402</hash>
+      </entry>
+      <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleep.c</file>
-         <hash>e633e9e235b1cef0420e80bf6fea5440060ba0f6fb8755a1de0f970fb2501512</hash>
+         <hash>d8b53b02adbaa236af54f43d1dce63b18dde5fb96967fd4d225aa52f2cd54065</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\bdb\include\bdbSecurity.h</file>
@@ -17894,6 +17898,10 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</file>
          <hash>d53f32bce04a0b5dd504328c8fee0ecdbff1c23ffd90c64433ae4bedb16c454a</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\system\cache\sys_cache.c</file>
+         <hash>7ed94244e15453076a32ec0f0e9d07ee40a74661c3da757c15c568b74f96d1ad</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\fuses.h</file>
@@ -18445,7 +18453,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\include\pds_config.h</file>
-         <hash>b21939183fabfc8c4cdc7dd18db0e3dde16b871fee816748d0c7e6704a746f9e</hash>
+         <hash>39f17a8ea253ac4b5f411ed9fcbf11c17127fdb432a0c8964f9195d40f94ce4d</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\private\nwkIB.h</file>
@@ -18713,7 +18721,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAppClock.c</file>
-         <hash>ef1145afa7c7404bc2927f94cc0411868e0d1cd0eb61dc9ef77c4074ba252056</hash>
+         <hash>6391177afb3fc9ce6860c62f5df26991c301d07af36f5804f276301eb2174c32</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zllplatform\infrastructure\N_Util\src\N_Util.c</file>
@@ -18801,7 +18809,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zcl\src\zclCommandManager.c</file>
-         <hash>beeb47a24539403ae02a66e5eaedd3e16f63c26917f10ee8ff9d924658e68e10</hash>
+         <hash>afc0c996879770d951c246d2b0e562949502a7eca45dacc81608e86d4f7dc005</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Services_pb.h</file>
@@ -19417,7 +19425,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\common\src\halTaskManager.c</file>
-         <hash>e1aa234da01c3a975fbccbd8e22faed247d49b8b31003e7d27f32c7feb2efd82</hash>
+         <hash>1174e22ada855c047d1124e8fb00d4bb21f911caef1725c18db15d01874e720c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\host_hci_defs.h</file>
@@ -19585,7 +19593,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\errH.c</file>
-         <hash>0b101f7c00b453f6b3330a782c78147b36544d6c2d23dba0d4e4a723eafdeff4</hash>
+         <hash>b6ed479ee5f68da468c629970dbbd3d94c0815fc3fe8c62587eb6187011b9456</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_pukcl.c</file>
@@ -19789,7 +19797,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halMacIsr.c</file>
-         <hash>06fe808f8269f1b587fb9e6b81afda01ca8b0780dba1d3c3acef4e419a64fc70</hash>
+         <hash>ba694d717a418d505ce5b8455a67ec79352f5fd0aa44e41ab8b8859d32c76c81</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rng_pb.h</file>
@@ -20045,7 +20053,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAes.c</file>
-         <hash>145a323cecf5d9adb49b4ab34f11b385cfd22624a353563b9114e54c6c4a191a</hash>
+         <hash>8e0561593c91911b047a5b78de96a90af0de89e0536bc0828b627bb22849dcf0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tcc\plib_tcc_common.h</file>
@@ -20065,7 +20073,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halRfCtrl.c</file>
-         <hash>0079d1d77534ba215f5433ef076a44e4b4b3d5fd3a73671838f8a00f58aebd8f</hash>
+         <hash>b2c57af3f46852983e170f9c31123eafde62aa462ba2cb24603f7094f8e93857</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccConv_pb.h</file>
@@ -20585,7 +20593,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysTaskManager.c</file>
-         <hash>9ee43c7e1ffdb111d437af301f2a21723b0473e637f8d847214fda6731f51994</hash>
+         <hash>30de00d414ec527b8a8820f6df97a3a087e9624fae6e5cdc2f21c89bd25e62bc</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ble.h</file>
@@ -20601,7 +20609,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\multiSensor\multiSensor.c</file>
-         <hash>b90a8d50731d075f221bcfc970fcf0911126510a041700b8deeaabe3261b30d6</hash>
+         <hash>a3807bef9cc1526befb4c7d5e8702ec84ee3c18ac34fd646c1a8dc8478d89c34</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\pkcs12.h</file>
@@ -21097,7 +21105,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleepTimerClock.c</file>
-         <hash>3548e8f2c532eae4014fa3c885fc79b641e390ad3d3c41809b2308cd36e433e4</hash>
+         <hash>5ea10851eaf30c7a5aa2e5354e06e1175ea2b3dabbf5937a2367d366bdeb4ad7</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang_ltm.h</file>
@@ -21217,7 +21225,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>a5568adae41f7f41a563f05f3e31ed3efb2234455939ab9167aca03cc0102db0</hash>
+         <hash>3ccc5db3e5e22b642738985f2050902b1ebd82bf25489a94c87be71adc01d1dc</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
@@ -21549,7 +21557,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysSleep.c</file>
-         <hash>ee6fbe35bdad389bbe83267c7aa71cddf057467479d30f43fe21d59c2edc93e6</hash>
+         <hash>fa04a10ba604376283eec31dbac3f0056f707cfc948aa8e7b44d92bce939210c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\icm.h</file>

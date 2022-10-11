@@ -1,24 +1,5 @@
 /*******************************************************************************
-  Device Information Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dm_info.c
-
-  Summary:
-    This file contains the Device Information functions for 
-    BLE Device Manager module internal use.
-
-  Description:
-    This file contains the Device Information functions for 
-    BLE Device Manager module internal use.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,7 +20,25 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Device Information Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dm_info.c
+
+  Summary:
+    This file contains the Device Information functions for 
+    BLE Device Manager module internal use.
+
+  Description:
+    This file contains the Device Information functions for 
+    BLE Device Manager module internal use.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -266,6 +265,8 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
     BLE_GAP_ResolvingListParams_T   *p_resolvingList;
     BLE_GAP_LocalPrivacyParams_T    privacy;
     bool                            enable;
+
+    result = MBA_RES_SUCCESS;
 
     if (p_devId == NULL || devCnt == 0 || p_privacyMode == NULL)
     {

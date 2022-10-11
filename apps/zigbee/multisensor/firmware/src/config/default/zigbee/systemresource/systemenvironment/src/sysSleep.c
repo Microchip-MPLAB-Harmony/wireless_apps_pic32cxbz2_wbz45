@@ -49,6 +49,7 @@
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyDeepSleep.h>
 #include <hal/cortexm4/pic32cx/include/halSleep.h>
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
+#include "task.h"
 /*********************************************************************************
                      External variables section
 **********************************************************************************/

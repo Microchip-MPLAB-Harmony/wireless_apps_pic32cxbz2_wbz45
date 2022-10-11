@@ -175,7 +175,7 @@ typedef struct _NIB_t
 #ifdef _CHILD_MANAGEMENT_
   /** For an RFD, this records the information received in an End Device
    * Timeout Response command indicating the parent information.
-   * For an FFD, this records the device?? local capabilities. */
+   * For an FFD, this records the deviceâ??s local capabilities. */
   uint8_t parentInformation;
   /** It indicates the default timeout in minutes for any end device
    * that does not negotiate a different timeout value. */

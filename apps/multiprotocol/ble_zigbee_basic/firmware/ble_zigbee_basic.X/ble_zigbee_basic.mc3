@@ -1,4 +1,5 @@
-<config configName="default" projectName="ble_zigbee_basic" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.4">
+<config configName="default" projectName="ble_zigbee_basic" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.11">
+   <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
          <string>BLE_STACK_LIB</string>
@@ -3895,7 +3896,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleep.c</file>
-         <hash>e633e9e235b1cef0420e80bf6fea5440060ba0f6fb8755a1de0f970fb2501512</hash>
+         <hash>d8b53b02adbaa236af54f43d1dce63b18dde5fb96967fd4d225aa52f2cd54065</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\bdb\include\bdbSecurity.h</file>
@@ -4047,7 +4048,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.h</file>
-         <hash>ae1f06649a4811a911426e2ed2720620248da7f41955df2b3c4564e4f9f9abba</hash>
+         <hash>b3f126e8c5fca72f988cecfc06b63f4bdae37861aa1e1f3c04246cb91a3c4e24</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\aps\include\apsdeEndpoint.h</file>
@@ -4079,7 +4080,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\service_ble\ble_trs\ble_trs.c</file>
-         <hash>b819c7be43b544dad915c2b196507e2b19f2958a54f53ea373ab53b1f91d918a</hash>
+         <hash>05da9045e1db9279f629fbb2c87f7ede7c128c0451e5cb999771337a911c5cbd</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\srp.h</file>
@@ -4127,7 +4128,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\service_ble\ble_trs\ble_trs.h</file>
-         <hash>44af1895e25e24780ce360b63734bef9048303d996916631973798a9406d4678</hash>
+         <hash>7d812596cc07b26c1090d4fa31bbd307abb3b200a5ca0ba14a278cfa2763b4b6</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\include\zgb_task.h</file>
@@ -4139,7 +4140,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_dd.h</file>
-         <hash>90af1e244c84e94e7bd6411d44f5d3acf85b668510351e32c79e638af88b3531</hash>
+         <hash>0f4421978eef025fb4b8f8b1e2c23a8fe130af4381345fe699518341cacc7475</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\types.h</file>
@@ -4151,7 +4152,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\bt_sys.h</file>
-         <hash>eff219f20ddcc4ab9e50ed465b353db7f8a375c320496eb8db484392b2a8cfd6</hash>
+         <hash>dcfca7efbc6e02306a741f6c055b2954b739e5c0d8aeb8935bb96e7b5bb422d9</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zcl\include\clusters.h</file>
@@ -4355,7 +4356,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_internal.h</file>
-         <hash>3612a9246d7d5fb71f0ea0c4078b454088e97aaca5dd931d075a029998cc7c08</hash>
+         <hash>b23252235bae95e96ba7fb81b9576260a515d471e1d69af046ba9e04d71f4ea5</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\rc2.c</file>
@@ -4431,7 +4432,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\stack_mgr.h</file>
-         <hash>e6d948186579bf17c624c588dabd862aceec3ce70c559a57553572e285357c96</hash>
+         <hash>403ba36a1083e6b79d8f6a546daeef0cecb555f8708ec69e5a0e547d3e0d9a2f</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hwInt.h</file>
@@ -4451,7 +4452,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\gap_defs.h</file>
-         <hash>f408ca733e65f50dc190448816d568bc71cda81fb8d49e5937f4ac797863a30f</hash>
+         <hash>2e20ae40832d4b7684c0b6a53a958cb5492722b2f12e1c47b0818ed9df0feebd</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ed25519.h</file>
@@ -4467,7 +4468,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_l2cap.h</file>
-         <hash>c04408451199f386c5193b2c05204b2b03f5930ffbaafb1dd3490731dc7a8a97</hash>
+         <hash>bda2bbe0f27676bcd8dfd62ae12b06381c3b29192b41dd7c9a3e1ed918176005</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zdo\include\zdo.h</file>
@@ -4495,7 +4496,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_log\ble_log.h</file>
-         <hash>8b9306e72512360e80a9ebe34b5531b47585a80cc236754b61112f75b259012c</hash>
+         <hash>54f8f8b0fbeffe47feff57c2f47e03e17c7f04c8986b2b92211663678cb1330f</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\freqm.h</file>
@@ -4535,7 +4536,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\bt_sys_log.h</file>
-         <hash>33d9622c24f26edef034411d6f06029e067ee2000f715cf708ba4c9c6bde97f7</hash>
+         <hash>4dcd6514ae14996ba07d608350500b67af1072457f9358d6af8f3b0c73283685</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_c64.c</file>
@@ -4599,7 +4600,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.c</file>
-         <hash>2666b9a4c4456cf7056bf20ec5b70e487df8458a300287df6834997fea90240a</hash>
+         <hash>18d0dc74ee6eaa8b03f6079f5ad993023adc927fc47fa8b60b109a01d435730e</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\aps\include\apsCommandReq.h</file>
@@ -4803,7 +4804,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\gatt.h</file>
-         <hash>81c25c2e7c253d3bc8a7e76da720a45d13b5e669cdc05c85451fea57f188799d</hash>
+         <hash>abcc31bedf2e0a02d0456d44113b23ffd6a22bc07216c9d1e6bdc103ba7f9fe7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\wolfevent.h</file>
@@ -4823,7 +4824,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAppClock.c</file>
-         <hash>ef1145afa7c7404bc2927f94cc0411868e0d1cd0eb61dc9ef77c4074ba252056</hash>
+         <hash>6391177afb3fc9ce6860c62f5df26991c301d07af36f5804f276301eb2174c32</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zllplatform\infrastructure\N_Util\src\N_Util.c</file>
@@ -4831,7 +4832,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\profile_ble\ble_trsps\ble_trsps.h</file>
-         <hash>84fd55850260313a1c2a9f08ba80af700dbd9315c6c81b1689f64c8c0bfe5114</hash>
+         <hash>e7eab1adc6582521ebf7661ea2f7cfb4781aec0cf38b173aed5ebf9aaacb48f9</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\icm.h</file>
@@ -4839,7 +4840,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\profile_ble\ble_trsps\ble_trsps.c</file>
-         <hash>78f02f5b27404a30e3a44d9d2caf2908f4af594b979d98534ab4633fb5dd9533</hash>
+         <hash>5c37d19f79815d636c7cf27c47d750a62fd530f242d4b25c0a1d9d46c132e709</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\arb.h</file>
@@ -4899,7 +4900,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zcl\src\zclCommandManager.c</file>
-         <hash>beeb47a24539403ae02a66e5eaedd3e16f63c26917f10ee8ff9d924658e68e10</hash>
+         <hash>afc0c996879770d951c246d2b0e562949502a7eca45dacc81608e86d4f7dc005</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Services_pb.h</file>
@@ -4911,7 +4912,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\att_uuid.h</file>
-         <hash>4446c64748c9b54aa0dfd98088b55f26173b2c6df9c8fc4a0d9a42d7eb551469</hash>
+         <hash>7b385fc98fb42be9962591409ebf4fd38e5c3cbe90c94055886e134435f42646</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\configserver\src\csMem.c</file>
@@ -5131,7 +5132,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_util\mw_assert.h</file>
-         <hash>04bc669f61fe38297117090d9fba8d785d2aaa707cafd0faf3b93e020fd70c63</hash>
+         <hash>701d39e8e675cce3cb4ac5069e4f711dcfa418d11d92c88d2c39c014328776ad</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\include\commandManager.h</file>
@@ -5223,7 +5224,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_util\byte_stream.h</file>
-         <hash>5f4a534ed30a1b106b99a5a006036c6ea91c6f9377b3820773d55a6948fa9c7e</hash>
+         <hash>e299f31475c883121937f45db5904cad7228c0da1566a08f0f8b29bf66eb8038</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\infrastructure\N_Task\include\N_Task.h</file>
@@ -5487,7 +5488,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_trsps_handler.h</file>
-         <hash>0711f4b23b2429270ab3ceaffd2756cccd0b764482d3bcc3622c54fe7d5ac772</hash>
+         <hash>3ae2cf02b60ace152eb07476d8fc5f665c7118a183fae0eb5fe9359e4e946ea0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\gpio\plib_gpio.h</file>
@@ -5507,7 +5508,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_trsps_handler.c</file>
-         <hash>21f42354cc146eac732226275daddfa2a9b3cdc6c54f9e4760bdac44ead0c1f7</hash>
+         <hash>933280a74226a38621e0003434bc5dceaa20dc9c96b79c35b06fbb8a1016162c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\mac_phy\include\macBuffers.h</file>
@@ -5515,11 +5516,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\common\src\halTaskManager.c</file>
-         <hash>e1aa234da01c3a975fbccbd8e22faed247d49b8b31003e7d27f32c7feb2efd82</hash>
+         <hash>1174e22ada855c047d1124e8fb00d4bb21f911caef1725c18db15d01874e720c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\host_hci_defs.h</file>
-         <hash>dc6d5e03f097e555b641d476bed3ed8ad721d6d27552d91b4885ba6726e20f20</hash>
+         <hash>4903366afaafe69070b9e4dd32d404978b31eb844080082a799920ce0471d4e4</hash>
       </entry>
       <entry>
          <file>..\src\config\default\stdio\xc32_monitor.c</file>
@@ -5527,7 +5528,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\ble_stack.a</file>
-         <hash>2d640523845984f846719b41b7ac4179ff65c609f26ad7aca7d1e9476ca3f8eb</hash>
+         <hash>fec58dbae2baeb070babe0fa7d01f6f5f7032519a3b10f8d10e887a0be858677</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\light\lightIdentifyCluster.c</file>
@@ -5619,7 +5620,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_dtm.h</file>
-         <hash>4cb349444cbfbbe9fb35abe3fbd55b1e7d8fc151a4b13d2cb016f5294412590f</hash>
+         <hash>ac51661f35cd03638686099d3d5547de5405bed44827c3255eef1c42260a5de0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysMutex.c</file>
@@ -5679,7 +5680,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\errH.c</file>
-         <hash>0b101f7c00b453f6b3330a782c78147b36544d6c2d23dba0d4e4a723eafdeff4</hash>
+         <hash>b6ed479ee5f68da468c629970dbbd3d94c0815fc3fe8c62587eb6187011b9456</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_pukcl.c</file>
@@ -5819,7 +5820,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_scm.h</file>
-         <hash>057382eea12da3d48926e2bd4135f872e7dfb4c41bc559ae382a6adc5306b1bc</hash>
+         <hash>1daa9810a5c586b132d0944b6ab7503e230f0f7b33a067a57d6b7d6edb8f3fb5</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ClearFlags_pb.h</file>
@@ -5851,7 +5852,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_conn.c</file>
-         <hash>ee90fbb5be874319dc1ced5a61f49d503c28b819c07dbb2e3ad2362a75273c58</hash>
+         <hash>a99eb63d8c9f7540bfd3f3a187d5430784254dcf10f96d0785337e020f0b1182</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nlmeRouteDiscovery.h</file>
@@ -5863,7 +5864,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_conn.h</file>
-         <hash>12774ad1897fde8c0f35acd3376e1b380093212df00f6241c834e86fa3a63434</hash>
+         <hash>8fa3321a7b59a071c1ca3d3b4d2e4570180ad45cc3886dfddf2244d921e680ef</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\private\nwkPassiveAck.h</file>
@@ -5871,7 +5872,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halMacIsr.c</file>
-         <hash>06fe808f8269f1b587fb9e6b81afda01ca8b0780dba1d3c3acef4e419a64fc70</hash>
+         <hash>ba694d717a418d505ce5b8455a67ec79352f5fd0aa44e41ab8b8859d32c76c81</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rng_pb.h</file>
@@ -5911,11 +5912,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm.c</file>
-         <hash>a4a5341e0dbb2d3a32de962b1e5961cefc4465d3fe20342e86bb91ad3e2f4290</hash>
+         <hash>2cefcf8725c800d92d528fa92b2fe174ca6cc3698cf304f676284f56eac58ccf</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm.h</file>
-         <hash>a55b57ae8a977af29d03a96e4e06e449cff36401cab500c96e8c609603705e98</hash>
+         <hash>186c8410eace2929b269dff4ea10d6a715fc1c196e07b59696228d56b6015744</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\mac_phy\mac_hwi\include\machwiAssociateHandler.h</file>
@@ -5939,7 +5940,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_gap.h</file>
-         <hash>8775e5695149c583d5732d18b2e8cd9d21f0c66dcf182e306810bec6323035d1</hash>
+         <hash>98f19cb563c8fbe7eb47a9576776ae32bb37db4ba6836d48f70caeb48870f6d7</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\configserver\include\private\csConstTable.h</file>
@@ -6087,15 +6088,15 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_dds.c</file>
-         <hash>43634165c832e23889a43c971812710450fde404e1cfe8033fce16d23875ffcd</hash>
+         <hash>f486b92f09d2c841daf33993301fed89ca462ee116c3311aeef7d9a7eff1d925</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_dds.h</file>
-         <hash>68a925da829d552b0b4f3681809f05007048b38902b4368f22338fcf735350c9</hash>
+         <hash>5bc23c4d2e271220595047f0917dd3c289dcd03af11ba074b966cfed2ae902e1</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAes.c</file>
-         <hash>145a323cecf5d9adb49b4ab34f11b385cfd22624a353563b9114e54c6c4a191a</hash>
+         <hash>8e0561593c91911b047a5b78de96a90af0de89e0536bc0828b627bb22849dcf0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tcc\plib_tcc_common.h</file>
@@ -6111,7 +6112,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halRfCtrl.c</file>
-         <hash>0079d1d77534ba215f5433ef076a44e4b4b3d5fd3a73671838f8a00f58aebd8f</hash>
+         <hash>b2c57af3f46852983e170f9c31123eafde62aa462ba2cb24603f7094f8e93857</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccConv_pb.h</file>
@@ -6399,7 +6400,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>a2ea52f41a90119d9beb10244cef4fa658234768248a81ba32a5673476491bc3</hash>
+         <hash>6b12575d1e7eaf846e4301827324b4887480e031e4265ba60ceee6ecd031838d</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\light\include\lightGroupsCluster.h</file>
@@ -6579,7 +6580,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysTaskManager.c</file>
-         <hash>9ee43c7e1ffdb111d437af301f2a21723b0473e637f8d847214fda6731f51994</hash>
+         <hash>30de00d414ec527b8a8820f6df97a3a087e9624fae6e5cdc2f21c89bd25e62bc</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ble.h</file>
@@ -6759,7 +6760,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_smp.h</file>
-         <hash>21e30fdfcfbe93a27836bd5fa733fdd56645ab200d9e30081ce8d5f6c2490f2d</hash>
+         <hash>1f847c2a948ba9d3a7ca970e5cdec02319ce57b251f1e4165dd9a54bcb5cf1b1</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zcl\include\zclGroupsCluster.h</file>
@@ -6931,7 +6932,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_sm.c</file>
-         <hash>377ad27b07a26fad9c7e90ed4328f958e3e4ea07d31cea68c3cb9fd18d22f947</hash>
+         <hash>ff4c9c34e25de3a29451b352d8060febc317f1316d8fb9c593b530603b1e3fa4</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\zgb_task.c</file>
@@ -7019,7 +7020,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\mba_error_defs.h</file>
-         <hash>3173e5a839703ec68b2daf8957d8575e0373f8a710f021629772415d72adf684</hash>
+         <hash>2ad7fa7e95f7c225979818eb2f8001801ce9b7a8eec25c724ad3452590433df5</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\nvm.h</file>
@@ -7051,7 +7052,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleepTimerClock.c</file>
-         <hash>3548e8f2c532eae4014fa3c885fc79b641e390ad3d3c41809b2308cd36e433e4</hash>
+         <hash>5ea10851eaf30c7a5aa2e5354e06e1175ea2b3dabbf5937a2367d366bdeb4ad7</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang_ltm.h</file>
@@ -7147,7 +7148,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_handler.h</file>
-         <hash>9e9883838c37ee56a973333dafe4ee0ad6883da86074a40d7c90ee737ddad0b0</hash>
+         <hash>69ff148b22be9888ca2081d34ab637ff765eaff118c6c160a83baed00196543f</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\mac_phy\include\macCommStatus.h</file>
@@ -7155,7 +7156,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_handler.c</file>
-         <hash>4153b3aa876e99d98f9a799f624f8028ee5c7395e92a75227a6a72111a47ef5a</hash>
+         <hash>460b736c9b9bb369dce930b8a04503694620cc931a4b8af43b093b8b249e5a7a</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Radio\include\N_Radio_Internal.h</file>
@@ -7163,7 +7164,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>91e5ab5fb2c0a77c4d1c360c993c77aaed2060c0ff16aa089cf4548459a48843</hash>
+         <hash>2e9c60f4cd4380b7686c9d4bf533fc5efebc18218c25e9fa004c369eea8e2bef</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
@@ -7183,7 +7184,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_sm.h</file>
-         <hash>3f2bfaa45ed1020a8e79d69c3cf3619d78bf4aa7b8d121711de48f471c3baf5a</hash>
+         <hash>a052212d350eb4af8b6d57ce746f6736c7eecf30783f568f1f3a2c0bf7687315</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Zcl_Framework\include\N_Zcl_Framework_Bindings.h</file>
@@ -7331,7 +7332,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_aes.c</file>
-         <hash>e682026099d241d419643ff81a936c69039f2791a20d5d55bed5aa9489d01d20</hash>
+         <hash>9a4689b45dd53dd82fb1c23d4177cd5ebbd632628cb0b575c37f5d92b35822b3</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\pds\src\bcPDS.c</file>
@@ -7339,7 +7340,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_aes.h</file>
-         <hash>deffcb5e1af57ad6aed93fd70005af0446c985189343cc3abc99b5bfdf85d46c</hash>
+         <hash>027216214ba542293b1bd03770a8ad0d670ceb5da8dc2c83197cbaaa2a21498e</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\otau\ofd\include\ofdMemoryDriver.h</file>
@@ -7487,7 +7488,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysSleep.c</file>
-         <hash>ee6fbe35bdad389bbe83267c7aa71cddf057467479d30f43fe21d59c2edc93e6</hash>
+         <hash>fa04a10ba604376283eec31dbac3f0056f707cfc948aa8e7b44d92bce939210c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\icm.h</file>
@@ -7563,7 +7564,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_info.h</file>
-         <hash>7f072cc725932c527fc1cb41f26d5e0f50e40016898967304b40384efc547a02</hash>
+         <hash>a911f830d8d39e9a039c39f69061c5014ae397d4f6de498c482f110b7e37d85a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_hwInt.h</file>
@@ -7583,7 +7584,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_info.c</file>
-         <hash>4dee0ca70a388c862d7cd0814e2f1db89751f178e11f6f7a0aee5a364de3f8c4</hash>
+         <hash>9fc26d9fa1b3d925a8343b4a35dc2234e79f59753eeec4bdfe3f210f9599c91d</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pfw.h</file>

@@ -1,24 +1,5 @@
 /*******************************************************************************
-  Bluetooth System Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    bt_sys.h
-
-  Summary:
-    This file contains the BLE System functions for the project.
-
-  Description:
-    This file contains the BLE System functions for the project. The "BT_SYS_Init"
-    function shall be called in the "SYS_Initialize" function to initialize the
-    this modules in the system. And the "BM_Task"  shall be called in the "SYS_Tasks".
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,7 +20,25 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Bluetooth System Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    bt_sys.h
+
+  Summary:
+    This file contains the BLE System functions for the project.
+
+  Description:
+    This file contains the BLE System functions for the project. The "BT_SYS_Init"
+    function shall be called in the "SYS_Initialize" function to initialize the
+    this modules in the system. And the "BM_Task"  shall be called in the "SYS_Tasks".
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BT_SYS

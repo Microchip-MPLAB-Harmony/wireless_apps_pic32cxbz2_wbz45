@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Profile Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_trsps_handler.c
-
-  Summary:
-    This file contains the Application BLE functions for this project.
-
-  Description:
-    This file contains the Application BLE functions for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Application BLE Profile Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_trsps_handler.c
+
+  Summary:
+    This file contains the Application BLE functions for this project.
+
+  Description:
+    This file contains the Application BLE functions for this project.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -47,9 +46,6 @@
 #include <string.h>
 #include <stdint.h>
 #include "ble_trsps/ble_trsps.h"
-#include <app_zigbee/zigbee_console/console.h>
-#include <z3device/light/include/lightOnOffCluster.h>
-#include "peripheral/gpio/plib_gpio.h"
 
 
 // *****************************************************************************
@@ -102,22 +98,6 @@ void APP_TrspsEvtHandler(BLE_TRSPS_Event_T *p_event)
         case BLE_TRSPS_EVT_VENDOR_CMD:
         {
             /* TODO: implement your application code.*/
-            if(p_event->eventField.onVendorCmd.length)
-            {                 
-                if(p_event->eventField.onVendorCmd.p_payLoad[1])
-                {    
-                    lightOnOffClusterServerAttributes.onOff.value = 1;
-                    RED_LED_Set();
-                    appSnprintf("[BLE} On Command\n\r");                    
-                }    
-                else
-                {    
-                    lightOnOffClusterServerAttributes.onOff.value = 0;
-                    RED_LED_Clear();
-                    appSnprintf("[BLE} Off Command\n\r");                    
-                }                   
-                ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
-            }
         }
         break;
 

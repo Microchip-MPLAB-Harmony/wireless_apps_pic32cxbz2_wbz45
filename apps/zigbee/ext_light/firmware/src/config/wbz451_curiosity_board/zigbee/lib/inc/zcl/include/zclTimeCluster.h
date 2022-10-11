@@ -399,7 +399,7 @@ typedef struct PACK
   \brief ValidUntilTime attribute (R/W, O)
 
   The ValidUntilTime attribute indicates a time, later than LastSetTime, up to which
-  the Time attribute may be trusted. ??rusted?? means that the difference between the
+  the Time attribute may be trusted. �Trusted� means that the difference between the
   Time  attribute  and  the  true  UTC  time  is  less  than  an  acceptable  error.  The
   acceptable error is not defined by this cluster specification, but may be defined by
   the application profile in which devices that use this cluster are specified.    

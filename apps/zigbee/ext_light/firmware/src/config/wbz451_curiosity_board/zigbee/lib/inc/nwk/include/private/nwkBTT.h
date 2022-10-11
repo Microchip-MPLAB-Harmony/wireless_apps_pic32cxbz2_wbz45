@@ -69,7 +69,7 @@ typedef struct _NWK_BTTTableEntry_t
 {
   /* The 16-bit network address of the broadcast initiator.*/
   uint16_t address;
-  /* The NWK layer sequence number of the initiator? broadcast. */
+  /* The NWK layer sequence number of the initiator?s broadcast. */
   uint8_t seqNumber;
   /* Flag indicates whether the entry is active or not*/
   bool active;

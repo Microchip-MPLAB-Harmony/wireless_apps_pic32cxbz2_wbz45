@@ -112,10 +112,10 @@ static void halEmptyHandler(void)
 ******************************************************************************/
 void HAL_TaskHandler(void)
 {
-  HalTask_t         handler;
+  HalTask_t         handler = NULL;
   HalTaskBitMask_t  mask = 1;
   uint8_t           index = 0;
-  HalTaskBitMask_t  tmpFlags;
+  HalTaskBitMask_t  tmpFlags = 0;
 
   ATOMIC_SECTION_ENTER
   tmpFlags = halTaskFlags;

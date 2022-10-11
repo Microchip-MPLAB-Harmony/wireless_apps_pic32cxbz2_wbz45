@@ -90,7 +90,7 @@ typedef struct PACK
    * End Device Timeout Request command.
    * Child Aging and Recovery Protocol r20, 7.2. */
   uint8_t status;
-  /* This bitmask indicates the parent router?? support information to the child device.
+  /* This bitmask indicates the parent routerâ??s support information to the child device.
    * Child Aging and Recovery Protocol r20, 7.2. */
   LITTLE_ENDIAN_OCTET (4, (
     /** MAC Data Poll Keepalive supported. */

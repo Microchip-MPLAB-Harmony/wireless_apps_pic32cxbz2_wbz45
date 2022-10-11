@@ -48,7 +48,7 @@
                    Includes section
 ******************************************************************************/
 
-
+#include "device.h"
 #include <hal/include/sleepTimer.h>
 #include <hal/cortexm4/pic32cx/include/halSleepTimerClock.h>
 #include <hal/cortexm4/pic32cx/include/halSleep.h>
@@ -145,8 +145,6 @@ we use the internal OSC8M and we don't initialize the EXOSC32K
 
   MCLK_APBAMASK |= MCLK_APBAMASK_RTC;
 
-  /* Enable the generic clk to clk the RTC */
-  GCLK_PCHCTRL(ID_RTC) = GCLK_PCHCTRL_GEN(GCLK_GEN_3) | GCLK_PCHCTRL_CHEN;
 
 
   RTC_MODE0_CTRLA = RTC_MODE1_CTRLA_SWRST;
@@ -229,7 +227,7 @@ static void halRtcWaitForSync(uint32_t bit)
 void rtcHandler(void)
 {
 
-  uint16_t intFlags;
+  uint16_t intFlags = 0U;
 #if defined(_STATS_ENABLED_)
   uint16_t stack_threshold;
   uint16_t stack_left = Stat_GetCurrentStackLeft();
@@ -314,9 +312,9 @@ Returns:
 uint64_t halGetTimeOfSleepTimer(void)
 {
 
-  uint32_t currCounter;
-  uint32_t tmpCounter;
-  uint64_t  countValue;
+  uint32_t currCounter = 0;
+  uint32_t tmpCounter = 0;
+  uint64_t  countValue = 0;
 
   ATOMIC_SECTION_ENTER
   // read interrupt counter
@@ -351,8 +349,8 @@ Synchronization system time which based on sleep timer.
 ******************************************************************************/
 void halSleepSystemTimeSynchronize(void)
 {
-  uint8_t tmpCounter;
-  uint32_t tmpValue;
+  uint8_t tmpCounter = 0;
+  uint32_t tmpValue = 0;
 
   ATOMIC_SECTION_ENTER
   tmpCounter = halIrqOvfwCount;

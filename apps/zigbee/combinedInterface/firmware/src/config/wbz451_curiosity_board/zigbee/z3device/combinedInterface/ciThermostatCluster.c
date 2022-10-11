@@ -147,7 +147,7 @@ static void ciFillsendSetPointRaiseLowerPayload(ZCL_SetpointRaiseLower_t *payloa
   \param[in] srcEp- source endpoint;
   \param mode - set points to be adjusted
   \param amount - amount of increase/decrease to setpoint value
-        (in steps of 0.1?C.)
+        (in steps of 0.1°C.)
   \return none
 ******************************************************************************/
 void ciSendSetpointRaiseLowerCommand(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,

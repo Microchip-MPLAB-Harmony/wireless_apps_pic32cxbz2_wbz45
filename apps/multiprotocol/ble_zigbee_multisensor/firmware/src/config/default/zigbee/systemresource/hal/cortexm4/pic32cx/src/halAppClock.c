@@ -48,6 +48,7 @@
 /******************************************************************************
                    Includes section
 ******************************************************************************/
+#include "device.h"
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
 #include <hal/cortexm4/pic32cx/include/halMacIsr.h>
 
@@ -221,7 +222,7 @@ Synchronization system time which based on application timer.
 void halAppSystemTimeSynchronize(void)
 {
   uint32_t tmpCounter;
-  uint32_t tmpValue;
+  uint32_t tmpValue = 0;
 
   ATOMIC_SECTION_ENTER
     tmpCounter = halAppIrqCount;
@@ -391,8 +392,8 @@ uint32_t HAL_ReadFreq(void)
 ******************************************************************************/
 void halDelayUs(uint16_t us)
 {
-  uint32_t startCounter;
-  uint32_t delta;
+  uint32_t startCounter = 0;
+  uint32_t delta = 0;
 
   us *= AMOUNT_TIMER_CLOCK_IN_ONE_USEC;
   // begin counter meaning

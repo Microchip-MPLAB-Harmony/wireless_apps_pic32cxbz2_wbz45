@@ -1,4 +1,5 @@
-<config configName="wbz451_curiosity_board" projectName="combinedInterface" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.4">
+<config configName="wbz451_curiosity_board" projectName="combinedInterface" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.11">
+   <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
          <string>BootloaderServices</string>
@@ -1604,8 +1605,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;472&quot; canvasWidth=&quot;1117&quot; dnOrder=&quot;0&quot;/&gt;
-    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BootloaderServices&quot; x=&quot;30&quot; y=&quot;360&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;170&quot; y=&quot;60&quot;/&gt;
@@ -1627,6 +1627,7 @@
         &lt;ElementPosition dnOrder=&quot;17&quot; id=&quot;trng&quot; x=&quot;640&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
+    &lt;GraphSettings canvasHeight=&quot;472&quot; canvasWidth=&quot;1117&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -5010,7 +5011,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\configserver\src\csMem.c</file>
-         <hash>f978a09ac71ed713415048ad9aaa67f4b84370a4bd9858119461ef9826a8ce7b</hash>
+         <hash>76b3a7e897d3d4e4a9ba6ba76409159c4cf629ba6a77039a211d28722dc81d24</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</file>
@@ -5042,7 +5043,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\srp.h</file>
-         <hash>f24b92f1cb5605b6aabebc10cb6b26e6223dc8c73c9d16873e05af83cee410f7</hash>
+         <hash>155f5879aed005f1c2278612afda3697530415f7c6de69eeb8ac8e718b402e60</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\infrastructure\N_Task\include\N_Task.h</file>
@@ -5086,7 +5087,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\systemenvironment\include\sysMutex.h</file>
-         <hash>6830737bbdadc3afb1b19134edd5b2d1aeea49ce52591494353a30097567c6fa</hash>
+         <hash>95793fc46c82e6c0ab0bac6a626fe49c848abf0da12ad80e8036f5d7d22c0093</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\security\serviceprovider\include\private\sspHashHandler.h</file>
@@ -5182,7 +5183,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\private\nwkIB.h</file>
-         <hash>6bd8ab227d3e6272f23406ad04f53f6b90a2a033d3f72fda4fea43dc6f33d618</hash>
+         <hash>345a66e4ca188323af56eecfd37705fa1f85a03d18e84b88ba9f021a87dd6876</hash>
       </entry>
       <entry>
          <file>..\src\app_zigbee\zigbee_console\console.h</file>
@@ -5314,7 +5315,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleep.c</file>
-         <hash>e633e9e235b1cef0420e80bf6fea5440060ba0f6fb8755a1de0f970fb2501512</hash>
+         <hash>d8b53b02adbaa236af54f43d1dce63b18dde5fb96967fd4d225aa52f2cd54065</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\aps\include\intrpData.h</file>
@@ -5522,7 +5523,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\combinedInterface\ciThermostatCluster.c</file>
-         <hash>802062a3966455a5bd92327cbbf728637c3440e836dd9a7aa1186e7d49c5ecc8</hash>
+         <hash>69a4aa3c60878d2c4c8529c07d6dbb48d5339f491a0f153c4d07b4b113779d17</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\combinedInterface\include\ciBasicCluster.h</file>
@@ -5530,7 +5531,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\include\appConsts.h</file>
-         <hash>7958d6d54e55614f37d366c350e22d1ab4948c4c37bb49ffd629b7d737e14a26</hash>
+         <hash>de177f3d15e414d83af17009dbbf2728e5e21862950c5c7952696bb193c197df</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\osal\osal_freertos.c</file>
@@ -5686,7 +5687,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\task.h</file>
-         <hash>35d73c971b7742150d4ba28497162a77c6313c56a12554b08165f326ae025daa</hash>
+         <hash>2bdfb8e3c1a76a5ccacb1b7815ca9acb63d1ba1f1bd29e5a75757d5e186c5056</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_Zdp\include\N_Zdp.h</file>
@@ -5758,7 +5759,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halRfCtrl.c</file>
-         <hash>0079d1d77534ba215f5433ef076a44e4b4b3d5fd3a73671838f8a00f58aebd8f</hash>
+         <hash>b2c57af3f46852983e170f9c31123eafde62aa462ba2cb24603f7094f8e93857</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\mac_phy\include\macData.h</file>
@@ -5822,7 +5823,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\zcl\src\zclCommandManager.c</file>
-         <hash>beeb47a24539403ae02a66e5eaedd3e16f63c26917f10ee8ff9d924658e68e10</hash>
+         <hash>afc0c996879770d951c246d2b0e562949502a7eca45dacc81608e86d4f7dc005</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_LinkInitiator\include\N_LinkInitiator.h</file>
@@ -5898,7 +5899,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\combinedInterface\include\ciThermostatCluster.h</file>
-         <hash>304b2fb6485a74c664c617f8e9ff5c4e0115b228686a699a15498984b6e64ed1</hash>
+         <hash>6406a535eee7b82ca6dc7b4de20b4949515643dbe6d6e5783093d2ff91756715</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\stack_interface\nwk\include\nwk_api.h</file>
@@ -5966,11 +5967,11 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\bsp\PIC32CX\src\fakeBSP.c</file>
-         <hash>0955028113e97b93e34b0401771df1e05860816b3f9c21159c604d615db84b4c</hash>
+         <hash>2734124749d5bdc47af0acf089c8507ff03ac190c7a7263fe5dca219c83316a2</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\include\z3Device.h</file>
-         <hash>5013b9898be8f57fa1b73f07550b51c10b15e9f456938022b196ddcc60a191b2</hash>
+         <hash>1357fd7cb7e93ea8197a83b8b536dbeb55abd0f7d7c6d1d3ed78785834dde92e</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\systemenvironment\src\sysAssert.c</file>
@@ -5982,7 +5983,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\definitions.h</file>
-         <hash>25b44d9e1d5b7330c8c9a3313ffdb44d35e947dceb1a17259e050e129744cd76</hash>
+         <hash>f8bc6abccd29d51ec245bd41fe9e6a4767eb9fde22b252744e7af40b46040219</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\systemenvironment\include\sysEventsHandler.h</file>
@@ -6078,7 +6079,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\common\src\halTaskManager.c</file>
-         <hash>e1aa234da01c3a975fbccbd8e22faed247d49b8b31003e7d27f32c7feb2efd82</hash>
+         <hash>1174e22ada855c047d1124e8fb00d4bb21f911caef1725c18db15d01874e720c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dscon.h</file>
@@ -6198,7 +6199,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halMacIsr.c</file>
-         <hash>06fe808f8269f1b587fb9e6b81afda01ca8b0780dba1d3c3acef4e419a64fc70</hash>
+         <hash>ba694d717a418d505ce5b8455a67ec79352f5fd0aa44e41ab8b8859d32c76c81</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\hal\cortexm4\pic32cx\include\halDiagnostic.h</file>
@@ -6366,7 +6367,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\errH.c</file>
-         <hash>0b101f7c00b453f6b3330a782c78147b36544d6c2d23dba0d4e4a723eafdeff4</hash>
+         <hash>b6ed479ee5f68da468c629970dbbd3d94c0815fc3fe8c62587eb6187011b9456</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\cmcc.h</file>
@@ -6486,7 +6487,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAes.c</file>
-         <hash>145a323cecf5d9adb49b4ab34f11b385cfd22624a353563b9114e54c6c4a191a</hash>
+         <hash>8e0561593c91911b047a5b78de96a90af0de89e0536bc0828b627bb22849dcf0</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\event_groups.c</file>
@@ -6554,7 +6555,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\systemenvironment\src\sysSleep.c</file>
-         <hash>ee6fbe35bdad389bbe83267c7aa71cddf057467479d30f43fe21d59c2edc93e6</hash>
+         <hash>fa04a10ba604376283eec31dbac3f0056f707cfc948aa8e7b44d92bce939210c</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_definitions.h</file>
@@ -6650,7 +6651,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\aps\include\apsmeEstablishKey.h</file>
-         <hash>8943ff24d36ee8fb364ef9147bec1c1c36955603f24dd45cd6494eda13833c1f</hash>
+         <hash>254065f573bc49e44c574896e1d57bce0cadeeadca89e5628ef27b84c2ef31dc</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_CRT_pb.h</file>
@@ -6762,7 +6763,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\private\nwkEndDeviceTimeoutInd.h</file>
-         <hash>4c09c462c5cde50c41104b85fcc1034ee96fd12bb4f3367309e6e2907093207f</hash>
+         <hash>a337f5aea104dd23004bbf9144757a9484b0e09fb76357332f9cf65f1f4bfe92</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\combinedInterface\include\ciCommissioningCluster.h</file>
@@ -6850,7 +6851,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\include\pic32cxBSP.h</file>
-         <hash>f7b5f9784d9f7d113ecec4240bdb52f60503fe307b9c7cb074021c1aed331e3d</hash>
+         <hash>c0131b443b5dfd34161a094d2db2e21a1746576ec74054171f8f2271ce2d6706</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\coding.h</file>
@@ -6926,7 +6927,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halSleepTimerClock.c</file>
-         <hash>3548e8f2c532eae4014fa3c885fc79b641e390ad3d3c41809b2308cd36e433e4</hash>
+         <hash>5ea10851eaf30c7a5aa2e5354e06e1175ea2b3dabbf5937a2367d366bdeb4ad7</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionRouter_Init.h</file>
@@ -6978,7 +6979,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\initialization.c</file>
-         <hash>dc11d4699e5e897f626044a6558d2993a9dd3a4d73860e475fe232a905b89456</hash>
+         <hash>db2c513f7389c605bc4ff0eb0e81c7e7920f839209899341c0a7d97612f9be22</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\include\otauService.h</file>
@@ -7002,7 +7003,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\settings.h</file>
-         <hash>86a92896cc09608435ffe0d78f4aa3421fb5f19a5675761070d1e9c85ad22de8</hash>
+         <hash>0131d22c9c73278c8123f7efcadf514e85ccb95cd61dbe7a40976de10800b2d0</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\infrastructure\N_Fsm\include\N_Fsm.h</file>
@@ -7150,7 +7151,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\nwkEndDeviceTimeout.h</file>
-         <hash>b3d383e4e1d19340deac50baa2c335f5e828544129f3f7e80429651021544e06</hash>
+         <hash>c02a90d8c5b96fd7c9b4a0db347bc00c74af05254cc6aaad3ff162b5b31be007</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\private\nwkTx.h</file>
@@ -7194,7 +7195,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\aes.c</file>
-         <hash>6097abbeacefa34474d4b3bfeb4e70559f9180e5224843c50911514e3f2ca558</hash>
+         <hash>17482921bf38fdb6ca77b0929b8e20a1ba936b325cdcd4320b641e2e13321bdb</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\mac_phy\mac_hwd_phy\include\machwd.h</file>
@@ -7266,7 +7267,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\hal\cortexm4\pic32cx\src\halAppClock.c</file>
-         <hash>ef1145afa7c7404bc2927f94cc0411868e0d1cd0eb61dc9ef77c4074ba252056</hash>
+         <hash>6391177afb3fc9ce6860c62f5df26991c301d07af36f5804f276301eb2174c32</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\nlmeEdScan.h</file>
@@ -7366,7 +7367,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\systemenvironment\src\sysTaskManager.c</file>
-         <hash>9ee43c7e1ffdb111d437af301f2a21723b0473e637f8d847214fda6731f51994</hash>
+         <hash>30de00d414ec527b8a8820f6df97a3a087e9624fae6e5cdc2f21c89bd25e62bc</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device_configs\stackConfig.h</file>
@@ -7654,7 +7655,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\nwkNeighbor.h</file>
-         <hash>14bb515cdaaac8e75e46ea9548063239274b89a2eef7f98b382d85c3e587c171</hash>
+         <hash>fe416cec181b4a3dd3a69ea4a1fceb0e3d92a2aa6c0d3027680f5c4d3aa25fe7</hash>
       </entry>
       <entry>
          <file>..\combinedInterface.X\java_friendly_private_key.pem</file>
@@ -7758,7 +7759,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zcl\include\zclTimeCluster.h</file>
-         <hash>9901c34c7252ee3531b70fa15f42aa3d4adada69b618ec060287ccb6ca092dab</hash>
+         <hash>ec29aa86642b76438bd1321fb67a5dd46f70a604dacb6d91c8b315b328edf388</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zcl\include\zclIlluminanceMeasurementCluster.h</file>
@@ -7870,7 +7871,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\pic32cxBSP.c</file>
-         <hash>5a88de1155114bd1b3b908492cd933ebc2c25eb89b47e650df9d2bba586717b7</hash>
+         <hash>fb41723287f2a206caf05dce3bbbbee06c936d382ab6e116041440bb7e61e838</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ed448.c</file>
@@ -8010,7 +8011,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\nwk\include\private\nwkBTT.h</file>
-         <hash>a7d53f0e847a61032a6c7e9dea8e58ea963f2cc80a7804a76bb621f1a291427e</hash>
+         <hash>9a2d3bfebbf38f21e697a385fd83b9aebeea56118149e91d1c06aff691e95644</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\common\include\keyboardPoll.h</file>
@@ -8322,7 +8323,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\aps\include\apsmeTransportKey.h</file>
-         <hash>e194232429d1c0c3bdc792c644154f500298d9c55c2955b66319091fdba714c9</hash>
+         <hash>531c913ee9f646d5fcf9cc65d9759ae4d3e5549d321148645a59c23679b04339</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionRouter_Bindings.h</file>

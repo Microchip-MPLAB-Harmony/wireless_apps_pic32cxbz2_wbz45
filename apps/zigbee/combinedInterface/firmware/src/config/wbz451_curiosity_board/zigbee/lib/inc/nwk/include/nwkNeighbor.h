@@ -113,7 +113,7 @@ typedef struct _NwkNeighbor_t
 
  
 #ifdef _CHILD_MANAGEMENT_
-  /** The end device?? configuration. */
+  /** The end deviceâ??s configuration. */
   uint16_t endDeviceConfiguration;
   /** This field indicates the timeout, in seconds, for the end device child. */
   uint32_t deviceTimeout;

@@ -103,7 +103,7 @@ void BSP_OffLed(void)
 }
 
 /**************************************************************************//**
-\brief Changes the?ED state to opposite.
+\brief Changes the LED state to opposite.
 
 \param[in]
       id - number of led

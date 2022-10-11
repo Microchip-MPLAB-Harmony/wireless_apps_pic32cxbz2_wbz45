@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_ble.c
-
-  Summary:
-    This file contains the Application BLE implementation for this project.
-
-  Description:
-    This file contains the Application BLE implementation for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,24 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+
+/*******************************************************************************
+  Application BLE Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_ble.c
+
+  Summary:
+    This file contains the Application BLE implementation for this project.
+
+  Description:
+    This file contains the Application BLE implementation for this project.
+ *******************************************************************************/
+
 
 #include "app.h"
 #include "osal/osal_freertos_extend.h"
@@ -190,7 +190,7 @@ void APP_BleConfigBasic()
     int8_t                          connTxPower;
     int8_t                          advTxPower;
     BLE_GAP_AdvParams_T             advParam;
-    uint8_t advData[]={0x02, 0x01, 0x05, 0x06, 0x09, 0x43, 0x4F, 0x4D, 0x42, 0x4F, 0x04, 0x16, 0xFE, 0xDA, 0x00};
+    uint8_t advData[]={0x02, 0x01, 0x05, 0x06, 0x09, 0x43, 0x4F, 0x4D, 0x42, 0x4F, 0x04, 0x16, 0xDA, 0xFE, 0x00};
     BLE_GAP_AdvDataParams_T         appAdvData;
     uint8_t scanRspData[]={0x0B, 0x09, 0x70, 0x69, 0x63, 0x33, 0x32, 0x63, 0x78, 0x2D, 0x62, 0x7A};
     BLE_GAP_AdvDataParams_T         appScanRspData;

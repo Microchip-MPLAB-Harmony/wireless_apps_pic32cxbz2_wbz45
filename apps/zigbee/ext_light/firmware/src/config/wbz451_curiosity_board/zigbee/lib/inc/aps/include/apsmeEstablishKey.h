@@ -190,7 +190,7 @@ typedef struct
   bool useParent;
   /** \ref Endian "[LE]"
    * If \c useParent is TRUE, then the \c responderParentAddress parameter shall
-   * contain the extended 64-bit address of the responder?? parent device.
+   * contain the extended 64-bit address of the responderâ??s parent device.
    * Otherwise, this parameter is not used and need not to be set. */
   ExtAddr_t responderParentAddress;
   /** Requested key-establishment method. The valid value is SKKE. */

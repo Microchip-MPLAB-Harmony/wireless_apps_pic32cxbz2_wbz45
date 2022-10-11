@@ -47,6 +47,7 @@
 #include <z3device/common/include/errH.h>
 #include <z3device/common/include/printLcd.h>
 #include <systemenvironment/include/sysAssert.h>
+#include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyPic32cx.h>
 
 /******************************************************************************
                     Definitions section

@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_ble_handler.c
-
-  Summary:
-    This file contains the Application BLE functions for this project.
-
-  Description:
-    This file contains the Application BLE functions for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Application BLE Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_ble_handler.c
+
+  Summary:
+    This file contains the Application BLE functions for this project.
+
+  Description:
+    This file contains the Application BLE functions for this project.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -48,8 +47,6 @@
 #include <stdint.h>
 #include "osal/osal_freertos_extend.h"
 #include "app_ble_handler.h"
-#include <app_zigbee/zigbee_console/console.h>
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -70,18 +67,13 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
         case BLE_GAP_EVT_CONNECTED:
         {
             /* TODO: implement your application code.*/
-            appSnprintf("[BLE} Connected\n\r");
-            conn_hdl = p_event->eventField.evtConnect.connHandle;
-            linkState = APP_BLE_STATE_CONNECTED;
         }
         break;
 
         case BLE_GAP_EVT_DISCONNECTED:
         {
             /* TODO: implement your application code.*/
-            appSnprintf("[BLE} DisConnected\n\r");
-            BLE_GAP_SetAdvEnable(true, 0);
-            linkState = APP_BLE_STATE_STANDBY;
+
         }
         break;
 

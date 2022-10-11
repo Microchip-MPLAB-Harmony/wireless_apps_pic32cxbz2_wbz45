@@ -47,6 +47,7 @@
 /******************************************************************************
                    Includes section
 ******************************************************************************/
+#include "device.h"
 #include <hal/cortexm4/pic32cx/include/halRfCtrl.h>
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
 #include <hal/cortexm4/pic32cx/include/halSleep.h>
