@@ -123,7 +123,6 @@
 #include "framework_defs.h"
 #include "app_idle_task.h"
 #include "device_sleep.h"
-#include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "app.h"
 
