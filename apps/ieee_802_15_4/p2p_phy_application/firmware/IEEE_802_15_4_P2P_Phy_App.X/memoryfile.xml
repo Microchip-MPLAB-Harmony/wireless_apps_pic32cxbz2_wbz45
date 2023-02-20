@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production/IEEE_802_15_4_P2P_Phy_App.X.production.elf">
+    <memory name="program">
+      <units>bytes</units>
+      <length>1032192</length>
+      <used>73142</used>
+      <free>959050</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>131072</length>
+      <used>50904</used>
+      <free>80168</free>
+    </memory>
+  </executable>
+</project>

@@ -1,6 +1,6 @@
 ﻿![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
-# MPLAB® Harmony  3 Wireless BLE and Zigbee Application Examples 
+# MPLAB® Harmony  3 Wireless BLE and Zigbee Application Examples
 
 MPLAB® Harmony  is an extension of the MPLAB® ecosystem for creating
 embedded firmware solutions for Microchip 32-bit SAM and PIC® microcontroller
@@ -48,6 +48,12 @@ The following applications are provided to demonstrate the typical use case of o
 | [UART](apps/ble/building_blocks/chip_peripherals/uart_hello_world/readme.md) | PIC32CX-BZ |
 | [BLE Multirole](apps/ble/building_blocks/multirole/multilink/readme.md) | PIC32CX-BZ |
 | [Bootloader](apps/bootloader/bootloader) | PIC32CX-BZ |
+
+
+| IEEE 802.15.4 Standalone PHY Application Examples | Families |
+| --- | :---: |
+| [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/readme.md) | PIC32CX-BZ |
+
 
 | Zigbee Examples | Families |
 | --- | :---: |
