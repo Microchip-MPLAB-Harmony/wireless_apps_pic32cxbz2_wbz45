@@ -1,9 +1,9 @@
 format_version: v1.0
 configName: default
-folderName: IEEE_802_15_4_P2P_Phy_App
-frameworkPath: C:\WBZ451_02_06_23_1953
+folderName: P2P_Phy
+frameworkPath: C:\WBZ451_02_20_23_1409
 processor: WBZ451
-projectName: IEEE_802_15_4_P2P_Phy_App
+projectName: P2P_Phy
 settings:
   PackageFilter: ''
   FORCE_OPTIMIZATION: 'false'
