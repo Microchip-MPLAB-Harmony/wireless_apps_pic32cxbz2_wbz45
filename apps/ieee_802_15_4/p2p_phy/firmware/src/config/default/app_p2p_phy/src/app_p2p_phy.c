@@ -321,7 +321,7 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
                     
         case APP_CONTINUOUS_DATA_TEST_MODE:
         {
-            PAL_TimerDelay(1500000);//Todo: have a macro for timer
+            PAL_TimerDelay(1000000);
             app_P2P_Phy_TestMode(CONT_TEST_MODE);
             break;
         }

@@ -34,4 +34,7 @@ The following applications are provided to demonstrate the typical use case of B
 * [BLE Throughput](ble/advanced_applications/ble_throughput/readme.md)
 
 
+## IEEE 802.15.4
 
+### IEEE 802.15.4 P2P PHY Application based on Standalone PHY
+* [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/readme.md)

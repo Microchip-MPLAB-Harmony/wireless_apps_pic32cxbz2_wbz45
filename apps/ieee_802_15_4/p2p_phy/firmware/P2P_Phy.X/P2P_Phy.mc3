@@ -1,4 +1,4 @@
-<config configName="default" projectName="P2P_Phy" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.5.0-c">
+<config configName="default" projectName="P2P_Phy" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.14">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -71,7 +71,7 @@
       </entry>
    </usedClasses>
    <usedLibraries class="java.util.ArrayList">
-      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.3.0-tc1"/>
+      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.2.0"/>
    </usedLibraries>
    <tokenMap class="java.util.TreeMap">
       <entry>
@@ -3822,27 +3822,27 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;472&quot; canvasWidth=&quot;914&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APP_P2P_PHY&quot; x=&quot;430&quot; y=&quot;260&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APP_P2P_PHY&quot; x=&quot;390&quot; y=&quot;340&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;240&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;HarmonyCore&quot; x=&quot;400&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;250&quot; y=&quot;240&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;570&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;cmsis&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;120&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;dfp&quot; x=&quot;30&quot; y=&quot;80&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;evsys&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;nvm&quot; x=&quot;330&quot; y=&quot;120&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;pdsSystem&quot; x=&quot;490&quot; y=&quot;140&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;30&quot; y=&quot;240&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sercom0&quot; x=&quot;430&quot; y=&quot;360&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_command&quot; x=&quot;580&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;sys_console&quot; x=&quot;690&quot; y=&quot;140&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;sys_time&quot; x=&quot;170&quot; y=&quot;120&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;tc0&quot; x=&quot;670&quot; y=&quot;320&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;nvm&quot; x=&quot;250&quot; y=&quot;100&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;pdsSystem&quot; x=&quot;750&quot; y=&quot;140&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;170&quot; y=&quot;180&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sercom0&quot; x=&quot;390&quot; y=&quot;240&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_command&quot; x=&quot;740&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;sys_console&quot; x=&quot;580&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;sys_time&quot; x=&quot;410&quot; y=&quot;120&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;tc0&quot; x=&quot;750&quot; y=&quot;260&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;466&quot; canvasWidth=&quot;754&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -7681,7 +7681,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\configuration.h</file>
-         <hash>88a702546e3182ccaa9e32e2e10bee260c471531b93fb76ac0b3d6bcd39f5997</hash>
+         <hash>a2451d88277aba00a03555d870fb9d7032ef76624d10ae1f8b55188c111c9e39</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.h</file>
@@ -7713,7 +7713,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>77b94d2850a6fa195b06322e91a0f9d1ec284860744e75573c6e9e18a38e13df</hash>
+         <hash>184bf986644b9fe283cc65fc79c3ae37ccc4ad40a30320868c086c3ba9adaf4a</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
@@ -7953,7 +7953,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>8e136b57aa934b63f7539e01abc335d0458db26b279421b615fb136693d2f2fe</hash>
+         <hash>04b9222476955c83c6d2cfbc386c97a129833fb87c4bbb750394c4d97c81c697</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pche.h</file>
@@ -8021,7 +8021,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\startup_xc32.c</file>
-         <hash>a814f932cb7628e8082ab583d2e183617edffd456c46141abf71f15fce33c2c2</hash>
+         <hash>11caa9a0b02e9cb9ce9c34129246742b0aec16dd5c7ea904d2b1abbd15e5432e</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\wbz451.h</file>
