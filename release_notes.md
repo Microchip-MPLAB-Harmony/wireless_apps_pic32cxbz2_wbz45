@@ -19,7 +19,7 @@ Following table provides number of Wireless examples available for different dev
 | WBZ451 Curiosity Board |       1            |
 
 ### New Features
-- WBZ451 IEEE 802.15.4 Standalone PHY MCC compoenent based P2P Phy application.
+- WBZ451 IEEE 802.15.4 Standalone PHY Harmony compoenent based P2P Phy application.
 
 ### Bug fixes and Improvements
 - New applications release.
@@ -56,7 +56,7 @@ Following table provides number of Wireless examples available for different dev
 ### New Features
 - WBZ451 ZigBee applications.
 - WBZ451 BLE and ZigBee Combo applications.
-- WBZ451 IEEE 802.15.4 Standalone PHY MCC compoenent based P2P Phy application.
+- WBZ451 IEEE 802.15.4 Standalone PHY Harmony compoenent based P2P Phy application.
 
 ### Bug fixes and Improvements
 - New applications release.
