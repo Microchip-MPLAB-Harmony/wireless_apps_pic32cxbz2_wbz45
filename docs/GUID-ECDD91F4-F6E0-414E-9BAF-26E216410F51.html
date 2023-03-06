@@ -229,16 +229,566 @@
 
 <h1 class="title topictitle1" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__GUID-E16B063E-CCB7-4F7D-AF93-C450AE812611" style="">15_4_P2P_Phy_App Functions</h1>
 <div class="body">
-        <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_CP1_HPQ_RWB"><code id="d8202e16" content="void app_P2P_Phy_TransmitFrame(uint8_t *payload, uint8_t payloadLength, uint8_t devIndex, uint8_t msduHandle, bool unicast, bool ackReq, bool frameRetry);&#xA;void app_P2P_Phy_setAddressModes(uint8_t srcAddressMode, uint8_t dstAddressMode);&#xA;void app_P2P_Phy_setFrameType(uint8_t frameType);&#xA;void app_P2P_Phy_ConfigDataReception(void);&#xA;void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch);&#xA;void app_P2P_Phy_packetErrorRateCal(uint64_t nPacketsSent, uint64_t nBytesSent, uint64_t nPacketsRecAck);&#xA;PHY_Retval_t app_P2P_Phy_StartEdScan(void);&#xA;void app_P2P_Phy_GetDeviceTableInfo(uint8_t dev_index);&#xA;void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);&#xA;APP_OP_STATE_T app_P2P_Phy_SetNWKParams(APP_NWK_PARAM *appnwkParam);">void app_P2P_Phy_TransmitFrame(uint8_t *payload, uint8_t payloadLength, uint8_t devIndex, uint8_t msduHandle, bool unicast, bool ackReq, bool frameRetry);
-void app_P2P_Phy_setAddressModes(uint8_t srcAddressMode, uint8_t dstAddressMode);
-void app_P2P_Phy_setFrameType(uint8_t frameType);
-void app_P2P_Phy_ConfigDataReception(void);
-void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch);
-void app_P2P_Phy_packetErrorRateCal(uint64_t nPacketsSent, uint64_t nBytesSent, uint64_t nPacketsRecAck);
-PHY_Retval_t app_P2P_Phy_StartEdScan(void);
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_MY1_CJP_RWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock language-c" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_NY1_CJP_RWB"><strong class="hl-keyword">void</strong> <span class="hl-functions">app_P2P_Phy_TransmitFrame</span>(uint8_t *payload, uint8_t payloadLength, uint8_t devIndex, uint8_t msduHandle, bool unicast, bool ackReq, bool frameRetry);</pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_OY1_CJP_RWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to transmit a frame from application layer.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_CSZ_T5K_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_MTB_X5K_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 1. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e54"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e57"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>payload</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>Pointer to payload</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>payloadLength</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>Length of Payload</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>devIndex</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>Index of device in application Device table </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>msduHandle</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>Handle for MSDU payload</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>unicast</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>boolean indicating if a packet is unicast or broadcast</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>ackReq</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>boolean to indicate if an ack is requested</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e54 "><span>frameRetry</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e57 "><span>Boolean to indicate if MAC level frame retry is requested or not</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ZH1_5VK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_F1H_XVK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_IT1_YVK_SWB"><code id="d8190e146" content="void app_P2P_Phy_setAddressModes(uint8_t srcAddressMode, uint8_t dstAddressMode);">void app_P2P_Phy_setAddressModes(uint8_t srcAddressMode, uint8_t dstAddressMode);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_NQR_ZVK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to set addressing modes - short (16 bit) or Extended addressing
+        mode(64 bits) throughout the application.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_UPR_ZVK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_VPR_ZVK_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 2. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e180"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e183"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e180 "><span>srcAddressMode</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e183 "><span>Addresing Mode of Source device (16bits/64 bits)</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e180 "><span>destAddressMode</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e183 "><span>Addressing Mode of Destination device(16bits/64 bits)</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_EPR_ZVK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ZMQ_TWK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_ANQ_TWK_SWB"><code id="d8190e226" content="void app_P2P_Phy_setFrameType(uint8_t frameType);">void app_P2P_Phy_setFrameType(uint8_t frameType);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_KMQ_TWK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to set frame types of payload-beacon, data, Ack, Command, LLDN,
+        Multipurpose frame.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ULQ_TWK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_VLQ_TWK_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 3. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e259"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e262"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e259 "><span>frameType</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e262 "><span>Type of frame to be transmitted</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_FLQ_TWK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ECJ_5WK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_FCJ_5WK_SWB"><code id="d8190e297" content="void app_P2P_Phy_ConfigDataReception(void);">void app_P2P_Phy_ConfigDataReception(void);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_PBJ_5WK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to configure Receiver.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_W1J_5WK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_G1J_5WK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_JLG_VWK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_KLG_VWK_SWB"><code id="d8190e333" content="void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch);">void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_SKG_VWK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to switch to different application modes.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_AKG_VWK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_BKG_VWK_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 4. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e367"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e370"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e367 "><span>appModeSwitch</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e370 "><span>Pointer to the structure APP_Msg_T</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_IJG_VWK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_JV3_VWK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_KV3_VWK_SWB"><code id="d8190e404" content="void app_P2P_Phy_packetErrorRateCal(uint64_t nPacketsSent, uint64_t nBytesSent, uint64_t nPacketsRecAck);">void app_P2P_Phy_packetErrorRateCal(uint64_t nPacketsSent, uint64_t nBytesSent, uint64_t nPacketsRecAck);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_S53_VWK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to calculate Packet Error Rate from below mentioned input
+        parameters.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_A53_VWK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_B53_VWK_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 5. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e437"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e440"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e437 "><span>nPacketsSent</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e440 "><span>Packets which received TX Done CB</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e437 "><span>nBytesSent</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e440 "><span>Bytes which received TX Done CB</span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e437 "><span>nPacketsRecAck</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e440 "><span>Packets which received Ack from peer device</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_HT3_VWK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_IZ4_VWK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_JZ4_VWK_SWB"><code id="d8190e493" content="PHY_Retval_t app_P2P_Phy_StartEdScan(void);">PHY_Retval_t app_P2P_Phy_StartEdScan(void);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_QY4_VWK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to initiate Energy Detection scan in the current set Channel.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_XX4_VWK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ZW4_VWK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_QQD_T1L_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 6. </span>Return Values</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e535"><span>Return Value</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e538"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e535 "><span>PHY_Retval_t</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e538 "><span>Returns the result of ED scan if the channel is idle or busy </span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_AVT_VWK_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_BVT_VWK_SWB"><code id="d8190e563" content="&#xA;void app_P2P_Phy_GetDeviceTableInfo(uint8_t dev_index);&#xA;void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);">
 void app_P2P_Phy_GetDeviceTableInfo(uint8_t dev_index);
-void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);
-APP_OP_STATE_T app_P2P_Phy_SetNWKParams(APP_NWK_PARAM *appnwkParam);</code></pre>
+void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_F5T_VWK_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to get/retain the device table parameters corresponding to device
+        table index like IEEE address, short address(16 bits), LQI value and RSSI value of received
+        payload.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_ITT_VWK_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_JTT_VWK_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 7. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e597"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e600"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e597 "><span>dev_index</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e600 "><span>Device table info corresponding to device table index </span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_MST_VWK_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_OGP_MBL_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_PGP_MBL_SWB"><code id="d8190e634" content="void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);">void app_P2P_Phy_SetDeviceTableInfo(uint8_t dev_index,  DEVICE_TABLE *devTable);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_WFP_MBL_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to set the device table parameters corresponding to device table
+        index like IEEE address, short address(16 bits), LQI value and RSSI value of received
+        payload.</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_CFP_MBL_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_DFP_MBL_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 8. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e667"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e670"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e667 "><span>dev_index</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e670 "><span>Device table info corresponding to device table index </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e667 "><span>devTable</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e670 "><span>Pointer to struct <a class="xref" href="GUID-8F4088F1-5CA1-4E03-A205-A2BD9CD6A829.html">DEVICE_TABLE</a></span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_I2P_MBL_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      <p class="p">None</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_JC1_ZBL_SWB"><h2 class="title sectiontitle">C</h2>
+      
+      <pre class="pre codeblock" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__CODEBLOCK_KC1_ZBL_SWB"><code id="d8190e717" content="APP_OP_STATE_T app_P2P_Phy_SetNWKParams(APP_NWK_PARAM *appnwkParam);">APP_OP_STATE_T app_P2P_Phy_SetNWKParams(APP_NWK_PARAM *appnwkParam);</code></pre>
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_IB1_ZBL_SWB"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">This function is used to set Network parameters like Channel, Channel Page,  no. of frame
+        retries and other PIB attributes, etc.,</p>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_E11_ZBL_SWB"><h2 class="title sectiontitle">Parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_A3Q_2CL_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 9. </span>Parameters</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e750"><span>Parameter</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e753"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e750 "><span>appnwkParam</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e753 "><span>Pointer to struct <a class="xref" href="GUID-1EB023D2-F2C1-4E5A-A47F-CF04918F28E2.html">APP_NWK_PARAM</a></span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__SECTION_FZZ_YBL_SWB"><h2 class="title sectiontitle">Return Values</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51__TABLE_GZZ_YBL_SWB" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 10. </span>Return Values</span></caption>
+          <col style="width:" />
+          <col style="width:" />
+          <thead class="thead" style="text-align:left;">
+            <tr class="row">
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e796"><span>Return Value</span></th>
+
+              <th class="entry cellrowborder" style="text-align:center;vertical-align:middle;" id="d8190e799"><span>Description</span></th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e796 "><span>APP_OP_STATE_T</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;" headers="d8190e799 "><span>Pointer to struct <a class="xref" href="GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9.html">APP_OP_STATE_T</a></span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
     </div>
 
 <div class="related-links">

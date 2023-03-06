@@ -229,18 +229,18 @@
 <h1 class="title topictitle1" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-653CE1B0-6179-4CF8-82B3-BA8D0855BB65" style="">Multiprotocol (BLE+ZIGBEE) Concurrent Application - Tutorial</h1><div class="body"><p class="p">This tutorial will help users to create multiprotocol (BLE+ZIGBEE) example project using Mplab code configurator. The step by step procedure will help the user to generate the multiprotocol project from scratch and will guide in understanding few API calls needed for data transaction between 2 protocols.</p>
 <p class="p">The project created at end of this tutorial, will look the sample project available here .</p>
 <div class="section" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-E0402AE1-10FD-4FE8-8E32-055F9342F535" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d38323e26"><span> <strong class="ph b">Tool</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d38323e30"><span> <strong class="ph b">Qty</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-E0402AE1-10FD-4FE8-8E32-055F9342F535" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d39492e26"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d39492e30"><span> <strong class="ph b">Qty</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e26 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e30 "><span>2</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e26 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e30 "><span>2</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e26 "><span>Micro USB cable</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e30 "><span>2</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e26 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e30 "><span>2</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e26 "><span>Android/iOS Mobile</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e30 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e26 "><span>Android/iOS Mobile</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e30 "><span>1</span></td>
 </tr>
 </tbody>
 </table>
@@ -271,7 +271,7 @@
 </ul>
 </li>
 </ul>
-<img class="image" src="GUID-48BA10E0-BF46-4A57-8480-FE142E46B008-low.png" /><pre class="pre codeblock"><code id="d38323e121" content="- Transparent Profile and Service components&#xA;&#xA; &#34;Add  Dependencies or satisfiers&#34;&#xA;">- Transparent Profile and Service components
+<img class="image" src="GUID-48BA10E0-BF46-4A57-8480-FE142E46B008-low.png" /><pre class="pre codeblock"><code id="d39492e121" content="- Transparent Profile and Service components&#xA;&#xA; &#34;Add  Dependencies or satisfiers&#34;&#xA;">- Transparent Profile and Service components
 
  "Add  Dependencies or satisfiers"
 </code></pre><img class="image" src="GUID-5261D052-7132-438C-AFCE-2D17D513C50A-low.png" /><ul class="ul"><li class="li" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-B93FBDEA-0BE8-4402-B8BD-04B6D08B56AB"><p class="p">Add UART components needed for console logs</p>
@@ -484,34 +484,34 @@ break;</pre><p class="p"><strong class="ph b">3. Zigbee specific code addition (
 <p class="p">Transparent Profile and Service (TRP/TRS) is the proprietary BLE service by microchip to establish data and control channel between BLE Central (Phone) and Peripheral (device). The custom 128-bit GATT characteristics are defined under this service.</p>
 <p class="p"> <strong class="ph b">Definition of Transparent Service and Characteristics UUID's</strong></p>
 
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-51677772-4EC3-45C7-AE0C-AE67E67AE426" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d38323e456"><span>Characteristic Name</span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d38323e458"><span>UUID</span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d38323e460"><span>Properties</span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-51677772-4EC3-45C7-AE0C-AE67E67AE426" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d39492e456"><span>Characteristic Name</span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d39492e458"><span>UUID</span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d39492e460"><span>Properties</span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS Service</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span>49535343-FE7D-4AE5-8FA9-9FAFD205E455</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span> </span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS Service</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span>49535343-FE7D-4AE5-8FA9-9FAFD205E455</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span> </span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS TxD- Tx Data to Client role (Data pipe)</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span>49535343-1E4D-4BD9-BA61-23C647249616</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span>Notify, Write</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS TxD- Tx Data to Client role (Data pipe)</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span>49535343-1E4D-4BD9-BA61-23C647249616</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span>Notify, Write</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS TxD - Client Characteristic Configuration Descriptor</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span> </span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span>Read, Write</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS TxD - Client Characteristic Configuration Descriptor</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span> </span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span>Read, Write</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS RxD- Rx Data from Client role (Data pipe)</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span>49535343-8841-43F4-A8D4-ECBE34729BB3</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span>Write, Write without response</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS RxD- Rx Data from Client role (Data pipe)</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span>49535343-8841-43F4-A8D4-ECBE34729BB3</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span>Write, Write without response</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS Ctrl Pt - Command and Response (Ctrl pipe)</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span>49535343-4C8A-39B3-2F49-511CFF073B7E</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span>Notify, Write, Write without response</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS Ctrl Pt - Command and Response (Ctrl pipe)</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span>49535343-4C8A-39B3-2F49-511CFF073B7E</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span>Notify, Write, Write without response</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e456 "><span>TRS Ctrl Pt - Client Characteristic Configuration descriptor</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e458 "><span> </span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d38323e460 "><span>Read, Write</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e456 "><span>TRS Ctrl Pt - Client Characteristic Configuration descriptor</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e458 "><span> </span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d39492e460 "><span>Read, Write</span></td>
 </tr>
 </tbody>
 </table>
@@ -651,7 +651,7 @@ break;</pre><p class="p"><strong class="ph b">3. Zigbee specific code addition (
         Response: <span class="hl-number">9</span>bfa</pre><pre class="pre codeblock json">On/off command:
            onOff <span class="hl-number">0x0</span> <span class="hl-number">0x9bfa</span> <span class="hl-number">0x20</span> -on
 
-           onOff <span class="hl-number">0x0</span> <span class="hl-number">0x9bfa</span> <span class="hl-number">0x20</span> -off</pre><pre class="pre codeblock"><code id="d38323e680" content="  0x20 is zigbee end point number used for light can be taken from MCC configurator.&#xA;">  0x20 is zigbee end point number used for light can be taken from MCC configurator.
+           onOff <span class="hl-number">0x0</span> <span class="hl-number">0x9bfa</span> <span class="hl-number">0x20</span> -off</pre><pre class="pre codeblock"><code id="d39492e680" content="  0x20 is zigbee end point number used for light can be taken from MCC configurator.&#xA;">  0x20 is zigbee end point number used for light can be taken from MCC configurator.
 </code></pre><img class="image" src="GUID-1C221F36-FD2B-4982-9ADF-5F62185B62BF-low.png" /><img class="image" src="GUID-FBEB61ED-4A19-49A5-B0C4-129DF718F83C-low.png" /><p class="p"><img class="image" height="500" src="GUID-2B151590-2FFA-49C9-B895-3BFC94E97A0F-low.jpg" width="250" /><img class="image" height="500" src="GUID-1A3A2D12-1BCB-4735-B605-807BB2AA5617-low.jpg" width="250" /></p>
 </div>
 <div class="section" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__WHERE-TO-GO-FROM-HERE"><h2 class="title sectiontitle">Where to go from here</h2><ul class="ul"><li class="li" id="GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064__GUID-73EEB446-3909-40DC-A5C4-9FA857F7FAE2"><p class="p"><a class="xref" href="GUID-707BAEEE-0EFF-428F-AFEC-C2E6C5E65BA9.html">Advanced Multiprotocol Application with Zigbee Provisioning over BLE</a> by following the similar implementation. The guide also explains the wrapper protocol written on top of BLE Transparent service for BLE provisioning and light control. The on board RGB colour is controlled in this example, which can be referenced for PWM functionality.</p>

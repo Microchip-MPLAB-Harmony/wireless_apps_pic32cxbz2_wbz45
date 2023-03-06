@@ -230,46 +230,46 @@
 <h1 class="title topictitle1" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-9272D919-625B-47D0-B014-C2B5DB368831" style="">Zigbee Commisioning Procedure</h1><div class="body"><p class="shortdesc">Commissioning is the process of initializing the devices to join a network and to work together. The Zigbee Base Device Behaviour specification specifies the procedures for the following commissioning mechanisms which are executed in the order as given given below</p>
 <p class="p"><a class="xref" href="https://csa-iot.org/developer-resource/zigbee-base-device-behavior-bdb-v1-0/" target="_blank">Link to Base Device Behavior Specification by Zigbee Alliance</a></p>
 <div class="p">
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-B0BF0809-ACB2-4D95-A81B-2121F543D4DF" class="table" frame="void" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e27"><span><p class="p">Sequence</p>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-B0BF0809-ACB2-4D95-A81B-2121F543D4DF" class="table" frame="void" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d33589e27"><span><p class="p">Sequence</p>
 </span></th>
-<th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e30"><span><p class="p">Commissioning Aspect</p>
+<th class="entry cell-norowborder" style="vertical-align:middle;" id="d33589e30"><span><p class="p">Commissioning Aspect</p>
 </span></th>
-<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d32374e33"><span><p class="p">Details</p>
+<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d33589e33"><span><p class="p">Details</p>
 </span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">1</p>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e27 "><span><p class="p">1</p>
 </span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Touchlink</p>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e30 "><span><p class="p">Touchlink</p>
 </span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">A node may support the proximity based commissioning mechanism. If touchlink commissioning is supported, the node shall support touchlink as an initiator, a target or both.</p>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d33589e33 "><span><p class="p">A node may support the proximity based commissioning mechanism. If touchlink commissioning is supported, the node shall support touchlink as an initiator, a target or both.</p>
 <p class="p"><strong class="ph b">- Initiator</strong> --&gt; Will be a member of an existing network or (if not) will create a new network</p>
 <p class="p"><strong class="ph b">- Target</strong> --&gt; Gets added to network by Initiator</p>
 </span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">2</p>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e27 "><span><p class="p">2</p>
 </span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Network Steering</p>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e30 "><span><p class="p">Network Steering</p>
 </span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">All nodes shall support network steering.</p>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d33589e33 "><span><p class="p">All nodes shall support network steering.</p>
 <p class="p"><strong class="ph b">- Node not on a network</strong> -&gt; Action of searching for and joining an open network.</p>
 <p class="p"><strong class="ph b">- Node on a network</strong> -&gt; It is the action of opening the network to allow new nodes to join</p>
 </span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">3</p>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e27 "><span><p class="p">3</p>
 </span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Network Formation</p>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e30 "><span><p class="p">Network Formation</p>
 </span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">The ability of a node to form a network with its network security model. It shall be dependent on the logical device type of the node.</p>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d33589e33 "><span><p class="p">The ability of a node to form a network with its network security model. It shall be dependent on the logical device type of the node.</p>
 <p class="p"><strong class="ph b">- Zigbee coordinator</strong> --&gt; Forms a Centralized security networks</p>
 <p class="p"><strong class="ph b">- Zigbee router</strong> --&gt; Forms a Distributed security network</p>
 </span></td>
 </tr>
-<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">4</p>
+<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d33589e27 "><span><p class="p">4</p>
 </span></td>
-<td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Finding &amp; Binding</p>
+<td class="entry cell-norowborder" style="vertical-align:middle;" headers="d33589e30 "><span><p class="p">Finding &amp; Binding</p>
 </span></td>
-<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p"><strong class="ph b">Initiator Endpoint</strong> -&gt; Automatically searches and establishes application connections with target endpoint, by using the identify cluster with matching cluster</p>
+<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d33589e33 "><span><p class="p"><strong class="ph b">Initiator Endpoint</strong> -&gt; Automatically searches and establishes application connections with target endpoint, by using the identify cluster with matching cluster</p>
 <p class="p">- <strong class="ph b">Target Endpoint</strong> -&gt; Handles finding and binding requests from initiator endpoint</p>
 </span></td>
 </tr>
@@ -328,22 +328,22 @@ This type of commissioning can be enabled by user, using the MPLAB Code Configur
                     <col style="width:" />
                     <thead class="thead" style="text-align:left;">
                         <tr class="row">
-                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e238"><span>
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d33589e238"><span>
                                 <p class="p">S.No.</p>
 
                             </span></th>
 
-                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e244"><span>
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d33589e244"><span>
                                 <p class="p">Coordinator</p>
 
                             </span></th>
 
-                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e250"><span>
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d33589e250"><span>
                                 <p class="p">Router/End device</p>
 
                             </span></th>
 
-                            <th class="entry nocellnorowborder" style="vertical-align:middle;" id="d32374e256"><span>
+                            <th class="entry nocellnorowborder" style="vertical-align:middle;" id="d33589e256"><span>
                                 <p class="p">Commands</p>
 
                             </span></th>
@@ -354,22 +354,22 @@ This type of commissioning can be enabled by user, using the MPLAB Code Configur
 
                     <tbody class="tbody">
                         <tr class="row">
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e238 "><span>
                                 <p class="p">1</p>
 
                             </span></td>
 
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e244 "><span>
                                 <p class="p">Combined interface</p>
 
                             </span></td>
 
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e250 "><span>
                                 <p class="p">Thermostat</p>
 
                             </span></td>
 
-                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d33589e256 "><span>
                                 <p class="p">1. Combined Interface and Thermostat - resetToFN</p>
 
                                 <p class="p">2.Combined Interface - invokeCommissioning 4 0</p>
@@ -394,22 +394,22 @@ This type of commissioning can be enabled by user, using the MPLAB Code Configur
                         </tr>
 
                         <tr class="row">
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e238 "><span>
                                 <p class="p">2</p>
 
                             </span></td>
 
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e244 "><span>
                                 <p class="p">Combined interface</p>
 
                             </span></td>
 
-                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d33589e250 "><span>
                                 <p class="p">Multi Sensor</p>
 
                             </span></td>
 
-                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d33589e256 "><span>
                                 <p class="p">1. Combined Interface and Multi Sensor - resetToFN</p>
 
                                 <p class="p">2. Combined Interface - invokeCommissioning 4 0</p>
@@ -458,22 +458,22 @@ This type of commissioning can be enabled by user, using the MPLAB Code Configur
                         </tr>
 
                         <tr class="row">
-                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d33589e238 "><span>
                                 <p class="p">3</p>
 
                             </span></td>
 
-                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d33589e244 "><span>
                                 <p class="p">Combined interface</p>
 
                             </span></td>
 
-                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d33589e250 "><span>
                                 <p class="p">Lights</p>
 
                             </span></td>
 
-                            <td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                            <td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d33589e256 "><span>
                                 <p class="p">1. Combined Interface and Light - resetToFN</p>
 
                                 <p class="p">2. Combined Interface - invokeCommissioning 4 0</p>

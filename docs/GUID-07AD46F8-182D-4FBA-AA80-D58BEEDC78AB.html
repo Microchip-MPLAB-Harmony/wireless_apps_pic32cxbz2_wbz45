@@ -232,18 +232,18 @@
 <div class="section" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This page describes the zigbee network formation in Combined Interface on <span class="ph">WBZ451</span> Curiosity boards. In zigbee centralized network, the network is formed by zigbee co-ordinator. Other routers and end-devices can enter into the network once it is formed. The demo steps explained here can be followed for any devices like light, thermostat, etc to bring into the CI formed network.</p>
 </div>
 <div class="section" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__PREREQUISITES-"><h2 class="title sectiontitle">Hardware Required</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-C87B2BAC-DEA9-498B-BC19-38540C045F50" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d27176e53"><span> <strong class="ph b">Tool</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d27176e57"><span> <strong class="ph b">Qty</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-C87B2BAC-DEA9-498B-BC19-38540C045F50" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d28286e53"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d28286e57"><span> <strong class="ph b">Qty</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e53 "><span><span class="ph">WBZ451</span> Curiosity Boards</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e57 "><span>1</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e53 "><span><span class="ph">WBZ451</span> Curiosity Boards</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e57 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e53 "><span>Micro USB cable</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e57 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e53 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e57 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e53 "><span>Personal Computer</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e57 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e53 "><span>Personal Computer</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e57 "><span>1</span></td>
 </tr>
 </tbody>
 </table>
@@ -269,14 +269,14 @@
 <p class="p"><dfn class="term">&lt;Harmony Content Path&gt;</dfn> <a class="xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p>
 </div>
 <div class="section" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__DEMO-DESCRIPTION"><h2 class="title sectiontitle">Demo Description</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-45B6A874-B3E0-4CAC-A0A1-91D4875A6ADD" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d27176e155"><span> <strong class="ph b">Application</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d27176e159"><span> <strong class="ph b">Zigbee Logical Device Type</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d27176e163"><span> <strong class="ph b">Functionality</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-45B6A874-B3E0-4CAC-A0A1-91D4875A6ADD" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d28286e155"><span> <strong class="ph b">Application</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d28286e159"><span> <strong class="ph b">Zigbee Logical Device Type</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d28286e163"><span> <strong class="ph b">Functionality</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e155 "><span>Combined Interface</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e159 "><span>Coordinator</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d27176e163 "><span>Device capable of controlling and monitoring other devices. It is typically a mains-powered device like a personal computer</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e155 "><span>Combined Interface</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e159 "><span>Coordinator</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d28286e163 "><span>Device capable of controlling and monitoring other devices. It is typically a mains-powered device like a personal computer</span></td>
 </tr>
 </tbody>
 </table>
@@ -288,7 +288,7 @@
 <ul class="ul" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__UL_QJH_CQQ_L5B"><li class="li" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-EA50E248-E3FB-4ADE-B3C4-03FC1904B80E"><p class="p">Open Terminal(eg: Tera Term) with the setup as shown below to look for these logs</p>
 </li>
 <li class="li" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__GUID-A312A980-64F6-451A-BA6C-125CA2AE26BD"><p class="p">On the PC side virtual COM port connection that corresponds to the board shall have following settings: </p>
-<pre class="pre codeblock" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__CODEBLOCK_PZ4_JCX_L5B"><code id="d27176e200" content="BAUD RATE: 115200 (as configured in SERCOM configuration)&#xA;PARITY: None&#xA;DATA BITS: 8&#xA;STOP BITS: 1&#xA;FLOW CONTROL: None">BAUD RATE: 115200 (as configured in SERCOM configuration)
+<pre class="pre codeblock" id="GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB__CODEBLOCK_PZ4_JCX_L5B"><code id="d28286e200" content="BAUD RATE: 115200 (as configured in SERCOM configuration)&#xA;PARITY: None&#xA;DATA BITS: 8&#xA;STOP BITS: 1&#xA;FLOW CONTROL: None">BAUD RATE: 115200 (as configured in SERCOM configuration)
 PARITY: None
 DATA BITS: 8
 STOP BITS: 1

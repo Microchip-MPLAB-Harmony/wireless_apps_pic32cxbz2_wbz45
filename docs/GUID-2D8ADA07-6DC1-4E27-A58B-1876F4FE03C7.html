@@ -8,16 +8,15 @@
 <meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="APP_STATES_PARAM" />
-<meta name="Description" content="Enter a short description of your topic here (optional)." />
-<meta name="DC.relation" scheme="URI" content="GUID-7190D043-D2F7-4691-ACEC-7134AD39FD98.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-769877FB-8190-4D79-A21B-67B2A76CD688.html" />
 <meta name="DC.format" content="XHTML" />
 <meta name="DC.identifier" content="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7" />
 <meta name="DC.language" content="en-US" />
 <link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
 <title>APP_STATES_PARAM</title>
 <meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7" />
-<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-7190D043-D2F7-4691-ACEC-7134AD39FD98" />
-<meta name="Microsoft.Help.TocOrder" content="4" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-769877FB-8190-4D79-A21B-67B2A76CD688" />
+<meta name="Microsoft.Help.TocOrder" content="2" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
 <meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
@@ -228,17 +227,68 @@
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7">
 
-<h1 class="title topictitle1" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__GUID-2613D20E-B702-4FA9-AA36-F1C03EC929B7" style="">APP_STATES_PARAM</h1>
+    <h1 class="title topictitle1" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__GUID-5E9CD885-A406-4AE6-9FCC-AB4CEACD1B20" style="">APP_STATES_PARAM</h1>
+    <div class="body">
+        <div class="section" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__SECTION_MY1_CJP_RWB"><h2 class="title sectiontitle">C</h2>
+            
+            <pre class="pre codeblock language-c" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__CODEBLOCK_NY1_CJP_RWB"><strong class="hl-keyword">typedef</strong> <strong class="hl-keyword">struct</strong>
+{
+    APP_OP_STATE_T appOpStates;
+    uint8_t appOpModes;
+}APP_STATES_PARAM;</pre>
+        </div>
 
-<div class="body"><p class="shortdesc">Enter a short description of your topic here (optional).</p>
+        <div class="section" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__SECTION_OY1_CJP_RWB"><h2 class="title sectiontitle">Description</h2>
+            
+            <p class="p">The structure contains the information about different application modes and
+                operating states. Please refer <a class="xref" href="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.html">Operating Modes of application</a> and <a class="xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html">Command Table</a> section for more details.</p>
 
-<p class="p">This is the start of your topic.</p>
+        </div>
 
+        <div class="section" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__SECTION_PY1_CJP_RWB"><h2 class="title sectiontitle">Field Documentation</h2>
+            
+            
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7__TABLE_QY1_CJP_RWB" class="table" frame="border" border="1" rules="all">
+                    <col style="width:" />
+                    <col style="width:" />
+                    <thead class="thead" style="text-align:left;">
+                        <tr class="row" style="vertical-align:middle;">
+                            <th class="entry cellrowborder" style="text-align:left;vertical-align:middle;" id="d29087e59"><span>Field</span></th>
+
+                            <th class="entry cellrowborder" style="text-align:left;vertical-align:middle;" id="d29087e62"><span>Description</span></th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody class="tbody">
+                        <tr class="row">
+                            <td class="entry cellrowborder" style="text-align:left;vertical-align:middle;" headers="d29087e59 "><span>APP_OP_STATE_T appOpStates</span></td>
+
+                            <td class="entry cellrowborder" style="text-align:left;vertical-align:middle;" headers="d29087e62 "><span>Instance of enum <a class="xref" href="GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9.html">APP_OP_STATE_T</a></span></td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry cellrowborder" style="text-align:left;vertical-align:middle;" headers="d29087e59 "><span>appOpModes</span></td>
+
+                            <td class="entry cellrowborder" style="text-align:left;vertical-align:middle;" headers="d29087e62 "><span>Operating Modes of application - Data Mode, Test Mode, Cmd
+                                Mode</span></td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
 </div>
+
+        </div>
+
+    </div>
 
 <div class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-7190D043-D2F7-4691-ACEC-7134AD39FD98.html">15_4_P2P_Phy_App</a></div>
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-769877FB-8190-4D79-A21B-67B2A76CD688.html">15_4_P2P_Phy_App Structures</a></div>
 </div>
 </div></body>
 </html>

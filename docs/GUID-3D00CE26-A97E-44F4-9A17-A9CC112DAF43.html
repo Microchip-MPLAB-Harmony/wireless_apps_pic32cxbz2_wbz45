@@ -228,18 +228,18 @@
 <body id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43">
 <h1 class="title topictitle1" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-DEE7421E-6B70-4D15-B0BD-4D876E92361A" style="">BLE ZigBee Provisioning Low Power Application Demo: Zigbee Multi-Sensor and Zigbee commissioning through BLE</h1><div class="body"><p class="p">This tutorial will help users to create a low power enabled multiprotocol (BLE+ZIGBEE) example project using Mplab code configurator. The step by step procedure will help the user to generate a Zigbee Multi-Sensor application and commission the Multi-Sensor to a Zigbee network through BLE from scratch.</p>
 <div class="section" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-B6C2E0F1-2E1B-4BDC-B770-1AE56A0976F0" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d31106e24"><span> <strong class="ph b">Tool</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d31106e28"><span> <strong class="ph b">Qty</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-B6C2E0F1-2E1B-4BDC-B770-1AE56A0976F0" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d32321e24"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d32321e28"><span> <strong class="ph b">Qty</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e24 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e28 "><span>1</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e24 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e28 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e24 "><span>Micro USB cable</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e28 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e24 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e28 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e24 "><span>Android/iOS Mobile</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d31106e28 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e24 "><span>Android/iOS Mobile</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32321e28 "><span>1</span></td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +290,7 @@
 <div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_FVH_DQN_1VB" src="GUID-361EDCCF-6E80-4495-AEEA-6582730D5BCC-low.png" /><br /></div>
 </li>
 </ul>
-<pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_RGG_GTN_1VB"><code id="d31106e194" content="For Zigbee applications the System Sleep mode is only enabled when using the following device types - Multisensor, Intruder Alarm System and Color Scene controller as per the Zigbee End Device Spec. &#xA;There is no separate configuration that a user has to select to enable the System Sleep like for BLE Sleep&#xA;">For Zigbee applications the System Sleep mode is only enabled when using the following device types - Multisensor, Intruder Alarm System and Color Scene controller as per the Zigbee End Device Spec. 
+<pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_RGG_GTN_1VB"><code id="d32321e194" content="For Zigbee applications the System Sleep mode is only enabled when using the following device types - Multisensor, Intruder Alarm System and Color Scene controller as per the Zigbee End Device Spec. &#xA;There is no separate configuration that a user has to select to enable the System Sleep like for BLE Sleep&#xA;">For Zigbee applications the System Sleep mode is only enabled when using the following device types - Multisensor, Intruder Alarm System and Color Scene controller as per the Zigbee End Device Spec. 
 There is no separate configuration that a user has to select to enable the System Sleep like for BLE Sleep
 </code></pre><ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_SGG_GTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-EF0BC56D-605A-4736-9B4D-98525E1E87FA"> Upon enabling sleep mode, FreeRTOS related settings will be set automatically. <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_TGG_GTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-49B4761E-0DE2-4155-B1A0-04DC9073751C"><p class="p">Tick Mode will be set to Tickless_Idle</p>
 </li>
@@ -337,24 +337,24 @@ There is no separate configuration that a user has to select to enable the Syste
 <div class="section" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__SECTION_ILG_GTN_1VB"><h2 class="title sectiontitle">BLE Zigbee Provisioning Manual Code Configuration</h2></div>
 <div class="section" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__SECTION_WGG_GTN_1VB"><ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_BCL_KTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-FACE9F2A-11A1-4C5E-ACFB-22CFF338BAD4">Open app.c file and include the header file app_prov.h as shown in below figure.</li>
 </ul>
-<pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_KGD_3TN_1VB"><code id="d31106e290" content="#include &#34;app_prov/app_prov.h&#34;">#include "app_prov/app_prov.h"</code></pre><div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_Z4M_JTN_1VB" src="GUID-40D25799-8680-453D-BEF4-478A3C26D3FB-low.jpg" /><br /></div>
+<pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_KGD_3TN_1VB"><code id="d32321e290" content="#include &#34;app_prov/app_prov.h&#34;">#include "app_prov/app_prov.h"</code></pre><div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_Z4M_JTN_1VB" src="GUID-40D25799-8680-453D-BEF4-478A3C26D3FB-low.jpg" /><br /></div>
 <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_JSX_LTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-0369747E-0059-4D61-BDA4-7922C5D81E2A">In app.c, Add the following code after APP_BleStackInit() in APP_Tasks function.</li>
 </ul>
-<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_F1N_LRN_1VB"><code id="d31106e298" content="APP_Prov_TRPS_Init();">APP_Prov_TRPS_Init();</code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_F1N_LRN_1VB"><code id="d32321e298" content="APP_Prov_TRPS_Init();">APP_Prov_TRPS_Init();</code></pre></div>
 <div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_MGP_MRN_1VB" src="GUID-7325A497-DD67-4B95-A573-B3D4F7610083-low.png" /><br /></div>
 <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_GPD_NTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-0F86330D-8018-4A16-9DF8-D05C25B0063B">Open app_ble_handler.c file located in app_ble project folder. In APP_BleGapEvtHandler() function, add the below code as shown in figure.</li>
 </ul>
-<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_KCN_PRN_1VB"><code id="d31106e306" content="extern void APP_BleGapConnEvtHandler(BLE_GAP_Event_T *p_event);&#xA;APP_BleGapConnEvtHandler(p_event);">extern void APP_BleGapConnEvtHandler(BLE_GAP_Event_T *p_event);
+<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_KCN_PRN_1VB"><code id="d32321e306" content="extern void APP_BleGapConnEvtHandler(BLE_GAP_Event_T *p_event);&#xA;APP_BleGapConnEvtHandler(p_event);">extern void APP_BleGapConnEvtHandler(BLE_GAP_Event_T *p_event);
 APP_BleGapConnEvtHandler(p_event);</code></pre></div>
 <div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_SGD_TRN_1VB" src="GUID-8AB14AB3-490E-4086-AD32-9B87076480E7-low.png" /><br /></div>
 <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_J1S_NTN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-5F94314B-B6B0-4B4B-9696-0B269158FA5F"> Open app_trsps_handler.c file. In APP_TrspsEvtHandler() function, add the below code as shown in figure. </li>
 </ul>
-<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_QBK_5RN_1VB"><code id="d31106e314" content="extern void APP_TRPS_EventHandler(BLE_TRSPS_Event_T *p_event);&#xA;APP_TRPS_EventHandler(p_event);">extern void APP_TRPS_EventHandler(BLE_TRSPS_Event_T *p_event);
+<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_QBK_5RN_1VB"><code id="d32321e314" content="extern void APP_TRPS_EventHandler(BLE_TRSPS_Event_T *p_event);&#xA;APP_TRPS_EventHandler(p_event);">extern void APP_TRPS_EventHandler(BLE_TRSPS_Event_T *p_event);
 APP_TRPS_EventHandler(p_event);</code></pre></div>
 <div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_UXW_XRN_1VB" src="GUID-230B92FF-40A3-413A-8939-DF84D1010C80-low.png" /><br /></div>
 <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_XPD_4TN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-CDB9BCEA-D139-4D0F-AE35-51DE2A29E4F2">Open app_zigbee_handler.c file located in app_zigbee project folder. In Zigbee_Event_Handler() function, add the below code as shown in figure. </li>
 </ul>
-<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_EXZ_YRN_1VB"><code id="d31106e323" content="extern void BZ_Prov_Zigbee_Event_Handler(APP_Zigbee_Event_t event);&#xA;BZ_Prov_Zigbee_Event_Handler(event);">extern void BZ_Prov_Zigbee_Event_Handler(APP_Zigbee_Event_t event);
+<div class="p"><pre class="pre codeblock" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__CODEBLOCK_EXZ_YRN_1VB"><code id="d32321e323" content="extern void BZ_Prov_Zigbee_Event_Handler(APP_Zigbee_Event_t event);&#xA;BZ_Prov_Zigbee_Event_Handler(event);">extern void BZ_Prov_Zigbee_Event_Handler(APP_Zigbee_Event_t event);
 BZ_Prov_Zigbee_Event_Handler(event);</code></pre></div>
 <div class="p"><br /><img class="image" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__IMAGE_ZLB_CSN_1VB" src="GUID-2808BAC0-6094-4BAB-BAC6-5F746A7F4F06-low.png" /><br /></div>
 <ul class="ul" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__UL_FHS_4TN_1VB"><li class="li" id="GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43__GUID-23E1AF3A-1E1B-45D9-BFE5-0223B74FEA1A">Open app_user_edits.c file. Comment out or remove the #error line. Update the freertos_hooks.c as mentioned in app_user_edits.c file</li>

@@ -1,13 +1,23 @@
+/* ************************************************************************ */
+/** Descriptive File Name
+
+  @Company
+    Microchip Technology pvt Ltd
+
+  @File Name
+    app_p2p_phy_config.h
+
+  @Summary
+    App config file
+
+  @Description
+    App config file
+ */
+/* ************************************************************************** */
+/* ***************************************************************************** */
 /**
- * @file app_p2p_phy_config.h
- *
- * @brief File contains P2P PHY App configuration parameters.
  *
  * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
- *
- * \asf_license_start
- *
- * \page License
  *
  * Subject to your compliance with these terms, you may use Microchip
  * software and any derivatives exclusively with Microchip products.
@@ -27,13 +37,6 @@
  * RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
  * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *
- * \asf_license_stop
- */
-
-/*
- * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
- *
- * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* Prevent double inclusion */
