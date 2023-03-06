@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <keywords publicationid="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C"
           language="en-US"
-          version="1"
+          version="2"
           documenttitle="Software Development"
           pubtype="Online Reference"
           pubsubtype=""
           pubuserguidesubtype=""
           pubproductheirarchy=""
           devices=""
-          revisiondate="17/02/2022 00:00:00"
-          revisionletter="1"
+          revisiondate="15/09/2022 00:00:00"
+          revisionletter="A"
           isbn=""
           pubid=""
           reachid=""
           description=""
-          lastmodified="26/08/2022 02:49:05"
+          lastmodified="03/03/2023 18:22:09"
           covertitle="PIC32CXBZ2 Application Developer's Guide"
-          frontcover=""/>
+          frontcover="">
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>BLE Applications</register>
+      <title>BLE Applications</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Bootloader</register>
+      <title>Bootloader</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.DFU.BOOTLOADER</keyword>
+   </keyworditem>
+</keywords>

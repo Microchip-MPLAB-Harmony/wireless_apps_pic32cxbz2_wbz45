@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="Low Power BLE Application Design" />
 <meta name="Description" content="Low Power BLE Application Design" />
@@ -20,7 +20,7 @@
 <meta name="Microsoft.Help.TocOrder" content="1" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -227,7 +227,7 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-101C8B73-AD8E-4845-831A-DC498B147435">
-<h1 class="title topictitle1" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-DA6B5665-A1F1-40B0-BEBE-FD80862FF3BF">Low Power BLE Application Design</h1><div class="body"><p class="shortdesc">Low Power BLE Application Design</p>
+<h1 class="title topictitle1" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-DA6B5665-A1F1-40B0-BEBE-FD80862FF3BF" style="">Low Power BLE Application Design</h1><div class="body"><p class="shortdesc">Low Power BLE Application Design</p>
 <p class="p">When designing a wireless Bluetooth Application, BLE stack advertisement/connection intervals are the driving factors determining sleep mode entries and exit. There are 2 low power/sleep modes that are supported by the BLE stack</p>
 <ul class="ul"><li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-55273D55-F6B5-48F8-A9B7-C46D3FE0688B"><p class="p">Sleep</p>
 </li>
@@ -396,22 +396,22 @@
 </ol>
 <u class="ph u">Where can i find Sleep related code implementation after code generation step?</u></div>
 <div class="p">
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EFBA4787-C53F-44D3-9CE9-5778FBDD7023" class="table" frame="void" border="1" rules="all"><col style="width:50%" /><col style="width:50%" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d1749e339"><span><strong class="ph b">Implementation</strong></span></th>
-<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d1749e342"><span><strong class="ph b">Location</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EFBA4787-C53F-44D3-9CE9-5778FBDD7023" class="table" frame="void" border="1" rules="all"><col style="width:50%" /><col style="width:50%" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d69000e339"><span><strong class="ph b">Implementation</strong></span></th>
+<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d69000e342"><span><strong class="ph b">Location</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>BT Sleep Mode</span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span>BLE Stack Library</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d69000e339 "><span>BT Sleep Mode</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d69000e342 "><span>BLE Stack Library</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>System Sleep Mode</span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span><p class="p">device_sleep.c</p>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d69000e339 "><span>System Sleep Mode</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d69000e342 "><span><p class="p">device_sleep.c</p>
 </span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d1749e339 "><span>Execute BT/System Sleep</span></td>
-<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d1749e342 "><span>app_idle_task.c</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d69000e339 "><span>Execute BT/System Sleep</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d69000e342 "><span>app_idle_task.c</span></td>
 </tr>
-<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d1749e339 "><span>RTC Based Tickless Idle Mode</span></td>
-<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d1749e342 "><span>app_idle_task.c</span></td>
+<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d69000e339 "><span>RTC Based Tickless Idle Mode</span></td>
+<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d69000e342 "><span>app_idle_task.c</span></td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +429,7 @@
 <li class="li" id="GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-7F8C6A0A-D8F2-4826-8C35-3A11727E8596"><p class="p">eTaskConfirmSleepModeStatus() returns eNoTasksWaitingTimeout, more information <a class="xref" href="https://www.freertos.org/eTaskConfirmSleepModeStatus.html" target="_blank">here</a>.</p>
 </li>
 </ul>
-<strong class="ph b">Tip:</strong> User can also add their own condition to be checked before system goes to sleep, for example, do not enter system sleep if data transmission over UART is active<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d1749e407', this);">Copy</button><code id="d1749e407" content="Pseudo code in RTC based Tickless Idle Mode:&#xA;&#xA;```&#xA;if ((BT_SYS_AllowSystemSleep() || ZB_ReadyToSleep()) &amp;&amp; ( eTaskConfirmSleepModeStatus() != eAbortSleep ) &amp;&amp; (user_condition))&#xA;{&#xA;        //Enter System Sleep Mode&#xA;        DEVICE_EnterSleepMode ();        //RTC Based Tickless Idle Mode       &#xA;}&#xA;```">Pseudo code in RTC based Tickless Idle Mode:
+<strong class="ph b">Tip:</strong> User can also add their own condition to be checked before system goes to sleep, for example, do not enter system sleep if data transmission over UART is active<pre class="pre codeblock"><code id="d69000e407" content="Pseudo code in RTC based Tickless Idle Mode:&#xA;&#xA;```&#xA;if ((BT_SYS_AllowSystemSleep() || ZB_ReadyToSleep()) &amp;&amp; ( eTaskConfirmSleepModeStatus() != eAbortSleep ) &amp;&amp; (user_condition))&#xA;{&#xA;        //Enter System Sleep Mode&#xA;        DEVICE_EnterSleepMode ();        //RTC Based Tickless Idle Mode       &#xA;}&#xA;```">Pseudo code in RTC based Tickless Idle Mode:
 
 ```
 if ((BT_SYS_AllowSystemSleep() || ZB_ReadyToSleep()) &amp;&amp; ( eTaskConfirmSleepModeStatus() != eAbortSleep ) &amp;&amp; (user_condition))

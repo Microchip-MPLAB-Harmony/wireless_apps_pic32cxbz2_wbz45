@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Unified Image Generation for Serial Bootloading" />
+<meta name="DC.relation" scheme="URI" content="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Unified Image Generation for Serial Bootloading</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3" />
+<meta name="Microsoft.Help.TocOrder" content="2" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB">
+<h1 class="title topictitle1" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-9802D08C-3ECE-4A1D-B8C1-4D0AB43B14F3" style="">Unified Image Generation for Serial Bootloading</h1><div class="body"><p class="shortdesc"></p>
+<ol class="ol" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-9BFE4A54-239C-4097-8920-729069BF9157"><li class="li" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-EC4718DE-D216-4D8D-A4EA-C9546B17B580"><span class="indent-level-default">1.</span><p class="p">Compile the project for no errors.</p>
+<div class="p"><div class="fig fignone" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-BE1614BF-193C-48FE-BC52-24CBBE871F63"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-D3B612DA-BFB8-4A02-ACA6-582005E51977-low.png" /></div>
+</div>
+<p class="p"></p>
+</li>
+<li class="li" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-E4F39DB4-DA58-4899-8DBB-047CD24EC398"><span class="indent-level-default">2.</span><p class="p">MPLABX generated hex image will be available in project production folder dist\default\production. There are 3 new images created as an outcome of "SignFirmware" MPLABX script. These images are the valid images which has the metadata header appended.</p>
+<ol class="ol" type="a" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-2EB198E1-9659-4F3D-9B80-F464FE018F97"><li class="li" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-8A4B4B67-F360-45F0-AD9C-BE673E5DA508"><span class="indent-level-default">a.</span><p class="p">signed.unified.hex - This is signed unified image along with bootloader. This is the current image to be programmed on the device.</p>
+</li>
+<li class="li" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-ACC93DDB-0B54-4079-8B62-35D5F5A3A61A"><span class="indent-level-default">b.</span><p class="p">signed.hex - This image is signed image without bootloader. This does not work if bootloader is not present on the device.</p>
+</li>
+<li class="li" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-1827D5DD-EFA2-4B68-A0F3-1204C4432954"><span class="indent-level-default">c.</span><p class="p">signed.bin - This is upgradable image which can be sent over serial DFU. Follow the steps mentioned in <a class="xref" href="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761.html">DFU over serial</a> if want to upgrade the device using serial interface.</p>
+</li>
+</ol>
+</li>
+</ol>
+<div class="p"><div class="fig fignone" id="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB__GUID-A996B6CC-82CB-477C-AC98-2BBC2014C6C2"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-0F68C890-16BF-42AB-A895-D50BF2BDD877-low.png" /></div>
+</div>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3.html">OTA Implementation Details - OTAU Server</a></div>
+</div>
+</div></body>
+</html>

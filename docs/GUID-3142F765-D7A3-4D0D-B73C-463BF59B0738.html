@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Operating Modes" />
+<meta name="DC.relation" scheme="URI" content="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Operating Modes</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-3E242310-437D-4F50-9E63-3C9EF144CD18" />
+<meta name="Microsoft.Help.TocOrder" content="0" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738">
+
+<h1 class="title topictitle1" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-B966DAF8-DB03-456B-8CEE-5935E7199920" style="">Operating Modes</h1>
+<div class="body">
+        <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_GSK_454_HWB">
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CDFE621B-F945-4FF1-8CA1-54CD75E9ED98">In this userguide, the TeraTerm is
+                used for providing Console inputs. On the Menu bar of Tera Term, Goto setup, select
+                serial port and then set the baud rate to <strong class="ph b">115200</strong> as shown in the following
+                    figure.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_I44_VF2_LWB"><div class="figcap"><span class="fig--title-label">Figure 1. </span>Tera Term Settings</div>
+                    
+                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_J44_VF2_LWB" src="GUID-1FC0B024-FE58-4638-B81C-0A8F5E6F2128-low.png" />
+                </div>
+</li>
+
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-DE0E7F1F-62C1-4875-B0D6-2E4FF3A847E2">Flash the application to <span class="ph">WBZ451</span> board after build is succesful (as described
+                    <a class="xref" href="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html#GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F__FIG_STG_1VK_GWB">here</a>). The P2P application requires 2 devices, where the
+                source address of peer device 1 is the destination address of peer device 2 and vice
+                versa. The source address and destination address can be modified in
+                    <code class="ph codeph">app_p2p_phy_config.h</code> file as well as via MCC Project graph
+                configuration Window as shown <a class="xref" href="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html#GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F__GUID-F88F06E4-DE42-417A-8EE6-DC2BCFD916D5">here</a>
+            </li>
+
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F5B6A1F8-D9F3-4DAF-B875-24144AA5D27F">Once the firmware is flashed to the
+                    <span class="ph">WBZ451</span> board, the following print will appear
+                in console window (here Tera Term is used). Specific commands (detailed description
+                and reference available in <a class="xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-DFC768DD-153D-46E0-8595-5C30947269B2">Command Table Description</a> section) should be given to switch between
+                different application modes (explained in detail in the following section). </li>
+
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-A6951252-5B41-4B7E-ACE4-DD583B1C38E0">The additional Tera Term settings
+                should be followed as per the following figure. <div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_BXY_4V4_HWB"><div class="figcap"><span class="fig--title-label">Figure 2. </span>Console Settings</div>
+                    
+                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_CXY_4V4_HWB" src="GUID-A4EC22ED-DC5A-4217-8EE7-CA9867D8C72F-low.png" />
+                </div>
+</li>
+
+        </ul>
+
+        <ul class="ul">
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1276C987-D93E-4B46-95CA-B5B1F659316E">The following figure shows the simple
+                flow diagram on the high level process flow from application level to PHY level.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-7B626C60-8FFE-4978-9D3D-0661811AA819"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Application
+                        FlowChart</div>
+                    
+                    <img class="image" src="GUID-51ED78BB-DEBB-4C83-9D8B-46779FF5FAB6-low.png" />
+                </div>
+</li>
+
+        </ul>
+
+        <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_FZJ_PXH_PWB">
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-AE948A10-7F82-4518-BD8F-BD82BDF298AD">The P2P PHY application has 2 source files: <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_S2R_2YH_PWB">
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-09D89B66-75C9-47DB-ABB8-ADFA8293CB11"><strong class="ph b">app_phy_cmd_processor.c</strong> which is an interface between console and
+                        app/phy layer.</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-73F31889-135E-4EFE-BAF0-36275621B30F"><strong class="ph b">app_p2p_phy.c </strong>which is an interface between user command via console
+                        and Phy layer.</li>
+
+                </ul>
+</li>
+
+        </ul>
+
+        <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_P3G_X4J_GWB">
+            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C44C9C35-F643-4117-B2BF-1D5B159D64D1"><strong class="ph b">The application features 5 modes
+                    </strong><ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_Q3G_X4J_GWB">
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E85C6705-000A-4C44-937B-31CD4AE546F3"><strong class="ph b">Data Mode</strong> – It is
+                        basic chat feature, where once user enters bytes, it will appear on the peer
+                        device console. User can give time period as well, where the timer starts
+                        once the user starts to enter first byte of data. Even if the user did not
+                        press enter, once the timer expires the data will be sent automatically. <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_KGQ_WK2_LWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1025455E-594C-4C1D-8025-CCA0354DDAB8">Data format can be given in format <strong class="ph b">xx :data</strong>, where <strong class="ph b">xx</strong>
+                                is <strong class="ph b">device index</strong>. (for example: <strong class="ph b">01 :Microchip</strong> -
+                                    <strong class="ph b">01</strong> specifies <strong class="ph b">Device table index</strong> and
+                                    <strong class="ph b">Microchip</strong> specifies <strong class="ph b">user data</strong>), and actual data
+                                comes after “:” .<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_HNS_3N2_LWB"><div class="figcap"><span class="fig--title-label">Figure 4. </span>Data Mode Example</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_INS_3N2_LWB" src="GUID-737C453B-1BEB-4F54-81C0-6D0F6B6E65E9-low.png" />
+                                </div>
+</li>
+
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-43F3B388-F268-4620-A0CC-707D87FC02E0">The data can also be sent without any index, in such scenario, the
+                                data will be sent to device details (address) stored in index 1 of
+                                the device table. If the info in index 1 of the device table is not
+                                valid, then the data will be broadcasted.</li>
+
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E82D07DC-3270-4F45-BB7C-2D3DF45FC3B5">For Broadcasting data, format is <strong class="ph b">ff :data</strong> (Example : ff
+                                :Microchip).</li>
+
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-22F36A84-7FED-413B-B101-6B289BB7A5E9">The device table can be updated with short address and ieee address
+                                as per user preference using the console command
+                                    <strong class="ph b">updateDeviceTable</strong>. Commands supported in the application
+                                are described in <a class="xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-A653B3AF-7AF6-45EF-8446-BE5ACF4D87C0">COMMAND TABLE</a> section.</li>
+
+                        </ul>
+<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_H1B_CW4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-49A1D501-83B8-4356-AE1F-6336E59D05C7">To enter data mode,
+                                    <strong class="ph b">+++,time(in microseconds)</strong> should be given in
+                                    console.<div class="note" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_G3P_RK2_LWB"><span class="notetitle">Note:</span> User input can be provided
+                                    through console in Data Mode only. In all the test modes, the
+                                    payload data is defined in the application. Data Payload
+                                    Modifications should be done in the application, if required.
+                                    Max payload limit in data mode is <strong class="ph b">232 bytes.</strong>(due to
+                                    Fragmentation of payload feature in application) . As per IEEE
+                                    802.15.4 Spec, Max payload size is 127 octets = 116 octets + Max
+                                    possible Frame Overhead. In App Fragmentation, 116 x 2 = 232
+                                    octets + Max possible Frame Overhead = 254 Octets. </div>
+</li>
+
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F272DAD6-D815-4396-BCD0-65B1F1B15F6A">The following figure
+                                show the operation of device in data mode, which is accessible using
+                                the cmd +++, time (in microseconds). </li>
+
+                        </ul>
+<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_OBQ_SV4_HWB"><div class="figcap"><span class="fig--title-label">Figure 5. </span>Data Mode</div>
+                            
+                            <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_PBQ_SV4_HWB" src="GUID-B450C468-2D07-4DE0-A75B-CA52D4C51E6C-low.png" />
+                        </div>
+<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_WKQ_5V4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E2CE0387-43DE-4F38-ACB9-0E5E9392CB71">To exit Data Mode,
+                                    <strong class="ph b">&amp;&amp;&amp; </strong>command should be given in console. Once
+                                exit from data mode, Device performance parameters like Packet error
+                                rate, no. of bytes sent will be displayed.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_YXW_2W4_HWB"><div class="figcap"><span class="fig--title-label">Figure 6. </span>Exit Data
+                                        Mode</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_ZXW_2W4_HWB" src="GUID-9AA4E9FE-6BF1-4DEB-B910-8446BB9D2361-low.png" />
+                                </div>
+</li>
+
+                        </ul>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-D88D36DD-C20C-4703-B7AF-502947F6F18E"><strong class="ph b">Continuous Test Mode</strong> –
+                        Predefined payload of 116 bytes is set in application. Each packet with 116
+                        bytes is sent one by one after the previously sent packets received ack from
+                        the  peer device. Max payload size of 116 is set as an example. <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_QK4_FW4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-01303596-5082-4C3D-9D22-9D352A962871">To enter Continuous
+                                Test Mode, the command <strong class="ph b">contTestMode </strong> need to be given in the
+                                    console.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_SY2_KW4_HWB"><div class="figcap"><span class="fig--title-label">Figure 7. </span>Continuous
+                                        Test Mode</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_TY2_KW4_HWB" src="GUID-723A9C55-62D0-4B31-B4C2-23C51BB3BC45-low.png" />
+                                </div>
+</li>
+
+                        </ul>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-2B468404-C3AD-43BF-81F6-5C0BA521B4F3"><strong class="ph b">Periodic Test Mode </strong>---
+                        User can provide a time as input. After periodic expiry of the user
+                        configured time, the predefined payload of 116 bytes will be sent to peer
+                        device. Once the tx is done, without waiting for ack, the next transmit
+                        starts once the timer expires after a configured time.<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_T44_LW4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-710C1B90-87BD-4002-B090-443155E684E6">To enter Periodic
+                                Test Mode, the command <strong class="ph b">periodTestMode,time(in microseconds)</strong>
+                                need to be provided.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_EFN_5W4_HWB"><div class="figcap"><span class="fig--title-label">Figure 8. </span>Periodic
+                                        Test Mode</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_FFN_5W4_HWB" src="GUID-5FE7972E-7A76-464D-A360-934DF86905AF-low.png" />
+                                </div>
+</li>
+
+                        </ul>
+<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_R3G_X4J_GWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CC3C09C0-61B1-4221-B299-E0F6FC233B0E">
+                                <div class="note" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_AKM_KFQ_GWB"><span class="notetitle">Note:</span> For all the above modes, the total no.
+                                    of packets sent, bytes sent, packets which received ack and PER
+                                    value are displayed at the end.</div>
+
+                            </li>
+
+                        </ul>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-18EAEBB2-6996-4DC5-8DBF-9F74F90DCD68"><strong class="ph b">Throughput Test Mode</strong> –
+                        Time period of 1 second is set as default in application. The max payload is
+                        predefined (116 bytes), which is sent once <strong class="ph b">tx done cb</strong> is called. The
+                        packets are sent continuously until the timer expires. The total no. of
+                        packets sent, bytes sent, packets which received ack and PER value per
+                        second are displayed at the end.<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_VP2_WW4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1770A75D-AEED-40F9-B968-FC941CA46EF4">To enter Throughput
+                                Test Mode, the command <strong class="ph b">throughputTestMode</strong> need to be
+                                    provided.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_FB3_DX4_HWB"><div class="figcap"><span class="fig--title-label">Figure 9. </span>Throughput
+                                        Test Mode</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_GB3_DX4_HWB" src="GUID-BDD0E1C0-812D-4AF8-A4E0-EDFE9F528675-low.png" />
+                                </div>
+</li>
+
+                        </ul>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-57E8BB4F-7347-41DD-98C8-6498AF2CFEC0"><strong class="ph b">PER Test Mode </strong>---
+                        Packet limit is fixed to 100 for this mode. 100 packets are sent
+                        continuously. Each packets are of max payload limit. The total no. of
+                        packets sent, bytes sent, packets which received ack and PER value are
+                        displayed at the end.<ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_LHS_XW4_HWB">
+                            <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C2230018-B76B-4453-87CD-B36AAF644097">To enter PER Test
+                                Mode, the command <strong class="ph b">perTestMode</strong> need to be provided.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_JGT_2X4_HWB"><div class="figcap"><span class="fig--title-label">Figure 10. </span>PER Test
+                                        Mode</div>
+                                    
+                                    <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_KGT_2X4_HWB" src="GUID-E1AE88CF-C002-408D-B2AC-3D1BAA23EF0D-low.png" />
+                                </div>
+</li>
+
+                        </ul>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-BC99E5D4-82F5-4693-9740-1726A8E82585">Each mode operates
+                        independently, only one mode can be enabled at a time.</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-3ACFE119-5CB6-432A-A521-95DB9091117F">To stop running test modes,
+                        the command <strong class="ph b">stopTestMode</strong> should be used. All the active running test
+                        modes will be stopped. This command can be applied to stop the test modes
+                            only.<div class="fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_NYS_5X4_HWB"><div class="figcap"><span class="fig--title-label">Figure 11. </span>Stop Active Test
+                                Modes</div>
+                            
+                            <img class="image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_OYS_5X4_HWB" src="GUID-1D9A8FDB-1BDF-4B2B-A365-70CF3FBE5B72-low.png" />
+                        </div>
+</li>
+
+                    <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-FB27E33B-6E1F-4268-A142-43E5560295C8">
+                        <div class="note notes" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_LZM_LFQ_GWB"><span class="notetitle">Notes:</span> 
+                            <ul class="ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_YSJ_ZJ2_LWB">
+                                <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-07B18A5E-1A91-4F4E-8422-75BE9ECF6703">Commands to navigate/switch to different modes in application
+                                    are described in <a class="xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-A653B3AF-7AF6-45EF-8446-BE5ACF4D87C0">COMMAND TABLE</a> section.</li>
+
+                                <li class="li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-EBBF2EAB-C692-4280-93E5-F7AB09655747">While the packets are being received, the following info will be
+                                    displayed: LQI(Link Quality Indicator), RSSI(Received Signal
+                                    Strength), Received packet Count and Length of received payload
+                                    in bytes. (Refer to Peer device 2 terminal of  <a class="xref" href="#GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_OBQ_SV4_HWB">Figure 5</a>).</li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+</li>
+
+        </ul>
+
+    </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html">Getting Started with IEEE 802.15.4 P2P Phy Application</a></div>
+</div>
+</div></body>
+</html>

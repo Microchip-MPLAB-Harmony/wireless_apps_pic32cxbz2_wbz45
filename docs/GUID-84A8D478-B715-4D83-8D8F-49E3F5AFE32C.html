@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="OTA Application Development" />
 <meta name="DC.relation" scheme="URI" content="GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html" />
@@ -19,7 +19,7 @@
 <meta name="Microsoft.Help.TocOrder" content="1" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -226,7 +226,7 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C">
-<h1 class="title topictitle1" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-1CE79867-809E-4846-87A7-3089A54CD1A9">OTA Application Development</h1><div class="body"><ol class="ol" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-DB02EC26-BCA7-47BA-87F0-50B6396488FB"><li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-95893762-4F66-4E95-8721-DF20563A9DA8"><span class="indent-level-default">1.</span><p class="p">Compile MCC auto generated project</p>
+<h1 class="title topictitle1" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-1CE79867-809E-4846-87A7-3089A54CD1A9" style="">OTA Application Development</h1><div class="body"><ol class="ol" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-DB02EC26-BCA7-47BA-87F0-50B6396488FB"><li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-95893762-4F66-4E95-8721-DF20563A9DA8"><span class="indent-level-default">1.</span><p class="p">Compile MCC auto generated project</p>
 <ul class="ul" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__UL_QQP_VQD_25B"><li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-C65E5FA9-1CFB-4CA3-95FB-F75C6AE2F920">Compile the MCC auto generated project as below.</li>
 </ul>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-64BC4A0C-913A-4CB1-BA26-A40480C105B7"><br /><img class="image" src="GUID-D3B612DA-BFB8-4A02-ACA6-582005E51977-low.png" /><br /></div>
@@ -240,15 +240,15 @@
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-D2DA905B-16F7-448B-90B2-F34CAAD1BF96"><span class="indent-level-default">2.</span><p class="p">Call BLE OTA Init function in "app.c" and add the include file.</p>
 <p class="p"></p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_QCS_X5D_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e40', this);">Copy</button><code id="d32991e40" content="APP_OTA_HDL_Init();"><em class="ph i">APP_OTA_HDL_Init();</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_QCS_X5D_25B"><code id="d41611e40" content="APP_OTA_HDL_Init();"><em class="ph i">APP_OTA_HDL_Init();</em></code></pre></div>
 <p class="p"></p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_KVW_Z5D_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e45', this);">Copy</button><code id="d32991e45" content="#include &#34;app_ota/app_ota_handler.h&#34;"><em class="ph i">#include "app_ota/app_ota_handler.h"</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_KVW_Z5D_25B"><code id="d41611e45" content="#include &#34;app_ota/app_ota_handler.h&#34;"><em class="ph i">#include "app_ota/app_ota_handler.h"</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-EB0934D8-3118-4B49-9244-B5F565A96CEB"><br /><img class="image" src="GUID-CECCD579-806A-46ED-B451-E083268939B0-low.png" /><br /></div>
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-FC0F8A14-50E5-454B-BF5C-512F13F7DAD3"><span class="indent-level-default">3.</span><p class="p">Call BLE OTA event handler function in "app_ble/app_otaps_handler.c".</p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_LRT_NYD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e55', this);">Copy</button><code id="d32991e55" content="APP_OTA_EvtHandler(p_event);"><em class="ph i">APP_OTA_EvtHandler(p_event);</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_CSB_4YD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e59', this);">Copy</button><code id="d32991e59" content="#include &#34;../app_ota/app_ota_handler.h&#34;"><em class="ph i">#include "../app_ota/app_ota_handler.h"</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_LRT_NYD_25B"><code id="d41611e55" content="APP_OTA_EvtHandler(p_event);"><em class="ph i">APP_OTA_EvtHandler(p_event);</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_CSB_4YD_25B"><code id="d41611e59" content="#include &#34;../app_ota/app_ota_handler.h&#34;"><em class="ph i">#include "../app_ota/app_ota_handler.h"</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-D6CBCC11-520D-4B87-B052-E8AAB89FF1DC"><br /><img class="image" src="GUID-B94E5EF1-9818-4DA1-825E-BDF1F5518B09-low.png" /><br /></div>
 </div>
 </li>
@@ -257,37 +257,37 @@
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-E6AC7D6B-9F4F-42D8-86F1-2A8579847D64"><span class="indent-level-default">5.</span><p class="p">Define the timer message ID's in APP_MsgId_T structure in "app.h".</p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_STR_TYD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e75', this);">Copy</button><code id="d32991e75" content="APP_TIMER_OTA_TIMEOUT_MSG,"><em class="ph i">APP_TIMER_OTA_TIMEOUT_MSG,</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_DPG_5YD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e79', this);">Copy</button><code id="d32991e79" content="APP_TIMER_OTA_REBOOT_MSG,"><em class="ph i">APP_TIMER_OTA_REBOOT_MSG,</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_STR_TYD_25B"><code id="d41611e75" content="APP_TIMER_OTA_TIMEOUT_MSG,"><em class="ph i">APP_TIMER_OTA_TIMEOUT_MSG,</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_DPG_5YD_25B"><code id="d41611e79" content="APP_TIMER_OTA_REBOOT_MSG,"><em class="ph i">APP_TIMER_OTA_REBOOT_MSG,</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-47667997-2F16-4C91-BB90-8E60BAE852F9"><img class="image" src="GUID-26B8C954-DC6D-4A79-BA73-41EB3B2EF835-low.png" /></div>
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-C63E0AC1-C1C5-4A9F-A77A-1458000E492D"><span class="indent-level-default">6.</span><p class="p">Call OTA timer handlers in APP_Tasks() in "app.c".</p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_PBG_KZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e89', this);">Copy</button><code id="d32991e89" content="else if(p_appMsg-&gt;msgId == APP_TIMER_OTA_TIMEOUT_MSG)"><em class="ph i">else if(p_appMsg-&gt;msgId == APP_TIMER_OTA_TIMEOUT_MSG)</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_MKL_KZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e93', this);">Copy</button><code id="d32991e93" content="{"><em class="ph i">{</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_PKS_KZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e97', this);">Copy</button><code id="d32991e97" content="APP_OTA_Timeout_Handler();"><em class="ph i">APP_OTA_Timeout_Handler();</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_Z2Z_KZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e101', this);">Copy</button><code id="d32991e101" content="}"><em class="ph i">}</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_OVH_LZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e105', this);">Copy</button><code id="d32991e105" content="else if(p_appMsg-&gt;msgId== APP_TIMER_OTA_REBOOT_MSG)"><em class="ph i">else if(p_appMsg-&gt;msgId== APP_TIMER_OTA_REBOOT_MSG)</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_U3Q_LZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e109', this);">Copy</button><code id="d32991e109" content="{"><em class="ph i">{</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_YCX_LZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e113', this);">Copy</button><code id="d32991e113" content="APP_OTA_Reboot_Handler();"><em class="ph i">APP_OTA_Reboot_Handler();</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_KXD_MZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e117', this);">Copy</button><code id="d32991e117" content="}"><em class="ph i">}</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_PBG_KZD_25B"><code id="d41611e89" content="else if(p_appMsg-&gt;msgId == APP_TIMER_OTA_TIMEOUT_MSG)"><em class="ph i">else if(p_appMsg-&gt;msgId == APP_TIMER_OTA_TIMEOUT_MSG)</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_MKL_KZD_25B"><code id="d41611e93" content="{"><em class="ph i">{</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_PKS_KZD_25B"><code id="d41611e97" content="APP_OTA_Timeout_Handler();"><em class="ph i">APP_OTA_Timeout_Handler();</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_Z2Z_KZD_25B"><code id="d41611e101" content="}"><em class="ph i">}</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_OVH_LZD_25B"><code id="d41611e105" content="else if(p_appMsg-&gt;msgId== APP_TIMER_OTA_REBOOT_MSG)"><em class="ph i">else if(p_appMsg-&gt;msgId== APP_TIMER_OTA_REBOOT_MSG)</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_U3Q_LZD_25B"><code id="d41611e109" content="{"><em class="ph i">{</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_YCX_LZD_25B"><code id="d41611e113" content="APP_OTA_Reboot_Handler();"><em class="ph i">APP_OTA_Reboot_Handler();</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_KXD_MZD_25B"><code id="d41611e117" content="}"><em class="ph i">}</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-EE3D3DF0-14D4-4086-941A-A34D040B7F41"><br /><img class="image" src="GUID-8B1FB9EA-37E1-4238-9FF2-37FA115DD592-low.png" /><br /></div>
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-72D9D972-09EC-47BE-8E10-B5FFD1E1EEB1"><span class="indent-level-default">7.</span><p class="p">Call DIS service Init function in "app.c" and add the include file.</p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_ZQH_RZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e127', this);">Copy</button><code id="d32991e127" content="BLE_DIS_Add();"><em class="ph i">BLE_DIS_Add();</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_ZVM_RZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e131', this);">Copy</button><code id="d32991e131" content="#include &#34;ble_dis/ble_dis.h&#34;"><em class="ph i">#include "ble_dis/ble_dis.h"</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_ZQH_RZD_25B"><code id="d41611e127" content="BLE_DIS_Add();"><em class="ph i">BLE_DIS_Add();</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_ZVM_RZD_25B"><code id="d41611e131" content="#include &#34;ble_dis/ble_dis.h&#34;"><em class="ph i">#include "ble_dis/ble_dis.h"</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-D1F9DF73-334B-4985-8056-DD232A2FFE0C"><br /><img class="image" src="GUID-E3561DD8-B307-45CC-8156-3144CE1D998E-low.png" /><br /></div>
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-5A467704-7F9E-4ED9-A237-70138817A89F"><span class="indent-level-default">8.</span><p class="p">Call BLE gap connected/disconnected event handler in "app_ble/app_ble_handler.c" . app_ble_conn_handler.c handles the events and also restarts the Advertising when disconnected.</p>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_FDF_TZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e141', this);">Copy</button><code id="d32991e141" content="APP_BleGapConnEvtHandler(p_event);"><em class="ph i">APP_BleGapConnEvtHandler(p_event);</em></code></pre></div>
-<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_AHM_TZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e145', this);">Copy</button><code id="d32991e145" content="#include &#34;../app_ble_conn_handler.h&#34;"><em class="ph i">#include "../app_ble_conn_handler.h"</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_FDF_TZD_25B"><code id="d41611e141" content="APP_BleGapConnEvtHandler(p_event);"><em class="ph i">APP_BleGapConnEvtHandler(p_event);</em></code></pre></div>
+<div class="p"><pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_AHM_TZD_25B"><code id="d41611e145" content="#include &#34;../app_ble_conn_handler.h&#34;"><em class="ph i">#include "../app_ble_conn_handler.h"</em></code></pre></div>
 <div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-1CB66374-70F8-4042-8A02-D0DE8F263913"><br /><img class="image" src="GUID-DDC2E7B5-C7A6-4CA7-ABBB-8DF7715A3B70-low.png" /><br /></div>
 </div>
 </li>
 <li class="li" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-67ED5114-DCF2-4007-B416-D790683851FF"><span class="indent-level-default">9.</span><p class="p">If the "Standby Sleep mode" <a class="xref" href="GUID-101C8B73-AD8E-4845-831A-DC498B147435.html#GUID-101C8B73-AD8E-4845-831A-DC498B147435__GUID-EE50BF1A-B91A-4B9C-BE4D-181632B7A3CF">low power functionality</a> is enabled in the application, during the OTA upgrade procedues, it is required to disable the device entering into sleep mode. Add the below check in app_idle_task() when the BT_SYS_EnterSleepMode() is called.</p>
-<pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_XNX_5ZD_25B"><button title="Copy Code" class="copy-code" onclick="cpy('d32991e158', this);">Copy</button><code id="d32991e158" content="if (APP_OTA_HDL_GetOTAMode() != APP_OTA_MODE_OTA)&#xA;BT_SYS_EnterSleepMode(RTC_Timer32FrequencyGet(), RTC_Timer32CounterGet()); "><em class="ph i">if (APP_OTA_HDL_GetOTAMode() != APP_OTA_MODE_OTA)
+<pre class="pre codeblock" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__CODEBLOCK_XNX_5ZD_25B"><code id="d41611e158" content="if (APP_OTA_HDL_GetOTAMode() != APP_OTA_MODE_OTA)&#xA;BT_SYS_EnterSleepMode(RTC_Timer32FrequencyGet(), RTC_Timer32CounterGet()); "><em class="ph i">if (APP_OTA_HDL_GetOTAMode() != APP_OTA_MODE_OTA)
 BT_SYS_EnterSleepMode(RTC_Timer32FrequencyGet(), RTC_Timer32CounterGet()); </em></code></pre><div class="p"><div class="fig fignone" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__GUID-4DF250F9-8EDC-4C5B-B5D3-5B1D4188750C"><br /><img class="image" id="GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C__IMAGE_UNL_F12_25B" src="GUID-B1F92094-6E3B-467D-A8C4-93A9524BF51E-low.png" /><br /></div>
 </div>
 </li>

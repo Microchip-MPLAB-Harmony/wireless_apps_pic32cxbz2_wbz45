@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Zigbee Green Power" />
+<meta name="Description" content="Green Power is a feature of Zigbee that allows for energy-harvesting technology to be used directly with the Zigbee stack. Green Power is the global wireless standard for large installations where changing batteries and accessing devices becomes costly." />
+<meta name="DC.relation" scheme="URI" content="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Zigbee Green Power</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" />
+<meta name="Microsoft.Help.TocOrder" content="4" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8">
+<h1 class="title topictitle1" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-E28D9A64-A215-47C7-8863-6EA1D7D38C1B" style="">Zigbee Green Power</h1><div class="body"><p class="shortdesc">Green Power is a feature of Zigbee that allows for energy-harvesting technology to be used directly with the Zigbee stack. Green Power is the global wireless standard for large installations where changing batteries and accessing devices becomes costly.</p>
+<div class="section" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-73297D95-B0F6-4A2C-A6AA-79A23D667C88"><h2 class="title sectiontitle">Green Power Infrastructure Device Types</h2></div>
+<ol class="ol" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-820B0F24-4377-4C88-BD82-C4370D5AAC70"><li class="li" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-3F3478F0-A53F-4B4C-A107-5D9083755515"><span class="indent-level-default">1.</span><p class="p"><strong class="ph b">Green Power Proxy (GPP) or Proxy:</strong> A fully compliant Zigbee device, which in addition to the core zigbee specification also implements proxy functionality of the Green Power feature, basic or advanced. The proxy is able to handle GPDFs (Green Power Data Frame) and tunnel the received GPDF to the sink on the zigbee network.</p>
+</li>
+<li class="li" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-8348E84D-AD20-4DA5-BDE8-0CB77D82E017"><span class="indent-level-default">2.</span><p class="p"><strong class="ph b">Green Power Sink (GPS) or Sink:</strong> A fully compliant Zigbee device, which in addition to a core zigbee specification also implements the sink functionality of the Green Power feature, basic or advanced. The sink is thus capable of receiving, processing and executing GPD commands, tunneled and optionally also directly received. Since all the Zigbee Routers supports proxy functionality, Sink exists always in combination with proxy as Green power combo which is explained below.</p>
+</li>
+<li class="li" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-0AA32619-20AB-4DB4-9BA5-72025D36106F"><span class="indent-level-default">3.</span><p class="p"><strong class="ph b">Green Power Combo (GPC) or Combo</strong> A fully compliant Zigbee device, which in addition to a core zigbee specification also implements both the proxy and the sink functionality of the Green Power feature. A Combo can thus receive, process and execute both tunneled and directly received GPD commands (in its sink role), as well as forward them to other GP nodes (in its proxy role).</p>
+</li>
+</ol>
+<p class="p">The serial console commands supported by combo-basic are listed in <u class="ph u"><a class="xref" href="GUID-BA19A3F8-CCEB-44C2-B5BF-C203DD6A8D41.html" title="Zigbee Serial console commands">Serial Console Commands doc</a></u> to verify Application / Stack behavior.</p>
+<div class="section" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-C277AB52-160D-4800-B297-A6649EDF6D26"><h2 class="title sectiontitle">Green Power End Device (GPD) Type</h2></div>
+<p class="p">A Green Power device may be considered a fourth logical device type. They are designed to be used in very low power operation, where they are intended to only send very simple commands. These small commands are called GPDFs, which is short for Green Power Data Frames.</p>
+<p class="p"><strong class="ph b">Note:</strong> <em class="ph i">Currently Green power infrastructure device types alone supported in Microchip zigbee stack. The Green power end device type is expected to be supported in upcoming Microchip zigbee stack.</em></p>
+<div class="section" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-76713E80-3C4E-4853-8B41-2D8C05E23ABA"><h2 class="title sectiontitle">Green Power Device Commissioning</h2><p class="p"></p>
+</div>
+<p class="p">Commissioning is done between a GPD and sink/Combo basic. Once commissioning is done, the sink will process the frames received from the particular GPD which got commissioned. To commission a green power device (GPD) with the endpoint on a target sink (present as a combo on Zigbee device), the sink has to be put in commissioning mode. If no endpoint in sink that supports the GPD device type, commissioning will fail. If the GPD is not in the vicinity of the sink, commissioning can happen via a proxy device. Commissioning mode is enabled in proxy by broadcasting proxy commissioning mode command from console of sink. On receipt of GP Proxy Commissioning Mode command, the proxy enters or exits the commissioning mode based on the options field in the command. Commissioning commands from GPD are verified in proxy and gets forwarded to sink via GPCommissioningNotification command. Note that GPD always sends messages in Green power frame format, whereas the commands that are transferred between proxy and sink are always in zigbee frame format as ZCL Green power cluster commands. Sink/Proxy can also send commands to GPD, but only when GPD indicates that it is available for reception. This will be indicated in RxAfterTx bit in the data sent by GPD.</p>
+<div class="p"><div class="fig fignone" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-FBEA37F2-586F-4B67-B33B-F08F330D4754"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-95528727-6939-4F47-8323-B38E8588D1E1-low.png" /></div>
+</div>
+<div class="section" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-001BCAA3-C488-4D25-83FE-7CE25540B41A"><h2 class="title sectiontitle">Zigbee Green Power Operation</h2></div>
+<p class="p">Based on the device type of a GPD, it can act as OnOff switch, Temperature sensor, illuminance sensor etc. After commissioning the GPD might send different commands and attribute reporting according to the device type. The data reaches the sink either directly or via proxy by GP notification command. Both proxy and sink performs security processing on the data sent by the GPD. The GP cluster endpoint of sink receives this GPD data first and forwards it to the appropriate endpoint implemented in sink device.</p>
+<p class="p">For more details regarding the Zigbee Green Power Feature, please refer to, the specification from Zigbee Alliance -&gt; <u class="ph u"><a class="xref" href="https://zigbeealliance.org/wp-content/uploads/2019/11/docs-09-5499-26-batt-zigbee-green-power-specification.pdf" target="_blank">Link to Zigbee PRO Green Power feature Specification by Zigbee Alliance</a></u></p>
+<p class="p">MPLAB Code Configurator (MCC) allows to configure the Zigbee Green Power feature as below</p>
+<div class="p"><div class="fig fignone" id="GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8__GUID-CD847EC2-756D-4CD1-AF33-F58D6FD55B72"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-1FEFD661-B8D0-4C16-A7AE-00DD157F7E24-low.png" /></div>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" title="This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.">Getting Started with Zigbee Applications</a></div>
+</div>
+</div></body>
+</html>

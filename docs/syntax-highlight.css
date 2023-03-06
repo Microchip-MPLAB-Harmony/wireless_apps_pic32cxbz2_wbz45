@@ -44,7 +44,7 @@
 }
 
 .hl-number {
-	color: #000000;
+	
 }
 
 .hl-annotation {
@@ -60,14 +60,14 @@
 }
 
 .hl-defines {
-	color: #2e92c7;
+    color: #2e92c7;
 }
 
 .hl-functions {
-	color: #000000;
-	font-weight: bold;
+    color: #000000;
+    font-weight: bold;
 }
 
 .hl-includes {
-	color: #CE7B00;
+    color: #CE7B00;
 }

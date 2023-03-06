@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="BLE Sleep Mode Legacy Advertisements" />
 <meta name="DC.relation" scheme="URI" content="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" />
@@ -19,7 +19,7 @@
 <meta name="Microsoft.Help.TocOrder" content="1" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -226,7 +226,7 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702">
-<h1 class="title topictitle1" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-C4E00FB7-D337-4E4A-8023-3FF06E68D25F">BLE Sleep Mode Legacy Advertisements</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<h1 class="title topictitle1" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-C4E00FB7-D337-4E4A-8023-3FF06E68D25F" style="">BLE Sleep Mode Legacy Advertisements</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
 <p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
 <p class="p"> <a class="xref" href="#GUID-820CEA03-90AE-484F-87C9-9CF2CE652702"><strong class="ph b">BLE Sleep Mode Legacy Advertisements</strong></a></p>
 <div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users to enable "sleep/standby" mode with BLE Advertisements on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the advertisement interval will be set to 1 sec. The advertisement interval will dictate the application sleep time.</p>
@@ -242,24 +242,24 @@
 </ol>
 </div>
 <div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e75"><span> <strong class="ph b">Tool</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e79"><span> <strong class="ph b">Qty</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d42910e75"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d42910e79"><span> <strong class="ph b">Qty</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e75 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e79 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span>Micro USB cable</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e75 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e79 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e75 "><span><a class="xref" href="https://www.microchip.com/en-us/development-tool/ATPOWERDEBUGGER" target="_blank">Power Debugger</a>/Multimeter</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e79 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e75 "><span><a class="xref" href="https://www.microchip.com/en-us/development-tool/ATPOWERDEBUGGER" target="_blank">Power Debugger</a>/Multimeter</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e79 "><span>1</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-4CBB6317-A2DE-486F-BCE0-42062FCF6301"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-7BE36147-8D27-4F88-939B-A394D40FC357"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Gettting Started with Software Development</a></p>
+<div class="section" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-4CBB6317-A2DE-486F-BCE0-42062FCF6301"><li class="li" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-7BE36147-8D27-4F88-939B-A394D40FC357"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on your PC">Gettting Started with Software Development</a></p>
 </li>
 </ol>
 </div>
@@ -334,18 +334,18 @@
 </div>
 <p class="p">Autogenerated, adverisement Data Format</p>
 <br /><img class="image" src="GUID-14EC7C05-6327-461B-8DD5-259218F05B05-low.png" /><br />
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-D7A5321C-855F-443E-847C-287A54624F6D" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e341"><span> <strong class="ph b">Source Files</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d37294e345"><span> <strong class="ph b">Usage</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702__GUID-D7A5321C-855F-443E-847C-287A54624F6D" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d42910e341"><span> <strong class="ph b">Source Files</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d42910e345"><span> <strong class="ph b">Usage</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e341 "><span>app.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e345 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app_ble.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e341 "><span>app_ble.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e345 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e341 "><span>app_ble_handler.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d37294e345 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e341 "><span>app_ble_handler.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d42910e345 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
 </tr>
 </tbody>
 </table>
@@ -375,7 +375,7 @@
 </li>
 </ul>
 <p class="p">This API can be called in APP_BleConfig() located in file app_ble.c</p>
-<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d37294e418', this);">Copy</button><code id="d37294e418" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
+<pre class="pre codeblock"><code id="d42910e418" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
     devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;
     devAddr.addr[0] = 0xA1;
     devAddr.addr[1] = 0xA2;

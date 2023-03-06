@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="BLE OTA DFU Image Distribution Procedure" />
 <meta name="DC.relation" scheme="URI" content="GUID-908446A4-F490-4063-9096-66C4831F9BE4.html" />
@@ -19,7 +19,7 @@
 <meta name="Microsoft.Help.TocOrder" content="4" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -226,7 +226,7 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-03033848-F789-4EF6-845B-0C7594868889">
-<h1 class="title topictitle1" id="GUID-03033848-F789-4EF6-845B-0C7594868889__GUID-9CF7B6E2-2321-40F6-BFB2-3D16B01A4258">BLE OTA DFU Image Distribution Procedure</h1><div class="body"><p class="p"><strong class="ph b">Step 1:</strong> Encrypted and Signed BLE OTAU bin File generation using signature and OTA configurator from MPLABX Tools device properties. Place the OTAU file in OTAU manager</p>
+<h1 class="title topictitle1" id="GUID-03033848-F789-4EF6-845B-0C7594868889__GUID-9CF7B6E2-2321-40F6-BFB2-3D16B01A4258" style="">BLE OTA DFU Image Distribution Procedure</h1><div class="body"><p class="p"><strong class="ph b">Step 1:</strong> Encrypted and Signed BLE OTAU bin File generation using signature and OTA configurator from MPLABX Tools device properties. Place the OTAU file in OTAU manager</p>
 <p class="p"><strong class="ph b">Step 2:</strong> Transfer the OTAU Flash image over BLE OTA profile/service to OTAU Target</p>
 <p class="p"><strong class="ph b">Step 3:</strong> Image is decrypted using AES Key in Target and stored in Embedded Flash Slot1</p>
 <p class="p"><strong class="ph b">Step 4:</strong> Once the complete image is received, the device is reset. Bootloader will copy new image from Slot1 to Slot0 after image authentication is done.</p>

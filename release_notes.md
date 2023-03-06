@@ -33,7 +33,7 @@ Following table provides number of Wireless examples available for different dev
 
 ### Development Tools
 
-- [MPLABÂ® X IDE v6.00](https://www.microchip.com/mplab/mplab-x-ide)
+- [MPLABÂ® X IDE v6.05](https://www.microchip.com/mplab/mplab-x-ide)
 - MPLABÂ® X IDE plug-ins:
   - MPLABÂ® Code Configurator (MCC) `v5.2.2`
 - [MPLABÂ® XC32 C/C++ Compiler v4.20](https://www.microchip.com/mplab/compilers)

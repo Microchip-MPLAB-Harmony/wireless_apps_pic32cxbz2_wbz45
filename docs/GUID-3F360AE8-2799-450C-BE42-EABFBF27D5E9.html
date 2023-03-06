@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="ZigBee Demo Experience" />
+<meta name="DC.relation" scheme="URI" content="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>ZigBee Demo Experience</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6" />
+<meta name="Microsoft.Help.TocOrder" content="3" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9">
+<h1 class="title topictitle1" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-2D3D7FD3-0ECB-4C6B-B8A0-3EC2BF976397" style="">ZigBee Demo Experience</h1><div class="body"><p class="p">The demo consists of the WBZ451 Curiosity board with accompanying ble_zigbee_light_prov (Zigbee Router/Zigbee Lights) Firmware, the Amazon Echo or Combined Interface firmware. The Amazon Echo or Combined Interface firmware plays the role of Zigbee Coordinator. The Coordinator, upon reset, creates a Zigbee network (Network Forming) and enables permit join for 3 minutes (Network Steering). The Router upon reset sends beacon requests looking for any existing network. If a network is found (beacon received from Zigbee Coordinator), the router will join (Network Steering) the existing network. To experience the Out of Box demo, users need to reset (factory new) the Zigbee Coordinator first followed by a reset (factory new) on the Zigbee Router. After a successful connection between the Zigbee Coordinator and the router, the router starts sending attributes to the coordinator. The Coordinator can control the router's Light On/Off, level, and color.</p>
+<div class="section" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-E013525F-889C-4133-915B-D159A216EBA2"><h2 class="title sectiontitle">Demo of Zigbee Lights with Amazon Echo as Coordinator</h2></div>
+<ol class="ol" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-77291B47-05DC-48C9-90AA-E251F0C2EABC"><span class="indent-level-default">1.</span><p class="p">Supply power to the WBZ451 Curiosity Board by connecting a USB cable to the kit (PC to WBZ451 Curiosity Board).</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-3F84BA3D-45C3-4850-A3D8-C4F78464E4CB"><span class="indent-level-default">2.</span><p class="p">Discovering Zigbee Lights (Using Voice Commands or the Alexa App)</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-62D8FEE8-423E-428B-8016-2C6404DF55FD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-8DFEA7C4-76B1-4F52-93A7-D2422AADCCED"><span class="indent-level-default">a.</span><p class="p">Voice Commands</p>
+<ol class="ol" type="i" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-C38C2473-04A3-4E0B-8AAA-00A7B26F590D"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-291F4B4C-D1AB-4AAA-9A3A-D4AEBEA945D2"><span class="indent-level-default">i.</span><p class="p">Ask Alexa to discover your device. Say “Discover my devices.”</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-53E41E62-28EB-44BC-A2DB-416244670ABB"><span class="indent-level-default">b.</span><p class="p">Alexa App</p>
+<ol class="ol" type="i" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-847265FB-0B9B-4AB5-8CA9-8C700A7C7393"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-BB2A8E80-2CC8-4D80-922B-85BAB5700410"><span class="indent-level-default">i.</span><p class="p">From the menu, select "Add Device."</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-7C35C753-6363-4BE6-864F-2D39AB8F1B5C"><span class="indent-level-default">ii.</span><p class="p">Select the type of smart home device “Light” and select other.</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-BA8762A9-F85F-4F9A-8FDC-D7B893EA6A48"><span class="indent-level-default">iii.</span><p class="p">Initiate Discover Devices</p>
+</li>
+</ol>
+</li>
+</ol>
+<div class="p"><strong class="ph b">Note:</strong> Echo/Alexa is in discovery mode for 45 secs. Devices (Lights/other) wanting to join Echo should initiate joining/connecting procedure within this time limit for a successful join<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-03711376-8336-4E4B-9C74-433B99CD8AE0"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-A2C32F37-9765-496A-A158-AE055ABB0492-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-B7EB2908-63DF-41A5-92B2-F58634148FC7"><span class="indent-level-default">3.</span><p class="p">Connecting Zigbee Lights (Router) to Echo (Coordinator)</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-B7EB2908-63DF-41A5-92B2-F58634148FC7"><span class="indent-level-default">a.</span><p class="p">Issue Reset to factory new by pressing and holding the SW2 button for 10 second.</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-B7EB2908-63DF-41A5-92B2-F58634148FC7"><span class="indent-level-default">b.</span><div class="p">Users can view the data logs for a better understanding of the demo experience. To view the logs -&gt; Open a terminal emulator like Teraterm with the following settings (Speed: 115200, Data: 8-bit, Parity: none, Stop bits: 1 bit, Flow control: none, LF+CR for tx and rx, echo enabled (Use of TeraTerm is not mandatory to experience the demo). The following message will be printed<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-98E4C9BE-0351-465F-B14C-76BA5F82F295"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-A7BD6AFB-BC44-4F92-BC8D-3309D46221A4-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9947FF90-457F-4759-A4FC-621F41F77A49"><span class="indent-level-default">c.</span><p class="p">To initiate a connection, the user needs to press and hold the SW2 button for 5 secs</p>
+<ol class="ol" type="i" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-899B7061-C362-4B6F-BEB6-9669606F915C"><span class="indent-level-default">i.</span><div class="p">Router finds the network and joins.<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-65F54C3E-15A7-4FC1-B4FC-3F9844CD80D2"><div class="figcap"><span class="fig--title-label">Figure 3. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-CE6CBC26-A259-4D8A-8CF1-8924F5DCAFEA-low.png" /></div>
+<strong class="ph b">Note 1:</strong> Reset to factory new (using SW2 button press) will erase the Zigbee connection state stored prior to reset and bring up the device as a factory new device.</div>
+<p class="p"><strong class="ph b">Note 2:</strong> Reset (SW1 button press) will not clear the Zigbee connection state prior to reset.</p>
+<p class="p"><strong class="ph b">Note 3:</strong> After a successful/unsuccessful join process, users can also initiate the reset to factory new by entering the command ‘resetToFN’ over UART</p>
+<p class="p"><strong class="ph b">Note 4:</strong> When using more than 1 WBZ451 Zigbee Light, users need to reprogram the new kit with different a mac ID.</p>
+<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-B11AB475-1579-4DAA-9A6F-1ECFAD2B3229"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-E1A1EFB1-FF89-4A4C-B87D-6AB143BF2166-low.png" /></div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-80849C4B-EE44-40FB-9038-C5D10A634C97"><span class="indent-level-default">4.</span><p class="p">Control the on/off state of RGB LEDs.</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-3D8889D8-4F33-4DDE-B538-AA1696C4E160"><span class="indent-level-default">a.</span><p class="p">Voice commands</p>
+<ol class="ol" type="i" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-8632F1E7-EBE2-4BBE-8830-62D7DA760ABB"><span class="indent-level-default">i.</span><p class="p">Ask Alexa, “Alexa, turn on first light” to change status of RGB LED from off to on</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-6D55F328-3CA2-49D8-8363-EAE4A0CF16EB"><span class="indent-level-default">ii.</span><p class="p">Ask Alexa, “Alexa, Dim first light” to reduce the brightness.</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-D85DCBF7-C75E-4FA9-87B8-FEF6AA51E971"><span class="indent-level-default">iii.</span><p class="p">Ask Alexa, “Alexa, Turn my first light green” to change the color.</p>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-2735A098-5324-4050-80F2-3EAD0854B69C"><span class="indent-level-default">b.</span><p class="p">Alexa App</p>
+<ol class="ol" type="i" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-9F8B15C2-8A32-4CEF-9E1E-368CBAA8C1CD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-1AE887A7-CC02-4F11-802C-5C9EAA80FD1C"><span class="indent-level-default">i.</span><p class="p">select First Light in “Lights” and control</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="section" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-0055CBDC-CD1C-4F86-9090-8CD32F143554"><h2 class="title sectiontitle">Setup – Zigbee Coordinator (Combined Interface)-Network Creation and Steering</h2></div>
+<ol class="ol" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-A2557A91-8297-4D56-A610-09491A448D6E"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-60F5B002-90F0-4656-A548-45FF2964DF9C"><span class="indent-level-default">1.</span><p class="p">Supply Power: Connect a USB cable to the WBZ451 Curiosity Board (zigbee_combined_interface)</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-69443016-9CF5-438E-8AAA-5F3B260DC3C8"><span class="indent-level-default">2.</span><p class="p">Open a terminal emulator like Teraterm with the following settings for both the WBZ451 Curiosity boards. USB Serial Device COMxx (Speed: 115200, Data: 8-bit, Parity: none, Stop bits: 1 bit, Flow control: none, LF+CR for tx and rx, echo enabled)</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-A7018950-2673-4F00-B839-7F292D50FAB9"><span class="indent-level-default">3.</span><p class="p">Reset the board to factory new (use either step 3.a or 3.b)</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-64414950-7FC0-4500-BC5D-7BE9F053C44C"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-78F1A637-189D-4DD6-B499-B6D4F829B8EF"><span class="indent-level-default">a.</span><p class="p">using button (SW2), press and hold SW2 button for 10 secs.</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-D5FF9509-6746-4C8C-8B24-FC8B0E843726"><span class="indent-level-default">b.</span><div class="p">send “resetToFN” to Coordinator over UART<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-17221FE8-9331-4D4E-BDA9-9B73A13ED05B"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-D0D002DB-1EF6-4AE3-BE36-1A880DB00F3F-low.png" /></div>
+<strong class="ph b">Note:</strong> Combined Interface will have permit join enabled for 180 secs after a successful creation of centralized network. Devices (Lights/other) wishing to join the combined interface must initiate the joining/connecting procedure within this time limit in order for the join to be successful.</div>
+</li>
+</ol>
+</li>
+</ol>
+<div class="section" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-23706D64-6F4A-4F80-B7B0-7C24B237E8A6"><h2 class="title sectiontitle">Zigbee Router (Lights) Setup – Connecting Zigbee Lights to the Network</h2></div>
+<ol class="ol" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-545C9FCC-0AE6-4908-AB97-EB1408E4DF31"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-0FBA56BB-4A70-4A92-9FFA-DC0B95394161"><span class="indent-level-default">1.</span><p class="p">Supply Power: Connect a USB cable to the WBZ451 Curiosity Board (PC to Board).</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-A5BC2D85-9F7D-447B-BEE9-4D1EF1763B4D"><span class="indent-level-default">2.</span><p class="p">Issue Reset to factory new by pressing and holding the SW2 button for 10 seconds.</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-3BB91F2A-0804-419E-A181-84B254F969D6"><span class="indent-level-default">3.</span><div class="p">Users can view the data logs for a better understanding of the demo experience. To view the logs -&gt; Open a terminal emulator like Teraterm with the following settings (Speed: 115200, Data: 8-bit, Parity: none, stop bits: 1 bit, Flow control: none, LF+CR for tx and rx, echo enabled. The following message will be printed<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-78B81A3A-C2B3-491F-8FC7-95FCA66BAAFB"><div class="figcap"><span class="fig--title-label">Figure 6. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-53B8F987-E1C4-4ABF-BA8E-C5FEE3766480-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-F578E26F-68D8-4210-9FDE-0B4E3BEF3335"><span class="indent-level-default">4.</span><p class="p">To initiate a connection, user needs to press and hold the SW2 button for 5 secs</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-EBE53FF1-EE19-4B7C-95FE-484C8A2E5518"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-DF93AAFF-AA36-46D3-9CB2-46FD8A068507"><span class="indent-level-default">a.</span><p class="p">Router finds the network and joins</p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-C8D3D773-F4E7-4487-B72E-8A7572B5579A"><span class="indent-level-default">b.</span><p class="p">Zigbee Lights (Router) will search for an existing network to join and after joining an existing network, the finding and binding of clusters will be initiated and completed</p>
+<div class="p"><strong class="ph b">Note:</strong> Zigbee Lights(Router) will be in identifying mode and will toggle RGB LED for 3 mins after Finding and Binding is successful<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-97CBDCC9-7F1E-4E5A-ADB9-3412649D4772"><div class="figcap"><span class="fig--title-label">Figure 7. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-C5A68CD4-4E1C-40A1-900D-EB0448357BE9-low.png" /></div>
+</div>
+<p class="p"><strong class="ph b">Note 1:</strong> Resetting to factory new (by pressing the SW2 button) will erase the Zigbee connection state stored prior to the reset and restore the device as a factory new device.</p>
+<p class="p"><strong class="ph b">Note 2:</strong> Reset (SW1 button press) will not clear the Zigbee connection state prior to reset.</p>
+<p class="p"><strong class="ph b">Note 3:</strong> After a successful or unsuccessful join process, users can also initiate the reset to factory new by entering the command ‘resetToFN’ over UART.</p>
+<div class="p"><strong class="ph b">Note 4:</strong> When using more than 1 WBZ451 Zigbee Lights, users need to reprogram the new kit with different mac ID.<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-EB511684-9CC4-489E-AF6F-C1D32E54D10E"><div class="figcap"><span class="fig--title-label">Figure 8. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-D3381481-B0BE-4D49-A6B0-35695851C30A-low.png" /></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+<div class="section" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-4058993C-2692-48DB-B362-310C3C9F6403"><h2 class="title sectiontitle">Monitoring and Control Zigbee Lights (Router)</h2></div>
+<ol class="ol" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-2DF07F48-287C-4BD7-877F-62EF4A900ECD"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-851F15EB-2C8F-444A-9642-7994F139AB72"><span class="indent-level-default">1.</span><p class="p">Obtain the Router's Network Address</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-5B1B5804-84AE-42CE-99DA-284042B45421"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-52EA6248-38E8-4F27-B64E-873E447DD004"><span class="indent-level-default">a.</span><div class="p">To get the Network Address of Router, user should send the getNetworkAddress command (the Router should have completed the joining process). A Command should be entered in terminal window of the Zigbee Router.<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-FA59B03C-1BB3-401D-879C-FD0052C7532C"><div class="figcap"><span class="fig--title-label">Figure 9. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-5CCAD051-1D7F-4731-AB4D-17F002130230-low.png" /></div>
+</div>
+<div class="p">The network address is also displayed on the Zigbee Coordinator device logs. <div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-8AEFDB5E-3EBF-4117-A0B8-CACBBE725A10"><div class="figcap"><span class="fig--title-label">Figure 10. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-7ED8EAD5-1FC3-4EE6-96B4-2316C25DA13E-low.png" /></div>
+</div>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-C6A9D8E5-5D16-43F3-990E-0D00EB6AD199"><span class="indent-level-default">2.</span><p class="p">Monitor the OnOff status, level, and Color control of Zigbee lights on the Coordinator.</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-F4CEC8FF-0B8A-4476-911A-811125B6388A"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-E9A3036D-EAFF-4757-B646-260BA4765234"><span class="indent-level-default">a.</span><div class="p">After a successful finding and binding, the coordinator device receives attributes automatically from the router periodically.<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-E16E2758-89AB-4759-AC7A-F199CA8FF078"><div class="figcap"><span class="fig--title-label">Figure 11. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-324A43B2-876D-4D89-AF1A-6CC52C8E6007-low.png" /></div>
+</div>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-E573129D-520A-481E-9C22-F6854782287D"><span class="indent-level-default">3.</span><p class="p">On/off control of Zigbee lights (RGB LED state)</p>
+<ol class="ol" type="a" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-FAEA1690-1869-4E71-9769-A10FC46CCCC9"><li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-D1AA47DF-D63C-4369-A0D6-B7802A7C671B"><span class="indent-level-default">a.</span><p class="p">On–Send the following command from Coordinator device over UART: <strong class="ph b">onOff -s 0x8185 0x23 -on</strong></p>
+</li>
+<li class="li" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-4EE4B78E-3B8F-4803-B132-251749C53602"><span class="indent-level-default">b.</span><p class="p">Off-Send the following command from Coordinator device over UART: <strong class="ph b">onOff -s 0x8185 0x23 -off</strong></p>
+<p class="p"><strong class="ph b">Note:</strong> "0x8185" is the address of the router (Light), the coordinator is trying to control.</p>
+<p class="p"><strong class="ph b">Note:</strong> "0x23" is the zigbee endpoint of the zigbee light in control.</p>
+</li>
+</ol>
+</li>
+</ol>
+<div class="p">Coordinator (Combined Interface-left) and the router (Zigbee Lights-right)<div class="fig fignone" id="GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9__GUID-F4365D25-EA3A-4F49-AF54-CCB06C47079B"><div class="figcap"><span class="fig--title-label">Figure 12. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-5234864C-0A30-493E-B949-A45C46171DE5-low.png" /></div>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" title="This section covers evaluation board features and running the preprogrammed demo example">Getting Started with WBZ451 Curiosity Board</a></div>
+</div>
+</div></body>
+</html>

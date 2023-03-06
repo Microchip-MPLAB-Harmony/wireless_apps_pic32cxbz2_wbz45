@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="BLE Connection" />
 <meta name="DC.relation" scheme="URI" content="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" />
@@ -19,7 +19,7 @@
 <meta name="Microsoft.Help.TocOrder" content="4" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -226,7 +226,7 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D">
-<h1 class="title topictitle1" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-F58D110D-7046-4982-8520-FCD1334D1BE9">BLE Connection</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+<h1 class="title topictitle1" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-F58D110D-7046-4982-8520-FCD1334D1BE9" style="">BLE Connection</h1><div class="body"><p class="p"> <a class="xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
 <p class="p"> <a class="xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
 <p class="p"><a class="xref" href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html">Legacy Advertisements</a> <strong class="ph b">--&gt;</strong> <a class="xref" href="#GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D">BLE Connection</a> <strong class="ph b">--&gt;</strong><a class="xref" href="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html">BLE Transparent UART</a></p>
 <div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__INTRODUCTION"><h2 class="title sectiontitle">Introduction</h2><p class="p">This document will help users enable advertisements and connection on <span class="ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC) BLE Advertisement is Broadcasting of small packets to peer devices. In BLE a peripheral device always starts with advertisements.Advertisement packets enable a central or observer to discover and connect to a peripheral.</p>
@@ -242,21 +242,21 @@
 </ol>
 </div>
 <div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__HARDWARE-REQUIRED"><h2 class="title sectiontitle">Hardware Required</h2>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-7901CA15-28A1-451A-B81A-168194CA36C2" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e84"><span> <strong class="ph b">Tool</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e88"><span> <strong class="ph b">Qty</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-7901CA15-28A1-451A-B81A-168194CA36C2" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d95670e84"><span> <strong class="ph b">Tool</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d95670e88"><span> <strong class="ph b">Qty</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e84 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e88 "><span>1</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e84 "><span><span class="ph">WBZ451</span> Curiosity Board</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e88 "><span>1</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e84 "><span>Micro USB cable</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e88 "><span>1</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e84 "><span>Micro USB cable</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e88 "><span>1</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-BC250753-8F17-4079-9977-31F8A2C5C790"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-07DD62AA-2B42-462C-8DC0-D87A4B7EB9B3"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Getting started with Software Development</a></p>
+<div class="section" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__SDK-SETUP"><h2 class="title sectiontitle">SDK Setup</h2><ol class="ol" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-BC250753-8F17-4079-9977-31F8A2C5C790"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-07DD62AA-2B42-462C-8DC0-D87A4B7EB9B3"><span class="indent-level-default">1.</span><p class="p"><a class="xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on your PC">Getting started with Software Development</a></p>
 </li>
 </ol>
 </div>
@@ -321,19 +321,19 @@
 </div>
 <p class="p">Autogenerated, advertisement data format</p>
 <br /><img class="image" src="GUID-48486BE3-FAEE-40E1-A324-54D3BFF8B8DA-low.png" /><br />
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-4147779E-0DE8-4986-AAB3-6C3AA9E7B24F" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e324"><span> <strong class="ph b">Source Files</strong></span></th>
-<th class="entry cellrowborder" style="vertical-align:middle;" id="d29957e328"><span> <strong class="ph b">Usage</strong></span></th>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-4147779E-0DE8-4986-AAB3-6C3AA9E7B24F" class="table" frame="border" border="1" rules="all"><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cellrowborder" style="vertical-align:middle;" id="d95670e324"><span> <strong class="ph b">Source Files</strong></span></th>
+<th class="entry cellrowborder" style="vertical-align:middle;" id="d95670e328"><span> <strong class="ph b">Usage</strong></span></th>
 </tr>
 </thead>
-<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span>app.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e324 "><span>app.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e328 "><span>Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span>app_ble\app_ble.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e324 "><span>app_ble\app_ble.c</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e328 "><span>Source Code for the BLE stack related component configurations, code related to function calls from app.c</span></td>
 </tr>
-<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e324 "><span><p class="p">app_ble\</p>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e324 "><span><p class="p">app_ble\</p>
 app_ble_handler.c</span></td>
-<td class="entry cellrowborder" style="vertical-align:middle;" headers="d29957e328 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d95670e328 "><span>All GAP, GATT, SMP and L2CAP Event handlers</span></td>
 </tr>
 </tbody>
 </table>
@@ -362,7 +362,7 @@ app_ble_handler.c</span></td>
 <ul class="ul"><li class="li" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D__GUID-2AF3C6DA-AD58-4F00-A042-F0180A8E4D0C"><p class="p">BLE_GAP_SetDeviceAddr(&amp;devAddr);</p>
 </li>
 </ul>
-<pre class="pre codeblock"><button title="Copy Code" class="copy-code" onclick="cpy('d29957e401', this);">Copy</button><code id="d29957e401" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
+<pre class="pre codeblock"><code id="d95670e401" content="    BLE_GAP_Addr_T devAddr;&#xA;    devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;&#xA;    devAddr.addr[0] = 0xA1;&#xA;    devAddr.addr[1] = 0xA2;&#xA;    devAddr.addr[2] = 0xA3;&#xA;    devAddr.addr[3] = 0xA4;&#xA;    devAddr.addr[4] = 0xA5;&#xA;    devAddr.addr[5] = 0xA6;&#xA;&#xA;    // Configure device address&#xA;    BLE_GAP_SetDeviceAddr(&amp;devAddr);">    BLE_GAP_Addr_T devAddr;
     devAddr.addrType = BLE_GAP_ADDR_TYPE_PUBLIC;
     devAddr.addr[0] = 0xA1;
     devAddr.addr[1] = 0xA2;

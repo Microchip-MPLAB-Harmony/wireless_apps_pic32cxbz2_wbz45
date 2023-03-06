@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Upgradable image .zigbee file generation" />
+<meta name="DC.relation" scheme="URI" content="GUID-F05AF46A-7BBB-4175-9128-7552429BC260.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-543C2332-73E4-4305-93D5-6649FE075F35" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Upgradable image .zigbee file generation</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-543C2332-73E4-4305-93D5-6649FE075F35" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-F05AF46A-7BBB-4175-9128-7552429BC260" />
+<meta name="Microsoft.Help.TocOrder" content="4" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-543C2332-73E4-4305-93D5-6649FE075F35"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-543C2332-73E4-4305-93D5-6649FE075F35">
+<h1 class="title topictitle1" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-EBA39AB2-0577-4A08-BAB0-EDB124C99BFE" style="">Upgradable image .zigbee file generation</h1><div class="body"><p class="shortdesc"></p>
+<p class="p">Referring to <a class="xref" href="GUID-F4386E1E-9C89-4A53-8F6F-D6729E9DF217.html">Project Properties Configuration for Current image</a> , "SignFirmware" and "OTA" bin (.zigbee) generation MPLABX script is added into OTA project. "OTA" window in project properties is used for OTA image generation.</p>
+<div class="p"><ol class="ol" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-F0F661B1-CC5D-4C1E-9AAE-2DECA0432085"><li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">1.</span><div class="p">After making the new upgrdabe application keep the new upgradable image version number not same as current running image version. The version number has to be taken care (defined by macro APPLICATION_VERSION in app.h file) in new firmware as well as "Firmware Rev" in "SignFirmware" window. For example, new image Firmware Rev is chosen as 1.0.0.1 and same in Firmware version in the project. <ol class="ol" type="a" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-F0F661B1-CC5D-4C1E-9AAE-2DECA0432085"><li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">1.</span><p class="p">Follow step 1 in <a class="xref" href="GUID-F4386E1E-9C89-4A53-8F6F-D6729E9DF217.html">Project Properties Configuration for Current image</a> to open "SignFirmware" properties window.</p>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">2.</span><div class="p">Change the "Firmware Rev" and then click on "Apply". <ol class="ol" type="i" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-F0F661B1-CC5D-4C1E-9AAE-2DECA0432085"><li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">1.</span><div class="p"><div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-0D328657-16D1-4C94-9371-DF74DE88DD19"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-E73B709E-9B95-4D86-A9C0-98FF2442F330-low.png" /></div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">3.</span><p class="p">Compile the project.</p>
+</li>
+</ol>
+</div>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><span class="indent-level-default">2.</span><div class="p">Follow the step 1 in <a class="xref" href="GUID-F4386E1E-9C89-4A53-8F6F-D6729E9DF217.html">Project Properties Configuration for Current image</a> to open "OTA" properties window.<ul class="ul" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-F0F661B1-CC5D-4C1E-9AAE-2DECA0432085"><li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><p class="p">"OTA" window has few configurations.</p>
+<div class="p"><div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-74EC8515-FF66-445A-88AB-A64501F3255D"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-B4BC0E67-C975-406E-A483-F19794C4C908-low.png" /></div>
+</div>
+<ul class="ul"><li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-DF303E53-75A5-418A-A082-DE971C8FAE34"><p class="p">Output File Name - Name of the image.</p>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-7182721D-167A-41E6-B65D-BB04EDCFB427"><div class="p">Output File Encryption - Key used to encrypt the image. If the upgradable image is secured (encrypted using AES128 CBC), the encryption key has to be present in current application to do decryption of the received image. The AES Key used in Zigbee OTA file generation configuration has to match with the key in current running image as shown below. <div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-4D018D16-B76D-472F-8FE7-5BA8DDE147DA"><div class="figcap"><span class="fig--title-label">Figure 3. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-5D9D51F0-75DD-4A2A-95D3-8645D0F7807B-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-38D15E19-A867-4834-9771-20D548BE44F6"><p class="p">Output File Type - Choose "Zigbee OTA File" type for Zigbee based OTAU</p>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-A3C3ABA0-BA2D-42B5-B1D2-F5750CA8932D"><div class="p">Manufacture Code - This has to match with the configuration in upgradable image code. <div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-F1827B95-D371-4C83-9C6C-E0688A9750A6"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-ECA39614-1C0F-4492-88D1-B1D553ED4AA0-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-A3C3ABA0-BA2D-42B5-B1D2-F5750CA8932D"><div class="p">Image Type - This can be 0xFFFF where image type can be anything, or has to match with configuration in upgradable image code. <div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-C99C0191-D71F-473B-9844-6C1C4D678243"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-F130A53C-80EB-4F3B-8437-5DFD10AD6452-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-A3C3ABA0-BA2D-42B5-B1D2-F5750CA8932D"><div class="p">File Version - This is the application firmware version, and has to be greater than the current running image. It has to match with the configuration in upgradable image code. <div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-FC877407-7EFB-4917-889E-7A98ECEC51A8"><div class="figcap"><span class="fig--title-label">Figure 6. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-25E7E639-2F8A-42CF-93B5-E1AE87AE3A59-low.png" /></div>
+</div>
+</li>
+</ul>
+<p class="p"></p>
+</li>
+<li class="li" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-D640FA0C-3EA5-4D3B-8ABE-67E9CAB9D9BD"><p class="p">After the configurations, click on "Create OTA File". The Upgradable .zigbee image with "Output File Name" will be created in .X folder. This is the image stored in Zigbee OTAU PC tool to send to OTAU Client.</p>
+<div class="p"><div class="fig fignone" id="GUID-543C2332-73E4-4305-93D5-6649FE075F35__GUID-CC7BF82C-42AF-4D9D-B003-60916F9AD190"><div class="figcap"><span class="fig--title-label">Figure 7. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-1E8F5801-4E88-4F00-9210-7752E10D7AEF-low.png" /></div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-F05AF46A-7BBB-4175-9128-7552429BC260.html">OTA Implementation Details - OTAU Client Side</a></div>
+</div>
+</div></body>
+</html>

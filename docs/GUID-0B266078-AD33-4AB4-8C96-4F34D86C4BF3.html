@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="OTA Implementation Details - OTAU Server" />
+<meta name="DC.relation" scheme="URI" content="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-2E405D3D-C758-40B8-A1DC-24B16E0AC2C1.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-8D2F1488-E176-4352-994E-9B8B96AA6369.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB.html" />
+<meta name="DC.relation" scheme="URI" content="GUID-E1668A2E-87A9-405D-9234-53C592A035DF-X2.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>OTA Implementation Details - OTAU Server</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6" />
+<meta name="Microsoft.Help.TocOrder" content="6" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3">
+<h1 class="title topictitle1" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-6F46B5DD-8FDE-4860-88C3-05084C004B29" style="">OTA Implementation Details - OTAU Server</h1><div class="body"><p class="shortdesc"></p>
+<p class="p">Follow the below step to add the Zigbee OTAU Server capability in any of the zigbee application. Mostly Combined interface which is zigbee co-ordinator is considered for OTAU server.</p>
+<div class="section" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-9B2831AA-7052-42E1-AA5B-801AB051A68B"><h2 class="title sectiontitle"><strong class="ph b">Pre-requisite</strong></h2></div>
+<ol class="ol" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-5194DF8C-0451-4998-BFC9-E16634D7ED2E"><li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-FF5E3527-6DD1-4D9C-9339-12C854FC65AF"><span class="indent-level-default">1.</span><p class="p">Open any zigbee type application based on MCC (Example project/ Custom created project)</p>
+</li>
+<li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-E5D0A192-2D84-45DB-BD45-487BEADF4BDC"><span class="indent-level-default">2.</span><p class="p">Launch MPLABx Code Configurator (MCC).</p>
+</li>
+</ol>
+<div class="p">The below steps explains only the components/configurations needed for OTAU Server functionality. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-0ED857B0-4420-4C5A-AE67-60FE6AC53418"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-CA6DC957-7162-4959-AD21-5259420E7C63-low.png" /></div>
+</div>
+<div class="section" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-CCB3B4B7-26FF-45DC-A929-A181045FD738"><h2 class="title sectiontitle"><strong class="ph b">Pull-in MCC Components</strong></h2></div>
+<ol class="ol" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-6479799C-7692-4A9D-82EF-7344BB5CB62E"><li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-B6DBE26A-1424-47C1-906A-54A178C41672"><span class="indent-level-default">1.</span><div class="p">Configure "Zigbee Device Type" component as below to enable "OTA Server" capability. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-80532FB1-A984-4E27-BAF3-C8CDF5E65F08"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-FB9DEF77-B3D7-4767-A226-040CCB04EECF-low.png" /></div>
+</div>
+</li>
+<li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-D0ABE758-A1E0-4F54-B916-42D33AAB5455"><span class="indent-level-default">2.</span><div class="p">As the OTAU server is connected to PC to get the upgradable image, the UART interface has to be configured. Connect "Zigbee console" in the Zigbee device component to USART Driver Component and to SERCM0 component (for WBZ Curiosity Board) as shown below. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-9B27740F-8975-4AA1-885D-50CD76AEDF84"><div class="figcap"><span class="fig--title-label">Figure 3. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-9E013D86-F0FB-437B-82D3-A2B8F1776AB1-low.jpg" /></div>
+</div>
+<ol class="ol" type="a" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-E67BF566-5C08-4FC9-8F91-818D976D7B99"><li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-1B509E4D-AC81-4EAB-AD44-FE4F9932A806"><span class="indent-level-default">a.</span><div class="p">Configure the SERCOM0 component to set the uart baud rate, parity, data bits and Sercom Tx and Rx pins, DMA. DMA is needed for stable UART communication without impacting the CPU time for other operations. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-9A2988FA-C3E6-4C1D-BADE-38761D7C97C6"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-57DCFA7C-248E-4355-9C8A-E63D97D2BCE1-low.jpg" /></div>
+</div>
+</li>
+</ol>
+</li>
+<li class="li" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-4B2F8EC6-2C04-4DBF-B231-A8F35A6B14AD"><span class="indent-level-default">3.</span><div class="p">Add the "Bootloader Services" dependent component for "Device Support" component in project graph. This component generates the supporting linker file and MPLABX script needed for OTAU Server device upgrade over UART. This step is needed only when require to upgrade the OTAU server device locally through UART interface. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-CF0140F9-2C75-402F-AC3D-13005BEF92E7"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-32EB6830-4FC4-47AA-86A7-97877B9A281F-low.png" /></div>
+</div>
+<div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-F8D2D494-7123-4538-8A0E-92E3D6C15137"><div class="figcap"><span class="fig--title-label">Figure 6. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-8BA33E91-1572-4B10-9ECD-1628A4BB4DFD-low.png" /></div>
+</li>
+</ol>
+<div class="section" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-14283541-C9B6-42BA-A7C3-8CF20EE12C17"><h2 class="title sectiontitle"><strong class="ph b">Generate Code</strong></h2></div>
+<p class="p">Generate Code by Clicking on "<a class="xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html">Generate</a>" button</p>
+<div class="p"><div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-48C94742-4C69-4150-AC63-4DB456B16520"><div class="figcap"><span class="fig--title-label">Figure 7. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-0A951584-D332-4D40-9CCE-F326CC157F00-low.png" /></div>
+</div>
+<div class="section" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-AC735526-734C-4E83-9630-53341A14D038"><h2 class="title sectiontitle"><strong class="ph b">Files and Routines Automatically generated by MCC</strong></h2></div>
+<div class="p">After generating the code from MCC tool by clicking Generate, below is the project folder structure. <div class="fig fignone" id="GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3__GUID-C67DE635-977D-408F-991C-4EBF396D7871"><div class="figcap"><span class="fig--title-label">Figure 8. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-9C9D1016-59A2-4EBF-912C-09BBE8D6FEBC-low.png" /></div>
+</div>
+<p class="p"></p>
+</div>
+<div class="related-links">
+<ul class="ullinks">
+<li class="link ulchildlink"><strong><a href="GUID-2E405D3D-C758-40B8-A1DC-24B16E0AC2C1.html">Application Development</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-8D2F1488-E176-4352-994E-9B8B96AA6369.html">Project Properties Configuration for Serial Bootloading</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB.html">Unified Image Generation for Serial Bootloading</a></strong><br />
+</li>
+<li class="link ulchildlink"><strong><a href="GUID-E1668A2E-87A9-405D-9234-53C592A035DF-X2.html">Programming the Current Application Image using MPLABX IDE</a></strong><br />
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6.html">Device Firmware Upgrade Over Zigbee Link</a></div>
+</div>
+</div></body>
+</html>

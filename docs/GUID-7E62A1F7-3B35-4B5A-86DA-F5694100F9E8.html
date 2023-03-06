@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Zigbee Commisioning Procedure" />
+<meta name="Description" content="Commissioning is the process of initializing the devices to join a network and to work together. The Zigbee Base Device Behaviour specification specifies the procedures for the following commissioning mechanisms which are executed in the order as given given below" />
+<meta name="DC.relation" scheme="URI" content="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="stylesheets/atmel.css" />
+<title>Zigbee Commisioning Procedure</title>
+<meta name="Microsoft.Help.Id" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8" />
+<meta name="Microsoft.Help.TocParent" content="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" />
+<meta name="Microsoft.Help.TocOrder" content="2" />
+<meta name="Microsoft.Help.Locale" content="en-US" />
+<meta name="Microsoft.Help.TopicLocale" content="en-US" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
+<script language="javascript">
+       
+       if (window.parent.location.protocol != 'file:') {
+				document.addEventListener('click', function(e) {
+				    if (e.target) {
+               if (e.target.nodeName == "A" ) {
+                    if (!e.target.target) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                              
+                      var origUrl = window.parent.location.href.substr(0, window.parent.location.href.indexOf("?"));
+                      if (origUrl.length === 0) {
+                          origUrl = window.parent.location.href;
+                      }
+                      var href= e.target.getAttribute("href");
+                      var parts = href.split("#");
+          
+                      var url = "";
+                      if (parts.length == 2 ) {
+                        if (!parts[0].length) {
+                            url = window.parent.location.search.replace('?','')
+                        } else {
+                            url = parts[0].replace('.html','');
+                        }
+                      } else {
+                        url = parts[0].replace('.html','');
+                      }
+
+                      if (parts.length == 2) {
+                          url += "#" + parts[1];
+                      }
+    
+                      window.parent.location.href = origUrl + "?" + url;
+
+                      return false;
+                    }
+               }
+            }
+				});
+			}
+
+		</script><script language="javascript">
+         
+         function copyContent(content, button) {
+         
+            var textArea = document.createElement("textarea");
+            
+            // Place in the top-left corner of screen regardless of scroll position.
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            
+            // Ensure it has a small width and height. Setting to 1px / 1em
+            // doesn't work as this gives a negative w/h on some browsers.
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            
+            // We don't need padding, reducing the size if it does flash render.
+            textArea.style.padding = 0;
+            
+            // Clean up any borders.
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            
+            // Avoid flash of the white box if rendered for any reason.
+            textArea.style.background = 'transparent';
+            
+            textArea.value = content;
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+               var successful = document.execCommand('copy');
+               var msg = successful ? 'successful' : 'unsuccessful';
+               if (!button.classList.contains("copied")){
+                  button.textContent = "Copied";
+                  button.classList.add("copied");
+                  setTimeout(function(){
+                     button.textContent = "Copy";
+                     button.classList.remove("copied");
+                  },1000);
+               }
+            } catch (err) {
+               console.log('Oops, unable to copy');
+            }
+            
+            document.body.removeChild(textArea);
+         }
+         
+         function cpy(id, button) {
+            var element = document.getElementById(id);
+            var content = element.getAttribute("content");
+            
+            copyContent(content, button);
+         }
+         
+         document.addEventListener("DOMContentLoaded", function(event) {
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.style.position = "relative";
+               var copy = document.createElement("button");
+               copy.textContent = "Copy";
+               copy.setAttribute("class", "copy-code");
+               
+               var content = elem.textContent;
+               
+               copy.addEventListener("click", function(){
+                  copyContent(content, copy);
+               });
+               
+               elem.addEventListener("mouseenter", function(evt){
+                  elem.prepend(copy);
+               });
+            });
+            
+            document.querySelectorAll(".codeblock").forEach(function(elem) {
+               elem.addEventListener("mouseleave", function(evt){
+                  document.querySelector(".copy-code").remove();
+               });
+            });
+         });
+         
+      </script><script language="javascript">
+          
+          // Add the MathML namespace to html
+          var html = document.getElementsByTagName("html")[0],
+          head = document.getElementsByTagName("head")[0];
+          
+          var mathJax = document.createElement("script");
+          mathJax.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML";
+          head.appendChild(mathJax);
+          
+          html.setAttribute("xmlns:m","http://www.w3.org/1998/Math/MathML");
+          
+          function inIframe() { try { return window.self !== window.top; } catch (e) { return true; } }
+          
+          if (!inIframe()) { 
+          
+          var Default = "index.html?GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8"; 
+          
+          var displaylocation = "value" + window.location.href;
+          
+          var GUIDS = displaylocation.split('GUID');          
+          
+          if (displaylocation.indexOf('#GUID') != -1) {            
+          var First = GUIDS[1].split('.html');  
+          if (GUIDS[3]){First = GUIDS[2].split('.html');}
+          if (GUIDS[4]){First = GUIDS[3].split('.html');}
+          if (GUIDS[5]){First = GUIDS[4].split('.html');}
+          
+          var Second = GUIDS[2].split('#');   
+          if (GUIDS[3]){Second = GUIDS[3].split('#');}
+          if (GUIDS[4]){Second = GUIDS[4].split('#');}
+          if (GUIDS[5]){Second = GUIDS[5].split('#');}
+          
+          Default = "index.html?" + "GUID" + First[0] + "GUID" + Second[0];     
+          }                    
+          window.top.location = Default;
+          }       
+          
+        </script><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /><style xml:space="">
+        
+          button.copy-code{
+            display:none;
+            padding:0.7em 1.4em;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.15em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#9c9c9c;
+            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+            text-align:center;
+            position:relative;
+            border: 0;
+            float: right;
+            border-radius: .5em;
+            cursor: pointer;
+          }
+          button.copy-code:active{
+            top:0.1em;
+          }
+          
+          pre:hover button.copy-code{
+            display: inline-block !important;
+          }
+          button.copy-code.copied {
+            cursor: default !important;
+          }
+          
+          
+          @media all and (max-width:30em){
+            button.copy-code{
+              display:block;
+              margin:0.4em auto;
+            }
+          }
+        
+        
+      </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
+<body id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8">
+<h1 class="title topictitle1" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-9272D919-625B-47D0-B014-C2B5DB368831" style="">Zigbee Commisioning Procedure</h1><div class="body"><p class="shortdesc">Commissioning is the process of initializing the devices to join a network and to work together. The Zigbee Base Device Behaviour specification specifies the procedures for the following commissioning mechanisms which are executed in the order as given given below</p>
+<p class="p"><a class="xref" href="https://csa-iot.org/developer-resource/zigbee-base-device-behavior-bdb-v1-0/" target="_blank">Link to Base Device Behavior Specification by Zigbee Alliance</a></p>
+<div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-B0BF0809-ACB2-4D95-A81B-2121F543D4DF" class="table" frame="void" border="1" rules="all"><col style="width:" /><col style="width:" /><col style="width:" /><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e27"><span><p class="p">Sequence</p>
+</span></th>
+<th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e30"><span><p class="p">Commissioning Aspect</p>
+</span></th>
+<th class="entry nocellnorowborder" style="vertical-align:middle;" id="d32374e33"><span><p class="p">Details</p>
+</span></th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">1</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Touchlink</p>
+</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">A node may support the proximity based commissioning mechanism. If touchlink commissioning is supported, the node shall support touchlink as an initiator, a target or both.</p>
+<p class="p"><strong class="ph b">- Initiator</strong> --&gt; Will be a member of an existing network or (if not) will create a new network</p>
+<p class="p"><strong class="ph b">- Target</strong> --&gt; Gets added to network by Initiator</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">2</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Network Steering</p>
+</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">All nodes shall support network steering.</p>
+<p class="p"><strong class="ph b">- Node not on a network</strong> -&gt; Action of searching for and joining an open network.</p>
+<p class="p"><strong class="ph b">- Node on a network</strong> -&gt; It is the action of opening the network to allow new nodes to join</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">3</p>
+</span></td>
+<td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Network Formation</p>
+</span></td>
+<td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p">The ability of a node to form a network with its network security model. It shall be dependent on the logical device type of the node.</p>
+<p class="p"><strong class="ph b">- Zigbee coordinator</strong> --&gt; Forms a Centralized security networks</p>
+<p class="p"><strong class="ph b">- Zigbee router</strong> --&gt; Forms a Distributed security network</p>
+</span></td>
+</tr>
+<tr class="row"><td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e27 "><span><p class="p">4</p>
+</span></td>
+<td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e30 "><span><p class="p">Finding &amp; Binding</p>
+</span></td>
+<td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d32374e33 "><span><p class="p"><strong class="ph b">Initiator Endpoint</strong> -&gt; Automatically searches and establishes application connections with target endpoint, by using the identify cluster with matching cluster</p>
+<p class="p">- <strong class="ph b">Target Endpoint</strong> -&gt; Handles finding and binding requests from initiator endpoint</p>
+</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p class="p">Here, Touchlink, Steering and Formation decides zigbee network joining procedure. Finding &amp; binding is not related to joining procedure, but involves application level connections for cluster data transaction, to be done in any joining procedure.</p>
+<div class="p">Default Mapping of Commissioning to zigbee device types :<div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-1507287F-CE2C-4448-9884-5FA6CE51E8B7"><div class="figcap"><span class="fig--title-label">Figure 1. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-4A9357F1-3A82-463B-BC1F-6F2AE6513D28-low.png" /></div>
+This is configurable from MPLAB Code Configurator (MCC) while generating the project:<div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-7F43194A-5109-487C-B0DD-330DDD00AC4C"><div class="figcap"><span class="fig--title-label">Figure 2. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-66B75DE9-BFAA-40C4-99F2-3D506886CD3F-low.png" /></div>
+</div>
+<p class="p">The commissioning procedure can be automatically started when the device is first powered on, based on the 4 Commissioning Aspects (Touchlink, steering, formation, finding &amp; binding) chosen in above MPLAB Code Configurator (MCC). This is referred as auto commissioning.</p>
+<p class="p">The application can also choose invoking this commisioning procedure manually through user input. In Microchip zigbee reference applications this is demonstrated through sending console commands through UART. This way of commissioning is referred as manual commissioning.</p>
+<div class="section" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-CC9D32FF-608F-4887-A0B2-A5A2E7C8AA9C"><h2 class="title sectiontitle">Auto commissioning</h2></div>
+<p class="p">Auto-commissioning/commissioning on startup is the easiest way of commissioning, which involves automatic commissioning of devices. It allows for minimal (or no) human intervention, since most of the startup parameters are pre-configured .The flowchart for the commissioning mode based on 4 commissioning aspect flags in Zigbee Application is described below :</p>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-292C81C4-0F93-4460-8816-2D40D1CA70A2"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Flowchart for Commissioning Procedure. </div><span class="desc figdesc"></span><img class="image" src="GUID-7AFDF51B-33E9-4D61-9819-A4FFE9A06B25-low.png" /></div>
+This type of commissioning can be enabled by user, using the MPLAB Code Configurator (MCC) as shown below :</div>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-74F7852F-DF11-437B-9583-AFCA42B646D2"><div class="figcap"><span class="fig--title-label">Figure 4. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-194ADA9C-FAE0-4D61-907F-87B889F35C3F-low.png" /></div>
+</div>
+<p class="p">Below is the example of auto commissioning procedure between Combined Interface and Thermostat applications.</p>
+<ol class="ol" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-237F2598-0265-431C-ADB0-BB9CBC545F8F"><li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-23260622-1CFD-47D6-9D6A-6108590CBC9A"><span class="indent-level-default">1.</span><p class="p">After Combined Interface application is programmed on the device, automatically device starts the commissioning procedure and creates the network.</p>
+</li>
+<li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-1D34C690-6A01-424F-8687-3950EDC10CD0"><span class="indent-level-default">2.</span><p class="p">Program another device with Thermostat application.</p>
+</li>
+<li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-D4F53758-C894-4E70-9C53-2D32A9B14663"><span class="indent-level-default">3.</span><p class="p">After that the device joins , the joiner(Thermostat) starts reporting attribute data back to the Combined Interface device. Here there is no user input needed to initiate the commissioning. It can be observed below in the console logs :</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Note:</strong> <em class="ph i">"resetToFN" console command is used to bring the device to factory default state and reset the device. This step is needed only if the UART terminal is not setup before the device gets power on first and if logs are missed in terminal.</em></p>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-F5957062-8AA4-4BE3-ACAA-5AF9B733EB0B"><div class="figcap"><span class="fig--title-label">Figure 5. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-B8F38EEC-441E-41C0-9AC2-11BE32DF6A55-low.jpg" /></div>
+</div>
+<div class="section" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-6D3F1A57-539D-41E2-80B4-AA95EE9229F6"><h2 class="title sectiontitle">Manual Commissioning (when UART is enabled)</h2></div>
+<p class="p">Manual mode of commissioning is configured using the following MPLAB Code Configurator (MCC) :</p>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-A285F367-E6FD-43C9-825B-1BD38205232C"><div class="figcap"><span class="fig--title-label">Figure 6. </span>. </div><span class="desc figdesc"></span><img class="image" src="GUID-03DF4BEA-86F9-4D82-9B93-1B3153ECE3C7-low.png" /></div>
+</div>
+<p class="p">To trigger the commissioning procedures manually, the user has to issue the following console commands as given below:</p>
+<ol class="ol" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-54112512-9145-4333-A27C-9B812E8A7F2A"><li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-556DB039-DAB4-4255-A6DB-4D1A149425FA"><span class="indent-level-default">1.</span><p class="p"><strong class="ph b">Touchlink</strong> – “invokeCommissioning 1 0” (The device starts touchlink as an initiator)</p>
+</li>
+<li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-370692EB-0ABC-4ED8-9BC6-96C36AE2CA70"><span class="indent-level-default">2.</span><p class="p"><strong class="ph b">Network Steering</strong> – “invokeCommissioning 2 0” (the device starts to search for a network to
+                    join. If device is already part of the network and has the "Router" capability,
+                    it will open the network for other devices to join)</p>
+</li>
+<li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-28D36C45-AF7E-4995-9112-0A9C3414D253"><span class="indent-level-default">3.</span><p class="p"><strong class="ph b">Network Formation</strong> – “invokeCommissioning 4 0” (If the device is a router or a coordinator,
+                    forms the network)</p>
+</li>
+<li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-5CBCD0F4-BFB7-4F2B-B413-FB59AF3FD555"><span class="indent-level-default">4.</span><p class="p"><strong class="ph b">Finding &amp; Binding</strong> - “invokeCommissioning 8 0” (this command shall be given for any the devices which needs to be bound for clusters) - SetFBRole 1 (this command to be given on application endpoint acts as initiator which initiates the binding procedure by sending identify query request) - SetFBRole 0 (this command to be given on application endpoint acts as target)</p>
+</li>
+</ol>
+<p class="p"><strong class="ph b">Note:</strong> <em class="ph i">Permit Join flag is enabled for 180 secs after forming a network and opens up the network for a finite duration to allow other nodes to join. To allow the joining even after 180 secs, give "setPermitJoin 180" or “invokeCommissioning 2 0” command from the console. The above mentioned note holds good for both Commissioning on Startup (auto) and manual commissioning procedure</em></p>
+<p class="p">The below table shows the list of manual commissioning command sequences to be followed between 2 joining devices.</p>
+<div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-155B3B8B-6C2F-45FE-84E4-96E56B4ADC96" class="table" frame="void" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 1. </span>Manual Commissioning command
+                    sequences</span></caption>
+                    <col style="width:" />
+                    <col style="width:" />
+                    <col style="width:" />
+                    <col style="width:" />
+                    <thead class="thead" style="text-align:left;">
+                        <tr class="row">
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e238"><span>
+                                <p class="p">S.No.</p>
+
+                            </span></th>
+
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e244"><span>
+                                <p class="p">Coordinator</p>
+
+                            </span></th>
+
+                            <th class="entry cell-norowborder" style="vertical-align:middle;" id="d32374e250"><span>
+                                <p class="p">Router/End device</p>
+
+                            </span></th>
+
+                            <th class="entry nocellnorowborder" style="vertical-align:middle;" id="d32374e256"><span>
+                                <p class="p">Commands</p>
+
+                            </span></th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody class="tbody">
+                        <tr class="row">
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                                <p class="p">1</p>
+
+                            </span></td>
+
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                                <p class="p">Combined interface</p>
+
+                            </span></td>
+
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                                <p class="p">Thermostat</p>
+
+                            </span></td>
+
+                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                                <p class="p">1. Combined Interface and Thermostat - resetToFN</p>
+
+                                <p class="p">2.Combined Interface - invokeCommissioning 4 0</p>
+
+                                <p class="p">3. Combined Interface - invokeCommissioning 2 0</p>
+
+                                <p class="p">4. Thermostat - invokeCommissioning 2 0 (After this Thermostat
+                                    joins Combined Interface)</p>
+
+                                <p class="p">5. Combined Interface - SetFBRole 0</p>
+
+                                <p class="p">6. Thermostat - SetFBRole 1</p>
+
+                                <p class="p">7. Combined Interface - invokeCommissioning 8 0</p>
+
+                                <p class="p">8. Thermostat - invokeCommissioning 8 0</p>
+
+                                <p class="p">9. Thermostat Device will start reporting periodically.</p>
+
+                            </span></td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                                <p class="p">2</p>
+
+                            </span></td>
+
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                                <p class="p">Combined interface</p>
+
+                            </span></td>
+
+                            <td class="entry cellrowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                                <p class="p">Multi Sensor</p>
+
+                            </span></td>
+
+                            <td class="entry row-nocellborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                                <p class="p">1. Combined Interface and Multi Sensor - resetToFN</p>
+
+                                <p class="p">2. Combined Interface - invokeCommissioning 4 0</p>
+
+                                <p class="p">3. Combined Interface - invokeCommissioning 2 0</p>
+
+                                <p class="p">4. Multi Sensor - invokeCommissioning 2 0 (After this Multi
+                                    Sensor joins Combined Interface)</p>
+
+                                <p class="p">5. Combined Interface - SetFBRole 0</p>
+
+                                <p class="p">6. Combined Interface - invokeCommissioning 8 0</p>
+
+                                <p class="p">7. Multi Sensor - setSrcSensorType -ls</p>
+
+                                <p class="p">8. Multi Sensor - SetFBRole 1</p>
+
+                                <p class="p">9. Multi Sensor - invokeCommissioning 8 0 (After this Light
+                                    Sensor Finding and Binding happens)</p>
+
+                                <p class="p">10. Multi Sensor - setSrcSensorType -os</p>
+
+                                <p class="p">11. Multi Sensor - SetFBRole 1</p>
+
+                                <p class="p">12. Multi Sensor - invokeCommissioning 8 0 (After this
+                                    Illuminance Measurement Finding and Binding happens)</p>
+
+                                <p class="p">13. Multi Sensor - setSrcSensorType -ts</p>
+
+                                <p class="p">14. Multi Sensor - SetFBRole 1</p>
+
+                                <p class="p">15. Multi Sensor - invokeCommissioning 8 0 (After this
+                                    Temperature Measurement Finding and Binding happens)</p>
+
+                                <p class="p">16. Multi Sensor - setSrcSensorType -hs</p>
+
+                                <p class="p">17. Multi Sensor - SetFBRole 1</p>
+
+                                <p class="p">18. Multi Sensor - invokeCommissioning 8 0 (After this Relative
+                                    Humidity Measurement Finding and Binding happens)</p>
+
+                                <p class="p">19. Multi Sensor Device will start reporting periodically</p>
+
+                            </span></td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e238 "><span>
+                                <p class="p">3</p>
+
+                            </span></td>
+
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e244 "><span>
+                                <p class="p">Combined interface</p>
+
+                            </span></td>
+
+                            <td class="entry cell-norowborder" style="vertical-align:middle;" headers="d32374e250 "><span>
+                                <p class="p">Lights</p>
+
+                            </span></td>
+
+                            <td class="entry nocellnorowborder" style="vertical-align:middle;" headers="d32374e256 "><span>
+                                <p class="p">1. Combined Interface and Light - resetToFN</p>
+
+                                <p class="p">2. Combined Interface - invokeCommissioning 4 0</p>
+
+                                <p class="p">3. Combined Interface - invokeCommissioning 2 0</p>
+
+                                <p class="p">4. Light - invokeCommissioning 2 0 (After this Light joins
+                                    Combined Interface)</p>
+
+                                <p class="p">5. Combined Interface - SetFBRole 0</p>
+
+                                <p class="p">6. Light - SetFBRole 1</p>
+
+                                <p class="p">7. Combined Interface - invokeCommissioning 8 0</p>
+
+                                <p class="p">8. Light - invokeCommissioning 8 0 (After this all the Finding
+                                    and Binding happens)</p>
+
+                                <p class="p">9. Light Device will start reporting peridically</p>
+
+                            </span></td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+</div>
+<strong class="ph b">Note:</strong><ol class="ol" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-DC334215-4309-4EA3-B7C8-29C438DEE144">
+                <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-9A98A9B9-3772-4366-A942-8F8DB7ABA20D"><span class="indent-level-default">1.</span><em class="ph i">invokeCommissioning 8 0 has to be executed first on target device then on
+                        initiator device.</em></li>
+
+                <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-90ED6723-41B5-4660-8AED-E4431B7C3EF2"><span class="indent-level-default">2.</span><strong class="ph b">SetFBRole 0</strong> sets device as Target, <strong class="ph b">SetFBRole 1</strong> sets the device as
+                    Initiator. A single device can act as initiator and/or target</li>
+
+            </ol>
+</div>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-8532CCCD-7B07-4AC7-9C1A-4CBCA2911EAD"><div class="figcap"><span class="fig--title-label">Figure 7. </span><em class="ph i"><strong class="ph b">Combined interface and Thermostat</strong></em>. </div><span class="desc figdesc"></span><img class="image" src="GUID-093822FD-E184-4CD9-86C0-43EA5299551B-low.jpg" /></div>
+</div>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-D0323F49-B143-4243-9A7A-7DB719E0C91C"><div class="figcap"><span class="fig--title-label">Figure 8. </span><strong class="ph b">Combined interface and Multi-sensor</strong>. </div><span class="desc figdesc"></span><img class="image" src="GUID-974CC497-EA6F-4116-B8DA-61CF3069B2D8-low.jpg" /></div>
+<div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-97AED224-A11F-4A28-90EC-6B38E4F6EE50"><div class="figcap"><span class="fig--title-label">Figure 9. </span><strong class="ph b">Combined interface and Extended Lights</strong>. </div><span class="desc figdesc"></span><img class="image" src="GUID-8A1874FE-BD85-4E0F-AAF5-584D046491BF-low.jpg" /></div>
+</div>
+<div class="section" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-C766EA50-6F8A-41B8-8BD2-99BDB287F013"><h2 class="title sectiontitle">Touchlink Commissioning</h2></div>
+<p class="p">The zigbee protocol provides special commissioning called Touchlink , which is an easy-to-use proximity mechanism for commisioning a device to a network. This method works by the Touchlink 'initiator' determining the proximity of the target device (to be commissioned) and negotiating/transferring network parameters. Touchlink commissioning can be used to form a new network and/or join a node to an existing network. Touchlink is initiated on a node called the ‘initiator’. Touchlink is provided as a cluster in the ZigBee Cluster Library (ZCL). The initiator must support the Touchlink cluster as a client and the target node must support the cluster as a server. If it is required on a node, Touchlink commissioning must be enabled via the ZigBee Base Device attribute bdbCommissioningMode.</p>
+<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-F0FC043F-7A42-46FF-A8EF-7E29BFE41D13"><div class="figcap"><span class="fig--title-label">Figure 10. </span><strong class="ph b">Wireshark Sniffer logs</strong>. </div><span class="desc figdesc"></span><img class="image" src="GUID-77DDD494-0ADA-4BBB-A00C-8DF5802E6DBA-low.jpg" /></div>
+</div>
+<p class="p">Let us look into an example. Here a ColorSceneController which is an end device type will bring the light into the network and by asking light to form the distributed network via Touchlink. For touchlink, a color scene controller shall be brought close to a target( Light) device around like 20-30cms range. It can be done in the following 2 ways :</p>
+<div class="p">
+            <ol class="ol" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-ECB35EC2-AE7E-49DD-BD08-7D3F414CDADA">
+                <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-CB0CBFC3-870C-4054-A614-C033F264571D"><span class="indent-level-default">1.</span><strong class="ph b">Auto-commissioning :</strong> In order to establish touchlink via
+                    auto-commissioning , each of the application e.g. extended lights and color
+                    scene controller, MPLAB Code Configuration (MCC) has to be updated as shown
+                    below :<div class="p"><div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-0B624D0E-F346-4352-B31E-ED5AF5848BE5"><span class="desc figdesc"></span>
+                            
+                            <br /><img class="image" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__IMAGE_C1T_PNP_L5B" src="GUID-C90F3DB1-AF05-4EFB-94C7-CF91DD52B4FC-low.png" /><br />
+                        </div>
+During auto commissioning mode , the device would perform touchlink by
+                        default. To initiate the process, input <em class="ph i">"resetToFN"</em> console command
+                        on the light device first followed by the color scene controller. After that
+                        the device joins via touchlink, the Light device starts reporting attribute
+                        data back to the ColorSceneController device. It can be observed below in
+                        :</div>
+<div class="p">
+                        <div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-53109708-F619-4CBA-8943-F9008F8A874A"><div class="figcap"><span class="fig--title-label">Figure 11. </span>Console
+                                Logs. </div><span class="desc figdesc"></span>
+                            
+                            
+                            <img class="image" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__IMAGE_D1T_PNP_L5B" src="GUID-09B1D02C-C336-4CC3-8DC6-444FF927799D-low.jpg" />
+                        </div>
+
+                    </div>
+</li>
+
+                <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-5A3ECDEF-35AE-41D4-A2DB-830292097E24"><span class="indent-level-default">2.</span><strong class="ph b">Manual commisioning :</strong> In order to establish touchlink commissioning
+                    manually, each of the application e.g. extended lights and color scene
+                    controller, MPLAB Code Configurator (MCC) has to be updated as shown below :<div class="p">
+                        <div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-C24D69A5-24C0-47ED-9218-4C39906C639B"><span class="desc figdesc"></span>
+                            
+                            <img class="image" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__IMAGE_PXK_RNP_L5B" src="GUID-951FC169-A2EA-4C5D-A7C5-6CB85663864B-low.png" />
+                        </div>
+
+                    </div>
+<p class="p">During manual commissioning mode , we need to issue console commands on
+                        the color scene controller device to perform touchlink. In order to initiate
+                        the process, input resetToFN console comand on the light device first
+                        followed by the color scene controller. Follow the below sequence of
+                        commands</p>
+<ol class="ol" type="a" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-6B7E1B59-8A53-42B3-8467-12FB6C4747F1">
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-21906F70-DC4A-42D2-ACD8-0E07F7817780"><span class="indent-level-default">a.</span>
+                            <p class="p">Light and CSC - resetToFN</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-9FA30C67-6E2A-4DFC-8014-8699C4903595"><span class="indent-level-default">b.</span>
+                            <p class="p">CSC - invokeCommissioning 1 0 (Touchlink commisioning, wait for
+                                touchlinking to be completed)</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-65AA3E6F-A122-447C-A7FF-57D729D8EAEF"><span class="indent-level-default">c.</span>
+                            <p class="p">CSC - SetFBRole 0</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-0FD204CE-93B9-4B9E-BE48-DB4F25D29AE3"><span class="indent-level-default">d.</span>
+                            <p class="p">Light - SetFBRole 1</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-1BCD5228-D3B7-4399-A795-BC1DB90203DB"><span class="indent-level-default">e.</span>
+                            <p class="p">CSC - invokeCommissioning 8 0</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-5E0997F7-0A92-4C21-A3FE-8B064755130A"><span class="indent-level-default">f.</span>
+                            <p class="p">Light - invokeCommissioning 8 0</p>
+
+                        </li>
+
+                        <li class="li" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-776FBE9D-A518-4399-BF4B-69F06E2C7E98"><span class="indent-level-default">g.</span>
+                            <p class="p">Light Device will start reporting periodically.</p>
+
+                        </li>
+
+                    </ol>
+<div class="p">
+                        <div class="fig fignone" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__GUID-75BA4C01-2183-4B39-8638-D4ED0CE7AFDC"><div class="figcap"><span class="fig--title-label">Figure 12. </span>Console
+                                Logs. </div><span class="desc figdesc"></span>
+                            
+                            
+                            <img class="image" id="GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8__IMAGE_QXK_RNP_L5B" src="GUID-1357ADD1-61B7-4AE4-973A-A01A72FD43E5-low.jpg" />
+                        </div>
+
+                    </div>
+</li>
+
+            </ol>
+
+        </div>
+<p class="p">For more details regarding the commisioning procedures, please refer to, the Commisioning
+            section(8) of the base device behaviour specification from Zigbee Alliance -&gt;
+                    <u class="ph u"><a class="xref" href="https://csa-iot.org/developer-resource/zigbee-base-device-behavior-bdb-v1-0/" target="_blank">Link to Base Device Behaviour Specification by Zigbee Alliance</a></u></p>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" title="This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.">Getting Started with Zigbee Applications</a></div>
+</div>
+</div></body>
+</html>

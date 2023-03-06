@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2022" />
-<meta name="DC.rights.owner" content="(C) Copyright 2022" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta name="copyright" content="(C) Copyright 2023" />
+<meta name="DC.rights.owner" content="(C) Copyright 2023" />
 <meta name="DC.type" content="topic" />
 <meta name="DC.title" content="Install Harmony 3 Dependencies" />
 <meta name="DC.relation" scheme="URI" content="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" />
@@ -19,7 +19,7 @@
 <meta name="Microsoft.Help.TocOrder" content="3" />
 <meta name="Microsoft.Help.Locale" content="en-US" />
 <meta name="Microsoft.Help.TopicLocale" content="en-US" />
-<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference 1 02/2022" />
+<meta name="Microsoft.Help.DisplayVersion" content="Software Development Reference A 09/2022" />
 <script language="javascript">
        
        if (window.parent.location.protocol != 'file:') {
@@ -226,146 +226,415 @@
         
       </style><link rel="stylesheet" type="text/css" href="syntax-highlight.css" /></head>
 <body id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825">
-<h1 class="title topictitle1" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-9FB3407B-DED1-4391-9965-C619D1709ED3">Install Harmony 3 Dependencies</h1><div class="body"><p class="p"><strong class="ph b">This section will describe in detail how to install the correct versions of the required
-                Harmony 3 component dependencies. The following table summarizes the components and
-                versions that will be installed</strong></p>
+<h1 class="title topictitle1" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-9FB3407B-DED1-4391-9965-C619D1709ED3" style="">Install Harmony 3 Dependencies</h1><div class="body"><p class="p">This section will describe in detail how to install the correct versions of the required Harmony
+                                                3 component dependencies. The following table
+                                                summarizes the components and versions that will be
+                                                installed</p>
 <div class="p">
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-AF986E94-2ACB-4D83-B1AD-C07C778186AE" class="table" frame="void" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 1. </span>Harmony Components</span></caption><col style="width:50%" /><col style="width:50%" /><tbody class="tbody"><tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p"><strong class="ph b">Harmony components to be cloned with MCC Content Manager</strong></p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:middle;"><span><p class="p"><strong class="ph b">Version</strong></p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">csp</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.13.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">core</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.11.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">mhc</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.8.3</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">dev_packs</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.13.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">bsp</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.13.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">CMSIS-FreeRTOS</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">10.3.1</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">crypto</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">3.7.4</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">wolfssl</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">4.7.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">PIC32CX-BZ_DFP</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">1.0.107</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">wireless_ble</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">1.0.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">wireless_system_pic32cxbz_wbz</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">1.0.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span><p class="p">wireless_apps_pic32cxbz2_wbz45</p>
-</span></td>
-<td class="entry row-nocellborder" style="text-align:center;vertical-align:top;"><span><p class="p">1.0.0</p>
-</span></td>
-</tr>
-<tr class="row"><td class="entry cell-norowborder" style="text-align:center;vertical-align:top;"><span><p class="p">wireless_pic32cxbz_wbz</p>
-</span></td>
-<td class="entry nocellnorowborder" style="text-align:center;vertical-align:top;"><span><p class="p">1.0.0</p>
-</span></td>
-</tr>
-</tbody>
-</table>
+                                                
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-FEE58371-4E88-488D-967D-087EE373C868" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap"><span class="table--title-label">Table 1. </span>Harmony Components</span></caption>
+          <col style="width:50%" />
+          <col style="width:50%" />
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p"><strong class="ph b">Harmony components to be cloned with MCC Content Manager</strong></p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:middle;"><span>
+                <p class="p"><strong class="ph b">Version</strong></p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">csp</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.13.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">core</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.11.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">mhc</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.8.3</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">dev_packs</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.13.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">bsp</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.13.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">CMSIS-FreeRTOS</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">10.3.1</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">crypto</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">3.7.4</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">wolfssl</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">4.7.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">PIC32CX-BZ_DFP</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">1.0.107</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">wireless_ble</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">1.0.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">wireless_system_pic32cxbz_wbz</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">1.1.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">wireless_apps_pic32cxbz2_wbz45</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">1.1.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">wireless_pic32cxbz_wbz</p>
+
+              </span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>
+                <p class="p">1.1.0</p>
+
+              </span></td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>wireless_zigbee</span></td>
+
+              <td class="entry cellrowborder" style="text-align:center;vertical-align:top;"><span>5.0.0</span></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
 </div>
-</div>
+
+                                </div>
 <div class="section" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-5E0F1FBF-073A-4D6D-B601-5B86194844FE"><h2 class="title sectiontitle">Clone the Harmony repositories using MCC Content Manager Wizard</h2></div>
 <ol class="ol" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-4407F5C1-3004-465E-8DED-2E4860D3CE52"><li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-B3DFE70A-6A75-4BCE-A6D7-EF0F9CC30E50"><span class="indent-level-default">1.</span><p class="p">Create a new “MCC Harmony” project (In order to clone the Harmony repositories user needs to create an empty project and clone the required repositories)</p>
-<ol class="ol" type="a" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-FB4D9AAA-6657-479B-BE61-61910E5DB23D"><li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-254CEAEF-CE60-4A79-BF5D-F780EC7C42DE"><span class="indent-level-default">a.</span><p class="p">Select "New Project"</p>
-<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-0CAF43ED-6826-4D9C-8F93-B3127752A4C8"><div class="figcap"><span class="fig--title-label">Figure 1. </span>New Project Creation</div><img class="image" src="GUID-F70CE34F-FFDC-488C-A74F-BF2388A4553B-low.png" /></div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-5D0CED62-97CF-4479-AD38-C1FEAACFC144"><span class="indent-level-default">b.</span><div class="p">Select "32-bit MCC Harmony Project"<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-C668E640-86A1-4CC8-9F99-94C016F04851"><div class="figcap"><span class="fig--title-label">Figure 2. </span>MCC Harmony Project option. </div><span class="desc figdesc"></span><img class="image" src="GUID-FAF17099-C3DC-42F0-AC60-F3DED0182408-low.png" /></div>
+<ol class="ol" type="a" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-FB4D9AAA-6657-479B-BE61-61910E5DB23D"><li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-254CEAEF-CE60-4A79-BF5D-F780EC7C42DE"><span class="indent-level-default">a.</span>
+                                                  <div class="p">Select "New Project" <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-0CAF43ED-6826-4D9C-8F93-B3127752A4C8"><div class="figcap"><span class="fig--title-label">Figure 1. </span>New
+                                                  Project Creation</div>
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_I2F_JH5_R5B" src="GUID-F70CE34F-FFDC-488C-A74F-BF2388A4553B-low.png" />
+                                                  </div>
 </div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-009D0588-741D-4866-874F-039410021A78"><span class="indent-level-default">c.</span><div class="p">Framework Selection<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-DEA5391E-8A83-4DF0-9CB1-4A4F173EFCB3"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Framework Selection. </div><span class="desc figdesc"><p class="p">Local PC directory where cloned repos would be placed</p>
-</span><img class="image" src="GUID-0DB4E104-291B-4FFB-A169-AD54B683E76C-low.png" /></div>
+
+                                                  </li>
+
+                                                  <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-F0FD6060-D740-4129-BEA6-C5FBDE4EB89A"><span class="indent-level-default">b.</span>
+                                                  <div class="p">Select "32-bit MCC Harmony Project" <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-CB8BC92B-D62F-431A-B3A0-8E6E55F0BF16"><div class="figcap"><span class="fig--title-label">Figure 2. </span>MCC
+                                                  Harmony Project option. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_LTW_3H5_R5B" src="GUID-FAF17099-C3DC-42F0-AC60-F3DED0182408-low.png" />
+                                                  </div>
 </div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-6FF4B2E3-0DD0-4883-ABFA-D0649EC8FCB1"><span class="indent-level-default">d.</span><div class="p">Project Settings<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-82AB585D-7D3F-4927-96E8-3150767F5284"><div class="figcap"><span class="fig--title-label">Figure 4. </span>Project Settings. </div><span class="desc figdesc"><p class="p">Project Folder Path and Name Selection</p>
-</span><img class="image" src="GUID-A736B97B-EC04-471F-8FE5-F9E288D95EC0-low.png" /></div>
+
+                                                  </li>
+
+                                                  <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-570C2227-168E-49EA-9ABB-5E0040B688DD"><span class="indent-level-default">c.</span>
+                                                  <div class="p">Framework Selection <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-6A5A87B6-CC02-43D1-A5A5-294F946F56E8"><div class="figcap"><span class="fig--title-label">Figure 3. </span>Framework Selection. </div><span class="desc figdesc">
+                                                  <p class="p">Local PC directory where cloned repos would be
+                                                  placed</p>
+
+                                                  </span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_LPB_KH5_R5B" src="GUID-0DB4E104-291B-4FFB-A169-AD54B683E76C-low.png" />
+                                                  </div>
 </div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-077C8756-B43A-44BA-8974-9A1F2941E20A"><span class="indent-level-default">e.</span><div class="p">Configuration Settings and select the device <span class="ph">WBZ451</span><div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-02869CE9-4388-44CE-99F2-6A59B9FC03BD"><div class="figcap"><span class="fig--title-label">Figure 5. </span>Configuration Settings. </div><span class="desc figdesc">Device Name and Configuration
+
+                                                  </li>
+
+                                                  <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-8DA8CFC7-FD93-4ECF-8EC1-62F6B200B9CB"><span class="indent-level-default">d.</span>
+                                                  <div class="p">Project Settings <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-4C250468-EB98-4F10-B645-BA67486FAE4D"><div class="figcap"><span class="fig--title-label">Figure 4. </span>Project Settings. </div><span class="desc figdesc">
+                                                  <p class="p">Project Folder Path and Name Selection</p>
+
+                                                  </span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_TLW_LH5_R5B" src="GUID-A736B97B-EC04-471F-8FE5-F9E288D95EC0-low.png" />
+                                                  </div>
+</div>
+
+                                                  </li>
+
+                                                  <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-3D7FF831-F0AE-4A0F-8933-A8F886C7F6B8"><span class="indent-level-default">e.</span>
+                                                  <p class="p">Configuration Settings and select the device
+                                                  <span class="ph">WBZ451</span></p>
+
+                                                  <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-02869CE9-4388-44CE-99F2-6A59B9FC03BD"><div class="figcap"><span class="fig--title-label">Figure 5. </span>Configuration Settings. </div><span class="desc figdesc">Device Name and Configuration
                                                   Settings</span>
                                                   
                                                   
-                                                  <img class="image" src="GUID-080BD142-732A-4E10-999E-A79EEE37E0DB-low.png" />
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_E1R_MH5_R5B" src="GUID-080BD142-732A-4E10-999E-A79EEE37E0DB-low.png" />
+                                                  </div>
+
+                                                  </li>
+</ol>
+</li>
+<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-BE358F2C-1019-40BA-9153-315CF0B59FCF"><span class="indent-level-default">2.</span>
+                                                  <p class="p">Open “MPLAB Code Configurator” after creation
+                                                  of project. MCC Content Manager window will appear
+                                                  in IDE </p>
+
+                                                  <div class="p">
+                                                  <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-36B95420-C86B-48B1-9436-3CED5A07F5F2"><div class="figcap"><span class="fig--title-label">Figure 6. </span>MCC
+                                                  in IDE. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_LH2_RH5_R5B" src="GUID-9552FC6F-18E5-4B15-8116-13074B0A541B-low.png" />
+                                                  </div>
+
+                                                  </div>
+
+                                                  <p class="p"></p>
+
+                                                </li>
+
+                                                <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-807926D0-4CDE-4AB2-8D06-7E9B9C35E460"><span class="indent-level-default">3.</span>Select “MPLAB Harmony” from the content manager
+                                                  window<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-F758D801-D1B6-4C44-8E62-0DB75A8EDCBF"><div class="figcap"><span class="fig--title-label">Figure 7. </span>MCC
+                                                  Content Manager window. </div><span class="desc figdesc">
+                                                  <p class="p"></p>
+
+                                                  </span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_A4V_QH5_R5B" src="GUID-C6A309DF-0505-469B-AD46-13E8017C8515-low.png" />
+                                                  </div>
+<div class="p">Select "Optional Content" as shown
+                                                  below<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-CB7C2998-0107-41C0-96BA-4637F13942E3"><div class="figcap"><span class="fig--title-label">Figure 8. </span>Optional Content Window MCC. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_JJX_QH5_R5B" src="GUID-A59D5B0C-B65F-4352-B61F-93A78FAB5C8B-low.png" />
                                                   </div>
 </div>
 </li>
-</ol>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-BE358F2C-1019-40BA-9153-315CF0B59FCF"><span class="indent-level-default">2.</span><div class="p">Open “MPLAB Code Configurator” after creation of project. MCC Content Manager window will appear in IDE<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-36B95420-C86B-48B1-9436-3CED5A07F5F2"><div class="figcap"><span class="fig--title-label">Figure 6. </span>MCC in IDE. </div><span class="desc figdesc"></span><img class="image" src="GUID-9552FC6F-18E5-4B15-8116-13074B0A541B-low.png" /></div>
+<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-3410BC2C-1E3E-4857-940C-D27E88A5FE03"><span class="indent-level-default">4.</span>
+                                                  <div class="p">Ensure all components are selected as displayed
+                                                  in the image below. Ignore version selection for
+                                                  now it will be taken care of at a later stage <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-3ECF6125-D154-4CD0-8BC3-267EB96A3508"><div class="figcap"><span class="fig--title-label">Figure 9. </span>Required Content. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_M1M_WH5_R5B" src="GUID-2EFDA6C6-EB94-4BED-A9BC-B99F1DB3E136-low.png" />
+                                                  </div>
 </div>
-<p class="p"></p>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-806484B8-2614-42EA-89CD-7DC85A6A030A"><span class="indent-level-default">3.</span><div class="p">Select “MPLAB Harmony” from the content manager window<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-F758D801-D1B6-4C44-8E62-0DB75A8EDCBF"><div class="figcap"><span class="fig--title-label">Figure 7. </span>MCC Content Manager window. </div><span class="desc figdesc"><p class="p"></p>
-</span><img class="image" src="GUID-C6A309DF-0505-469B-AD46-13E8017C8515-low.png" /></div>
+
+                                                </li>
+
+                                                <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-C325C029-46E4-458B-8C95-D6C73AB22DB8"><span class="indent-level-default">5.</span>
+                                                  <div class="p">Select “Finish” The downloading of selected
+                                                  components from harmony repositories will take
+                                                  some minutes.If all the selected components are
+                                                  cloned successfully, MCC logs in IDE will display
+                                                  this information. <ol class="ol" type="a" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-D7E43DF2-4D3D-4127-ACAE-A707CE8BED17">
+                                                  <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-7A178BAF-32C3-472C-BCCF-91CB14A0B586"><span class="indent-level-default">1.</span>
+                                                  <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-40F6E766-7081-45D1-935C-AD9DBC43E65C"><div class="figcap"><span class="fig--title-label">Figure 10. </span>MCC
+                                                  Logs Snapshot when all selected components are
+                                                  cloned successfully. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_BZZ_VH5_R5B" src="GUID-2BAAE5F6-555E-4B86-9EAD-B6338216502F-low.png" />
+                                                  </div>
+
+                                                  <div class="note hazardstatement attention" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-823E4EA3-B0DB-4AB7-BEB0-91A4483988CC"><span class="attentiontitle">Attention:</span> 
+                                                  <div class="messagepanel">
+                                                  <li class="typeofhazard" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-441BC748-C91C-442E-821E-DCC47B4E7F75"><strong class="ph b"><u class="ph u">If in the process a failure to download a
+                                                  particular component appears, try redownloading
+                                                  again only the component that failed to download.
+                                                  For example, if user received a prompt from MCC
+                                                  saying “dev_packs” was not
+                                                  download</u></strong></li>
+
+                                                  <li class="howtoavoid" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-05C6E5F6-F3FF-42DB-B797-8996703CECA1">close the MCC reopen MCC again and start from
+                                                  step 3 in this section, with the “dev_packs” as
+                                                  the only missing component for downloading and
+                                                  select “Finish”</li>
+
+                                                  </div>
+                                                  </div>
+
+                                                  <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-603867D8-6C8A-4CD9-843D-9E939B2560B1"><div class="figcap"><span class="fig--title-label">Figure 11. </span>"dev_packs" being redownloaded. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_DZZ_VH5_R5B" src="GUID-DA2BA56B-FD06-4EB8-84BC-9435E090A9EB-low.png" />
+                                                  </div>
+
+                                                  </li>
+
+                                                  </ol>
 </div>
-<div class="p">Select "Optional Content" as shown below<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-CB7C2998-0107-41C0-96BA-4637F13942E3"><div class="figcap"><span class="fig--title-label">Figure 8. </span>Optional Content Window MCC. </div><span class="desc figdesc"></span><img class="image" src="GUID-A59D5B0C-B65F-4352-B61F-93A78FAB5C8B-low.png" /></div>
+
+                                                </li>
+
+                                                <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-83E115EB-587C-4241-90CA-CAF124587188"><span class="indent-level-default">6.</span>Select/Confirm the Harmony Framework Path </li>
+
+                                                <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-AAE98555-EA88-47D1-B23C-63195B6F8257"><span class="indent-level-default">7.</span>
+                                                  <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-0C3B5705-765B-4C40-9B6C-87FD5A01CF8E"><div class="figcap"><span class="fig--title-label">Figure 12. </span>Harmony Framework Path Selection. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_TWG_XH5_R5B" src="GUID-9FA37C1C-2C21-452C-B301-EA9288917E60-low.png" />
+                                                  </div>
+
+                                                  <p class="p"><strong class="ph b">Note:</strong> Framework Path selection window
+                                                  appears beneath the Initializing Project pop-up,
+                                                  users should Choose Path as “C:\mchp”</p>
+
+                                                  <div class="p"><div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-551031BA-3D0C-423F-84D5-DDB8D85FF6FF"><div class="figcap"><span class="fig--title-label">Figure 13. </span>Framework Selection Path. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_ZRH_XH5_R5B" src="GUID-BF9919FE-A8D3-4493-9CF3-E4979F4773AD-low.png" />
+                                                  </div>
+Project Graph Window will appear after
+                                                  choosing the framework path and successful
+                                                  initialization of project<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-2E75DF24-127E-41FD-B1E7-DD4361011533"><div class="figcap"><span class="fig--title-label">Figure 14. </span>Project Graph. </div><span class="desc figdesc"></span>
+                                                  
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_ASH_XH5_R5B" src="GUID-173CA14B-8179-4925-BB5D-5B8DAB25B724-low.png" />
+                                                  </div>
 </div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-3410BC2C-1E3E-4857-940C-D27E88A5FE03"><span class="indent-level-default">4.</span><div class="p">Ensure all components are selected as displayed in the image below. Ignore version selection for now it will be taken care of at a later stage<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-6739E1D2-C21E-4FED-999A-8F4694C9BC6A"><div class="figcap"><span class="fig--title-label">Figure 9. </span>Required Content. </div><span class="desc figdesc"></span><img class="image" src="GUID-2EFDA6C6-EB94-4BED-A9BC-B99F1DB3E136-low.png" /></div>
-</div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-5CF4D3DC-549A-45D8-8578-158E20A18480"><span class="indent-level-default">5.</span><div class="p">Select “Finish” The downloading of selected components from harmony repositories will take some minutes.If all the selected components are cloned successfully, MCC logs in IDE will display this information. <div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-40F6E766-7081-45D1-935C-AD9DBC43E65C"><div class="figcap"><span class="fig--title-label">Figure 10. </span>MCC Logs Snapshot when all selected components are cloned successfully. </div><span class="desc figdesc"></span><img class="image" src="GUID-2BAAE5F6-555E-4B86-9EAD-B6338216502F-low.png" /></div>
-<div class="note hazardstatement attention" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-823E4EA3-B0DB-4AB7-BEB0-91A4483988CC"><span class="attentiontitle">Attention:</span> <div class="messagepanel"><li class="typeofhazard" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-441BC748-C91C-442E-821E-DCC47B4E7F75"><strong class="ph b"><u class="ph u">If in the process a failure to download a particular component appears, try redownloading again only the component that failed to download. For example, if user received a prompt from MCC saying “dev_packs” was not download</u></strong></li>
-<li class="howtoavoid" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-05C6E5F6-F3FF-42DB-B797-8996703CECA1">close the MCC reopen MCC again and start from step 3 in this section, with the “dev_packs” as the only missing component for downloading and select “Finish”</li>
-</div></div>
-<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-603867D8-6C8A-4CD9-843D-9E939B2560B1"><div class="figcap"><span class="fig--title-label">Figure 11. </span>"dev_packs" being redownloaded. </div><span class="desc figdesc"></span><img class="image" src="GUID-DA2BA56B-FD06-4EB8-84BC-9435E090A9EB-low.png" /></div>
-</div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-09F5FEB5-1EE8-44EF-A0C3-34596F9F1BCE"><span class="indent-level-default">6.</span><div class="p">Select/Confirm the Harmony Framework Path<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-0C3B5705-765B-4C40-9B6C-87FD5A01CF8E"><div class="figcap"><span class="fig--title-label">Figure 12. </span>Harmony Framework Path Selection. </div><span class="desc figdesc"></span><img class="image" src="GUID-9FA37C1C-2C21-452C-B301-EA9288917E60-low.png" /></div>
-</div>
-<p class="p"><strong class="ph b">Note:</strong> Framework Path selection window appears beneath the Initializing Project pop-up, users should Choose Path as “C:\mchp”</p>
-<div class="p"><div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-551031BA-3D0C-423F-84D5-DDB8D85FF6FF"><div class="figcap"><span class="fig--title-label">Figure 13. </span>Framework Selection Path. </div><span class="desc figdesc"></span><img class="image" src="GUID-BF9919FE-A8D3-4493-9CF3-E4979F4773AD-low.png" /></div>
-Project Graph Window will appear after choosing the framework path and successful initialization of project<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-2E75DF24-127E-41FD-B1E7-DD4361011533"><div class="figcap"><span class="fig--title-label">Figure 14. </span>Project Graph. </div><span class="desc figdesc"></span><img class="image" src="GUID-173CA14B-8179-4925-BB5D-5B8DAB25B724-low.png" /></div>
-</div>
-</li>
-<li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-561DBD87-AE1D-4372-B0CC-E603254E3B50"><span class="indent-level-default">7.</span><div class="p">Change to content<a class="xref" href="#GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-AF986E94-2ACB-4D83-B1AD-C07C778186AE">versions</a> recommended for use during development in the table using the content manager from Device Resources and select “Apply”. This step is important and should be followed by user as every wireless stack and app example release is tested with certain version of dependant component.<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-B77C8B2F-9BE7-455B-96FC-315AE2DD4A37"><div class="figcap"><span class="fig--title-label">Figure 15. </span>Changing content versions</div><img class="image" src="GUID-25B49C80-0340-4C6B-88F8-C2CD474A01BE-low.png" /></div>
-</div>
+
+                                                </li>
+
+                                                <li class="li" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-DDD79A76-1291-4CE4-895D-8C37D9506111"><span class="indent-level-default">8.</span>Change to content<a class="xref" href="#GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-AF986E94-2ACB-4D83-B1AD-C07C778186AE">versions</a> recommended for use during
+                                                  development in the table using the content manager
+                                                  from Device Resources and select “Apply”. This
+                                                  step is important and should be followed by user
+                                                  as every wireless stack and app example release is
+                                                  tested with certain version of dependant
+                                                  component.<div class="fig fignone" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__GUID-B77C8B2F-9BE7-455B-96FC-315AE2DD4A37"><div class="figcap"><span class="fig--title-label">Figure 15. </span>Changing content versions</div>
+                                                  
+                                                  <img class="image" id="GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825__IMAGE_BSP_YH5_R5B" src="GUID-25B49C80-0340-4C6B-88F8-C2CD474A01BE-low.png" />
+                                                  </div>
 </li>
 </ol>
 <p class="p">After successfully checking out the right version of content/components, users can <a class="xref" href="GUID-FAC65B28-B78E-48AF-BCFE-2D63DC274CDB.html" title="Stack, Peripherals and other documentation">start developing application examples</a>.</p>
 </div>
 <div class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE stacks and application examples on your PC">Getting Started with Software Development</a></div>
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="Steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on your PC">Getting Started with Software Development</a></div>
 </div>
 </div></body>
 </html>
