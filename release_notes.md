@@ -24,9 +24,8 @@ Following table provides number of Wireless examples available for different dev
 ### Bug fixes and Improvements
 - New applications release.
 
-
 ### Known Issues
-- 
+- False Positive MISRA C deviations - 12 (MISRA C-2012 Rule 8.6 & MISRA C-2012 Rule 17.7)
 
 ### Limitations
 - In IEEE 802.15.4 Standalone PHY based P2P Phy application, while using Data Mode, max data bytes/payload limit is 232 bytes (due to SYS CONSOLE Component limitation).
@@ -64,7 +63,6 @@ Following table provides number of Wireless examples available for different dev
 
 ### Known Issues
 - In the Zigbee Multisensor application, System sleep Implementation source(device_sleep.c) and header(device_sleep.h) files are may not be included sometimes when regenerating the project through MCC. Work Around is remove and add the Zigbee multisensor component again in the MCC configuration.
-- In IEEE 802.15.4 Standalone PHY based P2P Phy application, while using Data Mode, max data bytes/payload limit is 232 bytes (due to SYS CONSOLE Component limitation).
 
 ### Development Tools
 
