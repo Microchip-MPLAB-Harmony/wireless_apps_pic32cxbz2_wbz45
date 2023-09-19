@@ -10,21 +10,21 @@
 		"shortDescription": "This example application acts as a ble central device and connect with another ble peripheral device.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.00"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.1.0"
+				"semverRange": ">=4.21"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.0.107"
+			"semverRange": "^1.2.230"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.1.4"
+			"semverRange": ">=5.3.7"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

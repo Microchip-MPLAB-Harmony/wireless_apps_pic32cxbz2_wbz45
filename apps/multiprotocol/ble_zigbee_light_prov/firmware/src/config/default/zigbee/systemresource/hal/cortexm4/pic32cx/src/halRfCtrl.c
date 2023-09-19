@@ -50,6 +50,7 @@
 /******************************************************************************
                         Includes section.
 ******************************************************************************/
+#include "device.h"
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
 #include <hal/cortexm4/pic32cx/include/halRfCtrl.h>
 #include <hal/cortexm4/pic32cx/include/halMacIsr.h>
@@ -313,6 +314,14 @@ void HAL_DisableRxTxSwitcher(void)
   #ifdef _HAL_RF_RX_TX_INDICATOR_
     phyRxTxSwitcherOff();
   #endif //_HAL_RF_RX_TX_INDICATOR_
+}
+
+/*******************************************************************************
+  Enables Transceiver clock
+*******************************************************************************/
+void HAL_EnableTransceiver(void)
+{
+  // todo
 }
 
 /**************************************************************************//**

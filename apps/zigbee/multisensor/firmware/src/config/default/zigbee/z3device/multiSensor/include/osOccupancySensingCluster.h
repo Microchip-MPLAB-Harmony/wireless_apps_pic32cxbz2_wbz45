@@ -80,6 +80,16 @@ void occupancySensingClusterInit(void);
 ******************************************************************************/
 void occupancySensingToggleOccupancy(void);
 
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void osBackupOsAttributes(void);
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void osRestoreOsAttributes(void);
+
 #endif // _MSOCCUPANCYSENSINGCLUSTER_H
 
 // eof msOccupancySensingCluster.h

@@ -214,6 +214,13 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event)
         }        
         break;
 
+		case CMD_BUTTON_LONG_PRESS:
+        {
+            /* Button long press */
+            BDB_ResetToFactoryNew(true);
+        }
+		break;
+
         default:
         break;
     }

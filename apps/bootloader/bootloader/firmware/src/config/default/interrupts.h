@@ -66,6 +66,7 @@ void UsageFault_Handler (void);
 void DebugMonitor_Handler (void);
 void NVM_InterruptHandler (void);
 void SERCOM0_USART_InterruptHandler (void);
+void TC0_TimerInterruptHandler (void);
 void TC3_TimerInterruptHandler (void);
 
 

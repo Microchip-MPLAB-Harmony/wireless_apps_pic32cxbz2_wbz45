@@ -101,7 +101,7 @@
 
     // The recovery pds writes happens for every OTAU_RECOVERY_BLOCK_SIZE_MIN to avoid frequent writing of flash.
     // This increases the endurance of the flash
-    #define OTAU_RECOVERY_BLOCK_SIZE_MIN    (NVM_PAGE_SIZE * 4) // 16 KB
+    #define OTAU_RECOVERY_BLOCK_SIZE_MIN    (NVM_FLASH_PAGESIZE * 4) // 16 KB
 
     // The amount of servers the OTAU client can listen to during upgrade server
     // discovery

@@ -202,6 +202,14 @@ void CS_PdsDefaultValue(void);
   \return size of the particular item.
  ******************************************************************************/
 uint16_t CS_GetItemSize(CS_MemoryItemId_t itemId);
+/******************************************************************************
+  \brief Backing up Network parameters
+******************************************************************************/
+void CS_BackupNwkParams(void);
+/******************************************************************************
+  \brief Restoring Network parameters
+ ******************************************************************************/
+void  CS_RestoreNwkParams(void);
 
 #ifdef __cplusplus
 } /* extern "C" */

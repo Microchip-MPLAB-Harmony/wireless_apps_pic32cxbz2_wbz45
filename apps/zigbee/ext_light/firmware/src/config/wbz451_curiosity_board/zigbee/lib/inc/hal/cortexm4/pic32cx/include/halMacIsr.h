@@ -58,7 +58,7 @@
 #endif
 
 #include <systemenvironment/include/sysTypes.h>
-#include <hal/cortexm4/pic32cx/include/halAppClock.h>
+#include <halAppClock.h>
 
 /******************************************************************************
                         Types section.
@@ -78,87 +78,10 @@ typedef struct // Timer description.
 } RTimerDescr_t;
 
 /******************************************************************************
-                        External variables.
+  MAC timer handler.
 ******************************************************************************/
-/******************************************************************************
-                        Prototypes section.
-******************************************************************************/
-void TCC2_halMacTimerHandler(void);
 
-  /******************************************************************************
-   Polling the Sync. flag for Software Reset 
-   Parameters:
-     none
-   Returns:
-     none
-   *****************************************************************************/
-INLINE void rTimerSWRSTSync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_SWRST_Msk);
-}
-
-
-/******************************************************************************
- Polling the Sync. flag for CTRLB register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCTRLBSync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_CTRLB_Msk);
-}
-
-
-/******************************************************************************
- Polling the Sync. flag for Count register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCountSync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_COUNT_Msk );
-}
-
-/******************************************************************************
- Polling the Sync. flag for CC register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCC1Sync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_CC1_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Enable 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerEnableSync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_ENABLE_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Clock Domain
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerClockSync(void)
-{
-  while (TCC2_SYNCBUSY & TCC_SYNCBUSY_STATUS_Msk);
-}
-
+void halMacTimerHandler(void);
 
 /******************************************************************************
   Initializes Rtimer and RF ext. interrupts.

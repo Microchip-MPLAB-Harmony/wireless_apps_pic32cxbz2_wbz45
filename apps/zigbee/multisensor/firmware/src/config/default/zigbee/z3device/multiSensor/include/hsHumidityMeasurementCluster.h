@@ -86,6 +86,16 @@ void humidityMeasurementClusterInit(void);
 ******************************************************************************/
 void humidityMeasurementUpdateMeasuredValue(void);
 
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void hsBackupHsAttributes(void);
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void hsRestoreHsAttributes(void);
+
 #endif // _HSHUMIDITYMEASUREMENTCLUSTER_H
 
 // eof hsHumidityMeasurementCluster.h

@@ -42,6 +42,7 @@
 //DOM-IGNORE-END
 
 #include "plib_gpio.h"
+#include "interrupts.h"
 
 
 
@@ -57,11 +58,12 @@
 */
 void GPIO_Initialize ( void )
 {
+ 
     /* Disable JTAG since at least one of its pins is configured for Non-JTAG function */
     CFG_REGS->CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;
 
           /* PORTA Initialization */
-    GPIOA_REGS->GPIO_CNPDSET = 0x7fff; /* Pull-Down Enable */
+    GPIOA_REGS->GPIO_CNPDSET = 0x7fffU; /* Pull-Down Enable */
     /* PORTB Initialization */
     GPIOB_REGS->GPIO_ANSELCLR = 0xff; /* Digital Mode Enable */
 

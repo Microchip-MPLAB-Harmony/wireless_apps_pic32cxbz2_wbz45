@@ -115,6 +115,7 @@ ZCL_OccupancySensingClusterServerAttributes_t osOccupancySensingClusterServerAtt
   ZCL_DEFINE_OCCUPANCY_SENSING_CLUSTER_SERVER_ATTRIBUTES(OCCUPANCY_SENSING_VAL_MIN_REPORT_PERIOD, OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD)
 };
 
+ZCL_OccupancySensingClusterServerAttributes_t  __attribute__((persistent)) backuposOccupancySensingClusterServerAttributes;
 
 /******************************************************************************
                     Implementation section
@@ -219,6 +220,21 @@ static void ZCL_OsOccupancyAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_A
   }
 }
 
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void osBackupOsAttributes(void)
+{
+   memcpy4ByteAligned(&backuposOccupancySensingClusterServerAttributes, &osOccupancySensingClusterServerAttributes, sizeof(ZCL_OccupancySensingClusterServerAttributes_t));
+}
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void osRestoreOsAttributes(void)
+{
+   memcpy4ByteAligned(&osOccupancySensingClusterServerAttributes, &backuposOccupancySensingClusterServerAttributes, sizeof(ZCL_OccupancySensingClusterServerAttributes_t));
+}
 #endif //#ifdef APP_SENSOR_TYPE_OCCUPANCY_SENSOR
 #endif //#if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_MULTI_SENSOR)
 

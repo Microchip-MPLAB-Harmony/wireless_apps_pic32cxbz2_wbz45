@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BSP_H
-#define _BSP_H
+#ifndef BSP_H
+#define BSP_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -60,26 +60,29 @@
 // Section: BSP Macros
 // *****************************************************************************
 // *****************************************************************************
+#define wbz451_curiosity
+#define BSP_NAME             "wbz451_curiosity"
+
 /*** LED Macros for RGB_LED_RED ***/
-#define RGB_LED_RED_Toggle() (GPIOB_REGS->GPIO_LATINV = (1U<<0))
+#define RGB_LED_RED_Toggle() (GPIOB_REGS->GPIO_LATINV = (1UL<<0))
 #define RGB_LED_RED_Get() ((GPIOB_REGS->GPIO_PORT >> 0) & 0x1U)
-#define RGB_LED_RED_On() (GPIOB_REGS->GPIO_LATSET = (1U<<0))
-#define RGB_LED_RED_Off() (GPIOB_REGS->GPIO_LATCLR = (1U<<0))
+#define RGB_LED_RED_On() (GPIOB_REGS->GPIO_LATSET = (1UL<<0))
+#define RGB_LED_RED_Off() (GPIOB_REGS->GPIO_LATCLR = (1UL<<0))
 /*** LED Macros for RGB_LED_GREEN ***/
-#define RGB_LED_GREEN_Toggle() (GPIOB_REGS->GPIO_LATINV = (1U<<3))
+#define RGB_LED_GREEN_Toggle() (GPIOB_REGS->GPIO_LATINV = (1UL<<3))
 #define RGB_LED_GREEN_Get() ((GPIOB_REGS->GPIO_PORT >> 3) & 0x1U)
-#define RGB_LED_GREEN_On() (GPIOB_REGS->GPIO_LATSET = (1U<<3))
-#define RGB_LED_GREEN_Off() (GPIOB_REGS->GPIO_LATCLR = (1U<<3))
+#define RGB_LED_GREEN_On() (GPIOB_REGS->GPIO_LATSET = (1UL<<3))
+#define RGB_LED_GREEN_Off() (GPIOB_REGS->GPIO_LATCLR = (1UL<<3))
 /*** LED Macros for RGB_LED_BLUE ***/
-#define RGB_LED_BLUE_Toggle() (GPIOB_REGS->GPIO_LATINV = (1U<<5))
+#define RGB_LED_BLUE_Toggle() (GPIOB_REGS->GPIO_LATINV = (1UL<<5))
 #define RGB_LED_BLUE_Get() ((GPIOB_REGS->GPIO_PORT >> 5) & 0x1U)
-#define RGB_LED_BLUE_On() (GPIOB_REGS->GPIO_LATSET = (1U<<5))
-#define RGB_LED_BLUE_Off() (GPIOB_REGS->GPIO_LATCLR = (1U<<5))
+#define RGB_LED_BLUE_On() (GPIOB_REGS->GPIO_LATSET = (1UL<<5))
+#define RGB_LED_BLUE_Off() (GPIOB_REGS->GPIO_LATCLR = (1UL<<5))
 /*** LED Macros for USER_LED ***/
-#define USER_LED_Toggle() (GPIOB_REGS->GPIO_LATINV = (1U<<7))
+#define USER_LED_Toggle() (GPIOB_REGS->GPIO_LATINV = (1UL<<7))
 #define USER_LED_Get() ((GPIOB_REGS->GPIO_PORT >> 7) & 0x1U)
-#define USER_LED_On() (GPIOB_REGS->GPIO_LATSET = (1U<<7))
-#define USER_LED_Off() (GPIOB_REGS->GPIO_LATCLR = (1U<<7))
+#define USER_LED_On() (GPIOB_REGS->GPIO_LATSET = (1UL<<7))
+#define USER_LED_Off() (GPIOB_REGS->GPIO_LATCLR = (1UL<<7))
 
 
 
@@ -113,7 +116,6 @@
 
   Example:
     <code>
-    //Initialize the BSP
     BSP_Initialize();
     </code>
 
@@ -123,7 +125,7 @@
 
 void BSP_Initialize(void);
 
-#endif // _BSP_H
+#endif // BSP_H
 
 /*******************************************************************************
  End of File

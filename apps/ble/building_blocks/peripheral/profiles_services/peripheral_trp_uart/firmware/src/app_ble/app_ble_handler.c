@@ -204,6 +204,12 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
         }
         break;
 
+        case BLE_GAP_EVT_PATH_LOSS_THRESHOLD:
+        {
+            /* TODO: implement your application code.*/
+        }
+        break;
+
         default:
         break;
     }

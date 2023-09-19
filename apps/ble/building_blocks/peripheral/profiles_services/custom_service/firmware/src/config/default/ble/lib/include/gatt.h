@@ -1,24 +1,5 @@
 /*******************************************************************************
-  GATT Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    gatt.h
-
-  Summary:
-    This file contains the GATT functions for application user.
-
-  Description:
-    This file contains the GATT functions and event for application user.  The
-    "BLE_GATTS_Init" or "BLE_GATTC_Init" function shall be called in the "APP_Initialize" 
-    function to initialize the modules in the system.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,10 +20,28 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
 
-/**
- * @addtogroup GATT GATT
+/*******************************************************************************
+  GATT Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    gatt.h
+
+  Summary:
+    This file contains the GATT functions for application user.
+
+  Description:
+    This file contains the GATT functions and event for application user.  The
+    "BLE_GATTS_Init" or "BLE_GATTC_Init" function shall be called in the "APP_Initialize" 
+    function to initialize the modules in the system.
+ *******************************************************************************/
+
+
+/**@defgroup GATT Generic Attribute Profile (GATT)
+ * @brief This module defines the GATT interface to the BLE Library
  * @{
  * @brief Header file for the Generic Attributes library.
  * @note Definitions and prototypes for the GATT stack layer application programming interface.
@@ -57,6 +56,14 @@
 // *****************************************************************************
 #include "att_uuid.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -68,219 +75,220 @@
  
  
 /**@defgroup GATT_EXEC_WRITE_FLAGS Execute write flag
- * @brief The definition of flags for Execute Write Request
+ * @brief The definition of flags for Execute Write Request.
  * @{ */
-#define GATT_EXEC_WRITE_FLAG_CANCEL_ALL                     0x00                /**< Cancel all prepared writes.*/
-#define GATT_EXEC_WRITE_FLAG_WRITE                          0x01                /**< Immediately write all pending prepared values.*/
+#define GATT_EXEC_WRITE_FLAG_CANCEL_ALL                     (0x00U)                /**< Cancel all prepared writes.*/
+#define GATT_EXEC_WRITE_FLAG_WRITE                          (0x01U)                /**< Immediately write all pending prepared values.*/
+#define GATT_EXEC_WRITE_FLAG_INTERNAL_CANCEL                (0x02U)                /**< Cancel all prepared writes due to internal error.*/
 /** @} */
 
 /**@defgroup BLE_GATT_MTU_LENGTH MTU length
- * @brief The definition of GATT MTU length
+ * @brief The definition of GATT MTU length.
  * @{ */
-#define BLE_ATT_DEFAULT_MTU_LEN                             23                  /**< ATT default MTU length. */
-#define BLE_ATT_MAX_MTU_LEN                                 247                 /**< The Maximum supported MTU length of ATT stack. */
+#define BLE_ATT_DEFAULT_MTU_LEN                             (23U)                  /**< ATT default MTU length. */
+#define BLE_ATT_MAX_MTU_LEN                                 (247U)                 /**< The Maximum supported MTU length of ATT stack. */
 /** @} */
 
 
-/**@defgroup GATT_HEADER_SIZE Header size
- * @brief The definition of GATT header size
+/**@defgroup GATT_HEADER_SIZE GATT Header size
+ * @brief The definition of GATT header size.
  * @{ */
-#define ATT_HANDLE_VALUE_HEADER_SIZE                        3                   /**< The ATT Handle Value Notification/Indication Header Size. */
-#define ATT_WRITE_HEADER_SIZE                               3                   /**< The ATT Write Request/Command Header Size. */
-#define ATT_READ_RESP_HEADER_SIZE                           1                   /**< The ATT Read Response Header Size. */
-#define ATT_WRITE_RESP_HEADER_SIZE                          5                   /**< The ATT Prepare Write Response Header Size. */
-#define ATT_FIND_INFO_RESP_HEADER_SIZE                      2                   /**< The ATT Find Information Response Header Size.*/
-#define ATT_FIND_BY_TYPE_RESP_HEADER_SIZE                   1                   /**< The ATT Find By Type Value Response Header Size. */
-#define ATT_READ_BY_TYPE_RESP_HEADER_SIZE                   2                   /**< The ATT Read By Type Response Header Size. */
-#define ATT_READ_BY_GROUP_RESP_HEADER_SIZE                  2                   /**< The ATT Read By Group Type Response Header Size. */
-#define ATT_PREP_WRITE_RESP_HEADER_SIZE                     5                   /**< The ATT Prepare Write Response Header Size. */
-#define ATT_NOTI_INDI_HEADER_SIZE                           3                   /**< The ATT Notification/Indication Header Size. */
+#define ATT_HANDLE_VALUE_HEADER_SIZE                        (3U)                   /**< The ATT Handle Value Notification/Indication Header Size. */
+#define ATT_WRITE_HEADER_SIZE                               (3U)                   /**< The ATT Write Request/Command Header Size. */
+#define ATT_READ_RESP_HEADER_SIZE                           (1U)                   /**< The ATT Read Response Header Size. */
+#define ATT_WRITE_RESP_HEADER_SIZE                          (5U)                   /**< The ATT Prepare Write Response Header Size. */
+#define ATT_FIND_INFO_RESP_HEADER_SIZE                      (2U)                   /**< The ATT Find Information Response Header Size.*/
+#define ATT_FIND_BY_TYPE_RESP_HEADER_SIZE                   (1U)                   /**< The ATT Find By Type Value Response Header Size. */
+#define ATT_READ_BY_TYPE_RESP_HEADER_SIZE                   (2U)                   /**< The ATT Read By Type Response Header Size. */
+#define ATT_READ_BY_GROUP_RESP_HEADER_SIZE                  (2U)                   /**< The ATT Read By Group Type Response Header Size. */
+#define ATT_PREP_WRITE_RESP_HEADER_SIZE                     (5U)                   /**< The ATT Prepare Write Response Header Size. */
+#define ATT_NOTI_INDI_HEADER_SIZE                           (3U)                   /**< The ATT Notification/Indication Header Size. */
 /** @} */
 
 
 /**@defgroup GATTC_CONFIGURATION_BITS GATT client configuration definitions
- * @brief The definition of of GATT Client configuration bits
+ * @brief The definition of of GATT Client configuration bits.
  * @{ */
-#define GATTC_CONFIG_NONE                                   0x0000              /**< Not configure anyone of the supported function. */
-#define GATTC_CONFIG_MANUAL_CONFIRMATION                    0x0001              /**< bit 0: Configure ATT stack for auto/manual transmission of confirmation when an indication is received. */
+#define GATTC_CONFIG_NONE                                   (0x0000U)              /**< Not configure anyone of the supported function. */
+#define GATTC_CONFIG_MANUAL_CONFIRMATION                    (0x0001U)              /**< bit 0: Configure ATT stack for auto/manual transmission of confirmation when an indication is received. */
 /** @} */
 
 /**@defgroup GATTS_CONFIGURATION_BITS GATT server configuration definitions
-* @brief The definition of GATT server configuration bits
+* @brief The definition of GATT server configuration bits.
 * @{ */
-#define GATTS_CONFIG_NONE                                   0x0000              /**< Not configure anyone of the supported function. */
-#define GATTS_CONFIG_CACHING_SUPPORT                        0x0001              /**< bit 0: Configure GATT Server support caching function. \n
+#define GATTS_CONFIG_NONE                                   (0x0000U)              /**< Not configure anyone of the supported function. */
+#define GATTS_CONFIG_CACHING_SUPPORT                        (0x0001U)              /**< bit 0: Configure GATT Server support caching function. \n
                                                                                   *  If gatt caching is supported, the API @ref GATTS_UpdateBondingInfo must be called after link connected.
                                                                                   *  Otherwise, the GATT Server won't start process the incoming packets. */
 /** @} */
 
 /**@defgroup ATT_ERROR_CODES  ATT error code
- * @brief The definition of ATT Error Codes
+ * @brief The definition of ATT Error Codes.
  * @{ */
-#define ATT_ERRCODE_INVALID_HANDLE                          0x01                /**< ATT Error Code: Invalid Handle.*/
-#define ATT_ERRCODE_READ_NOT_PERMITTED                      0x02                /**< ATT Error Code: Read Not Permitted.*/
-#define ATT_ERRCODE_WRITE_NOT_PERMITTED                     0x03                /**< ATT Error Code: Write Not Permitted.*/
-#define ATT_ERRCODE_INVALID_PDU                             0x04                /**< ATT Error Code: Invalid PDU.*/
-#define ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION             0x05                /**< ATT Error Code: Insufficient Authentication.*/
-#define ATT_ERRCODE_REQUEST_NOT_SUPPORT                     0x06                /**< ATT Error Code: Request Not Supported.*/
-#define ATT_ERRCODE_INVALID_OFFSET                          0x07                /**< ATT Error Code: Invalid Offset.*/
-#define ATT_ERRCODE_INSUFFICIENT_AUTHORIZATION              0x08                /**< ATT Error Code: Insufficient Authorization.*/
-#define ATT_ERRCODE_PREPARE_QUEUE_FULL                      0x09                /**< ATT Error Code: Prepare Queue Full.*/
-#define ATT_ERRCODE_ATTRIBUTE_NOT_FOUND                     0x0a                /**< ATT Error Code: Attribute Not Found.*/
-#define ATT_ERRCODE_ATTRIBUTE_NOT_LONG                      0x0b                /**< ATT Error Code: Attribute Not Long.*/
-#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION_KEY_SIZE        0x0c                /**< ATT Error Code: Insufficient Encryption Key Size.*/
-#define ATT_ERRCODE_INVALID_ATTRIBUTE_VALUE_LENGTH          0x0d                /**< ATT Error Code: Invalid Attribute Value Length.*/
-#define ATT_ERRCODE_UNLIKELY_ERROR                          0x0e                /**< ATT Error Code: Unlikely Error.*/
-#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION                 0x0f                /**< ATT Error Code: Insufficient Encryption.*/
-#define ATT_ERRCODE_UNSUPPORTED_GROUP_TYPE                  0x10                /**< ATT Error Code: Unsupported Group Type.*/
-#define ATT_ERRCODE_INSUFFICIENT_RESOURCE                   0x11                /**< ATT Error Code: Insufficient Resource.*/
-#define ATT_ERRCODE_DATABASE_OUT_OF_SYNC                    0x12                /**< ATT Error Code: Database Out Of Sync.*/
-#define ATT_ERRCODE_VALUE_NOT_ALLOW                         0x13                /**< ATT Error Code: Value Not Allowed.*/
-#define ATT_ERRCODE_APPLICATION_ERROR                       0x80                /**< ATT Error Code: Application Error.*/
+#define ATT_ERRCODE_INVALID_HANDLE                          (0x01U)                /**< ATT Error Code: Invalid Handle.*/
+#define ATT_ERRCODE_READ_NOT_PERMITTED                      (0x02U)                /**< ATT Error Code: Read Not Permitted.*/
+#define ATT_ERRCODE_WRITE_NOT_PERMITTED                     (0x03U)                /**< ATT Error Code: Write Not Permitted.*/
+#define ATT_ERRCODE_INVALID_PDU                             (0x04U)                /**< ATT Error Code: Invalid PDU.*/
+#define ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION             (0x05U)                /**< ATT Error Code: Insufficient Authentication.*/
+#define ATT_ERRCODE_REQUEST_NOT_SUPPORT                     (0x06U)                /**< ATT Error Code: Request Not Supported.*/
+#define ATT_ERRCODE_INVALID_OFFSET                          (0x07U)                /**< ATT Error Code: Invalid Offset.*/
+#define ATT_ERRCODE_INSUFFICIENT_AUTHORIZATION              (0x08U)                /**< ATT Error Code: Insufficient Authorization.*/
+#define ATT_ERRCODE_PREPARE_QUEUE_FULL                      (0x09U)                /**< ATT Error Code: Prepare Queue Full.*/
+#define ATT_ERRCODE_ATTRIBUTE_NOT_FOUND                     (0x0aU)                /**< ATT Error Code: Attribute Not Found.*/
+#define ATT_ERRCODE_ATTRIBUTE_NOT_LONG                      (0x0bU)                /**< ATT Error Code: Attribute Not Long.*/
+#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION_KEY_SIZE        (0x0cU)                /**< ATT Error Code: Insufficient Encryption Key Size.*/
+#define ATT_ERRCODE_INVALID_ATTRIBUTE_VALUE_LENGTH          (0x0dU)                /**< ATT Error Code: Invalid Attribute Value Length.*/
+#define ATT_ERRCODE_UNLIKELY_ERROR                          (0x0eU)                /**< ATT Error Code: Unlikely Error.*/
+#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION                 (0x0fU)                /**< ATT Error Code: Insufficient Encryption.*/
+#define ATT_ERRCODE_UNSUPPORTED_GROUP_TYPE                  (0x10U)                /**< ATT Error Code: Unsupported Group Type.*/
+#define ATT_ERRCODE_INSUFFICIENT_RESOURCE                   (0x11U)                /**< ATT Error Code: Insufficient Resource.*/
+#define ATT_ERRCODE_DATABASE_OUT_OF_SYNC                    (0x12U)                /**< ATT Error Code: Database Out Of Sync.*/
+#define ATT_ERRCODE_VALUE_NOT_ALLOW                         (0x13U)                /**< ATT Error Code: Value Not Allowed.*/
+#define ATT_ERRCODE_APPLICATION_ERROR                       (0x80U)                /**< ATT Error Code: Application Error.*/
 /** @} */
 
 /**@defgroup ATT_OPCODES    ATT opcodes
- * @brief The definition of ATT Attribute Opcodes
+ * @brief The definition of ATT Attribute Opcodes.
  * @{ */
-#define ATT_ERROR_RSP                                       0x01               /**< Attribute Opcode: Error Response.*/
-#define ATT_EXCHANGE_MTU_REQ                                0x02               /**< Attribute Opcode: Exchange MTU Request.*/
-#define ATT_EXCHANGE_MTU_RSP                                0x03               /**< Attribute Opcode: Exchange MTU Response.*/
-#define ATT_FIND_INFORMATION_REQ                            0x04               /**< Attribute Opcode: Find Information Request.*/
-#define ATT_FIND_INFORMATION_RSP                            0x05               /**< Attribute Opcode: Find Information Response.*/
-#define ATT_FIND_BY_TYPE_VALUE_REQ                          0x06               /**< Attribute Opcode: Find By Type Value Request.*/
-#define ATT_FIND_BY_TYPE_VALUE_RSP                          0x07               /**< Attribute Opcode: Find By Type Value Response.*/
-#define ATT_READ_BY_TYPE_REQ                                0x08               /**< Attribute Opcode: Read By Type Request.*/
-#define ATT_READ_BY_TYPE_RSP                                0x09               /**< Attribute Opcode: Read By Type Response.*/
-#define ATT_READ_REQ                                        0x0a               /**< Attribute Opcode: Read Request.*/
-#define ATT_READ_RSP                                        0x0b               /**< Attribute Opcode: Read Response.*/
-#define ATT_READ_BLOB_REQ                                   0x0c               /**< Attribute Opcode: Read Blob Request.*/
-#define ATT_READ_BLOB_RSP                                   0x0d               /**< Attribute Opcode: Read Blob Response.*/
-#define ATT_READ_MULTIPLE_REQ                               0x0e               /**< Attribute Opcode: Read Multiple Request.*/
-#define ATT_READ_MULTIPLE_RSP                               0x0f               /**< Attribute Opcode: Read Multiple Response.*/
-#define ATT_READ_BY_GROUP_TYPE_REQ                          0x10               /**< Attribute Opcode: Read By Group Type Request.*/
-#define ATT_READ_BY_GROUP_TYPE_RSP                          0x11               /**< Attribute Opcode: Read By Group Type Response.*/
-#define ATT_WRITE_REQ                                       0x12               /**< Attribute Opcode: Write Request.*/
-#define ATT_WRITE_RSP                                       0x13               /**< Attribute Opcode: Write Response.*/
-#define ATT_WRITE_CMD                                       0x52               /**< Attribute Opcode: Write Command.*/
-#define ATT_PREPARE_WRITE_REQ                               0x16               /**< Attribute Opcode: Prepare Write Request.*/
-#define ATT_PREPARE_WRITE_RSP                               0x17               /**< Attribute Opcode: Prepare Write Response.*/
-#define ATT_EXECUTE_WRITE_REQ                               0x18               /**< Attribute Opcode: Execute Write Request.*/
-#define ATT_EXECUTE_WRITE_RSP                               0x19               /**< Attribute Opcode: Execute Write Response.*/
-#define ATT_HANDLE_VALUE_NTF                                0x1b               /**< Attribute Opcode: Handle Value Notification.*/
-#define ATT_HANDLE_VALUE_IND                                0x1d               /**< Attribute Opcode: Handle Value Indication.*/
-#define ATT_HANDLE_VALUE_CFM                                0x1e               /**< Attribute Opcode: Handle Value Confirmation.*/
-#define ATT_READ_MUTIPLE_VARIABLE_REQ                       0x20               /**< Attribute Opcode: Read Multiple Variable Request.*/
-#define ATT_READ_MUTIPLE_VARIABLE_RSP                       0x21               /**< Attribute Opcode: Read Multiple Variable Response.*/
-#define ATT_MUTIPLE_HANDLE_VALUE_NTF                        0x22               /**< Attribute Opcode: Multiple Handle Value Notification.*/
-#define ATT_SIGNED_WRITE_COMMAND                            0xd2               /**< Attribute Opcode: Signed Write Command.*/
+#define ATT_ERROR_RSP                                       (0x01U)               /**< Attribute Opcode: Error Response.*/
+#define ATT_EXCHANGE_MTU_REQ                                (0x02U)               /**< Attribute Opcode: Exchange MTU Request.*/
+#define ATT_EXCHANGE_MTU_RSP                                (0x03U)               /**< Attribute Opcode: Exchange MTU Response.*/
+#define ATT_FIND_INFORMATION_REQ                            (0x04U)               /**< Attribute Opcode: Find Information Request.*/
+#define ATT_FIND_INFORMATION_RSP                            (0x05U)               /**< Attribute Opcode: Find Information Response.*/
+#define ATT_FIND_BY_TYPE_VALUE_REQ                          (0x06U)               /**< Attribute Opcode: Find By Type Value Request.*/
+#define ATT_FIND_BY_TYPE_VALUE_RSP                          (0x07U)               /**< Attribute Opcode: Find By Type Value Response.*/
+#define ATT_READ_BY_TYPE_REQ                                (0x08U)               /**< Attribute Opcode: Read By Type Request.*/
+#define ATT_READ_BY_TYPE_RSP                                (0x09U)               /**< Attribute Opcode: Read By Type Response.*/
+#define ATT_READ_REQ                                        (0x0aU)               /**< Attribute Opcode: Read Request.*/
+#define ATT_READ_RSP                                        (0x0bU)               /**< Attribute Opcode: Read Response.*/
+#define ATT_READ_BLOB_REQ                                   (0x0cU)               /**< Attribute Opcode: Read Blob Request.*/
+#define ATT_READ_BLOB_RSP                                   (0x0dU)               /**< Attribute Opcode: Read Blob Response.*/
+#define ATT_READ_MULTIPLE_REQ                               (0x0eU)               /**< Attribute Opcode: Read Multiple Request.*/
+#define ATT_READ_MULTIPLE_RSP                               (0x0fU)               /**< Attribute Opcode: Read Multiple Response.*/
+#define ATT_READ_BY_GROUP_TYPE_REQ                          (0x10U)               /**< Attribute Opcode: Read By Group Type Request.*/
+#define ATT_READ_BY_GROUP_TYPE_RSP                          (0x11U)               /**< Attribute Opcode: Read By Group Type Response.*/
+#define ATT_WRITE_REQ                                       (0x12U)               /**< Attribute Opcode: Write Request.*/
+#define ATT_WRITE_RSP                                       (0x13U)               /**< Attribute Opcode: Write Response.*/
+#define ATT_WRITE_CMD                                       (0x52U)               /**< Attribute Opcode: Write Command.*/
+#define ATT_PREPARE_WRITE_REQ                               (0x16U)               /**< Attribute Opcode: Prepare Write Request.*/
+#define ATT_PREPARE_WRITE_RSP                               (0x17U)               /**< Attribute Opcode: Prepare Write Response.*/
+#define ATT_EXECUTE_WRITE_REQ                               (0x18U)               /**< Attribute Opcode: Execute Write Request.*/
+#define ATT_EXECUTE_WRITE_RSP                               (0x19U)               /**< Attribute Opcode: Execute Write Response.*/
+#define ATT_HANDLE_VALUE_NTF                                (0x1bU)               /**< Attribute Opcode: Handle Value Notification.*/
+#define ATT_HANDLE_VALUE_IND                                (0x1dU)               /**< Attribute Opcode: Handle Value Indication.*/
+#define ATT_HANDLE_VALUE_CFM                                (0x1eU)               /**< Attribute Opcode: Handle Value Confirmation.*/
+#define ATT_READ_MUTIPLE_VARIABLE_REQ                       (0x20U)               /**< Attribute Opcode: Read Multiple Variable Request.*/
+#define ATT_READ_MUTIPLE_VARIABLE_RSP                       (0x21U)               /**< Attribute Opcode: Read Multiple Variable Response.*/
+#define ATT_MUTIPLE_HANDLE_VALUE_NTF                        (0x22U)               /**< Attribute Opcode: Multiple Handle Value Notification.*/
+#define ATT_SIGNED_WRITE_COMMAND                            (0xd2U)               /**< Attribute Opcode: Signed Write Command.*/
 /** @} */
 
 /**@defgroup ATT_PERMISSION_KEY_SIZE  Permission key size
- * @brief The definition of of permission key size
+ * @brief The definition of of permission key size.
  * @note  Attribute might require permission (Encryption/Authentication Permission) to be accessed.
  *        The key size defines the minimum length of the pairing key.\n Key size shorter than this length is considered as unsafe authentication/encryption.
  *        Length ranges from 7 bytes to 16 bytes.\n Set to zero to disable the key size checking.
  * @{ */
-#define ATT_PERMISSION_KEY_SIZE                             0x10                /**< Minimum length of the pairing key. */
+#define ATT_PERMISSION_KEY_SIZE                             (0x10U)                /**< Minimum length of the pairing key. */
 /** @} */
 
 
 /**@defgroup GATT_PROCEDURE_STATUS  Procedure status definition
- * @brief The definition of of procedure status
+ * @brief The definition of of procedure status.
  * @note Some GATT procedures would not finish in one ATT request. Hence, more than one event will received in one procedure.\n
  *        Status in the event indicates if this procedure will continue or end.\n
  * @{ */
-#define GATT_PROCEDURE_STATUS_CONTINUE                      0x00                /**< Querying procedure continues. Further events will be received. */
-#define GATT_PROCEDURE_STATUS_FINISH                        0x01                /**< Querying procedure is complete. Last event of this procedure. */
+#define GATT_PROCEDURE_STATUS_CONTINUE                      (0x00U)                /**< Querying procedure continues. Further events will be received. */
+#define GATT_PROCEDURE_STATUS_FINISH                        (0x01U)                /**< Querying procedure is complete. Last event of this procedure. */
 /** @} */
 
 
 /**@defgroup GATT_CLIENT_FEATURE  GATT client features
- * @brief The definition of client features in client supported features characteristic in GATT Service
+ * @brief The definition of client features in client supported features characteristic in GATT Service.
  * @{ */
-#define GATT_ROBUST_CACHING                                 0x01                /**< The client supports robust caching. */
-#define GATT_EATT_BEARER                                    0x02                /**< The client supports enhanced ATT bearer. */
-#define GATT_MULTI_HANDLE_NOTI                              0x04                /**< The client supports multiple handle value notifications. */
+#define GATT_ROBUST_CACHING                                 (0x01U)                /**< The client supports robust caching. */
+#define GATT_EATT_BEARER                                    (0x02U)                /**< The client supports enhanced ATT bearer. */
+#define GATT_MULTI_HANDLE_NOTI                              (0x04U)                /**< The client supports multiple handle value notifications. */
 /** @} */
 
 
 /**@defgroup GATT_ATTRIBUTE_PERMISSIONS Attribute permission
 *  @brief The definition of attribute permissions.
 *  @{ */
-#define PERMISSION_READ                                     0x01                /**< Read access is premitted. */
-#define PERMISSION_READ_AUTHEN                              0x02                /**< Read access requires encryption, MITM protection. */
-#define PERMISSION_READ_AUTHEN_SC                           0x04                /**< Read access requires encryption, MITM protection, Secure Connections */
-#define PERMISSION_READ_ENC                                 0x08                /**< Read access requires encryption, No MITM protection. */
-#define PERMISSION_WRITE                                    0x10                /**< Write access is premitted. */
-#define PERMISSION_WRITE_AUTHEN                             0x20                /**< Write access requires encryption, MITM protection. */
-#define PERMISSION_WRITE_AUTHEN_SC                          0x40                /**< write access requires encryption, MITM protection, Secure Connections */
-#define PERMISSION_WRITE_ENC                                0x80                /**< Write access requires encryption, No MITM protection. */
+#define PERMISSION_READ                                     (0x01U)                /**< Read access is premitted. */
+#define PERMISSION_READ_AUTHEN                              (0x02U)                /**< Read access requires encryption, MITM protection. */
+#define PERMISSION_READ_AUTHEN_SC                           (0x04U)                /**< Read access requires encryption, MITM protection, Secure Connections. */
+#define PERMISSION_READ_ENC                                 (0x08U)                /**< Read access requires encryption, No MITM protection. */
+#define PERMISSION_WRITE                                    (0x10U)                /**< Write access is premitted. */
+#define PERMISSION_WRITE_AUTHEN                             (0x20U)                /**< Write access requires encryption, MITM protection. */
+#define PERMISSION_WRITE_AUTHEN_SC                          (0x40U)                /**< Write access requires encryption, MITM protection, Secure Connections. */
+#define PERMISSION_WRITE_ENC                                (0x80U)                /**< Write access requires encryption, No MITM protection. */
 /** @} */
 
 /**@defgroup GATT_ATTRIBUTE_SETTINGS Attribute settings
 *  @brief The definition of attribute settings.
 *  @{ */
-#define SETTING_MANUAL_WRITE_RSP                            0x01                /**< Set if service need to know write operations on this attribute. Service also need to send response (if need) manually. */
-#define SETTING_MANUAL_READ_RSP                             0x02                /**< Set if service need to know read operations on this attribute. Service also need to send response manually. */
-#define SETTING_UUID_16                                     0x04                /**< Set if the UUID is 16 bytes (128 bits) in length */
-#define SETTING_VARIABLE_LEN                                0x08                /**< Set if the attribute has a variable length */
-#define SETTING_ALLOW_OFFSET                                0x10                /**< Set if writes are allowed with an offset */
-#define SETTING_CCCD                                        0x20                /**< Set if the attribute is CCCD */
+#define SETTING_MANUAL_WRITE_RSP                            (0x01U)                /**< Set if service need to know write operations on this attribute. Service also need to send response (if need) manually. */
+#define SETTING_MANUAL_READ_RSP                             (0x02U)                /**< Set if service need to know read operations on this attribute. Service also need to send response manually. */
+#define SETTING_UUID_16                                     (0x04U)                /**< Set if the UUID is 16 bytes (128 bits) in length. */
+#define SETTING_VARIABLE_LEN                                (0x08U)                /**< Set if the attribute has a variable length. */
+#define SETTING_ALLOW_OFFSET                                (0x10U)                /**< Set if writes are allowed with an offset. */
+#define SETTING_CCCD                                        (0x20U)                /**< Set if the attribute is CCCD. */
 /** @} */
 
 
 /**@defgroup GATT_CHARACTERISTIC_PROPERTIES Characteristic property
  * @brief The definition of properties in Characteristic declaration.
  * @{ */
-#define ATT_PROP_BROADCAST                                  0x01                /**< If set, permits broadcasts of Characteristic Value using Server Characteristic Configuration Descriptor.*/
-#define ATT_PROP_READ                                       0x02                /**< If set, permits reads of the Characteristic Value.*/
-#define ATT_PROP_WRITE_CMD                                  0x04                /**< If set, permits writes of Characteristic Value without response.*/
-#define ATT_PROP_WRITE_REQ                                  0x08                /**< If set, permits writes of Characteristic Value with response.*/
-#define ATT_PROP_NOTIFY                                     0x10                /**< If set, permits notifications of a Characteristic Value without acknowledgement.*/
-#define ATT_PROP_INDICATE                                   0x20                /**< If set, permits indications of Characteristic Value with acknowledgement.*/
-#define ATT_PROP_AUTH_WRITES                                0x40                /**< If set, permits signed writes to the Characteristic Value.*/
-#define ATT_PROP_EXTENDED_PROP                              0x80                /**< If set, additional characteristic properties are defined in the Characteristic Extended Properties Descriptor.*/
+#define ATT_PROP_BROADCAST                                  (0x01U)                /**< If set, permits broadcasts of Characteristic Value using Server Characteristic Configuration Descriptor.*/
+#define ATT_PROP_READ                                       (0x02U)                /**< If set, permits reads of the Characteristic Value.*/
+#define ATT_PROP_WRITE_CMD                                  (0x04U)                /**< If set, permits writes of Characteristic Value without response.*/
+#define ATT_PROP_WRITE_REQ                                  (0x08U)                /**< If set, permits writes of Characteristic Value with response.*/
+#define ATT_PROP_NOTIFY                                     (0x10U)                /**< If set, permits notifications of a Characteristic Value without acknowledgement.*/
+#define ATT_PROP_INDICATE                                   (0x20U)                /**< If set, permits indications of Characteristic Value with acknowledgement.*/
+#define ATT_PROP_AUTH_WRITES                                (0x40U)                /**< If set, permits signed writes to the Characteristic Value.*/
+#define ATT_PROP_EXTENDED_PROP                              (0x80U)                /**< If set, additional characteristic properties are defined in the Characteristic Extended Properties Descriptor.*/
 /** @} */
 
 /**@defgroup GATT_CHARACTERISTIC_EXTENDED_PROPERTIES Characteristic extended property
- * @brief The definition of Characteristic Extended Properties bit field
+ * @brief The definition of Characteristic Extended Properties bit field.
  * @{ */
-#define RELIABLE_WRITE                                      0x0001              /**< If set, permits reliable writes of Characteristic Value.*/
-#define WRITABLE_AUXILIARIES                                0x0002              /**< If set, permits writes to the Characteristic Descriptor.*/
+#define RELIABLE_WRITE                                      (0x0001U)             /**< If set, permits reliable writes of Characteristic Value.*/
+#define WRITABLE_AUXILIARIES                                (0x0002U)             /**< If set, permits writes to the Characteristic Descriptor.*/
 /** @} */
 
 /**@defgroup GATT_CCCD_BITS Client Characteristic Configuration definition
- * @brief The definition of Client Characteristic Configuration bit field
+ * @brief The definition of Client Characteristic Configuration bit field.
  * @{ */
-#define NOTIFICATION                                        0x0001              /**< The Characteristic Value shall be notified.*/
-#define INDICATION                                          0x0002              /**< The Characteristic Value shall be indicated.*/
+#define NOTIFICATION                                        (0x0001U)              /**< The Characteristic Value shall be notified.*/
+#define INDICATION                                          (0x0002U)              /**< The Characteristic Value shall be indicated.*/
 /** @} */
 
 /**@defgroup GATT_SCCD_BITS Server Characteristic Configuration definition
- * @brief The definition of Server Characteristic Configuration bit field
+ * @brief The definition of Server Characteristic Configuration bit field.
  * @{ */
-#define SCCD_BROADCAST                                      0x0001              /**< The Characteristic Value shall be broadcast.*/
+#define SCCD_BROADCAST                                      (0x0001U)              /**< The Characteristic Value shall be broadcast.*/
 /** @} */
 
 /**@defgroup GATTS_BUILDIN_CCCD Maximium build-in CCCD number
  * @brief The definition of total CCCD number of build-in services.
  * @{ */
-#define GATTS_BUILDIN_CCCD_NUM                              0x01                /**< There exist one CCCD in build-in GATT Services. */
+#define GATTS_BUILDIN_CCCD_NUM                              (0x01U)                /**< There exist one CCCD in build-in GATT Services. */
 /** @} */
 
 /**@defgroup GATT_DB_CHANGE_STATE Database change state
- * @brief The definition of GATT Server database change-aware state
+ * @brief The definition of GATT Server database change-aware state.
  * @{ */
-#define GATT_DB_CHANGE_AWARE                                0x00                /**< The GATT database is change-aware to specific client. */
-#define GATT_DB_CHANGE_UNAWARE                              0x01                /**< The GATT database is change-unaware to specific client. */
+#define GATT_DB_CHANGE_AWARE                                (0x00U)                /**< The GATT database is change-aware to specific client. */
+#define GATT_DB_CHANGE_UNAWARE                              (0x01U)                /**< The GATT database is change-unaware to specific client. */
 /** @} */
 
 
 /**@defgroup GATTS_APP_SVC_START_HDL Valid start attribute handle
- * @brief The definition of valid attribute handle
- * @note  The application registered service should be greater than this definition
+ * @brief The definition of valid attribute handle.
+ * @note  The application registered service should be greater than this definition.
  * @{ */
-#define GATTS_APP_ATTRIBUTE_START_HANDLE                    0x0050              /**< Start attribute handle of application-defined service. */
+#define GATTS_APP_ATTRIBUTE_START_HANDLE                    (0x0050U)              /**< Start attribute handle of application-defined service. */
 /** @} */
 
 
@@ -298,7 +306,7 @@
  */
 typedef enum GATT_EventId_T
 {
-    GATTC_EVT_ERROR_RESP = 0x00,                                                /**< Error Response Event. See @ref GATT_EvtError_T for event details. */
+    GATTC_EVT_ERROR_RESP = 0x00U,                                                /**< Error Response Event. See @ref GATT_EvtError_T for event details. */
     GATTC_EVT_DISC_PRIM_SERV_RESP,                                              /**< Discover Primary Services Response Event. See @ref GATT_EvtDiscPrimServResp_T for event details. */
     GATTC_EVT_DISC_PRIM_SERV_BY_UUID_RESP,                                      /**< Discover Primary Services By UUID Response Event. See @ref GATT_EvtDiscPrimServByUuidResp_T for event details. */
     GATTC_EVT_DISC_CHAR_RESP,                                                   /**< Discover All Characteristics Response Event. See @ref GATT_EvtDiscCharResp_T for event details. */
@@ -316,11 +324,11 @@ typedef enum GATT_EventId_T
     ATT_EVT_TIMEOUT,                                                            /**< ATT Stack Timeout Event. */
     ATT_EVT_UPDATE_MTU,                                                         /**< Update MTU Event. See @ref GATT_EvtUpdateMtu_T for event details. */
     GATTC_EVT_DISC_CHAR_BY_UUID_RESP,                                           /**< Discover Characteristics By UUID Response Event. See @ref GATT_EvtDiscCharResp_T for event details. */
-    GATTS_EVT_SERVICE_CHANGE,                                                   /**< Service change for the specific bonded client. The information must be kept between connection. @ref GATT_EvtServiceChange_T. */
-    GATTS_EVT_CLIENT_FEATURE_CHANGE,                                            /**< Support feature change for a specific bonded client. The information must be kept between connection. @ref GATT_EvtClientFeatureChange_T. */
-    GATTS_EVT_CLIENT_CCCDLIST_CHANGE,                                           /**< CCCD list change for a specific bonded client. The information must be kept between connection. @ref GATT_EvtClientCccdListChange_T. */
-    GATTC_EVT_PROTOCOL_AVAILABLE,                                               /**< Sequential protocol available in client role. @ref GATT_EvtProtocolAvailable_T */
-    GATTS_EVT_PROTOCOL_AVAILABLE                                                /**< Sequential protocol available in server role. @ref GATT_EvtProtocolAvailable_T */
+    GATTS_EVT_SERVICE_CHANGE,                                                   /**< Service change for the specific bonded client. The information must be kept between connection. See @ref GATT_EvtServiceChange_T for event details. */
+    GATTS_EVT_CLIENT_FEATURE_CHANGE,                                            /**< Support feature change for a specific bonded client. The information must be kept between connection. See @ref GATT_EvtClientFeatureChange_T for event details. */
+    GATTS_EVT_CLIENT_CCCDLIST_CHANGE,                                           /**< CCCD list change for a specific bonded client. The information must be kept between connection. See @ref GATT_EvtClientCccdListChange_T for event details. */
+    GATTC_EVT_PROTOCOL_AVAILABLE,                                               /**< Sequential protocol available in client role. See @ref GATT_EvtProtocolAvailable_T for event details. */
+    GATTS_EVT_PROTOCOL_AVAILABLE                                                /**< Sequential protocol available in server role. See @ref GATT_EvtProtocolAvailable_T for event details. */
 }GATT_EventId_T;
 
 /**@} */ //GATT_ENUMS
@@ -337,7 +345,7 @@ typedef enum GATT_EventId_T
 typedef struct GATTC_WriteParams_T
 {
     uint16_t     charHandle;                                                    /**< Handle of the characteristic to be written. */
-    uint16_t     charLength;                                                    /**< Length of the characteristic to be written. For Max value refer size of charValue[] */
+    uint16_t     charLength;                                                    /**< Length of the characteristic to be written. For Max value refer size of charValue. */
     uint8_t      charValue[BLE_ATT_MAX_MTU_LEN - ATT_WRITE_HEADER_SIZE];        /**< Data to be written. */
     uint8_t      writeType;                                                     /**< Type of the write operation. See @ref ATT_OPCODES. Only ATT_WRITE_REQ/ATT_WRITE_CMD/ATT_PREPARE_WRITE_REQ/ATT_EXECUTE_WRITE_REQ are allowed. */
     uint16_t     valueOffset;                                                   /**< The offset of the first octet to be written. Set to offset
@@ -350,8 +358,8 @@ typedef struct GATTC_WriteParams_T
 /**@brief GATT Discover Primary Service By UUID parameters. */
 typedef struct GATTC_DiscoverPrimaryServiceByUuidParams_T
 {
-    uint16_t     startHandle;                                                   /**< Start handle for querying the service by UUID */
-    uint16_t     endHandle;                                                     /**< End handle for querying the service by UUID */
+    uint16_t     startHandle;                                                   /**< Start handle for querying the service by UUID. */
+    uint16_t     endHandle;                                                     /**< End handle for querying the service by UUID. */
     uint8_t      valueLength;                                                   /**< length of UUID in bytes. Should be set to 2 for 16-bit UUID and 16 for 128 bit UUID. */
     uint8_t      value[ATT_MAX_UUID_SIZE];                                      /**< UUID of particular primary service to be discovered. The format of UUID is little endian. */
 }   GATTC_DiscoverPrimaryServiceByUuidParams_T;
@@ -438,7 +446,7 @@ typedef struct GATTS_BondingParams_T
     uint8_t     clientSupportFeature;                                           /**< Support feature of the related client. */
 } GATTS_BondingParams_T;
 
-/**@brief GATT attribute */
+/**@brief GATT attribute. */
 typedef struct GATTS_Attribute_T
 {
     uint8_t     *p_uuid;                                                        /**< Pointer to the attribute's UUID (attribut type). */
@@ -449,7 +457,7 @@ typedef struct GATTS_Attribute_T
     uint8_t     permissions;                                                    /**< Attribute permissions. */
 } GATTS_Attribute_T;
 
-/**@brief Service table parameters */
+/**@brief Service table parameters. */
 typedef struct GATTS_Service_T
 {
     struct GATTS_Service_T          *p_next;                                    /**< For internal use only. */
@@ -583,11 +591,11 @@ typedef struct GATT_EvtReadResp_T
 typedef struct GATT_EvtWriteResp_T
 {
     uint16_t    connHandle;                                                     /**< Connection handle associated with this connection. */
-    uint8_t     responseType;                                                   /**< Write response type. See @ref ATT_OPCODES. Only ATT_WRITE_RSP/ATT_PREPARE_WRITE_RSP/ATT_EXECUTE_WRITE_RSP are allowed */
-    uint16_t    charHandle;                                                     /**< Handle (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP */
-    uint16_t    valueOffset;                                                    /**< Write offset (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP */
-    uint16_t    writeLength;                                                    /**< Length of written value. Used only when responseType is @ref ATT_PREPARE_WRITE_RSP*/
-    uint8_t     writeValue[BLE_ATT_MAX_MTU_LEN-ATT_PREP_WRITE_RESP_HEADER_SIZE];/**< Value written (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP*/
+    uint8_t     responseType;                                                   /**< Write response type. See @ref ATT_OPCODES. Only ATT_WRITE_RSP/ATT_PREPARE_WRITE_RSP/ATT_EXECUTE_WRITE_RSP are allowed. */
+    uint16_t    charHandle;                                                     /**< Handle (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP. */
+    uint16_t    valueOffset;                                                    /**< Write offset (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP. */
+    uint16_t    writeLength;                                                    /**< Length of written value. Used only when responseType is @ref ATT_PREPARE_WRITE_RSP. */
+    uint8_t     writeValue[BLE_ATT_MAX_MTU_LEN-ATT_PREP_WRITE_RESP_HEADER_SIZE];/**< Value written (Same as in prepare write request). Used only when responseType is @ref ATT_PREPARE_WRITE_RSP. */
 }   GATT_EvtWriteResp_T;
 
 /**@brief Data structure for @ref ATT_EVT_UPDATE_MTU event.*/
@@ -625,15 +633,15 @@ typedef struct GATT_EvtServiceChange_T
 typedef struct GATT_EvtClientFeatureChange_T
 {
     uint16_t    connHandle;                                                     /**< Connection handle associated with this connection. */
-    uint8_t     clientSupportFeature;                                           /**< Bit field represents client support features. @ref GATT_CLIENT_FEATURE */
+    uint8_t     clientSupportFeature;                                           /**< Bit field represents client support features. See @ref GATT_CLIENT_FEATURE. */
 } GATT_EvtClientFeatureChange_T;
 
 /**@brief Data structure for @ref GATTS_EVT_CLIENT_CCCDLIST_CHANGE event. */
 typedef struct GATT_EvtClientCccdListChange_T
 {
-    GATTS_CccdList_T *p_cccdList;                                               /**< Pointer to the CCCD list */
+    GATTS_CccdList_T *p_cccdList;                                               /**< Pointer to the CCCD list. */
     uint16_t         connHandle;                                                /**< Connection handle associated with this connection. */
-    uint8_t          numOfCccd;                                                 /**< Number of CCCDs in the List */
+    uint8_t          numOfCccd;                                                 /**< Number of CCCDs in the List. */
 } GATT_EvtClientCccdListChange_T;
 
 /**@brief Data structure for @ref GATTC_EVT_PROTOCOL_AVAILABLE or @ref GATTS_EVT_PROTOCOL_AVAILABLE event. */
@@ -646,26 +654,26 @@ typedef struct GATT_EvtProtocolAvailable_T
 /**@brief Union of GATT callback event data types. */
 typedef union
 {
-    GATT_EvtError_T                       onError;                              /**< Handle @ref GATTC_EVT_ERROR_RESP */
-    GATT_EvtRead_T                        onRead;                               /**< Handle @ref GATTS_EVT_READ */
-    GATT_EvtWrite_T                       onWrite;                              /**< Handle @ref GATTS_EVT_WRITE */
-    GATT_EvtDiscPrimServResp_T            onDiscPrimServResp;                   /**< Handle @ref GATTC_EVT_DISC_PRIM_SERV_RESP */
-    GATT_EvtDiscPrimServByUuidResp_T      onDiscPrimServByUuidResp;             /**< Handle @ref GATTC_EVT_DISC_PRIM_SERV_BY_UUID_RESP */
-    GATT_EvtDiscCharResp_T                onDiscCharResp;                       /**< Handle @ref GATTC_EVT_DISC_CHAR_RESP */
-    GATT_EvtDiscDescResp_T                onDiscDescResp;                       /**< Handle @ref GATTC_EVT_DISC_DESC_RESP */
-    GATT_EvtReadUsingUuidResp_T           onReadUsingUuidResp;                  /**< Handle @ref GATTC_EVT_READ_USING_UUID_RESP */
-    GATT_EvtReadResp_T                    onReadResp;                           /**< Handle @ref GATTC_EVT_READ_RESP */
-    GATT_EvtWriteResp_T                   onWriteResp;                          /**< Handle @ref GATTC_EVT_WRITE_RESP */
-    GATT_EvtUpdateMtu_T                   onUpdateMTU;                          /**< Handle @ref ATT_EVT_UPDATE_MTU */
-    GATT_EvtReceiveHandleValue_T          onNotification;                       /**< Handle @ref GATTC_EVT_HV_NOTIFY */
-    GATT_EvtReceiveHandleValue_T          onIndication;                         /**< Handle @ref GATTC_EVT_HV_INDICATE */
-    GATT_EvtReceiveCfm_T                  onConfirmation;                       /**< Handle @ref GATTS_EVT_HV_CONFIRM */
-    GATT_EvtDiscCharResp_T                onDiscCharByUuid;                     /**< Handle @ref GATTC_EVT_DISC_CHAR_BY_UUID_RESP */
-    GATT_EvtServiceChange_T               onServiceChange;                      /**< Handle @ref GATTS_EVT_SERVICE_CHANGE */
-    GATT_EvtClientFeatureChange_T         onClientFeatureChange;                /**< Handle @ref GATTS_EVT_CLIENT_FEATURE_CHANGE */
-    GATT_EvtClientCccdListChange_T        onClientCccdListChange;               /**< Handle @ref GATTS_EVT_CLIENT_CCCDLIST_CHANGE */
-    GATT_EvtProtocolAvailable_T           onClientProtocolAvailable;            /**< Handle @ref GATTC_EVT_PROTOCOL_AVAILABLE */
-    GATT_EvtProtocolAvailable_T           onServerProtocolAvailable;            /**< Handle @ref GATTS_EVT_PROTOCOL_AVAILABLE */
+    GATT_EvtError_T                       onError;                              /**< Handle @ref GATTC_EVT_ERROR_RESP. */
+    GATT_EvtRead_T                        onRead;                               /**< Handle @ref GATTS_EVT_READ. */
+    GATT_EvtWrite_T                       onWrite;                              /**< Handle @ref GATTS_EVT_WRITE. */
+    GATT_EvtDiscPrimServResp_T            onDiscPrimServResp;                   /**< Handle @ref GATTC_EVT_DISC_PRIM_SERV_RESP. */
+    GATT_EvtDiscPrimServByUuidResp_T      onDiscPrimServByUuidResp;             /**< Handle @ref GATTC_EVT_DISC_PRIM_SERV_BY_UUID_RESP. */
+    GATT_EvtDiscCharResp_T                onDiscCharResp;                       /**< Handle @ref GATTC_EVT_DISC_CHAR_RESP. */
+    GATT_EvtDiscDescResp_T                onDiscDescResp;                       /**< Handle @ref GATTC_EVT_DISC_DESC_RESP. */
+    GATT_EvtReadUsingUuidResp_T           onReadUsingUuidResp;                  /**< Handle @ref GATTC_EVT_READ_USING_UUID_RESP. */
+    GATT_EvtReadResp_T                    onReadResp;                           /**< Handle @ref GATTC_EVT_READ_RESP. */
+    GATT_EvtWriteResp_T                   onWriteResp;                          /**< Handle @ref GATTC_EVT_WRITE_RESP. */
+    GATT_EvtUpdateMtu_T                   onUpdateMTU;                          /**< Handle @ref ATT_EVT_UPDATE_MTU. */
+    GATT_EvtReceiveHandleValue_T          onNotification;                       /**< Handle @ref GATTC_EVT_HV_NOTIFY. */
+    GATT_EvtReceiveHandleValue_T          onIndication;                         /**< Handle @ref GATTC_EVT_HV_INDICATE. */
+    GATT_EvtReceiveCfm_T                  onConfirmation;                       /**< Handle @ref GATTS_EVT_HV_CONFIRM. */
+    GATT_EvtDiscCharResp_T                onDiscCharByUuid;                     /**< Handle @ref GATTC_EVT_DISC_CHAR_BY_UUID_RESP. */
+    GATT_EvtServiceChange_T               onServiceChange;                      /**< Handle @ref GATTS_EVT_SERVICE_CHANGE. */
+    GATT_EvtClientFeatureChange_T         onClientFeatureChange;                /**< Handle @ref GATTS_EVT_CLIENT_FEATURE_CHANGE. */
+    GATT_EvtClientCccdListChange_T        onClientCccdListChange;               /**< Handle @ref GATTS_EVT_CLIENT_CCCDLIST_CHANGE. */
+    GATT_EvtProtocolAvailable_T           onClientProtocolAvailable;            /**< Handle @ref GATTC_EVT_PROTOCOL_AVAILABLE. */
+    GATT_EvtProtocolAvailable_T           onServerProtocolAvailable;            /**< Handle @ref GATTS_EVT_PROTOCOL_AVAILABLE. */
 } GATT_EventField_T;
 
 /**@brief GATT callback event.*/
@@ -760,7 +768,7 @@ uint16_t GATTC_Read(uint16_t connHandle, uint16_t charHandle, uint16_t valueOffs
  *@ref ATT_EVT_TIMEOUT Generated when server does not respond the request.
  *
  *@param[in] connHandle                 Handle of the connection to send write operation.
- *@param[in] p_writeParams              Pointer to the Write Request parameters. Refer @ref GATTC_WriteParams_T
+ *@param[in] p_writeParams              Pointer to the Write Request parameters. Refer @ref GATTC_WriteParams_T.
  *
  *@retval MBA_RES_SUCCESS               Successfully starts the write operation.
  *@retval MBA_RES_FAIL                  Operation is not permitted.
@@ -1005,7 +1013,7 @@ uint16_t GATTC_ReadUsingUUID(uint16_t connHandle, GATTC_ReadByTypeParams_T *p_re
  *@param[in] p_service                  Pointer to the registering service information.
  *@param[in] numAttributes              Number of the attributes in the registering service.
  *
- *@retval MBA_RES_SUCCESS               Successfully registering the service
+ *@retval MBA_RES_SUCCESS               Successfully registering the service.
  *@retval MBA_RES_FAIL                  Fail to register the service. The assigned attribute handles in the service conflict or \n
  *                                      the start handle of the service is smaller than @ref GATTS_APP_SVC_START_HDL.
  */
@@ -1037,7 +1045,7 @@ uint16_t GATTS_RemoveService(uint16_t startHandle);
  *@param[in] connHandle                 Handle of the connection to send Handle Value Notification/Indication.
  *@param[in] p_hvParams                 Pointer to the Handle Value Notification/Indication Parameters.
  *
- *@retval MBA_RES_SUCCESS               Successfully starts the Handle Value Notification/Indication
+ *@retval MBA_RES_SUCCESS               Successfully starts the Handle Value Notification/Indication.
  *@retval MBA_RES_FAIL                  Operation is not permitted. Memory not available to send notification/indication.
  *@retval MBA_RES_OOM                   Internal memory allocation failure.
  *@retval MBA_RES_INVALID_PARA          Invalid parameters. One of the following errors may have occurred:
@@ -1045,7 +1053,7 @@ uint16_t GATTS_RemoveService(uint16_t startHandle);
  *                                      - Parameters specified in @ref GATTS_HandleValueParams_T have invalid/out of range values\n
  *                                      - The sending data length is exceeded the MTU.
  *                                      - Notification/Indication has to be sent but either Notify/Indicate property is not set
- *                                        for the characteristic or Notification/Indication is not enabled in the CCCD
+ *                                        for the characteristic or Notification/Indication is not enabled in the CCCD.
  *@retval MBA_RES_BUSY                  Send indication when another indication is ongoing. Only available in sending indication.
  *@retval MBA_RES_NO_RESOURCE           No available resource to send the handle value.
  */
@@ -1066,11 +1074,11 @@ uint16_t GATTS_SendHandleValue(uint16_t connHandle, GATTS_HandleValueParams_T *p
  *       This API should be called to send the response only when event @ref GATTS_EVT_READ is received.
  *
  *@param[in] connHandle                 Handle of the connection to send the read response.
- *@param[in] p_respParams               Pointer to Read Response parameters. See @ref GATTS_SendReadRespParams_T
+ *@param[in] p_respParams               Pointer to Read Response parameters. See @ref GATTS_SendReadRespParams_T.
  *
  *@retval MBA_RES_SUCCESS               Successfully starts to send the read response.
  *@retval MBA_RES_FAIL                  Operation is not permitted as Read response/Read Blob response transmission was requested
- *                                      but read request/read blob request was not received
+ *                                      but read request/read blob request was not received.
  *@retval MBA_RES_OOM                   Internal memory allocation failure.
  *@retval MBA_RES_INVALID_PARA          Invalid parameters. Connection handle is not valid.
  */
@@ -1131,7 +1139,7 @@ uint16_t GATTS_SendReadByTypeResponse(uint16_t connHandle, GATTS_SendReadByTypeR
  *       This API should be called to send the response only when event @ref GATTS_EVT_WRITE is received.
  *
  *@param[in] connHandle                 Handle of the connection to send the write response.
- *@param[in] p_respParams               Pointer to Write Response parameters. See @ref GATTS_SendWriteRespParams_T
+ *@param[in] p_respParams               Pointer to Write Response parameters. See @ref GATTS_SendWriteRespParams_T.
  *
  *@retval MBA_RES_SUCCESS               Successfully starts to send the write response.
  *@retval MBA_RES_FAIL                  Operation is not permitted as Write response/Prepare Write response/Execute Write response
@@ -1149,7 +1157,7 @@ uint16_t GATTS_SendWriteResponse(uint16_t connHandle, GATTS_SendWriteRespParams_
  *
  *@retval MBA_RES_SUCCESS               Successfully notify the connected devices th service change.
  */
-uint16_t GATTS_ServiceChanged();
+uint16_t GATTS_ServiceChanged(void);
 
 /**
  *@brief Notify GATT Server the relevant bonding information of the connection.
@@ -1160,7 +1168,7 @@ uint16_t GATTS_ServiceChanged();
  *       this function must be called after the link connected (whether bonded link or not). The stack GATT will start process 
  *       packets after the bonded information get.
  *
- *@param[in] connHandle                 Connection handle
+ *@param[in] connHandle                 Connection handle.
  *@param[in] p_gattsParams              GATTS required bonding parameters. See @ref GATTS_BondingParams_T. Set NULL if it is non-bonded connection.
  *@param[in] numOfCccds                 Number of CCCDs of this bonded connection. Set zero if it is non-bonded connection.
  *@param[in] p_cccdList                 CCCDs list of this bonded connection. @ref GATTS_CccdList_T. Set NULL if it is non-bonded connection.
@@ -1218,6 +1226,13 @@ uint16_t GATTS_ConfigureBuildInService(GATTS_GattServiceOptions_T *p_gattService
 uint16_t GATTS_SetPreferredMtu(uint16_t preferredMtuPeriph, uint16_t preferredMtuCentral);
 
 /**@} */ //GATT_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 #endif
 
 /**

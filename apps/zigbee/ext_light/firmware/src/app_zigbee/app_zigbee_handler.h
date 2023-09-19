@@ -101,6 +101,8 @@ typedef enum
     CMD_SENSOR_OPEN,
     /* Sensor Event */
     CMD_SENSOR_READ,
+    /* Button Event */        
+    CMD_BUTTON_LONG_PRESS,
 
     /* Events in the Zigbee Group Event */
     /* Network joining/rejoining done*/
@@ -287,6 +289,9 @@ typedef enum
     CMD_ZCL_ATTR_LEVEL_CONTROL,
     /* Command ZCL OnOffAttributeEventInd */
     CMD_ZCL_ATTR_ONOFF,
+
+
+
 } APP_Zigbee_EventId_t;
 
 /*******************************************************************************

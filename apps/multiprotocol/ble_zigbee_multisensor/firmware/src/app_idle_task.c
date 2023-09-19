@@ -79,6 +79,11 @@
 #define APP_IDLE_NVIC_PENDSVCLEAR_BIT            ( 1UL << 27UL )
 #define APP_IDLE_NVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL << 25UL )
 
+/* 
+ * Max sleep allowed - user can configure this value
+ */
+#define MAX_SLEEP_ALLOWED   (60*60*1000L) //1 hour
+
 /*
  * The number of SysTick increments that make up one tick period.
  */
@@ -134,7 +139,16 @@ void app_idle_task( void )
             }
             else if ((RF_Cal_Needed) && (BT_RF_Suspended == BT_SYS_RF_SUSPENDED_NO_SLEEP))
             {
+              if (ZB_CheckStackSleep())
+              {
+                ZB_WakeUpFromSleep();
                 RF_Timer_Cal(WSS_ENABLE_BLE_ZB);
+                ZB_EnterSleep();
+              }
+              else
+              {
+                RF_Timer_Cal(WSS_ENABLE_BLE_ZB);
+              }
             }
             BT_SYS_RfSuspendReq(0);
         }
@@ -147,6 +161,7 @@ void app_idle_task( void )
     else
     {
         zigbeeTaskAbortDelayReturn = xTaskAbortDelay(zigbeeTaskHandle);
+        isZBIdleTaskReadyToSleep = false;
     }
     /*
       Request BT to enter sleep mode, BLE stack will check if it can enter or not.
@@ -328,7 +343,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
     /* Allow system to enter sleep mode */
     if (isSystemCanSleep &&
         ((isZBIdleTaskReadyToSleep) &&
-        (xExpectedIdleTime > 512) && (xExpectedIdleTime < 0xfff0)))
+        (xExpectedIdleTime > 512) && (xExpectedIdleTime < MAX_SLEEP_ALLOWED)))
     {
         uint32_t ulCompleteTickPeriods = 0;
         TickType_t xModifiableIdleTime = 0;
@@ -382,8 +397,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
         }
 
         /* Enter system sleep mode */
-        ZB_StopStackTimerBeforeSleep();
-        ZB_EnterSleep(isSystemCanSleep);
+		ZB_StopStackTimerBeforeSleep();
         DEVICE_EnterSleepMode();
 
         if( xModifiableIdleTime > 0 )
@@ -480,7 +494,6 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             APP_IDLE_NVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - remainSysTickCnt;
 
         }
-        ZB_WakeUpFromSleep(isSystemCanSleep);
         ZB_RestartStackTimerAfterSleep(ulCompleteTickPeriods);
         isZBIdleTaskReadyToSleep = false;
 

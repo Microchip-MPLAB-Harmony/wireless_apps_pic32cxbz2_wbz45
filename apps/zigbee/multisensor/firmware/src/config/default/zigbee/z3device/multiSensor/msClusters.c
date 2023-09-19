@@ -64,6 +64,7 @@
 #include <z3device/multiSensor/include/hsIdentifyCluster.h>
 #include <z3device/multiSensor/include/hsGroupsCluster.h>
 
+
 /******************************************************************************
                     Global variables
 ******************************************************************************/
@@ -79,7 +80,9 @@ void (*msClientClusterInitFunctions[MS_CLIENT_CLUSTER_INIT_COUNT])() =
   NULL // needs to add otau client init
 };
 
-ZCL_Cluster_t msClientClusters[MS_CLIENT_CLUSTERS_COUNT];
+ZCL_Cluster_t msClientClusters[MS_CLIENT_CLUSTERS_COUNT] = 
+{
+};
 
 #endif //OTAU_CLIENT
 
@@ -107,20 +110,20 @@ ZCL_Cluster_t osClientClusters[OS_CLIENT_CLUSTERS_COUNT] =
 ClusterId_t osClientClusterIds[OS_CLIENT_CLUSTERS_COUNT] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID
+  GROUPS_CLUSTER_ID,
 };
 
 void (*osClientClusterInitFunctions[OS_CLIENT_CLUSTERS_COUNT])() =
 {
   osIdentifyClusterInit,
-  osGroupsClusterInit
+  osGroupsClusterInit,
 };
 
 void (*osServerClusterInitFunctions[OS_SERVER_CLUSTERS_COUNT])() =
 {
   osBasicClusterInit,
   osIdentifyClusterInit,
-  occupancySensingClusterInit
+  occupancySensingClusterInit,
 };
 
 #endif //APP_SENSOR_TYPE_OCCUPANCY_SENSOR
@@ -145,7 +148,7 @@ void (*lsServerClusterInitFunctions[LS_SERVER_CLUSTERS_COUNT])() =
 {
   lsBasicClusterInit,
   lsIdentifyClusterInit,
-  illuminanceMeasurementClusterInit
+  illuminanceMeasurementClusterInit,
 };
 
 ZCL_Cluster_t lsClientClusters[LS_CLIENT_CLUSTERS_COUNT] =
@@ -157,13 +160,13 @@ ZCL_Cluster_t lsClientClusters[LS_CLIENT_CLUSTERS_COUNT] =
 ClusterId_t lsClientClusterIds[LS_CLIENT_CLUSTERS_COUNT] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID
+  GROUPS_CLUSTER_ID,
 };
 
 void (*lsClientClusterInitFunctions[LS_CLIENT_CLUSTERS_COUNT])() =
 {
   lsIdentifyClusterInit,
-  lsGroupsClusterInit
+  lsGroupsClusterInit,
 };
 
 #endif //APP_SENSOR_TYPE_LIGHT_SENSOR
@@ -192,20 +195,20 @@ ZCL_Cluster_t tsClientClusters[TS_CLIENT_CLUSTERS_COUNT] =
 ClusterId_t tsClientClusterIds[TS_CLIENT_CLUSTERS_COUNT] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID
+  GROUPS_CLUSTER_ID,
 };
 
 void (*tsClientClusterInitFunctions[TS_CLIENT_CLUSTERS_COUNT])() =
 {
   tsIdentifyClusterInit,
-  tsGroupsClusterInit
+  tsGroupsClusterInit,
 };
 
 void (*tsServerClusterInitFunctions[TS_SERVER_CLUSTERS_COUNT])() =
 {
   tsBasicClusterInit,
   tsIdentifyClusterInit,
-  temperatureMeasurementClusterInit
+  temperatureMeasurementClusterInit,
 };
 
 #endif //APP_SENSOR_TYPE_TEMPERATURE_SENSOR
@@ -215,7 +218,7 @@ ZCL_Cluster_t hsServerClusters[HS_SERVER_CLUSTERS_COUNT] =
 {
   ZCL_DEFINE_BASIC_CLUSTER_SERVER(&hsBasicClusterServerAttributes, &hsBasicClusterServerCommands),
   DEFINE_IDENTIFY_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &hsIdentifyClusterServerAttributes, &hsIdentifyCommands),
-  DEFINE_HUMIDITY_MEASUREMENT_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &hsHumidityMeasurementClusterServerAttributes)
+  DEFINE_HUMIDITY_MEASUREMENT_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &hsHumidityMeasurementClusterServerAttributes),
 };
 
 ClusterId_t hsServerClusterIds[HS_SERVER_CLUSTERS_COUNT] =
@@ -234,20 +237,20 @@ ZCL_Cluster_t hsClientClusters[HS_CLIENT_CLUSTERS_COUNT] =
 ClusterId_t hsClientClusterIds[HS_CLIENT_CLUSTERS_COUNT] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID
+  GROUPS_CLUSTER_ID,
 };
 
 void (*hsClientClusterInitFunctions[HS_CLIENT_CLUSTERS_COUNT])() =
 {
   hsIdentifyClusterInit,
-  hsGroupsClusterInit
+  hsGroupsClusterInit,
 };
 
 void (*hsServerClusterInitFunctions[HS_SERVER_CLUSTERS_COUNT])() =
 {
   hsBasicClusterInit,
   hsIdentifyClusterInit,
-  humidityMeasurementClusterInit
+  humidityMeasurementClusterInit,
 };
 
 #endif //APP_SENSOR_TYPE_HUMIDITY_SENSOR

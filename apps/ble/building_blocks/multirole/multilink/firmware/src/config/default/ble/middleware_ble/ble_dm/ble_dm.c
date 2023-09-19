@@ -1,24 +1,5 @@
 /*******************************************************************************
-  BLE Device Manager Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dm.c
-
-  Summary:
-    This file contains the BLE Device Manager functions and event for application user.
-
-  Description:
-    This file contains the BLE Device Manager functions and event for application user.
-    The "BLE_DM_Init" function shall be called in the "APP_Initialize" function to 
-    initialize the this modules in the system.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,18 +20,37 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Device Manager Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dm.c
+
+  Summary:
+    This file contains the BLE Device Manager functions and event for application user.
+
+  Description:
+    This file contains the BLE Device Manager functions and event for application user.
+    The "BLE_DM_Init" function shall be called in the "APP_Initialize" function to 
+    initialize the this modules in the system.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "ble_dm/ble_dm.h"
-#include "ble_dm/ble_dm_sm.h"
-#include "ble_dm/ble_dm_info.h"
-#include "ble_dm/ble_dm_dds.h"
-#include "ble_dm/ble_dm_conn.h"
+#include "ble_dm.h"
+#include "ble_dm_sm.h"
+#include "ble_dm_info.h"
+#include "ble_dm_dds.h"
+#include "ble_dm_conn.h"
+#include "ble_dm_internal.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -58,8 +58,8 @@
 // *****************************************************************************
 // *****************************************************************************
 
-BLE_DM_EventCb_T        s_dmEventCb[BLE_DM_MAX_REGISTER_NUM];
-uint8_t                 s_dmCbNum;
+BLE_DM_EventCb_T        g_dmEventCb[BLE_DM_MAX_REGISTER_NUM];
+uint8_t                 g_dmCbNum;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -73,34 +73,46 @@ void BLE_DM_ConveyEvent(BLE_DM_Event_T *p_event)
 
     p_conn = BLE_DM_InfoGetConnByHandle(p_event->connHandle);
 
-    if (p_conn)
-        p_event->peerDevId = p_conn->devId;
-    else
-        p_event->peerDevId = BLE_DM_PEER_DEV_ID_INVALID;
-
-    for(i=0;i<s_dmCbNum; i++)
+    if (p_conn != NULL)
     {
-        if(s_dmEventCb[i])
+        p_event->peerDevId = p_conn->devId;
+    }
+    else
+    {
+        p_event->peerDevId = BLE_DM_PEER_DEV_ID_INVALID;
+    }
+
+    for(i=0;i<g_dmCbNum; i++)
+    {
+        if(g_dmEventCb[i]!=NULL)
         {
-            s_dmEventCb[i](p_event);
+            g_dmEventCb[i](p_event);
         }
     }
 }
 
-void BLE_DM_Init()
+bool BLE_DM_Init(void)
 {
+    BLE_DM_DdsInit(BLE_DM_SmWriteCompleteCallback);
     BLE_DM_SmInit();
-    BLE_DM_InfoInit();
-    BLE_DM_ConnInit();
+    
+    if (BLE_DM_InfoInit() == false)
+    {
+        return false;
+    }            
+    
+    return BLE_DM_ConnInit();
 }
 
 uint16_t BLE_DM_EventRegister(BLE_DM_EventCb_T eventCb)
 {
-    if(s_dmCbNum>=BLE_DM_MAX_REGISTER_NUM)
+    if(g_dmCbNum>=BLE_DM_MAX_REGISTER_NUM)
+    {
         return MBA_RES_NO_RESOURCE;
+    }
 
-    s_dmEventCb[s_dmCbNum]=eventCb;
-    s_dmCbNum++;
+    g_dmEventCb[g_dmCbNum]=eventCb;
+    g_dmCbNum++;
 
     return MBA_RES_SUCCESS;
 }
@@ -120,9 +132,13 @@ uint16_t BLE_DM_Config(BLE_DM_Config_T *p_config)
     result = BLE_DM_SmConfig(p_config->secAutoAccept);
 
     if (result != MBA_RES_SUCCESS)
+    {
         return result;
+    }
     else
+    {
         return BLE_DM_ConnConfig(&p_config->connConfig);
+    }
 }
 
 uint16_t BLE_DM_ProceedSecurity(uint16_t connHandle, uint8_t repairing)
@@ -155,7 +171,7 @@ uint16_t BLE_DM_GetPairedDevice(uint8_t devId, BLE_DM_PairedDevInfo_T *p_pairedD
     return BLE_DM_DdsGetPairedDevice(devId, p_pairedDevInfo);
 }
 
-uint16_t BLE_DM_DeleteAllPairedDevice()
+uint16_t BLE_DM_DeleteAllPairedDevice(void)
 {
     return BLE_DM_DdsDeleteAllPairedDevice();
 }
@@ -168,7 +184,7 @@ void BLE_DM_GetPairedDeviceList(uint8_t *p_devId, uint8_t *p_devCnt)
 
     for (devId = 0; devId < BLE_DM_MAX_PAIRED_DEVICE_NUM; devId++)
     {
-        if (BLE_DM_DdsChkDeviceId(devId))
+        if (BLE_DM_DdsChkDeviceId(devId)==true)
         {
             p_devId[*p_devCnt] = devId;
             (*p_devCnt)++;

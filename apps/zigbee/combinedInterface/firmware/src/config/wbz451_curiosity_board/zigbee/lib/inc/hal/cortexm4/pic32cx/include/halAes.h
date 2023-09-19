@@ -49,7 +49,7 @@
  ******************************************************************************/
 #include <crypto.h>
 #include <systemenvironment/include/sysTypes.h>
-#include <hal/cortexm4/pic32cx/include/halAssert.h>
+#include <halAssert.h>
 
 #ifdef __cplusplus
 extern "C" {

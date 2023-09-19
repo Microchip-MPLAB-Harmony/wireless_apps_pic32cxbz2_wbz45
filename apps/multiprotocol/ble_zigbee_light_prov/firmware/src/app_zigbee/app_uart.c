@@ -249,6 +249,7 @@ size_t fwrite(const void *ptr, size_t size, size_t nelem, FILE *stream)
     APP_UartWriteBuffer((void*)ptr, nelem);
     APP_UartWriteBuffer("\n", 1);
     APP_UartHandler(); 
+	return nelem;
 }
 
 int printf(const char *format, ...)
@@ -260,7 +261,8 @@ int printf(const char *format, ...)
     ret = vsprintf(s, format, ap);
     va_end(ap);
     APP_UartWriteBuffer((void*)s, ret);
-    APP_UartHandler(); 
+    APP_UartHandler();
+	return ret;
 }
 
 

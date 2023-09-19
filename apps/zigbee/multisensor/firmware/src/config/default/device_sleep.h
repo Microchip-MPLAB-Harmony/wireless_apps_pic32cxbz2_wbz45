@@ -1,3 +1,19 @@
+/*******************************************************************************
+  System Sleep Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    device_sleep.h
+
+  Summary:
+    This file contains the Device Sleep functions for the project.
+
+  Description:
+    This file contains the Device Sleep functions for the project.
+ *******************************************************************************/
+
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.

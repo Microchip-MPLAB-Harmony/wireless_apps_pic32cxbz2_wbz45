@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_ble.c
-
-  Summary:
-    This file contains the Application BLE implementation for this project.
-
-  Description:
-    This file contains the Application BLE implementation for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,12 +20,30 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+
+/*******************************************************************************
+  Application BLE Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_ble.c
+
+  Summary:
+    This file contains the Application BLE implementation for this project.
+
+  Description:
+    This file contains the Application BLE implementation for this project.
+ *******************************************************************************/
+
 
 #include "app.h"
 #include "osal/osal_freertos_extend.h"
 #include "app_ble.h"
 #include "app_ble_handler.h"
+
 
 
 
@@ -68,7 +69,7 @@
 // Section: Global Variables
 // *****************************************************************************
 // *****************************************************************************
-BLE_DD_Config_T         ddConfig;
+static BLE_DD_Config_T         ddConfig;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -83,19 +84,19 @@ BLE_DD_Config_T         ddConfig;
 // *****************************************************************************
 // *****************************************************************************
 
-void APP_BleStackCb(STACK_Event_T *p_stack)
+static void APP_BleStackCb(STACK_Event_T *p_stack)
 {
     STACK_Event_T stackEvent;
     APP_Msg_T   appMsg;
     APP_Msg_T   *p_appMsg;
 
-    memcpy((uint8_t *)&stackEvent, (uint8_t *)p_stack, sizeof(STACK_Event_T));
+    (void)memcpy((uint8_t *)&stackEvent, (uint8_t *)p_stack, sizeof(STACK_Event_T));
     stackEvent.p_event=OSAL_Malloc(p_stack->evtLen);
     if(stackEvent.p_event==NULL)
     {
         return;
     }
-    memcpy(stackEvent.p_event, p_stack->p_event, p_stack->evtLen);
+    (void)memcpy(stackEvent.p_event, p_stack->p_event, p_stack->evtLen);
     stackEvent.p_event=stackEvent.p_event;
 
     if (p_stack->groupId==STACK_GRP_GATT)
@@ -109,7 +110,7 @@ void APP_BleStackCb(STACK_Event_T *p_stack)
             p_payload = (uint8_t *)OSAL_Malloc((p_evtGatt->eventField.onClientCccdListChange.numOfCccd*4));
             if (p_payload != NULL)
             {
-                memcpy(p_payload, (uint8_t *)p_evtGatt->eventField.onClientCccdListChange.p_cccdList, (p_evtGatt->eventField.onClientCccdListChange.numOfCccd*4));
+                (void)memcpy(p_payload, (uint8_t *)p_evtGatt->eventField.onClientCccdListChange.p_cccdList, (p_evtGatt->eventField.onClientCccdListChange.numOfCccd*4));
                 p_evtGatt->eventField.onClientCccdListChange.p_cccdList = (GATTS_CccdList_T *)p_payload;
             }
         }
@@ -182,7 +183,7 @@ void APP_BleStackLogHandler(BT_SYS_LogEvent_T *p_logEvt)
 {
 }
 
-void APP_DdEvtHandler(BLE_DD_Event_T *p_event)
+static void APP_DdEvtHandler(BLE_DD_Event_T *p_event)
 {
 
 
@@ -193,7 +194,7 @@ void APP_DdEvtHandler(BLE_DD_Event_T *p_event)
 
 
 
-void APP_BleConfigBasic()
+static void APP_BleConfigBasic(void)
 {
     int8_t                          advTxPower;
     BLE_GAP_AdvParams_T             advParam;
@@ -205,32 +206,32 @@ void APP_BleConfigBasic()
     // Configure advertising parameters
     BLE_GAP_SetAdvTxPowerLevel(9,&advTxPower);      /* Advertising TX Power */
     
-    memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
+    (void)memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
     advParam.intervalMin = 32;     /* Advertising Interval Min */
     advParam.intervalMax = 32;     /* Advertising Interval Max */
     advParam.type = BLE_GAP_ADV_TYPE_ADV_IND;        /* Advertising Type */
     advParam.advChannelMap = BLE_GAP_ADV_CHANNEL_ALL;        /* Advertising Channel Map */
     advParam.filterPolicy = BLE_GAP_ADV_FILTER_DEFAULT;     /* Advertising Filter Policy */
     BLE_GAP_SetAdvParams(&advParam);
-    
+
     // Configure advertising data
     appAdvData.advLen=sizeof(advData);
-    memcpy(appAdvData.advData, advData, appAdvData.advLen);     /* Advertising Data */
+    (void)memcpy(appAdvData.advData, advData, appAdvData.advLen);     /* Advertising Data */
     BLE_GAP_SetAdvData(&appAdvData);
 
     //Configure advertising scan response data
     appScanRspData.advLen=sizeof(scanRspData);
-    memcpy(appScanRspData.advData, scanRspData, appScanRspData.advLen);     /* Scan Response Data */
+    (void)memcpy(appScanRspData.advData, scanRspData, appScanRspData.advLen);     /* Scan Response Data */
     BLE_GAP_SetScanRspData(&appScanRspData);
 
 }
-void APP_BleConfigAdvance()
+static void APP_BleConfigAdvance(void)
 {
     uint8_t devName[]={GAP_DEV_NAME_VALUE};
 
     BLE_SMP_Config_T                smpParam;
 
-   
+
     BLE_GAP_ScanningParams_T        scanParam;
     BLE_DM_Config_T                 dmConfig;
     BLE_GAP_ServiceOption_T         gapServiceOptions;
@@ -240,19 +241,19 @@ void APP_BleConfigAdvance()
     // Configure Device Name
     BLE_GAP_SetDeviceName(sizeof(devName), devName);    /* Device Name */
 
-    
+
     // GAP Service option
     gapServiceOptions.charDeviceName.enableWriteProperty = false;             /* Enable Device Name Write Property */
     gapServiceOptions.charAppearance.appearance = 0x0;                          /* Appearance */
-    gapServiceOptions.charPeriPreferConnParam.enable = true;                    /* Enable Peripheral Preffered Connection Parameters */
+    gapServiceOptions.charPeriPreferConnParam.enable = true;                    /* Enable Peripheral Preferred Connection Parameters */
     gapServiceOptions.charPeriPreferConnParam.minConnInterval = 32;    /* Minimum Connection Interval */
     gapServiceOptions.charPeriPreferConnParam.maxConnInterval = 32;    /* Maximum Connection Interval */
     gapServiceOptions.charPeriPreferConnParam.peripheralLatency = 0;       /* Peripheral Latency */
     gapServiceOptions.charPeriPreferConnParam.connSupervisionTimeoutMulti = 600; /* Connection Sup ervision Timeout Multiplier */
-    
+
     BLE_GAP_ConfigureBuildInService(&gapServiceOptions);
-    
-    
+
+
     // Configure scan parameters
     scanParam.type = BLE_GAP_SCAN_TYPE_PASSIVE_SCAN;      /* Scan Type */
     scanParam.interval = 160;      /* Scan Interval */
@@ -264,7 +265,7 @@ void APP_BleConfigAdvance()
     BLE_GAP_SetConnTxPowerLevel(15, &connTxPower);      /* Connection TX Power */
 
     // Configure SMP parameters
-    memset(&smpParam, 0, sizeof(BLE_SMP_Config_T));
+    (void)memset(&smpParam, 0, sizeof(BLE_SMP_Config_T));
     smpParam.ioCapability = BLE_SMP_IO_NOINPUTNOOUTPUT;                  /* IO Capability */
     smpParam.authReqFlag |= BLE_SMP_OPTION_BONDING;             /* Authentication Setting: Bonding */
     smpParam.authReqFlag |= BLE_SMP_OPTION_SECURE_CONNECTION;   /* Authentication Setting: Secure Connections */
@@ -286,7 +287,7 @@ void APP_BleConfigAdvance()
     ddConfig.initDiscInPeripheral = false;
 }
 
-void APP_BleStackInitBasic()
+void APP_BleStackInitBasic(void)
 {
     BLE_GAP_Init();
 
@@ -294,28 +295,28 @@ void APP_BleStackInitBasic()
 
 }
 
-void APP_BleStackInitAdvance()
+void APP_BleStackInitAdvance(void)
 {
     uint16_t gattsInitParam=GATTS_CONFIG_NONE;
-    
+
     uint16_t gattcInitParam=GATTC_CONFIG_NONE;
 
     STACK_EventRegister(APP_BleStackCb);
-    
+
 
 
     BLE_GAP_ScanInit();     /* Scan */
-    
+
     BLE_GAP_ConnCentralInit();  /* Central */
 
     BLE_L2CAP_Init();
-    
+
     GATTS_Init(gattsInitParam);
-    
+
     GATTC_Init(gattcInitParam);     /* Enable Client Role */
 
     BLE_SMP_Init();
-    
+
 
     //Initialize BLE middleware
     BLE_DM_Init();
@@ -340,10 +341,11 @@ void APP_BleStackInitAdvance()
 
 
 
+
     APP_BleConfigAdvance();
 }
 
-void APP_BleStackInit()
+void APP_BleStackInit(void)
 {
     APP_BleStackInitBasic();
     APP_BleConfigBasic();

@@ -1,3 +1,4 @@
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -20,6 +21,7 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+// DOM-IGNORE-END
 
 /*******************************************************************************
   MPLAB Harmony Application Header File
@@ -94,6 +96,7 @@ typedef enum
 typedef enum APP_MsgId_T
 {
     APP_MSG_BLE_STACK_EVT,
+    APP_MSG_BLE_STACK_LOG,
     APP_MSG_ZB_STACK_EVT,
     APP_MSG_ZB_STACK_CB,
     APP_TIMER_ADV_CTRL_MSG,    

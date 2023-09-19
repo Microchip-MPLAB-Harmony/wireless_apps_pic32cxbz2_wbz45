@@ -1,6 +1,6 @@
 /* curve25519.c
  *
- * Copyright (C) 2006-2020 wolfSSL Inc.
+ * Copyright (C) 2006-2021 wolfSSL Inc.
  *
  * This file is part of wolfSSL.
  *
@@ -44,6 +44,10 @@
     #include <wolfssl/wolfcrypt/port/nxp/ksdk_port.h>
 #endif
 
+#ifdef WOLF_CRYPTO_CB
+    #include <wolfssl/wolfcrypt/cryptocb.h>
+#endif
+
 const curve25519_set_type curve25519_sets[] = {
     {
         CURVE25519_KEYSIZE,
@@ -55,11 +59,12 @@ static const unsigned char kCurve25519BasePoint[CURVE25519_KEYSIZE] = {9};
 
 /* compute the public key from an existing private key, using bare vectors.
  *
- * return value is propagated from curve25519() (0 on success), or ECC_BAD_ARG_E,
- * and the byte vectors are little endian.
+ * return value is propagated from curve25519() (0 on success), or
+ * ECC_BAD_ARG_E, and the byte vectors are little endian.
  */
 int wc_curve25519_make_pub(int public_size, byte* pub, int private_size,
-                           const byte* priv) {
+                           const byte* priv)
+{
     int ret;
 
     if ((public_size != CURVE25519_KEYSIZE) ||
@@ -79,7 +84,8 @@ int wc_curve25519_make_pub(int public_size, byte* pub, int private_size,
     {
         const ECPoint* basepoint = nxp_ltc_curve25519_GetBasePoint();
         ECPoint wc_pub;
-        ret = nxp_ltc_curve25519(&wc_pub, priv, basepoint, kLTC_Weierstrass); /* input basepoint on Weierstrass curve */
+        /* input basepoint on Weierstrass curve */
+        ret = nxp_ltc_curve25519(&wc_pub, priv, basepoint, kLTC_Weierstrass);
         if (ret == 0)
             XMEMCPY(pub, wc_pub.point, CURVE25519_KEYSIZE);
     }
@@ -100,21 +106,22 @@ int wc_curve25519_make_pub(int public_size, byte* pub, int private_size,
     return ret;
 }
 
-/* compute the public key from an existing private key, with supplied basepoint, using bare vectors.
+/* compute the public key from an existing private key, with supplied basepoint,
+ * using bare vectors.
  *
  * return value is propagated from curve25519() (0 on success),
  * and the byte vectors are little endian.
  */
 int wc_curve25519_generic(int public_size, byte* pub,
                           int private_size, const byte* priv,
-                          int basepoint_size, const byte* basepoint) {
-    int ret;
-
+                          int basepoint_size, const byte* basepoint)
+{
 #ifdef FREESCALE_LTC_ECC
     /* unsupported with NXP LTC, onlly supports single basepoint with
      * nxp_ltc_curve25519_GetBasePoint() */
     return WC_HW_E;
 #else
+    int ret;
 
     if ((public_size != CURVE25519_KEYSIZE) ||
         (private_size != CURVE25519_KEYSIZE) ||
@@ -143,7 +150,6 @@ int wc_curve25519_generic(int public_size, byte* pub,
     #endif
 
     return ret;
-
 #endif /* FREESCALE_LTC_ECC */
 }
 
@@ -188,10 +194,20 @@ int wc_curve25519_make_key(WC_RNG* rng, int keysize, curve25519_key* key)
     if (key == NULL || rng == NULL)
         return BAD_FUNC_ARG;
 
+#ifdef WOLF_CRYPTO_CB
+    if (key->devId != INVALID_DEVID) {
+        ret = wc_CryptoCb_Curve25519Gen(rng, keysize, key);
+        if (ret != CRYPTOCB_UNAVAILABLE)
+            return ret;
+        /* fall-through when unavailable */
+    }
+#endif
+
     ret = wc_curve25519_make_priv(rng, keysize, key->k.point);
     if (ret < 0)
         return ret;
-    return wc_curve25519_make_pub((int)sizeof key->p.point, key->p.point, sizeof key->k.point, key->k.point);
+    return wc_curve25519_make_pub((int)sizeof(key->p.point), key->p.point,
+                                  (int)sizeof(key->k.point), key->k.point);
 }
 
 #ifdef HAVE_CURVE25519_SHARED_SECRET
@@ -208,24 +224,38 @@ int wc_curve25519_shared_secret_ex(curve25519_key* private_key,
                                    curve25519_key* public_key,
                                    byte* out, word32* outlen, int endian)
 {
-    #ifdef FREESCALE_LTC_ECC
-        ECPoint o = {{0}};
-    #else
-        unsigned char o[CURVE25519_KEYSIZE];
-    #endif
+#ifdef FREESCALE_LTC_ECC
+    ECPoint o = {{0}};
+#else
+    unsigned char o[CURVE25519_KEYSIZE];
+#endif
     int ret = 0;
 
     /* sanity check */
     if (private_key == NULL || public_key == NULL ||
-        out == NULL || outlen == NULL || *outlen < CURVE25519_KEYSIZE)
+        out == NULL || outlen == NULL || *outlen < CURVE25519_KEYSIZE) {
         return BAD_FUNC_ARG;
+    }
 
     /* avoid implementation fingerprinting */
     if (public_key->p.point[CURVE25519_KEYSIZE-1] > 0x7F)
         return ECC_BAD_ARG_E;
 
+
+#ifdef WOLF_CRYPTO_CB
+    if (private_key->devId != INVALID_DEVID) {
+        ret = wc_CryptoCb_Curve25519(private_key, public_key, out, outlen,
+            endian);
+        if (ret != CRYPTOCB_UNAVAILABLE)
+            return ret;
+        /* fall-through when unavailable */
+    }
+#endif
+
     #ifdef FREESCALE_LTC_ECC
-        ret = nxp_ltc_curve25519(&o, private_key->k.point, &public_key->p, kLTC_Curve25519 /* input point P on Curve25519 */);
+        /* input point P on Curve25519 */
+        ret = nxp_ltc_curve25519(&o, private_key->k.point, &public_key->p,
+                                 kLTC_Curve25519);
     #else
         #if defined(USE_INTEL_SPEEDUP) || defined(WOLFSSL_ARMASM)
             SAVE_VECTOR_REGISTERS();
@@ -571,8 +601,7 @@ int wc_curve25519_import_private_ex(const byte* priv, word32 privSz,
 
 #endif /* HAVE_CURVE25519_KEY_IMPORT */
 
-
-int wc_curve25519_init(curve25519_key* key)
+int wc_curve25519_init_ex(curve25519_key* key, void* heap, int devId)
 {
     if (key == NULL)
        return BAD_FUNC_ARG;
@@ -582,6 +611,13 @@ int wc_curve25519_init(curve25519_key* key)
     /* currently the format for curve25519 */
     key->dp = &curve25519_sets[0];
 
+#ifdef WOLF_CRYPTO_CB
+    key->devId = devId;
+#else
+    (void)devId;
+#endif
+    (void)heap; /* if needed for XMALLOC/XFREE in future */
+
 #ifndef FREESCALE_LTC_ECC
     fe_init();
 #endif
@@ -589,6 +625,10 @@ int wc_curve25519_init(curve25519_key* key)
     return 0;
 }
 
+int wc_curve25519_init(curve25519_key* key)
+{
+    return wc_curve25519_init_ex(key, NULL, INVALID_DEVID);
+}
 
 /* Clean the memory of a key */
 void wc_curve25519_free(curve25519_key* key)

@@ -55,6 +55,14 @@
 // *****************************************************************************
 #include <stdint.h>
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 /**************************************************************************************************
   Macros
 **************************************************************************************************/
@@ -62,41 +70,42 @@
  * @{ */
  
 /**@defgroup GATT_UUID_DEFS  UUID definitions
- * @brief The definition of GATT UUID
+ * @brief The definition of GATT UUID.
  * @{ */
-#define UUID_PRIMARY_SERVICE                                0x2800              /**< Primary Service Declaration.*/
-#define UUID_SECONDARY_SERVICE                              0x2801              /**< Secondary Service Declaration.*/
-#define UUID_INCLUDE                                        0x2802              /**< Include Declaration.*/
-#define UUID_CHARACTERISTIC                                 0x2803              /**< Characteristic Declaration.*/
-#define UUID_DESCRIPTOR_CHAR_EXT_PROP                       0x2900              /**< Characteristic Extended Properties.*/
-#define UUID_DESCRIPTOR_USER_DESC                           0x2901              /**< Characteristic User Description Descriptor.*/
-#define UUID_DESCRIPTOR_CLIENT_CHAR_CONFIG                  0x2902              /**< Client Characteristic Configuration Descriptor.*/
-#define UUID_DESCRIPTOR_SERVER_CHAR_CONFIG                  0x2903              /**< Server Characteristic Configuration Descriptor.*/
-#define UUID_DESCRIPTOR_CHAR_PRE_FORMAT                     0x2904              /**< Characteristic Presentation Format Descriptor.*/
-#define UUID_DESCRIPTOR_CHAR_AGGRE_FROMAT                   0x2905              /**< Characteristic Aggregate Format Descriptor.*/
-#define UUID_DESCRIPTOR_VALID_RANGE                         0x2906              /**< Valid Range.*/
-#define UUID_DESCRIPTOR_EXTERNAL_REPORT_REF                 0x2907              /**< External Report Reference.*/
-#define UUID_DESCRIPTOR_REPORT_REF                          0x2908              /**< Report Reference.*/
-#define UUID_DESCRIPTOR_NUM_OF_DIGITALS                     0x2909              /**< Number of Digitals.*/
-#define UUID_DESCRIPTOR_VALUE_TRIGGER_SETTING               0x290A              /**< Value Trigger Setting.*/
-#define UUID_DESCRIPTOR_ENV_SENSING_CONFIG                  0x290B              /**< Environmental Sensing Configuration.*/
-#define UUID_DESCRIPTOR_ENV_SENSING_MEASURE                 0x290C              /**< Environmental Sensing Measurement.*/
-#define UUID_DESCRIPTOR_ENV_SENSING_TRIGGER_SETTING         0x290D              /**< Environmental Sensing Trigger Setting.*/
-#define UUID_DESCRIPTOR_TIME_TRIGGER_SETTING                0x290E              /**< Time Trigger Setting.*/
-#define UUID_DESCRIPTOR_COMPLETE_BREDR_BLOCK_DATA           0x290F              /**< Complete BR-EDR Transport Block Data.*/
+#define UUID_PRIMARY_SERVICE                                (0x2800U)              /**< Primary Service Declaration.*/
+#define UUID_SECONDARY_SERVICE                              (0x2801U)              /**< Secondary Service Declaration.*/
+#define UUID_INCLUDE                                        (0x2802U)              /**< Include Declaration.*/
+#define UUID_CHARACTERISTIC                                 (0x2803U)              /**< Characteristic Declaration.*/
+#define UUID_DESCRIPTOR_CHAR_EXT_PROP                       (0x2900U)              /**< Characteristic Extended Properties.*/
+#define UUID_DESCRIPTOR_USER_DESC                           (0x2901U)              /**< Characteristic User Description Descriptor.*/
+#define UUID_DESCRIPTOR_CLIENT_CHAR_CONFIG                  (0x2902U)              /**< Client Characteristic Configuration Descriptor.*/
+#define UUID_DESCRIPTOR_SERVER_CHAR_CONFIG                  (0x2903U)              /**< Server Characteristic Configuration Descriptor.*/
+#define UUID_DESCRIPTOR_CHAR_PRE_FORMAT                     (0x2904U)              /**< Characteristic Presentation Format Descriptor.*/
+#define UUID_DESCRIPTOR_CHAR_AGGRE_FROMAT                   (0x2905U)              /**< Characteristic Aggregate Format Descriptor.*/
+#define UUID_DESCRIPTOR_VALID_RANGE                         (0x2906U)              /**< Valid Range.*/
+#define UUID_DESCRIPTOR_EXTERNAL_REPORT_REF                 (0x2907U)              /**< External Report Reference.*/
+#define UUID_DESCRIPTOR_REPORT_REF                          (0x2908U)              /**< Report Reference.*/
+#define UUID_DESCRIPTOR_NUM_OF_DIGITALS                     (0x2909U)              /**< Number of Digitals.*/
+#define UUID_DESCRIPTOR_VALUE_TRIGGER_SETTING               (0x290AU)              /**< Value Trigger Setting.*/
+#define UUID_DESCRIPTOR_ENV_SENSING_CONFIG                  (0x290BU)              /**< Environmental Sensing Configuration.*/
+#define UUID_DESCRIPTOR_ENV_SENSING_MEASURE                 (0x290CU)              /**< Environmental Sensing Measurement.*/
+#define UUID_DESCRIPTOR_ENV_SENSING_TRIGGER_SETTING         (0x290DU)              /**< Environmental Sensing Trigger Setting.*/
+#define UUID_DESCRIPTOR_TIME_TRIGGER_SETTING                (0x290EU)              /**< Time Trigger Setting.*/
+#define UUID_DESCRIPTOR_COMPLETE_BREDR_BLOCK_DATA           (0x290FU)              /**< Complete BR-EDR Transport Block Data.*/
+#define UUID_DESCRIPTOR_SIG_DEFINED_RESERVED                (0x29FFU)              /**< Reserve UUID 0x2900-0x29FF for SIG-defined descriptors. */
 /** @} */
 
 
 /**@defgroup ATT_UUID_LENGTH_TYPES UUID length
- * @brief The definition of UUID length
+ * @brief The definition of UUID length.
  * @{ */
-#define ATT_UUID_LENGTH_2                               2                       /**< 16-bit Bluetooth UUID. */
-#define ATT_UUID_LENGTH_4                               4                       /**< 32-bit Bluetooth UUID. */
-#define ATT_UUID_LENGTH_16                              16                      /**< 128-bit Bluetooth UUID. */
+#define ATT_UUID_LENGTH_2                               (2U)                       /**< 16-bit Bluetooth UUID. */
+#define ATT_UUID_LENGTH_4                               (4U)                       /**< 32-bit Bluetooth UUID. */
+#define ATT_UUID_LENGTH_16                              (0x10U)                    /**< 128-bit Bluetooth UUID. */
 /** @} */
 
 /**@defgroup GATT_MAX_UUID_LENGTH Maximum UUID length
- * @brief The definition of max UUID length
+ * @brief The definition of max UUID length.
  * @{ */
 #define ATT_MAX_UUID_SIZE                               ATT_UUID_LENGTH_16      /**< The Maximum UUID Length. 128-bit. */
 /** @} */
@@ -129,7 +138,7 @@ typedef struct ATT_Uuid_T
  * @{ */
  
 /**@defgroup UUID_ARRAY UUID declaration
- * @brief The declaration of UUID for service table usage
+ * @brief The declaration of UUID for service table usage.
  * @{ */
 extern const uint8_t g_gattUuidPrimSvc[ATT_UUID_LENGTH_2];                      /**< GATT Declaration UUID: Primary Service. */
 extern const uint8_t g_gattUuidSecSvc[ATT_UUID_LENGTH_2];                       /**< GATT Declaration UUID: Secondary Service. */
@@ -155,6 +164,12 @@ extern const uint8_t g_descUuidCompleteBredrBlockData[ATT_UUID_LENGTH_2];       
 /** @} */
 
 /**@} */ //GATT_DEFINES
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif
 

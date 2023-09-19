@@ -221,6 +221,12 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event)
             //appSnprintf("Sensor Read Event \r\n");
         }        
         break;
+		
+		case CMD_BUTTON_LONG_PRESS:
+        {
+            /* Button long press */
+        }
+		break;
 
         default:
         break;
@@ -398,9 +404,9 @@ void Zigbee_Event_Handler(APP_Zigbee_Event_t event)
         case EVENT_IEEE_ADDRESS_RESPONSE:
         {
             if(event.eventData.ParentChildInfo.status == ZCL_SUCCESS_STATUS)
-                appSnprintf("->IeeeAddrResponse, status = %d, address = 0x%04x \r\n", event.eventData.ParentChildInfo.status, (uint32_t)(event.eventData.ParentChildInfo.extendedAddress >> 32), (uint32_t)(event.eventData.ParentChildInfo.extendedAddress & 0xFFFFFFFF));
+                appSnprintf("->IeeeAddrResponse, status = %d, address = 0x%016x \r\n", event.eventData.ParentChildInfo.status,(event.eventData.ParentChildInfo.extendedAddress));
             else
-                appSnprintf( "->IeeeAddrResponse, status = %d, address = 0x%04x \r\n", event.eventData.ParentChildInfo.status);
+                appSnprintf( "->IeeeAddrResponse, status = %d, address = 0x%016x \r\n", event.eventData.ParentChildInfo.status);
         }
         break;
 
@@ -1105,6 +1111,11 @@ void Cluster_Event_Handler(APP_Zigbee_Event_t event)
             appSnprintf( "<-Relative Humidity Measurement Attr Report: Value = 0x%x\r\n", reportValue);
         }
         break;
+        
+        //Custom Clusters       
+
+
+
         default:
         break;
     }

@@ -51,49 +51,53 @@
 #include <z3device/multiSensor/include/tsIdentifyCluster.h>
 #include <z3device/multiSensor/include/hsIdentifyCluster.h>
 
+
+
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
 
+
+
 #ifdef APP_SENSOR_TYPE_OCCUPANCY_SENSOR
-#define OS_SERVER_CLUSTERS_COUNT     3
+#define OS_SERVER_CLUSTERS_COUNT     3 
 #else
-#define OS_SERVER_CLUSTERS_COUNT     0
+#define OS_SERVER_CLUSTERS_COUNT     0 
 #endif
 
 #ifdef APP_SENSOR_TYPE_LIGHT_SENSOR
-#define LS_SERVER_CLUSTERS_COUNT     3
+#define LS_SERVER_CLUSTERS_COUNT     3 
 #else
-#define LS_SERVER_CLUSTERS_COUNT     0
+#define LS_SERVER_CLUSTERS_COUNT     0 
 #endif
 
 #ifdef APP_SENSOR_TYPE_TEMPERATURE_SENSOR
-#define TS_SERVER_CLUSTERS_COUNT     3
+#define TS_SERVER_CLUSTERS_COUNT     3 
 #else
-#define TS_SERVER_CLUSTERS_COUNT     0
+#define TS_SERVER_CLUSTERS_COUNT     0 
 #endif
 
 #ifdef APP_SENSOR_TYPE_HUMIDITY_SENSOR
-#define HS_SERVER_CLUSTERS_COUNT     3
+#define HS_SERVER_CLUSTERS_COUNT     3 
 #else
-#define HS_SERVER_CLUSTERS_COUNT     0
+#define HS_SERVER_CLUSTERS_COUNT     0 
 #endif
 
-#define OS_CLIENT_CLUSTERS_COUNT   2
-#define LS_CLIENT_CLUSTERS_COUNT   2
-#define TS_CLIENT_CLUSTERS_COUNT   2
-#define HS_CLIENT_CLUSTERS_COUNT   2
+#define OS_CLIENT_CLUSTERS_COUNT   2 
+#define LS_CLIENT_CLUSTERS_COUNT   2 
+#define TS_CLIENT_CLUSTERS_COUNT   2 
+#define HS_CLIENT_CLUSTERS_COUNT   2 
 
 
-#define MS_SERVER_CLUSTERS_COUNT     0
+#define MS_SERVER_CLUSTERS_COUNT     0 
 #define MS_SERVER_CLUSTER_INIT_COUNT MS_SERVER_CLUSTERS_COUNT
 
 #ifdef OTAU_CLIENT
   #define MS_CLIENT_CLUSTERS_COUNT   (1) 
-  #define MS_CLIENT_CLUSTER_INIT_COUNT 1
+  #define MS_CLIENT_CLUSTER_INIT_COUNT 1 
 #else
-  #define MS_CLIENT_CLUSTERS_COUNT   0
-  #define MS_CLIENT_CLUSTER_INIT_COUNT 0
+  #define MS_CLIENT_CLUSTERS_COUNT   0 
+  #define MS_CLIENT_CLUSTER_INIT_COUNT 0 
 #endif
 
 /* Multi sensor device type logical device Id form reserved space */

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -161,6 +161,10 @@ typedef struct __attribute__((__packed__)) __META_HEADER
 } META_HEADER;
 typedef void (*p_function)(void);
 
+/** Variable which holds the status of the Expiration of Timer **/
+bool timerExpired = false;
+/** Timer callback Context **/
+uintptr_t timercontext;
 
 volatile uint8_t no_printout = 0;
 /**
@@ -613,6 +617,7 @@ void NVIC_deInit(void)
   NVIC_DisableIRQ(FLASH_CONTROL_IRQn);
   NVIC_DisableIRQ(SERCOM0_IRQn);
   NVIC_DisableIRQ(TC3_IRQn);
+  NVIC_DisableIRQ(TC0_IRQn);
 }
 
 /**
@@ -729,6 +734,46 @@ void check_for_image(void)
     p_jump_function();
 }
 
+/**
+*@brief This callback gets called upon timer expiry.
+*
+*@param status - status of the timer
+*       context - timer context
+*        
+*@retval None
+*/
+void timerCallback(TC_TIMER_STATUS status, uintptr_t context)
+{
+  timerExpired = true;    
+}
+
+/**
+*@brief This function initializes and starts the timer upon entering into
+*        DFU mode. Once it expires, bootloader jumps to application
+*
+*@param status - status of the timer
+*       context - timer context
+*        
+*@retval None
+*/
+static void DfuTimerInit(void)
+{
+  timerExpired = false;
+  TC0_TimerCallbackRegister(timerCallback,timercontext);
+  TC0_TimerStart();
+}
+
+/**
+*@brief This function checks the DFU timer expired or not
+*
+*@param None
+*        
+*@retval true if timer is expired, false - otherwise
+*/
+static bool IsDfuTimerExpired(void)
+{
+  return timerExpired;
+}
 
 /**
 *@brief This function runs the bootloader functionality
@@ -740,32 +785,21 @@ void check_for_image(void)
 void bootloader_functions(void)
 {
   uint32_t count;
-  uint32_t portRef;
-  uint32_t pval;
   bool isWDTEnabled = ((CFG_REGS->CFG_CFGCON2 & CFG_CFGCON2_WDTEN_Msk) == CFG_CFGCON2_WDTEN_Msk ? true : false);
-  /* Set to Digital mode */
-  ((gpio_registers_t*)GPIO_PORT_B)->GPIO_ANSELCLR = (1 << 4);
 
   /* Enable SERCOM0 UART fast mode */
   CFG_REGS->CFG_CFGCON1SET |= CFG_CFGCON1_SCOM0_HSEN_Msk;
 
-  /* Read the GPIO Port for Button Press Identification */
-  portRef = ((gpio_registers_t*)GPIO_PORT_B)->GPIO_PORT;
-  pval = portRef & (1 << 4);
-  /* If button is not pressed, check for the image and jump to application 
-     If pressed, jump to DFU Mode */
-  if( pval )
-  {
-     check_for_image();
-  }
-  else
   {
     /* Enters DFU Mode */
     print_buf((uint8_t *)"DFU Now!\r\n", 10);
     for(count = 0; count < 0x2ffff; count++);
+    /* DFU Timer Initialization - Bootloader will be in DFU Mode until the timer */
+    DfuTimerInit();
     /* Initialize the SERCOM UART for read notification, thershold setting */
     UART_Init();
-    /* Runs the Device Firmware Upgrade Mode */
+    /* Wait in Device Firmware Upgrade (DFU) mode until timer expiry, upon expiry
+      then check for image, jump to application */
     while(1)
     {
        start_dfu();
@@ -773,6 +807,12 @@ void bootloader_functions(void)
        {
          /*Clear watchdog counter so that watchdog reset won't get triggered */           
          clear_watchdog_counter();
+       }
+       /* If Timer is expired, then check for image, jump to application */
+       if(IsDfuTimerExpired())
+       {
+          print_buf((uint8_t *)"DFU Exit!\r\n", 11);
+          check_for_image();
        }
     }
   }

@@ -80,6 +80,13 @@ typedef enum
     NVM_UNLOCK_KEY2 = 0x556699AA
 } NVM_UNLOCK_KEYS;
 
+typedef struct
+{
+    NVM_CALLBACK CallbackFunc;
+    uintptr_t Context;
+}nvmCallbackObjType;
+
+volatile static nvmCallbackObjType nvmCallbackObj;
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Local Functions                                                   */
@@ -92,22 +99,19 @@ typedef enum
 // *****************************************************************************
 // *****************************************************************************
 
-static NVM_CALLBACK nvmCallbackFunc;
-
-static uintptr_t nvmContext;
-
 void NVM_CallbackRegister( NVM_CALLBACK callback, uintptr_t context )
 {
     /* Register callback function */
-    nvmCallbackFunc    = callback;
-    nvmContext         = context;
+    nvmCallbackObj.CallbackFunc    = callback;
+    nvmCallbackObj.Context         = context;
 }
 
-void NVM_InterruptHandler( void )
+void __attribute__((used)) NVM_InterruptHandler( void )
 {
-    if(nvmCallbackFunc != NULL)
+    if(nvmCallbackObj.CallbackFunc != NULL)
     {
-        nvmCallbackFunc(nvmContext);
+        uintptr_t context = nvmCallbackObj.Context;
+        nvmCallbackObj.CallbackFunc(context);
     }
 }
 
@@ -271,7 +275,7 @@ void NVM_BootFlashWriteProtectUnlock( uint32_t bootFlashPagesMsk )
     NVM_WriteUnlockSequence();
 
     // Disable erase and write protection on the specified pages in bootFlashPagesMsk
-    NVM_REGS->NVM_NVMLBWPCLR = (bootFlashPagesMsk & (NVM_NVMLBWP_Msk & ~(0x80000000)));
+    NVM_REGS->NVM_NVMLBWPCLR = (bootFlashPagesMsk & (NVM_NVMLBWP_Msk & ~(0x80000000U)));
 
     __set_PRIMASK( old_primask );
 }
@@ -284,7 +288,7 @@ void NVM_BootFlashWriteProtectLock( uint32_t bootFlashPagesMsk )
     NVM_WriteUnlockSequence();
 
     // Enable erase and write protection on the specified pages in bootFlashPagesMsk
-    NVM_REGS->NVM_NVMLBWPSET = (bootFlashPagesMsk & (NVM_NVMLBWP_Msk & ~(0x80000000)));
+    NVM_REGS->NVM_NVMLBWPSET = (bootFlashPagesMsk & (NVM_NVMLBWP_Msk & ~(0x80000000U)));
 
     __set_PRIMASK( old_primask );
 }

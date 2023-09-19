@@ -228,7 +228,7 @@ be unique for each device in a network.
 <b>Can be set:</b> at any time before network start \n
 */
 #ifndef CS_UID
-#define CS_UID                                0xbee
+#define CS_UID                                0
 #endif
 
 //! \brief The maximum duration in ms of frame transmission
@@ -1079,11 +1079,7 @@ stored for a certain period of time and then removed.
 <b>C-type:</b> uint8_t \n
 <b>Can be set:</b> at compile time only \n
 */
-#ifdef CS_NWK_BTT_SIZE
-#if (CS_NWK_BTT_SIZE < 9)
-#error BTT size should have a minimum value of 9
-#endif
-#else
+#if !defined CS_NWK_BTT_SIZE
   #define CS_NWK_BTT_SIZE                     9
 #endif
 
@@ -2238,6 +2234,18 @@ ARB_ZB_DYNAMIC_MODE  2  */
 #define CS_CERTIFICATION_FLAG        false
 #endif
 
+/** \brief Device deep sleep wakeup source  
+<b>C-type:</b> uint8_t \n
+<b>Can be set:</b> at compile time only \n*/
+/**
+DEVICE_DEEP_SLEEP_WAKE_NONE    0
+DEVICE_DEEP_SLEEP_WAKE_INT0    1
+DEVICE_DEEP_SLEEP_WAKE_RTC     2  */
+#ifndef CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC
+#define CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC    (0)
+#endif
+
+
 /**Enabling the touchlink related features
 <b>Value range:</b> \c true or \c false \n
 <b>Can be set:</b> at compile time only \n*/
@@ -2256,15 +2264,11 @@ CS_DEVICE_POWER_LPA    (0x0B)
 #define CS_DEVICE_POWER_TYPE    (0x0F)
 #endif
 
-/** \brief Device Power Region ID  
-<b>C-type:</b> uint8_t \n
+/** \brief Tx Antenna Gain  
+<b>C-type:</b> int8_t \n
 <b>Can be set:</b> at compile time only \n*/
-/**
-CS_DEVICE_POWER_REGION_ETSI  (0x00)
-CS_DEVICE_POWER_REGION_FCC   (0x01)
-*/
-#ifndef CS_DEVICE_POWER_REGION   
-#define CS_DEVICE_POWER_REGION    (0x00)
+#ifndef CS_TX_ANTENNA_GAIN   
+#define CS_TX_ANTENNA_GAIN    (0x03)
 #endif
 
 /******************************************************************************

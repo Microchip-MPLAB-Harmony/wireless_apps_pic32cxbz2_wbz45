@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_BLE_HANDLER_H
-#define _APP_BLE_HANDLER_H
+#ifndef APP_BLE_HANDLER_H
+#define APP_BLE_HANDLER_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -59,6 +59,8 @@
 #include "gatt.h"
 #include "ble_dtm.h"
 #include "ble_dm/ble_dm.h"
+//#include "ble_gcm/ble_dd.h"
+//#include "ble_gcm/ble_scm.h"
 #include "ble_log/ble_log.h"
 
 // DOM-IGNORE-BEGIN

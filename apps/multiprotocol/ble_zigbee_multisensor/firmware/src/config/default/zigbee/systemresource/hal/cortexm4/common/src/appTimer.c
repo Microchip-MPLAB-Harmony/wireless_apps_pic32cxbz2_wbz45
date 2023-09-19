@@ -48,9 +48,9 @@
                    Includes section
 ******************************************************************************/
 #include <hal/include/appTimer.h>
-#include <hal/cortexm4/pic32cx/include/halDbg.h>
 #include <systemenvironment/include/sysAssert.h>
-
+#include <hal/cortexm4/pic32cx/include/halDbg.h>
+#include <hal/cortexm4/pic32cx/include/halAppClock.h>
 /******************************************************************************
                    External global variables section
 ******************************************************************************/
@@ -60,7 +60,10 @@ extern uint8_t halAppTimeOvfw;
                    Global variables section
 ******************************************************************************/
 static HAL_AppTimer_t *halAppTimerHead = NULL; // head of appTimer list
-
+static HAL_AppTimer_t __attribute__((persistent)) *backupHalAppTimerHead;
+static HAL_AppTimer_t __attribute__((persistent)) backupTimers[6];
+static uint32_t __attribute__((persistent)) backupxExpectedIdleTime;
+ 
 /******************************************************************************
                    Implementations section
 ******************************************************************************/
@@ -237,5 +240,59 @@ int HAL_RemainingAppTimer(HAL_AppTimer_t *appTimer, uint32_t *remainingTime)
   }
   return 0;
 }
+
+/******************************************************************************
+ * Backing up of running timers and sys time
+
+Returns:
+ * void
+******************************************************************************/
+void HAL_BackupRunningTimers(uint32_t expectedSleepTime)
+{
+  uint8_t i =0;
+  HAL_AppTimer_t *p = NULL; 
+  memcpy(&backupHalAppTimerHead,&halAppTimerHead, 4);
+  p = halAppTimerHead;  
+  while(p)    
+  {
+    backupTimers[i].mode = p->mode;
+    backupTimers[i].interval = p->interval;
+    backupTimers[i].callback = p->callback;
+    backupTimers[i].service.sysTimeLabel = p->service.sysTimeLabel;
+    backupTimers[i].service.next = p->service.next;        
+    p = p->service.next;
+    i++;
+  } 
+  //backup system time  
+  halBackupSystemTime();
+  backupxExpectedIdleTime = expectedSleepTime;
+}
+
+/******************************************************************************
+ * Restoring of running timers and sys time
+
+Returns:
+  void
+******************************************************************************/
+void HAL_RestoreRunningTimers(void)
+{
+  uint8_t i =0;
+  halRestoreSystemTime();
+  memcpy(&halAppTimerHead, &backupHalAppTimerHead, 4);
+  HAL_AppTimer_t *p = halAppTimerHead; //= &backupTimers[0];
+  for(i=0; p;i++)
+  {
+    p->mode = backupTimers[i].mode;
+     p->interval = backupTimers[i].interval;      
+     p->callback = backupTimers[i].callback;
+     p->service.sysTimeLabel = backupTimers[i].service.sysTimeLabel;
+     p->service.next = backupTimers[i].service.next;
+     p = p->service.next;
+  }
+  {
+      halAdjustSleepInterval(backupxExpectedIdleTime-1);
+  }
+}
+
 
 // eof appTimer.c

@@ -1,3 +1,4 @@
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -20,6 +21,7 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+// DOM-IGNORE-END
 
 /*******************************************************************************
   MPLAB Harmony Application Source File
@@ -56,11 +58,17 @@
 #include "app_ble_dsadv.h"
 
 
+
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
+
+
+
+
 
 // *****************************************************************************
 /* Application Data
@@ -170,6 +178,9 @@ void APP_Tasks ( void )
                 APP_BleDsadvStart(true);
             }
 
+
+
+
             if (appInitialized)
             {
 
@@ -182,6 +193,7 @@ void APP_Tasks ( void )
         {
             if (OSAL_QUEUE_Receive(&appData.appQueue, &appMsg, OSAL_WAIT_FOREVER))
             {
+
                 if(p_appMsg->msgId==APP_MSG_BLE_STACK_EVT)
                 {
                     // Pass BLE Stack Event Message to User Application for handling
@@ -192,6 +204,9 @@ void APP_Tasks ( void )
                     // Pass BLE LOG Event Message to User Application for handling
                     APP_BleStackLogHandler((BT_SYS_LogEvent_T *)p_appMsg->msgData);
                 }
+
+
+
             }
             break;
         }

@@ -66,10 +66,12 @@ void TCC2_PWMInitialize(void)
         /* Wait for sync */
     }
     /* Clock prescaler */
-    TCC2_REGS->TCC_CTRLA = TCC_CTRLA_PRESCALER_DIV1 ;
+    TCC2_REGS->TCC_CTRLA = TCC_CTRLA_PRESCALER_DIV1 
+                            | TCC_CTRLA_PRESCSYNC_PRESC ;
     TCC2_REGS->TCC_WEXCTRL = TCC_WEXCTRL_OTMX(0UL);
 
-    TCC2_REGS->TCC_WAVE = TCC_WAVE_WAVEGEN_NPWM;
+    TCC2_REGS->TCC_WAVE = TCC_WAVE_WAVEGEN_NPWM | TCC_WAVE_RAMP_RAMP1;
+
 
     /* Configure duty cycle values */
     TCC2_REGS->TCC_CC[0] = 0U;
@@ -130,10 +132,31 @@ uint16_t TCC2_PWM16bitPeriodGet (void)
 
 
 
-/* Set the counter*/
-void TCC2_PWM16bitCounterSet (uint16_t count)
+
+/* Get the current counter value */
+uint16_t TCC2_PWM16bitCounterGet( void )
 {
-    TCC2_REGS->TCC_COUNT = count;
+    /* Write command to force COUNT register read synchronization */
+    TCC2_REGS->TCC_CTRLBSET |= (uint8_t)TCC_CTRLBSET_CMD_READSYNC;
+
+    while((TCC2_REGS->TCC_SYNCBUSY & TCC_SYNCBUSY_CTRLB_Msk) == TCC_SYNCBUSY_CTRLB_Msk)
+    {
+        /* Wait for Write Synchronization */
+    }
+
+    while((TCC2_REGS->TCC_CTRLBSET & TCC_CTRLBSET_CMD_Msk) != 0U)
+    {
+        /* Wait for CMD to become zero */
+    }
+
+    /* Read current count value */
+    return (uint16_t)TCC2_REGS->TCC_COUNT;
+}
+
+/* Set the counter*/
+void TCC2_PWM16bitCounterSet (uint16_t countVal)
+{
+    TCC2_REGS->TCC_COUNT = countVal;
     while ((TCC2_REGS->TCC_SYNCBUSY & TCC_SYNCBUSY_COUNT_Msk) != 0U)
     {
         /* Wait for sync */

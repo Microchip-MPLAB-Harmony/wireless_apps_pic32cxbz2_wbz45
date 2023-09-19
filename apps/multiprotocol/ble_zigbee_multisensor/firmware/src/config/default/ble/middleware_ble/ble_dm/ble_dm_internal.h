@@ -63,8 +63,8 @@
 // *****************************************************************************
 // *****************************************************************************
 
-extern BLE_DM_EventCb_T        s_dmEventCb[BLE_DM_MAX_REGISTER_NUM];
-extern uint8_t                 s_dmCbNum;
+extern BLE_DM_EventCb_T        g_dmEventCb[BLE_DM_MAX_REGISTER_NUM];
+extern uint8_t                 g_dmCbNum;
 
 
 // *****************************************************************************

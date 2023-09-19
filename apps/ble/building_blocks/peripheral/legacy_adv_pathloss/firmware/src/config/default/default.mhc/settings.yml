@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: Legacy_ADV_Pathloss
+frameworkPath: D:\All_H3_Repos\A2_RTP
+processor: WBZ451
+projectName: Legacy_ADV_Pathloss
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.1.230\WBZ451\atdf\WBZ451.atdf

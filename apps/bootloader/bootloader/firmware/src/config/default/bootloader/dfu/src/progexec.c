@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -129,6 +129,19 @@ void dfu(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
         program_exec_main(tops, count);
 }
 
+/** Variable which holds the status of the Expiration of Timer **/
+extern bool timerExpired;
+
+/******************************************************************************
+ activityRecvdRestartTimer
+ Activity Observed. Restart/Refresh the timer.
+******************************************************************************/
+void activityRecvdRestartTimer(void)
+{
+    TC0_TimerStop();
+    timerExpired = false;
+    TC0_TimerStart();
+}
 /******************************************************************************
  main
  This is the entry point for the programming executive. It receives commands
@@ -146,6 +159,7 @@ int32_t program_exec_main(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
 	if (GET_PE_COMMAND((uint8_t *)pe_command, PE_CMD_SIZE) <= 0)
 		return -1;
 
+	activityRecvdRestartTimer();
 	sram_cmd_addr =  (uint32_t *)pe_command;
 	incmd = *sram_cmd_addr++;
 
@@ -157,10 +171,11 @@ int32_t program_exec_main(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
 	/* dispatch commands */   
 	switch( Cmd.cmd )
 	{ 
-    case RESET_CMD:
-        RCON_SoftwareReset();
-        retval = PASS_RESP;
-        break;
+	case RESET_CMD:
+		RCON_SoftwareReset();
+		retval = PASS_RESP;
+		break;
+
 	case EXEC_VERSION_CMD:
 		retval = PROG_EXEC_VERSION_NUMBER;   
 		break;  
@@ -238,7 +253,7 @@ int32_t program_exec_main(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
 	}
 
 	SET_PE_RESPONSE((int8_t *)pe_resp, respSize); 
-   
+	activityRecvdRestartTimer();
    return 0;
    
 } /* end of main */

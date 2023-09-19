@@ -347,7 +347,7 @@ void writeAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoi
 
   writeAttrReq.id = attr;
   writeAttrReq.type = type;
-  
+  memset(&writeAttrReq.value, 0, sizeof(ZCL_WriteAttributeReq_t));
   memcpy(req->requestPayload, (uint8_t *)&writeAttrReq, sizeof(ZCL_WriteAttributeReq_t) - sizeof(uint8_t));
   memcpy(req->requestPayload + sizeof(ZCL_WriteAttributeReq_t) - sizeof(uint8_t), (uint8_t *)data, size);
 
@@ -400,7 +400,7 @@ void writeAttributeNoResp(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
 
   writeAttrReq.id = attr;
   writeAttrReq.type = type;
-  
+  memset(&writeAttrReq.value, 0, sizeof(ZCL_WriteAttributeNoResponseReq_t));
   memcpy(req->requestPayload, (uint8_t *)&writeAttrReq, sizeof(ZCL_WriteAttributeNoResponseReq_t) - sizeof(uint8_t));
   memcpy(req->requestPayload + sizeof(ZCL_WriteAttributeNoResponseReq_t) - sizeof(uint8_t), (uint8_t *)data, size);
 
@@ -489,7 +489,8 @@ void configureReportingWithRC(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t 
   configureReportingReq.minReportingInterval = min;
   configureReportingReq.maxReportingInterval = max;
   ZCL_GetDataTypeDescriptor(attrType, repChange, &attrDescr);
-  memcpy(configureReportingReq.reportableChange, (uint8_t *)repChange, attrDescr.length);
+  if(attrDescr.length != 0)
+    memcpy(configureReportingReq.reportableChange, (uint8_t *)repChange, attrDescr.length);
 
   if(((configureReportingReq.maxReportingInterval == 0x0000) && (configureReportingReq.minReportingInterval == 0xffff)) || (configureReportingReq.maxReportingInterval == 0xffff))
     configureReportingReq.reportableChange[0] = 0;

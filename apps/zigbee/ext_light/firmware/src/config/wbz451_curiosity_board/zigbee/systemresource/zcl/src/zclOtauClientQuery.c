@@ -224,7 +224,7 @@ static void otauStartImageLoading(void)
 {
   ZCL_OtauClientMem_t *clientMem = zclGetOtauClientMem();
   ZCL_OtauQueryNextImageResp_t *payload = &clientMem->queryNextImageResp;
-  
+
   /*Image size shall be greater than the OTAU header size*/
   if (sizeof(ZCL_OtauUpgradeImageHeader_t) > payload->imageSize)
   {
@@ -274,13 +274,26 @@ static void otauStartImageLoading(void)
       {
         clientMem->imageAuxParam.requestBlockSize = OTAU_MAX_REQ_BLOCK_SIZE;
         appOtauPrintf("OTAU: Fresh Download after restore\r\n");
-        clientMem->ofdParam.offset = OFD_SLOT2_IMAGE_START_ADDRESS;
+        clientMem->ofdParam.offset = OFD_IMAGE_START_ADDRESS;
       }
       else
       {
+      #if !defined _PIC32CX_BZ3_  
         clientMem->imageAuxParam.requestFileOffset = recoveryParams->fileOffset - getAesDecryptIVsize();
-        appOtauPrintf("Restored file offset %d\r\n",recoveryParams->fileOffset);
         clientMem->imageAuxParam.requestBlockSize = getAesDecryptIVsize();
+      #else
+        clientMem->imageAuxParam.requestFileOffset = recoveryParams->fileOffset - OTAU_MAX_REQ_BLOCK_SIZE;
+        clientMem->imageAuxParam.requestBlockSize = OTAU_MAX_REQ_BLOCK_SIZE;
+        DRV_HANDLE *handle = getSstHandle();
+        //Erase 4 sectors of 4k each from the restored file offset
+        for(uint8_t sectorIndex  = 0; sectorIndex  < OTAU_MAX_SECTOR_ERASE; sectorIndex ++)
+        {
+          //Erase 4 sectors of 4k each from the restored file offset
+          (void)DRV_SST26_SectorErase(*handle,recoveryParams->fileOffset+(sectorIndex*NVM_FLASH_PAGESIZE));
+        }
+        while(DRV_SST26_TransferStatusGet(*handle) == DRV_SST26_TRANSFER_BUSY);
+      #endif
+        appOtauPrintf("Restored file offset %d\r\n",recoveryParams->fileOffset);
         setOtauIVrecovery(true);
       }
       OTAU_SET_STATE(otauStateMachine, OTAU_GET_IMAGE_DOWNLOADING_STATE);
@@ -307,10 +320,14 @@ static void otauStartImageLoading(void)
   clientMem->imageAuxParam.totalImageLength   = payload->imageSize;
   clientMem->imageAuxParam.requestFileOffset  = 0;
 
-  clientMem->ofdParam.offset = OFD_SLOT2_IMAGE_START_ADDRESS;
+  clientMem->ofdParam.offset = OFD_IMAGE_START_ADDRESS;
   OTAU_SET_STATE(otauStateMachine,OTAU_START_DOWNLOAD_STATE);
   PDS_Store(OTAU_RECOVERY_DIR_ID);
+#if !defined _PIC32CX_BZ3_  
   otauStartErase();
+#else
+  otauStartDownload();
+#endif
 }
 
 

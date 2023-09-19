@@ -49,7 +49,7 @@
 #include <stdint.h>
 #include "app_trps/app_trps.h"
 #include "sensors/inc/rgb_led.h"
-#include "Sensors/inc/temp_sensor.h"
+#include "sensors/inc/temp_sensor.h"
 #include "app_timer/app_timer.h"
 #include "peripheral/eic/plib_eic.h"
 #include <app_zigbee/zigbee_console/console.h>

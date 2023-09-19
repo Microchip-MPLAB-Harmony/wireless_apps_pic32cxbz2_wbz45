@@ -157,7 +157,7 @@ void CLK_Initialize( void )
     /* WAKE2SPD = SELECTED_CLK */
     /* DRMEN    = NO_EFFECT    */
     /* FRCDIV   = DIV_1   */
-    CRU_REGS->CRU_OSCCON = 0x100U;
+    CRU_REGS->CRU_OSCCON = 0x102U;
 
     CRU_REGS->CRU_OSCCONSET = CRU_OSCCON_OSWEN_Msk;  /* request oscillator switch to occur */
 

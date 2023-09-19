@@ -76,7 +76,7 @@
 **********************************************************************************/
 #include <systemenvironment/include/sysTypes.h>
 #ifdef _SYS_ASSERT_ON_
-  #include <hal/cortexm4/pic32cx/include/halAssert.h>
+#include <halAssert.h>
 #endif // _SYS_ASSERT_ON_
 
 /******************************************************************************

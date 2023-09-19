@@ -57,7 +57,7 @@
  * Step 1
  * ------
  * Modify the source file:
- *      ""config/default/freertos_hooks.c/""
+ *      "config/default/freertos_hooks.c/"
  *
  * Add include directive
 #include "definitions.h"

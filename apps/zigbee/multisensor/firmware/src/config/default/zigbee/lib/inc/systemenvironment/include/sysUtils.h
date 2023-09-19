@@ -224,6 +224,59 @@ INLINE uint16_t SYS_Crc16Ccitt(uint16_t initValue, uint8_t byte)
           ^ (uint8_t)(byte >> 4) ^ ((uint16_t)byte << 3));
 }
 
+INLINE void memcpy4ByteAligned(void* outbuf, void* inbuf, uint16_t length)
+{
+  static uint8_t mod_size;
+  static uint8_t size;
+  static uint16_t k;
+  uint32_t* src = (uint32_t* )inbuf;
+  uint32_t* dst = (uint32_t* )outbuf;
+   
+  mod_size = (length % 4);
+
+  // total_length is in multiple of 4
+  if (mod_size !=0)
+    size  = length + 4 - mod_size; 
+  else 
+    size  = length;
+  
+  size  = size >> 2;
+  for (k = 0; k < size; k++)
+  {
+      *dst = *src;
+      src++;
+      dst++;
+  }
+}
+
+/*******************************************************************//**
+  \brief Calculate difference between two numbers with overflow handling
+
+  ingroup sys
+
+  \param subtrahend - Value to be subtracted
+         minuend - Value from where to be subtracted
+
+  \return  difference between subtrahend and minuend
+ ***********************************************************************/
+INLINE uint32_t SYS_calculateDifference(uint32_t subtrahend, uint32_t minuend)
+{
+    uint32_t difference = 0U;
+    
+    if (((int32_t )(minuend -subtrahend)) >= 0)
+    {
+        difference = (minuend -subtrahend);
+    }
+    else
+    {
+        uint32_t complement = (UINT32_MAX - subtrahend);
+
+        difference = complement + minuend + 1;
+    }
+    
+    return difference;
+}
+
 #ifndef _MAC2_
 /********************************************************************//**
   \brief This function reads version number in CS and returns as string

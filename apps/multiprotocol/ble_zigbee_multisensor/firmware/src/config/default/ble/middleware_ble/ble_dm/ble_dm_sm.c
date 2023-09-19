@@ -47,10 +47,11 @@
 // *****************************************************************************
 #include <string.h>
 #include "osal/osal_freertos_extend.h"
-#include "ble_dm/ble_dm.h"
-#include "ble_dm/ble_dm_internal.h"
-#include "ble_dm/ble_dm_info.h"
-#include "ble_dm/ble_dm_dds.h"
+#include "ble_dm.h"
+#include "ble_dm_internal.h"
+#include "ble_dm_info.h"
+#include "ble_dm_dds.h"
+#include "ble_dm_sm.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -97,7 +98,7 @@ static void ble_dm_SmConveyFailEvt(uint16_t connHandle, BLE_DM_SecurityProc_T pr
 }
 
 
-void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
+static void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
 {
     switch (p_event->eventId)
     {
@@ -111,7 +112,9 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
                 p_conn = BLE_DM_InfoGetConnByHandle(p_event->eventField.evtSecurityReq.connHandle);
 
                 if (p_conn == NULL)
+                {
                     return;
+                }
 
                 if (p_conn->role == BLE_GAP_ROLE_CENTRAL)
                 {
@@ -121,14 +124,18 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
                         result = BLE_GAP_EnableEncryption(p_conn->connHandle, bonding.rv, bonding.ediv, bonding.ltk);
 
                         if (result == MBA_RES_SUCCESS)
-                            ble_dm_SmConveyStartEvt(p_conn->connHandle, DM_SECURITY_PROC_ENCRYPTION);            
+                        {
+                            ble_dm_SmConveyStartEvt(p_conn->connHandle, DM_SECURITY_PROC_ENCRYPTION); 
+                        }
                     }
                     else
                     {
                         result = BLE_SMP_InitiatePairing(p_conn->connHandle);
 
                         if (result == MBA_RES_SUCCESS)
+                        {
                             ble_dm_SmConveyStartEvt(p_conn->connHandle, DM_SECURITY_PROC_PAIRING);
+                        }
                     }               
                 }
             }
@@ -145,7 +152,9 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
                 p_conn = BLE_DM_InfoGetConnByHandle(p_event->eventField.evtPairingReq.connHandle);
                 
                 if (p_conn == NULL)
+                {
                     return;
+                }
 
                 if (p_conn->role == BLE_GAP_ROLE_PERIPHERAL)
                 {
@@ -174,10 +183,12 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
                 ble_dm_SmConveySuccessEvt(p_event->eventField.evtPairingComplete.connHandle, DM_SECURITY_PROC_PAIRING, p_event->eventField.evtPairingComplete.bond);
 
                 p_conn->encryptKeyValid = true;
-                memcpy(p_conn->encryptKey, p_event->eventField.evtPairingComplete.encryptKey, 16);
+                (void)memcpy(p_conn->encryptKey, p_event->eventField.evtPairingComplete.encryptKey, 16);
 
                 if (p_conn->role == BLE_GAP_ROLE_CENTRAL)
+                {
                     ble_dm_SmConveyStartEvt(p_conn->connHandle, DM_SECURITY_PROC_ENCRYPTION);
+                }
            }
            else
            {
@@ -195,10 +206,15 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
 
             p_conn = BLE_DM_InfoGetConnByHandle(p_event->eventField.evtNotifyKeys.connHandle);
             if (p_conn == NULL)
+            {
                 return;
+            }
 
             p_devInfo = OSAL_Malloc(sizeof(BLE_DM_PairedDevInfo_T));
-            if (p_devInfo == NULL) return;
+            if (p_devInfo == NULL) 
+            {
+                return;
+            }
             
             p_key = &p_event->eventField.evtNotifyKeys.keys;
 
@@ -231,41 +247,39 @@ void ble_dm_SecurityManager(BLE_SMP_Event_T *p_event)
 
             if (p_conn->role == BLE_GAP_ROLE_CENTRAL)
             {
-                if (p_key->local.encInfo.lesc)
+                if (p_key->local.encInfo.lesc == true)
                 {
-                    memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->local.encInfo.ltk[0]), 16);
+                    (void)memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->local.encInfo.ltk[0]), 16);
                 }
                 else
                 {
-                    memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->remote.encInfo.ltk[0]), 16);
-                    memcpy(p_devInfo->rv, (uint8_t *)(&p_key->remote.encInfo.rand[0]), 8);
-                    memcpy(p_devInfo->ediv, (uint8_t *)(&p_key->remote.encInfo.ediv[0]), 2);
+                    (void)memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->remote.encInfo.ltk[0]), 16);
+                    (void)memcpy(p_devInfo->rv, (uint8_t *)(&p_key->remote.encInfo.rand[0]), 8);
+                    (void)memcpy(p_devInfo->ediv, (uint8_t *)(&p_key->remote.encInfo.ediv[0]), 2);
                 }
 
-                memcpy(p_devInfo->remoteIrk, (uint8_t *)(&p_key->remote.idInfo.irk[0]), 16);
+                (void)memcpy(p_devInfo->remoteIrk, (uint8_t *)(&p_key->remote.idInfo.irk[0]), 16);
+
             }
             else
             {
-                memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->local.encInfo.ltk[0]), 16);
-                memcpy(p_conn->encryptKey, (uint8_t *)&p_key->local.encInfo.ltk[0], 16);
-                memcpy(p_devInfo->remoteIrk, (uint8_t *)(&p_key->remote.idInfo.irk[0]), 16);
+                (void)memcpy(p_devInfo->ltk, (uint8_t *)(&p_key->local.encInfo.ltk[0]), 16);
+                (void)memcpy(p_conn->encryptKey, (uint8_t *)&p_key->local.encInfo.ltk[0], 16);
+                (void)memcpy(p_devInfo->remoteIrk, (uint8_t *)(&p_key->remote.idInfo.irk[0]), 16);
             }
 
             p_devInfo->encryptKeySize=p_key->local.encInfo.ltkLen;
 
             p_devInfo->auth=p_key->local.encInfo.auth;
             p_devInfo->lesc=p_key->local.encInfo.lesc;
+            (void)memcpy(p_devInfo->localIrk, (uint8_t *)(&p_key->local.idInfo.irk[0]), 16);
+            p_devInfo->localAddr = p_key->local.idInfo.addr;
 
-            BLE_DM_DdsSetPairedDevice(devId, p_devInfo);
+            /* The data(p_devInfo) will be really written to flash at the moment when ble_sm_WriteCompleteCallback() is called,
+             * Hence the event: BLE_DM_EVT_PAIRED_DEVICE_UPDATED is postponed to send in ble_sm_WriteCompleteCallback() */
+            (void)BLE_DM_DdsSetPairedDevice(devId, p_devInfo);
 
             OSAL_Free(p_devInfo);
-
-            {
-                 BLE_DM_Event_T  dmEvt;
-                 dmEvt.eventId = BLE_DM_EVT_PAIRED_DEVICE_UPDATED;
-                 dmEvt.connHandle = p_conn->connHandle;
-                 BLE_DM_ConveyEvent(&dmEvt);
-            }
         }
         break;
 
@@ -291,7 +305,9 @@ void BLE_DM_Sm(STACK_Event_T *p_stackEvent)
 
             p_conn = BLE_DM_InfoGetConnByHandle(p_evt->eventField.evtEncInfoReq.connHandle);
             if (p_conn == NULL)
+            {
                 return;
+            }
 
             ble_dm_SmConveyStartEvt(p_conn->connHandle, DM_SECURITY_PROC_ENCRYPTION);
 
@@ -302,8 +318,10 @@ void BLE_DM_Sm(STACK_Event_T *p_stackEvent)
                 if (BLE_DM_DdsGetPairedDevice(p_conn->devId, &bonding) == MBA_RES_SUCCESS)
                 {
                     if (MBA_RES_SUCCESS != BLE_GAP_EncInfoReqReply(p_conn->connHandle, bonding.ltk))
+                    {
                         ble_dm_SmConveyFailEvt(p_evt->eventField.evtEncryptStatus.connHandle, DM_SECURITY_PROC_ENCRYPTION
                         , 0x00, 0x00);
+                    }
                 }
                 else
                 {
@@ -316,8 +334,10 @@ void BLE_DM_Sm(STACK_Event_T *p_stackEvent)
             else 
             {
                 if (MBA_RES_SUCCESS != BLE_GAP_EncInfoReqReply(p_conn->connHandle, p_conn->encryptKey))
+                {
                     ble_dm_SmConveyFailEvt(p_evt->eventField.evtEncryptStatus.connHandle, DM_SECURITY_PROC_ENCRYPTION
                     , 0x00, 0x00);
+                }
             }
         }
         else if (p_evt->eventId == BLE_GAP_EVT_ENCRYPT_STATUS)
@@ -332,6 +352,14 @@ void BLE_DM_Sm(STACK_Event_T *p_stackEvent)
                     , 0x00, 0x00);
             }
         }
+        else
+        {
+			//Shall not enter here
+        }
+    }
+    else
+    {
+		//Shall not enter here
     }
 }
 
@@ -349,7 +377,9 @@ uint16_t BLE_DM_SmPairing(uint16_t connHandle, uint8_t repairing)
     p_conn = BLE_DM_InfoGetConnByHandle(connHandle);
 
     if (p_conn == NULL)
+    {
         return MBA_RES_INVALID_PARA;
+    }
 
     if (p_conn->role == BLE_GAP_ROLE_CENTRAL)
     {
@@ -359,14 +389,18 @@ uint16_t BLE_DM_SmPairing(uint16_t connHandle, uint8_t repairing)
             result = BLE_GAP_EnableEncryption(connHandle, bonding.rv, bonding.ediv, bonding.ltk);
 
             if (result == MBA_RES_SUCCESS)
+            {
                 ble_dm_SmConveyStartEvt(connHandle, DM_SECURITY_PROC_ENCRYPTION);
+            }
         }
         else
         {
             result = BLE_SMP_InitiatePairing(connHandle);
 
             if (result == MBA_RES_SUCCESS)
+            {
                 ble_dm_SmConveyStartEvt(connHandle, DM_SECURITY_PROC_PAIRING);
+            }
         }
 
         return result;
@@ -377,7 +411,20 @@ uint16_t BLE_DM_SmPairing(uint16_t connHandle, uint8_t repairing)
     }
 }
 
-void BLE_DM_SmInit()
+void BLE_DM_SmInit(void)
 {
     s_autoAccept = true;
+}
+
+void BLE_DM_SmWriteCompleteCallback(uint8_t devId)
+{
+    BLE_DM_Event_T  dmEvt;
+    uint16_t connHandle;
+
+    if (BLE_DM_InfoGetConnHandleByDevId(devId, &connHandle) == MBA_RES_SUCCESS)
+    {
+        dmEvt.eventId = BLE_DM_EVT_PAIRED_DEVICE_UPDATED;
+        dmEvt.connHandle = connHandle;
+        BLE_DM_ConveyEvent(&dmEvt);
+    }
 }

@@ -54,6 +54,7 @@
 #include <z3device/light/include/lightScenesCluster.h>
 #include <z3device/light/include/lightCommissioningCluster.h>
 
+
 /******************************************************************************
                     Global variables
 ******************************************************************************/
@@ -118,19 +119,19 @@ ZCL_Cluster_t lightClientClusters[LIGHT_CLIENT_CLUSTERS_COUNT] =
   ZCL_DEFINE_BASIC_CLUSTER_CLIENT(&lightBasicClusterClientAttributes),
 #endif
   DEFINE_IDENTIFY_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &lightIdentifyClusterClientAttributes, &lightIdentifyCommands),
-  DEFINE_GROUPS_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &lightGroupsClusterClientAttributes, &lightGroupsCommands)
+  DEFINE_GROUPS_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &lightGroupsClusterClientAttributes, &lightGroupsCommands)  
 };
 
 
 ClusterId_t lightClientClusterIds[LIGHT_CLIENT_CLUSTERS_COUNT] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID,
+  GROUPS_CLUSTER_ID
 #if ZLO_EXTRA_CLUSTERS_SUPPORT == 1
-  BASIC_CLUSTER_ID,
+  ,BASIC_CLUSTER_ID
 #endif
 #ifdef OTAU_CLIENT
-  OTAU_CLUSTER_ID, // Always should be on last position in list of clusters ID.
+  ,OTAU_CLUSTER_ID // Always should be on last position in list of clusters ID.
 #endif
 };
 

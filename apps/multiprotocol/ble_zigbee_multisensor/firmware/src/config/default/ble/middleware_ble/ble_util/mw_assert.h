@@ -47,12 +47,27 @@
 #ifndef MW_ASSERT_H
 #define MW_ASSERT_H
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
 #define  MW_ASSERT(check)     extern char assertion[(check) ? 1 : -1]
+	
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 #endif
 
 /** @} */

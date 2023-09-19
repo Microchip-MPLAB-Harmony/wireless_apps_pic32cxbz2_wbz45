@@ -200,14 +200,14 @@ void CLK_Initialize( void )
     /* Peripheral Clock Generators */
     CFG_REGS->CFG_CFGPCLKGEN1 = 0xa009009U;
     CFG_REGS->CFG_CFGPCLKGEN2 = 0x0U;
-    CFG_REGS->CFG_CFGPCLKGEN3 = 0x0U;
+    CFG_REGS->CFG_CFGPCLKGEN3 = 0x900000U;
 
     /* Peripheral Module Disable Configuration */
 
 
     CFG_REGS->CFG_PMD1 = 0x2000004dU;
-    CFG_REGS->CFG_PMD2 = 0xd3000000U;
-    CFG_REGS->CFG_PMD3 = 0x737eU;
+    CFG_REGS->CFG_PMD2 = 0xc3000000U;
+    CFG_REGS->CFG_PMD3 = 0x637eU;
 
 
     /* Lock system since done with clock configuration */

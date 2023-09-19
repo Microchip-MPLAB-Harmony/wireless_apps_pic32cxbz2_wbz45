@@ -16,7 +16,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -834,15 +834,6 @@ void DEVICE_ExitSleepMode(void)
 
     // Restore all PMD setting
     device_configPmdReg(DEVICE_SLEEP_EXIT_SLEEP);
-
-
-    //TODO: Can be removed
-#if 0
-    if (CFG_REGS->CFG_PMD2 & CFG_PMD2_REFO1MD_Msk)
-    {
-        CFG_REGS->CFG_PMD2 &= ~CFG_PMD2_REFO1MD_Msk;   //Enable PMD2_REFO1
-    }
-#endif
 
     //Restore the setting of REFOxCON register
     device_configRefOscReg(DEVICE_SLEEP_EXIT_SLEEP);

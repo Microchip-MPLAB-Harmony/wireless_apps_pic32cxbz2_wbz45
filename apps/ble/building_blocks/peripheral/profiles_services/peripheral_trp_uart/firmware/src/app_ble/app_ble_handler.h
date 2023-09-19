@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_BLE_HANDLER_H
-#define _APP_BLE_HANDLER_H
+#ifndef APP_BLE_HANDLER_H
+#define APP_BLE_HANDLER_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -60,7 +60,6 @@
 #include "ble_dtm.h"
 #include "ble_dm/ble_dm.h"
 #include "ble_gcm/ble_dd.h"
-#include "ble_gcm/ble_scm.h"
 #include "ble_log/ble_log.h"
 
 // DOM-IGNORE-BEGIN
@@ -177,13 +176,14 @@ void APP_BleSmpEvtHandler(BLE_SMP_Event_T *p_event);
 */
 void APP_DmEvtHandler(BLE_DM_Event_T *p_event);
 
-#endif /* _APP_BLE_HANDLER_H */
-
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
 //DOM-IGNORE-END
+
+#endif /* APP_BLE_HANDLER_H */
+
 
 /*******************************************************************************
  End of File

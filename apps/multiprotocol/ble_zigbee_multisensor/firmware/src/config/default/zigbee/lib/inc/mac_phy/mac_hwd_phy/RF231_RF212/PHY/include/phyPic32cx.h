@@ -51,7 +51,7 @@
 #include <xc.h>
 
 #ifdef _RF_AES_
-#include <hal/cortexm4/pic32cx/include/halRfCtrl.h>
+#include <halRfCtrl.h>
 #include <mac_phy/include/RF231_RF212/PHY/include/phyEncrypt.h>
 #endif
 

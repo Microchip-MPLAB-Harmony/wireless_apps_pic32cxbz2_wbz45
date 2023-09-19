@@ -49,7 +49,7 @@
 #include "mba_error_defs.h"
 #include "gatt.h"
 #include "ble_util/byte_stream.h"
-#include "ble_trs/ble_trs.h"
+#include "ble_trs.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -212,7 +212,7 @@ static GATTS_Service_T s_svcTrs =
 // *****************************************************************************
 // *****************************************************************************
 
-uint16_t BLE_TRS_Add() 
+uint16_t BLE_TRS_Add(void) 
 {
     return GATTS_AddService(&s_svcTrs, (TRS_END_HDL - TRS_START_HDL + 1));
 }

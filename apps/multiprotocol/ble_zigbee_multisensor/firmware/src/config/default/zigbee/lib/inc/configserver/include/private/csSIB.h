@@ -192,7 +192,7 @@ typedef struct _SIB_t
 {
   /* MAC parameters */
   uint32_t    csMacTransactionTime;
-  int8_t      csRfTxPowerRegion;  //Future Use.
+  int8_t      csRfTxAntennaGain;  //Future Use.
   int8_t      csRfTxPowerType;  
   int8_t      csRfTxPower;
   int8_t      csRfch26MaxTxPower;

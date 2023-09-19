@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Middleware Device Firmware Udpate Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    mw_dfu.h
-
-  Summary:
-    This file contains the BLE Device Firmware Udpate functions for application user.
-
-  Description:
-    This file contains the BLE Device Firmware Udpate functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Middleware Device Firmware Udpate Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    mw_dfu.h
+
+  Summary:
+    This file contains the BLE Device Firmware Udpate functions for application user.
+
+  Description:
+    This file contains the BLE Device Firmware Udpate functions for application user.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup MW_DFU
@@ -57,6 +56,13 @@
 
 #include <stdint.h>
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -70,14 +76,14 @@
 /**@defgroup MW_DFU_MAX_IMAGE_SIZE Maximum image size
  * @brief The definition of DFU maximum image size.
  * @{ */
-#define MW_DFU_MAX_SIZE_FW_IMAGE              507904           /**< Maximum size of firmware image in bytes */
+#define MW_DFU_MAX_SIZE_FW_IMAGE              (507904UL)           /**< Maximum size of firmware image in bytes */
 /** @} */
 
 
 /**@defgroup MW_DFU_MAX_BLOCK_LEN Maximum block len
  * @brief The definition of maximum block length.
  * @{ */
-#define MW_DFU_MAX_BLOCK_LEN                   0x400           /**< Maximum block length */
+#define MW_DFU_MAX_BLOCK_LEN                   (0x400U)           /**< Maximum block length */
 /** @} */
 
 /**@} */ //MW_DFU_DEFINES
@@ -95,6 +101,7 @@
 typedef struct MW_DFU_Info_T
 {
     uint32_t fwImageSize;                                      /**< Firmware image size. It must be 16-bytes aligned. */
+    uint8_t  fwFlashType;                                      /**< Firmware flash type: Reserved for future use. */
 } MW_DFU_Info_T;
 
 /**@} */ //MW_DFU_STRUCTS
@@ -126,7 +133,7 @@ uint16_t MW_DFU_Config(MW_DFU_Info_T *p_dfuInfo);
  *@retval MBA_RES_SUCCESS         Start or restart firmware image update procedure successfully.
  *@retval MBA_RES_BAD_STATE       This API cannot be executed in current DFU process state.
  */
-uint16_t MW_DFU_FwImageStart();
+uint16_t MW_DFU_FwImageStart(void);
 
 /**
  *@brief The API is used to update the fragment of firmware image to flash. 
@@ -160,6 +167,13 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content);
 uint16_t MW_DFU_FwImageRead(uint32_t offset, uint16_t length, uint8_t *p_content);
 
 /**@} */ //MW_DFU_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 
 #endif
 /**

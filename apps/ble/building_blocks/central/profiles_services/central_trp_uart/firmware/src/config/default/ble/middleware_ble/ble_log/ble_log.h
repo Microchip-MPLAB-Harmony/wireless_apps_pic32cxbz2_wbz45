@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE Log Middleware Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_log.h
-
-  Summary:
-    This file contains the BLE Log functions for this project.
-
-  Description:
-    This file contains the BLE Log functions for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,10 +20,28 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Log Middleware Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_log.h
+
+  Summary:
+    This file contains the BLE Log functions for this project.
+
+  Description:
+    This file contains the BLE Log functions for this project.
+ *******************************************************************************/
+/** @addtogroup BLE_MW BLE Middleware
+ *  @{ */
 
 /**
- * @addtogroup BLE_LOG
+ * @defgroup BLE_LOG BLE Log (BLE_LOG)
+ * @brief Handling Bluetooth system log from LIB
  * @{
  * @brief Header file for the BLE Log (ble_log) module.
  * @note Definitions and prototypes for the BLE Log application programming interface.
@@ -58,6 +59,14 @@
 #include <string.h>
 #include "bt_sys_log.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -68,7 +77,7 @@
  * @{ */
 
 /**@defgroup BLE_LOG_TYPE Definitions of BLE log
- * @brief The definition of BLE log
+ * @brief The definition of BLE log.
  * @{ */
 #define BLE_LOG_TYPE_HCI_COMMAND            0x01                                            /**< HCI Command. */
 #define BLE_LOG_TYPE_HCI_ACL_TX             0x02                                            /**< HCI ACL Tx Packet. */
@@ -114,7 +123,17 @@ void BLE_LOG_EventRegister(BLE_LOG_EventCb_T eventCb);
 void BLE_LOG_StackLogHandler(BT_SYS_LogEvent_T *p_log);
 
 /**@} */ //BLE_LOG_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
 #endif
+//DOM-IGNORE-END
+
+
+#endif
+
+/** @} */
 
 /**
   @}

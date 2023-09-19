@@ -55,7 +55,31 @@
 #endif
 #include <configserver/include/private/csSIB.h>
 #include <configserver/include/configserver.h>
+#ifndef _MAC2_
+#include <nwk/include/nwkSecurity.h>
+#include <zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo.h>
+#include <zllplatform/ZLL/N_AddressManager/include/N_AddressManager.h>
+#include <zcl/include/zclMem.h>
+#include <pds/include/wlPdsTypesConverter.h>
+#include <zcl/include/zcloccupancysensingcluster.h>
+#include <zcl/include/zclTemperatureMeasurementCluster.h>
+#include <zcl/include/zclIlluminanceMeasurementCluster.h>
+#include <zcl/include/zclHumidityMeasurementCluster.h>
+#ifdef _SECURITY_
+#include <security/TrustCentre/include/tcAuthentic.h>
+#endif /* _SECURITY */
+#endif //#ifndef _MAC2_
 
+/******************************************************************************
+                    Static prototype Section
+******************************************************************************/
+static void restoreExtendedBcSet(void);
+static void backupExtendedBcSet(void);
+
+/******************************************************************************
+                    TRNG_ReadData function declaration
+******************************************************************************/
+uint32_t TRNG_ReadData(void);
 
 /******************************************************************************
                     External variables section
@@ -76,7 +100,28 @@ PIB_t csPIB;
 NIB_t csNIB;
 ZIB_t csZIB;
 AIB_t csAIB;
+
+ExtGetMem_t extGenMemParams;
+typedef struct backup_data_
+{
+    
+    BDBIB_t  backupBdbIB;
+    ExtGetMem_t backupExtGenMem;
+    DeviceInfoParameters_t backupDeviceInfoParams;
+    uint16_t backupOutCounterTop;
+    Neib_t backupCsNeibTable[CS_NEIB_TABLE_SIZE];
+    NWK_SecurityIB_t securityIB;
+    NWK_SecurityKey_t backupCsNwkSecKeys[CS_NWK_SECURITY_KEYS_AMOUNT];
+    ApsKeyPairDescriptor_t backupCsApsKeyPairDescriptors[CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT];
+    ApsBindingEntry_t backupCsApsBindingTable[CS_APS_BINDING_TABLE_SIZE];
+    ZclMem_t backupZclMem;
+    uint32_t dummy;
+    
+} bkupRamData_t;
+
+bkupRamData_t __attribute__((persistent)) backupRamData;
 #endif
+
 #ifdef _ZGPD_SPECIFIC_
 ZGIB_t csZGIB;
 #endif
@@ -86,6 +131,9 @@ BIB_t csBIB;
 SIB_t csSIB;
 
 bool certificationFlag = CS_CERTIFICATION_FLAG;
+
+/* To store the deep sleep wakeup source. */
+uint8_t deviceDeepSleepWakeupSrc = CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC;
 
 /* BitCloud memory buffers allocation */
 CS_StackBuffers_t stackBuffers;
@@ -124,7 +172,7 @@ NIB_t PROGMEM_DECLARE(defaultNIB) =
 #ifdef _CHILD_MANAGEMENT_
   /** For an RFD, this records the information received in an End Device
    * Timeout Response command indicating the parent information.
-   * For an FFD, this records the device?? local capabilities. */
+   * For an FFD, this records the deviceâ??s local capabilities. */
   .parentInformation =  CS_DEFAULT_PARENT_INFORMATION,
   /** It indicates the default timeout in minutes for any end device
    * that does not negotiate a different timeout value. */
@@ -180,7 +228,7 @@ SIB_t PROGMEM_DECLARE(defaultSIB) =
 {
   /* MAC parameters */
   .csMacTransactionTime = CS_MAC_TRANSACTION_TIME,
-  .csRfTxPowerRegion    = CS_DEVICE_POWER_REGION,
+  .csRfTxAntennaGain    = CS_TX_ANTENNA_GAIN,
   .csRfTxPowerType = CS_DEVICE_POWER_TYPE,
   .csRfTxPower = CS_RF_TX_POWER,
   .csRfch26MaxTxPower = CS_RF_MAX_CH26_TX_POWER,
@@ -371,7 +419,7 @@ CS_ReadOnlyItems_t PROGMEM_DECLARE(csReadOnlyItems) =
 #ifdef BDB_SUPPORT
   .joinInfoEntriesAmount = CS_BDB_NODE_JOIN_INFO_ENTRIES_AMOUNT,            //BDB
   .distributedNetworkAddress = CS_DISTRIBUTED_NETWORK_ADDRESS,              //BDB
-  .touchlinkSupport = CS_TOUCHLINK_SUPPORT_FLAG                             //BDB   
+  .touchlinkSupport = CS_TOUCHLINK_SUPPORT_FLAG                             //BDB
 #endif   
 #endif /* !_MAC2_*/
 };
@@ -443,18 +491,29 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
   }
   else
   {
-    csPIB.macAttr.extAddr = CCPU_TO_LE64(CS_UID);
+    if (CS_UID != 0)
+    {
+      csPIB.macAttr.extAddr = CCPU_TO_LE64(CS_UID);
+    }
+    else
+    {
+      csPIB.macAttr.extAddr = TRNG_ReadData();
+    }
   }
   csPIB.macAttr.maxFrameTransmissionTime = CS_MAX_FRAME_TRANSMISSION_TIME;
   csPIB.phyAttr.ccaMode = CS_PHY_CC_CCA_MODE;
   csPIB.macAttr.ccaEdThres = CS_RF_CCA_ED_THRES;
   
   //Reads from the User to set the Region otherwise falls back to the CS default.
-  csPIB.phyAttr.txPowerRegion = CS_DEVICE_POWER_REGION;
-  csPIB.phyAttr.transmitPower  = CS_RF_TX_POWER + zgbIBdata->antGain; // Radiated power ( Antenna Gain + Power)
+  if (zgbIBdata->validityCheck.antennaGainValid)
+    csSIB.csRfTxAntennaGain = zgbIBdata->antGain;//valid antennai gain from IB found so update
+  else
+    csSIB.csRfTxAntennaGain  = CS_TX_ANTENNA_GAIN;
+
+  csPIB.phyAttr.transmitPower  = CS_RF_TX_POWER;//radiated power
 
   //Update csRfTxPower default as well.
-  csSIB.csRfTxPower = CS_RF_TX_POWER + zgbIBdata->antGain;
+  csSIB.csRfTxPower = csPIB.phyAttr.transmitPower;
 
 #endif // defined(_USE_KF_MAC_)
 
@@ -513,5 +572,135 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
   csSIB.installCodeBasedJoinLinkKeyType = CS_INSTALL_CODE_BASED_JOIN_LINK_KEY_TYPE;
 }
 
+#ifndef _MAC2_
+/******************************************************************************
+  \brief Backing up Network parameters
+******************************************************************************/
+void CS_BackupNwkParams(void)
+{
+    backupExtendedBcSet();
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupExtGenMem, &extGenMemParams, sizeof(ExtGetMem_t));
+    //BDB
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupBdbIB, (uint8_t*)&bdbIB, sizeof(BDBIB_t));
+    //nwk Security IB
+    memcpy4ByteAligned((uint8_t*)&backupRamData.securityIB, (uint8_t*)&csNIB.securityIB, sizeof(NWK_SecurityIB_t));
+    //security counter
+    memcpy4ByteAligned(&backupRamData.backupOutCounterTop, &csNIB.securityCounters.outCounterTop, 2); 
+    //zll dev info params
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupDeviceInfoParams, (uint8_t*)&deviceInfoParams, sizeof(DeviceInfoParameters_t));
+    //neighbor table
+    memcpy4ByteAligned(backupRamData.backupCsNeibTable,stackBuffers.csNeibTable,NEIGHBOR_TABLE_ITEM_SIZE);
+    //nwk keys
+    memcpy4ByteAligned(&backupRamData.backupCsNwkSecKeys, &stackBuffers.csNwkSecKeys, SECURITY_KEYS_ITEM_SIZE);
+    memcpy4ByteAligned(backupRamData.backupCsApsKeyPairDescriptors, stackBuffers.csApsKeyPairDescriptors, KEY_PAIR_DESCRIPTOR_ITEM_SIZE);
+    //binding table
+    for (uint8_t i=0; i< CS_APS_BINDING_TABLE_SIZE; i++)
+        backupRamData.backupCsApsBindingTable[i] = stackBuffers.csApsBindingTable[i];
+    //zcl mem
+    memcpy4ByteAligned(&backupRamData.backupZclMem, &zclMem, sizeof(ZclMem_t)); 
+
+}
+
+/******************************************************************************
+  \brief Restoring Backup Network parameters
+ ******************************************************************************/
+void  CS_RestoreNwkParams(void)
+{
+    memcpy4ByteAligned(&extGenMemParams,(uint8_t*)&backupRamData.backupExtGenMem,sizeof(ExtGetMem_t));
+    restoreExtendedBcSet();
+     //BDB
+    memcpy4ByteAligned((uint8_t*)&bdbIB, (uint8_t*)&backupRamData.backupBdbIB, sizeof(BDBIB_t));
+    //nwk Security IB
+    memcpy4ByteAligned((uint8_t*)&csNIB.securityIB, (uint8_t*)&backupRamData.securityIB, sizeof(NWK_SecurityIB_t));
+    //security counter
+    memcpy4ByteAligned(&csNIB.securityCounters.outCounterTop, &backupRamData.backupOutCounterTop, 2);
+    //device Params
+    memcpy4ByteAligned((uint8_t*)&deviceInfoParams, (uint8_t*)&backupRamData.backupDeviceInfoParams, sizeof(DeviceInfoParameters_t));
+    //neighbor table
+    memcpy4ByteAligned(stackBuffers.csNeibTable, backupRamData.backupCsNeibTable, NEIGHBOR_TABLE_ITEM_SIZE);
+
+    memcpy4ByteAligned(&stackBuffers.csNwkSecKeys, &backupRamData.backupCsNwkSecKeys, SECURITY_KEYS_ITEM_SIZE);
+    memcpy4ByteAligned(stackBuffers.csApsKeyPairDescriptors, backupRamData.backupCsApsKeyPairDescriptors,  KEY_PAIR_DESCRIPTOR_ITEM_SIZE);
+    for (uint8_t i=0; i< CS_APS_BINDING_TABLE_SIZE; i++)
+        stackBuffers.csApsBindingTable[i] = backupRamData.backupCsApsBindingTable[i] ;
+    //zcl mem
+    memcpy4ByteAligned(&zclMem, &backupRamData.backupZclMem, sizeof(ZclMem_t));
+}
+
+/******************************************************************************
+  \brief Backing up Network parameters
+******************************************************************************/
+static void backupExtendedBcSet(void)
+{
+  extGenMemParams.csUid = csPIB.macAttr.extAddr;
+
+  extGenMemParams.txPower = csSIB.csRfTxPower;
+  extGenMemParams.extPanId = csSIB.csExtPANID;
+  extGenMemParams.channelMask = csSIB.csChannelMask;
+  extGenMemParams.channelPage = csNIB.channelPage;
+  extGenMemParams.deviceType = csNIB.deviceType;
+  extGenMemParams.rxOnWhenIdle = csSIB.csRxOnWhenIdle;
+  extGenMemParams.complexDescrAvailable = csSIB.csComplexDescriptorAvailable;
+  extGenMemParams.userDescrAvailable = csSIB.csUserDescriptorAvailable;
+  extGenMemParams.userDescr = csSIB.csUserDescriptor;
+  extGenMemParams.panId = csSIB.csNwkPanid;
+  extGenMemParams.predefinedPanId = csSIB.csNwkPredefinedPanid;
+  extGenMemParams.shortAddress = csNIB.networkAddress;
+  extGenMemParams.uniqueNwkAddress = csNIB.uniqueAddr;
+  extGenMemParams.leaveReqAllowed = csNIB.leaveReqAllowed;
+  extGenMemParams.dtrWakeUp = csSIB.csDtrWakeup;
+  extGenMemParams.updateId = csNIB.updateId;
+#if defined _SECURITY_
+  extGenMemParams.extTcAddress = csAIB.trustCenterAddress;
+  extGenMemParams.nwkTcAddress = csAIB.tcNwkAddr;
+  extGenMemParams.securityStatus = csSIB.csZdoSecurityStatus;
+#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
+  extGenMemParams.tcPermissions = csAIB.tcSecurityPolicy;
+#endif //#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
+#endif
+  extGenMemParams.parentNwkAddress = csNIB.parentNetworkAddress;
+  extGenMemParams.nwkDepth = csNIB.depth;
+  extGenMemParams.nwkExtPanId = csNIB.extendedPanId;
+  extGenMemParams.logicalChannel = csSIB.csNwkLogicalChannel;
+}
+/******************************************************************************
+  \brief Restoring Network parameters
+******************************************************************************/
+static void restoreExtendedBcSet(void)
+{
+
+  // update appropriate BC structures
+  csPIB.macAttr.extAddr = extGenMemParams.csUid;
+  csSIB.csRfTxPower = extGenMemParams.txPower;
+  csSIB.csExtPANID = extGenMemParams.extPanId;
+  csSIB.csChannelMask = extGenMemParams.channelMask;
+  csNIB.channelPage = extGenMemParams.channelPage;
+  csNIB.deviceType = extGenMemParams.deviceType;
+  csSIB.csRxOnWhenIdle = extGenMemParams.rxOnWhenIdle;
+  csSIB.csComplexDescriptorAvailable = extGenMemParams.complexDescrAvailable;
+  csSIB.csUserDescriptorAvailable = extGenMemParams.userDescrAvailable;
+  csSIB.csUserDescriptor = extGenMemParams.userDescr;
+  csSIB.csNwkPanid = extGenMemParams.panId;
+  csSIB.csNwkPredefinedPanid = extGenMemParams.predefinedPanId;
+  csNIB.networkAddress = extGenMemParams.shortAddress;
+  csNIB.uniqueAddr = extGenMemParams.uniqueNwkAddress;
+  csNIB.leaveReqAllowed = extGenMemParams.leaveReqAllowed;
+  csSIB.csDtrWakeup = extGenMemParams.dtrWakeUp;
+  csNIB.updateId = extGenMemParams.updateId;
+#ifdef _SECURITY_  
+  csAIB.trustCenterAddress = extGenMemParams.extTcAddress;
+  csAIB.tcNwkAddr = extGenMemParams.nwkTcAddress;
+  csSIB.csZdoSecurityStatus = extGenMemParams.securityStatus;
+#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
+  csAIB.tcSecurityPolicy = extGenMemParams.tcPermissions;
+#endif //#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
+#endif
+  csNIB.parentNetworkAddress = extGenMemParams.parentNwkAddress;
+  csNIB.depth = extGenMemParams.nwkDepth;
+  csNIB.extendedPanId = extGenMemParams.nwkExtPanId;
+  csSIB.csNwkLogicalChannel = extGenMemParams.logicalChannel;
+  csNIB.deviceType = backupRamData.backupExtGenMem.deviceType;
+}
+#endif /* _MAC2_ */
 /* eof csMem.c */
 

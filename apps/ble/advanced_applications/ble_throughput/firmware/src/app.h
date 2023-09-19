@@ -177,7 +177,7 @@ extern "C" {
         This routine must be called from the SYS_Initialize function.
      */
 
-    void APP_Initialize(void);
+void APP_Initialize ( void );
 
 
     /*******************************************************************************
@@ -210,7 +210,7 @@ extern "C" {
         This routine must be called from SYS_Tasks() routine.
      */
 
-    void APP_Tasks(void);
+void APP_Tasks( void );
 
     //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

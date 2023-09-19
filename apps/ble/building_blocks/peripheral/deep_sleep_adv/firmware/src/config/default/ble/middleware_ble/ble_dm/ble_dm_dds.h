@@ -1,24 +1,5 @@
 /*******************************************************************************
-  Device Information Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dm_dds.h
-
-  Summary:
-    This file contains the Device Data Storage functions for 
-    BLE Device Manager module internal use.
-
-  Description:
-    This file contains the Device Data Storage functions for 
-    BLE Device Manager module internal use.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,7 +20,25 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Device Information Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dm_dds.h
+
+  Summary:
+    This file contains the Device Data Storage functions for 
+    BLE Device Manager module internal use.
+
+  Description:
+    This file contains the Device Data Storage functions for 
+    BLE Device Manager module internal use.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BLE_DM_PDB BLE_DM_PDB
@@ -66,16 +65,16 @@
 // Section: Function Prototypes
 // *****************************************************************************
 // *****************************************************************************
-
+typedef void (*BLE_DM_DdsWriteCompleteCb_T)(uint8_t devId);
 
 uint16_t BLE_DM_DdsGetPairedDevice(uint8_t devId, BLE_DM_PairedDevInfo_T *p_pairedDevInfo);
 uint16_t BLE_DM_DdsSetPairedDevice(uint8_t devId, BLE_DM_PairedDevInfo_T *p_pairedDevInfo);
-uint8_t BLE_DM_DdsGetFreeDeviceId();
+uint8_t BLE_DM_DdsGetFreeDeviceId(void);
 uint8_t BLE_DM_DdsGetDeviceId(BLE_GAP_Addr_T *p_bdAddr);
 uint16_t BLE_DM_DdsDeletePairedDevice(uint8_t devId);
-uint16_t BLE_DM_DdsDeleteAllPairedDevice();
+uint16_t BLE_DM_DdsDeleteAllPairedDevice(void);
 bool BLE_DM_DdsChkDeviceId(uint8_t devId);
-
+void BLE_DM_DdsInit(BLE_DM_DdsWriteCompleteCb_T cb);
 
 #endif
 

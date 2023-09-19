@@ -47,7 +47,7 @@
 // *****************************************************************************
 #include <string.h>
 #include "app.h"
-#include "app_ble_handler.h"
+#include "app_ble/app_ble_handler.h"
 #include "app_adv.h"
 #include "app_error_defs.h"
 #include "app_led.h"

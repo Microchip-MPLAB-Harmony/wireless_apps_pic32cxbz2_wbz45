@@ -42,7 +42,6 @@
 #include <z3device/stack_interface/zgb_api.h>
 #include <z3device/stack_interface/bdb/include/bdb_api.h>
 #include <z3device/stack_interface/zcl/include/zcl_api.h>
-#include <z3device/stack_interface/configServer/include/cs_api.h>
 #include <z3device/stack_interface/nwk/include/nwk_api.h>
 #include <z3device/stack_interface/bdb/include/BDB_Unpack.h>
 #include <configserver/include/configserver.h>
@@ -70,6 +69,9 @@
 #include "zllplatform/ZLL/N_Connection/include/N_Connection_Internal.h"
 #include "zllplatform/ZLL/N_LinkTarget/include/N_LinkTarget.h"
 
+#ifdef OTAU_CLIENT
+#include <zcl/include/zclOtauClient.h>
+#endif
 #ifdef _GREENPOWER_SUPPORT_
 #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
 #include <z3device/common/include/zgpAppInterface.h>
@@ -214,6 +216,7 @@ BDB_CommissioningMode_t autoCommissionsEnableMask = ((APP_COMMISSIONING_TOUCHLIN
 
 extern OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
 extern TaskHandle_t zigbeeTaskHandle;
+
 /**************************************************************************
 \brief Create Application queue for zigbee and usart events
 ***************************************************************************/
@@ -311,7 +314,6 @@ bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* bindReq)
 */
 void bdbInitCompleted(void)
 {
-
 }
 
 /**************************************************************************//**
@@ -375,6 +377,7 @@ static void networkEventsHandler(SYS_EventId_t eventId, SYS_EventData_t data)
       APP_Zigbee_Event_t event;
       event.eventGroup = EVENT_ZIGBEE;
       event.eventId = EVENT_LEFT_FROM_NETWORK;
+	  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
       APP_Zigbee_Handler(event);
       SYS_UnsubscribeFromEvent(BC_EVENT_NETWORK_LEFT, &networkEventsListener);
       if (resetToFactoryNew)
@@ -529,6 +532,7 @@ void ZDO_MgmtNwkUpdateNotf_CB(ZDO_MgmtNwkUpdateNotf_t *notify)
     case ZDO_NWK_UPDATE_STATUS:
     {
       event.eventId = EVENT_NWK_UPDATE;
+	  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
       APP_Zigbee_Handler(event);
     }
     break;
@@ -550,6 +554,7 @@ void ZDO_WakeUpInd_CB(void)
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_ZIGBEE;
   event.eventId = EVENT_WAKEUP;
+  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -607,6 +612,14 @@ void App_SetCommissioningStatus(bool val)
 }
 
 /**************************************************************************//**
+\brief Callback function for user button short press action.
+*****************************************************************************/
+static void userButtonShortPressAction(void)
+{
+    /* Add custom action when user button short pressed here. */
+}
+
+/**************************************************************************//**
 \brief Application and stack parameters initialization
 *****************************************************************************/
 static void initApp(void)
@@ -626,6 +639,7 @@ static void initApp(void)
   deviceType = detectNwkAddrAndDevType();
   // Set parameters to config server
   CS_WriteParameter(CS_DEVICE_TYPE_ID, &deviceType);
+  
 
   errHInit();
   /* BDB Advance features like parallel Finding & Binding are enabled which is non Compliance */
@@ -633,14 +647,13 @@ static void initApp(void)
   BDB_EventsSubscribe(&s_BDB_EventsCallback);
   BDB_Init(bdbInitCompleted);
   
+  
   //BSP_OpenLeds();
   appDeviceInit();
-
 #ifdef _ZCL_REPORTING_SUPPORT_
-  resetReportConfig();
-  ZCL_StartReporting();
+    resetReportConfig();
+    ZCL_StartReporting();
 #endif
-
 #ifdef _GREENPOWER_SUPPORT_
 #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
   ZGP_AppInit();
@@ -700,6 +713,7 @@ static void Connected(void)
 
   event.eventGroup = EVENT_ZIGBEE;
   event.eventId = EVENT_NETWORK_ESTABLISHED;
+  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -820,6 +834,21 @@ void process_ZB_evt(void)
         break;
   }
 }
+
+
+/**************************************************************************//**
+\brief Backing up up required paramaters for stack
+
+\param[in]
+  bool None
+******************************************************************************/
+void SYS_BackupStackParams(uint32_t expectedSleepTime)
+{
+  ZDO_BackupZdoParams();
+  CS_BackupNwkParams();
+  HAL_BackupRunningTimers(expectedSleepTime);
+}
+
 
 #if defined WIN
 /**************************************************************************//**

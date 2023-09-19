@@ -316,6 +316,14 @@ void HAL_DisableRxTxSwitcher(void)
   #endif //_HAL_RF_RX_TX_INDICATOR_
 }
 
+/*******************************************************************************
+  Enables Transceiver clock
+*******************************************************************************/
+void HAL_EnableTransceiver(void)
+{
+  // todo
+}
+
 /**************************************************************************//**
   \brief Enables Antenna diversity option for radio if that is supported.
 ******************************************************************************/

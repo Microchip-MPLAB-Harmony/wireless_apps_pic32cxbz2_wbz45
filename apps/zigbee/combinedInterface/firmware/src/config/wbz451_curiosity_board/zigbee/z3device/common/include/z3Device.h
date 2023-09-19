@@ -178,6 +178,12 @@ bool isCommssioiningInProgress(void);
 bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* dlBindReq);
 
 /**************************************************************************//**
+\brief backing of zcl attributes for device to support deep sleep 
+
+******************************************************************************/
+void APP_BackupZCLAttributes(void);
+
+/**************************************************************************//**
 \brief Reset the report configuration of the device's reportable attributes
 
 \param[in] none

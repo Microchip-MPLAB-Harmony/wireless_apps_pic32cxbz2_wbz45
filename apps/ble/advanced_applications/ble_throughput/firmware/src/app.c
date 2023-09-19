@@ -53,7 +53,7 @@
 #include "app.h"
 #include "definitions.h"
 #include "app_ble.h"
-#include "app_ble_handler.h"
+#include "app_ble/app_ble_handler.h"
 #include "app_trps.h"
 #include "app_adv.h"
 #include "app_led.h"

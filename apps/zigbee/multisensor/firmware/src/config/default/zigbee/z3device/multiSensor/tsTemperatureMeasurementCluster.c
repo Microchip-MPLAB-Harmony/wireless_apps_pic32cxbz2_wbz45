@@ -104,6 +104,8 @@ ZCL_TemperatureMeasurementClusterServerAttributes_t tsTemperatureMeasurementClus
   ZCL_DEFINE_TEMPERATURE_MEASUREMENT_CLUSTER_SERVER_ATTRIBUTES(TEMPERATURE_MEASUREMENT_VAL_MIN_REPORT_PERIOD, TEMPERATURE_MEASUREMENT_VAL_MAX_REPORT_PERIOD)
 };
 
+ZCL_TemperatureMeasurementClusterServerAttributes_t   __attribute__((persistent)) backuptsTemperatureMeasurementClusterServerAttributes;
+
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
@@ -216,7 +218,21 @@ static void ZCL_tsTemparatureAttributeEventInd(ZCL_Addressing_t *addressing, ZCL
     PDS_Store(APP_MS_TEMP_MEASURED_VALUE_MEM_ID);
   }
 }
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void tsBackupTsAttributes(void)
+{
+    memcpy4ByteAligned(&backuptsTemperatureMeasurementClusterServerAttributes,&tsTemperatureMeasurementClusterServerAttributes, sizeof(ZCL_TemperatureMeasurementClusterServerAttributes_t));
+}
 
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void tsRestoreTsAttributes(void)
+{
+  memcpy4ByteAligned(&tsTemperatureMeasurementClusterServerAttributes, &backuptsTemperatureMeasurementClusterServerAttributes, sizeof(ZCL_TemperatureMeasurementClusterServerAttributes_t));
+}
 #endif  //#ifdef APP_SENSOR_TYPE_TEMPERATURE_SENSOR
 #endif  //#if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_MULTI_SENSOR)
 

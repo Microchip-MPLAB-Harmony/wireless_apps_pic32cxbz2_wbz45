@@ -68,6 +68,7 @@
 #include <zcl/include/zclOtauManager.h>
 #endif
 
+
 /******************************************************************************
                    type(s) section
 ******************************************************************************/
@@ -109,7 +110,7 @@ static ZCL_DeviceEndpoint_t lightEndpoint =
 static ClusterId_t lightClientClusterToBindIds[] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID,
+  GROUPS_CLUSTER_ID,  
 };
 
 static ClusterId_t lightServerClusterToBindIds[] =
@@ -123,8 +124,8 @@ static ClusterId_t lightServerClusterToBindIds[] =
   LEVEL_CONTROL_CLUSTER_ID,
 #endif
 #if (APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT)
-  COLOR_CONTROL_CLUSTER_ID
-#endif
+  COLOR_CONTROL_CLUSTER_ID,
+#endif  
 };
 
 static AppBindReq_t lightBindReq =

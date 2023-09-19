@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Bluetooth Sys Log Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    bt_sys_log.h
-
-  Summary:
-    This file contains the BT system log definitions for the project.
-
-  Description:
-    This file contains the BT system log definitions for the project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Bluetooth Sys Log Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    bt_sys_log.h
+
+  Summary:
+    This file contains the BT system log definitions for the project.
+
+  Description:
+    This file contains the BT system log definitions for the project.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BT_SYS
@@ -59,6 +58,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -68,10 +75,10 @@
 /**@addtogroup BT_SYS_LOG_ENUMS Enumerations
  * @{ */
 
-/**@brief Log type. */
+/**@brief The definition of log type of HCI logs. */
 typedef enum BT_SYS_LogType_T
 {
-    BT_SYS_LOG_TYPE_HCI_COMMAND = (0x0100+0x0001),          /**< HCI Command. */
+    BT_SYS_LOG_TYPE_HCI_COMMAND = (0x0100U+0x0001U),          /**< HCI Command. */
     BT_SYS_LOG_TYPE_HCI_ACL_TX,                             /**< HCI ACL Tx Packet. */
     BT_SYS_LOG_TYPE_HCI_ACL_RX,                             /**< HCI ACL Rx Packet. */
     BT_SYS_LOG_TYPE_HCI_EVENT,                              /**< HCI Event. */
@@ -121,6 +128,12 @@ void BT_SYS_LogEnable(BT_SYS_LogEventCb_T logCb);
 /**
   @}
 */
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif//BT_SYS_LOG_H
 

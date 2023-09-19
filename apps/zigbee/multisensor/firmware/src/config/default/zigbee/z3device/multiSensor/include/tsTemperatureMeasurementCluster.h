@@ -87,6 +87,16 @@ void temperatureMeasurementClusterInit(void);
 ******************************************************************************/
 void tempeartureMeasurementUpdateMeasuredValue(void);
 
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void tsBackupTsAttributes(void);
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void tsRestoreTsAttributes(void);
+    
 #endif // _TSTEMPERATUREMEASUREMENTCLUSTER_H
 
 // eof tsTemperatureMeasurementCluster.h

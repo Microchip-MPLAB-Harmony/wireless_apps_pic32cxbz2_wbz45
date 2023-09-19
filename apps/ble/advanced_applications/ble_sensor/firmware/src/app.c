@@ -1,3 +1,4 @@
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -20,6 +21,7 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+// DOM-IGNORE-END
 
 /*******************************************************************************
   MPLAB Harmony Application Source File
@@ -111,7 +113,7 @@ APP_DATA appData;
 
 /* TODO:  Add any necessary local functions.
 */
-
+uint32_t wbz451_silicon_revision = 0x00;
 
 static void APP_Init(void)
 {
@@ -132,6 +134,25 @@ static void APP_Init(void)
     APP_TRPS_Sensor_Init();
     
     APP_OTA_HDL_Init();
+    
+    wbz451_silicon_revision = 	DSU_REGS->DSU_DID;	
+    SYS_CONSOLE_PRINT("\n\r[Device DID] 0x%x  \n\r", (DSU_REGS->DSU_DID)); 
+    
+    if(wbz451_silicon_revision & (1 << 29)) // A2 Silicon // if((wbz451_silicon_revision >> 28) == (0x02))
+    {  
+          /* PPS Output Remapping */
+      PPS_REGS->PPS_RPB0G1R = 11U;
+      PPS_REGS->PPS_RPB3G4R = 12U;
+      PPS_REGS->PPS_RPB5G3R = 11U;
+    }
+    else if((wbz451_silicon_revision >> 28) ==  (0x00)) // A0 silicon
+    {
+      /* PPS Output Remapping */
+      PPS_REGS->PPS_RPB0G1R = 21U;
+      PPS_REGS->PPS_RPB3G4R = 21U;
+      PPS_REGS->PPS_RPB5G3R = 22U;
+    }	
+
 }
 
 
@@ -161,7 +182,7 @@ void APP_Initialize ( void )
      */
 }
 
-    
+
 /******************************************************************************
   Function:
     void APP_Tasks ( void )

@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE Transparent Client Profile Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_trspc.h
-
-  Summary:
-    This file contains the BLE Transparent Client functions for application user.
-
-  Description:
-    This file contains the BLE Transparent Client functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,10 +20,31 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Transparent Client Profile Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_trspc.h
+
+  Summary:
+    This file contains the BLE Transparent Client functions for application user.
+
+  Description:
+    This file contains the BLE Transparent Client functions for application user.
+ *******************************************************************************/
+/** @addtogroup BLE_PROFILE BLE Profile
+ *  @{ */
+
+/** @addtogroup BLE_TRP Transparent Profile
+ *  @{ */
 
 /**
- * @addtogroup BLE_TRPC
+ * @defgroup BLE_TRPC Transparent Profile Client Role (TRPC)
+ * @brief Transparent Profile Client Role (TRPC)
  * @{
  * @brief Header file for the BLE Transparent Profile Client role library.
  * @note Definitions and prototypes for the BLE Transparent profile stack layer application programming interface.
@@ -57,6 +61,14 @@
 #include "stack_mgr.h"
 #include "ble_gcm/ble_dd.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -68,23 +80,23 @@
 /**@defgroup BLE_TRSPC_MAX_CONN_NBR Maximum connection number
  * @brief The definition of Memory size.
  * @{ */
-#define BLE_TRSPC_MAX_CONN_NBR                  BLE_GAP_MAX_LINK_NBR    /**< Maximum allowing Conncetion Numbers for MBADK. */
+#define BLE_TRSPC_MAX_CONN_NBR                  BLE_GAP_MAX_LINK_NBR    /**< Maximum allowing Conncetion Numbers for the device. */
 /** @} */
 
 
 /**@defgroup BLE_TRSPC_UL_STATUS Definition of uplink status
  * @brief The definition of BLE transparent service uplink status.
  * @{ */
-#define BLE_TRSPC_UL_STATUS_DISABLED            0x00    /**< Transparent uplink is disabled. */
-#define BLE_TRSPC_UL_STATUS_CBFCENABLED         0x01    /**< Transparent uplink is enabled with credit based flow control */
+#define BLE_TRSPC_UL_STATUS_DISABLED            (0x00U)    /**< Transparent uplink is disabled. */
+#define BLE_TRSPC_UL_STATUS_CBFCENABLED         (0x01U)    /**< Transparent uplink is enabled with credit based flow control. */
 /** @} */
 
 /**@defgroup BLE_TRSPC_DL_STATUS Definition of downlink status
  * @brief The definition of BLE transparent service downlink status.
  * @{ */
-#define BLE_TRSPC_DL_STATUS_DISABLED            0x00    /**< Transparent downlink is disabled. */
-#define BLE_TRSPC_DL_STATUS_NONCBFCENABLED      0x10    /**< Transparent downlink is enabled without credit based flow control */
-#define BLE_TRSPC_DL_STATUS_CBFCENABLED         0x20    /**< Transparent downlink is enabled with credit based flow control */
+#define BLE_TRSPC_DL_STATUS_DISABLED            (0x00U)    /**< Transparent downlink is disabled. */
+#define BLE_TRSPC_DL_STATUS_NONCBFCENABLED      (0x10U)    /**< Transparent downlink is enabled without credit based flow control. */
+#define BLE_TRSPC_DL_STATUS_CBFCENABLED         (0x20U)    /**< Transparent downlink is enabled with credit based flow control. */
 /** @} */
 
 
@@ -131,7 +143,7 @@ typedef struct BLE_TRSPC_EvtDownlinkStatus_T
 {
     uint16_t        connHandle;                         /**< Connection handle associated with this connection. */
     uint8_t         status;                             /**< Connection status. See @ref BLE_TRSPC_DL_STATUS.*/
-    uint8_t         currentCreditNumber;                /**< The current available credit number of the downlink in this connection */
+    uint8_t         currentCreditNumber;                /**< The current available credit number of the downlink in this connection. */
 }   BLE_TRSPC_EvtDownlinkStatus_T;
 
 /**@brief Data structure for @ref BLE_TRSPC_EVT_RECEIVE_DATA event. */
@@ -199,7 +211,7 @@ typedef void(*BLE_TRSPC_EventCb_T)(BLE_TRSPC_Event_T *p_event);
  * @retval MBA_RES_FAIL                     Fail to registering TRS discovery to BLE_DD module.
  *
  */
-uint16_t BLE_TRSPC_Init();
+uint16_t BLE_TRSPC_Init(void);
 
 /**@brief Register BLE Transparent profile client callback. 
  *
@@ -211,9 +223,9 @@ void BLE_TRSPC_EventRegister(BLE_TRSPC_EventCb_T bleTranCliHandler);
 /**@brief Send vendor command.
  *
  * @param[in] connHandle                    Connection handle associated with this connection.
- * @param[in] commandID                     Command id of the vendor command
- * @param[in] commandLength                 Length of payload in vendor commnad
- * @param[in] p_commandPayload              Pointer to the payload of vendor command
+ * @param[in] commandID                     Command id of the vendor command.
+ * @param[in] commandLength                 Length of payload in vendor commnad.
+ * @param[in] p_commandPayload              Pointer to the payload of vendor command.
  *
  * @retval MBA_RES_SUCCESS                  Successfully issue a send vendor command.
  * @retval MBA_RES_FAIL                     Invalid connection or the CCCD of TCP is not enabled.
@@ -238,7 +250,7 @@ uint16_t BLE_TRSPC_SendData(uint16_t connHandle, uint16_t len, uint8_t *p_data);
 
 /**@brief Get queued data length.
  *
- * @param[in]  connHandle                   Connection handle associated with the queued data
+ * @param[in]  connHandle                   Connection handle associated with the queued data.
  * @param[out] p_dataLength                 Data length.
  *
  */
@@ -246,8 +258,8 @@ void BLE_TRSPC_GetDataLength(uint16_t connHandle, uint16_t *p_dataLength);
 
 /**@brief Get queued data.
  *
- * @param[in]  connHandle                   Connection handle associated with the queued data
- * @param[out] p_data                       Pointer to the data buffer
+ * @param[in]  connHandle                   Connection handle associated with the queued data.
+ * @param[out] p_data                       Pointer to the data buffer.
  *
  * @retval MBA_RES_SUCCESS                  Successfully issue a flow ctrl stop.
  * @retval MBA_RES_FAIL                     No data in the input queue.
@@ -256,7 +268,7 @@ void BLE_TRSPC_GetDataLength(uint16_t connHandle, uint16_t *p_dataLength);
 uint16_t BLE_TRSPC_GetData(uint16_t connHandle, uint8_t *p_data);
 
 /**@brief Handle BLE_Stack events.
- *        This API should be called in the application while caching BLE_Stack events
+ *        This API should be called in the application while caching BLE_Stack events.
  *
  * @param[in] p_stackEvent                  Pointer to BLE_Stack events buffer.
  *
@@ -264,7 +276,7 @@ uint16_t BLE_TRSPC_GetData(uint16_t connHandle, uint8_t *p_data);
 void BLE_TRSPC_BleEventHandler(STACK_Event_T *p_stackEvent);
 
 /**@brief Handle BLE_DD (Database Discovery middleware) events.
- *        This API should be called in the application while caching BLE_DD events
+ *        This API should be called in the application while caching BLE_DD events.
  *
  * @param[in] p_event                       Pointer to BLE_DD events buffer.
  *
@@ -273,7 +285,19 @@ void BLE_TRSPC_BleDdEventHandler(BLE_DD_Event_T *p_event);
 
 /**@} */ //BLE_TRPC_FUNS
 
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
 #endif
+//DOM-IGNORE-END
+
+
+#endif
+
+/** @} */
+
+/** @} */
 
 /**
   @}

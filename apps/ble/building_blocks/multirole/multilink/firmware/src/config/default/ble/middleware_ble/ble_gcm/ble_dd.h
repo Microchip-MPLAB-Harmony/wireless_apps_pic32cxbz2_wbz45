@@ -1,24 +1,5 @@
 /*******************************************************************************
-  BLE Database Discovery Middleware Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dd.h
-
-  Summary:
-    This file contains the BLE Database Discovery functions and event for application user.
-
-  Description:
-    This file contains the BLE Database Discovery functions and event for application user.
-    The "BLE_DD_Init" function shall be called in the "APP_Initialize" function to 
-    initialize the this modules in the system.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,10 +20,30 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Database Discovery Middleware Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dd.h
+
+  Summary:
+    This file contains the BLE Database Discovery functions and event for application user.
+
+  Description:
+    This file contains the BLE Database Discovery functions and event for application user.
+    The "BLE_DD_Init" function shall be called in the "APP_Initialize" function to 
+    initialize the this modules in the system.
+ *******************************************************************************/
+/** @addtogroup BLE_MW BLE Middleware
+ *  @{ */
 
 /**
- * @addtogroup BLE_DD
+ * @defgroup BLE_DD BLE Database Discovery (BLE_DD)
+ * @brief Handling GATT Client Procedures for service discovery at remote
  * @{
  * @brief Header file for the BLE Database Discovery (ble_dd) module.
  * @note Definitions and prototypes for the BLE Database Discovery application programming interface.
@@ -61,6 +62,14 @@
 #include "att_uuid.h"
 #include "ble_gap.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -71,16 +80,16 @@
  * @{ */
  
 /**@defgroup BLE_DD_CHAR_SETTING Characteristic setting
- * @brief The definition of characteristic setting for discovery
+ * @brief The definition of characteristic setting for discovery.
  * @{ */
-#define CHAR_SET_DESCRIPTOR                         0x01    /**< Set if this is a characteristic descriptor */
+#define CHAR_SET_DESCRIPTOR                         (0x01U)    /**< Set if this is a characteristic descriptor */
 /** @} */
 
 
 /**@defgroup BLE_DD_MAX_REG_NUM Maximum register services number
- * @brief The definition of maximum registering services allowed in BLE_DD module
+ * @brief The definition of maximum registering services allowed in BLE_DD module.
  * @{ */
-#define BLE_DD_MAX_DISC_SVC_NUM                     0x06    /**< Maximum registering services allowed */
+#define BLE_DD_MAX_DISC_SVC_NUM                     (0x06U)    /**< Maximum registering services allowed */
 /** @} */
 
 
@@ -92,8 +101,8 @@
 /**@brief The definition of BLE_DD module event ID. */
 typedef enum BLE_DD_EventId_T
 {
-    BLE_DD_EVT_DISC_COMPLETE,               /**< The discovery of all service is completed. @ref BLE_DD_EvtDiscResult_T */
-    BLE_DD_EVT_SEC_REQUIRED,                /**< Encryption/authentication permission is required accessing characteristic at remote. Application might need to initiate encryption/authentication to remote. @ref BLE_DD_EvtSecRequire_T */
+    BLE_DD_EVT_DISC_COMPLETE,               /**< The discovery of all service is completed. See @ref BLE_DD_EvtDiscResult_T. */
+    BLE_DD_EVT_SEC_REQUIRED,                /**< Encryption/authentication permission is required accessing characteristic at remote. Application might need to initiate encryption/authentication to remote. See @ref BLE_DD_EvtSecRequire_T. */
     BLE_DD_EVT_CONNECTED,                   /**< BLE link is established. See @ref BLE_DD_EvtConnect_T for the event details. */
     BLE_DD_EVT_DISCONNECTED,                /**< BLE link is terminated. See @ref BLE_DD_EvtDisconnect_T for the event details. */
     BLE_DD_EVT_END
@@ -123,6 +132,7 @@ typedef struct BLE_DD_CharInfo_T
 {
     uint16_t                charHandle;             /**< Handle of the characteristic. */
     uint8_t                 property;               /**< The field is only meaningful when the type of characteristic is characteristic declaration. */
+    uint16_t                attrHandle;             /**< Attribute handle. */
 } BLE_DD_CharInfo_T;
 
 /**@brief Characteristic list parameters. */
@@ -132,6 +142,12 @@ typedef struct BLE_DD_CharList_T
     BLE_DD_CharInfo_T       *p_charInfo;            /**< Pointer to the characteristic information. */
 } BLE_DD_CharList_T;
 
+/**@brief Start and end handles for prime service. */
+typedef struct BLE_DD_DiscInfo_T
+{
+    uint16_t                svcStartHandle;            /**< Start handle of discovered service. */
+    uint16_t                svcEndHandle;              /**< End handle of discovered service. */
+}BLE_DD_DiscInfo_T;
 /**@brief Characteristic for discovery procedure. */
 typedef struct BLE_DD_DiscChar_T
 {
@@ -143,6 +159,7 @@ typedef struct BLE_DD_DiscChar_T
 typedef struct BLE_DD_DiscSvc_T
 {
     ATT_Uuid_T              svcUuid;                /**< UUID of the service to be discovered. */
+    BLE_DD_DiscInfo_T       *p_discInfo;         /**< Discoveried service information. */
     BLE_DD_DiscChar_T       **p_discChars;          /**< Characteristic list of the service to be discoverd. Note: only assigned characteristic will be discovered. */
     BLE_DD_CharList_T       *p_charList;            /**< Structure storing discovered information of the characteristic. Application/profile need to provide the storage. */
     uint8_t                 discCharsNum;           /**< Number of the characteristics in the list. */
@@ -205,8 +222,10 @@ typedef void (*BLE_DD_EventCb_T)(BLE_DD_Event_T *p_event);
  
 /**@brief Initialize BLE_DD module.
  *
+ * @retval true      Successfully initialize BLE_DD module.
+ * @retval false     Fail to initialize BLE_DD module.
 */
-void BLE_DD_Init();
+bool BLE_DD_Init(void);
 
 
 /**@brief Register BLE_DD callback.
@@ -227,8 +246,8 @@ void BLE_DD_EventRegister(BLE_DD_EventCb_T eventCb);
 */
 uint16_t BLE_DD_ServiceDiscoveryRegister(BLE_DD_DiscSvc_T *p_discSvc);
 
-/**@brief Handle BLE events
- * @note  This function should be called for every BLE event
+/**@brief Handle BLE events.
+ * @note  This function should be called for every BLE event.
  *
  * @param[in] p_config          Pointer to the @ref BLE_DD_Config_T structure buffer.
  * @param[in] p_stackEvent      Pointer to @ref STACK_Event_T structure buffer.
@@ -236,7 +255,7 @@ uint16_t BLE_DD_ServiceDiscoveryRegister(BLE_DD_DiscSvc_T *p_discSvc);
 */
 void BLE_DD_BleEventHandler(BLE_DD_Config_T *p_config, STACK_Event_T *p_stackEvent);
 
-/**@brief Restart database discovery for specific connection
+/**@brief Restart database discovery for specific connection.
  * @note  This function shall only be called when remote services changed and application wants to restart database discovery.
  *
  * @param[in] connHandle        Connection handle associated with this connection.
@@ -248,7 +267,16 @@ void BLE_DD_BleEventHandler(BLE_DD_Config_T *p_config, STACK_Event_T *p_stackEve
 uint16_t BLE_DD_RestartServicesDiscovery(uint16_t connHandle);
 
 /**@} */ //BLE_DD_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
 #endif
+//DOM-IGNORE-END
+
+#endif
+
+/** @} */
 
 /**
   @}

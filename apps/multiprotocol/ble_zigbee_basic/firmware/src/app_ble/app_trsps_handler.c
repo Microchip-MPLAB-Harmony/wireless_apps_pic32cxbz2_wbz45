@@ -43,9 +43,8 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include <string.h>
-#include <stdint.h>
-#include "ble_trsps/ble_trsps.h"
+#include "app_trsps_handler.h"
+#include "peripheral/gpio/plib_gpio.h"
 
 
 // *****************************************************************************
@@ -97,7 +96,20 @@ void APP_TrspsEvtHandler(BLE_TRSPS_Event_T *p_event)
         
         case BLE_TRSPS_EVT_VENDOR_CMD:
         {
+            uint8_t* cmd = p_event->eventField.onVendorCmd.p_payLoad;            
             /* TODO: implement your application code.*/
+            if(cmd[0] == 0x8f)
+            {
+                switch(cmd[1])
+                {
+                    case 0x01:
+                        RED_LED_Set();
+                    break;
+                    case 0x00:
+                        RED_LED_Clear();
+                    break;
+                }
+            }
         }
         break;
 

@@ -105,6 +105,8 @@ ZCL_HumidityMeasurementClusterServerAttributes_t hsHumidityMeasurementClusterSer
   ZCL_DEFINE_HUMIDITY_MEASUREMENT_CLUSTER_SERVER_ATTRIBUTES(HUMIDITY_MEASUREMENT_VAL_MIN_REPORT_PERIOD, HUMIDITY_MEASUREMENT_VAL_MAX_REPORT_PERIOD)
 };
 
+ZCL_HumidityMeasurementClusterServerAttributes_t __attribute__((persistent)) backuphsHumidityMeasurementClusterServerAttributes;
+
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
@@ -215,6 +217,22 @@ static void ZCL_HsHumidityAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_At
     PDS_Store(APP_MS_HUMIDITY_MEASURED_VALUE_MEM_ID);
   }
 
+}
+
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void hsBackupHsAttributes(void)
+{
+  memcpy4ByteAligned(&backuphsHumidityMeasurementClusterServerAttributes,&hsHumidityMeasurementClusterServerAttributes, sizeof(ZCL_HumidityMeasurementClusterServerAttributes_t));
+}
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void hsRestoreHsAttributes(void)
+{
+  memcpy4ByteAligned(&hsHumidityMeasurementClusterServerAttributes, &backuphsHumidityMeasurementClusterServerAttributes, sizeof(ZCL_HumidityMeasurementClusterServerAttributes_t));
 }
 
 #endif  //#ifdef APP_SENSOR_TYPE_HUMIDITY_SENSOR

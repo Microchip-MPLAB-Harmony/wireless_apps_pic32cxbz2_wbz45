@@ -83,6 +83,10 @@
                 <itemPath>../src/config/wbz451_curiosity_board/peripheral/sercom/usart/plib_sercom_usart_common.h</itemPath>
               </logicalFolder>
             </logicalFolder>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/wbz451_curiosity_board/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/wbz451_curiosity_board/peripheral/tc/plib_tc0.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="tcc" displayName="tcc" projectFiles="true">
               <itemPath>../src/config/wbz451_curiosity_board/peripheral/tcc/plib_tcc_common.h</itemPath>
               <itemPath>../src/config/wbz451_curiosity_board/peripheral/tcc/plib_tcc2.h</itemPath>
@@ -180,8 +184,6 @@
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halDbg.h</itemPath>
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halRfCtrl.h</itemPath>
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halMacIsr.h</itemPath>
-                        <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halSleepTimerClock.h</itemPath>
-                        <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halSleep.h</itemPath>
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halAssert.h</itemPath>
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halAppClock.h</itemPath>
                         <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halDiagnostic.h</itemPath>
@@ -195,7 +197,6 @@
                     <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/include/bcTimer.h</itemPath>
                     <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/include/statStack.h</itemPath>
                     <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/include/atomic.h</itemPath>
-                    <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/include/sleepTimer.h</itemPath>
                     <itemPath>../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/include/halTaskManager.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
@@ -817,6 +818,7 @@
           <itemPath>../src/config/wbz451_curiosity_board/configuration.h</itemPath>
           <itemPath>../src/config/wbz451_curiosity_board/device_cache.h</itemPath>
           <itemPath>../src/config/wbz451_curiosity_board/toolchain_specifics.h</itemPath>
+          <itemPath>../src/config/wbz451_curiosity_board/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -964,6 +966,11 @@
           <itemPath>../src/packs/WBZ451_DFP/wbz451.h</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="system" displayName="system" projectFiles="true">
+        <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+          <itemPath>../src/config/wbz451_curiosity_board/system/tmr/sys_tmr.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="wolfcrypt" displayName="wolfcrypt" projectFiles="true">
         <logicalFolder name="port" displayName="port" projectFiles="true">
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccAdd_pb.h</itemPath>
@@ -1100,6 +1107,8 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/fe_operations.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/srp.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/md5.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sakke.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/eccsi.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app_idle_task.h</itemPath>
       <itemPath>../src/app.h</itemPath>
@@ -1131,6 +1140,26 @@
         <itemPath>../src/app_zigbee/app_zigbee.c</itemPath>
       </logicalFolder>
       <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
+            <logicalFolder name="systemresource"
+                           displayName="systemresource"
+                           projectFiles="true">
+              <logicalFolder name="hal" displayName="hal" projectFiles="true">
+                <logicalFolder name="cortexm4" displayName="cortexm4" projectFiles="true">
+                  <logicalFolder name="common" displayName="common" projectFiles="true">
+                    <logicalFolder name="src" displayName="src" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="pic32cx" displayName="pic32cx" projectFiles="true">
+                    <logicalFolder name="src" displayName="src" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="wbz451_curiosity_board"
                        displayName="wbz451_curiosity_board"
                        projectFiles="true">
@@ -1175,6 +1204,9 @@
               <logicalFolder name="usart" displayName="usart" projectFiles="true">
                 <itemPath>../src/config/wbz451_curiosity_board/peripheral/sercom/usart/plib_sercom0_usart.c</itemPath>
               </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/wbz451_curiosity_board/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
             <logicalFolder name="tcc" displayName="tcc" projectFiles="true">
               <itemPath>../src/config/wbz451_curiosity_board/peripheral/tcc/plib_tcc2.c</itemPath>
@@ -1221,10 +1253,8 @@
                 <logicalFolder name="cortexm4" displayName="cortexm4" projectFiles="true">
                   <logicalFolder name="common" displayName="common" projectFiles="true">
                     <logicalFolder name="src" displayName="src" projectFiles="true">
-                      <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/sleepTimer.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/appTimer.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/halTaskManager.c</itemPath>
-                      <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/sleep.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/statStack.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/common/src/timer.c</itemPath>
                     </logicalFolder>
@@ -1232,12 +1262,10 @@
                   <logicalFolder name="pic32cx" displayName="pic32cx" projectFiles="true">
                     <logicalFolder name="src" displayName="src" projectFiles="true">
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halAes.c</itemPath>
-                      <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halSleep.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/atomic.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halMacIsr.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halRfCtrl.c</itemPath>
                       <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halAppClock.c</itemPath>
-                      <itemPath>../src/config/wbz451_curiosity_board/zigbee/systemresource/hal/cortexm4/pic32cx/src/halSleepTimerClock.c</itemPath>
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
@@ -1502,6 +1530,8 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/integer.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ecc.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/idea.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/eccsi.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sakke.c</itemPath>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>java_friendly_private_key.pem</itemPath>
@@ -1528,14 +1558,14 @@
         <targetDevice>WBZ451</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pkob4hybrid</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.0.107"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.2.230"/>
       </packs>
       <ScriptingSettings>
         <ScriptingSetting key="configuration.header.zota_manufacture_code"
@@ -1586,7 +1616,7 @@
         <archiverTool>
         </archiverTool>
         <loading>
-          <loadableFile>../../../../bootloader/precompiled_hex/bootloader_timer.X.production.hex</loadableFile>
+          <loadableFile>bootloader_timer.X.production.hex</loadableFile>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
           <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
@@ -1607,14 +1637,13 @@
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value="-include&quot;lib/Zigbee_AllDevice_Makerules.h&quot;"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/wbz451_curiosity_board;../src/config/wbz451_curiosity_board/crypto;../src/config/wbz451_curiosity_board/driver/pds/include;../src/config/wbz451_curiosity_board/peripheral;../src/config/wbz451_curiosity_board/zigbee;../src/config/wbz451_curiosity_board/zigbee/configs;../src/config/wbz451_curiosity_board/zigbee/lib/inc;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
+                  value="../src;../src/config/wbz451_curiosity_board;../src/config/wbz451_curiosity_board/crypto;../src/config/wbz451_curiosity_board/driver/pds/include;../src/config/wbz451_curiosity_board/peripheral;../src/config/wbz451_curiosity_board/zigbee;../src/config/wbz451_curiosity_board/zigbee/configs;../src/config/wbz451_curiosity_board/zigbee/lib/inc;../src/config/wbz451_curiosity_board/zigbee/lib/inc/hal/cortexm4/pic32cx/include;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -1666,7 +1695,6 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -1706,7 +1734,6 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -1735,7 +1762,6 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
-        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>
@@ -1763,7 +1789,10 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -1777,6 +1806,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1000000-10fffff"/>
+        <property key="programmerToGoFilePath"
+                  value="D:/FQ2_FY24/Chimera/H3/wireless_apps_pic32cxbz2_wbz45/apps/zigbee/combinedInterface/firmware/combinedInterface.X/debug/wbz451_curiosity_board/combinedInterface_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
@@ -1813,7 +1844,10 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>

@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_BLE_H
-#define _APP_BLE_H
+#ifndef APP_BLE_H
+#define APP_BLE_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -193,13 +193,13 @@ void APP_BleStackEvtHandler(STACK_Event_T *p_stackEvt);
 */
 void APP_BleStackLogHandler(BT_SYS_LogEvent_T *p_logEvt);
 
-#endif /* _APP_BLE_H */
-
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
 //DOM-IGNORE-END
+
+#endif /* APP_BLE_H */
 
 /*******************************************************************************
  End of File

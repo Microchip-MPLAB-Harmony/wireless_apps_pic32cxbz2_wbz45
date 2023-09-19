@@ -704,7 +704,12 @@ static  ZCL_Status_t  aceGetByPassedZoneListCommandInd(ZCL_Addressing_t *address
    fillCommandRequest(req, ZCL_IAS_ACE_CLUSTER_SET_BYPASSED_ZONE_LIST_COMMAND_ID, payloadSetResponseListIndex--, APP_ENDPOINT_COMBINED_INTERFACE);
 
    //Payload Copy into the request Payload.
-   memcpy(req->requestPayload, &payloadResponse[0],payloadSetResponseListIndex--);
+   if(payloadSetResponseListIndex > 0)
+   {
+     //Payload Copy into the request Payload.
+     memcpy(req->requestPayload, &payloadResponse[0],payloadSetResponseListIndex);
+     payloadSetResponseListIndex - 1;
+   }
 
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);

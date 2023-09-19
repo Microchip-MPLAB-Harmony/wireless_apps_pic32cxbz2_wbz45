@@ -10,21 +10,21 @@
 		"shortDescription": "This example application users enable Extended Advertisements (1M, 2M, coded PHY -- 125kbps) on WBZ451 Curiosity Board. This example (ext_adv) enables users to send application data using extended advertisements.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.00"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.1.0"
+				"semverRange": ">=4.21"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.0.107"
+			"semverRange": "^1.2.230"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.1.4"
+			"semverRange": ">=5.3.7"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

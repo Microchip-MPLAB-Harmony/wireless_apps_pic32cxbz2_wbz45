@@ -55,9 +55,20 @@
 // *****************************************************************************
 // *****************************************************************************
 #include <stdint.h>
+#include <string.h>
 #include "stack_mgr.h"
 #include "ble_gap.h"
 
+// *****************************************************************************
+// *****************************************************************************
+// Section: Macros
+// *****************************************************************************
+// *****************************************************************************
+typedef enum BLE_DM_InfoState_T
+{
+    BLE_DM_INFO_STATE_IDLE = 0x00,
+    BLE_DM_INFO_STATE_CONNECTED
+}BLE_DM_InfoState_T;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -66,15 +77,15 @@
 // *****************************************************************************
 typedef struct BLE_DM_InfoConn_T
 {
-    uint16_t        connHandle;
-    uint8_t         role;
-    uint8_t         state;
-    BLE_GAP_Addr_T  remoteAddr;
-    bool            encryptKeyValid;
-    uint8_t         encryptKey[16];
-    uint8_t         pairOption;
-    uint8_t         encKeySize;
-    uint8_t         devId;
+    uint16_t        		connHandle;
+    uint8_t         		role;
+    BLE_DM_InfoState_T      state;
+    BLE_GAP_Addr_T  		remoteAddr;
+    bool            		encryptKeyValid;
+    uint8_t         		encryptKey[16];
+    uint8_t         		pairOption;
+    uint8_t         		encKeySize;
+    uint8_t         		devId;
 } BLE_DM_InfoConn_T;
 
 // *****************************************************************************
@@ -85,8 +96,10 @@ typedef struct BLE_DM_InfoConn_T
 
 /**@brief Initialize BLE_DM_InfoInit module.
  *
+ * @retval true      Successfully initialize BLE_DM_InfoInit module.
+ * @retval false     Fail to initialize BLE_DM_InfoInit module.
 */
-void BLE_DM_InfoInit();
+bool BLE_DM_InfoInit(void);
 
 
 /**@brief Function for handling BLE events.
@@ -104,6 +117,8 @@ uint16_t BLE_DM_InfoSetFilterAcceptList(uint8_t devCnt, uint8_t const *p_devId);
 uint16_t BLE_DM_InfoGetFilterAcceptList(uint8_t *p_devCnt, BLE_GAP_Addr_T *p_addr);
 
 uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uint8_t const *p_privacyMode);
+
+uint16_t BLE_DM_InfoGetConnHandleByDevId(uint8_t devId, uint16_t *p_connHandle);
 
 #endif
 

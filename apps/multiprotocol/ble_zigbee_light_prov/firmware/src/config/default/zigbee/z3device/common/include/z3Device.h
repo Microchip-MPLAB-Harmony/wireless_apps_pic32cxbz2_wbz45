@@ -54,7 +54,7 @@
                     Defines section
 ******************************************************************************/
 
-//Table 4 ?? Bits of the bdbCommissioningMode attribute
+//Table 4 â?? Bits of the bdbCommissioningMode attribute
 //5.3.2 bdbCommissioningMode attribute
 #define BDB_COMMISSIONING_TOUCHLINK       0 //(1)
 #define BDB_COMMISSIONING_NWK_STEERING    1 // (2)
@@ -176,6 +176,12 @@ bool isCommssioiningInProgress(void);
 \returns true, if Register Endpoint is Successful, false otherwise
 ******************************************************************************/
 bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* dlBindReq);
+
+/**************************************************************************//**
+\brief backing of zcl attributes for device to support deep sleep 
+
+******************************************************************************/
+void APP_BackupZCLAttributes(void);
 
 /**************************************************************************//**
 \brief Reset the report configuration of the device's reportable attributes

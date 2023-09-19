@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_OTAPS_HANDLER_H
-#define _APP_OTAPS_HANDLER_H
+#ifndef APP_OTAPS_HANDLER_H
+#define APP_OTAPS_HANDLER_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -89,13 +89,14 @@ extern "C" {
 void APP_OtapsEvtHandler(BLE_OTAPS_Event_T *p_event);
 
 
-#endif /* _APP_OTAPS_HANDLER_H */
-
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
 //DOM-IGNORE-END
+
+#endif /* APP_OTAPS_HANDLER_H */
+
 
 /*******************************************************************************
  End of File

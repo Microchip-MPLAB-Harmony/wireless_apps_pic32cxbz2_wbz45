@@ -249,6 +249,7 @@ void APP_OTA_EvtHandler(BLE_OTAPS_Event_T *p_event)
         case BLE_OTAPS_EVT_START_IND:
         {
             /* TODO: implement your application code.*/
+			
             APP_OTA_HDL_Start();            
         }
         break;

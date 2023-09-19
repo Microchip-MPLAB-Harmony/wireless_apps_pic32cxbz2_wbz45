@@ -46,7 +46,7 @@
 #include <systemenvironment/include/sysUtils.h>
 #include <zcl/include/zclCommandManager.h>
 #include <zcl/include/zclParser.h>
-
+#include <app_zigbee/zigbee_console/console.h>
 #if MICROCHIP_APPLICATION_SUPPORT == 1
 #include <zcl/include/zclZllBasicCluster.h>
 #include <zcl/include/zclZllIdentifyCluster.h>
@@ -73,7 +73,9 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
+#ifndef COMMAND_BUFFERS_AMOUNT
 #define COMMAND_BUFFERS_AMOUNT 6
+#endif
 #define ALL_ATTRIBUTES_ARE_WRITTEN 1
 
 /******************************************************************************
@@ -360,8 +362,6 @@ static void commandZclRequestResp(ZCL_Notify_t *ntfy)
         appSnprintf("Write Attribute Response received: status = 0x%02x\r\n", writeAttributeResp->status);
         element.content = NULL;
       }
-
-      (void)writeAttributeResp;
     }
     else
     {

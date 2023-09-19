@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE Device Information Service Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dis.h
-
-  Summary:
-    This file contains the BLE Device Information Service functions for application user.
-
-  Description:
-    This file contains the BLE Device Information Service functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Device Information Service Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dis.h
+
+  Summary:
+    This file contains the BLE Device Information Service functions for application user.
+
+  Description:
+    This file contains the BLE Device Information Service functions for application user.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BLE_DIS BLE DIS
@@ -48,30 +47,38 @@
 #ifndef BLE_DIS_H
 #define BLE_DIS_H
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
-#define DIS_MANU_NAME_ENABLE
-#define DIS_MODEL_NUM_ENABLE
-//#define DIS_SERIAL_NUM_ENABLE
-//#define DIS_HW_REV_ENABLE
-#define DIS_FW_REV_ENABLE
-//#define DIS_SW_REV_ENABLE
-//#define DIS_SYSTEM_ID_ENABLE
-//#define DIS_IEEE_ENABLE
-//#define DIS_PNP_ID_ENABLE
+#define DIS_MANU_NAME_ENABLE      /* Manufacturer Name */
+#define DIS_MODEL_NUM_ENABLE      /* Model Name */
+//#define DIS_SERIAL_NUM_ENABLE     /* Serial Name */
+//#define DIS_HW_REV_ENABLE         /* Hardware Revision */
+#define DIS_FW_REV_ENABLE         /* Firmware Revision */
+//#define DIS_SW_REV_ENABLE         /* Software Revision */
+//#define DIS_SYSTEM_ID_ENABLE      /* System Id */
+//#define DIS_IEEE_ENABLE           /* IEEE 11073-20601 */
+//#define DIS_PNP_ID_ENABLE         /* PnP ID */
 
-#define DIS_MANU_NAME                                  "MCHP"
-#define DIS_MODEL_NUM                                  "Coming Soon"
-#define DIS_SERIAL_NUM                                 "Serial Number"
-#define DIS_HW_REVISION                                "Hardware Revision"
-#define DIS_FW_REVISION                                "0.9.0.4"
-#define DIS_SW_REVISION                                "Software"
-#define DIS_SYSTEM_ID                                  "System Id"
-#define DIS_IEEE_11073_20601                           "NULL"
-#define DIS_PNP_ID                                     "NULL"
+#define DIS_MANU_NAME                                  "MCHP"    /* Manufacture Name */
+#define DIS_MODEL_NUM                                  "Coming Soon"    /* Model Number */
+#define DIS_SERIAL_NUM                                 "Serial Number"    /* Serial Number */
+#define DIS_HW_REVISION                                "Hardware Revision"    /* Hardware Revision */
+#define DIS_FW_REVISION                                "0.9.0.4"    /* Firmware Revision */
+#define DIS_SW_REVISION                                "Software"    /* Software Revision */
+#define DIS_SYSTEM_ID                                  "System Id"    /* System Id */
+#define DIS_IEEE_11073_20601                           "NULL"    /* IEEE 11073-20601 Data */
+#define DIS_PNP_ID                                     "NULL"    /* PnP Id */
 
 #define UUID_DEVICE_INFO_SERVICE                        0x180A      /**< Device Information Service. */
 
@@ -146,8 +153,13 @@ typedef enum BLE_DIS_AttributeHandle_T
  *@return MBA_RES_NO_RESOURCE                Fail to register service.
  *
  */
-uint16_t BLE_DIS_Add();
+uint16_t BLE_DIS_Add(void);
 
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif
 

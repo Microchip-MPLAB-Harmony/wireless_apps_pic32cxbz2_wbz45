@@ -135,7 +135,6 @@ MEMORY
  * DATA_REGION defaults to 'ram', which must be present.
  * VECTOR_REGION defaults to CODE_REGION, unless 'boot_rom' is present.
  */
-#define CODE_REGION boot_rom
 #ifndef CODE_REGION
 # if ROM_LENGTH > 0
 #   define CODE_REGION rom
@@ -158,11 +157,6 @@ __ram_end = ORIGIN(ram) + LENGTH(ram);
  *************************************************************************/
 SECTIONS
 {
- reset_handler_section 0x100 :
- {
- *.o (.text.Reset_Handler)
- }
-
     .config_00045F80 : {
       KEEP(*(.config_00045F80))
     } > config_00045F80

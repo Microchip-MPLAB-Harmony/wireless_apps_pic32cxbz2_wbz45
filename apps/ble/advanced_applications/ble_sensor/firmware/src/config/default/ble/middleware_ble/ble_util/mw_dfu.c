@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Middleware Device Firmware Udpate Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    mw_dfu.c
-
-  Summary:
-    This file contains the Middleware Device Firmware Udpate functions for application user.
-
-  Description:
-    This file contains the Middleware Device Firmware Udpate functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Middleware Device Firmware Udpate Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    mw_dfu.c
+
+  Summary:
+    This file contains the Middleware Device Firmware Udpate functions for application user.
+
+  Description:
+    This file contains the Middleware Device Firmware Udpate functions for application user.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -51,9 +50,9 @@
 #include "mw_dfu.h"
 
 
-#define MW_DFU_FW_START_ADDR                   0x01080000
-#define MW_DFU_FW_PAGE_SIZE                    0x1000
-#define MW_DFU_FW_QUAD_WORD_SIZE               0x10
+#define MW_DFU_FW_START_ADDR                   0x01080000UL
+#define MW_DFU_FW_PAGE_SIZE                    0x1000U
+#define MW_DFU_FW_QUAD_WORD_SIZE               0x10U
 
 enum
 {
@@ -71,9 +70,11 @@ static uint32_t *sp_dfuIdent = NULL;
 
 uint16_t MW_DFU_Config(MW_DFU_Info_T * p_dfuInfo)
 {
-    if ((p_dfuInfo->fwImageSize > MW_DFU_MAX_SIZE_FW_IMAGE) || (p_dfuInfo->fwImageSize == 0)
-        || (p_dfuInfo->fwImageSize & (MW_DFU_FW_QUAD_WORD_SIZE-1)))
+    if ((p_dfuInfo->fwImageSize > MW_DFU_MAX_SIZE_FW_IMAGE) || (p_dfuInfo->fwImageSize == 0U)
+        || (p_dfuInfo->fwImageSize & (MW_DFU_FW_QUAD_WORD_SIZE-1U)))
+    {
         return MBA_RES_INVALID_PARA;
+    }
 
     s_dfuSizeInfo = *p_dfuInfo;
 
@@ -82,10 +83,12 @@ uint16_t MW_DFU_Config(MW_DFU_Info_T * p_dfuInfo)
     return MBA_RES_SUCCESS;
 }
 
-uint16_t MW_DFU_FwImageStart()
+uint16_t MW_DFU_FwImageStart(void)
 {
     if (s_dfuState == MW_DFU_STATE_IDLE)
+    {
         return MBA_RES_BAD_STATE;
+    }
 
     s_dfuAddr = MW_DFU_FW_START_ADDR;
     s_dfuState = MW_DFU_STATE_FW_START;
@@ -99,27 +102,41 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content)
     uint32_t addr;
 
     if ((s_dfuState != MW_DFU_STATE_FW_START) && (s_dfuState != MW_DFU_STATE_FW_UPDATE))
+    {
         return MBA_RES_BAD_STATE;
+    }
 
     /* Check if image content length and offset are legal */
     if ((s_dfuAddr + length > MW_DFU_FW_START_ADDR + s_dfuSizeInfo.fwImageSize) || (length > MW_DFU_MAX_BLOCK_LEN)
-        || (length & (MW_DFU_FW_QUAD_WORD_SIZE-1)) || (length == 0))
+        || (length & (MW_DFU_FW_QUAD_WORD_SIZE-1U)) || (length == 0U))
+    {
         return MBA_RES_INVALID_PARA;
+    }
 
     /* make sure nvm is not busy now */
-    while(NVM_IsBusy());
+    while(NVM_IsBusy()==true)
+    {
+        
+    }
 
     /* if start from page boundary or write cross page, erase new page */
-    if ((s_dfuAddr & (MW_DFU_FW_PAGE_SIZE - 1)) == 0 
-    || (s_dfuAddr & ~(MW_DFU_FW_PAGE_SIZE - 1)) < ((s_dfuAddr + length - 1)  & ~(MW_DFU_FW_PAGE_SIZE - 1)))
+    if ((s_dfuAddr & (MW_DFU_FW_PAGE_SIZE - 1U)) == 0U 
+    || (s_dfuAddr & ~(MW_DFU_FW_PAGE_SIZE - 1U)) < ((s_dfuAddr + length - 1U)  & ~(MW_DFU_FW_PAGE_SIZE - 1U)))
     {
-        if (!NVM_PageErase((s_dfuAddr + length - 1) & ~(MW_DFU_FW_PAGE_SIZE - 1)))
+        if (!NVM_PageErase((s_dfuAddr + length - 1U) & ~(MW_DFU_FW_PAGE_SIZE - 1U)))
+        {
             return MBA_RES_FAIL;
+        }
 
-        while(NVM_IsBusy());
+        while(NVM_IsBusy()==true)
+        {
+
+        }
         
         if (NVM_ErrorGet() != NVM_ERROR_NONE)
+        {
             return MBA_RES_FAIL;
+        }
     }
 
     
@@ -133,10 +150,12 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content)
         {
             sp_dfuIdent = OSAL_Malloc(16);
             if (sp_dfuIdent == NULL)
+            {
                 return MBA_RES_OOM;
+            }
         }
         
-        memcpy(sp_dfuIdent, p_data, 16);
+        (void)memcpy(sp_dfuIdent, p_data, 16);
 
         addr += MW_DFU_FW_QUAD_WORD_SIZE;
         p_data += 4;
@@ -145,12 +164,19 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content)
     for (;addr < s_dfuAddr + length; addr += MW_DFU_FW_QUAD_WORD_SIZE)
     {
         if(!NVM_QuadWordWrite(p_data, addr))
+        {
             return MBA_RES_FAIL;
+        }
 
-        while(NVM_IsBusy());
+        while(NVM_IsBusy()==true)
+        {
+
+        }
 
         if (NVM_ErrorGet() != NVM_ERROR_NONE)
+        {
             return MBA_RES_FAIL;
+        }
 
         p_data += 4;
     }
@@ -163,12 +189,18 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content)
     if (s_dfuAddr == MW_DFU_FW_START_ADDR + s_dfuSizeInfo.fwImageSize)
     {
         if(!NVM_QuadWordWrite(sp_dfuIdent, MW_DFU_FW_START_ADDR))
+        {
             return MBA_RES_FAIL;
+        }
 
-        while(NVM_IsBusy());
+        while(NVM_IsBusy()==true)
+        {
+        }
 
         if (NVM_ErrorGet() != NVM_ERROR_NONE)
+        {
             return MBA_RES_FAIL;
+        }
 
         OSAL_Free(sp_dfuIdent);
         sp_dfuIdent = NULL;
@@ -181,12 +213,18 @@ uint16_t MW_DFU_FwImageRead(uint32_t offset, uint16_t length, uint8_t *p_content
 {
     //Check read range 
     if ((offset + length > MW_DFU_MAX_SIZE_FW_IMAGE) || (length > MW_DFU_MAX_BLOCK_LEN))
+    {
         return MBA_RES_INVALID_PARA;
+    }
 
-    while(NVM_IsBusy());
+    while(NVM_IsBusy()==true)
+    {
+    }
 
     if (!NVM_Read((uint32_t *)p_content, length, MW_DFU_FW_START_ADDR + offset))
+    {
         return MBA_RES_FAIL;
+    }
     
     return MBA_RES_SUCCESS;
 }

@@ -45,10 +45,15 @@
 #include <systemenvironment/include/sysDbg.h>
 #include <systemenvironment/include/sysSleep.h>
 #include <systemenvironment/include/sysAssert.h>
+#include <configserver/include/configserver.h>
 #include <hal/include/appTimer.h>
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyDeepSleep.h>
-#include <hal/cortexm4/pic32cx/include/halSleep.h>
-#include <hal/cortexm4/pic32cx/include/halAppClock.h>
+#include <zdo/include/zdo.h>
+#include <halAppClock.h>
+#include "task.h"
+#include <zdo/include/zdo.h>
+
+
 /*********************************************************************************
                      External variables section
 **********************************************************************************/
@@ -114,7 +119,9 @@ void SYS_Sleep(HAL_Sleep_t *sleepParam)
     status = HAL_StartSystemSleep(sleepParam);
     #endif
   #else
+    SYS_EnterSleep();
     vTaskDelay(sleepParam->sleepTime);
+    SYS_WakeUpSleep();
   #endif
 }
 
@@ -125,9 +132,21 @@ void SYS_Sleep(HAL_Sleep_t *sleepParam)
 \param[in]
   none
 ******************************************************************************/
-void SYS_EnterSleep(bool sysSleep)
+void SYS_EnterSleep(void)
 {
-  PHY_PrepareSleep(sysSleep);
+  if (ZDO_IsStackSleeping())
+    PHY_PrepareSleep();
+}
+
+/**************************************************************************//**
+\brief Checks system(MCU + BB) for sleep.
+
+\param[in]
+\returns 1 if sleeping success, 0 - otherwise
+******************************************************************************/
+bool SYS_CheckStackSleep(void)
+{
+    return ZDO_IsStackSleeping();
 }
 
 /**************************************************************************//**
@@ -136,9 +155,9 @@ void SYS_EnterSleep(bool sysSleep)
 \param[in]
   none
 ******************************************************************************/
-void SYS_WakeUpSleep(bool sysSleep)
+void SYS_WakeUpSleep(void)
 {
-  PHY_RestoreFromSleep(sysSleep);
+  PHY_RestoreFromSleep();
 }
 /**************************************************************************//**
 \brief To Stop Stack Timer before Sleep.
@@ -161,4 +180,15 @@ void SYS_RestartStackTimerAfterSleep(uint32_t sleepTime)
 {
   halAdjustSleepInterval(sleepTime);
   halStartAppClock();
+}
+
+/**************************************************************************//**
+\brief BLE Clock On or Off.
+
+\param[in]
+  bool status
+******************************************************************************/
+void SYS_BLEClockOnOff(bool status)
+{
+  PHY_BLEClockOnOff(status);
 }

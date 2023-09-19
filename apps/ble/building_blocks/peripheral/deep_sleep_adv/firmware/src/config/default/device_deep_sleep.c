@@ -218,12 +218,16 @@ static void device_DisableEic(void)
     CFG_REGS->CFG_CFGPCLKGEN1CLR = CFG_CFGPCLKGEN1_EICCD_Msk;
 }
 
-static void device_disablePmdExceptRtcc()
+static void device_disablePmd(bool enableRtc)
 {
     // Disable PMD lock
     CFG_REGS->CFG_CFGCON0 &= ~CFG_CFGCON0_PMDLOCK_Msk;
 
+    if (enableRtc)
     CFG_REGS->CFG_PMD1SET = 0xFFFEFFFF; // Except RTCC (bit 16)
+    else
+        CFG_REGS->CFG_PMD1SET = 0xFFFFFFFF;
+
     CFG_REGS->CFG_PMD2SET = 0xFFFFFFFF;
     CFG_REGS->CFG_PMD3SET = 0xFFFF;
     CFG_REGS->CFG_CFGCON1CLR = 0x00100000; // SAMD Macro CCL Pads (via PPS) Output Disable    
@@ -234,6 +238,36 @@ static void device_disablePmdExceptRtcc()
 
     EIC_REGS->EIC_CTRLA = 0x0; // SAMD Macro EIC Disable
     FREQM_REGS->FREQM_CTRLA = 0x0; // SAMD Macro FREQM Disable 
+
+    if (!enableRtc)   //Disable RTC
+    {
+        RTC_Timer32Stop();
+}
+}
+
+static void device_ConfigDsCtrlRtcc(bool enable)
+{
+    if (enable)
+    {
+        //RTCC Request enable
+        DSCON_REGS->DSCON_DSCON &= ~DSCON_DSCON_RTCPWREQ_Msk;
+        DSCON_REGS->DSCON_DSCON &= ~DSCON_DSCON_RTCPWREQ_Msk;
+
+        //RTCC wake up enable
+        DSCON_REGS->DSCON_DSCON &= ~DSCON_DSCON_RTCCWDIS_Msk;
+        DSCON_REGS->DSCON_DSCON &= ~DSCON_DSCON_RTCCWDIS_Msk;
+
+    }
+    else
+    {
+        //RTCC Request disable
+        DSCON_REGS->DSCON_DSCON |= DSCON_DSCON_RTCPWREQ_Msk;
+        DSCON_REGS->DSCON_DSCON |= DSCON_DSCON_RTCPWREQ_Msk;
+
+        //RTCC wake up disable
+        DSCON_REGS->DSCON_DSCON |= DSCON_DSCON_RTCCWDIS_Msk;
+        DSCON_REGS->DSCON_DSCON |= DSCON_DSCON_RTCCWDIS_Msk;
+    }
 }
 
 static void device_ConfigDeepSleepEnableReg(void)
@@ -257,7 +291,7 @@ static void device_ConfigDeepSleepReg(void)
 {
     devie_SysUnlock();
 
-    BT_SYS_EnterDeepSleepMode();
+    DEVICE_SLEEP_ConfigWssLowPowerMode();
 
 
     device_ConfigDeepSleepEnableReg();
@@ -298,7 +332,7 @@ static void device_DeepSleepRegRtcCallback(void)
 }
 
 /* Set RTC timer */
-static void device_setDsadvInterval(uint32_t interval)
+static void device_setDsInterval(uint32_t interval)
 {
     uint32_t compareValue = 0;
     uint32_t currentRtcCnt = 0;
@@ -314,7 +348,7 @@ static void device_setDsadvInterval(uint32_t interval)
        2. RTC Clock : RTC_Timer32FrequencyGet
        3. intercal (ms) * RTC clock (32 kHz) = compareValue value
     */
-    compareValue = (uint64_t)(interval * s_rtcClkFreq + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
+    compareValue = ((uint64_t)interval * s_rtcClkFreq + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
 
     /* Get current RTC counter value after system wakes up */
     currentRtcCnt = RTC_Timer32CounterGet();
@@ -340,7 +374,10 @@ static void device_setDsadvInterval(uint32_t interval)
 }
 
 
-/* Configure the GPIO setting for deep sleep */
+/* Configure the GPIO setting for deep sleep. 
+   It's an example code for wbz curiosity board.
+   The user application could have its own configuration based on the requirement. 
+*/
 void Device_GpioConfig(void)
 {
     /* Disable JTAG since at least one of its pins is configured for Non-JTAG function */
@@ -375,8 +412,12 @@ bool DEVICE_ClearDeepSleepReg(void)
         {
             s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_DSWDT;
         }
+        else if (DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_MCLR_Msk)
+        {
+            s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_MCLR;
+        }
 
-        //Note: Before cleaering deep sleep related register,
+        //Note: Before cleaning deep sleep related register,
         //the application might consider to restore the GPIO settings before entering deep sleep
         //to avoid reseting the I/O status to default.
         Device_GpioConfig();
@@ -453,7 +494,7 @@ void DEVICE_EnterDeepSleep(bool enableRetRam, uint32_t interval)
     device_DisableSercom();
 
     //Disable All Peripherals with PMD Disable Bits Except RTCC
-    device_disablePmdExceptRtcc();
+    device_disablePmd(true);
 
     //Gpio set Port A & B as input mode and pulled up Except for Interrupt
     Device_GpioConfig();
@@ -471,27 +512,83 @@ void DEVICE_EnterDeepSleep(bool enableRetRam, uint32_t interval)
     // WCM Memories Ret + NAP Mode
     DEVICE_SLEEP_ConfigRetRam(enableRetRam);
 
-    // disable system timer
+    // Disable system timer
     devie_DisableSysTick();
 
-    // clear interrupt state
+    // Clear interrupt state
     device_DisableEic();
 
-    // configure INT0 for DS, fixed @ RB4.
+    // Configure INT0 for DS, fixed @ RB4.
     device_ConfigInt0();
 
     device_ConfigDeepSleepReg();
 
     if (interval)
     {
-        device_setDsadvInterval(interval);
+        device_setDsInterval(interval);
     }
     else
     {
-        //Disable RTC intterupt if the device is waken up by RTC and enters deep sleep again without enabling RTC timer
+        //Disable RTC interrupt if the device is waken up by RTC and enters deep sleep again without enabling RTC timer
         RTC_Timer32Compare0Set (0);
         RTC_Timer32InterruptDisable(RTC_MODE0_INTENCLR_CMP0_Msk);
     }
+
+    //Set wait for interrupt
+    devie_SetWfi();
+}
+
+/* Perform the procedure of entering xtreme deep sleep mode.*/
+void DEVICE_EnterExtremeDeepSleep(bool enableInt0)
+{
+    devie_SysUnlock();
+
+    //Disable SERCOM TX Enable
+    device_DisableSercom();
+
+    //Disable All Peripherals with PMD Disable Bits
+    device_disablePmd(false);
+
+    //Gpio set Port A & B as input mode and pulled up Except for Interrupt
+    Device_GpioConfig();
+
+    // Config LP clock source as SOSC or LPRC
+    if ((CFG_REGS->CFG_CFGCON4 & CFG_CFGCON4_VBKP_32KCSEL_Msk) == 0x2000)   //LP clock source is set as SOSC, no need to switch
+    {
+        s_rtcClkFreq = DEVICE_RTC_CLOCK_FREQUENCY_32768HZ;     //Just update the static variable
+    }
+    else  //LP clock source is not set as SOSC, need to switch to LPRC
+    {
+        device_ConfigLpClkSrc(DEVICE_SOURCE_LPRC, DEVICE_RTC_CLK_FREQ_32768HZ);
+    }
+
+    //Disable retention ram
+    DEVICE_SLEEP_ConfigRetRam(false);
+
+    // Disable system timer
+    devie_DisableSysTick();
+
+    // Clear interrupt state
+    device_DisableEic();
+
+    //Disable RTCC wake up
+    device_ConfigDsCtrlRtcc(false);
+
+    //Disable DSWDT
+    if (CFG_REGS->CFG_CFGCON4 & CFG_CFGCON4_DSWDTEN_Msk)
+        CFG_REGS->CFG_CFGCON4CLR = CFG_CFGCON4_DSWDTEN_Msk;
+
+    if (enableInt0)            //Determine if the device can be woken from XDS by INT0
+    {
+        device_ConfigInt0();
+    }
+
+    device_ConfigDeepSleepReg();
+
+    //Disable interrupt
+    __asm volatile( "cpsid i" ::: "memory" );
+    __asm volatile( "dsb" );
+    __asm volatile( "isb" );
 
     //Set wait for interrupt
     devie_SetWfi();

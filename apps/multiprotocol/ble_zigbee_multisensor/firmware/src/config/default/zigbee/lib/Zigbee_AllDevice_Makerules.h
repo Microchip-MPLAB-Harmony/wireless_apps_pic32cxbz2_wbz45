@@ -305,4 +305,6 @@
 #endif
 #if defined (Z3DEVICE_APP) || defined (ZGPSENSOR_APP) || defined (ZGPSWITCH_APP)
 #include <zigbee/z3device_configs/zigbeeAppConfig.h>
+#elif defined (ZIGBEE_ZAPPSI)
+#include <zigbee/ZAppSiRunner_configs/zigbeeAppConfig.h>
 #endif

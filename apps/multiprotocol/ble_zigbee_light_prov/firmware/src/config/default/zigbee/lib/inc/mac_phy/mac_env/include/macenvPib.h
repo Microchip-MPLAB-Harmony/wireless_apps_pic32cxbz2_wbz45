@@ -480,15 +480,6 @@ INLINE uint8_t MAC_GetChannel(void)
   return csPIB.phyAttr.channel;
 }
 
-/**************************************************************************//**
-  \brief Gets max frame transmission time attribute value.
-
-  \return Max frame transmission time attribute value.
- ******************************************************************************/
-INLINE uint8_t MAC_GetPowerRegion(void)
-{
-  return csPIB.phyAttr.txPowerRegion;
-}
 #endif /* _MACENVPIB_H */
 
 // eof macenvPib.h

@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_TRSPS_HANDLER_H
-#define _APP_TRSPS_HANDLER_H
+#ifndef APP_TRSPS_HANDLER_H
+#define APP_TRSPS_HANDLER_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -101,6 +101,9 @@ void APP_TrspsEvtHandler(BLE_TRSPS_Event_T *p_event);
 }
 #endif
 //DOM-IGNORE-END
+
+//#endif /* APP_TRSPS_HANDLER_H */
+
 
 /*******************************************************************************
  End of File

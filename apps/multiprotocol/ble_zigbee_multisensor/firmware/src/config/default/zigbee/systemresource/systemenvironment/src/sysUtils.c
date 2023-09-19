@@ -51,9 +51,6 @@
 #ifdef __XC32__
 #include <xc.h>
 #endif
-#ifdef TRNG_MODULE_ENABLED
-#include <trng/plib_trng.h>
-#endif
 /******************************************************************************
                         Definitions section
 ******************************************************************************/
@@ -87,6 +84,10 @@ static void sysSeedRandFunction(uint16_t randValue);
 #if (defined (TRNG_MODULE_ENABLED) && defined(TRNG_MODULE_INTERRUPT_METHOD))
 static void sysRndTrngCallback(uint32_t randData, uintptr_t context);
 uint16_t trngContext = 0xAA; //dummy value
+#endif
+
+#ifdef TRNG_MODULE_ENABLED
+uint32_t TRNG_ReadData( void );
 #endif
 /******************************************************************************
                     Static variables section

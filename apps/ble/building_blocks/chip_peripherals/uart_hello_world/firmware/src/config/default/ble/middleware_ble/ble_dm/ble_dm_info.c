@@ -1,24 +1,5 @@
 /*******************************************************************************
-  Device Information Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dm_info.c
-
-  Summary:
-    This file contains the Device Information functions for 
-    BLE Device Manager module internal use.
-
-  Description:
-    This file contains the Device Information functions for 
-    BLE Device Manager module internal use.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,44 +20,56 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Device Information Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dm_info.c
+
+  Summary:
+    This file contains the Device Information functions for 
+    BLE Device Manager module internal use.
+
+  Description:
+    This file contains the Device Information functions for 
+    BLE Device Manager module internal use.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include <string.h>
 #include "osal/osal_freertos_extend.h"
 #include "mba_error_defs.h"
 #include "ble_gap.h"
-#include "ble_dm/ble_dm_internal.h"
-#include "ble_dm/ble_dm_info.h"
-#include "ble_dm/ble_dm_dds.h"
+#include "ble_dm_internal.h"
+#include "ble_dm_info.h"
+#include "ble_dm_dds.h"
 
+// *****************************************************************************
+// *****************************************************************************
+// Section: Data Types
+// *****************************************************************************
+// *****************************************************************************
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Macros
-// *****************************************************************************
-// *****************************************************************************
-typedef enum BLE_DM_InfoState_T
+typedef struct BLE_DM_InfoCtrl_T
 {
-    BLE_DM_INFO_STATE_IDLE = 0x00,
-    BLE_DM_INFO_STATE_CONNECTED
-}BLE_DM_InfoState_T;
-
-
-
+    BLE_DM_InfoConn_T *  conn[BLE_GAP_MAX_LINK_NBR];
+    uint8_t              filterAcceptListCnt;
+    uint8_t              filterAcceptList[BLE_DM_MAX_FILTER_ACCEPT_LIST_NUM];
+} BLE_DM_InfoCtrl_T;
 
 
 /**************************************************************************************************
   Variables
 **************************************************************************************************/
-BLE_DM_InfoConn_T       s_dmInfoRole[BLE_GAP_MAX_LINK_NBR];
-
-static uint8_t          s_dmInfoFilterAcceptListCnt;
-static uint8_t          s_dmInfoFilterAcceptList[BLE_DM_MAX_FILTER_ACCEPT_LIST_NUM];
+static BLE_DM_InfoCtrl_T      *sp_dmInfoCtrl;
 
 
 /**************************************************************************************************
@@ -89,10 +82,15 @@ static BLE_DM_InfoConn_T *ble_dm_InfoGetFreeConn(void)
 
     for (i = 0; i < BLE_GAP_MAX_LINK_NBR; i++)
     {
-        if (s_dmInfoRole[i].state == BLE_DM_INFO_STATE_IDLE)
+        if (sp_dmInfoCtrl->conn[i] == NULL)
         {
-            memset((uint8_t *)&s_dmInfoRole[i], 0, sizeof(BLE_DM_InfoConn_T));
-            return &s_dmInfoRole[i];
+            sp_dmInfoCtrl->conn[i] = OSAL_Malloc(sizeof(BLE_DM_InfoConn_T));
+
+            if (sp_dmInfoCtrl->conn[i] != NULL)
+            {
+                (void)memset((uint8_t *)sp_dmInfoCtrl->conn[i], 0, sizeof(BLE_DM_InfoConn_T));
+            }
+            return sp_dmInfoCtrl->conn[i];
         }
     }
     return NULL;
@@ -104,19 +102,62 @@ BLE_DM_InfoConn_T *BLE_DM_InfoGetConnByHandle(uint16_t connHandle)
 
     for (i = 0; i < BLE_GAP_MAX_LINK_NBR; i++)
     {
-        if (s_dmInfoRole[i].connHandle == connHandle)
+        if ((sp_dmInfoCtrl->conn[i] != NULL) 
+            && (sp_dmInfoCtrl->conn[i]->state == BLE_DM_INFO_STATE_CONNECTED) && (sp_dmInfoCtrl->conn[i]->connHandle == connHandle))
         {
-            return &s_dmInfoRole[i];
+            return sp_dmInfoCtrl->conn[i];
         }
     }
     return NULL;
 }
 
 
-void BLE_DM_InfoInit()
+static void ble_dm_FreeConn(BLE_DM_InfoConn_T * p_conn)
 {
-    memset(s_dmInfoRole, 0x00, sizeof(s_dmInfoRole));
-    s_dmInfoFilterAcceptListCnt = 0;
+    uint8_t i;
+
+    if (p_conn == NULL)
+    {
+        return;
+    }
+    
+    for (i = 0U; i < BLE_GAP_MAX_LINK_NBR; i++)
+    {
+        if (sp_dmInfoCtrl->conn[i] == p_conn)
+        {
+            OSAL_Free(p_conn);
+            sp_dmInfoCtrl->conn[i] = NULL;
+        
+            return;
+        }
+    }
+}
+
+
+bool BLE_DM_InfoInit(void)
+{
+    uint8_t i;
+
+    if (sp_dmInfoCtrl == NULL)
+    {
+        sp_dmInfoCtrl = OSAL_Malloc(sizeof(BLE_DM_InfoCtrl_T));
+
+        if (sp_dmInfoCtrl == NULL)
+        {
+            return false;
+        }
+    }
+    else
+    {
+        for (i = 0U; i < BLE_GAP_MAX_LINK_NBR; i++)
+        {
+            ble_dm_FreeConn(sp_dmInfoCtrl->conn[i]);
+        }
+    }
+
+    (void)memset(sp_dmInfoCtrl, 0x00, sizeof(BLE_DM_InfoCtrl_T));
+
+    return true;
 }
 
 void BLE_DM_Info(STACK_Event_T *p_stackEvent)
@@ -135,7 +176,7 @@ void BLE_DM_Info(STACK_Event_T *p_stackEvent)
                     BLE_DM_Event_T          dmEvt;
 
                     p_conn = ble_dm_InfoGetFreeConn();
-                    if (p_conn)
+                    if (p_conn!= NULL)
                     {
                         p_conn->connHandle = p_gapEvt->eventField.evtConnect.connHandle;
                         p_conn->role = p_gapEvt->eventField.evtConnect.role;
@@ -146,12 +187,15 @@ void BLE_DM_Info(STACK_Event_T *p_stackEvent)
                         if (p_conn->devId != BLE_DM_PEER_DEV_ID_INVALID)
                         {
                             BLE_DM_PairedDevInfo_T  devInfo;
-                            BLE_SMP_PairInfo_T      pairInfo;
 
-                            BLE_DM_DdsGetPairedDevice(p_conn->devId, &devInfo);
-                            pairInfo.lesc=devInfo.lesc;
-                            pairInfo.auth=devInfo.auth;
-                            BLE_SMP_UpdateBondingInfo(p_conn->connHandle, devInfo.encryptKeySize, &pairInfo);
+                            if(BLE_DM_DdsGetPairedDevice(p_conn->devId, &devInfo)==MBA_RES_SUCCESS)
+                            {
+                                BLE_SMP_PairInfo_T      pairInfo;
+
+                                pairInfo.lesc=devInfo.lesc;
+                                pairInfo.auth=devInfo.auth;
+                                BLE_SMP_UpdateBondingInfo(p_conn->connHandle, devInfo.encryptKeySize, &pairInfo);
+                            }
                         }
 
                         dmEvt.connHandle=p_gapEvt->eventField.evtConnect.connHandle;
@@ -170,21 +214,27 @@ void BLE_DM_Info(STACK_Event_T *p_stackEvent)
                 
                 
                 p_conn = BLE_DM_InfoGetConnByHandle(p_gapEvt->eventField.evtDisconnect.connHandle);
-                if (p_conn)
+                if (p_conn != NULL)
                 {
                     dmEvt.peerDevId = p_conn->devId;
-                    memset(p_conn, 0x00, sizeof(BLE_DM_InfoConn_T));
+                    ble_dm_FreeConn(p_conn);
                 }
                 else
-                    dmEvt.peerDevId = BLE_DM_PEER_DEV_ID_INVALID;
-
-                for(i=0;i<s_dmCbNum; i++)
                 {
-                    if(s_dmEventCb[i])
+                    dmEvt.peerDevId = BLE_DM_PEER_DEV_ID_INVALID;
+                }
+
+                for(i=0;i<g_dmCbNum; i++)
+                {
+                    if(g_dmEventCb[i] != NULL)
                     {
-                        s_dmEventCb[i](&dmEvt);
+                        g_dmEventCb[i](&dmEvt);
                     }
                 }
+            }
+            else
+            {
+				//Shall not enter here
             }
         }
         break;
@@ -199,19 +249,21 @@ uint16_t BLE_DM_InfoSetFilterAcceptList(uint8_t devCnt, uint8_t const * p_devId)
     uint16_t result;
     uint8_t i;
 
-    if (p_devId == NULL || devCnt == 0)
+    if (p_devId == NULL || devCnt == 0U)
     {
         result = BLE_GAP_SetFilterAcceptList(0, NULL);
         if (result == MBA_RES_SUCCESS)
         {
-            s_dmInfoFilterAcceptListCnt = 0;
+            sp_dmInfoCtrl->filterAcceptListCnt = 0;
         }
 
         return result;
     }
 
     if (devCnt > BLE_DM_MAX_FILTER_ACCEPT_LIST_NUM)
+    {
         return MBA_RES_INVALID_PARA;
+    }
 
     BLE_GAP_Addr_T addr[BLE_DM_MAX_FILTER_ACCEPT_LIST_NUM];
 
@@ -222,11 +274,15 @@ uint16_t BLE_DM_InfoSetFilterAcceptList(uint8_t devCnt, uint8_t const * p_devId)
         BLE_DM_PairedDevInfo_T pairedInfo;
 
         if ((result = BLE_DM_DdsGetPairedDevice(p_devId[i], &pairedInfo)) != MBA_RES_SUCCESS)
+        {
             return result;
+        }
 
         if (pairedInfo.remoteAddr.addrType != BLE_GAP_ADDR_TYPE_PUBLIC 
             && pairedInfo.remoteAddr.addrType != BLE_GAP_ADDR_TYPE_RANDOM_STATIC)
+        {
             return MBA_RES_INVALID_PARA;
+        }
 
         addr[i] = pairedInfo.remoteAddr;
     }
@@ -234,8 +290,8 @@ uint16_t BLE_DM_InfoSetFilterAcceptList(uint8_t devCnt, uint8_t const * p_devId)
     result = BLE_GAP_SetFilterAcceptList(devCnt,addr);
 
     /* copy the devices added successfully to s_imFilterAcceptList */
-    memcpy(s_dmInfoFilterAcceptList, p_devId, sizeof(uint8_t) * i);
-    s_dmInfoFilterAcceptListCnt = i;
+    (void)memcpy(sp_dmInfoCtrl->filterAcceptList, p_devId, sizeof(uint8_t) * i);
+    sp_dmInfoCtrl->filterAcceptListCnt = i;
 
 
     return result;
@@ -246,15 +302,17 @@ uint16_t BLE_DM_InfoGetFilterAcceptList(uint8_t *p_devCnt, BLE_GAP_Addr_T *p_add
 {
     BLE_DM_PairedDevInfo_T pairedInfo;
 
-    for (uint8_t i = 0; i < s_dmInfoFilterAcceptListCnt; i++)
+    for (uint8_t i = 0; i < sp_dmInfoCtrl->filterAcceptListCnt; i++)
     {
-        if (MBA_RES_SUCCESS != BLE_DM_DdsGetPairedDevice(s_dmInfoFilterAcceptList[i], &pairedInfo))
+        if (MBA_RES_SUCCESS != BLE_DM_DdsGetPairedDevice(sp_dmInfoCtrl->filterAcceptList[i], &pairedInfo))
+        {
             return MBA_RES_FAIL;
+        }
 
         p_addr[i] = pairedInfo.remoteAddr;
     }
 
-    *p_devCnt = s_dmInfoFilterAcceptListCnt;
+    *p_devCnt = sp_dmInfoCtrl->filterAcceptListCnt;
 
     return MBA_RES_SUCCESS;
 }
@@ -264,23 +322,30 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
     uint16_t                        result;
     uint8_t                         i;
     BLE_GAP_ResolvingListParams_T   *p_resolvingList;
-    BLE_GAP_LocalPrivacyParams_T    privacy;
-    bool                            enable;
+    bool enable;
+    BLE_GAP_LocalPrivacyParams_T privacy;
 
-    if (p_devId == NULL || devCnt == 0 || p_privacyMode == NULL)
+
+    result = MBA_RES_SUCCESS;
+
+    if (p_devId == NULL || devCnt == 0U || p_privacyMode == NULL)
     {
         result = BLE_GAP_SetResolvingList(0, NULL);
         return result;
     }
 
     if (devCnt > BLE_DM_MAX_RESOLVING_LIST_NUM)
+    {
         return MBA_RES_INVALID_PARA;
-
-    BLE_GAP_GetLocalPrivacy(&enable, &privacy);
+    }
 
     p_resolvingList = OSAL_Malloc(sizeof(BLE_GAP_ResolvingListParams_T) * devCnt);
     if (p_resolvingList == NULL)
+    {
         return MBA_RES_OOM;
+    }
+
+    (void)BLE_GAP_GetLocalPrivacy(&enable, &privacy);
 
     /* Get address by peer id */
     for (i = 0; i < devCnt; i++)
@@ -288,7 +353,9 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
         BLE_DM_PairedDevInfo_T pairedInfo;
 
         if ((result = BLE_DM_DdsGetPairedDevice(p_devId[i], &pairedInfo)) != MBA_RES_SUCCESS)
+        {
             break;
+        }
 
         if ((pairedInfo.remoteAddr.addrType != BLE_GAP_ADDR_TYPE_PUBLIC 
             && pairedInfo.remoteAddr.addrType != BLE_GAP_ADDR_TYPE_RANDOM_STATIC)
@@ -298,17 +365,43 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
             break;
         }
 
-        memcpy(p_resolvingList[i].localIrk, privacy.localIrk, 16);
-        memcpy(p_resolvingList[i].peerIrk, pairedInfo.remoteIrk, 16);
+        if (pairedInfo.localIrk[0]==0x00 && memcmp(pairedInfo.localIrk, pairedInfo.localIrk+1, 15) == 0)
+        {
+            (void)memcpy(p_resolvingList[i].localIrk, privacy.localIrk, 16);
+        }
+        else
+        {
+            (void)memcpy(p_resolvingList[i].localIrk, pairedInfo.localIrk, 16);
+        }
+        (void)memcpy(p_resolvingList[i].peerIrk, pairedInfo.remoteIrk, 16);
         p_resolvingList[i].peerIdAddr = pairedInfo.remoteAddr;
         p_resolvingList[i].privacyMode = p_privacyMode[i];
     }
 
     if (result == MBA_RES_SUCCESS)
+    {
         result = BLE_GAP_SetResolvingList(devCnt,p_resolvingList);
+    }
 
     OSAL_Free(p_resolvingList);
 
     return result;
 }
 
+uint16_t BLE_DM_InfoGetConnHandleByDevId(uint8_t devId, uint16_t *p_connHandle)
+{
+    uint8_t  i;
+    uint16_t result;
+
+    result=MBA_RES_FAIL;
+    for (i = 0; i < BLE_GAP_MAX_LINK_NBR; i++)
+    {
+        if (sp_dmInfoCtrl->conn[i] != NULL && sp_dmInfoCtrl->conn[i]->devId == devId)
+        {
+            *p_connHandle = sp_dmInfoCtrl->conn[i]->connHandle;
+            result=MBA_RES_SUCCESS;
+            break;
+        }
+    }
+    return result;
+}

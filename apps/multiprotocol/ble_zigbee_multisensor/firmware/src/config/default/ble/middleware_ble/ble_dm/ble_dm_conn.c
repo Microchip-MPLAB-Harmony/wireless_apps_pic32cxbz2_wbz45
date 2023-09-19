@@ -45,10 +45,23 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "ble_dm/ble_dm.h"
-#include "ble_dm/ble_dm_conn.h"
-#include "ble_dm/ble_dm_info.h"
-#include "ble_dm/ble_dm_internal.h"
+#include "osal/osal_freertos_extend.h"
+#include "ble_dm.h"
+#include "ble_dm_conn.h"
+#include "ble_dm_info.h"
+#include "ble_dm_internal.h"
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Macros
+// *****************************************************************************
+// *****************************************************************************
+
+typedef enum BLE_DM_CONN_State_T
+{
+    BLE_DM_CONN_STATE_IDLE = 0x00,                          /**< Default state (Disconnected). */
+    BLE_DM_CONN_STATE_CONNECTED                             /**< Connected. */
+} BLE_DM_CONN_State_T;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -59,6 +72,7 @@
 typedef struct BLE_DM_ConnUpdateDb_T
 {
     uint16_t                    connHandle;                 /**< The connection handle. */
+    BLE_DM_CONN_State_T         state;                      /**< Connection state. */
     bool                        isProcedureInitiator;       /**< Record the update procedure is initiated by this module or remote */
 } BLE_DM_ConnUpdateDb_T;
 
@@ -75,7 +89,7 @@ typedef struct BLE_DM_ConnCtrl_T
 // *****************************************************************************
 // *****************************************************************************
 
-BLE_DM_ConnCtrl_T               s_dmConnCtrl;
+static BLE_DM_ConnCtrl_T *              sp_dmConnCtrl;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -85,7 +99,22 @@ BLE_DM_ConnCtrl_T               s_dmConnCtrl;
 
 static void ble_dm_ConnInitUpdateDb(BLE_DM_ConnUpdateDb_T *p_conn)
 {
-    memset((uint8_t *)p_conn, 0, sizeof(BLE_DM_ConnUpdateDb_T));
+    (void)memset((uint8_t *)p_conn, 0, sizeof(BLE_DM_ConnUpdateDb_T));
+}
+
+static BLE_DM_ConnUpdateDb_T *ble_dm_GetFreeConn(void)
+{
+    uint8_t i;
+
+    for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
+    {
+        if (sp_dmConnCtrl->updateDb[i].state == BLE_DM_CONN_STATE_IDLE)
+        {
+            sp_dmConnCtrl->updateDb[i].state = BLE_DM_CONN_STATE_CONNECTED;
+            return &sp_dmConnCtrl->updateDb[i];
+        }
+    }
+    return NULL;
 }
 
 static BLE_DM_ConnUpdateDb_T *ble_dm_ConnFindConnByHandle(uint16_t connHandle)
@@ -94,22 +123,36 @@ static BLE_DM_ConnUpdateDb_T *ble_dm_ConnFindConnByHandle(uint16_t connHandle)
 
     for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
     {
-        if (s_dmConnCtrl.updateDb[i].connHandle == connHandle)
+        if ((sp_dmConnCtrl->updateDb[i].state == BLE_DM_CONN_STATE_CONNECTED) && (sp_dmConnCtrl->updateDb[i].connHandle == connHandle))
         {
-            return &s_dmConnCtrl.updateDb[i];
+            return &sp_dmConnCtrl->updateDb[i];
         }
     }
     return NULL;
 }
 
-void BLE_DM_ConnInit()
+bool BLE_DM_ConnInit(void)
 {
     uint8_t i;
 
+    if (sp_dmConnCtrl == NULL)
+    {
+        sp_dmConnCtrl = OSAL_Malloc(sizeof(BLE_DM_ConnCtrl_T));
+
+        if (sp_dmConnCtrl == NULL)
+        {
+            return false;
+        }
+    }
+
+    memset(sp_dmConnCtrl, 0x00, sizeof(BLE_DM_ConnCtrl_T));
+
     for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
     {
-        ble_dm_ConnInitUpdateDb(&s_dmConnCtrl.updateDb[i]);
+        ble_dm_ConnInitUpdateDb(&sp_dmConnCtrl->updateDb[i]);
     }
+
+    return true;
 }
 
 static void ble_dm_ConnProcGapConnected(BLE_GAP_Event_T *p_event)
@@ -119,7 +162,7 @@ static void ble_dm_ConnProcGapConnected(BLE_GAP_Event_T *p_event)
         BLE_DM_ConnUpdateDb_T *p_conn;
     
         /* Find free connection instance */
-        p_conn = ble_dm_ConnFindConnByHandle(0);
+        p_conn = ble_dm_GetFreeConn();
 
         if (p_conn != NULL)
         {
@@ -183,15 +226,15 @@ static bool ble_dm_ConnCheckRemoteUpdateParams(uint16_t minInterval, uint16_t ma
     }
 
     /* Check if parameters cause timeout */
-    minRequireTimeout = (maxInterval*(1+latency))*2;    // Uint: 1.25 ms
-    if ((timeout*8) < minRequireTimeout)                // Compare with uint: 1.25 ms
+    minRequireTimeout = (maxInterval*(1U+latency))*2U;    // Uint: 1.25 ms
+    if ((timeout*8U) < minRequireTimeout)                // Compare with uint: 1.25 ms
     {
         return false;
     }
 
     /* Check if parameters are in user preferred range */
-    if ((s_dmConnCtrl.userConnConfig.maxAcceptConnInterval < minInterval) || (s_dmConnCtrl.userConnConfig.minAcceptConnInterval > maxInterval) ||
-        (s_dmConnCtrl.userConnConfig.maxAcceptPeripheralLatency < latency) || (s_dmConnCtrl.userConnConfig.minAcceptPeripheralLatency > latency))
+    if ((sp_dmConnCtrl->userConnConfig.maxAcceptConnInterval < minInterval) || (sp_dmConnCtrl->userConnConfig.minAcceptConnInterval > maxInterval) ||
+        (sp_dmConnCtrl->userConnConfig.maxAcceptPeripheralLatency < latency) || (sp_dmConnCtrl->userConnConfig.minAcceptPeripheralLatency > latency))
     {
         return false;
     }
@@ -204,7 +247,7 @@ static void ble_dm_ConnProcGapRemoteConnUpdateReq(BLE_GAP_Event_T *p_event)
     BLE_GAP_ConnParams_T    connParams;
     bool                    paramsValid;
 
-    if (s_dmConnCtrl.autoReplyUpdate)
+    if (sp_dmConnCtrl->autoReplyUpdate)
     {
         paramsValid = ble_dm_ConnCheckRemoteUpdateParams(p_event->eventField.evtRemoteConnParamReq.intervalMin, p_event->eventField.evtRemoteConnParamReq.intervalMax,
                                                          p_event->eventField.evtRemoteConnParamReq.latency, p_event->eventField.evtRemoteConnParamReq.timeout);
@@ -267,7 +310,7 @@ static void ble_dm_ConnProcL2capConnParamUpdateReq(BLE_L2CAP_Event_T *p_event)
     {
         bool paramsValid;
 
-        if (s_dmConnCtrl.autoReplyUpdate)
+        if (sp_dmConnCtrl->autoReplyUpdate)
         {
             paramsValid = ble_dm_ConnCheckRemoteUpdateParams(p_event->eventField.evtConnParamUpdateReq.intervalMin, p_event->eventField.evtConnParamUpdateReq.intervalMax,
                                                              p_event->eventField.evtConnParamUpdateReq.latency, p_event->eventField.evtConnParamUpdateReq.timeout);
@@ -357,7 +400,7 @@ void BLE_DM_Conn(STACK_Event_T *p_stackEvent)
 
 uint16_t BLE_DM_ConnConfig(BLE_DM_ConnConfig_T *p_config)
 {
-    if (p_config->autoReplyUpdateRequest)
+    if (p_config->autoReplyUpdateRequest==true)
     {
         if ((p_config->maxAcceptConnInterval < p_config->minAcceptConnInterval) ||
             (p_config->maxAcceptPeripheralLatency < p_config->minAcceptPeripheralLatency) ||
@@ -365,23 +408,23 @@ uint16_t BLE_DM_ConnConfig(BLE_DM_ConnConfig_T *p_config)
             (p_config->maxAcceptConnInterval > BLE_GAP_CP_MAX_CONN_INTVAL_MAX) ||
             (p_config->maxAcceptPeripheralLatency > BLE_GAP_CP_LATENCY_MAX))
         {
-            s_dmConnCtrl.autoReplyUpdate = false;
+            sp_dmConnCtrl->autoReplyUpdate = false;
             return MBA_RES_INVALID_PARA;
         }
         else
         {
-            s_dmConnCtrl.autoReplyUpdate = true;
-            s_dmConnCtrl.userConnConfig.minAcceptConnInterval = p_config->minAcceptConnInterval;
-            s_dmConnCtrl.userConnConfig.maxAcceptConnInterval = p_config->maxAcceptConnInterval;
-            s_dmConnCtrl.userConnConfig.minAcceptPeripheralLatency = p_config->minAcceptPeripheralLatency;
-            s_dmConnCtrl.userConnConfig.maxAcceptPeripheralLatency = p_config->maxAcceptPeripheralLatency;
-            s_dmConnCtrl.userConnConfig.autoReplyUpdateRequest = p_config->autoReplyUpdateRequest;
+            sp_dmConnCtrl->autoReplyUpdate = true;
+            sp_dmConnCtrl->userConnConfig.minAcceptConnInterval = p_config->minAcceptConnInterval;
+            sp_dmConnCtrl->userConnConfig.maxAcceptConnInterval = p_config->maxAcceptConnInterval;
+            sp_dmConnCtrl->userConnConfig.minAcceptPeripheralLatency = p_config->minAcceptPeripheralLatency;
+            sp_dmConnCtrl->userConnConfig.maxAcceptPeripheralLatency = p_config->maxAcceptPeripheralLatency;
+            sp_dmConnCtrl->userConnConfig.autoReplyUpdateRequest = p_config->autoReplyUpdateRequest;
             return MBA_RES_SUCCESS;
         }
     }
     else
     {
-        s_dmConnCtrl.autoReplyUpdate = false;
+        sp_dmConnCtrl->autoReplyUpdate = false;
         return MBA_RES_SUCCESS;
     }
 }

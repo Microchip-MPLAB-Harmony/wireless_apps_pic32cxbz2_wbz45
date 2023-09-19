@@ -1,4 +1,4 @@
-﻿![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
+![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 # MPLAB® Harmony  3 Wireless BLE, Zigbee and IEEE 802.15.4 Standalone Phy Application Examples
 
@@ -39,27 +39,40 @@ The following applications are provided to demonstrate the typical use case of o
 | [BLE Central Scan Ext Adv](apps/ble/building_blocks/central/scan_ext_adv/readme.md) | PIC32CX-BZ |
 | [BLE Central transparent UART](apps/ble/building_blocks/central/profiles_services/central_trp_uart/readme.md) | PIC32CX-BZ |
 | [BLE Central Multilink](apps/ble/building_blocks/central/profiles_services/multilink/readme.md) | PIC32CX-BZ |
+| [BLE Central Code PHY transparent UART](apps/ble/building_blockscentral/profiles_services/central_trp_uart_codedPhy/readme.md) | PIC32CX-BZ |
 | [BLE Peripheral Connection](apps/ble/building_blocks/peripheral/peripheral_conn/readme.md) | PIC32CX-BZ |
 | [BLE peripheral Legacy Scan](apps/ble/building_blocks/peripheral/legacy_adv/readme.md) | PIC32CX-BZ |
 | [BLE peripheral Ext Adv](apps/ble/building_blocks/peripheral/ext_adv/readme.md) | PIC32CX-BZ |
 | [BLE peripheral transparent UART](apps/ble/building_blocks/peripheral/profiles_services/custom_service/readme.md) | PIC32CX-BZ |
 | [BLE Custom Service](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md) | PIC32CX-BZ |
 | [BLE Deep Sleep Adv](apps/ble/building_blocks/peripheral/deep_sleep_adv/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral ANCS](apps/ble/building_blocks/peripheral/ble_ancs_app/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral HOGPS or HID Profile](apps/ble/building_blocks/peripheral/ble_hogps_app/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral PATH Loss Advertisement](apps/ble/building_blocks/peripheral/legacy_adv_pathloss/readme.md) | PIC32CX-BZ |
+| [BLE peripheral Code PHY transparent UART](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart_codedPhy/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral BLE Multiple Advertising Sets](apps/ble/building_blocks/peripheral/two_set_adv/readme.md) | PIC32CX-BZ |
 | [UART](apps/ble/building_blocks/chip_peripherals/uart_hello_world/readme.md) | PIC32CX-BZ |
 | [BLE Multirole](apps/ble/building_blocks/multirole/multilink/readme.md) | PIC32CX-BZ |
 | [Bootloader](apps/bootloader/bootloader) | PIC32CX-BZ |
 
 
+
+
+
 | IEEE 802.15.4 Standalone P2P PHY Application Examples | Families |
 | --- | :---: |
 | [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/readme.md) | PIC32CX-BZ |
-
+| [IEEE 802 15.4 MAC](apps/ieee_802_15_4/MAC/push_pull_mac_app/readme.md) | PIC32CX-BZ |
 
 | Zigbee Examples | Families |
 | --- | :---: |
 | [Zigbee Combined Interface (Coordinator)](apps/zigbee/combinedInterface/readme.md) | PIC32CX-BZ |
 | [Zigbee Extended Lights (Router)](apps/zigbee/ext_light/readme.md) | PIC32CX-BZ |
 | [Zigbee End Device (End Device)](apps/zigbee/multisensor/readme.md) | PIC32CX-BZ |
+| [Zigbee Combined Interface](apps/zigbee/custom_cluster_server/readme.md) | PIC32CX-BZ |
+| [Zigbee Combined Interface](apps/zigbee/custom_occupancy_light/readme.md) | PIC32CX-BZ |
+| [Zigbee Combined Interface](apps/zigbee/custome_cluster_client/readme.md) | PIC32CX-BZ |
+| [Zigbee Combined Interface](apps/zigbee/multisensor_deepSleep/readme.md) | PIC32CX-BZ |
 
 | Multiprotocol(BLE+Zigbee) Examples | Families |
 | --- | :---: |

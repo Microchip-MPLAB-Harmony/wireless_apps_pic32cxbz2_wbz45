@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE Device Information Service Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dis.c
-
-  Summary:
-    This file contains the BLE Device Information Service functions for application user.
-
-  Description:
-    This file contains the BLE Device Information Service functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Device Information Service Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dis.c
+
+  Summary:
+    This file contains the BLE Device Information Service functions for application user.
+
+  Description:
+    This file contains the BLE Device Information Service functions for application user.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -49,7 +48,7 @@
 #include "mba_error_defs.h"
 #include "gatt.h"
 #include "ble_util/byte_stream.h"
-#include "ble_dis/ble_dis.h"
+#include "ble_dis.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -62,9 +61,9 @@
 #define UUID_HARDWARE_REVISION                         0x2A27  /**< Hardware Revision. */
 #define UUID_FIRMWARE_REVISION                         0x2A26  /**< Firmware Revision. */
 #define UUID_SOFTWARE_REVISION                         0x2A28  /**< Software Revision. */
-#define UUID_SYSTEM_ID                                 0x2A23  /**< Peripheral Preferred Connection Parameters. */
-#define UUID_IEEE_11073_20601_RCDL                     0x2A2A  /**< Peripheral Preferred Connection Parameters. */
-#define UUID_PNP_ID                                    0x2A50  /**< Peripheral Preferred Connection Parameters. */
+#define UUID_SYSTEM_ID                                 0x2A23  /**< System ID. */
+#define UUID_IEEE_11073_20601_RCDL                     0x2A2A  /**< IEEE 11073-20601 Regulatory Certification Data List. */
+#define UUID_PNP_ID                                    0x2A50  /**< PNP ID. */
 
 
 // *****************************************************************************
@@ -72,46 +71,46 @@
 // Section: Local Variables
 // *****************************************************************************
 // *****************************************************************************
-const uint8_t g_svcUuidDis[ATT_UUID_LENGTH_2] =                 {UINT16_TO_BYTES(UUID_DEVICE_INFO_SERVICE)};
+static const uint8_t s_svcUuidDis[ATT_UUID_LENGTH_2] =                 {UINT16_TO_BYTES(UUID_DEVICE_INFO_SERVICE)};
 
 #ifdef DIS_MANU_NAME_ENABLE
-const uint8_t g_chUuidManuName[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_MANUFACTURER_NAME)};
+static const uint8_t s_chUuidManuName[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_MANUFACTURER_NAME)};
 #endif
 
 #ifdef DIS_MODEL_NUM_ENABLE
-const uint8_t g_chUuidModelNum[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_MODEL_NUMBER)};
+static const uint8_t s_chUuidModelNum[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_MODEL_NUMBER)};
 #endif
 
 #ifdef DIS_SERIAL_NUM_ENABLE
-const uint8_t g_chUuidSerialNum[ATT_UUID_LENGTH_2] =            {UINT16_TO_BYTES(UUID_SERIAL_NUMBER)};
+static const uint8_t s_chUuidSerialNum[ATT_UUID_LENGTH_2] =            {UINT16_TO_BYTES(UUID_SERIAL_NUMBER)};
 #endif
 
 #ifdef DIS_HW_REV_ENABLE
-const uint8_t g_chUuidHwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_HARDWARE_REVISION)};
+static const uint8_t s_chUuidHwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_HARDWARE_REVISION)};
 #endif
 
 #ifdef DIS_FW_REV_ENABLE
-const uint8_t g_chUuidFwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_FIRMWARE_REVISION)};
+static const uint8_t s_chUuidFwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_FIRMWARE_REVISION)};
 #endif
 
 #ifdef DIS_SW_REV_ENABLE
-const uint8_t g_chUuidSwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_SOFTWARE_REVISION)};
+static const uint8_t s_chUuidSwRev[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_SOFTWARE_REVISION)};
 #endif
 
 #ifdef DIS_SYSTEM_ID_ENABLE
-const uint8_t g_chUuidSystemId[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_SYSTEM_ID)};
+static const uint8_t s_chUuidSystemId[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_SYSTEM_ID)};
 #endif
 
 #ifdef DIS_IEEE_ENABLE
-const uint8_t g_chUuidIeeeRcdl[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_IEEE_11073_20601_RCDL)};
+static const uint8_t s_chUuidIeeeRcdl[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_IEEE_11073_20601_RCDL)};
 #endif
 
 #ifdef DIS_PNP_ID_ENABLE
-const uint8_t g_chUuidPnpId[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_PNP_ID)};
+static const uint8_t s_chUuidPnpId[ATT_UUID_LENGTH_2] =                {UINT16_TO_BYTES(UUID_PNP_ID)};
 #endif
 
 /* Device Information Service Declaration */
-static const uint16_t s_svcUuidDisLen = sizeof(g_svcUuidDis);
+static const uint16_t s_svcUuidDisLen = sizeof(s_svcUuidDis);
 
 #ifdef DIS_MANU_NAME_ENABLE
 /* Manufacture Name Characteristic */
@@ -217,7 +216,7 @@ static uint8_t s_disAttrIndex;
 // *****************************************************************************
 // *****************************************************************************
 
-uint16_t BLE_DIS_Add()
+uint16_t BLE_DIS_Add(void)
 {
     uint16_t result;
 
@@ -225,9 +224,9 @@ uint16_t BLE_DIS_Add()
 
     /* Initialize attribute list */
     s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_gattUuidPrimSvc;
-    s_disList[s_disAttrIndex].p_value = (uint8_t *) g_svcUuidDis;
+    s_disList[s_disAttrIndex].p_value = (uint8_t *) s_svcUuidDis;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_svcUuidDisLen;
-    s_disList[s_disAttrIndex].maxLen = sizeof(g_svcUuidDis);
+    s_disList[s_disAttrIndex].maxLen = sizeof(s_svcUuidDis);
     s_disList[s_disAttrIndex].settings = 0;
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
@@ -242,7 +241,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidManuName;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidManuName;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_manuNameVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_manuNameValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_manuNameVal);
@@ -261,7 +260,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidModelNum;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidModelNum;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_modelNumVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_modelNumValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_modelNumVal);
@@ -280,7 +279,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidSerialNum;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidSerialNum;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_serialNumVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_serialNumValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_serialNumVal);
@@ -299,7 +298,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidHwRev;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidHwRev;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_hwRevVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_hwRevValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_hwRevVal);
@@ -318,7 +317,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidFwRev;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidFwRev;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_fwRevVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_fwRevValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_fwRevVal);
@@ -337,7 +336,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidSwRev;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidSwRev;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_swRevVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_swRevValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_swRevVal);
@@ -356,7 +355,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidSystemId;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidSystemId;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_systemIdVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_systemIdValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_systemIdVal);
@@ -375,7 +374,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidIeeeRcdl;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidIeeeRcdl;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_ieeeVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_ieeeValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_ieeeVal);
@@ -394,7 +393,7 @@ uint16_t BLE_DIS_Add()
     s_disList[s_disAttrIndex].permissions = PERMISSION_READ;
     s_disAttrIndex++;
 
-    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) g_chUuidPnpId;
+    s_disList[s_disAttrIndex].p_uuid = (uint8_t *) s_chUuidPnpId;
     s_disList[s_disAttrIndex].p_value = (uint8_t *) s_pnpIdVal;
     s_disList[s_disAttrIndex].p_len = (uint16_t *) &s_pnpIdValLen;
     s_disList[s_disAttrIndex].maxLen = sizeof(s_pnpIdVal);

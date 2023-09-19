@@ -157,6 +157,7 @@ void BSP_TempSensorOpen();
 ******************************************************************************/
 void BSP_ReadTempSensor(uint16_t *measuredValue);
 
+
 #endif
 #endif
 // eof pic32cxBSP.c

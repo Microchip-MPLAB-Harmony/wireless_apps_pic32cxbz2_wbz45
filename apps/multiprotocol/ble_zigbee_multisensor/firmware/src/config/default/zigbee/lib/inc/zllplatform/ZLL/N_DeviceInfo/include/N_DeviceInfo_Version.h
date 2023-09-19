@@ -44,11 +44,11 @@
 
 #define PRODUCT                 "ZB"
 #define MAJOR_NUM               "5"
-#define MINOR_NUM               "0"
+#define MINOR_NUM               "1"
 #define MINOR_DERIVATIVE_NUM    "0"
 #define BRANCH_ID               "3"
 #define BRANCH_ITERATION_NUM    "1"
-#define RELEASE_M               "E"
+#define RELEASE_M               "P"
 
 /* Release Version Information */
 #define VER_PRODUCT_INFO    PRODUCT"_V"MAJOR_NUM"."MINOR_NUM"."MINOR_DERIVATIVE_NUM"_"BRANCH_ID"."BRANCH_ITERATION_NUM"_"RELEASE_M

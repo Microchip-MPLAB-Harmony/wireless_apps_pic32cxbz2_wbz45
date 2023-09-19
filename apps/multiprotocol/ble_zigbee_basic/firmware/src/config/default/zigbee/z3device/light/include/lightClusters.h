@@ -50,25 +50,28 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
+
+
+
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_ON_OFF_LIGHT)
-#define LIGHT_SERVER_CLUSTERS_COUNT     6
+#define LIGHT_SERVER_CLUSTERS_COUNT     6 
 #elif APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_DIMMABLE_LIGHT
-#define LIGHT_SERVER_CLUSTERS_COUNT     7
+#define LIGHT_SERVER_CLUSTERS_COUNT     7 
 #elif (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_TEMPERATURE_COLOR_LIGHT)
-#define LIGHT_SERVER_CLUSTERS_COUNT     8
+#define LIGHT_SERVER_CLUSTERS_COUNT     8 
 #endif
 
 #if ZLO_EXTRA_CLUSTERS_SUPPORT == 1
   #ifdef OTAU_CLIENT
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   4
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   4 
   #else
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   3
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   3 
   #endif
 #else // no extra clusters
   #ifdef OTAU_CLIENT
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   3
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   3 
   #else
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   2
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   2 
   #endif
 #endif // ZLO_EXTRA_CLUSTERS_SUPPORT == 1
 

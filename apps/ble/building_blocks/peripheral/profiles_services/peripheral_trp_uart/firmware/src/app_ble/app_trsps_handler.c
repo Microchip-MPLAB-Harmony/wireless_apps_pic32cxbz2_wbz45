@@ -44,6 +44,8 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+#include "app_trsps_handler.h"
+
 #include <string.h>
 #include "stdint.h"
 #include "ble_trsps/ble_trsps.h"

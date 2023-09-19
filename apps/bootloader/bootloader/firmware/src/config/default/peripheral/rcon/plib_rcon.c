@@ -84,6 +84,6 @@ void __attribute__((noreturn)) RCON_SoftwareReset( void )
     /* Prevent any unwanted code execution until reset occurs */
     while(true)
     {
-
+        /* Nothing to do */
     }
 }

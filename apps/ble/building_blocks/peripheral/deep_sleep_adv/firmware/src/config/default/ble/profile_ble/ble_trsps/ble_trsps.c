@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE Transparent Server Profile Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_trsps.c
-
-  Summary:
-    This file contains the BLE Transparent Server functions for application user.
-
-  Description:
-    This file contains the BLE Transparent Server functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Transparent Server Profile Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_trsps.c
+
+  Summary:
+    This file contains the BLE Transparent Server functions for application user.
+
+  Description:
+    This file contains the BLE Transparent Server functions for application user.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -54,7 +53,7 @@
 #include "ble_util/mw_assert.h"
 #include "ble_util/byte_stream.h"
 #include "ble_trs/ble_trs.h"
-#include "ble_trsps/ble_trsps.h"
+#include "ble_trsps.h"
 
 
 // *****************************************************************************
@@ -118,6 +117,16 @@
 #define BLE_TRSPS_RETRY_TYPE_ERR                0x02    /**< Definition of error retry type. */
 /** @} */
 
+/**@defgroup BLE_TRSPS_STATE TRSPS state
+ * @brief The definition of BLE TRSPS connection state
+ * @{ */
+typedef enum BLE_TRSPS_State_T
+{
+    BLE_TRSPS_STATE_IDLE = 0x00,        /**< Default state (Disconnected). */
+    BLE_TRSPS_STATE_CONNECTED           /**< Connected. */
+} BLE_TRSPS_State_T;
+/** @} */
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Data Types
@@ -145,6 +154,7 @@ typedef struct BLE_TRSPS_QueueIn_T
 typedef struct BLE_TRSPS_ConnList_T
 {
     uint8_t                    trsState;                /**< BLE transparent service current state. @ref BLE_TRSPS_STATUS.*/
+    uint8_t                    state;                   /**< Connection state. */
     uint16_t                   connHandle;              /**< Connection handle associated with this connection. */
     uint16_t                   attMtu;                  /**< Record the current connection MTU size. */
     uint8_t                    cbfcEnable;              /**< Credit based flow enable. @ref BLE_TRSPS_CREDIT_BASED_FLOW_CONTROL. */
@@ -192,7 +202,7 @@ static BLE_TRSPS_ConnList_T * ble_trsps_GetConnListByHandle(uint16_t connHandle)
 
     for(i=0; i<BLE_TRSPS_MAX_CONN_NBR;i++)
     {
-        if (s_trsConnList[i].connHandle == connHandle)
+        if ((s_trsConnList[i].state == BLE_TRSPS_STATE_CONNECTED) && (s_trsConnList[i].connHandle == connHandle))
         {
             return &s_trsConnList[i];
         }
@@ -207,8 +217,9 @@ static BLE_TRSPS_ConnList_T *ble_trsps_GetFreeConnList()
 
     for(i=0; i<BLE_TRSPS_MAX_CONN_NBR;i++)
     {
-        if (s_trsConnList[i].connHandle == 0)
+        if (s_trsConnList[i].state == BLE_TRSPS_STATE_IDLE)
         {
+            s_trsConnList[i].state = BLE_TRSPS_STATE_CONNECTED;
             return &s_trsConnList[i];
         }
     }
@@ -231,8 +242,8 @@ static uint16_t ble_trsps_ServerReturnCredit(BLE_TRSPS_ConnList_T *p_conn)
     p_buf=hvParams.charValue;
     U8_TO_STREAM(&p_buf, BLE_TRSPS_CBFC_OPCODE_SUCCESS);
     U8_TO_STREAM(&p_buf, BLE_TRSPS_CBFC_OPCODE_SERVER_ENABLED);
-    U16_TO_STREAM_BE(&p_buf, p_conn->attMtu)
-    U8_TO_STREAM(&p_buf, p_conn->peerCredit)
+    U16_TO_STREAM_BE(&p_buf, p_conn->attMtu);
+    U8_TO_STREAM(&p_buf, p_conn->peerCredit);
 
     if (GATTS_SendHandleValue(p_conn->connHandle, &hvParams) == MBA_RES_SUCCESS)
     {
@@ -303,7 +314,7 @@ static bool ble_trsps_CheckQueuedTask(void)
     
     for(i=0; i < BLE_TRSPS_MAX_CONN_NBR; i++)
     {
-        if ((s_trsConnList[i].connHandle != 0) && (s_trsConnList[i].peerCredit >= BLE_TRSPS_MAX_RETURN_CREDIT))
+        if ((s_trsConnList[i].state == BLE_TRSPS_STATE_CONNECTED) && (s_trsConnList[i].peerCredit >= BLE_TRSPS_MAX_RETURN_CREDIT))
         {
             return true;
         }
@@ -357,7 +368,8 @@ static void ble_trsps_ProcessQueuedTask(uint16_t connHandle)
             ble_trsps_FreeRetryData(p_connList);
         }
     }
-    if (p_connList->connHandle != 0)
+
+    if (p_connList->state == BLE_TRSPS_STATE_CONNECTED)
     {
         if (p_connList->peerCredit >= BLE_TRSPS_MAX_RETURN_CREDIT)
             ble_trsps_ServerReturnCredit(p_connList);
@@ -674,7 +686,7 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
 
     if (p_event->eventField.onWrite.writeType == ATT_PREPARE_WRITE_REQ)
     {
-        error = ATT_ERRCODE_APPLICATION_ERROR;
+        error = ATT_ERRCODE_REQUEST_NOT_SUPPORT;
     }
 
     if (!error)

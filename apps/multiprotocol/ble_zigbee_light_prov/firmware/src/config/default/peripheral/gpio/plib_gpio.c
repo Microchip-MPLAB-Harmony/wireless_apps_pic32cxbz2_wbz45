@@ -42,6 +42,7 @@
 //DOM-IGNORE-END
 
 #include "plib_gpio.h"
+#include "interrupts.h"
 
 
 
@@ -73,6 +74,8 @@ void GPIO_Initialize ( void )
 
     /* PPS Output Remapping */
     PPS_REGS->PPS_RPB0G1R = 21U;
+    PPS_REGS->PPS_RPB3G1R = 6U;
+    PPS_REGS->PPS_RPB5G2R = 2U;
     PPS_REGS->PPS_RPB3G4R = 21U;
     PPS_REGS->PPS_RPB5G3R = 22U;
 

@@ -67,13 +67,15 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
         case BLE_GAP_EVT_CONNECTED:
         {
             /* TODO: implement your application code.*/
+            linkState = APP_BLE_STATE_CONNECTED;
+            conn_hdl = p_event->eventField.evtConnect.connHandle;
         }
         break;
 
         case BLE_GAP_EVT_DISCONNECTED:
         {
             /* TODO: implement your application code.*/
-
+            linkState = APP_BLE_STATE_STANDBY;
         }
         break;
 
@@ -195,6 +197,12 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
         {
             /* TODO: implement your application code.*/
 
+        }
+        break;
+
+        case BLE_GAP_EVT_PATH_LOSS_THRESHOLD:
+        {
+            /* TODO: implement your application code.*/
         }
         break;
 

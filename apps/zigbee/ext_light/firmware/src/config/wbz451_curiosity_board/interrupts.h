@@ -63,11 +63,15 @@ void HardFault_Handler (void);
 void MemoryManagement_Handler (void);
 void BusFault_Handler (void);
 void UsageFault_Handler (void);
+void vPortSVCHandler (void);
 void DebugMonitor_Handler (void);
+void xPortPendSVHandler (void);
 void xPortSysTickHandler (void);
 void EIC_InterruptHandler (void);
 void NVM_InterruptHandler (void);
 void SERCOM0_USART_InterruptHandler (void);
+void TCC0_InterruptHandler (void);
+void TC0_TimerInterruptHandler (void);
 
 
 

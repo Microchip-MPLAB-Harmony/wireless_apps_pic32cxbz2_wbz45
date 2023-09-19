@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Utility Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_ble_utility.c
-
-  Summary:
-    This file contains the Application BLE functions for this project.
-
-  Description:
-    This file contains the Application BLE functions for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,15 +20,31 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Application BLE Utility Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_ble_utility.c
+
+  Summary:
+    This file contains the Application BLE functions for this project.
+
+  Description:
+    This file contains the Application BLE functions for this project.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include <stdint.h>
 #include "osal/osal_freertos_extend.h"
+#include "app_ble_utility.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -69,7 +68,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-bool APP_ImageValidation()
+bool APP_ImageValidation(void)
 {
     uint8_t *p_ram;
     bool    result;

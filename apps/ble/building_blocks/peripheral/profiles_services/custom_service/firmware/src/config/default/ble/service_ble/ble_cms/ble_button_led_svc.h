@@ -1,22 +1,6 @@
+
 /*******************************************************************************
-  BLE Button_led Service Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_button_led_svc.h
-
-  Summary:
-    This file contains the BLE Button_led Service functions for application user.
-
-  Description:
-    This file contains the BLE Button_led Service functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +21,23 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Button_led Service Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_button_led_svc.h
+
+  Summary:
+    This file contains the BLE Button_led Service functions for application user.
+
+  Description:
+    This file contains the BLE Button_led Service functions for application user.
+ *******************************************************************************/
+
 
 /**
  * @addtogroup BLE_BUTTON_LED BLE BUTTON_LED
@@ -54,6 +54,14 @@
 // *****************************************************************************
 // *****************************************************************************
 #include <stdint.h>
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -97,7 +105,13 @@ typedef enum BLE_BUTTON_LED_AttributeHandle_T
  *@return MBA_RES_NO_RESOURCE                Fail to register service.
  *
  */
-uint16_t BLE_BUTTON_LED_Add();
+uint16_t BLE_BUTTON_LED_Add(void);
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 
 #endif

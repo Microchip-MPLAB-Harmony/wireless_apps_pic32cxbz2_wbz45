@@ -106,7 +106,7 @@ ZCL_IlluminanceMeasurementClusterServerAttributes_t lsIlluminanceMeasurementClus
   ZCL_DEFINE_ILLUMINANCE_MEASUREMENT_CLUSTER_SERVER_ATTRIBUTES(ILLUMINANCE_MEASUREMENT_VAL_MIN_REPORT_PERIOD, ILLUMINANCE_MEASUREMENT_VAL_MAX_REPORT_PERIOD)
 };
 
-
+ZCL_IlluminanceMeasurementClusterServerAttributes_t __attribute__((persistent)) backuplsIlluminanceMeasurementClusterServerAttributes;
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
@@ -218,7 +218,21 @@ static void ZCL_LsIlluminanceAttributeEventInd(ZCL_Addressing_t *addressing, ZCL
     PDS_Store(APP_MS_ILLU_MEASURED_VALUE_MEM_ID);
   }
 }
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void lsBackupLsAttributes(void)
+{
+  memcpy4ByteAligned(&backuplsIlluminanceMeasurementClusterServerAttributes, &lsIlluminanceMeasurementClusterServerAttributes, sizeof(ZCL_IlluminanceMeasurementClusterServerAttributes_t));
+}
 
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void lsRestoreLsAttributes(void)
+{ 
+  memcpy4ByteAligned(&lsIlluminanceMeasurementClusterServerAttributes,&backuplsIlluminanceMeasurementClusterServerAttributes,  sizeof(ZCL_IlluminanceMeasurementClusterServerAttributes_t));
+}
 #endif  //#ifdef APP_SENSOR_TYPE_LIGHT_SENSOR
 #endif  //#if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_MULTI_SENSOR)
 

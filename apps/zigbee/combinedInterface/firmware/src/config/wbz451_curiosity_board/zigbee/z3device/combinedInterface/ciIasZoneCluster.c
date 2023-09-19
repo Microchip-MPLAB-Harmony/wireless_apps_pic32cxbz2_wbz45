@@ -141,7 +141,7 @@ static ZCL_Status_t zoneStatusChangeNotificationCommandInd(ZCL_Addressing_t *add
 ******************************************************************************/
 static void zoneTableEntry(ZCL_ZoneEnrollResCommand_t *response, ZCL_ZoneEnrollRequest_t *payload, ZCL_Addressing_t *addressing)
 {
-  uint64_t zoneServerAddr;
+  uint64_t zoneServerAddr = DEFAULT_EXT_ADDR;
   uint8_t freeIndex = 0xFF;
   uint8_t zoneEntryIndex = 0;
   response->enrollResponseCode = ENROLL_RESP_TOO_MANY_ZONES;

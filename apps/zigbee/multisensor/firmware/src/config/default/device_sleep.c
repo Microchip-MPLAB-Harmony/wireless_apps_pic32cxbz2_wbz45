@@ -1,3 +1,19 @@
+/*******************************************************************************
+  Sleep System Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    device_sleep.c
+
+  Summary:
+    This file contains the Device Sleep functions.
+
+  Description:
+    This file contains the Device Sleep functions.
+ *******************************************************************************/
+
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
@@ -818,15 +834,6 @@ void DEVICE_ExitSleepMode(void)
 
     // Restore all PMD setting
     device_configPmdReg(DEVICE_SLEEP_EXIT_SLEEP);
-
-
-    //TODO: Can be removed
-#if 0
-    if (CFG_REGS->CFG_PMD2 & CFG_PMD2_REFO1MD_Msk)
-    {
-        CFG_REGS->CFG_PMD2 &= ~CFG_PMD2_REFO1MD_Msk;   //Enable PMD2_REFO1
-    }
-#endif
 
     //Restore the setting of REFOxCON register
     device_configRefOscReg(DEVICE_SLEEP_EXIT_SLEEP);

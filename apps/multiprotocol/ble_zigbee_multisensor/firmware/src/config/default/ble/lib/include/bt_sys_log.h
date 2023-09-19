@@ -58,6 +58,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -67,10 +75,10 @@
 /**@addtogroup BT_SYS_LOG_ENUMS Enumerations
  * @{ */
 
-/**@brief Log type. */
+/**@brief The definition of log type of HCI logs. */
 typedef enum BT_SYS_LogType_T
 {
-    BT_SYS_LOG_TYPE_HCI_COMMAND = (0x0100+0x0001),          /**< HCI Command. */
+    BT_SYS_LOG_TYPE_HCI_COMMAND = (0x0100U+0x0001U),          /**< HCI Command. */
     BT_SYS_LOG_TYPE_HCI_ACL_TX,                             /**< HCI ACL Tx Packet. */
     BT_SYS_LOG_TYPE_HCI_ACL_RX,                             /**< HCI ACL Rx Packet. */
     BT_SYS_LOG_TYPE_HCI_EVENT,                              /**< HCI Event. */
@@ -120,6 +128,12 @@ void BT_SYS_LogEnable(BT_SYS_LogEventCb_T logCb);
 /**
   @}
 */
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif//BT_SYS_LOG_H
 

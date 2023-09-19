@@ -1,22 +1,5 @@
 /*******************************************************************************
-  BLE OTA Service Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_otas.h
-
-  Summary:
-    This file contains the BLE OTA Service functions for application user.
-
-  Description:
-    This file contains the BLE OTA Service functions for application user.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,7 +20,22 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE OTA Service Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_otas.h
+
+  Summary:
+    This file contains the BLE OTA Service functions for application user.
+
+  Description:
+    This file contains the BLE OTA Service functions for application user.
+ *******************************************************************************/
 
 
 /**
@@ -50,11 +48,13 @@
 #define BLE_OTAS_H
 
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 
 // *****************************************************************************
@@ -107,6 +107,12 @@ typedef enum BLE_OTAS_AttributeHandle_T
  *                              the start handle of the service is smaller than @ref GATTS_APP_SVC_START_HDL.
  */
 uint16_t BLE_OTAS_Add(void);
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif
 

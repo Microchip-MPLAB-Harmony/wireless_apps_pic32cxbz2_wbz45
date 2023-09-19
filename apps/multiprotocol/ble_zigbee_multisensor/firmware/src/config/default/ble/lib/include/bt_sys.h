@@ -41,7 +41,8 @@
 
 
 /**
- * @addtogroup BT_SYS
+ * @defgroup BT_SYS Bluetooth System
+ * @brief Definitions of Bluetooth system
  * @{
  */
 
@@ -55,11 +56,20 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
+
 
 /**@addtogroup BT_SYS_DEFINES Defines
  * @{ */
@@ -67,28 +77,62 @@
 /**@defgroup BT_SYS_ADDR_LEN Length of Bluetooth address
  * @brief Length of Bluetooth address.
  * @{ */
-#define BT_SYS_DEV_ADDR_LEN             7           /**< Length of the Bluetooth address. */
+#define BT_SYS_DEV_ADDR_LEN                 (7U)           /**< Length of the Bluetooth address. */
 /**@} */ //BT_SYS_ADDR_LEN
 
 
 /**@defgroup BT_SYS_TRACE_MASK Trace Mask
  * @brief The definition of trace mask.
  * @{ */
-#define BT_SYS_TRACE_INFO_LL_H          1           /**< LL trace high priority information. */
-#define BT_SYS_TRACE_INFO_LL_L          (1<<1)      /**< LL trace low priority information. */
-#define BT_SYS_TRACE_INFO_HOST          (1<<2)      /**< Host trace info. */
+#define BT_SYS_TRACE_INFO_LL_H              (1U)          /**< LL trace high priority information. */
+#define BT_SYS_TRACE_INFO_LL_L              (1U<<1U)      /**< LL trace low priority information. */
+#define BT_SYS_TRACE_INFO_HOST              (1U<<2U)      /**< Host trace info. */
 /**@} */ //BT_SYS_TRACE_MASK
 
 
-/**@defgroup BT_SYS_RF_SUSPEND_STATUS Rf Suspned Status
- * @brief The definition of rf suspend status
+/**@defgroup BT_SYS_TRACE_LEVEL Trace Level
+ * @brief The definition of trace level.
  * @{ */
-#define BT_SYS_RF_NOT_SUSPEND               0          /**< BLE RF is not allowed to suspend. */
-#define BT_SYS_RF_SUSPENDED_NO_SLEEP        1          /**< BLE RF is allowed to suspended without ble sleep mode. */
-#define BT_SYS_RF_SUSPENDED_WITH_SLEEP      2          /**< BLE RF is allowed to suspended with ble sleep mode. */
+#define BT_SYS_TRACE_LEVEL_ERR				0			  /**< Error level. */
+#define BT_SYS_TRACE_LEVEL_API				1		      /**< API level. */
+#define BT_SYS_TRACE_LEVEL_OP				2			  /**< OP level. */
+/**@} */ //BT_SYS_TRACE_LEVEL
+
+
+/**@defgroup BT_SYS_RF_SUSPEND_STATUS Rf Suspned Status
+ * @brief The definition of rf suspend status.
+ * @{ */
+#define BT_SYS_RF_NOT_SUSPEND               (0U)          /**< BLE RF is not allowed to suspend. */
+#define BT_SYS_RF_SUSPENDED_NO_SLEEP        (1U)          /**< BLE RF is allowed to suspended without ble sleep mode. */
+#define BT_SYS_RF_SUSPENDED_WITH_SLEEP      (2U)          /**< BLE RF is allowed to suspended with ble sleep mode. */
 /**@} */ //BT_SYS_RF_SUSPEND
 
 /**@} */ //BT_SYS_DEFINES
+
+
+/**@addtogroup BT_SYS_ENUM Enumerations
+ * @{ */
+ 
+/**@defgroup BT_SYS_TRACE_FMT Trace format
+ * @{ */
+/**@brief The definition of trace format. */
+typedef enum BT_SYS_TraceFmt_T{
+	BT_SYS_FMT_ASCII,	                                 /**< ASCII. */
+}BT_SYS_TraceFmt_T;
+/**@} */ //BT_SYS_TRACE_FMT
+
+
+/**@defgroup BT_SYS_ERR BT system error code
+ * @{ */
+/**@brief The definition of BT system error code. */
+typedef enum BT_SYS_ErrCode_T{
+	BT_SYS_ERR_OOM,	                                 	/**< Out of memory. */
+	BT_SYS_ERR_END										/**< End of error code definition. */
+}BT_SYS_ErrCode_T;
+/**@} */ //BT_SYS_ERR
+
+
+/**@} */ //BT_SYS_ENUM
 
 // *****************************************************************************
 // *****************************************************************************
@@ -101,26 +145,39 @@
 /**@brief Bluetooth system configuration. */
 typedef struct BT_SYS_Cfg_T
 {
-    uint8_t     addrValid:1;                        /**< Set true if devAddr field is valid. */
-    uint8_t     rssiOffsetValid:1;                  /**< Set true if rssiOffset field is valid. */
-    uint8_t     antennaGainValid:1;                 /**< Set true if antennaGain field is valid. */
-    uint8_t     devAddr[BT_SYS_DEV_ADDR_LEN];       /**< Device address. */
-    int8_t      rssiOffset;                         /**< RSSI offset. */
-    int8_t      antennaGain;                        /**< Antenna gain. */
+    int8_t      	antennaGain;                        /**< Antenna gain. */
+    uint8_t     	addrValid:1;                        /**< Set true if devAddr field is valid. */
+    uint8_t     	rssiOffsetValid:1;                  /**< Set true if rssiOffset field is valid. */
+    uint8_t     	devAddr[BT_SYS_DEV_ADDR_LEN];       /**< Device address. */
+    int8_t      	rssiOffset;                         /**< RSSI offset. */
 } BT_SYS_Cfg_T;
-
-/**@brief BT system trace callback type. This callback function sends trace events to the application. */
-typedef void (*BT_SYS_TraceEventCb_T)(uint8_t length, uint8_t *p_tracePayload);
 
 /**@brief Bluetooth system initialization. */
 typedef struct BT_SYS_Option_T
 {
-    uint32_t        cmnMemSize;                         /**< Common memory size. */
-    uint8_t         *p_cmnMemAddr;                      /**< Common memory address. */
-    uint32_t        *p_sramVecorTable;                  /**< Vector table. */
+    uint32_t        cmnMemSize;                     	/**< Common memory size. */
+    uint8_t         *p_cmnMemAddr;                  	/**< Common memory address. */
+    uint32_t        *p_sramVecorTable;              	/**< Vector table. */
+    uint8_t			hciMode:1;							/**< HCI mode option. Set TRUE to enable HCI mode. */
 } BT_SYS_Option_T;
 
+/**@brief Trace event additional information. */
+typedef struct BT_SYS_TraceInfo_T
+{
+	uint8_t			level;								/**< Level. */
+    uint8_t     	componentId;                        /**< Component id. */
+    uint8_t     	eventId;                  			/**< Event id. */
+} BT_SYS_TraceInfo_T;
+
+/**@brief BT system trace callback type. This callback function sends trace events to the application. */
+typedef void (*BT_SYS_TraceEventCb_T)(BT_SYS_TraceInfo_T *p_traceInfo, uint8_t length, uint8_t *p_tracePayload);
+
+
+/**@brief BT system error callback type.*/
+typedef void(*BT_SYS_ErrCb_T)(BT_SYS_ErrCode_T errCode);
+
 /**@} */ //BT_SYS_STRUCTS
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -131,7 +188,7 @@ typedef struct BT_SYS_Option_T
 /**@addtogroup BT_SYS_FUNS Functions
  * @{ */
 
-/**@brief Initialize Bluetooth system
+/**@brief Initialize Bluetooth system.
  *
  * @param[in] p_reqQueueHandle                  OS handle for Bluetooth internal task.
  * @param[in] p_osalApiList                     OSAL api list.
@@ -152,20 +209,12 @@ bool BT_SYS_Init(void *p_reqQueueHandle, void *p_osalApiList, BT_SYS_Option_T *p
 void BT_SYS_ReadVersion(uint32_t *p_version);
 
 
-/**@brief Query if BT is ready for idle.
- *
- * @retval true                                     Ready for idle.
- * @retval false                                    Not ready for idle.
- */
-bool BT_SYS_Ready4Idle();
-
-
 /**@brief Query if BT is sleeping.
  *
  * @retval true                                     BT is sleeping.
  * @retval false                                    BT is not sleeping.
  */
-bool BT_SYS_GetSleepMode();
+bool BT_SYS_GetSleepMode(void);
 
 
 /**@brief Request BT enter sleep mode.
@@ -190,41 +239,40 @@ bool BT_SYS_EnterSleepMode(uint32_t ulRtcFrequency, uint32_t ulRtcCurrentCnt);
 bool BT_SYS_AllowSystemSleep(uint32_t ulRtcFrequency, uint32_t ulRtcCurrentCnt);
 
 
-/**@brief Request BT enter deep sleep mode.
- *
- * @retval None
- */
-void BT_SYS_EnterDeepSleepMode();
+/**@brief Request BT enter deep sleep mode. */
+void BT_SYS_EnterDeepSleepMode(void);
 
 
 /**@brief Request BT suspend RF.
  *
  * @param[in] enable                                Set true to suspend RF. Otherwise set false.
  *
- * @retval BT_SYS_RF_SUSPEND_STATUS                  BT system RF Suspend status. See @ref BT_SYS_RF_SUSPEND_STATUS.
+ * @retval BT_SYS_RF_SUSPEND_STATUS                 BT system RF Suspend status. See @ref BT_SYS_RF_SUSPEND_STATUS.
  */
-uint8_t BT_SYS_RfSuspendReq(uint8_t enable);
+uint8_t BT_SYS_RfSuspendReq(bool enable);
 
 
 /**@brief Enable BT trace message indication.
  *
+ * @param[in] fmt                                   BT system trace format. See @ref BT_SYS_TRACE_FMT.
  * @param[in] traceMask                             BT system trace mask. See @ref BT_SYS_TRACE_MASK.
  * @param[in] traceCb                               BT system trace callback.
  *
  */
-void BT_SYS_TraceEnable(uint32_t traceMask, BT_SYS_TraceEventCb_T traceCb);
+void BT_SYS_TraceEnable(BT_SYS_TraceFmt_T fmt, uint32_t traceMask, BT_SYS_TraceEventCb_T traceCb);
 
-/**@brief Enable BT time sensitive trace message indication.
+
+/**@brief Register BT system error callback.
  *
- * @param[in] traceMask                             BT system trace mask. See @ref BT_SYS_TRACE_MASK.
- * @param[in] traceCb                               BT system trace callback.
+ * @param[in] errHandler                             BT system error callback function.
  *
  */
-void BT_SYS_TraceTimeSensEnable(uint32_t traceMask, BT_SYS_TraceEventCb_T traceCb);
+void BT_SYS_ErrRegister(BT_SYS_ErrCb_T errHandler);
 
-/**@brief Hook Bluetooth task
+
+/**@brief Hook Bluetooth task.
  *
- * @param[in] p_param Pointer that will be used as the parameter for the task
+ * @param[in] p_param Pointer that will be used as the parameter for the task.
  *
  */
 void BM_Task(void *p_param);
@@ -234,6 +282,12 @@ void BM_Task(void *p_param);
 /**
   @}
 */
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 
 #endif//BT_SYS_H
 

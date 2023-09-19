@@ -38,16 +38,24 @@
     Application shall call the "STACK_EventRegister" in the "APP_Initialize" function 
     to receive the BLE relevant events.
  *******************************************************************************/
-
+ 
 
 /**
- * @addtogroup STACK_MGR STACK
+ * @defgroup STACK_MGR STACK
  * @{
- * @brief This module defines the STACK interface to the BLE Library
+ * @brief This module defines the STACK interface to the BLE Library.
  */
 
 #ifndef STACK_MGR_H
 #define STACK_MGR_H
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -55,17 +63,12 @@
 // *****************************************************************************
 // *****************************************************************************
 
-/**@addtogroup STACK_DEFINES Defines
- * @{ */
- 
-/**@} */ //STACK_DEFINES
-
 /**@addtogroup STACK_ENUMS Enumerations
  * @{ */
 
-/**@brief The definitions of stack group id*/
+/**@brief The definitions of stack group id. */
 typedef enum STACK_GroupId_T{
-    STACK_GRP_NONE,
+    STACK_GRP_NONE = 0U,
     STACK_GRP_BLE_GAP,                      /**< Stack group: BLE GAP. */
     STACK_GRP_BLE_L2CAP,                    /**< Stack group: BLE L2CAP. */
     STACK_GRP_BLE_SMP,                      /**< Stack group: BLE SMP. */
@@ -86,9 +89,9 @@ typedef enum STACK_GroupId_T{
 /**@brief STACK callback event. */
 typedef struct STACK_Event_T
 {
-    STACK_GroupId_T     groupId;                    /**< Group id. See @ref STACK_GroupId_T */
-    uint16_t            evtLen;                     /**< Length of the event */
-    uint8_t             *p_event;                   /**< Pointer to the event field */
+    STACK_GroupId_T     groupId;                    /**< Group id. See @ref STACK_GroupId_T. */
+    uint16_t            evtLen;                     /**< Length of the event. */
+    uint8_t             *p_event;                   /**< Pointer to the event field. */
 } STACK_Event_T;
 
 /**@brief STACK callback type. This callback function sends STACK events to the application. */
@@ -113,6 +116,12 @@ typedef void (*STACK_EventCb_T)(STACK_Event_T *p_event);
 void STACK_EventRegister(STACK_EventCb_T eventCb);
 
 /**@} */ //STACK_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 
 #endif
 

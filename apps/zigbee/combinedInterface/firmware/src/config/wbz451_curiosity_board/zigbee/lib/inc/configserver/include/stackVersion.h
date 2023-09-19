@@ -96,4 +96,4 @@ Example:
 ******************************************************************************/
 
 #undef  CS_STACK_VERSION_VALUE
-#define CS_STACK_VERSION_VALUE  0X50030700 //ZB_V5.0.0_3.1E
+#define CS_STACK_VERSION_VALUE  0X51030500 //ZB_V5.1.0_3.1P

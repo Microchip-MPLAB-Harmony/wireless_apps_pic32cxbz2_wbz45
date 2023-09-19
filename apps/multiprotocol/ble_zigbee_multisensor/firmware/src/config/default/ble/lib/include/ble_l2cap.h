@@ -41,7 +41,8 @@
 
 
 /**
- * @addtogroup BLE_L2CAP
+ * @defgroup BLE_L2CAP Logic Link Control And Adaption Protocol (L2CAP)
+ * @brief This module defines the L2CAP interface to the BLE Library
  * @{
  * @brief Header file for the BLE Logical Link Control for protocol/service multiplexers library.
  * @note Definitions and prototypes for the BLE L2CAP stack layer application programming interface.
@@ -49,6 +50,14 @@
 
 #ifndef BLE_L2CAP_H
 #define BLE_L2CAP_H
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -72,77 +81,77 @@
 /**@defgroup BLE_L2CAP_SPSM_RANGE SPSM range
  * @brief Range for SPSM.
  * @{ */
-#define BLE_L2CAP_SPSM_DYNAMIC_MIN                  0x0080          /**< The minimum dynamic SPSM value */
-#define BLE_L2CAP_SPSM_DYNAMIC_MAX                  0x00ff          /**< The maximum dynamic SPSM value */
+#define BLE_L2CAP_SPSM_DYNAMIC_MIN                  (0x0080U)          /**< The minimum dynamic SPSM value. */
+#define BLE_L2CAP_SPSM_DYNAMIC_MAX                  (0x00ffU)          /**< The maximum dynamic SPSM value. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_PDU_SIZE Maximum PDU size
- * @brief The definition of maximum PDU size
+ * @brief The definition of maximum PDU size.
  * @{ */
-#define BLE_L2CAP_MAX_PDU_SIZE                      1024            /**< The maximum PDU size */
+#define BLE_L2CAP_MAX_PDU_SIZE                      (1024U)            /**< The maximum PDU size. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_MTU_SIZE L2CAP minimum MTU size
- * @brief The definition of minimum MTU size
+ * @brief The definition of minimum MTU size.
  * @{ */
-#define BLE_L2CAP_MIN_MTU_SIZE                      23              /**< The minimum MTU size */
+#define BLE_L2CAP_MIN_MTU_SIZE                      (23U)              /**< The minimum MTU size. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_MPS_SIZE Minimum MPS size
- * @brief The definition of minimum MPS size
+ * @brief The definition of minimum MPS size.
  * @{ */
-#define BLE_L2CAP_MIN_MPS_SIZE                      23              /**< The minimum MPS size */
+#define BLE_L2CAP_MIN_MPS_SIZE                      (23U)              /**< The minimum MPS size. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_SDU_SIZE Maximum SDU size
- * @brief The definition of maximum SDU size
+ * @brief The definition of maximum SDU size.
  * @{ */
-#define BLE_L2CAP_MAX_SDU_SIZE                      739             /**< The maximum SDU size */
+#define BLE_L2CAP_MAX_SDU_SIZE                      (739U)             /**< The maximum SDU size. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_CB_SPSM_NUM Maximum SPSM number
- * @brief The definition of SPSM number of credit based channel can be registered
+ * @brief The definition of SPSM number of credit based channel can be registered.
  * @{ */
-#define BLE_L2CAP_MAX_CB_SPSM_NUM                   2               /**< The maximum SPSM number of credit based channel can be registered */
+#define BLE_L2CAP_MAX_CB_SPSM_NUM                   (2U)               /**< The maximum SPSM number of credit based channel can be registered. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_CB_NUM Credit based channel number
- * @brief The definition of L2cap credit based channel number per connection
+ * @brief The definition of L2cap credit based channel number per connection.
  * @{ */
-#define BLE_L2CAP_MAX_CB_NUM                        0x05            /**< The maximum L2cap credit based channel number per connection */
+#define BLE_L2CAP_MAX_CB_NUM                        (0x05U)            /**< The maximum L2cap credit based channel number per connection. */
 /** @} */
 
 
 /**@defgroup BLE_L2CAP_PERMISSION L2CAP permission definition
 *@brief The definition of L2CAP permission.
 * @{ */
-#define BLE_L2CAP_PERMISSION_NONE                   0x00            /**< No permission required. */
-#define BLE_L2CAP_PERMISSION_AUTHEN                 0x01            /**< Connection requires encryption, MITM protection. */
-#define BLE_L2CAP_PERMISSION_ENC                    0x02            /**< Connection requires encryption, No MITM protection. */
-#define BLE_L2CAP_PERMISSION_AUTHEN_SC              0x03            /**< Connection requires encryption, MITM protection, Secure Connections. */
+#define BLE_L2CAP_PERMISSION_NONE                   (0x00U)            /**< No permission required. */
+#define BLE_L2CAP_PERMISSION_AUTHEN                 (0x01U)            /**< Connection requires encryption, MITM protection. */
+#define BLE_L2CAP_PERMISSION_ENC                    (0x02U)            /**< Connection requires encryption, No MITM protection. */
+#define BLE_L2CAP_PERMISSION_AUTHEN_SC              (0x03U)            /**< Connection requires encryption, MITM protection, Secure Connections. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_CONN_PARAM_RSP_RESULT Connection parameter update result
  *@brief The definition of response result code for connection parameter update.
  * @{ */
-#define BLE_L2CAP_CONN_PARAMS_ACCEPT                0x0000          /**< Connection Parameters accepted */
-#define BLE_L2CAP_CONN_PARAMS_REJECT                0x0001          /**< Connection Parameters rejected */
+#define BLE_L2CAP_CONN_PARAMS_ACCEPT                (0x0000U)          /**< Connection Parameters accepted. */
+#define BLE_L2CAP_CONN_PARAMS_REJECT                (0x0001U)          /**< Connection Parameters rejected. */
 /** @} */
 
 /**@defgroup BLE_L2CAP_CB_CONN_RSP_RESULT Connection result
  * @brief The definition of the result for L2CAP credit based connection response packet.
  * @{ */
-#define BLE_L2CAP_RES_CONN_SUCCESSFUL               0x0000          /**< Connection successful. */
-#define BLE_L2CAP_RES_CONN_SPSM_NOT_SUPPORTED       0x0002          /**< Connection refused - SPSM not supported. */
-#define BLE_L2CAP_RES_CONN_NO_RESOURCES             0x0004          /**< Connection refused - no resource available. */
-#define BLE_L2CAP_RES_CONN_INSUFF_AUTHENTICATION    0x0005          /**< Connection refused - insufficient authentication. */
-#define BLE_L2CAP_RES_CONN_INSUFF_AUTHORIZATION     0x0006          /**< Connection refused - insufficient authorization. */
-#define BLE_L2CAP_RES_CONN_INSUFF_ENC_KEY_SIZE      0x0007          /**< Connection refused - insufficient encryption key size. */
-#define BLE_L2CAP_RES_CONN_INSUFF_ENC               0x0008          /**< Connection refused - insufficient encryption. */
-#define BLE_L2CAP_RES_CONN_INVALID_SOURCE_CID       0x0009          /**< Connection refused - invalid Source CID. */
-#define BLE_L2CAP_RES_CONN_SOURCE_CID_ALLOCATED     0x000A          /**< Connection refused - Source CID already allocated. */
-#define BLE_L2CAP_RES_CONN_UNACCEPT_PARAMS          0x000B          /**< Connection refused - unacceptable parameters. */
-#define BLE_L2CAP_RES_CONN_REJECT                   0xFFFF          /**< Command reject. */
+#define BLE_L2CAP_RES_CONN_SUCCESSFUL               (0x0000U)          /**< Connection successful. */
+#define BLE_L2CAP_RES_CONN_SPSM_NOT_SUPPORTED       (0x0002U)          /**< Connection refused - SPSM not supported. */
+#define BLE_L2CAP_RES_CONN_NO_RESOURCES             (0x0004U)          /**< Connection refused - no resource available. */
+#define BLE_L2CAP_RES_CONN_INSUFF_AUTHENTICATION    (0x0005U)          /**< Connection refused - insufficient authentication. */
+#define BLE_L2CAP_RES_CONN_INSUFF_AUTHORIZATION     (0x0006U)          /**< Connection refused - insufficient authorization. */
+#define BLE_L2CAP_RES_CONN_INSUFF_ENC_KEY_SIZE      (0x0007U)          /**< Connection refused - insufficient encryption key size. */
+#define BLE_L2CAP_RES_CONN_INSUFF_ENC               (0x0008U)          /**< Connection refused - insufficient encryption. */
+#define BLE_L2CAP_RES_CONN_INVALID_SOURCE_CID       (0x0009U)          /**< Connection refused - invalid Source CID. */
+#define BLE_L2CAP_RES_CONN_SOURCE_CID_ALLOCATED     (0x000AU)          /**< Connection refused - Source CID already allocated. */
+#define BLE_L2CAP_RES_CONN_UNACCEPT_PARAMS          (0x000BU)          /**< Connection refused - unacceptable parameters. */
+#define BLE_L2CAP_RES_CONN_REJECT                   (0xFFFFU)          /**< Command reject. */
 /** @} */
 
 /**@} */ //BLE_L2CAP_DEFINES
@@ -199,8 +208,8 @@ typedef struct BLE_L2CAP_EvtCbConnInd_T
     uint8_t       leL2capId;                                       /**< Instance of l2cap session. */
     uint16_t      connHandle;                                      /**< Connection handle. */
     uint16_t      spsm;                                            /**< SPSM. */
-    uint16_t      remoteMtu;                                       /**< Remote maximum transmit unit, in bytes */
-    uint16_t      remoteMps;                                       /**< Remote maximum PDU size, in bytes */
+    uint16_t      remoteMtu;                                       /**< Remote maximum transmit unit, in bytes. */
+    uint16_t      remoteMps;                                       /**< Remote maximum PDU size, in bytes. */
     uint16_t      initialCredits;                                  /**< Initial credits. */
     uint16_t      localCid;                                        /**< Local Cid. */
     uint16_t      remoteCid;                                       /**< Remote Cid. */
@@ -218,7 +227,7 @@ typedef struct BLE_L2CAP_EvtCbConnFailInd_T
 typedef struct BLE_L2CAP_EvtCbSduInd_T
 {
     uint8_t       leL2capId;                                       /**< Instance of l2cap session. */
-    uint16_t      length;                                          /**< Length of SDU payload, in bytes*/
+    uint16_t      length;                                          /**< Length of SDU payload, in bytes.*/
     uint8_t       payload[BLE_L2CAP_MAX_PDU_SIZE];                 /**< SDU payload. */
     uint8_t       frames;                                          /**< Number of frames reassembled for this SDU. */
 } BLE_L2CAP_EvtCbSduInd_T;
@@ -274,7 +283,7 @@ typedef struct  BLE_L2CAP_Event_T
  * @retval MBA_RES_SUCCESS      Successfully initialize BLE L2cap main module.
  * @retval MBA_RES_OOM          Internal memory allocation failure.
 */
-uint16_t BLE_L2CAP_Init();
+uint16_t BLE_L2CAP_Init(void);
 
 
 /**@brief Initialize BLE L2CAP Credit Based module.
@@ -282,7 +291,7 @@ uint16_t BLE_L2CAP_Init();
  * @retval MBA_RES_SUCCESS      Successfully initialize BLE L2cap credit based module.
  * @retval MBA_RES_OOM          Internal memory allocation failure.
 */
-uint16_t BLE_L2CAP_CbInit();
+uint16_t BLE_L2CAP_CbInit(void);
 
 
 /**@brief Issue a connection parameter update request.
@@ -387,7 +396,7 @@ uint16_t BLE_L2CAP_CbDiscReq(uint8_t leL2capId);
  * @param[in] mtu               Maximum Transmission Unit. See the range definition @ref BLE_L2CAP_MIN_MTU_SIZE , @ref BLE_L2CAP_MAX_PDU_SIZE.
  * @param[in] mps               Maximum PDU Payload Size. See the minimum definition @ref BLE_L2CAP_MIN_MPS_SIZE.
  * @param[in] initCredits       Initial Credits.
- * @param[in] permission        Permission of the SPSM. See @ref BLE_L2CAP_PERMISSION
+ * @param[in] permission        Permission of the SPSM. See @ref BLE_L2CAP_PERMISSION.
  *
  * @retval MBA_RES_SUCCESS      Successfully register SPSM.
  * @retval MBA_RES_INVALID_PARA Invalid MTU parameter usage.
@@ -418,6 +427,14 @@ uint16_t BLE_L2CAP_CbDeregisterSpsm(uint16_t spsm);
 uint16_t BLE_L2CAP_CbPauseAuthorization(uint16_t spsm, bool enable);
 
 /**@} */ //BLE_L2CAP_FUNS
+
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 #endif
 
 /**

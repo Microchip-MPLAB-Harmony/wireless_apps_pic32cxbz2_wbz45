@@ -61,7 +61,6 @@ typedef struct
 {
   uint8_t         channel;
   uint32_t        channelsSupported; // Just one row for current page.
-  uint8_t         txPowerRegion;
   int8_t          transmitPower;
   PHY_CcaMode_t   ccaMode;
   uint8_t         currentPage;

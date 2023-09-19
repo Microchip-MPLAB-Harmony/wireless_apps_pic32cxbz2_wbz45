@@ -1,24 +1,5 @@
 /*******************************************************************************
-  BLE Database Discovery Middleware Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_dd.c
-
-  Summary:
-    This file contains the BLE Database Discovery functions and event for application user.
-
-  Description:
-    This file contains the BLE Database Discovery functions and event for application user.
-    The "BLE_DD_Init" function shall be called in the "APP_Initialize" function to 
-    initialize the this modules in the system.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,7 +20,25 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE Database Discovery Middleware Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_dd.c
+
+  Summary:
+    This file contains the BLE Database Discovery functions and event for application user.
+
+  Description:
+    This file contains the BLE Database Discovery functions and event for application user.
+    The "BLE_DD_Init" function shall be called in the "APP_Initialize" function to 
+    initialize the this modules in the system.
+ *******************************************************************************/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -51,7 +50,7 @@
 #include "mba_error_defs.h"
 #include "gatt.h"
 #include "ble_util/byte_stream.h"
-#include "ble_gcm/ble_dd.h"
+#include "ble_dd.h"
 
 
 // *****************************************************************************
@@ -63,6 +62,12 @@
 #define DISC_CHAR_UUID2_RSP_LENGTH                  0x07    /**< Length of handle-value pair of Characteristic Declaration with UUID length is 2 bytes. */
 #define DISC_CHAR_UUID16_RSP_LENGTH                 0x15    /**< Length of handle-value pair of Characteristic Declaration with UUID length is 16 bytes. */
 
+typedef enum BLE_DD_State_T
+{
+    BLE_DD_STATE_IDLE = 0x00U,                               /**< Default state (Disconnected). */
+    BLE_DD_STATE_CONNECTED                                  /**< Connected. */
+} BLE_DD_State_T;
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Data Types
@@ -73,7 +78,7 @@ typedef struct BLE_DD_DiscInstance_T
 {
     uint16_t                svcStartHandle;                     /**< Internal used. Service start handle. */
     uint16_t                svcEndHandle;                       /**< Internal used. Service end handle. */
-    uint8_t                 isSvcFound;                         /**< Internal used. Service is found or not in primary service discovery step. */
+    bool                    isSvcFound;                         /**< Internal used. Service is found or not in primary service discovery step. */
     uint8_t                 queuedReqByProtocol;                /**< Internal used. Queued request if ATT protocol is busy. */
     uint8_t                 queuedReqBySecurity;                /**< Internal used. Queued request if ATT is blocked by security. */
 } BLE_DD_DiscInstance_T;
@@ -89,12 +94,13 @@ typedef struct BLE_DD_Conn_T
     uint8_t                 discSvcIndex;                       /**< The index of service that the discovery is ongoing. */
     bool                    isDiscovering;                      /**< Internal used. Record if discovery is ongoing. */
     bool                    disableDiscovery;                   /**< Disable discovery of the connection. Application caches characteristic handles and no need to discover again. */
+    BLE_DD_State_T          state;                              /**< Connection state. */
 } BLE_DD_Conn_T;
 
 /**@brief The database of database discovery module. */
 typedef struct BLE_DD_Ctrl_T
 {
-    BLE_DD_Conn_T           conn[BLE_GAP_MAX_LINK_NBR];         /**< Connection database for database discovery module. */
+    BLE_DD_Conn_T *         conn[BLE_GAP_MAX_LINK_NBR];         /**< Connection database for database discovery module. */
     BLE_DD_DiscSvc_T        services[BLE_DD_MAX_DISC_SVC_NUM];  /**< Service information registered by profile/application to be discovered. */
     uint8_t                 numOfService;                       /**< Number of registered service. Maximum @ref BLE_DD_MAX_DISC_SVC_NUM */
 } BLE_DD_Ctrl_T;
@@ -104,24 +110,53 @@ typedef struct BLE_DD_Ctrl_T
 // Section: Local Variables
 // *****************************************************************************
 // *****************************************************************************
-BLE_DD_EventCb_T            s_ddEventCb;            /* Events callback function. */
-BLE_DD_Ctrl_T               s_ddCtrl;                 /* DD module database. */
+static BLE_DD_EventCb_T            s_ddEventCb;            /* Events callback function. */
+static BLE_DD_Ctrl_T *             sp_ddCtrl;              /* DD module database. */
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Functions
 // *****************************************************************************
 // *****************************************************************************
-static void ble_dd_InitConn(BLE_DD_Conn_T *p_conn)
+static void ble_dd_FreeConn(BLE_DD_Conn_T *p_conn)
 {
+    uint8_t i;
+
     if (p_conn->p_discInstance != NULL)
     {
         OSAL_Free(p_conn->p_discInstance);
     }
 
-    memset((uint8_t *)p_conn, 0, sizeof(BLE_DD_Conn_T));
-    p_conn->p_discInstance = NULL;
-    p_conn->p_charInfoList = NULL;
+    for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
+    {
+        if (sp_ddCtrl->conn[i] == p_conn)
+        {
+            OSAL_Free(sp_ddCtrl->conn[i]);
+            sp_ddCtrl->conn[i] = NULL;
+        
+            break;
+        }
+    }
+}
+
+static BLE_DD_Conn_T *ble_dd_GetFreeConn(void)
+{
+    uint8_t i;
+
+    for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
+    {
+        if (sp_ddCtrl->conn[i] == NULL)
+        {
+            sp_ddCtrl->conn[i] = OSAL_Malloc(sizeof(BLE_DD_Conn_T));
+            if (sp_ddCtrl->conn[i] != NULL)
+            {
+                (void)memset((uint8_t *)sp_ddCtrl->conn[i], 0, sizeof(BLE_DD_Conn_T));
+                sp_ddCtrl->conn[i]->connIndex = i;
+            }
+            return sp_ddCtrl->conn[i];
+        }
+    }
+    return NULL;
 }
 
 static BLE_DD_Conn_T *ble_dd_FindConnByHandle(uint16_t connHandle)
@@ -130,16 +165,16 @@ static BLE_DD_Conn_T *ble_dd_FindConnByHandle(uint16_t connHandle)
 
     for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
     {
-        if (s_ddCtrl.conn[i].connHandle == connHandle)
+        if ((sp_ddCtrl->conn[i]!= NULL) && (sp_ddCtrl->conn[i]->connHandle == connHandle))
         {
-            s_ddCtrl.conn[i].connIndex = i;
-            return &s_ddCtrl.conn[i];
+            sp_ddCtrl->conn[i]->connIndex = i;
+            return sp_ddCtrl->conn[i];
         }
     }
     return NULL;
 }
 
-void ble_dd_SendDiscCompleteEvent(BLE_DD_Conn_T *p_conn)
+static void ble_dd_SendDiscCompleteEvent(BLE_DD_Conn_T *p_conn)
 {
     if (s_ddEventCb != NULL)
     {
@@ -151,28 +186,28 @@ void ble_dd_SendDiscCompleteEvent(BLE_DD_Conn_T *p_conn)
     }
 }
 
-void ble_dd_ServiceDiscovery(BLE_DD_Conn_T *p_conn)
+static void ble_dd_ServiceDiscovery(BLE_DD_Conn_T *p_conn)
 {
     GATTC_DiscoverPrimaryServiceByUuidParams_T discParams;
 
-    p_conn->p_charInfoList = s_ddCtrl.services[p_conn->discSvcIndex].p_charList[p_conn->connIndex].p_charInfo;
-    memset((uint8_t *)p_conn->p_charInfoList, 0, sizeof(BLE_DD_CharInfo_T)*s_ddCtrl.services[p_conn->discSvcIndex].discCharsNum);
-    memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
+    p_conn->p_charInfoList = sp_ddCtrl->services[p_conn->discSvcIndex].p_charList[p_conn->connIndex].p_charInfo;
+    (void)memset((uint8_t *)p_conn->p_charInfoList, 0, sizeof(BLE_DD_CharInfo_T)*sp_ddCtrl->services[p_conn->discSvcIndex].discCharsNum);
+    (void)memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
 
     discParams.startHandle = 0x0001;
     discParams.endHandle = 0xFFFF;
-    discParams.valueLength = s_ddCtrl.services[p_conn->discSvcIndex].svcUuid.uuidLength;
-    memcpy(discParams.value ,s_ddCtrl.services[p_conn->discSvcIndex].svcUuid.uuid, s_ddCtrl.services[p_conn->discSvcIndex].svcUuid.uuidLength);
+    discParams.valueLength = sp_ddCtrl->services[p_conn->discSvcIndex].svcUuid.uuidLength;
+    (void)memcpy(discParams.value ,sp_ddCtrl->services[p_conn->discSvcIndex].svcUuid.uuid, sp_ddCtrl->services[p_conn->discSvcIndex].svcUuid.uuidLength);
     if (GATTC_DiscoverPrimaryServiceByUUID(p_conn->connHandle, &discParams) == MBA_RES_BUSY)
     {
         p_conn->p_discInstance->queuedReqByProtocol = ATT_FIND_BY_TYPE_VALUE_REQ;
     }
 }
 
-void ble_dd_NextServiceDiscovery(BLE_DD_Conn_T *p_conn)
+static void ble_dd_NextServiceDiscovery(BLE_DD_Conn_T *p_conn)
 {
     p_conn->discSvcIndex++;
-    if (p_conn->discSvcIndex < s_ddCtrl.numOfService)
+    if (p_conn->discSvcIndex < sp_ddCtrl->numOfService)
     {
         ble_dd_ServiceDiscovery(p_conn);
     }
@@ -189,12 +224,12 @@ static uint16_t ble_dd_DescriptorDiscovery(BLE_DD_Conn_T *p_conn)
     uint16_t            result = MBA_RES_SUCCESS;
     uint8_t             idx;
 
-    p_discChar = s_ddCtrl.services[p_conn->discSvcIndex].p_discChars;
+    p_discChar = sp_ddCtrl->services[p_conn->discSvcIndex].p_discChars;
 
-    for (idx=0; idx<s_ddCtrl.services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
+    for (idx=0; idx<sp_ddCtrl->services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
     {
         /* Check if there's descriptor to discover */
-        if ((*p_discChar)->settings & CHAR_SET_DESCRIPTOR)
+        if (((*p_discChar)->settings & CHAR_SET_DESCRIPTOR)!= 0U)
         {
             if (GATTC_DiscoverAllDescriptors(p_conn->connHandle, p_conn->p_discInstance->svcStartHandle , p_conn->p_discInstance->svcEndHandle) == MBA_RES_BUSY)
             {
@@ -228,18 +263,19 @@ static void ble_dd_ProcCharDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
     /* Process each characteristic declaration in response */
     while (procIdx < p_event->eventField.onDiscCharResp.attrDataLength)
     {
-        p_uuid = &p_event->eventField.onDiscCharResp.attrData[procIdx+5];
+        p_uuid = &p_event->eventField.onDiscCharResp.attrData[procIdx+5U];
 
         /* Process each discover characteristic with each characteristic declaration */
-        for (idx=0, p_discChar = s_ddCtrl.services[p_conn->discSvcIndex].p_discChars; idx<s_ddCtrl.services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
+        for (idx=0, p_discChar = sp_ddCtrl->services[p_conn->discSvcIndex].p_discChars; idx<sp_ddCtrl->services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
         {
-            if (((*p_discChar)->settings & CHAR_SET_DESCRIPTOR) == 0)
+            if (((*p_discChar)->settings & CHAR_SET_DESCRIPTOR) == 0U)
             {
                 if (((*p_discChar)->p_uuid->uuidLength == uuidLength) && (memcmp((*p_discChar)->p_uuid->uuid, p_uuid, uuidLength) == 0))
                 {
+                    BUF_LE_TO_U16(&p_conn->p_charInfoList[idx].attrHandle, &p_event->eventField.onDiscCharResp.attrData[procIdx]);
                     /* Characteristic found, record handle. */
-                    BUF_LE_TO_U16(&p_conn->p_charInfoList[idx].charHandle, &p_event->eventField.onDiscCharResp.attrData[procIdx+3]);
-                    p_conn->p_charInfoList[idx].property = p_event->eventField.onDiscCharResp.attrData[procIdx+2];
+                    BUF_LE_TO_U16(&p_conn->p_charInfoList[idx].charHandle, &p_event->eventField.onDiscCharResp.attrData[procIdx+3U]);
+                    p_conn->p_charInfoList[idx].property = p_event->eventField.onDiscCharResp.attrData[procIdx+2U];
                 }
             }
         }
@@ -260,12 +296,12 @@ static void ble_dd_ProcDescDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
     /* Process each handle-uuid pair in response */
     while (procIdx < p_event->eventField.onDiscDescResp.infoDataLength)
     {
-        p_uuid = &p_event->eventField.onDiscDescResp.infoData[procIdx+2];
+        p_uuid = &p_event->eventField.onDiscDescResp.infoData[procIdx+2U];
 
         /* Process each discover characteristic with each characteristic declaration */
-        for (idx=0, p_discChar = s_ddCtrl.services[p_conn->discSvcIndex].p_discChars; idx<s_ddCtrl.services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
+        for (idx=0, p_discChar = sp_ddCtrl->services[p_conn->discSvcIndex].p_discChars; idx<sp_ddCtrl->services[p_conn->discSvcIndex].discCharsNum; idx++, p_discChar++)
         {
-            if ((((*p_discChar)->settings & CHAR_SET_DESCRIPTOR) != 0) && (p_conn->p_charInfoList[idx].charHandle == 0))
+            if ((((*p_discChar)->settings & CHAR_SET_DESCRIPTOR) != 0U) && (p_conn->p_charInfoList[idx].charHandle == 0U))
             {
                 if (((*p_discChar)->p_uuid->uuidLength == uuidLength) && (memcmp((*p_discChar)->p_uuid->uuid, p_uuid, uuidLength) == 0))
                 {
@@ -279,7 +315,7 @@ static void ble_dd_ProcDescDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
     }
 }
 
-void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_event)
+static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_event)
 {
     switch (p_event->eventId)
     {
@@ -291,7 +327,7 @@ void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_
                 uint8_t         i;
 
                 /* Find free connection instance */
-                p_conn = ble_dd_FindConnByHandle(0);
+                p_conn = ble_dd_GetFreeConn();
 
                 if (p_conn != NULL)
                 {
@@ -302,16 +338,16 @@ void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_
                     p_conn->gapRole = p_event->eventField.evtConnect.role;
                     p_conn->p_discInstance = OSAL_Malloc(sizeof(BLE_DD_DiscInstance_T));
 
-                    for (i=0; i<s_ddCtrl.numOfService; i++)
+                    for (i=0; i<sp_ddCtrl->numOfService; i++)
                     {
-                        s_ddCtrl.services[i].p_charList[p_conn->connIndex].connHandle = p_event->eventField.evtConnect.connHandle;
+                        sp_ddCtrl->services[i].p_charList[p_conn->connIndex].connHandle = p_event->eventField.evtConnect.connHandle;
                     }
 
                     if (p_conn->p_discInstance != NULL)
                     {
-                        memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
+                        (void)memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
 
-                        if (p_config->disableConnectedDisc == 0)
+                        if (p_config->disableConnectedDisc == 0U)
                         {
                             if (((p_config->initDiscInCentral) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
                                 ((p_config->initDiscInPeripheral) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
@@ -348,7 +384,7 @@ void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_
             {
                 BLE_DD_Event_T ddEvent;
 
-                ble_dd_InitConn(p_conn);
+                ble_dd_FreeConn(p_conn);
                 ddEvent.eventId = BLE_DD_EVT_DISCONNECTED;
                 ddEvent.eventField.evtDisconnect.connHandle = p_event->eventField.evtDisconnect.connHandle;
                 s_ddEventCb(&ddEvent);
@@ -387,11 +423,15 @@ void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_
                                 p_conn->p_discInstance->queuedReqByProtocol = ATT_FIND_INFORMATION_REQ;
                             }
                         }
+                        else
+                        {
+							//Shall not enter here
+                        }
                         p_conn->p_discInstance->queuedReqBySecurity = 0;
                     }
                     else
                     {
-                        if ((p_config->waitForSecurity == true) && (s_ddCtrl.numOfService > 0) && (p_conn->p_discInstance != NULL) && (p_conn->disableDiscovery == false))
+                        if ((p_config->waitForSecurity == true) && (sp_ddCtrl->numOfService > 0U) && (p_conn->p_discInstance != NULL) && (p_conn->disableDiscovery == false))
                         {
                             if (((p_config->initDiscInCentral) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
                                 ((p_config->initDiscInPeripheral) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
@@ -411,7 +451,7 @@ void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Event_T *p_
     }
 }
 
-void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
+static void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 {
     switch (p_event->eventId)
     {
@@ -425,7 +465,9 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
             {
                 /* Ignore responses when dd is not discovering */
                 if (p_conn->isDiscovering == false)
+                {
                     return;
+                }
 
                 /* Require security permission to access characteristics. Inform application and pause the discovery. */
                 if ((p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_ENCRYPTION) || (p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION))
@@ -444,7 +486,7 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 
                 if (p_event->eventField.onError.reqOpcode == ATT_FIND_BY_TYPE_VALUE_REQ)
                 {
-                    if (p_conn->p_discInstance->isSvcFound)
+                    if (p_conn->p_discInstance->isSvcFound==true)
                     {
                         /* Service found. Send characteristic discovery */
                         if (GATTC_DiscoverAllCharacteristics(p_conn->connHandle, p_conn->p_discInstance->svcStartHandle, p_conn->p_discInstance->svcEndHandle) == MBA_RES_BUSY)
@@ -477,6 +519,10 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
                     /* Move to next service discovery if exists */
                     ble_dd_NextServiceDiscovery(p_conn);
                 }
+                else
+                {
+					//Shall not enter here
+                }
             }
         }
         break;
@@ -489,13 +535,20 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 
             /* Ignore responses when dd is not discovering */
             if (p_conn->isDiscovering == false)
+            {
                 return;
+            }
 
             if (p_conn != NULL)
             {
                 BUF_LE_TO_U16(&p_conn->p_discInstance->svcStartHandle, &p_event->eventField.onDiscPrimServByUuidResp.handleInfo[0]);
                 BUF_LE_TO_U16(&p_conn->p_discInstance->svcEndHandle, &p_event->eventField.onDiscPrimServByUuidResp.handleInfo[2]);
-                p_conn->p_discInstance->isSvcFound = 1;
+                if (sp_ddCtrl->services[p_conn->discSvcIndex].p_discInfo != NULL)
+                {
+                    sp_ddCtrl->services[p_conn->discSvcIndex].p_discInfo->svcStartHandle = p_conn->p_discInstance->svcStartHandle;
+                    sp_ddCtrl->services[p_conn->discSvcIndex].p_discInfo->svcEndHandle = p_conn->p_discInstance->svcEndHandle;
+                }
+                p_conn->p_discInstance->isSvcFound = true;
 
                 if (p_event->eventField.onDiscPrimServByUuidResp.procedureStatus == GATT_PROCEDURE_STATUS_FINISH)
                 {
@@ -517,7 +570,9 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 
             /* Ignore responses when dd is not discovering */
             if (p_conn->isDiscovering == false)
+            {
                 return;
+            }
 
             if (p_conn != NULL)
             {
@@ -549,11 +604,13 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 
             /* Ignore responses when dd is not discovering */
             if (p_conn->isDiscovering == false)
+            {
                 return;
+            }
 
             if (p_conn != NULL)
             {
-                if (p_event->eventField.onDiscDescResp.infoDataLength)
+                if (p_event->eventField.onDiscDescResp.infoDataLength != 0U)
                 {
                     ble_dd_ProcDescDiscResp(p_conn, p_event);
                 }
@@ -576,7 +633,9 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
 
             /* Ignore responses when dd is not discovering */
             if (p_conn->isDiscovering == false)
+            {
                 return;
+            }
 
             if (p_conn != NULL)
             {
@@ -601,6 +660,10 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
                         p_conn->p_discInstance->queuedReqByProtocol = ATT_FIND_INFORMATION_REQ;
                     }
                 }
+                else
+                {
+					//Shall not enter here
+                }
             }
         }
         break;
@@ -610,15 +673,34 @@ void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
     }
 }
 
-void BLE_DD_Init()
+bool BLE_DD_Init(void)
 {
     uint8_t i;
-
-    memset((uint8_t *)&s_ddCtrl, 0, sizeof(BLE_DD_Ctrl_T));
-    for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
+    
+    if (sp_ddCtrl == NULL)
     {
-        s_ddCtrl.conn[i].p_discInstance = NULL;
+        sp_ddCtrl = OSAL_Malloc(sizeof(BLE_DD_Ctrl_T));
+
+        if (sp_ddCtrl == NULL)
+        {
+            return false;
+        }
     }
+    else
+    {
+        for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
+        {
+            if (sp_ddCtrl->conn[i] != NULL)
+            {
+                ble_dd_FreeConn(sp_ddCtrl->conn[i]);
+            }
+        }
+    }
+
+    (void)memset((uint8_t *)sp_ddCtrl, 0, sizeof(BLE_DD_Ctrl_T));
+
+
+    return true;
 }
 
 void BLE_DD_EventRegister(BLE_DD_EventCb_T eventCb)
@@ -628,10 +710,10 @@ void BLE_DD_EventRegister(BLE_DD_EventCb_T eventCb)
 
 uint16_t BLE_DD_ServiceDiscoveryRegister(BLE_DD_DiscSvc_T *p_discSvc)
 {
-    if (s_ddCtrl.numOfService < BLE_DD_MAX_DISC_SVC_NUM)
+    if (sp_ddCtrl->numOfService < BLE_DD_MAX_DISC_SVC_NUM)
     {
-        memcpy((uint8_t *)&s_ddCtrl.services[s_ddCtrl.numOfService], (uint8_t *)p_discSvc, sizeof(BLE_DD_DiscSvc_T));
-        s_ddCtrl.numOfService += 1;
+        (void)memcpy((uint8_t *)&sp_ddCtrl->services[sp_ddCtrl->numOfService], (uint8_t *)p_discSvc, sizeof(BLE_DD_DiscSvc_T));
+        sp_ddCtrl->numOfService += 1U;
         return MBA_RES_SUCCESS;
     }
     else
@@ -674,7 +756,7 @@ uint16_t BLE_DD_RestartServicesDiscovery(uint16_t connHandle)
     {
         if (p_conn->p_discInstance != NULL)
         {
-            memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
+            (void)memset((uint8_t *)p_conn->p_discInstance, 0, sizeof(BLE_DD_DiscInstance_T));
             p_conn->discSvcIndex = 0;
             p_conn->isDiscovering = true;
             ble_dd_ServiceDiscovery(p_conn);

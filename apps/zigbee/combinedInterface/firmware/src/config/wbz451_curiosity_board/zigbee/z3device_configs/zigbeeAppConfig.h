@@ -247,9 +247,8 @@
 #define APP_COMMISSIONING_FINDING_AND_BINDING 1
 #endif
 
-#define TX_POWER_REGION    ETSI
-#define TX_POWER_REQ       0
-
+#define CS_RF_TX_POWER   3
+#define CS_TX_ANTENNA_GAIN    3
 
 #ifndef _USE_LIB_
 /* Bit Cloud Configurations*/

@@ -38,10 +38,21 @@
  *******************************************************************************/
 
 
-
 #ifndef MBA_ERROR_DEFS_H
 #define MBA_ERROR_DEFS_H
 
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
+/** @addtogroup STACK_MGR
+ *  @{ */
+ 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -51,23 +62,32 @@
  * @{ */
  
 /**@defgroup STACK_ERR_CODE Error code definitions
- * @brief The definition of STACK API result
+ * @brief The definition of STACK API result.
  * @{ */
-#define MBA_RES_SUCCESS                         0x0000                                  /**< Execution successfully. */
-#define MBA_RES_FAIL                            0x0001                                  /**< Execution fail. */
-#define MBA_RES_OOM                             0x0002                                  /**< Out of memory. */
-#define MBA_RES_INVALID_PARA                    0x0003                                  /**< Invalid parameters. */
-#define MBA_RES_NO_RESOURCE                     0x0004                                  /**< No resource. */
-#define MBA_RES_BAD_STATE                       0x0005                                  /**< Bad State. */
-#define MBA_RES_PENDING_DUE_TO_SECURITY         0x0006                                  /**< Pending the request due to security process. */
-#define MBA_RES_BUSY                            0x0007                                  /**< Execution fail due to stack is busy. */
+#define MBA_RES_SUCCESS                         (0x0000U)                                  /**< Execution successfully. */
+#define MBA_RES_FAIL                            (0x0001U)                                  /**< Execution fail. */
+#define MBA_RES_OOM                             (0x0002U)                                  /**< Out of memory. */
+#define MBA_RES_INVALID_PARA                    (0x0003U)                                  /**< Invalid parameters. */
+#define MBA_RES_NO_RESOURCE                     (0x0004U)                                  /**< No resource. */
+#define MBA_RES_BAD_STATE                       (0x0005U)                                  /**< Bad State. */
+#define MBA_RES_PENDING_DUE_TO_SECURITY         (0x0006U)                                  /**< Pending the request due to security process. */
+#define MBA_RES_BUSY                            (0x0007U)                                  /**< Execution fail due to stack is busy. */
 
-#define MBA_RES_UNKNOWN_CONN_ID                 0x0102                                  /**< Unknown connection identifier. */
-#define MBA_RES_CONN_ALREADY_EXISTS             0x010B                                  /**< Connection already exists. */
-#define MBA_RES_COMMAND_DISALLOWED              0x010C                                  /**< Command disallowed. */
-#define MBA_RES_UNSUPPORT_REMOTE_FEATURE        0x011A                                  /**< Unsupported remote feature. */
-#define MBA_RES_UNKNOWN_ADV_ID                  0x0142                                  /**< Unknown advertising identifier. */
+#define MBA_RES_UNKNOWN_CONN_ID                 (0x0102U)                                  /**< Unknown connection identifier. */
+#define MBA_RES_CONN_ALREADY_EXISTS             (0x010BU)                                  /**< Connection already exists. */
+#define MBA_RES_COMMAND_DISALLOWED              (0x010CU)                                  /**< Command disallowed. */
+#define MBA_RES_UNSUPPORT_REMOTE_FEATURE        (0x011AU)                                  /**< Unsupported remote feature. */
+#define MBA_RES_UNKNOWN_ADV_ID                  (0x0142U)                                  /**< Unknown advertising identifier. */
 /** @} */
 
 /**@} */ //STACK_DEFINES
+
+/** @} */
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
 #endif

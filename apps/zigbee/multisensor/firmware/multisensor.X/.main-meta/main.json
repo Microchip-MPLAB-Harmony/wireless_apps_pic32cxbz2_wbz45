@@ -6,25 +6,25 @@
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_zigbee_multisensor",
 		"version": "1.0.0",
 		"displayName": "Zigbee Multi-Sensor with Low Power Functionality",
-		"projectName": "zigbee_multisensor",
+		"projectName": "multisensor",
 		"shortDescription": "This application demonstrates the Zigbee Multi-Sensor application with low power enabled.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.00"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.1.0"
+				"semverRange": ">=4.21"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.0.107"
+			"semverRange": "^1.2.230"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.1.9"
+			"semverRange": ">=5.3.7"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

@@ -216,7 +216,11 @@ typedef struct BDB_InitiatorReq_t
   BDB_BindFinishedCallback_t callback;
 } BDB_InitiatorReq_t;
 
+/**************************************************************************//**
+\brief Defines the commissioning mode parameters required for initiator procedure
+******************************************************************************/
 typedef uint8_t BDB_CommissioningMode_t;
+
 /**************************************************************************//**
 \brief Describes the parameters of the BDB_InvokeCommissioningReq() function
 ******************************************************************************/

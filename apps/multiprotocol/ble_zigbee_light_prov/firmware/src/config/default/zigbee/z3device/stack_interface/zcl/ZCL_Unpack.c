@@ -287,7 +287,7 @@ ZCL_Status_t ZCL_CommandInd(ZCL_CommandIndCallback_t callbackFn, ZCL_Addressing_
   zclCbParams.uCallBackID = ZCL_CLUSTER_COMMAND_IND;
   zclCbParams.paramSize = sizeof(&paramPtr);
   paramPtr = OSAL_Malloc(sizeof(ZCL_CommandInd_t));
-  
+  memset(&zclCommandIndication.status,0, sizeof(zclCommandIndication.status));
   memcpy(paramPtr,&zclCommandIndication, sizeof(ZCL_CommandInd_t));
   zclCbParams.parameters = (void *)&paramPtr;
   

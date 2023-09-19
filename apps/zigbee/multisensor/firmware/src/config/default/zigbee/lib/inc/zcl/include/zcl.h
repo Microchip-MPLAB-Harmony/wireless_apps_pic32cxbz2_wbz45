@@ -618,6 +618,14 @@ typedef enum
   ZLO_IAS_ACE_DEVICE_ID                                 = 0x0401,
     /*! custom device id  */
   ZLO_CUSTOM_DEVICE_ID                                  = 0x0F00,  
+  /*! Shade Device */
+  ZLO_SHADE_DEVICE_ID                                   = 0x0200,
+  /*! Shade Controller */
+  ZLO_SHADE_CONTROLLER_DEVICE_ID                        = 0x0201,
+  /*! Window Covering Device */
+  ZLO_WINDOW_COVERING_DEVICE_ID                         = 0x0202,
+  /*! Window Covering Controller */
+  ZLO_WINDOW_COVERING_CONTROLLER_DEVICE_ID              = 0x0203,
 } ZLO_DeviceId_t;
 
 /** ZCL events' IDs */

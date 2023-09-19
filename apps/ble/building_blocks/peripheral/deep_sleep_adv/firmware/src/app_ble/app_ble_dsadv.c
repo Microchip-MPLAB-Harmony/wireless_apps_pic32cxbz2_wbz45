@@ -1,22 +1,5 @@
 /*******************************************************************************
-  Application BLE Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_ble_dsadv.c
-
-  Summary:
-    This file contains the Application BLE Deep Sleep Advertising (DSADV) function for this project.
-
-  Description:
-    This file contains the Application BLE Deep Sleep Advertising (DSADV) function for this project.
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -37,10 +20,27 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  Application BLE Source File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    app_ble_dsadv.c
+
+  Summary:
+    This file contains the Application BLE Deep Sleep Advertising (DSADV) function for this project.
+
+  Description:
+    This file contains the Application BLE Deep Sleep Advertising (DSADV) function for this project.
+ *******************************************************************************/
+
 
 #include "app_ble.h"
 #include "device_deep_sleep.h"
+#include "app_ble_dsadv.h"
 
 
 
@@ -77,9 +77,13 @@ bool APP_BleDsadvIsEnable(void)
 
     DEVICE_GetDeepSleepWakeUpSrc(&wakeSrc);
     if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE)
+    {
         return false;
+    }
     else
+    {
         return true;
+    }
 }
 
 void APP_BleDsadvStart(bool flag)

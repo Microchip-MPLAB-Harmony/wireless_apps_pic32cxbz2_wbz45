@@ -117,7 +117,7 @@
 //  Defines Prov Notify Command length APP_TRPS_CTRL_NOTIFY_LENGTH
 #define    PROV_STATUS_NFY_LEN   0x1
 
-#define COMBO_STACK_VERSION  "B_1.0.0.0_Z_5.0.0.0"
+#define COMBO_STACK_VERSION  "B_0.7.3.5_Z_5.0.0.3"
 #define COMBO_APP_VERSION  "1.0.0.0"
 // *****************************************************************************
 // *****************************************************************************

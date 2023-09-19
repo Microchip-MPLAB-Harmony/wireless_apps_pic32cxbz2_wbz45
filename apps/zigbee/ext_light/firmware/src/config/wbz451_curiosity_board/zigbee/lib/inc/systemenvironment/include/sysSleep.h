@@ -45,7 +45,6 @@
                           Includes section.
 **********************************************************************************/
 #include <hal/include/sleep.h>
-#include <hal/cortexm4/pic32cx/include/halSleep.h>
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyPic32cx.h>
 /*********************************************************************************
                    Define(s) section
@@ -55,6 +54,9 @@
 #define ZB_WakeUpFromSleep             SYS_WakeUpSleep
 #define ZB_StopStackTimerBeforeSleep   SYS_StopStackTimerBeforeSleep
 #define ZB_RestartStackTimerAfterSleep SYS_RestartStackTimerAfterSleep
+#define ZB_BLEClockOnOff               SYS_BLEClockOnOff
+#define ZB_BackupStackParams           SYS_BackupStackParams
+#define ZB_CheckStackSleep             SYS_CheckStackSleep
 
 /*********************************************************************************
                           Function prototypes section.
@@ -72,14 +74,21 @@ void SYS_Sleep(HAL_Sleep_t *sleepParam);
 \param[in]
   none
 ******************************************************************************/
-void SYS_EnterSleep(bool sysSleep);
+void SYS_EnterSleep(void);
+/**************************************************************************//**
+\brief Checks system(MCU + BB) for sleep.
+
+\param[in]
+\returns 1 if sleeping success, 0 - otherwise
+******************************************************************************/
+bool SYS_CheckStackSleep(void);
 /**************************************************************************//**
 \brief Wakes Up the system(MCU + BB) from sleep.
 
 \param[in]
   none
 ******************************************************************************/
-void SYS_WakeUpSleep(bool sysSleep);
+void SYS_WakeUpSleep(void);
 /**************************************************************************//**
 \brief To Stop Stack Timer before Sleep.
 
@@ -94,4 +103,19 @@ void SYS_StopStackTimerBeforeSleep();
   uint32_t time
 ******************************************************************************/
 void SYS_RestartStackTimerAfterSleep(uint32_t sleepTime);
+/**************************************************************************//**
+\brief BLE Clock On or Off.
+
+\param[in]
+  bool status
+******************************************************************************/
+void SYS_BLEClockOnOff(bool status);
+/**************************************************************************//**
+\brief baclup all require stack params
+
+\param[in]
+  bool expectedSleepTime
+******************************************************************************/
+void SYS_BackupStackParams(uint32_t expectedSleepTime);
+
 #endif /* _SYSSLEEP_H */

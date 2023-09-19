@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_BLE_UTILITY_H
-#define _APP_BLE_UTILITY_H
+#ifndef APP_BLE_UTILITY_H
+#define APP_BLE_UTILITY_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -69,7 +69,7 @@ extern "C" {
 
 /*******************************************************************************
   Function:
-    bool APP_ImageValidation()
+    bool APP_ImageValidation(void)
 
   Summary:
      Firmware image validation.
@@ -86,16 +86,16 @@ extern "C" {
     true if image validation is success. Otherwise false.
 
 */
-bool APP_ImageValidation();
-
-
-#endif /* _APP_BLE_UTILITY_H */
+bool APP_ImageValidation(void);
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
 //DOM-IGNORE-END
+
+#endif /* APP_BLE_UTILITY_H */
+
 
 /*******************************************************************************
  End of File

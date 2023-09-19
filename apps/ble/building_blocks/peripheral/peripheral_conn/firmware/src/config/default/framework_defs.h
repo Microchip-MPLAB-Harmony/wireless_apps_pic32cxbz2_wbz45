@@ -13,7 +13,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -33,7 +33,7 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
 
 #ifndef FRAMEWORK_DEFS_H
@@ -52,20 +52,20 @@ typedef struct
     void (*OSAL_CRIT_Leave)(OSAL_CRIT_TYPE, OSAL_CRITSECT_DATA_TYPE);
 
     OSAL_RESULT(*OSAL_SEM_Create)(OSAL_SEM_HANDLE_TYPE *, OSAL_SEM_TYPE, uint8_t, uint8_t);
-    OSAL_RESULT(*OSAL_SEM_Pend)(OSAL_SEM_HANDLE_TYPE *, uint16_t);
+    OSAL_RESULT(*OSAL_SEM_Pend)(OSAL_SEM_HANDLE_TYPE *, uint32_t);
     OSAL_RESULT(*OSAL_SEM_Post)(OSAL_SEM_HANDLE_TYPE *);
     OSAL_RESULT(*OSAL_SEM_PostISR)(OSAL_SEM_HANDLE_TYPE *);
     uint8_t(*OSAL_SEM_GetCount)(OSAL_SEM_HANDLE_TYPE *);
 
     OSAL_RESULT(*OSAL_QUEUE_Create)(OSAL_QUEUE_HANDLE_TYPE *, uint32_t, uint32_t);
-    OSAL_RESULT(*OSAL_QUEUE_Send)(OSAL_QUEUE_HANDLE_TYPE *, void *, uint16_t);
+    OSAL_RESULT(*OSAL_QUEUE_Send)(OSAL_QUEUE_HANDLE_TYPE *, void *, uint32_t);
     OSAL_RESULT(*OSAL_QUEUE_SendISR)(OSAL_QUEUE_HANDLE_TYPE *, void *);
-    OSAL_RESULT(*OSAL_QUEUE_Receive)(OSAL_QUEUE_HANDLE_TYPE *, void *, uint16_t);
+    OSAL_RESULT(*OSAL_QUEUE_Receive)(OSAL_QUEUE_HANDLE_TYPE *, void *, uint32_t);
     OSAL_RESULT(*OSAL_QUEUE_IsFullISR)(OSAL_QUEUE_HANDLE_TYPE *);
 
     OSAL_RESULT(*OSAL_QUEUE_CreateSet)(OSAL_QUEUE_SET_HANDLE_TYPE *, uint32_t);
     OSAL_RESULT(*OSAL_QUEUE_AddToSet)(OSAL_QUEUE_SET_MEMBER_HANDLE_TYPE *, OSAL_QUEUE_SET_HANDLE_TYPE *);
-    OSAL_RESULT(*OSAL_QUEUE_SelectFromSet)(OSAL_QUEUE_SET_MEMBER_HANDLE_TYPE *, OSAL_QUEUE_SET_HANDLE_TYPE *, uint16_t);
+    OSAL_RESULT(*OSAL_QUEUE_SelectFromSet)(OSAL_QUEUE_SET_MEMBER_HANDLE_TYPE *, OSAL_QUEUE_SET_HANDLE_TYPE *, uint32_t);
     
     void* (*OSAL_MemAlloc)(size_t size);
     void  (*OSAL_MemFree)(void* );

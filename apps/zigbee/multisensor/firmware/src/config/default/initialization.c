@@ -48,7 +48,6 @@
 #include "device.h"
 
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -145,7 +144,7 @@
 
 /*** FBCFG0 ***/
 #pragma config BINFOVALID =      VALID
-#pragma config PCSCMODE =      SINGLE
+#pragma config PCSCMODE =      DUAL
 
 /*** FCPN0 ***/
 #pragma config CP =      DISABLED
@@ -159,6 +158,11 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+/* Following MISRA-C rules are deviated in the below code block */
+/* MISRA C-2012 Rule 11.1 */
+/* MISRA C-2012 Rule 11.3 */
+/* MISRA C-2012 Rule 11.8 */
+
 
 
 // *****************************************************************************
@@ -166,6 +170,8 @@
 // Section: System Data
 // *****************************************************************************
 // *****************************************************************************
+/* Structure to hold the object handles for the modules in the system. */
+SYSTEM_OBJECTS sysObj;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -226,7 +232,6 @@ OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-#define REGULATORY_REGION "ETSI"
 
 
 
@@ -289,7 +294,25 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
     }
 
 }
+void _on_reset(void)
+{
+    //Need to clear register before configure any GPIO
+    DEVICE_ClearDeepSleepReg();
 
+    // Initialize the RF Clock Generator
+    SYS_ClkGen_Config();
+
+    /* Can't call a RAM function before __pic32c_data_initialization
+       Must call a flash function, but in A0 HW version, RAM function is required to avoid HW issue.
+       Thus, will not config PCHE before __pic32c_data_initialization in A0 version.
+    */
+    // Configure Prefetch, Wait States
+    if (DSU_REGS->DSU_DID & DSU_DID_REVISION_Msk)   //A1 and later version
+    {
+        PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
+                                        | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+    }
+}
 
 
 
@@ -300,7 +323,7 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 // *****************************************************************************
 // *****************************************************************************
 
-
+/* MISRAC 2012 deviation block end */
 
 /*******************************************************************************
   Function:
@@ -314,6 +337,7 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 
 void SYS_Initialize ( void* data )
 {
+
     /* MISRAC 2012 deviation block start */
     /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
@@ -340,11 +364,6 @@ void SYS_Initialize ( void* data )
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
-    // Initialize the RF Clock Generator
-    SYS_ClkGen_Config();
-
-    // Configure Cache and Wait States
-    PCHE_Setup();
 
   
     CLK_Initialize();
@@ -353,12 +372,24 @@ void SYS_Initialize ( void* data )
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
 
 
+	uint8_t deepSleepWakeupSrc;
+	
+	DEVICE_DeepSleepWakeSrc_T wakeSrc;
+	DEVICE_GetDeepSleepWakeUpSrc(&wakeSrc);
+
+	deepSleepWakeupSrc = (uint8_t) wakeSrc;
+	if ((wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE) || (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_MCLR))  
+	{
+		deepSleepWakeupSrc = (uint8_t) DEVICE_DEEP_SLEEP_WAKE_NONE;
+		RTC_Initialize();
+	}
+
 
 	GPIO_Initialize();
 
     EVSYS_Initialize();
 
-    RTC_Initialize();
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 
@@ -366,6 +397,12 @@ void SYS_Initialize ( void* data )
 
 	TRNG_Initialize();
 
+
+
+    /* MISRAC 2012 deviation block start */
+    /* Following MISRA-C rules deviated in this block  */
+    /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
+    /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
 
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
@@ -393,29 +430,6 @@ void SYS_Initialize ( void* data )
     PDS_Init(MAX_PDS_ITEMS_COUNT, MAX_PDS_DIRECTORIES_COUNT);
 
 
-/*******************************************************************************
-* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*******************************************************************************/
-    
     // Initialize RF System
     SYS_Load_Cal(WSS_ENABLE_ZB);
  
@@ -446,7 +460,9 @@ void SYS_Initialize ( void* data )
 
 
 
-    // Create ZIGBEE Stack Message QUEUE
+
+
+	// Create ZIGBEE Stack Message QUEUE
     OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
 
     // Retrieve Zigbee's data from Information Base
@@ -458,19 +474,22 @@ void SYS_Initialize ( void* data )
     // Initialize ZIGBEE Stack
     Zigbee_Init(&osalAPIList, &zigbeeRequestQueueHandle, NULL, &zgbIBdata);
 
+    // pass the above read wakep src for the stack to use
+	CS_WriteParameter(CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC_ID, &deepSleepWakeupSrc);
     //uint8_t value = PMU_Set_Mode(PMU_MODE_BUCK_PWM); //Set PMU as PWM mode
     //PMU_Set_Mode(PMU_MODE_BUCK_PWM); //Set PMU as PWM mode // For Buck Mode : PMU_MODE_MLDO
 
     CRYPT_WCCB_Initialize();
 
+    /* MISRAC 2012 deviation block end */
     APP_Initialize();
 
 
     NVIC_Initialize();
 
+
     /* MISRAC 2012 deviation block end */
 }
-
 
 /*******************************************************************************
  End of File

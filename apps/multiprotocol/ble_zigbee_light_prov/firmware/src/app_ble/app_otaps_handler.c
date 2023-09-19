@@ -85,6 +85,12 @@ void APP_OtapsEvtHandler(BLE_OTAPS_Event_T *p_event)
         }
         break;
         
+        case BLE_OTAPS_EVT_UPDATING_REQ:
+        {
+            /* TODO: implement your application code.*/
+        }
+        break;
+        
         case BLE_OTAPS_EVT_COMPLETE_IND:
         {
             /* TODO: implement your application code.*/

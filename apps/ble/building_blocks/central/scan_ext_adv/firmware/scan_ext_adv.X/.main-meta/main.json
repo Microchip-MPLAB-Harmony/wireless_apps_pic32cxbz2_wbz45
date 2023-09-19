@@ -6,25 +6,25 @@
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ext_scan_adv",
 		"version": "1.0.0",
 		"displayName": "Extended Scan and Advertisment Application",
-		"projectName": "ext_scan_adv",
+		"projectName": "scan_ext_adv",
 		"shortDescription": "This example application used to enable scanning of Extended Advertisements (ADV_EXT_IND, ADV_AUX_IND) on WBZ451 Curiosity board. For a successful scan of Extended Advertisement user needs to have a broadcaster transmitting these Advertisements. In BLE a central or observer always starts with scanning.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.00"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.1.0"
+				"semverRange": ">=4.21"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "1.0.107"
+			"semverRange": "1.2.230"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.1.4"
+			"semverRange": ">=5.3.7"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

@@ -56,7 +56,7 @@
  ******************************************************************************/
  
 #include <systemenvironment/include/sysTypes.h>
-#include <hal/cortexm4/pic32cx/include/halAppClock.h>
+#include <halAppClock.h>
 #include <hal/include/bcTimer.h>
 
 /******************************************************************************
@@ -127,6 +127,17 @@ uint32_t HAL_GetElapsedAppTimerTimeSinceLastIsr(void);
           0 Success    
  **********************************************************************/
 int HAL_RemainingAppTimer(HAL_AppTimer_t *appTimer, uint32_t *remainingTime);
+/*****************************************************************//**
+  \brief  Backing up timers info
+
+ **********************************************************************/
+void HAL_BackupRunningTimers(uint32_t expectedSleepTime);
+
+/*****************************************************************//**
+  \brief  Restoring timers info
+
+ **********************************************************************/
+void HAL_RestoreRunningTimers(void);
 
 
 #ifdef __cplusplus

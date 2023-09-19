@@ -51,6 +51,7 @@
 #include "peripheral/tc/plib_tc2.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "math.h"
+#include "peripheral/tcc/plib_tcc0.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -252,11 +253,21 @@ static void HSV2RGB(unsigned int hue, unsigned int saturation,unsigned int level
 /****************************************************************
 Turn off RGB LED.
 ****************************************************************/
+extern uint32_t wbz451_silicon_revision;
 void RGB_LED_Off(void)
 {
-    TC2_CompareStop();
-    TC3_CompareStop();
-    pwmStopped = true;
+    if(wbz451_silicon_revision & (1 << 29)) // A2 Silicon // if((wbz451_silicon_revision >> 28) == (0x02))
+    {
+        TCC0_CompareStop();
+        pwmStopped = true;
+    }
+    
+    else //if((wbz451_silicon_revision >> 28) ==  (0x00)) // A0 silicon
+    {
+      TC2_CompareStop();
+      TC3_CompareStop();
+      pwmStopped = true;
+    }
 }
 
 /**************************************************************************//**
@@ -279,7 +290,7 @@ void RGB_LED_SetBrightnessLevel(uint8_t level)
 #endif       
     }   
 }
-
+extern uint32_t wbz451_silicon_revision;
 /**************************************************************************//**
 \brief Set compare value for PWM channels
 ******************************************************************************/
@@ -288,13 +299,32 @@ static void RGB_LED_SetPwmChannelCompareValue(uint16_t r, uint16_t g, uint16_t b
   r = r * TOP / 65535;
   g = g * TOP / 65535;
   b = b * TOP / 65535;
-
-  if(pwmStopped)
+  if(wbz451_silicon_revision & (1 << 29)) // A2 Silicon // if((wbz451_silicon_revision >> 28) == (0x02))
   {
+      if(pwmStopped)
+	  {
+	       TCC0_CompareStart();
+	       pwmStopped = false;
+	  }
+	  
+	  TCC0_Compare24bitMatchSet(TCC0_CHANNEL0,r);
+	  
+	  TCC0_Compare24bitMatchSet(TCC0_CHANNEL1,g);
+	  
+	  TCC0_Compare24bitMatchSet(TCC0_CHANNEL2,b);
+
+	  TCC0_CompareStart();
+  }
+  
+  else //if((wbz451_silicon_revision >> 28) ==  (0x00)) // A0 silicon
+  {   
+      
+      if(pwmStopped)
+     {
        TC2_CompareStart();
        TC3_CompareStart();
        pwmStopped = false;
-  }
+     }
   
   TC2_Compare16bitMatch0Set(r);
 
@@ -313,6 +343,8 @@ static void RGB_LED_SetPwmChannelCompareValue(uint16_t r, uint16_t g, uint16_t b
   TC3_CompareStart();
   
 }
+}
+
 #endif
 
 #ifdef COLOR_XY

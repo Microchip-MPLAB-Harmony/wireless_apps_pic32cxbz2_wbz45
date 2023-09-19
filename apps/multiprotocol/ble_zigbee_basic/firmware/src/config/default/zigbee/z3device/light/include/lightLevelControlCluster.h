@@ -53,7 +53,7 @@
 ******************************************************************************/
 #define UPDATE_TIMER_INTERVAL               100 // 1/10th of a second as per specification
 #define MIN_LIGHT_LEVEL                      1
-#define MAX_LIGHT_LEVEL                     254
+#define MAX_LIGHT_LEVEL                     255
 #define MIN_TRANSITION_TIME                  1
 #define DIMMABLE_LIGHT_HUE_LEVEL            35
 #define DIMMABLE_LIGHT_SATURATION_LEVEL     35

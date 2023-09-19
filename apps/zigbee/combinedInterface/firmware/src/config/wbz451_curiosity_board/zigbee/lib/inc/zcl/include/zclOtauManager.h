@@ -254,7 +254,11 @@ typedef struct
 {
   ZCL_OtauFirmwareVersion_t version;
   uint32_t totalSize;
+  #if defined _PIC32CX_BZ3_ 
+  uint8_t   otauHeader[OTAU_MAX_REQ_PAGE_SIZE];
+  #else
   uint8_t   metaHeader[OTAU_MAX_REQ_BLOCK_SIZE];
+  #endif
 }ZclOtauRecoveryImageInfo_t;
 
 typedef uint32_t ZCLOtauRecoveryOffsetInfo_t;

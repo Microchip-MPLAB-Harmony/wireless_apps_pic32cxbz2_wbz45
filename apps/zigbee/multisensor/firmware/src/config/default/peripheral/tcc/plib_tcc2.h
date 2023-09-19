@@ -138,7 +138,9 @@ bool TCC2_PWM16bitPeriodSet(uint16_t period);
 
 uint16_t TCC2_PWM16bitPeriodGet(void);
 
-void TCC2_PWM16bitCounterSet(uint16_t count);
+void TCC2_PWM16bitCounterSet(uint16_t countVal);
+
+uint16_t TCC2_PWM16bitCounterGet(void);
 
 __STATIC_INLINE bool TCC2_PWM16bitDutySet(TCC2_CHANNEL_NUM channel, uint16_t duty)
 {

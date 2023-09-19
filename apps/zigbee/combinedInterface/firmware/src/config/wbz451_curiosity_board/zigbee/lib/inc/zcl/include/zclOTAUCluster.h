@@ -101,6 +101,8 @@
 
 #define OTAU_MAX_REQ_BLOCK_SIZE 48
 
+#define OTAU_MAX_REQ_PAGE_SIZE 256
+
 // The page size - the number of bytes sent for a single image page request
 // 
 //  The parameter sets the number of bytes to be sent by the server for an image
@@ -118,7 +120,11 @@
 //  C-type: uint16_t
 //  Can be set: at compile time only
 //  Persistent: No
+#if defined _PIC32CX_BZ3_ 
+#define CS_ZCL_OTAU_IMAGE_PAGE_REQUEST_PAGE_SIZE    DRV_SST26_PAGE_SIZE
+#else
 #define CS_ZCL_OTAU_IMAGE_PAGE_REQUEST_PAGE_SIZE    (OTAU_MAX_REQ_BLOCK_SIZE * 5)
+#endif
 
 // OTAU commands
 // list of commands id

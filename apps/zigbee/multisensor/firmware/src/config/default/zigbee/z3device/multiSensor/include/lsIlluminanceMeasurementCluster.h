@@ -91,6 +91,16 @@ void illuminanceMeasurementClusterInit(void);
 ******************************************************************************/
  void illuminanceMeasurementUpdateTolerance(void);
 
+/**************************************************************************//**
+\brief Backing up attributes
+******************************************************************************/
+void lsBackupLsAttributes(void);
+
+/**************************************************************************//**
+\brief Restoring attributes
+******************************************************************************/
+void lsRestoreLsAttributes(void);
+
 #endif // _MSILLUMINANCEMEASUREMENTCLUSTER_H
 
 // eof msilluminanceMeasureCluster.h

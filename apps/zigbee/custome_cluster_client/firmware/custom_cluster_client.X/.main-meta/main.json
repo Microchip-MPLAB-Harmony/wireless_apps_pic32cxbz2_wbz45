@@ -1,0 +1,70 @@
+{
+	"metaDataVersion": "1.0.0",
+	"category": "com.microchip.ide.project",
+	"content": {
+		"metaDataVersion": "1.3.0",
+		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_custom_cluster_client",
+		"version": "1.0.0",
+		"displayName": "Zigbee Custom Cluster Application - Cluster Client",
+		"projectName": "custom_cluster_client",
+		"shortDescription": "This aplication is a Zigbee custom cluster example, it iimplements a flowRateMonitor cluster including 7 attributes in server and 1 attribute in client. The application includes two examples to work together: custom_cluster_client example and custom_cluster_server example. It demonstrates Zigbee commissioning, finding&binding, attribute periodical report from server to client.",
+		"ide": {
+			"name": "MPLABX",
+			"semverRange": ">=6.15"
+		},
+		"compiler": [
+			{
+				"name": "XC32",
+				"semverRange": ">=4.21"
+			}
+		],
+		"dfp": {
+			"name": "PIC32CXBZ2_DFP",
+			"semverRange": "^1.2.230"
+		},
+		"configurator": {
+			"name": "MCC",
+			"semverRange": ">=5.3.7"
+		},
+		"device": {
+			"metaDataVersion": "1.0.0",
+			"category": "com.microchip.portal.contentRef",
+			"content": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.device",
+				"name": "WBZ451",
+				"versionRange": "*"
+			}
+		},
+		"author": "Microchip",
+		"peripherals": [
+			"Zigbee",
+			"UART",
+			"GPIO"
+		],
+		"keywords": [
+			"MCC",
+			"Harmony",
+			"PIC32CX1012BZ20548",
+			"WBZ451",
+			"PIC32CXBZ2 Family",
+			"wireless",
+			"Zigbee",
+			"Custom",
+			"Cluster",
+			"Client",
+			"Server"
+		],
+		"additionalData": {
+			"longDescription": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.portal.fileRef",
+				"content": {
+					"metaDataVersion": "1.0.0",
+					"fileName": "./../../readme.md",
+					"mimeType": "text/markdown"
+				}
+			}
+		}
+	}
+}

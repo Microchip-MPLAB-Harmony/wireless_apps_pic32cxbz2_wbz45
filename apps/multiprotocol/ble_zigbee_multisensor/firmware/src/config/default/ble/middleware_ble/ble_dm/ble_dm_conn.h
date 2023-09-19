@@ -73,8 +73,10 @@
 
 /**@brief Initialize BLE_DM_ConnInit module.
  *
+ * @retval true      Successfully initialize BLE_DM_ConnInit module.
+ * @retval false     Fail to initialize BLE_DM_ConnInit module.
 */
-void BLE_DM_ConnInit();
+bool BLE_DM_ConnInit(void);
 
 
 /**@brief Function for handling BLE events.

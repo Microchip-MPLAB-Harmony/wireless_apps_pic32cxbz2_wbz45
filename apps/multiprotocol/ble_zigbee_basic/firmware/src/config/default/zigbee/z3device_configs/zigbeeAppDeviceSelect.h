@@ -77,14 +77,13 @@
 #define APP_Z3_DEVICE_TYPE             ZIGBEE_ON_OFF_LIGHT
 
 
-#define CS_UID 0xbee //Unique Identifier (UID) determining the device extended address
+#define CS_UID 0 //Unique Identifier (UID) determining the device extended address
 
 //Primary and secondary channel set configuration 
 #define CS_BDB_PRIMARY_CHANNELS_MASK       0x2108800 //standard (11, 15, 20, 25)
 #define CS_BDB_SECONDARY_CHANNELS_MASK     0x5ef7000 //standard
 
 #ifndef CPU_CLK_HZ
-#define CPU_CLK_HZ              64000000  // Core Clock
-//#define CPU_CLK_HZ              48000000  // Core Clock
+#define CPU_CLK_HZ              64000000  // Core CPU Clock
 #endif
 #endif

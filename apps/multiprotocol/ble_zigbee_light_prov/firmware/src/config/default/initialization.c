@@ -145,7 +145,7 @@
 
 /*** FBCFG0 ***/
 #pragma config BINFOVALID =      VALID
-#pragma config PCSCMODE =      SINGLE
+#pragma config PCSCMODE =      DUAL
 
 /*** FCPN0 ***/
 #pragma config CP =      DISABLED
@@ -159,6 +159,10 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+/* Following MISRA-C rules are deviated in the below code block */
+/* MISRA C-2012 Rule 11.1 */
+/* MISRA C-2012 Rule 11.3 */
+/* MISRA C-2012 Rule 11.8 */
 // <editor-fold defaultstate="collapsed" desc="DRV_USART Instance 0 Initialization Data">
 
 static DRV_USART_CLIENT_OBJ drvUSART0ClientObjPool[DRV_USART_CLIENTS_NUMBER_IDX0];
@@ -166,35 +170,35 @@ static DRV_USART_CLIENT_OBJ drvUSART0ClientObjPool[DRV_USART_CLIENTS_NUMBER_IDX0
 /* USART transmit/receive transfer objects pool */
 static DRV_USART_BUFFER_OBJ drvUSART0BufferObjPool[DRV_USART_QUEUE_SIZE_IDX0];
 
-const DRV_USART_PLIB_INTERFACE drvUsart0PlibAPI = {
+static const DRV_USART_PLIB_INTERFACE drvUsart0PlibAPI = {
     .readCallbackRegister = (DRV_USART_PLIB_READ_CALLBACK_REG)SERCOM0_USART_ReadCallbackRegister,
-    .read = (DRV_USART_PLIB_READ)SERCOM0_USART_Read,
+    .read_t = (DRV_USART_PLIB_READ)SERCOM0_USART_Read,
     .readIsBusy = (DRV_USART_PLIB_READ_IS_BUSY)SERCOM0_USART_ReadIsBusy,
     .readCountGet = (DRV_USART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
     .readAbort = (DRV_USART_PLIB_READ_ABORT)SERCOM0_USART_ReadAbort,
     .writeCallbackRegister = (DRV_USART_PLIB_WRITE_CALLBACK_REG)SERCOM0_USART_WriteCallbackRegister,
-    .write = (DRV_USART_PLIB_WRITE)SERCOM0_USART_Write,
+    .write_t = (DRV_USART_PLIB_WRITE)SERCOM0_USART_Write,
     .writeIsBusy = (DRV_USART_PLIB_WRITE_IS_BUSY)SERCOM0_USART_WriteIsBusy,
     .writeCountGet = (DRV_USART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
     .errorGet = (DRV_USART_PLIB_ERROR_GET)SERCOM0_USART_ErrorGet,
     .serialSetup = (DRV_USART_PLIB_SERIAL_SETUP)SERCOM0_USART_SerialSetup
 };
 
-const uint32_t drvUsart0remapDataWidth[] = { 0x5, 0x6, 0x7, 0x0, 0x1 };
-const uint32_t drvUsart0remapParity[] = { 0x2, 0x0, 0x80000, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF };
-const uint32_t drvUsart0remapStopBits[] = { 0x0, 0xFFFFFFFF, 0x40 };
-const uint32_t drvUsart0remapError[] = { 0x4, 0x0, 0x2 };
+static const uint32_t drvUsart0remapDataWidth[] = { 0x5, 0x6, 0x7, 0x0, 0x1 };
+static const uint32_t drvUsart0remapParity[] = { 0x2, 0x0, 0x80000, 0xFFFFFFFFU, 0xFFFFFFFFU, 0xFFFFFFFFU };
+static const uint32_t drvUsart0remapStopBits[] = { 0x0, 0xFFFFFFFFU, 0x40 };
+static const uint32_t drvUsart0remapError[] = { 0x4, 0x0, 0x2 };
 
-const DRV_USART_INTERRUPT_SOURCES drvUSART0InterruptSources =
+static const DRV_USART_INTERRUPT_SOURCES drvUSART0InterruptSources =
 {
     /* Peripheral has single interrupt vector */
     .isSingleIntSrc                        = true,
 
     /* Peripheral interrupt line */
-    .intSources.usartInterrupt             = SERCOM0_IRQn,
+    .intSources.usartInterrupt             = (int32_t)SERCOM0_IRQn,
 };
 
-const DRV_USART_INIT drvUsart0InitData =
+static const DRV_USART_INIT drvUsart0InitData =
 {
     .usartPlib = &drvUsart0PlibAPI,
 
@@ -224,6 +228,7 @@ const DRV_USART_INIT drvUsart0InitData =
 };
 
 // </editor-fold>
+
 
 
 // *****************************************************************************
@@ -274,6 +279,8 @@ OSAL_API_LIST_TYPE     osalAPIList;
 
 #define QUEUE_LENGTH_BLE        (32)
 #define QUEUE_ITEM_SIZE_BLE     (sizeof(void *))
+#define EXT_COMMON_MEMORY_SIZE  (28*1024)
+static uint8_t __attribute__((section (".bss.s_btMem"), noload, address(0x20018C00))) s_btMem[EXT_COMMON_MEMORY_SIZE];
 OSAL_QUEUE_HANDLE_TYPE bleRequestQueueHandle;
 
 /*******************************************************************************
@@ -371,6 +378,7 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 // *****************************************************************************
 // *****************************************************************************
 
+/* MISRAC 2012 deviation block end */
 
 
 /*******************************************************************************
@@ -385,6 +393,7 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 
 void SYS_Initialize ( void* data )
 {
+
     /* MISRAC 2012 deviation block start */
     /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
@@ -418,6 +427,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
     BT_SYS_Cfg_T        btSysCfg;
+    BT_SYS_Option_T     btOption;
 
   
     CLK_Initialize();
@@ -427,7 +437,10 @@ void SYS_Initialize ( void* data )
 
 
 
+
 	GPIO_Initialize();
+
+    TC0_TimerInitialize();
 
     TC3_CompareInitialize();
 
@@ -447,6 +460,7 @@ void SYS_Initialize ( void* data )
 
     TCC2_PWMInitialize();
 
+    TCC0_CompareInitialize();
 
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
@@ -471,6 +485,12 @@ void SYS_Initialize ( void* data )
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
     
+
+    /* MISRAC 2012 deviation block start */
+    /* Following MISRA-C rules deviated in this block  */
+    /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
+    /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
+
     // Initialize RF System
     SYS_Load_Cal(WSS_ENABLE_BLE_ZB);
  
@@ -495,6 +515,8 @@ void SYS_Initialize ( void* data )
 
     osalAPIList.OSAL_MemAlloc = OSAL_Malloc;
     osalAPIList.OSAL_MemFree = OSAL_Free;
+
+
 
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
@@ -547,17 +569,23 @@ void SYS_Initialize ( void* data )
     // Retrieve BLE calibration data
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
-    btSysCfg.antennaGainValid = IB_GetAntennaGain(&btSysCfg.antennaGain);
 
+    if (!IB_GetAntennaGain(&btSysCfg.antennaGain))
+    {
+        btSysCfg.antennaGain = 3;
+    }
+
+
+    //Configure BLE option
+    btOption.hciMode = false;
+    btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
+    btOption.p_cmnMemAddr = s_btMem;
 
     // Initialize BLE Stack
-    BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, NULL, &btSysCfg);
-    
-
-
-
+    BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);
     CRYPT_WCCB_Initialize();
 
+    /* MISRAC 2012 deviation block end */
     APP_Initialize();
 
 

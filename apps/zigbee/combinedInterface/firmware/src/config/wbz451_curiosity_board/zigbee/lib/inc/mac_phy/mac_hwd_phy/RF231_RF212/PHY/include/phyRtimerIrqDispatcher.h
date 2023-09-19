@@ -51,7 +51,7 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
-#define STATE_POLL_PERIOD 50 // [us] Period of time for RF current state polling.
+#define STATE_POLL_PERIOD 100U // [us] Period of time for RF current state polling.
 
 /******************************************************************************
                         Prototypes section.

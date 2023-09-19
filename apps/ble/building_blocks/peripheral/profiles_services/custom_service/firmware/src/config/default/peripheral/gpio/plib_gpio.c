@@ -42,6 +42,7 @@
 //DOM-IGNORE-END
 
 #include "plib_gpio.h"
+#include "interrupts.h"
 
 
 
@@ -61,7 +62,10 @@ void GPIO_Initialize ( void )
     /* Disable JTAG since at least one of its pins is configured for Non-JTAG function */
     CFG_REGS->CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;
 
-          /* PORTA Initialization */
+//         /* SOSCSEL - Digital (SCLKI) mode is selected */
+//    CFG_REGS->CFG_CFGCON2CLR = CFG_CFGCON2_SOSCSEL_Msk;
+
+    /* PORTA Initialization */
     GPIOA_REGS->GPIO_CNPDSET = 0x7f9fU; /* Pull-Down Enable */
     /* PORTB Initialization */
     GPIOB_REGS->GPIO_LAT = 0x0U; /* Initial Latch Value */

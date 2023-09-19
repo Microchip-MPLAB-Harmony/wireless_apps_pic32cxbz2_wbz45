@@ -1,24 +1,5 @@
 /*******************************************************************************
-  BLE SMP Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    ble_smp.h
-
-  Summary:
-    This file contains the BLE SMP functions for application user.
-
-  Description:
-    This file contains the BLE SMP functions and event for application user.  The
-    "BLE_SMP_Init" function shall be called in the "APP_Initialize" function to 
-    initialize the this modules in the system
- *******************************************************************************/
-
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -39,11 +20,28 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+
+/*******************************************************************************
+  BLE SMP Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    ble_smp.h
+
+  Summary:
+    This file contains the BLE SMP functions for application user.
+
+  Description:
+    This file contains the BLE SMP functions and event for application user.  The
+    "BLE_SMP_Init" function shall be called in the "APP_Initialize" function to 
+    initialize the this modules in the system
+ *******************************************************************************/
 
 
-/**
- * @addtogroup BLE_SMP
+/**@defgroup BLE_SMP Security Manager Protocol (SMP)
+ * @brief This module defines the SMP interface to the BLE Library
  * @{
  * @brief Header file for the BLE Security Manager library.
  * @note Definitions and prototypes for the BLE SMP stack layer application programming interface.
@@ -52,6 +50,15 @@
 #define BLE_SMP_H
 
 #include "ble_gap.h"
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -62,21 +69,21 @@
  * @{ */
  
 /**@defgroup BLE_SMP_IO_CAPABILITY_DEF IO capability
- * @brief The definition of SMP IO Capabilities
+ * @brief The definition of SMP IO Capabilities.
  * @{ */
-#define BLE_SMP_IO_DISPLAYONLY                              0x00        /**< Device has the ability to display or communicate a 6 digit decimal number but does not have the ability to indicate yes or no. */
-#define BLE_SMP_IO_DISPLAYYESNO                             0x01        /**< Device has at least two buttons that can be easily mapped to yes and no and also has the ability to display or communicate a 6 digit decimal number. */
-#define BLE_SMP_IO_KEYBOARDONLY                             0x02        /**< Device has a numeric keyboard that can input the numbers 0 through 9 and a confirmation but does not have the ability to display or communicate a 6 digit decimal number. */
-#define BLE_SMP_IO_NOINPUTNOOUTPUT                          0x03        /**< Device does not have the abilities to indicate yes or no and display or communicate a 6 digit decimal number. */
-#define BLE_SMP_IO_KEYBOARDDISPLAY                          0x04        /**< Device has a numeric keyboard that can input the numbers 0 through 9 and a confirmation and has the ability to display or communicate a 6 digit decimal number. */
+#define BLE_SMP_IO_DISPLAYONLY                              (0x00U)        /**< Device has the ability to display or communicate a 6 digit decimal number but does not have the ability to indicate yes or no. */
+#define BLE_SMP_IO_DISPLAYYESNO                             (0x01U)        /**< Device has at least two buttons that can be easily mapped to yes and no and also has the ability to display or communicate a 6 digit decimal number. */
+#define BLE_SMP_IO_KEYBOARDONLY                             (0x02U)        /**< Device has a numeric keyboard that can input the numbers 0 through 9 and a confirmation but does not have the ability to display or communicate a 6 digit decimal number. */
+#define BLE_SMP_IO_NOINPUTNOOUTPUT                          (0x03U)        /**< Device does not have the abilities to indicate yes or no and display or communicate a 6 digit decimal number. */
+#define BLE_SMP_IO_KEYBOARDDISPLAY                          (0x04U)        /**< Device has a numeric keyboard that can input the numbers 0 through 9 and a confirmation and has the ability to display or communicate a 6 digit decimal number. */
 /** @} */
 
 
 /**@defgroup BLE_SMP_OPTION Pairing options
- * @brief The definition of pairing options
+ * @brief The definition of pairing options.
  * @note Possible combinations are :
- * - BLE_SMP_OPTION_NONE : No bonding, LE legacy pairing is used
- * - BLE_SMP_OPTION_BONDING    : Bonding requested, LE legacy pairing is used
+ * - BLE_SMP_OPTION_NONE : No bonding, LE legacy pairing is used.
+ * - BLE_SMP_OPTION_BONDING    : Bonding requested, LE legacy pairing is used.
  * - BLE_SMP_OPTION_SECURE_CONNECTION : No Bonding. If both devices support LE Secure Connections, use LE
  *                                                                  Secure Connections; otherwise use LE legacy pairing.
  * - BLE_SMP_OPTION_BONDING | BLE_SMP_OPTION_SECURE_CONNECTION : Bonding Requested. If both devices support LE Secure Connections, use LE
@@ -101,66 +108,66 @@
  *                                                                                                               Enable keypress notifications.
  *
  * @{ */
-#define BLE_SMP_OPTION_NONE                                 0x00        /**< Do not allow a bond to be created with a peer device. The keys are not stored*/
-#define BLE_SMP_OPTION_BONDING                              0x01        /**< Allows two connected devices to exchange and store security and identity information to create a trusted relationship . */
-#define BLE_SMP_OPTION_MITM                                 0x04        /**< Request MITM protection. */
-#define BLE_SMP_OPTION_SECURE_CONNECTION                    0x08        /**< Request LE Secure Connections pairing. */
-#define BLE_SMP_OPTION_KEYPRESS                             0x10        /**< Enable keypress notifications. */
+#define BLE_SMP_OPTION_NONE                                 (0x00U)        /**< Do not allow a bond to be created with a peer device. The keys are not stored.*/
+#define BLE_SMP_OPTION_BONDING                              (0x01U)        /**< Allows two connected devices to exchange and store security and identity information to create a trusted relationship . */
+#define BLE_SMP_OPTION_MITM                                 (0x04U)        /**< Request MITM protection. */
+#define BLE_SMP_OPTION_SECURE_CONNECTION                    (0x08U)        /**< Request LE Secure Connections pairing. */
+#define BLE_SMP_OPTION_KEYPRESS                             (0x10U)        /**< Enable keypress notifications. */
 /** @} */
 
 
 /**@defgroup BLE_SMP_CONFIRM Confirm result
- * @brief The definition of user confirm result
+ * @brief The definition of user confirm result.
  * @{ */
-#define BLE_SMP_CONFIRM_YES                                 0x00        /**< User confirms "YES". */
-#define BLE_SMP_CONFIRM_NO                                  0x01        /**< User confirms "NO". */
+#define BLE_SMP_CONFIRM_YES                                 (0x00U)        /**< User confirms "YES". */
+#define BLE_SMP_CONFIRM_NO                                  (0x01U)        /**< User confirms "NO". */
 /** @} */
 
 
 /**@defgroup BLE_SMP_PAIRING_RESULT Pairing result
- * @brief The definition of pairing result
+ * @brief The definition of pairing result.
  * @{ */
-#define BLE_SMP_PAIRING_SUCCESS                             0x00        /**< Pairing process is successful. */
-#define BLE_SMP_PAIRING_FAIL                                0x01        /**< Pairing process failed. */
-#define BLE_SMP_PAIRING_TIMEOUT                             0x02        /**< Pairing process timeout. */
+#define BLE_SMP_PAIRING_SUCCESS                             (0x00U)        /**< Pairing process is successful. */
+#define BLE_SMP_PAIRING_FAIL                                (0x01U)        /**< Pairing process failed. */
+#define BLE_SMP_PAIRING_TIMEOUT                             (0x02U)        /**< Pairing process timeout. */
 /** @} */
 
 /**@defgroup BLE_SMP_PAIRING_FAIL_REASON Pairing fail reason
  * @brief The definition of the reason for pairing fail.
  * @{ */
-#define BLE_SMP_REASON_PASSKEY_ENTRY_FAILED                 0x01        /**< The user input of passkey failed. */
-#define BLE_SMP_REASON_OOB_NOT_AVAILABLE                    0x02        /**< The OOB data is not available. */
-#define BLE_SMP_REASON_AUTH_REQ                             0x03        /**< Authentication requirements cannot be met due to IO capabilities of one or both devices. */
-#define BLE_SMP_REASON_CONFIRM_VALUE_FAILED                 0x04        /**< The confirm value does not match. */
-#define BLE_SMP_REASON_PAIRING_NOT_SUPPORTED                0x05        /**< Pairing is not supported by the device. */
-#define BLE_SMP_REASON_ENCRYPT_KEY_SIZE                     0x06        /**< Encryption key size is insufficient. */
-#define BLE_SMP_REASON_COMMAND_NOT_SUPPORTED                0x07        /**< The SMP command received is not supported on this device. */
-#define BLE_SMP_REASON_UNSPECIFIED_REASON                   0x08        /**< Pairing failed due to an unspecified reason. */
-#define BLE_SMP_REASON_REPEATED_ATTEMPTS                    0x09        /**< Too little time has elapsed since last pairing request or security request. */
-#define BLE_SMP_REASON_INVALID_PARAMETERS                   0x0A        /**< The command length is invalid. */
-#define BLE_SMP_REASON_DHKEY_CHECK_FAILED                   0x0B        /**< DHKey Check value received doesn?? match the one calculated by the local device. */
-#define BLE_SMP_REASON_NUMERIC_COMPARISON_FAILED            0x0C        /**< The confirm values in the numeric comparison protocol do not match. */
+#define BLE_SMP_REASON_PASSKEY_ENTRY_FAILED                 (0x01U)        /**< The user input of passkey failed. */
+#define BLE_SMP_REASON_OOB_NOT_AVAILABLE                    (0x02U)        /**< The OOB data is not available. */
+#define BLE_SMP_REASON_AUTH_REQ                             (0x03U)        /**< Authentication requirements cannot be met due to IO capabilities of one or both devices. */
+#define BLE_SMP_REASON_CONFIRM_VALUE_FAILED                 (0x04U)        /**< The confirm value does not match. */
+#define BLE_SMP_REASON_PAIRING_NOT_SUPPORTED                (0x05U)        /**< Pairing is not supported by the device. */
+#define BLE_SMP_REASON_ENCRYPT_KEY_SIZE                     (0x06U)        /**< Encryption key size is insufficient. */
+#define BLE_SMP_REASON_COMMAND_NOT_SUPPORTED                (0x07U)        /**< The SMP command received is not supported on this device. */
+#define BLE_SMP_REASON_UNSPECIFIED_REASON                   (0x08U)        /**< Pairing failed due to an unspecified reason. */
+#define BLE_SMP_REASON_REPEATED_ATTEMPTS                    (0x09U)        /**< Too little time has elapsed since last pairing request or security request. */
+#define BLE_SMP_REASON_INVALID_PARAMETERS                   (0x0AU)        /**< The command length is invalid. */
+#define BLE_SMP_REASON_DHKEY_CHECK_FAILED                   (0x0BU)        /**< DHKey Check value received doesnâ??t match the one calculated by the local device. */
+#define BLE_SMP_REASON_NUMERIC_COMPARISON_FAILED            (0x0CU)        /**< The confirm values in the numeric comparison protocol do not match. */
 /** @} */
 
 
 /**@defgroup BLE_SMP_FLAG_KEY_VALID Key flags
- * @brief The definition of valid remote keys flag
+ * @brief The definition of valid remote keys flag.
  * @{ */
-#define BLE_SMP_FLAG_ENCRYPT_INFO                           (1<<0)      /**< Indicate LTK is valid. */
-#define BLE_SMP_FLAG_CENTRAL_ID                             (1<<1)      /**< Indicate EDIV and Rand are valid. */
-#define BLE_SMP_FLAG_ID_INFO                                (1<<2)      /**< Indicate IRK is valid. */
-#define BLE_SMP_FLAG_ID_ADDR_INFO                           (1<<3)      /**< Indicate identity address is valid. */
-#define BLE_SMP_FLAG_SIGNING_INFO                           (1<<4)      /**< Indicate SRK is valid. */
+#define BLE_SMP_FLAG_ENCRYPT_INFO                           (1U<<0U)      /**< Indicate LTK is valid. */
+#define BLE_SMP_FLAG_CENTRAL_ID                             (1U<<1U)      /**< Indicate EDIV and Rand are valid. */
+#define BLE_SMP_FLAG_ID_INFO                                (1U<<2U)      /**< Indicate IRK is valid. */
+#define BLE_SMP_FLAG_ID_ADDR_INFO                           (1U<<3U)      /**< Indicate identity address is valid. */
+#define BLE_SMP_FLAG_SIGNING_INFO                           (1U<<4U)      /**< Indicate SRK is valid. */
 /** @} */
 
 /**@defgroup BLE_SMP_KEYPRESS_NOTI_TYPE Keypress notification type
- * @brief The definition of keypress notification type
+ * @brief The definition of keypress notification type.
  * @{ */
-#define BLE_SMP_KEYPRESS_STARTED                            0x00        /**< Passkey entry started. */
-#define BLE_SMP_KEYPRESS_DIGIT_ENTERED                      0x01        /**< Passkey digit entered. */
-#define BLE_SMP_KEYPRESS_DIGIT_ERASED                       0x02        /**< Passkey digit erased. */
-#define BLE_SMP_KEYPRESS_CLEARED                            0x03        /**< Passkey cleared. */
-#define BLE_SMP_KEYPRESS_COMPLETED                          0x04        /**< Passkey entry completed. */
+#define BLE_SMP_KEYPRESS_STARTED                            (0x00U)        /**< Passkey entry started. */
+#define BLE_SMP_KEYPRESS_DIGIT_ENTERED                      (0x01U)        /**< Passkey digit entered. */
+#define BLE_SMP_KEYPRESS_DIGIT_ERASED                       (0x02U)        /**< Passkey digit erased. */
+#define BLE_SMP_KEYPRESS_CLEARED                            (0x03U)        /**< Passkey cleared. */
+#define BLE_SMP_KEYPRESS_COMPLETED                          (0x04U)        /**< Passkey entry completed. */
 /** @} */
 
 
@@ -212,49 +219,49 @@ typedef struct BLE_SMP_Config_T
 /** @brief Pairing information.*/
 typedef struct BLE_SMP_PairInfo_T
 {
-    uint8_t                 auth:1;                                     /**< Set true if it's authenticated pairing */
-    uint8_t                 lesc:1;                                     /**< Set true if key is generated by using LE security connection */
-    uint8_t                 reserve:6;                                  /**< Reserved */
+    uint8_t                 auth:1;                                     /**< Set true if it's authenticated pairing. */
+    uint8_t                 lesc:1;                                     /**< Set true if key is generated by using LE security connection. */
+    uint8_t                 reserve:6;                                  /**< Reserved. */
 }BLE_SMP_PairInfo_T;
 
 
 /** @brief Encryption information.*/
 typedef struct BLE_SMP_EncInfo_T
 {
-    uint8_t                 ltk[16];                                    /**< The long term key */
-    uint8_t                 ediv[2];                                    /**< The encrypted diversifier value */
-    uint8_t                 rand[8];                                    /**< The randon number value */
-    uint8_t                 lesc:1;                                     /**< Key generated using LE security connection */
+    uint8_t                 ltk[16];                                    /**< The long term key. */
+    uint8_t                 ediv[2];                                    /**< The encrypted diversifier value. */
+    uint8_t                 rand[8];                                    /**< The randon number value. */
+    uint8_t                 lesc:1;                                     /**< Key generated using LE security connection. */
     uint8_t                 auth:1;                                     /**< Is Authenticated Key? */
-    uint8_t                 ltkLen:6;                                   /**< The LTK length in bytes */
+    uint8_t                 ltkLen:6;                                   /**< The LTK length in bytes. */
 }BLE_SMP_EncInfo_T;
 
 /** @brief Identity information.*/
 typedef struct BLE_SMP_IdInfo_T
 {
-    uint8_t                 irk[16];                                    /**< The identity resolving key */
-    BLE_GAP_Addr_T          addr;                                       /**< The identity address */
+    uint8_t                 irk[16];                                    /**< The identity resolving key. */
+    BLE_GAP_Addr_T          addr;                                       /**< The identity address. */
 }BLE_SMP_IdInfo_T;
 
 /** @brief Signing information.*/
 typedef struct BLE_SMP_SignInfo_T
 {
-    uint8_t                 srk[16];                                    /**< The signature resolving key*/
+    uint8_t                 srk[16];                                    /**< The signature resolving key.*/
 }BLE_SMP_SignInfo_T;
 
 /** @brief Security keys.*/
 typedef struct BLE_SMP_SecKeys_T
 {
-    BLE_SMP_EncInfo_T       encInfo;                                    /**< The encryption information */
-    BLE_SMP_IdInfo_T        idInfo;                                     /**< The identity information */
-    BLE_SMP_SignInfo_T      signInfo;                                   /**< The signing information */
+    BLE_SMP_EncInfo_T       encInfo;                                    /**< The encryption information. */
+    BLE_SMP_IdInfo_T        idInfo;                                     /**< The identity information. */
+    BLE_SMP_SignInfo_T      signInfo;                                   /**< The signing information. */
 }BLE_SMP_SecKeys_T;
 
 /** @brief Key list.*/
 typedef struct BLE_SMP_KeyList_T
 {
-    BLE_SMP_SecKeys_T       local;                                      /**< Local security keys */
-    BLE_SMP_SecKeys_T       remote;                                     /**< Remote security keys */
+    BLE_SMP_SecKeys_T       local;                                      /**< Local security keys. */
+    BLE_SMP_SecKeys_T       remote;                                     /**< Remote security keys. */
 } BLE_SMP_KeyList_T;
 
 
@@ -264,10 +271,10 @@ typedef struct  BLE_SMP_EvtPairingComplete_T
     uint16_t                connHandle;                                 /**< Connection handle associated with this connection. */
     uint8_t                 status;                                     /**< Status of pairing procedure. See @ref BLE_SMP_PAIRING_RESULT. */
     uint8_t                 failReason;                                 /**< The failReason field indicates why the pairing failed if the status is BLE_SMP_PAIRING_FAIL. See @ref BLE_SMP_PAIRING_FAIL_REASON. */
-    bool                    bond;                                       /**< The remote is bonded or not */
+    bool                    bond;                                       /**< The remote is bonded or not. */
     uint8_t                 encryptKey[16];                             /**< Encryption key associated with this connection.*/    
-    BLE_SMP_SecKeys_T       local;                                      /**< Local security keys */
-    BLE_SMP_SecKeys_T       remote;                                     /**< Remote security keys */
+    BLE_SMP_SecKeys_T       local;                                      /**< Local security keys. */
+    BLE_SMP_SecKeys_T       remote;                                     /**< Remote security keys. */
 
 } BLE_SMP_EvtPairingComplete_T;
 
@@ -287,7 +294,7 @@ typedef struct  BLE_SMP_EvtDisplayPasskeyReq_T
 } BLE_SMP_EvtDisplayPasskeyReq_T;
 
 
-/**@brief Data structure @ref BLE_SMP_EVT_INPUT_PASSKEY_REQUEST event */
+/**@brief Data structure @ref BLE_SMP_EVT_INPUT_PASSKEY_REQUEST event. */
 typedef struct  BLE_SMP_EvtInputPasskeyReq_T
 {
     uint16_t                connHandle;                                 /**< Connection handle associated with this connection. */
@@ -384,7 +391,7 @@ typedef struct  BLE_SMP_Event_T
  * @retval MBA_RES_SUCCESS                  Successfully initialize the BLE SMP main module.
  * @retval MBA_RES_OOM                      Internal memory allocation failure.
 */
-uint16_t BLE_SMP_Init();
+uint16_t BLE_SMP_Init(void);
 
 
 /**@brief Configure SMP pairing parameters. 
@@ -451,7 +458,7 @@ uint16_t BLE_SMP_PasskeyNegativeReply(uint16_t connHandle);
  * @param[in] outcome                       See @ref BLE_SMP_CONFIRM. The result of user confirm.
  *
  * @retval MBA_RES_SUCCESS                  Successfully sent user confirmation (Yes or No).
- * @retval MBA_RES_INVALID_PARA             Outcome is invalid (other than Yes or No). See @ref BLE_SMP_CONFIRM
+ * @retval MBA_RES_INVALID_PARA             Outcome is invalid (other than Yes or No). See @ref BLE_SMP_CONFIRM.
  * @retval MBA_RES_FAIL                     The specified connection handle is invalid.
  */
 uint16_t BLE_SMP_NumericComparisonConfirmReply(uint16_t connHandle, uint8_t outcome);
@@ -509,20 +516,20 @@ uint16_t BLE_SMP_ScOobDataReply(uint16_t connHandle, uint8_t *p_confirm, uint8_t
  * @retval MBA_RES_OOM                      Internal memory allocation failure.
  * @retval MBA_RES_BUSY                     Generation fail due to SMP is busy.
  */
-uint16_t BLE_SMP_GenerateScOobData();
+uint16_t BLE_SMP_GenerateScOobData(void);
 
 
 /**@brief Initiate pairing procedure. 
  * @note  If Pairing is initiated (unbonded devices) then following happens:
- *        - Phase 1: Pairing Feature Exchange
- *        - Phase 2 (LE legacy pairing): Short Term Key (STK) Generation
- *        - Phase 2 (LE Secure Connections): Long Term Key (LTK) Generation
- *        - Phase 3: Transport Specific Key Distribution
+ *        - Phase 1: Pairing Feature Exchange.
+ *        - Phase 2 (LE legacy pairing): Short Term Key (STK) Generation.
+ *        - Phase 2 (LE Secure Connections): Long Term Key (LTK) Generation.
+ *        - Phase 3: Transport Specific Key Distribution.
  *        The pairing method for Phase 2 is chosen based on IO Capabilities and Authentication request
  *        flag.
  *        For phase 3:
- *        - LE Secure connection pairing: CSRK and IRK may be distributed
- *        - LE Legacy pairing: Encryption key (LTK, EDIV, Rand), CSRK and IRK may be distributed
+ *        - LE Secure connection pairing: CSRK and IRK may be distributed.
+ *        - LE Legacy pairing: Encryption key (LTK, EDIV, Rand), CSRK and IRK may be distributed.
  *
  * @par Events generated
  *      Depending on the pairing parameters configured by @ref BLE_SMP_Config and the pairing feature exchanges with the peer, the following events may be generated:\n
@@ -556,7 +563,7 @@ uint16_t BLE_SMP_InitiatePairing(uint16_t connHandle);
 void BLE_SMP_GeneratePasskey(uint8_t *p_passkey);
 
 
-/**@brief Update paired device information to SMP
+/**@brief Update paired device information to SMP.
  * @note  This function is suggested to be called once after connected if the connection is bonded.
  *        SMP requires bonding information to check permission when processing requests. \n
  *
@@ -630,7 +637,7 @@ uint16_t BLE_SMP_Keypress(uint16_t connHandle, uint8_t notifyType);
  * @retval MBA_RES_SUCCESS                  Successfully set to accept debug key.
  * @retval MBA_RES_FAIL                     Fail to set to accept debug key due to @ref BLE_SMP_EnableDebugMode API is called.
 */
-uint16_t BLE_SMP_AcceptDebugKey();
+uint16_t BLE_SMP_AcceptDebugKey(void);
 
 
 /**@brief Enable BLE SMP debug mode.
@@ -640,9 +647,15 @@ uint16_t BLE_SMP_AcceptDebugKey();
  * @retval MBA_RES_SUCCESS                  Successfully enable SMP debug mode.
  * @retval MBA_RES_FAIL                     Fail to enable debug mode due to @ref BLE_SMP_AcceptDebugKey API is called.
 */
-uint16_t BLE_SMP_EnableDebugMode();
+uint16_t BLE_SMP_EnableDebugMode(void);
 
 /**@} */ //BLE_SMP_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
 #endif
 
 /**

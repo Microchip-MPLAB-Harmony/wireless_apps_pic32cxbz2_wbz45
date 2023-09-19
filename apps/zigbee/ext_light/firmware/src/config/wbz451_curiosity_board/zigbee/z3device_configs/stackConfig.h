@@ -59,21 +59,10 @@
 //ARB_ZB_STATIC_MODE   1
 //ARB_ZB_DYNAMIC_MODE  2  */
 //-----------------------------------------------
-#define CS_RADIO_ARB_MODE    (2)
+#define CS_RADIO_ARB_MODE  2
 
 #if (CS_RADIO_ARB_MODE > 2) 
 #error - wrong Radio arbiter mode setting
-#endif
-
-
-// Tx Power region set by user.
-#define FCC                      0
-#define ETSI                     1
-#define ETSI_FCC                 2
-#define CS_DEVICE_POWER_REGION   ETSI
-
-#if (CS_DEVICE_POWER_REGION > 2) 
-#error - wrong Tx Power Region
 #endif
 
 //-----------------------------------------------
@@ -87,19 +76,14 @@
 #define CS_DEVICE_POWER_TYPE   CS_DEVICE_POWER_MPA
 
 //Tx Power set by user.Considering Radiative power
-#define CS_RF_TX_POWER   0
+#define CS_RF_TX_POWER   3
 
 //Tx Power set on Channel 26 for FCC by user.
-#define CS_RF_MAX_CH26_TX_POWER  0
+#define CS_RF_MAX_CH26_TX_POWER  3
 
 //User Specific Items from Product Specific , taken from there , this is just to make sure to have a default value.
-#ifndef TX_POWER_REQ
-#define TX_POWER_REQ   7
-#endif
-
-//User Specific Items from Product Specific , taken from there , this is just to make sure to have a default value.
-#ifndef TX_ANT_GAIN
-#define TX_ANT_GAIN    2
+#ifndef CS_TX_ANTENNA_GAIN
+#define CS_TX_ANTENNA_GAIN    3
 #endif
 
 // Enables or disables APS Fragmentation support.
@@ -301,6 +285,30 @@
 //  Can be set: at any time
 //  Persistent: No
 #define CS_END_DEVICE_SLEEP_PERIOD 7000L
+
+// \brief Default Timeout enumeration used by the device
+//     ref Table 3.4.3 of R21
+//	 This value need to be set according to the CS_END_DEVICE_SLEEP_PERIOD and
+//	 make sure 3 polls shall go within CS_DEFAULT_END_DEVICE_TIMEOUT vaue  
+//<b>Value range:</b> \c 0 to \c 14 \n
+// 0 -    10 Sec \n
+// 1 -     2 minutes \n
+// 2 -     4 minutes \n
+// 3 -     8 minutes \n
+// 4 -    16 minutes \n
+// 5 -    32 minutes \n
+// 6 -    64 minutes \n
+// 7 -   128 minutes \n
+// 8 -   256 minutes \n
+// 9 -   512 minutes \n
+//10 -  1024 minutes \n
+//11 -  2048 minutes \n
+//12 -  4096 minutes \n
+//13 -  8192 minutes \n
+//14 - 16384 minutes \n
+//<b>C-type:</b> uint8_t \n
+//<b>Can be set:</b> at Compile time only \n
+#define CS_DEFAULT_END_DEVICE_TIMEOUT  NWK_END_DEVICE_TIMEOUT_2M
 
 // The maximum number of network keys that can be stored on the device
 // 

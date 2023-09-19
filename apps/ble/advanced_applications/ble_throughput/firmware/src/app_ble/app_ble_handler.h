@@ -41,8 +41,8 @@
     are defined here for convenience.
 *******************************************************************************/
 
-#ifndef _APP_BLE_HANDLER_H
-#define _APP_BLE_HANDLER_H
+#ifndef APP_BLE_HANDLER_H
+#define APP_BLE_HANDLER_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -59,9 +59,7 @@
 #include "gatt.h"
 #include "ble_dtm.h"
 #include "ble_dm/ble_dm.h"
-#include "ble_gcm/ble_dd.h"
-#include "ble_gcm/ble_scm.h"
-#include "app.h"
+#include "ble_log/ble_log.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -310,6 +308,9 @@ void APP_SetPairTrigger(uint8_t trigger);
 }
 #endif
 //DOM-IGNORE-END
+
+//#endif /* APP_BLE_HANDLER_H */
+
 
 /*******************************************************************************
  End of File

@@ -199,10 +199,10 @@ OTAU header feilds offset  zcl spec rev 6 - 11.4.2 OTA Header Format
 #define OTAU_RECOVERY_IMAGE_OFFSET_MEM_ID         OTAU_PARAM5_MEM_ID
 
 #define OTAU_MAX_QUERY_JITTER_VALUE         0xff
-/******************************************************************************
-                   Types section
-******************************************************************************/
 
+#if defined _PIC32CX_BZ3_ 
+#define OTAU_MAX_SECTOR_ERASE 4U
+#endif
 /******************************************************************************
                    Constants section
 ******************************************************************************/
@@ -212,6 +212,12 @@ typedef struct {
   uint8_t queryJitter;
 } ZclOtauImageNotifyParams_t;
 
+#if defined _PIC32CX_BZ3_ 
+typedef struct {
+    uint8_t buff[CS_ZCL_OTAU_IMAGE_PAGE_REQUEST_PAGE_SIZE]; /*Otau buffer to hold bytes from block response*/
+    uint16_t end; /*Index used to write bytes to Otau buffer*/
+} otauPageBuff_t;
+#endif
 /******************************************************************************
                           Prototypes section
 ******************************************************************************/
@@ -239,6 +245,12 @@ void otauNwkAddrResp(ZDO_ZdpResp_t *nwkAddrResp);
 void otauMatchDescReq(bool unicast, void (* zdoZdpResp)(ZDO_ZdpResp_t *zdpResp));
 void otauBroadcastMatchDescResp(ZDO_ZdpResp_t *zdpResp);
 void otauUnicastMatchDescResp(ZDO_ZdpResp_t *zdpResp);
+
+#if defined _PIC32CX_BZ3_ 
+bool otauExternalPageWrite(uint8_t* otauDataBuffer, uint32_t writeAddress);
+bool otauCacheExternalFlashPage(otauPageBuff_t* clientBuffer, uint8_t* data, uint32_t* writeAddress, uint16_t blockLength);
+DRV_HANDLE * getSstHandle(void);
+#endif
 
 #if (defined _LINK_SECURITY_) && (!defined _LIGHT_LINK_PROFILE_)
 void otauRequestKeyReq(ExtAddr_t *tcExtAddr);
@@ -291,6 +303,7 @@ void setOtauIVrecovery(bool flag);
 void otauRestartBlockRxTimer (void);
 
 #endif // (ZCL_SUPPORT == 1) && (APP_USE_OTAU == 1)
-
+void ZCL_RestoreOtauparams(void);
+void ZCL_BackupOtauparams(void);
 #endif // _ZCLOTAUCLIENT_H
 //eof zclOtauClient.h

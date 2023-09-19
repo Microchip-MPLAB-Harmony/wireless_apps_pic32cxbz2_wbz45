@@ -1,6 +1,6 @@
 /* pkcs7.c
  *
- * Copyright (C) 2006-2020 wolfSSL Inc.
+ * Copyright (C) 2006-2021 wolfSSL Inc.
  *
  * This file is part of wolfSSL.
  *
@@ -116,11 +116,6 @@ struct PKCS7State {
 };
 
 
-enum PKCS7_MaxLen {
-    PKCS7_DEFAULT_PEEK = 0,
-    PKCS7_SEQ_PEEK
-};
-
 /* creates a PKCS7State structure and returns 0 on success */
 static int wc_PKCS7_CreateStream(PKCS7* pkcs7)
 {
@@ -217,12 +212,14 @@ static void wc_PKCS7_FreeStream(PKCS7* pkcs7)
 static int wc_PKCS7_GrowStream(PKCS7* pkcs7, word32 newSz)
 {
     byte* pt;
-
     pt = (byte*)XMALLOC(newSz, pkcs7->heap, DYNAMIC_TYPE_PKCS7);
     if (pt == NULL) {
         return MEMORY_E;
     }
-    XMEMCPY(pt, pkcs7->stream->buffer, pkcs7->stream->bufferSz);
+
+    if (pkcs7->stream->buffer != NULL && pkcs7->stream->bufferSz > 0) {
+        XMEMCPY(pt, pkcs7->stream->buffer, pkcs7->stream->bufferSz);
+    }
 
 #ifdef WC_PKCS7_STREAM_DEBUG
     printf("PKCS7 increasing internal stream buffer %d -> %d\n",
@@ -318,67 +315,6 @@ static int wc_PKCS7_AddDataToStream(PKCS7* pkcs7, byte* in, word32 inSz,
 }
 
 
-/* Does two things
- *  1) Tries to get the length from current buffer and set it as max length
- *  2) Retrieves the set max length
- *
- * if no flag value is set then the stored max length is returned.
- * returns length found on success and defSz if no stored data is found
- */
-static long wc_PKCS7_GetMaxStream(PKCS7* pkcs7, byte flag, byte* in,
-        word32 defSz)
-{
-    /* check there is a buffer to read from */
-    if (pkcs7) {
-        int     length = 0, ret;
-        word32  idx = 0, maxIdx;
-        byte*   pt;
-
-        if (flag != PKCS7_DEFAULT_PEEK) {
-            if (pkcs7->stream->length > 0) {
-                length = pkcs7->stream->length;
-                pt     = pkcs7->stream->buffer;
-            }
-            else {
-                length = defSz;
-                pt     = in;
-            }
-            maxIdx = (word32)length;
-
-            if (length < MAX_SEQ_SZ) {
-                WOLFSSL_MSG("PKCS7 Error not enough data for SEQ peek\n");
-                return 0;
-            }
-            if (flag == PKCS7_SEQ_PEEK) {
-                if ((ret = GetSequence_ex(pt, &idx, &length, maxIdx,
-                                NO_USER_CHECK)) < 0) {
-                    return ret;
-                }
-
-            #ifdef ASN_BER_TO_DER
-                if (length == 0 && ret == 0) {
-                    idx = 0;
-                    if ((ret = wc_BerToDer(pt, defSz, NULL,
-                                    (word32*)&length)) != LENGTH_ONLY_E) {
-                        return ret;
-                    }
-                }
-            #endif /* ASN_BER_TO_DER */
-                pkcs7->stream->maxLen = length + idx;
-            }
-        }
-
-        if (pkcs7->stream->maxLen == 0) {
-            pkcs7->stream->maxLen = defSz;
-        }
-
-        return pkcs7->stream->maxLen;
-    }
-
-    return defSz;
-}
-
-
 /* setter function for stored variables */
 static void wc_PKCS7_StreamStoreVar(PKCS7* pkcs7, word32 var1, int var2,
         int var3)
@@ -389,6 +325,57 @@ static void wc_PKCS7_StreamStoreVar(PKCS7* pkcs7, word32 var1, int var2,
         pkcs7->stream->varThree = var3;
     }
 }
+
+/* Tries to peek at the SEQ and get the length
+ * returns 0 on success
+ */
+static int wc_PKCS7_SetMaxStream(PKCS7* pkcs7, byte* in, word32 defSz)
+{
+    /* check there is a buffer to read from */
+    if (pkcs7) {
+        int     length = 0, ret;
+        word32  idx = 0, maxIdx;
+        byte*   pt;
+
+        if (pkcs7->stream->length > 0) {
+            length = pkcs7->stream->length;
+            pt     = pkcs7->stream->buffer;
+        }
+        else {
+            length = defSz;
+            pt     = in;
+        }
+        maxIdx = (word32)length;
+
+        if (length < MAX_SEQ_SZ) {
+            WOLFSSL_MSG("PKCS7 Error not enough data for SEQ peek");
+            return 0;
+        }
+
+        if ((ret = GetSequence_ex(pt, &idx, &length, maxIdx, NO_USER_CHECK))
+                < 0) {
+            return ret;
+        }
+
+    #ifdef ASN_BER_TO_DER
+        if (length == 0 && ret == 0) {
+            idx = 0;
+            if ((ret = wc_BerToDer(pt, defSz, NULL,
+                            (word32*)&length)) != LENGTH_ONLY_E) {
+                return ret;
+            }
+        }
+    #endif /* ASN_BER_TO_DER */
+        pkcs7->stream->maxLen = length + idx;
+
+        if (pkcs7->stream->maxLen == 0) {
+            pkcs7->stream->maxLen = defSz;
+        }
+    }
+
+    return 0;
+}
+
 
 /* getter function for stored variables */
 static void wc_PKCS7_StreamGetVar(PKCS7* pkcs7, word32* var1, int* var2,
@@ -639,8 +626,10 @@ static int wc_GetContentType(const byte* input, word32* inOutIdx, word32* oid,
                              word32 maxIdx)
 {
     WOLFSSL_ENTER("wc_GetContentType");
-    if (GetObjectId(input, inOutIdx, oid, oidIgnoreType, maxIdx) < 0)
+    if (GetObjectId(input, inOutIdx, oid, oidIgnoreType, maxIdx) < 0) {
+        WOLFSSL_LEAVE("wc_GetContentType", ASN_PARSE_E);
         return ASN_PARSE_E;
+    }
 
     return 0;
 }
@@ -1098,6 +1087,16 @@ int wc_PKCS7_InitWithCert(PKCS7* pkcs7, byte* derCert, word32 derCertSz)
             XFREE(dCert, pkcs7->heap, DYNAMIC_TYPE_DCERT);
 #endif
             return ret;
+        }
+
+        if (dCert->pubKeySize > (MAX_RSA_INT_SZ + MAX_RSA_E_SZ) ||
+            dCert->serialSz > MAX_SN_SZ) {
+            WOLFSSL_MSG("Invalid size in certificate\n");
+            FreeDecodedCert(dCert);
+#ifdef WOLFSSL_SMALL_STACK
+            XFREE(dCert, pkcs7->heap, DYNAMIC_TYPE_DCERT);
+#endif
+            return ASN_PARSE_E;
         }
 
         XMEMCPY(pkcs7->publicKey, dCert->publicKey, dCert->pubKeySize);
@@ -1993,6 +1992,28 @@ static int wc_PKCS7_SignedDataGetEncAlgoId(PKCS7* pkcs7, int* digEncAlgoId,
                 algoId = CTC_SHA512wRSA;
                 break;
         #endif
+        #ifdef WOLFSSL_SHA3
+        #ifndef WOLFSSL_NOSHA3_224
+            case SHA3_224h:
+                algoId = CTC_SHA3_224wRSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_256
+            case SHA3_256h:
+                algoId = CTC_SHA3_256wRSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_384
+            case SHA3_384h:
+                algoId = CTC_SHA3_384wRSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_512
+            case SHA3_512h:
+                algoId = CTC_SHA3_512wRSA;
+                break;
+        #endif
+        #endif
         }
 
     }
@@ -2026,6 +2047,28 @@ static int wc_PKCS7_SignedDataGetEncAlgoId(PKCS7* pkcs7, int* digEncAlgoId,
             case SHA512h:
                 algoId = CTC_SHA512wECDSA;
                 break;
+        #endif
+        #ifdef WOLFSSL_SHA3
+        #ifndef WOLFSSL_NOSHA3_224
+            case SHA3_224h:
+                algoId = CTC_SHA3_224wECDSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_256
+            case SHA3_256h:
+                algoId = CTC_SHA3_256wECDSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_384
+            case SHA3_384h:
+                algoId = CTC_SHA3_384wECDSA;
+                break;
+        #endif
+        #ifndef WOLFSSL_NOSHA3_512
+            case SHA3_512h:
+                algoId = CTC_SHA3_512wECDSA;
+                break;
+        #endif
         #endif
         }
     }
@@ -2587,7 +2630,7 @@ static int PKCS7_EncodeSigned(PKCS7* pkcs7, ESD* esd,
         idx = 0;
     }
     else {
-        if (!pkcs7->detached) {
+        if (!pkcs7->detached && pkcs7->content != NULL && pkcs7->contentSz > 0) {
             XMEMCPY(output + idx, pkcs7->content, pkcs7->contentSz);
             idx += pkcs7->contentSz;
         }
@@ -3926,6 +3969,10 @@ static int wc_PKCS7_SetPublicKeyOID(PKCS7* pkcs7, int sigOID)
         case CTC_SHA256wRSA:
         case CTC_SHA384wRSA:
         case CTC_SHA512wRSA:
+        case CTC_SHA3_224wRSA:
+        case CTC_SHA3_256wRSA:
+        case CTC_SHA3_384wRSA:
+        case CTC_SHA3_512wRSA:
             pkcs7->publicKeyOID = RSAk;
             break;
 
@@ -3954,6 +4001,10 @@ static int wc_PKCS7_SetPublicKeyOID(PKCS7* pkcs7, int sigOID)
         case CTC_SHA256wECDSA:
         case CTC_SHA384wECDSA:
         case CTC_SHA512wECDSA:
+        case CTC_SHA3_224wECDSA:
+        case CTC_SHA3_256wECDSA:
+        case CTC_SHA3_384wECDSA:
+        case CTC_SHA3_512wECDSA:
             pkcs7->publicKeyOID = ECDSAk;
             break;
 
@@ -4288,7 +4339,6 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
     word32 pkiMsgSz = inSz;
 #ifndef NO_PKCS7_STREAM
     word32 stateIdx = 0;
-    long rc;
 #endif
 
     byte* pkiMsg2 = in2;
@@ -4336,12 +4386,11 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                 break;
             }
 
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_SEQ_PEEK, in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
+            if ((ret = wc_PKCS7_SetMaxStream(pkcs7, in, inSz)) != 0) {
                 break;
             }
-            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length :inSz;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length:
+                                                    inSz;
         #endif
 
             /* determine total message size */
@@ -4377,10 +4426,7 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                     return ASN_PARSE_E;
 
             #ifndef NO_PKCS7_STREAM
-                rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_SEQ_PEEK,
-                    pkiMsg, pkiMsgSz);
-                if (rc < 0) {
-                    ret = (int)rc;
+                if ((ret = wc_PKCS7_SetMaxStream(pkcs7, in, inSz)) != 0) {
                     break;
                 }
             #endif
@@ -4542,8 +4588,8 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                 if (ret == 0 && tag != ASN_OCTET_STRING)
                     ret = ASN_PARSE_E;
 
-                if (ret == 0 && GetLength_ex(pkiMsg, &localIdx, &length, pkiMsgSz,
-                            NO_USER_CHECK) < 0)
+                if (ret == 0 && GetLength_ex(pkiMsg, &localIdx, &length,
+                            pkiMsgSz, NO_USER_CHECK) < 0)
                     ret = ASN_PARSE_E;
 
                 if (ret == 0) {
@@ -4662,19 +4708,13 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                             pkcs7->stream->expected, &pkiMsg, &idx)) != 0) {
                 break;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                    pkiMsg, pkiMsgSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
         #ifdef ASN_BER_TO_DER
             if (pkcs7->derSz != 0)
                 pkiMsgSz = pkcs7->derSz;
             else
         #endif
-                pkiMsgSz = (word32)rc;
+                pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length:
+                    inSz;
             wc_PKCS7_StreamGetVar(pkcs7, &pkiMsg2Sz, (int*)&localIdx, &length);
 
             if (pkcs7->stream->length > 0) {
@@ -4763,6 +4803,7 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                     pkiMsg2   = pkiMsg;
                     pkiMsg2Sz = pkiMsgSz;
                 #ifndef NO_PKCS7_STREAM
+                    pkiMsg2Sz = pkcs7->stream->maxLen;
                     pkcs7->stream->varOne = pkiMsg2Sz;
                     pkcs7->stream->flagOne = 1;
                 #endif
@@ -4772,6 +4813,7 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                 pkiMsg2 = pkiMsg;
                 pkiMsg2Sz = pkiMsgSz;
             #ifndef NO_PKCS7_STREAM
+                pkiMsg2Sz = pkcs7->stream->maxLen;
                 pkcs7->stream->varOne = pkiMsg2Sz;
                 pkcs7->stream->flagOne = 1;
             #endif
@@ -4917,9 +4959,7 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                     der = pkcs7->der;
                     pkcs7->der = NULL;
         #endif
-                    contentDynamic = pkcs7->contentDynamic;
                     version = pkcs7->version;
-
 
                     if (ret == 0) {
                         byte isDynamic = pkcs7->isDynamic;
@@ -4927,6 +4967,19 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                         PKCS7State* stream = pkcs7->stream;
                         pkcs7->stream = NULL;
                     #endif
+
+                        /* Save dynamic content before freeing PKCS7 struct */
+                        if (pkcs7->contentDynamic != NULL) {
+                            contentDynamic = (byte*)XMALLOC(contentSz,
+                                               pkcs7->heap, DYNAMIC_TYPE_PKCS7);
+                            if (contentDynamic == NULL) {
+                                ret = MEMORY_E;
+                                break;
+                            }
+                            XMEMCPY(contentDynamic, pkcs7->contentDynamic,
+                                    contentSz);
+                        }
+
                         /* Free pkcs7 resources but not the structure itself */
                         pkcs7->isDynamic = 0;
                         wc_PKCS7_Free(pkcs7);
@@ -4934,11 +4987,18 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                         /* This will reset PKCS7 structure and then set the
                          * certificate */
                         ret = wc_PKCS7_InitWithCert(pkcs7, cert, certSz);
+
+                        /* Restore pkcs7->contentDynamic from above, will be
+                         * freed by application with wc_PKCS7_Free() */
+                        if (contentDynamic != NULL) {
+                            pkcs7->contentDynamic = contentDynamic;
+                            contentDynamic = NULL;
+                        }
+
                     #ifndef NO_PKCS7_STREAM
                         pkcs7->stream = stream;
                     #endif
                     }
-                    pkcs7->contentDynamic = contentDynamic;
                     pkcs7->version = version;
         #ifdef ASN_BER_TO_DER
                     pkcs7->der = der;
@@ -5059,6 +5119,11 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
             wc_PKCS7_StreamGetVar(pkcs7, &pkiMsg2Sz, 0, &length);
             if (pkcs7->stream->flagOne) {
                 pkiMsg2 = pkiMsg;
+
+                /* check if using internal stream buffer and should adjust sz */
+                if (pkiMsg != in && pkcs7->stream->length > 0) {
+                    pkiMsg2Sz = pkcs7->stream->length;
+                }
             }
 
             /* restore content type */
@@ -5118,7 +5183,7 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
                 }
             }
             else {
-                /* last state expect the reset of the buffer */
+                /* last state expect the rest of the buffer */
                 pkcs7->stream->expected = (pkcs7->stream->maxLen -
                     pkcs7->stream->totalRd) + pkcs7->stream->length;
             }
@@ -5137,6 +5202,11 @@ static int PKCS7_VerifySignedData(PKCS7* pkcs7, const byte* hashBuf,
             wc_PKCS7_StreamGetVar(pkcs7, &pkiMsg2Sz, 0, &length);
             if (pkcs7->stream->flagOne) {
                 pkiMsg2 = pkiMsg;
+
+                /* check if using internal stream buffer and should adjust sz */
+                if (pkiMsg != in && pkcs7->stream->length > 0) {
+                    pkiMsg2Sz = pkcs7->stream->length;
+                }
             }
 
             /* restore content */
@@ -6235,9 +6305,8 @@ int wc_PKCS7_AddRecipient_KTRI(PKCS7* pkcs7, const byte* cert, word32 certSz,
     byte issuerSeq[MAX_SEQ_SZ];
     byte encKeyOctetStr[MAX_OCTET_STR_SZ];
 
-    byte issuerSKIDSeq[MAX_SEQ_SZ];
-    byte issuerSKID[MAX_OCTET_STR_SZ];
-    word32 issuerSKIDSeqSz = 0, issuerSKIDSz = 0;
+    byte issuerSKID[MAX_LENGTH_SZ];
+    word32 issuerSKIDSz = 0;
 
 #ifdef WOLFSSL_SMALL_STACK
     byte*   serial;
@@ -6392,9 +6461,7 @@ int wc_PKCS7_AddRecipient_KTRI(PKCS7* pkcs7, const byte* cert, word32 certSz,
         verSz = SetMyVersion(2, ver, 0);
         recip->recipVersion = 2;
 
-        issuerSKIDSz = SetOctetString(KEYID_SIZE, issuerSKID);
-        issuerSKIDSeqSz = SetExplicit(0, issuerSKIDSz + KEYID_SIZE,
-                                      issuerSKIDSeq);
+        issuerSKIDSz = SetLength(KEYID_SIZE, issuerSKID);
     } else {
         FreeDecodedCert(decoded);
 #ifdef WOLFSSL_SMALL_STACK
@@ -6496,8 +6563,19 @@ int wc_PKCS7_AddRecipient_KTRI(PKCS7* pkcs7, const byte* cert, word32 certSz,
     }
 
 
-    ret = wc_RsaPublicEncrypt(pkcs7->cek, pkcs7->cekSz, encryptedKey,
+#ifdef WOLFSSL_ASYNC_CRYPT
+    /* Currently the call to RSA public encrypt here is blocking @TODO */
+    do {
+        ret = wc_AsyncWait(ret, &pubKey->asyncDev, WC_ASYNC_FLAG_CALL_AGAIN);
+        if (ret >= 0)
+#endif
+        {
+            ret = wc_RsaPublicEncrypt(pkcs7->cek, pkcs7->cekSz, encryptedKey,
                               encryptedKeySz, pubKey, &rng);
+        }
+#ifdef WOLFSSL_ASYNC_CRYPT
+    } while (ret == WC_PENDING_E);
+#endif
     wc_FreeRsaKey(pubKey);
     wc_FreeRng(&rng);
 
@@ -6542,11 +6620,11 @@ int wc_PKCS7_AddRecipient_KTRI(PKCS7* pkcs7, const byte* cert, word32 certSz,
         }
 
     } else {
-        recipSeqSz = SetSequence(verSz + issuerSKIDSeqSz + issuerSKIDSz +
+        recipSeqSz = SetSequence(verSz + ASN_TAG_SZ + issuerSKIDSz +
                                  KEYID_SIZE + keyEncAlgSz + encKeyOctetStrSz +
                                  encryptedKeySz, recipSeq);
 
-        if (recipSeqSz + verSz + issuerSKIDSeqSz + issuerSKIDSz + KEYID_SIZE +
+        if (recipSeqSz + verSz + ASN_TAG_SZ + issuerSKIDSz + KEYID_SIZE +
             keyEncAlgSz + encKeyOctetStrSz + encryptedKeySz > MAX_RECIP_SZ) {
             WOLFSSL_MSG("RecipientInfo output buffer too small");
             FreeDecodedCert(decoded);
@@ -6576,8 +6654,8 @@ int wc_PKCS7_AddRecipient_KTRI(PKCS7* pkcs7, const byte* cert, word32 certSz,
         XMEMCPY(recip->recip + idx, serial, snSz);
         idx += snSz;
     } else {
-        XMEMCPY(recip->recip + idx, issuerSKIDSeq, issuerSKIDSeqSz);
-        idx += issuerSKIDSeqSz;
+        recip->recip[idx] = ASN_CONTEXT_SPECIFIC;
+        idx += ASN_TAG_SZ;
         XMEMCPY(recip->recip + idx, issuerSKID, issuerSKIDSz);
         idx += issuerSKIDSz;
         XMEMCPY(recip->recip + idx, pkcs7->issuerSubjKeyId, KEYID_SIZE);
@@ -8236,7 +8314,6 @@ static int wc_PKCS7_DecryptKtri(PKCS7* pkcs7, byte* in, word32 inSz,
 
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = *idx;
-    long rc;
 #endif
 #ifdef WC_RSA_BLINDING
     WC_RNG rng;
@@ -8259,15 +8336,7 @@ static int wc_PKCS7_DecryptKtri(PKCS7* pkcs7, byte* in, word32 inSz,
                             &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                    in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
-
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             if (GetMyVersion(pkiMsg, idx, &version, pkiMsgSz) < 0)
                 return ASN_PARSE_E;
@@ -8297,18 +8366,14 @@ static int wc_PKCS7_DecryptKtri(PKCS7* pkcs7, byte* in, word32 inSz,
         case WC_PKCS7_DECRYPT_KTRI_2:
         #ifndef NO_PKCS7_STREAM
 
-            if ((ret = wc_PKCS7_AddDataToStream(pkcs7, in, inSz, pkcs7->stream->expected,
-                            &pkiMsg, idx)) != 0) {
+            if ((ret = wc_PKCS7_AddDataToStream(pkcs7, in, inSz,
+                            pkcs7->stream->expected, &pkiMsg, idx)) != 0) {
                 return ret;
             }
 
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                    in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
+            if (in != pkiMsg) {
+                pkiMsgSz =  pkcs7->stream->length;
             }
-            pkiMsgSz = (word32)rc;
 
             wc_PKCS7_StreamGetVar(pkcs7, NULL, &sidType, &version);
 
@@ -8375,24 +8440,31 @@ static int wc_PKCS7_DecryptKtri(PKCS7* pkcs7, byte* in, word32 inSz,
         #endif
 
             } else {
-                /* remove SubjectKeyIdentifier */
+                /* parse SubjectKeyIdentifier
+                 * RFC 5652 lists SubjectKeyIdentifier as [0] followed by
+                 * simple type of octet string
+                 *
+                 *  RecipientIdentifier ::= CHOICE {
+                 *  issuerAndSerialNumber IssuerAndSerialNumber,
+                 *  subjectKeyIdentifier [0] SubjectKeyIdentifier }
+                 *
+                 * The choice of subjectKeyIdentifer (where version was 2) is
+                 * context specific with tag number 0 within the class.
+                 */
+
                 if (GetASNTag(pkiMsg, idx, &tag, pkiMsgSz) < 0)
                     return ASN_PARSE_E;
 
-                if (tag != (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC))
+                /* should be context specific and tag number 0: [0] (0x80) */
+                if (tag != ASN_CONTEXT_SPECIFIC) {
                     return ASN_PARSE_E;
+                }
 
                 if (GetLength(pkiMsg, idx, &length, pkiMsgSz) < 0)
                     return ASN_PARSE_E;
 
-                if (GetASNTag(pkiMsg, idx, &tag, pkiMsgSz) < 0)
-                    return ASN_PARSE_E;
-
-                if (tag != ASN_OCTET_STRING)
-                    return ASN_PARSE_E;
-
-                if (GetLength(pkiMsg, idx, &length, pkiMsgSz) < 0)
-                    return ASN_PARSE_E;
+                if (KEYID_SIZE > pkiMsgSz - (*idx))
+                    return BUFFER_E;
 
                 /* if we found correct recipient, SKID will match */
                 if (XMEMCMP(pkiMsg + (*idx), pkcs7->issuerSubjKeyId,
@@ -8498,8 +8570,22 @@ static int wc_PKCS7_DecryptKtri(PKCS7* pkcs7, byte* in, word32 inSz,
             }
             #endif
             if (ret == 0) {
-                keySz = wc_RsaPrivateDecryptInline(encryptedKey, encryptedKeySz,
-                                                   &outKey, privKey);
+            #ifdef WOLFSSL_ASYNC_CRYPT
+                /* Currently the call to RSA decrypt here is blocking @TODO */
+                keySz = 0; /* set initial "ret" value to 0 */
+                do {
+                    keySz = wc_AsyncWait(keySz, &privKey->asyncDev,
+                                         WC_ASYNC_FLAG_CALL_AGAIN);
+                if (keySz >= 0)
+            #endif
+                {
+                    keySz = wc_RsaPrivateDecryptInline(encryptedKey,
+                                                       encryptedKeySz, &outKey,
+                                                       privKey);
+                }
+            #ifdef WOLFSSL_ASYNC_CRYPT
+                } while (keySz == WC_PENDING_E);
+            #endif
                 #ifdef WC_RSA_BLINDING
                     wc_FreeRng(&rng);
                 #endif
@@ -9010,7 +9096,6 @@ static int wc_PKCS7_DecryptOri(PKCS7* pkcs7, byte* in, word32 inSz,
     word32 pkiMsgSz = inSz;
 #ifndef NO_PKCS7_STREAM
     word32 stateIdx = *idx;
-    long rc;
 #endif
 
     if (pkcs7->oriDecryptCb == NULL) {
@@ -9028,14 +9113,7 @@ static int wc_PKCS7_DecryptOri(PKCS7* pkcs7, byte* in, word32 inSz,
                    pkcs7->stream->length, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             /* get OtherRecipientInfo sequence length */
             if (GetLength(pkiMsg, idx, &seqSz, pkiMsgSz) < 0)
@@ -9109,7 +9187,6 @@ static int wc_PKCS7_DecryptPwri(PKCS7* pkcs7, byte* in, word32 inSz,
     byte  tag;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = *idx;
-    long rc;
 #endif
 
     switch (pkcs7->state) {
@@ -9121,14 +9198,7 @@ static int wc_PKCS7_DecryptPwri(PKCS7* pkcs7, byte* in, word32 inSz,
                    pkcs7->stream->length, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             /* remove KeyDerivationAlgorithmIdentifier */
             if (GetASNTag(pkiMsg, idx, &tag, pkiMsgSz) < 0)
@@ -9335,7 +9405,6 @@ static int wc_PKCS7_DecryptKekri(PKCS7* pkcs7, byte* in, word32 inSz,
     word32 pkiMsgSz = inSz;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = *idx;
-    long rc;
 #endif
 
     WOLFSSL_ENTER("wc_PKCS7_DecryptKekri");
@@ -9348,14 +9417,7 @@ static int wc_PKCS7_DecryptKekri(PKCS7* pkcs7, byte* in, word32 inSz,
                    pkcs7->stream->length, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             /* remove KEKIdentifier */
             if (GetSequence(pkiMsg, idx, &length, pkiMsgSz) < 0)
@@ -9483,7 +9545,6 @@ static int wc_PKCS7_DecryptKari(PKCS7* pkcs7, byte* in, word32 inSz,
     word32 pkiMsgSz = inSz;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = (idx) ? *idx : 0;
-    long rc;
 #endif
 
     WOLFSSL_ENTER("wc_PKCS7_DecryptKari");
@@ -9505,14 +9566,7 @@ static int wc_PKCS7_DecryptKari(PKCS7* pkcs7, byte* in, word32 inSz,
                    pkcs7->stream->length, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
 
             kari = wc_PKCS7_KariNew(pkcs7, WC_PKCS7_DECODE);
@@ -9742,7 +9796,6 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
     byte  tag;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx;
-    long rc;
 #endif
 
     if (pkcs7 == NULL || pkiMsg == NULL || idx == NULL ||
@@ -9804,11 +9857,7 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
 
     savedIdx = *idx;
 #ifndef NO_PKCS7_STREAM
-    rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in, inSz);
-    if (rc < 0) {
-        return (int)rc;
-    }
-    pkiMsgSz = (word32)rc;
+    pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
     if (pkcs7->stream->length > 0)
         pkiMsg = pkcs7->stream->buffer;
 #endif
@@ -9819,7 +9868,7 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
 
         /* remove RecipientInfo, if we don't have a SEQUENCE, back up idx to
          * last good saved one */
-        if (GetSequence(pkiMsg, idx, &length, pkiMsgSz) > 0) {
+        if (GetSequence_ex(pkiMsg, idx, &length, pkiMsgSz, NO_USER_CHECK) > 0) {
 
         #ifndef NO_RSA
             /* found ktri */
@@ -9851,7 +9900,8 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
 
             if (tag == (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC | 1)) {
                 (*idx)++;
-                if (GetLength(pkiMsg, idx, &length, pkiMsgSz) < 0)
+                if (GetLength_ex(pkiMsg, idx, &length, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     return ASN_PARSE_E;
 
                 if (GetMyVersion(pkiMsg, idx, &version, pkiMsgSz) < 0) {
@@ -9879,7 +9929,8 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
             } else if (tag == (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC | 2)) {
                 (*idx)++;
 
-                if (GetLength(pkiMsg, idx, &version, pkiMsgSz) < 0)
+                if (GetLength_ex(pkiMsg, idx, &version, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     return ASN_PARSE_E;
 
                 if (GetMyVersion(pkiMsg, idx, &version, pkiMsgSz) < 0) {
@@ -9908,7 +9959,8 @@ static int wc_PKCS7_DecryptRecipientInfos(PKCS7* pkcs7, byte* in,
         #if !defined(NO_PWDBASED) && !defined(NO_SHA)
                 (*idx)++;
 
-                if (GetLength(pkiMsg, idx, &version, pkiMsgSz) < 0)
+                if (GetLength_ex(pkiMsg, idx, &version, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     return ASN_PARSE_E;
 
                 if (GetMyVersion(pkiMsg, idx, &version, pkiMsgSz) < 0) {
@@ -9981,14 +10033,17 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
     byte  tag;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = 0;
-    long rc;
 #endif
 
     if (pkcs7 == NULL || pkiMsg == NULL || pkiMsgSz == 0 || idx == NULL)
         return BAD_FUNC_ARG;
 
     if ((type != ENVELOPED_DATA) && (type != AUTH_ENVELOPED_DATA) &&
-            pkcs7->contentOID != FIRMWARE_PKG_DATA)
+            pkcs7->contentOID != FIRMWARE_PKG_DATA
+        #if defined(HAVE_LIBZ) && !defined(NO_PKCS7_COMPRESSED_DATA)
+            && pkcs7->contentOID != COMPRESSED_DATA
+        #endif
+       )
         return BAD_FUNC_ARG;
 
 #ifndef NO_PKCS7_STREAM
@@ -10019,16 +10074,14 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
                             ASN_TAG_SZ, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc  = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_SEQ_PEEK, in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
+            if ((ret = wc_PKCS7_SetMaxStream(pkcs7, in, inSz)) != 0) {
                 break;
             }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             /* read past ContentInfo, verify type is envelopedData */
-            if (ret == 0 && GetSequence(pkiMsg, idx, &length, pkiMsgSz) < 0)
+            if (ret == 0 && GetSequence_ex(pkiMsg, idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0)
             {
                 ret = ASN_PARSE_E;
             }
@@ -10048,14 +10101,8 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
                             &pkiMsg, idx)) != 0) {
                     return ret;
                 }
-
-                rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                        in, inSz);
-                if (rc < 0) {
-                    ret = (int)rc;
-                    break;
-                }
-                pkiMsgSz = (word32)rc;
+                pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length:
+                    inSz;
                 #endif
 
                 len = 0;
@@ -10143,19 +10190,13 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
                             MAX_VERSION_SZ, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             /* remove EnvelopedData and version */
             if (pkcs7->contentOID != FIRMWARE_PKG_DATA ||
                     type == AUTH_ENVELOPED_DATA) {
-                if (ret == 0 && GetSequence(pkiMsg, idx, &length, pkiMsgSz) < 0)
+                if (ret == 0 && GetSequence_ex(pkiMsg, idx, &length, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     ret = ASN_PARSE_E;
             }
 
@@ -10181,14 +10222,7 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
                             MAX_SET_SZ, &pkiMsg, idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
             version = pkcs7->stream->varOne;
         #endif
 
@@ -10213,7 +10247,8 @@ static int wc_PKCS7_ParseToRecipientInfoSet(PKCS7* pkcs7, byte* in,
             }
 
             /* remove RecipientInfo set, get length of set */
-            if (ret == 0 && GetSet(pkiMsg, idx, &length, pkiMsgSz) < 0)
+            if (ret == 0 && GetSet_ex(pkiMsg, idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0)
                 ret = ASN_PARSE_E;
 
             if (ret < 0)
@@ -10301,9 +10336,8 @@ WOLFSSL_API int wc_PKCS7_DecodeEnvelopedData(PKCS7* pkcs7, byte* in,
     word32 idx = 0;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = 0;
-    long rc;
 #endif
-    word32 contentType, encOID = 0;
+    word32 contentType = 0, encOID = 0;
     word32 decryptedKeySz = MAX_ENCRYPTED_KEY_SZ;
 
     int expBlockSz = 0, blockKeySz = 0;
@@ -10415,26 +10449,24 @@ WOLFSSL_API int wc_PKCS7_DecodeEnvelopedData(PKCS7* pkcs7, byte* in,
                                                 != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #else
             ret = 0;
         #endif
 
             /* remove EncryptedContentInfo */
-            if (GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0) {
+            if (GetSequence_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0) {
                 ret = ASN_PARSE_E;
             }
 
             if (ret == 0 && wc_GetContentType(pkiMsg, &idx, &contentType,
                         pkiMsgSz) < 0) {
                 ret = ASN_PARSE_E;
+            }
+
+            if (ret == 0) {
+                pkcs7->contentOID = contentType;
             }
 
             if (ret == 0 && GetAlgoId(pkiMsg, &idx, &encOID, oidBlkType,
@@ -10461,7 +10493,8 @@ WOLFSSL_API int wc_PKCS7_DecodeEnvelopedData(PKCS7* pkcs7, byte* in,
                 ret = ASN_PARSE_E;
             }
 
-            if (ret == 0 && GetLength(pkiMsg, &idx, &length, pkiMsgSz) < 0) {
+            if (ret == 0 && GetLength_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0) {
                 ret = ASN_PARSE_E;
             }
 
@@ -10491,14 +10524,7 @@ WOLFSSL_API int wc_PKCS7_DecodeEnvelopedData(PKCS7* pkcs7, byte* in,
                             pkcs7->stream->expected, &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             wc_PKCS7_StreamGetVar(pkcs7, 0, 0, &length);
             tmpIv = pkcs7->stream->tmpIv;
@@ -11205,9 +11231,8 @@ WOLFSSL_API int wc_PKCS7_DecodeAuthEnvelopedData(PKCS7* pkcs7, byte* in,
     word32 idx = 0;
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = 0;
-    long rc;
 #endif
-    word32 contentType, encOID = 0;
+    word32 contentType = 0, encOID = 0;
     word32 decryptedKeySz = 0;
     byte* pkiMsg = in;
     word32 pkiMsgSz = inSz;
@@ -11326,14 +11351,7 @@ WOLFSSL_API int wc_PKCS7_DecodeAuthEnvelopedData(PKCS7* pkcs7, byte* in,
                             &pkiMsg, &idx)) != 0) {
                 break;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
 
             /* remove EncryptedContentInfo */
@@ -11344,6 +11362,10 @@ WOLFSSL_API int wc_PKCS7_DecodeAuthEnvelopedData(PKCS7* pkcs7, byte* in,
             if (ret == 0 && wc_GetContentType(pkiMsg, &idx, &contentType,
                         pkiMsgSz) < 0) {
                 ret = ASN_PARSE_E;
+            }
+
+            if (ret == 0) {
+                pkcs7->contentOID = contentType;
             }
 
             if (ret == 0 && GetAlgoId(pkiMsg, &idx, &encOID, oidBlkType,
@@ -11390,14 +11412,7 @@ WOLFSSL_API int wc_PKCS7_DecodeAuthEnvelopedData(PKCS7* pkcs7, byte* in,
                             &pkiMsg, &idx)) != 0) {
                 break;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
         #endif
             if (ret == 0 && GetLength(pkiMsg, &idx, &nonceSz, pkiMsgSz) < 0) {
                 ret = ASN_PARSE_E;
@@ -11491,14 +11506,7 @@ WOLFSSL_API int wc_PKCS7_DecodeAuthEnvelopedData(PKCS7* pkcs7, byte* in,
                             &pkiMsg, &idx)) != 0) {
                 break;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             encryptedContentSz = pkcs7->stream->expected;
         #endif
@@ -11611,14 +11619,7 @@ authenv_atrbend:
                             ASN_TAG_SZ, &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK,
-                in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             if (pkcs7->stream->aadSz > 0) {
                 encodedAttribSz = pkcs7->stream->aadSz;
@@ -12104,9 +12105,8 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
 
 #ifndef NO_PKCS7_STREAM
     word32 tmpIdx = 0;
-    long rc;
 #endif
-    word32 contentType, encOID;
+    word32 contentType = 0, encOID;
 
     int expBlockSz = 0;
     byte tmpIvBuf[MAX_CONTENT_IV_SIZE];
@@ -12146,15 +12146,14 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                 return ret;
             }
 
-            rc  = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_SEQ_PEEK, in, inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
+            if ((ret = wc_PKCS7_SetMaxStream(pkcs7, in, inSz)) != 0) {
+                return ret;
             }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 #endif
 
-            if (GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0)
+            if (GetSequence_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0)
                 ret = ASN_PARSE_E;
 
             if (pkcs7->version != 3) { /* ContentInfo not in firmware bundles */
@@ -12185,14 +12184,7 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                             &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 #endif
             if (pkcs7->version != 3) {
                 if (ret == 0 && GetASNTag(pkiMsg, &idx, &tag, pkiMsgSz) < 0)
@@ -12201,11 +12193,13 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                         (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC | 0))
                     ret = ASN_PARSE_E;
 
-                if (ret == 0 && GetLength(pkiMsg, &idx, &length, pkiMsgSz) < 0)
+                if (ret == 0 && GetLength_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     ret = ASN_PARSE_E;
 
                 /* remove EncryptedData and version */
-                if (ret == 0 && GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0)
+                if (ret == 0 && GetSequence_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                            NO_USER_CHECK) < 0)
                     ret = ASN_PARSE_E;
             }
 
@@ -12226,14 +12220,7 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                             &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 #endif
             /* get version, check later */
             haveAttribs = 0;
@@ -12241,12 +12228,17 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                 ret = ASN_PARSE_E;
 
             /* remove EncryptedContentInfo */
-            if (ret == 0 && GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0)
+            if (ret == 0 && GetSequence_ex(pkiMsg, &idx, &length, pkiMsgSz,
+                        NO_USER_CHECK) < 0)
                 ret = ASN_PARSE_E;
 
             if (ret == 0 && wc_GetContentType(pkiMsg, &idx, &contentType,
                         pkiMsgSz) < 0)
                 ret = ASN_PARSE_E;
+
+            if (ret == 0) {
+                pkcs7->contentOID = contentType;
+            }
 
             if (ret == 0 && (ret = GetAlgoId(pkiMsg, &idx, &encOID, oidBlkType,
                         pkiMsgSz)) < 0)
@@ -12278,14 +12270,7 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                             ASN_TAG_SZ + MAX_LENGTH_SZ, &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             /* restore saved variables */
             expBlockSz = pkcs7->stream->varOne;
@@ -12323,14 +12308,7 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                             MAX_LENGTH_SZ, &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             /* use IV buffer from stream structure */
             tmpIv  = pkcs7->stream->tmpIv;
@@ -12344,8 +12322,8 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
             if (ret == 0 && tag != (ASN_CONTEXT_SPECIFIC | 0))
                 ret = ASN_PARSE_E;
 
-            if (ret == 0 && GetLength(pkiMsg, &idx, &encryptedContentSz,
-                        pkiMsgSz) <= 0)
+            if (ret == 0 && GetLength_ex(pkiMsg, &idx, &encryptedContentSz,
+                        pkiMsgSz, NO_USER_CHECK) <= 0)
                 ret = ASN_PARSE_E;
 
             if (ret < 0)
@@ -12357,7 +12335,8 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                 break;
             }
 
-            if (pkcs7->stream->totalRd +  encryptedContentSz < pkiMsgSz) {
+            if (pkcs7->stream->totalRd +  encryptedContentSz <
+                    pkcs7->stream->maxLen) {
                 pkcs7->stream->flagOne = 1;
             }
 
@@ -12375,14 +12354,7 @@ int wc_PKCS7_DecodeEncryptedData(PKCS7* pkcs7, byte* in, word32 inSz,
                             pkcs7->stream->expected, &pkiMsg, &idx)) != 0) {
                 return ret;
             }
-
-            rc = wc_PKCS7_GetMaxStream(pkcs7, PKCS7_DEFAULT_PEEK, in,
-                    inSz);
-            if (rc < 0) {
-                ret = (int)rc;
-                break;
-            }
-            pkiMsgSz = (word32)rc;
+            pkiMsgSz = (pkcs7->stream->length > 0)? pkcs7->stream->length: inSz;
 
             /* restore saved variables */
             expBlockSz = pkcs7->stream->varOne;
@@ -12602,15 +12574,37 @@ int wc_PKCS7_EncodeCompressedData(PKCS7* pkcs7, byte* output, word32 outputSz)
     compressedDataSeqSz = SetSequence(totalSz, compressedDataSeq);
     totalSz += compressedDataSeqSz;
 
-    /* ContentInfo content EXPLICIT SEQUENCE */
-    contentInfoContentSeqSz = SetExplicit(0, totalSz, contentInfoContentSeq);
-    totalSz += contentInfoContentSeqSz;
-
-    /* ContentInfo ContentType (compressedData) */
     if (pkcs7->version == 3) {
-        contentInfoTypeOidSz = 0;
+        /* RFC 4108 section 2
+         * When the SignedData is version 3 and eContent is compressedData then
+         * the encoding is :
+         * CompressedData {
+         *   version
+         *   compressionAlgorithm
+         *   encapContentInfo
+         * }
+         */
+        contentInfoSeqSz        = 0;
+        contentInfoTypeOidSz    = 0;
+        contentInfoContentSeqSz = 0;
     }
     else {
+        /* EncryptedData eContent type is encoded with:
+         * EncryptedData {
+         *  version
+         *  EncryptedContentInfo {
+         *      contentType (i.e id-ct-compressedData)
+         *      contentEncryptionAlgorithm
+         *      octet string of CompressedData or FirmwarePkgData
+         *  }
+         *  attributes
+         * }
+         */
+
+        /* ContentInfo content EXPLICIT SEQUENCE */
+        contentInfoContentSeqSz = SetExplicit(0, totalSz, contentInfoContentSeq);
+        totalSz += contentInfoContentSeqSz;
+
         ret = wc_SetContentType(COMPRESSED_DATA, contentInfoTypeOid,
                                 sizeof(contentInfoTypeOid));
         if (ret < 0) {
@@ -12620,11 +12614,11 @@ int wc_PKCS7_EncodeCompressedData(PKCS7* pkcs7, byte* output, word32 outputSz)
 
         contentInfoTypeOidSz = ret;
         totalSz += contentInfoTypeOidSz;
-    }
 
-    /* ContentInfo SEQUENCE */
-    contentInfoSeqSz = SetSequence(totalSz, contentInfoSeq);
-    totalSz += contentInfoSeqSz;
+        /* ContentInfo SEQUENCE */
+        contentInfoSeqSz = SetSequence(totalSz, contentInfoSeq);
+        totalSz += contentInfoSeqSz;
+    }
 
     if (outputSz < totalSz) {
         XFREE(compressed, pkcs7->heap, DYNAMIC_TYPE_PKCS7);
@@ -12632,12 +12626,18 @@ int wc_PKCS7_EncodeCompressedData(PKCS7* pkcs7, byte* output, word32 outputSz)
     }
 
     idx = 0;
-    XMEMCPY(output + idx, contentInfoSeq, contentInfoSeqSz);
-    idx += contentInfoSeqSz;
-    XMEMCPY(output + idx, contentInfoTypeOid, contentInfoTypeOidSz);
-    idx += contentInfoTypeOidSz;
-    XMEMCPY(output + idx, contentInfoContentSeq, contentInfoContentSeqSz);
-    idx += contentInfoContentSeqSz;
+    if (contentInfoSeqSz > 0) {
+        XMEMCPY(output + idx, contentInfoSeq, contentInfoSeqSz);
+        idx += contentInfoSeqSz;
+    }
+    if (contentInfoTypeOidSz > 0) {
+        XMEMCPY(output + idx, contentInfoTypeOid, contentInfoTypeOidSz);
+        idx += contentInfoTypeOidSz;
+    }
+    if (contentInfoContentSeqSz > 0) {
+        XMEMCPY(output + idx, contentInfoContentSeq, contentInfoContentSeqSz);
+        idx += contentInfoContentSeqSz;
+    }
     XMEMCPY(output + idx, compressedDataSeq, compressedDataSeqSz);
     idx += compressedDataSeqSz;
     XMEMCPY(output + idx, cmsVersion, cmsVersionSz);
@@ -12661,6 +12661,7 @@ int wc_PKCS7_EncodeCompressedData(PKCS7* pkcs7, byte* output, word32 outputSz)
 }
 
 /* unwrap and decompress PKCS#7/CMS compressedData object,
+ * Handles content wrapped compressed data and raw compressed data packet
  * returned decoded size */
 int wc_PKCS7_DecodeCompressedData(PKCS7* pkcs7, byte* pkiMsg, word32 pkiMsgSz,
                                   byte* output, word32 outputSz)
@@ -12677,28 +12678,46 @@ int wc_PKCS7_DecodeCompressedData(PKCS7* pkcs7, byte* pkiMsg, word32 pkiMsgSz,
         return BAD_FUNC_ARG;
     }
 
-    /* get ContentInfo SEQUENCE */
-    if (GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0)
-        return ASN_PARSE_E;
+    /* unwarp content surrounding if found */
+    {
+        word32 localIdx = idx;
+        int err = 0;
 
-    if (pkcs7->version != 3) {
-        /* get ContentInfo contentType */
-        if (wc_GetContentType(pkiMsg, &idx, &contentType, pkiMsgSz) < 0)
-            return ASN_PARSE_E;
+        /* get ContentInfo SEQUENCE */
+        if (GetSequence(pkiMsg, &localIdx, &length, pkiMsgSz) < 0)
+            err = ASN_PARSE_E;
 
-        if (contentType != COMPRESSED_DATA)
-            return ASN_PARSE_E;
+        if (err == 0 && pkcs7->version != 3) {
+            /* get ContentInfo contentType */
+            if (wc_GetContentType(pkiMsg, &localIdx, &contentType, pkiMsgSz)
+                    < 0)
+                err = ASN_PARSE_E;
+
+            if (err == 0 && contentType != COMPRESSED_DATA)
+                err = ASN_PARSE_E;
+        }
+
+        /* get ContentInfo content EXPLICIT SEQUENCE */
+        if (err == 0) {
+            if (GetASNTag(pkiMsg, &localIdx, &tag, pkiMsgSz) < 0)
+                err = ASN_PARSE_E;
+        }
+
+        if (err == 0) {
+            if (tag != (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC | 0))
+                err = ASN_PARSE_E;
+        }
+
+        if (err == 0) {
+            if (GetLength(pkiMsg, &localIdx, &length, pkiMsgSz) < 0)
+                err = ASN_PARSE_E;
+        }
+
+        /* successful content unwrap, update index */
+        if (err == 0) {
+            idx = localIdx;
+        }
     }
-
-    /* get ContentInfo content EXPLICIT SEQUENCE */
-    if (GetASNTag(pkiMsg, &idx, &tag, pkiMsgSz) < 0)
-        return ASN_PARSE_E;
-
-    if (tag != (ASN_CONSTRUCTED | ASN_CONTEXT_SPECIFIC | 0))
-        return ASN_PARSE_E;
-
-    if (GetLength(pkiMsg, &idx, &length, pkiMsgSz) < 0)
-        return ASN_PARSE_E;
 
     /* get CompressedData SEQUENCE */
     if (GetSequence(pkiMsg, &idx, &length, pkiMsgSz) < 0)

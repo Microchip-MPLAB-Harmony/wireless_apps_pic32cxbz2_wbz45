@@ -1,31 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><configurationDescriptor version="65">
-  <logicalFolder displayName="root" name="root" projectFiles="true">
-    <logicalFolder displayName="Header Files" name="HeaderFiles" projectFiles="true">
-      <logicalFolder displayName="app_ble" name="app_ble" projectFiles="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="65">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
         <itemPath>../src/app_ble/app_ble_handler.h</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.h</itemPath>
         <itemPath>../src/app_ble/app_ble.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_log_handler.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_dsadv.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_utility.h</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_prov" name="app_prov" projectFiles="true">
+      <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
         <itemPath>../src/app_prov/app_prov.h</itemPath>
         <itemPath>../src/app_prov/app_prov_handler.h</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_trps" name="app_trps" projectFiles="true">
+      <logicalFolder name="app_trps" displayName="app_trps" projectFiles="true">
         <itemPath>../src/app_trps/app_trps.h</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_zigbee" name="app_zigbee" projectFiles="true">
-        <logicalFolder displayName="zigbee_console" name="zigbee_console" projectFiles="true">
+      <logicalFolder name="app_zigbee" displayName="app_zigbee" projectFiles="true">
+        <logicalFolder name="zigbee_console"
+                       displayName="zigbee_console"
+                       projectFiles="true">
           <itemPath>../src/app_zigbee/zigbee_console/console.h</itemPath>
           <itemPath>../src/app_zigbee/zigbee_console/consoleCmds.h</itemPath>
         </logicalFolder>
         <itemPath>../src/app_zigbee/app_zigbee_handler.h</itemPath>
         <itemPath>../src/app_zigbee/app_zigbee.h</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="config" name="config" projectFiles="true">
-        <logicalFolder displayName="default" name="default" projectFiles="true">
-          <logicalFolder displayName="ble" name="ble" projectFiles="true">
-            <logicalFolder displayName="lib" name="lib" projectFiles="true">
-              <logicalFolder displayName="include" name="include" projectFiles="true">
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="ble" displayName="ble" projectFiles="true">
+            <logicalFolder name="lib" displayName="lib" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
                 <itemPath>../src/config/default/ble/lib/include/gap_defs.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/host_hci_defs.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys_log.h</itemPath>
@@ -38,102 +46,108 @@
                 <itemPath>../src/config/default/ble/lib/include/stack_mgr.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/gatt.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/bt_sys_pta.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/hci.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="middleware_ble" name="middleware_ble" projectFiles="true">
-              <logicalFolder displayName="ble_dm" name="ble_dm" projectFiles="true">
+            <logicalFolder name="middleware_ble"
+                           displayName="middleware_ble"
+                           projectFiles="true">
+              <logicalFolder name="ble_dm" displayName="ble_dm" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_internal.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_dds.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.h</itemPath>
-                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_aes.h</itemPath>
               </logicalFolder>
-              <logicalFolder displayName="ble_gcm" name="ble_gcm" projectFiles="true">
-                <itemPath>../src/config/default/ble/middleware_ble/ble_gcm/ble_scm.h</itemPath>
-                <itemPath>../src/config/default/ble/middleware_ble/ble_gcm/ble_dd.h</itemPath>
-              </logicalFolder>
-              <logicalFolder displayName="ble_log" name="ble_log" projectFiles="true">
+              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.h</itemPath>
               </logicalFolder>
-              <logicalFolder displayName="ble_util" name="ble_util" projectFiles="true">
+              <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/byte_stream.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_assert.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="profile_ble" name="profile_ble" projectFiles="true">
-              <logicalFolder displayName="ble_trsps" name="ble_trsps" projectFiles="true">
+            <logicalFolder name="profile_ble" displayName="profile_ble" projectFiles="true">
+              <logicalFolder name="ble_trsps" displayName="ble_trsps" projectFiles="true">
                 <itemPath>../src/config/default/ble/profile_ble/ble_trsps/ble_trsps.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="service_ble" name="service_ble" projectFiles="true">
-              <logicalFolder displayName="ble_trs" name="ble_trs" projectFiles="true">
+            <logicalFolder name="service_ble" displayName="service_ble" projectFiles="true">
+              <logicalFolder name="ble_trs" displayName="ble_trs" projectFiles="true">
                 <itemPath>../src/config/default/ble/service_ble/ble_trs/ble_trs.h</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder displayName="crypto" name="crypto" projectFiles="true">
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
             <itemPath>../src/config/default/crypto/crypto.h</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="driver" name="driver" projectFiles="true">
-            <logicalFolder displayName="device_support" name="device_support" projectFiles="true">
-              <logicalFolder displayName="include" name="include" projectFiles="true">
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="device_support"
+                           displayName="device_support"
+                           projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
                 <itemPath>../src/config/default/driver/device_support/include/rf_system.h</itemPath>
                 <itemPath>../src/config/default/driver/device_support/include/sleep_system.h</itemPath>
                 <itemPath>../src/config/default/driver/device_support/include/info_block.h</itemPath>
                 <itemPath>../src/config/default/driver/device_support/include/pmu_system.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="pds" name="pds" projectFiles="true">
-              <logicalFolder displayName="include" name="include" projectFiles="true">
+            <logicalFolder name="pds" displayName="pds" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
                 <itemPath>../src/config/default/driver/pds/include/pds_config.h</itemPath>
                 <itemPath>../src/config/default/driver/pds/include/pds.h</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder displayName="osal" name="osal" projectFiles="true">
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal_freertos.h</itemPath>
             <itemPath>../src/config/default/osal/osal_definitions.h</itemPath>
             <itemPath>../src/config/default/osal/osal_freertos_extend.h</itemPath>
             <itemPath>../src/config/default/osal/osal.h</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="peripheral" name="peripheral" projectFiles="true">
-            <logicalFolder displayName="clk" name="clk" projectFiles="true">
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
               <itemPath>../src/config/default/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="cmcc" name="cmcc" projectFiles="true">
+            <logicalFolder name="cmcc" displayName="cmcc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/cmcc/plib_cmcc.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="evsys" name="evsys" projectFiles="true">
+            <logicalFolder name="evsys" displayName="evsys" projectFiles="true">
               <itemPath>../src/config/default/peripheral/evsys/plib_evsys.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="gpio" name="gpio" projectFiles="true">
+            <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/default/peripheral/gpio/plib_gpio.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="nvic" name="nvic" projectFiles="true">
+            <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvic/plib_nvic.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="nvm" name="nvm" projectFiles="true">
+            <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvm/plib_nvm.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="rtc" name="rtc" projectFiles="true">
+            <logicalFolder name="rtc" displayName="rtc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/rtc/plib_rtc.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="tcc" name="tcc" projectFiles="true">
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="tcc" displayName="tcc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tcc/plib_tcc_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/tcc/plib_tcc2.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="trng" name="trng" projectFiles="true">
+            <logicalFolder name="trng" displayName="trng" projectFiles="true">
               <itemPath>../src/config/default/peripheral/trng/plib_trng.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder displayName="zigbee" name="zigbee" projectFiles="true">
-            <logicalFolder displayName="lib" name="lib" projectFiles="true">
-              <logicalFolder displayName="inc" name="inc" projectFiles="true">
-                <logicalFolder displayName="aps" name="aps" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
-                    <logicalFolder displayName="private" name="private" projectFiles="true">
+          <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
+            <logicalFolder name="lib" displayName="lib" projectFiles="true">
+              <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                <logicalFolder name="aps" displayName="aps" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/aps/include/private/apsMemoryManager.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/aps/include/private/apsFrames.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/aps/include/private/apsKeyPairSet.h</itemPath>
@@ -160,8 +174,8 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/aps/include/apsConfigServer.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="bdb" name="bdb" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="bdb" displayName="bdb" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/bdb/include/bdbSecurity.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/bdb/include/bdbTouchlink.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/bdb/include/bdb.h</itemPath>
@@ -174,9 +188,11 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/bdb/include/bdbZllBindings.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="configserver" name="configserver" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
-                    <logicalFolder displayName="private" name="private" projectFiles="true">
+                <logicalFolder name="configserver"
+                               displayName="configserver"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/configserver/include/private/csBuffers.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/configserver/include/private/csSIB.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/configserver/include/private/csDbg.h</itemPath>
@@ -189,34 +205,31 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/configserver/include/stackVersion.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="hal" name="hal" projectFiles="true">
-                  <logicalFolder displayName="cortexm4" name="cortexm4" projectFiles="true">
-                    <logicalFolder displayName="pic32cx" name="pic32cx" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="hal" displayName="hal" projectFiles="true">
+                  <logicalFolder name="cortexm4" displayName="cortexm4" projectFiles="true">
+                    <logicalFolder name="pic32cx" displayName="pic32cx" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halAes.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halSleepTimerClock.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halAssert.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halAppClock.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halDiagnostic.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halDbg.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halSleep.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halRfCtrl.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include/halMacIsr.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/halTaskManager.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/statStack.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/appTimer.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/sleep.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/atomic.h</itemPath>
-                    <itemPath>../src/config/default/zigbee/lib/inc/hal/include/sleepTimer.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/hal/include/bcTimer.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="mac_phy" name="mac_phy" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="mac_phy" displayName="mac_phy" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/include/macCommon.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/include/macphyPib.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/include/macBanNode.h</itemPath>
@@ -249,14 +262,14 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/include/macScan.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/include/rfEncrypt.h</itemPath>
                   </logicalFolder>
-                  <logicalFolder displayName="mac_env" name="mac_env" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="mac_env" displayName="mac_env" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_env/include/macenvPib.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_env/include/macenvMem.h</itemPath>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="mac_hwd_phy" name="mac_hwd_phy" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="mac_hwd_phy" displayName="mac_hwd_phy" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/include/machwdService.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/include/machwdSetTrx.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/include/machwd.h</itemPath>
@@ -265,14 +278,14 @@
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/include/machwdEd.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/include/machwdSet.h</itemPath>
                     </logicalFolder>
-                    <logicalFolder displayName="RF231_RF212" name="RF231_RF212" projectFiles="true">
-                      <logicalFolder displayName="MAC_HWD" name="MAC_HWD" projectFiles="true">
-                        <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="RF231_RF212" displayName="RF231_RF212" projectFiles="true">
+                      <logicalFolder name="MAC_HWD" displayName="MAC_HWD" projectFiles="true">
+                        <logicalFolder name="include" displayName="include" projectFiles="true">
                           <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/RF231_RF212/MAC_HWD/include/machwdMem.h</itemPath>
                         </logicalFolder>
                       </logicalFolder>
-                      <logicalFolder displayName="PHY" name="PHY" projectFiles="true">
-                        <logicalFolder displayName="include" name="include" projectFiles="true">
+                      <logicalFolder name="PHY" displayName="PHY" projectFiles="true">
+                        <logicalFolder name="include" displayName="include" projectFiles="true">
                           <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyDataStatus.h</itemPath>
                           <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phySet.h</itemPath>
                           <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phyDeepSleep.h</itemPath>
@@ -287,8 +300,8 @@
                       </logicalFolder>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="mac_hwi" name="mac_hwi" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="mac_hwi" displayName="mac_hwi" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwi/include/machwiHwdReqMemPool.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwi/include/machwiTransactionHandler.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/mac_phy/mac_hwi/include/machwiPollHandler.h</itemPath>
@@ -302,9 +315,9 @@
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="nwk" name="nwk" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
-                    <logicalFolder displayName="private" name="private" projectFiles="true">
+                <logicalFolder name="nwk" displayName="nwk" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/nwk/include/private/nwkRx.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/nwk/include/private/nwkRouteDiscoveryTable.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/nwk/include/private/nwkTx.h</itemPath>
@@ -355,17 +368,19 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/nwk/include/nlmeStartRouter.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="pds" name="pds" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="pds" displayName="pds" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/pds/include/wlPdsTypesConverter.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/pds/include/wlPdsMemIds.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/pds/include/bcPDS.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="security" name="security" projectFiles="true">
-                  <logicalFolder displayName="serviceprovider" name="serviceprovider" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
-                      <logicalFolder displayName="private" name="private" projectFiles="true">
+                <logicalFolder name="security" displayName="security" projectFiles="true">
+                  <logicalFolder name="serviceprovider"
+                                 displayName="serviceprovider"
+                                 projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
+                      <logicalFolder name="private" displayName="private" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/security/serviceprovider/include/private/sspHashHandler.h</itemPath>
                       </logicalFolder>
                       <itemPath>../src/config/default/zigbee/lib/inc/security/serviceprovider/include/sspChallengeGen.h</itemPath>
@@ -376,16 +391,18 @@
                       <itemPath>../src/config/default/zigbee/lib/inc/security/serviceprovider/include/sspSkke.h</itemPath>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="TrustCentre" name="TrustCentre" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="TrustCentre" displayName="TrustCentre" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/security/TrustCentre/include/tcKeyEstablish.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/security/TrustCentre/include/tcAuthentic.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/security/TrustCentre/include/tcPermissions.h</itemPath>
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="systemenvironment" name="systemenvironment" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="systemenvironment"
+                               displayName="systemenvironment"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/systemenvironment/include/sysSleep.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/systemenvironment/include/sysTaskManager.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/systemenvironment/include/sysDbg.h</itemPath>
@@ -407,15 +424,15 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/systemenvironment/include/sysEventsHandler.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="zcl" name="zcl" projectFiles="true">
-                  <logicalFolder displayName="clusters" name="clusters" projectFiles="true">
-                    <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
+                  <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
+                    <logicalFolder name="include" displayName="include" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/zcl/clusters/include/identifyCluster.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/zcl/clusters/include/scenes.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/zcl/clusters/include/groupsCluster.h</itemPath>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/lib/inc/zcl/include/zclHumidityMeasurementCluster.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/zcl/include/zclScenesCluster.h</itemPath>
                     <itemPath>../src/config/default/zigbee/lib/inc/zcl/include/zclGroupsCluster.h</itemPath>
@@ -457,9 +474,9 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/zcl/include/zclSecurityManager.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="zdo" name="zdo" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
-                    <logicalFolder displayName="private" name="private" projectFiles="true">
+                <logicalFolder name="zdo" displayName="zdo" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
+                    <logicalFolder name="private" displayName="private" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/lib/inc/zdo/include/private/zdoMgmtNwkUpdate.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/zdo/include/private/zdoEndDeviceBinding.h</itemPath>
                       <itemPath>../src/config/default/zigbee/lib/inc/zdo/include/private/zdoTaskManager.h</itemPath>
@@ -485,150 +502,110 @@
                     <itemPath>../src/config/default/zigbee/lib/inc/zdo/include/zdoAddrResolving.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="ZGP" name="ZGP" projectFiles="true">
-                  <logicalFolder displayName="GPInfrastructure" name="GPInfrastructure" projectFiles="true">
-                    <logicalFolder displayName="highZgp" name="highZgp" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
-                        <logicalFolder displayName="private" name="private" projectFiles="true">
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpSinkTable.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpProxyTable.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpSinkBasic.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpProxyBasic.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpHighMem.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpClusterGeneric.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpClusterServer.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpHighGeneric.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/private/zgpClusterClient.h</itemPath>
-                        </logicalFolder>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/zgpClusterZclInterface.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/zgpCluster.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/zgpMiddleProxy.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/zgpInfraDevice.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/highZgp/include/zgpClusterStructure.h</itemPath>
-                      </logicalFolder>
-                    </logicalFolder>
-                    <logicalFolder displayName="lowZgp" name="lowZgp" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
-                        <logicalFolder displayName="private" name="private" projectFiles="true">
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpLowProxy.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpNvmTableBindings.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpLowMem.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpCstub.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpDstub.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpTaskManager.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpLowSink.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpLowGeneric.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpPacket.h</itemPath>
-                          <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/private/zgpNvmTable.h</itemPath>
-                        </logicalFolder>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/zgpLowNvmTable.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/zgpLowGpdf.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/zgpLowMiddleProxy.h</itemPath>
-                        <itemPath>../src/config/default/zigbee/lib/inc/ZGP/GPInfrastructure/lowZgp/include/zgpLow.h</itemPath>
-                      </logicalFolder>
-                    </logicalFolder>
-                  </logicalFolder>
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
-                    <itemPath>../src/config/default/zigbee/lib/inc/ZGP/include/zgpCommon.h</itemPath>
-                    <itemPath>../src/config/default/zigbee/lib/inc/ZGP/include/zgpDbg.h</itemPath>
-                  </logicalFolder>
-                </logicalFolder>
-                <logicalFolder displayName="zllplatform" name="zllplatform" projectFiles="true">
-                  <logicalFolder displayName="infrastructure" name="infrastructure" projectFiles="true">
-                    <logicalFolder displayName="N_Address" name="N_Address" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="zllplatform" displayName="zllplatform" projectFiles="true">
+                  <logicalFolder name="infrastructure"
+                                 displayName="infrastructure"
+                                 projectFiles="true">
+                    <logicalFolder name="N_Address" displayName="N_Address" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Address/include/N_Address.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_ErrH" name="N_ErrH" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_ErrH" displayName="N_ErrH" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_ErrH/include/N_ErrH.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Fsm" name="N_Fsm" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Fsm" displayName="N_Fsm" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Fsm/include/N_Fsm.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Init" name="N_Init" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Init" displayName="N_Init" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Init/include/N_Init-Atmel_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Init/include/N_Init.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Log" name="N_Log" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Log" displayName="N_Log" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Log/include/N_Log.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Memory" name="N_Memory" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Memory" displayName="N_Memory" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Memory/include/N_Memory.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Task" name="N_Task" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Task" displayName="N_Task" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Task/include/N_Task_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Task/include/N_Task-Internal.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Task/include/N_Task.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Task/include/N_Task_Init.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Timer" name="N_Timer" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Timer" displayName="N_Timer" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Timer/include/N_Timer_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Timer/include/N_Timer_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Timer/include/N_Timer.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Timer/include/N_Timer-Internal.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Types" name="N_Types" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Types" displayName="N_Types" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Types/include/N_Types.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Util" name="N_Util" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Util" displayName="N_Util" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Util/include/N_Util_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/infrastructure/N_Util/include/N_Util.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="ZLL" name="ZLL" projectFiles="true">
-                    <logicalFolder displayName="N_AddressManager" name="N_AddressManager" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                  <logicalFolder name="ZLL" displayName="ZLL" projectFiles="true">
+                    <logicalFolder name="N_AddressManager"
+                                   displayName="N_AddressManager"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_AddressManager/include/N_AddressManager_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_AddressManager/include/N_AddressManager_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_AddressManager/include/N_AddressManager.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_AddressMap" name="N_AddressMap" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_AddressMap"
+                                   displayName="N_AddressMap"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_AddressMap/include/N_AddressMap.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_AddressMap/include/N_AddressMap_Bindings.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Beacon" name="N_Beacon" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Beacon" displayName="N_Beacon" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Beacon/include/N_Beacon.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Binding" name="N_Binding" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Binding" displayName="N_Binding" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Binding/include/N_Binding_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Binding/include/N_Binding_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Binding/include/N_Binding.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Cmi" name="N_Cmi" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Cmi" displayName="N_Cmi" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Cmi/include/N_Cmi.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Cmi/include/N_Cmi_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Cmi/include/N_Cmi_Init.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Connection" name="N_Connection" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Connection"
+                                   displayName="N_Connection"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Connection/include/N_ConnectionEnddevice_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Connection/include/N_Connection_ReconnectHandler.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Connection/include/N_Connection_Private.h</itemPath>
@@ -639,86 +616,100 @@
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Connection/include/N_ConnectionRouter_Bindings.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_DeviceInfo" name="N_DeviceInfo" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_DeviceInfo"
+                                   displayName="N_DeviceInfo"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo_Version.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_EndDeviceRobustness" name="N_EndDeviceRobustness" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_EndDeviceRobustness"
+                                   displayName="N_EndDeviceRobustness"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_EndDeviceRobustness/include/N_EndDeviceRobustness.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_EndDeviceRobustness/include/N_EndDeviceRobustness_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_EndDeviceRobustness/include/N_EndDeviceRobustness_Init.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Groups" name="N_Groups" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Groups" displayName="N_Groups" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Groups/include/N_Groups_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Groups/include/N_Groups.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_InterPan" name="N_InterPan" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_InterPan" displayName="N_InterPan" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_InterPan/include/N_InterPan.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_InterPan/include/N_InterPanBuffers.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_InterPan/include/N_InterPan_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_InterPan/include/N_InterPan_Bindings.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_LinkInitiator" name="N_LinkInitiator" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_LinkInitiator"
+                                   displayName="N_LinkInitiator"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkInitiator/include/N_LinkInitiator.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkInitiator/include/N_LinkInitiator_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkInitiator/include/N_LinkInitiator_Init.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_LinkTarget" name="N_LinkTarget" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_LinkTarget"
+                                   displayName="N_LinkTarget"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkTarget/include/N_LinkTarget_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkTarget/include/N_LinkTarget_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_LinkTarget/include/N_LinkTarget.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_PacketDistributor" name="N_PacketDistributor" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_PacketDistributor"
+                                   displayName="N_PacketDistributor"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_PacketDistributor/include/N_PacketDistributor.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_PacketDistributor/include/N_ZllEndpoint.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Radio" name="N_Radio" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Radio" displayName="N_Radio" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Radio/include/N_Radio_Internal.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Radio/include/N_Radio_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Radio/include/N_Radio_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Radio/include/N_Radio.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_ReconnectHandler" name="N_ReconnectHandler" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_ReconnectHandler"
+                                   displayName="N_ReconnectHandler"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_ReconnectHandler/include/N_ReconnectHandler_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_ReconnectHandler/include/N_ReconnectHandler_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_ReconnectHandler/include/N_ReconnectHandler.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Security" name="N_Security" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Security" displayName="N_Security" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Security/include/N_Security_Init.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Security/include/N_Security.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Security/include/N_Security_Calc.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Security/include/N_Security_Bindings.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Zcl_Framework" name="N_Zcl_Framework" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Zcl_Framework"
+                                   displayName="N_Zcl_Framework"
+                                   projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Zcl_Framework/include/N_Zcl_Framework_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Zcl_Framework/include/N_Zcl_Framework.h</itemPath>
                       </logicalFolder>
                     </logicalFolder>
-                    <logicalFolder displayName="N_Zdp" name="N_Zdp" projectFiles="true">
-                      <logicalFolder displayName="include" name="include" projectFiles="true">
+                    <logicalFolder name="N_Zdp" displayName="N_Zdp" projectFiles="true">
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Zdp/include/N_Zdp_Bindings.h</itemPath>
                         <itemPath>../src/config/default/zigbee/lib/inc/zllplatform/ZLL/N_Zdp/include/N_Zdp.h</itemPath>
                       </logicalFolder>
@@ -729,9 +720,9 @@
               </logicalFolder>
               <itemPath>../src/config/default/zigbee/lib/Zigbee_AllDevice_Makerules.h</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="z3device" name="z3device" projectFiles="true">
-              <logicalFolder displayName="clusters" name="clusters" projectFiles="true">
-                <logicalFolder displayName="include" name="include" projectFiles="true">
+            <logicalFolder name="z3device" displayName="z3device" projectFiles="true">
+              <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/clusters/include/onOffCluster.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/clusters/include/haClusters.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/clusters/include/colorControlCluster.h</itemPath>
@@ -741,8 +732,8 @@
                   <itemPath>../src/config/default/zigbee/z3device/clusters/include/basicCluster.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="common" name="common" projectFiles="true">
-                <logicalFolder displayName="include" name="include" projectFiles="true">
+              <logicalFolder name="common" displayName="common" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/common/include/keyboardPoll.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/common/include/hs2xy.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/common/include/system.h</itemPath>
@@ -760,8 +751,8 @@
                   <itemPath>../src/config/default/zigbee/z3device/common/include/otauService.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="multiSensor" name="multiSensor" projectFiles="true">
-                <logicalFolder displayName="include" name="include" projectFiles="true">
+              <logicalFolder name="multiSensor" displayName="multiSensor" projectFiles="true">
+                <logicalFolder name="include" displayName="include" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/multiSensor/include/tsBasicCluster.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/multiSensor/include/osIdentifyCluster.h</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/multiSensor/include/multiSensor.h</itemPath>
@@ -782,40 +773,44 @@
                   <itemPath>../src/config/default/zigbee/z3device/multiSensor/include/osGroupsCluster.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="otau" name="otau" projectFiles="true">
-                <logicalFolder displayName="ofd" name="ofd" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+              <logicalFolder name="otau" displayName="otau" projectFiles="true">
+                <logicalFolder name="ofd" displayName="ofd" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/otau/ofd/include/ofdMemoryDriver.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="stack_interface" name="stack_interface" projectFiles="true">
-                <logicalFolder displayName="bdb" name="bdb" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+              <logicalFolder name="stack_interface"
+                             displayName="stack_interface"
+                             projectFiles="true">
+                <logicalFolder name="bdb" displayName="bdb" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/bdb/include/bdb_api.h</itemPath>
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/bdb/include/BDB_Unpack.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="configServer" name="configServer" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="configServer"
+                               displayName="configServer"
+                               projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/configServer/include/CS_Unpack.h</itemPath>
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/configServer/include/cs_api.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="nwk" name="nwk" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="nwk" displayName="nwk" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/nwk/include/NWK_Unpack.h</itemPath>
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/nwk/include/nwk_api.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="zcl" name="zcl" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/zcl/include/ZCL_Unpack.h</itemPath>
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/zcl/include/zcl_api.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="zdo" name="zdo" projectFiles="true">
-                  <logicalFolder displayName="include" name="include" projectFiles="true">
+                <logicalFolder name="zdo" displayName="zdo" projectFiles="true">
+                  <logicalFolder name="include" displayName="include" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/zdo/include/zdo_api.h</itemPath>
                     <itemPath>../src/config/default/zigbee/z3device/stack_interface/zdo/include/ZDO_Unpack.h</itemPath>
                   </logicalFolder>
@@ -823,7 +818,9 @@
                 <itemPath>../src/config/default/zigbee/z3device/stack_interface/zgb_api.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="z3device_configs" name="z3device_configs" projectFiles="true">
+            <logicalFolder name="z3device_configs"
+                           displayName="z3device_configs"
+                           projectFiles="true">
               <itemPath>../src/config/default/zigbee/z3device_configs/zigbeeAppConfig.h</itemPath>
               <itemPath>../src/config/default/zigbee/z3device_configs/zigbeeAppDeviceSelect.h</itemPath>
               <itemPath>../src/config/default/zigbee/z3device_configs/stackConfig.h</itemPath>
@@ -841,11 +838,12 @@
           <itemPath>../src/config/default/user.h</itemPath>
           <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/default/framework_defs.h</itemPath>
+          <itemPath>../src/config/default/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder displayName="FreeRTOS" name="FreeRTOS" projectFiles="true">
-        <logicalFolder displayName="Source" name="Source" projectFiles="true">
-          <logicalFolder displayName="include" name="include" projectFiles="true">
+      <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
+        <logicalFolder name="Source" displayName="Source" projectFiles="true">
+          <logicalFolder name="include" displayName="include" projectFiles="true">
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/croutine.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/timers.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/portable.h</itemPath>
@@ -863,10 +861,10 @@
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stack_macros.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_prototypes.h</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="portable" name="portable" projectFiles="true">
-            <logicalFolder displayName="GCC" name="GCC" projectFiles="true">
-              <logicalFolder displayName="SAM" name="SAM" projectFiles="true">
-                <logicalFolder displayName="ARM_CM4F" name="ARM_CM4F" projectFiles="true">
+          <logicalFolder name="portable" displayName="portable" projectFiles="true">
+            <logicalFolder name="GCC" displayName="GCC" projectFiles="true">
+              <logicalFolder name="SAM" displayName="SAM" projectFiles="true">
+                <logicalFolder name="ARM_CM4F" displayName="ARM_CM4F" projectFiles="true">
                   <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F/portmacro.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
@@ -874,11 +872,11 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder displayName="packs" name="packs" projectFiles="true">
-        <logicalFolder displayName="CMSIS" name="CMSIS" projectFiles="true">
-          <logicalFolder displayName="CMSIS" name="CMSIS" projectFiles="true">
-            <logicalFolder displayName="Core" name="Core" projectFiles="true">
-              <logicalFolder displayName="Include" name="Include" projectFiles="true">
+      <logicalFolder name="packs" displayName="packs" projectFiles="true">
+        <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
+          <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
+            <logicalFolder name="Core" displayName="Core" projectFiles="true">
+              <logicalFolder name="Include" displayName="Include" projectFiles="true">
                 <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cachel1_armv7.h</itemPath>
                 <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armclang.h</itemPath>
                 <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_iccarm.h</itemPath>
@@ -893,8 +891,8 @@
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
-        <logicalFolder displayName="WBZ451_DFP" name="WBZ451_DFP" projectFiles="true">
-          <logicalFolder displayName="component" name="component" projectFiles="true">
+        <logicalFolder name="WBZ451_DFP" displayName="WBZ451_DFP" projectFiles="true">
+          <logicalFolder name="component" displayName="component" projectFiles="true">
             <itemPath>../src/packs/WBZ451_DFP/component/trng.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/component/ccl.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/component/gpio.h</itemPath>
@@ -934,7 +932,7 @@
             <itemPath>../src/packs/WBZ451_DFP/component/pps.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/component/pukcc.h</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="instance" name="instance" projectFiles="true">
+          <logicalFolder name="instance" displayName="instance" projectFiles="true">
             <itemPath>../src/packs/WBZ451_DFP/instance/tc2.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/instance/arb.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/instance/fuses.h</itemPath>
@@ -982,14 +980,19 @@
             <itemPath>../src/packs/WBZ451_DFP/instance/pps.h</itemPath>
             <itemPath>../src/packs/WBZ451_DFP/instance/gpiob.h</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="pio" name="pio" projectFiles="true">
+          <logicalFolder name="pio" displayName="pio" projectFiles="true">
             <itemPath>../src/packs/WBZ451_DFP/pio/wbz451.h</itemPath>
           </logicalFolder>
           <itemPath>../src/packs/WBZ451_DFP/wbz451.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder displayName="wolfcrypt" name="wolfcrypt" projectFiles="true">
-        <logicalFolder displayName="port" name="port" projectFiles="true">
+      <logicalFolder name="system" displayName="system" projectFiles="true">
+        <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+          <itemPath>../src/config/default/system/tmr/sys_tmr.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="wolfcrypt" displayName="wolfcrypt" projectFiles="true">
+        <logicalFolder name="port" displayName="port" projectFiles="true">
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccAdd_pb.h</itemPath>
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEcDsa_pb.h</itemPath>
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ExpMod_pb.h</itemPath>
@@ -1124,30 +1127,40 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/logging.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_class.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/settings.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sakke.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/eccsi.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app_ble_conn_handler.h</itemPath>
       <itemPath>../src/app_idle_task.h</itemPath>
       <itemPath>../src/app_error_defs.h</itemPath>
       <itemPath>../src/app.h</itemPath>
     </logicalFolder>
-    <logicalFolder displayName="Linker Files" name="LinkerScript" projectFiles="true">
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
       <itemPath>../src/config/default/WBZ451.ld</itemPath>
     </logicalFolder>
-    <logicalFolder displayName="Source Files" name="SourceFiles" projectFiles="true">
-      <logicalFolder displayName="app_ble" name="app_ble" projectFiles="true">
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
         <itemPath>../src/app_ble/app_ble_handler.c</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.c</itemPath>
         <itemPath>../src/app_ble/app_ble.c</itemPath>
+        <itemPath>../src/app_ble/app_ble_log_handler.c</itemPath>
+        <itemPath>../src/app_ble/app_ble_utility.c</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_prov" name="app_prov" projectFiles="true">
+      <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
         <itemPath>../src/app_prov/app_prov.c</itemPath>
         <itemPath>../src/app_prov/app_prov_handler.c</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_trps" name="app_trps" projectFiles="true">
+      <logicalFolder name="app_trps" displayName="app_trps" projectFiles="true">
         <itemPath>../src/app_trps/app_trps.c</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="app_zigbee" name="app_zigbee" projectFiles="true">
-        <logicalFolder displayName="zigbee_console" name="zigbee_console" projectFiles="true">
+      <logicalFolder name="app_zigbee" displayName="app_zigbee" projectFiles="true">
+        <logicalFolder name="zigbee_console"
+                       displayName="zigbee_console"
+                       projectFiles="true">
           <itemPath>../src/app_zigbee/zigbee_console/msConsole.c</itemPath>
           <itemPath>../src/app_zigbee/zigbee_console/consoleCmds.c</itemPath>
           <itemPath>../src/app_zigbee/zigbee_console/console.c</itemPath>
@@ -1155,102 +1168,112 @@
         <itemPath>../src/app_zigbee/app_zigbee_handler.c</itemPath>
         <itemPath>../src/app_zigbee/app_zigbee.c</itemPath>
       </logicalFolder>
-      <logicalFolder displayName="config" name="config" projectFiles="true">
-        <logicalFolder displayName="default" name="default" projectFiles="true">
-          <logicalFolder displayName="ble" name="ble" projectFiles="true">
-            <logicalFolder displayName="middleware_ble" name="middleware_ble" projectFiles="true">
-              <logicalFolder displayName="ble_dm" name="ble_dm" projectFiles="true">
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="ble" displayName="ble" projectFiles="true">
+            <logicalFolder name="middleware_ble"
+                           displayName="middleware_ble"
+                           projectFiles="true">
+              <logicalFolder name="ble_dm" displayName="ble_dm" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_dds.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.c</itemPath>
-                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_aes.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.c</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="profile_ble" name="profile_ble" projectFiles="true">
-              <logicalFolder displayName="ble_trsps" name="ble_trsps" projectFiles="true">
+            <logicalFolder name="profile_ble" displayName="profile_ble" projectFiles="true">
+              <logicalFolder name="ble_trsps" displayName="ble_trsps" projectFiles="true">
                 <itemPath>../src/config/default/ble/profile_ble/ble_trsps/ble_trsps.c</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="service_ble" name="service_ble" projectFiles="true">
-              <logicalFolder displayName="ble_trs" name="ble_trs" projectFiles="true">
+            <logicalFolder name="service_ble" displayName="service_ble" projectFiles="true">
+              <logicalFolder name="ble_trs" displayName="ble_trs" projectFiles="true">
                 <itemPath>../src/config/default/ble/service_ble/ble_trs/ble_trs.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder displayName="crypto" name="crypto" projectFiles="true">
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
             <itemPath>../src/config/default/crypto/src/crypto.c</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="osal" name="osal" projectFiles="true">
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal_freertos.c</itemPath>
             <itemPath>../src/config/default/osal/osal_freertos_extend.c</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="peripheral" name="peripheral" projectFiles="true">
-            <logicalFolder displayName="clk" name="clk" projectFiles="true">
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
               <itemPath>../src/config/default/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="cmcc" name="cmcc" projectFiles="true">
+            <logicalFolder name="cmcc" displayName="cmcc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/cmcc/plib_cmcc.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="evsys" name="evsys" projectFiles="true">
+            <logicalFolder name="evsys" displayName="evsys" projectFiles="true">
               <itemPath>../src/config/default/peripheral/evsys/plib_evsys.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="gpio" name="gpio" projectFiles="true">
+            <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/default/peripheral/gpio/plib_gpio.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="nvic" name="nvic" projectFiles="true">
+            <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvic/plib_nvic.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="nvm" name="nvm" projectFiles="true">
+            <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvm/plib_nvm.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="rtc" name="rtc" projectFiles="true">
+            <logicalFolder name="rtc" displayName="rtc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/rtc/plib_rtc_timer.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="tcc" name="tcc" projectFiles="true">
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="tcc" displayName="tcc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tcc/plib_tcc2.c</itemPath>
             </logicalFolder>
-            <logicalFolder displayName="trng" name="trng" projectFiles="true">
+            <logicalFolder name="trng" displayName="trng" projectFiles="true">
               <itemPath>../src/config/default/peripheral/trng/plib_trng.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder displayName="stdio" name="stdio" projectFiles="true">
+          <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder displayName="zigbee" name="zigbee" projectFiles="true">
-            <logicalFolder displayName="systemresource" name="systemresource" projectFiles="true">
-              <logicalFolder displayName="bsp" name="bsp" projectFiles="true">
-                <logicalFolder displayName="PIC32CX" name="PIC32CX" projectFiles="true">
-                  <logicalFolder displayName="src" name="src" projectFiles="true">
+          <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
+            <logicalFolder name="systemresource"
+                           displayName="systemresource"
+                           projectFiles="true">
+              <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
+                <logicalFolder name="PIC32CX" displayName="PIC32CX" projectFiles="true">
+                  <logicalFolder name="src" displayName="src" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/systemresource/bsp/PIC32CX/src/fakeBSP.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="configserver" name="configserver" projectFiles="true">
-                <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="configserver"
+                             displayName="configserver"
+                             projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/systemresource/configserver/src/csPersistentMem.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/configserver/src/configserver.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/configserver/src/csMem.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="hal" name="hal" projectFiles="true">
-                <logicalFolder displayName="cortexm4" name="cortexm4" projectFiles="true">
-                  <logicalFolder displayName="common" name="common" projectFiles="true">
-                    <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="hal" displayName="hal" projectFiles="true">
+                <logicalFolder name="cortexm4" displayName="cortexm4" projectFiles="true">
+                  <logicalFolder name="common" displayName="common" projectFiles="true">
+                    <logicalFolder name="src" displayName="src" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/timer.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/sleepTimer.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/statStack.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/appTimer.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/halTaskManager.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/common/src/sleep.c</itemPath>
                     </logicalFolder>
                   </logicalFolder>
-                  <logicalFolder displayName="pic32cx" name="pic32cx" projectFiles="true">
-                    <logicalFolder displayName="src" name="src" projectFiles="true">
+                  <logicalFolder name="pic32cx" displayName="pic32cx" projectFiles="true">
+                    <logicalFolder name="src" displayName="src" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/halAppClock.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/halSleep.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/halSleepTimerClock.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/halMacIsr.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/halRfCtrl.c</itemPath>
                       <itemPath>../src/config/default/zigbee/systemresource/hal/cortexm4/pic32cx/src/atomic.c</itemPath>
@@ -1259,14 +1282,16 @@
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="pds" name="pds" projectFiles="true">
-                <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="pds" displayName="pds" projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/systemresource/pds/src/bcPDS.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/pds/src/wlPdsTypesConverter.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="systemenvironment" name="systemenvironment" projectFiles="true">
-                <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="systemenvironment"
+                             displayName="systemenvironment"
+                             projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/systemresource/systemenvironment/src/sysStat.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/systemenvironment/src/sysMutex.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/systemenvironment/src/sysDuplicateTable.c</itemPath>
@@ -1282,13 +1307,13 @@
                   <itemPath>../src/config/default/zigbee/systemresource/systemenvironment/src/sysTimer.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="zcl" name="zcl" projectFiles="true">
-                <logicalFolder displayName="clusters" name="clusters" projectFiles="true">
-                  <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
+                <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
+                  <logicalFolder name="src" displayName="src" projectFiles="true">
                     <itemPath>../src/config/default/zigbee/systemresource/zcl/clusters/src/scenes.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder displayName="src" name="src" projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/systemresource/zcl/src/zclOtauClientDiscovery.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/zcl/src/zclOtauClientQuery.c</itemPath>
                   <itemPath>../src/config/default/zigbee/systemresource/zcl/src/zclCommandManager.c</itemPath>
@@ -1298,60 +1323,26 @@
                   <itemPath>../src/config/default/zigbee/systemresource/zcl/src/zclOtauClientUpgrade.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder displayName="ZGP" name="ZGP" projectFiles="true">
-                <logicalFolder displayName="GPInfrastructure" name="GPInfrastructure" projectFiles="true">
-                  <logicalFolder displayName="highZgp" name="highZgp" projectFiles="true">
-                    <logicalFolder displayName="src" name="src" projectFiles="true">
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpHighMem.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpProxyPdt.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpSinkTable.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpClusterGeneric.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpHighGeneric.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpSinkBasic.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpProxyBasic.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpMiddleProxy.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpProxyTable.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpClusterClient.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpSinkPdt.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/highZgp/src/zgpClusterServer.c</itemPath>
-                    </logicalFolder>
-                  </logicalFolder>
-                  <logicalFolder displayName="lowZgp" name="lowZgp" projectFiles="true">
-                    <logicalFolder displayName="src" name="src" projectFiles="true">
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpLowProxy.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpLowSink.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpLowMem.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpLowGeneric.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpTaskManager.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpDstub.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpCstub.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpNvmTable.c</itemPath>
-                      <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/lowZgp/src/zgpPacket.c</itemPath>
-                    </logicalFolder>
-                  </logicalFolder>
-                  <logicalFolder displayName="src" name="src" projectFiles="true">
-                    <itemPath>../src/config/default/zigbee/systemresource/ZGP/GPInfrastructure/src/zgpGeneric.c</itemPath>
-                  </logicalFolder>
-                </logicalFolder>
-              </logicalFolder>
-              <logicalFolder displayName="zllplatform" name="zllplatform" projectFiles="true">
-                <logicalFolder displayName="infrastructure" name="infrastructure" projectFiles="true">
-                  <logicalFolder displayName="N_Util" name="N_Util" projectFiles="true">
-                    <logicalFolder displayName="src" name="src" projectFiles="true">
+              <logicalFolder name="zllplatform" displayName="zllplatform" projectFiles="true">
+                <logicalFolder name="infrastructure"
+                               displayName="infrastructure"
+                               projectFiles="true">
+                  <logicalFolder name="N_Util" displayName="N_Util" projectFiles="true">
+                    <logicalFolder name="src" displayName="src" projectFiles="true">
                       <itemPath>../src/config/default/zigbee/systemresource/zllplatform/infrastructure/N_Util/src/N_Util.c</itemPath>
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="z3device" name="z3device" projectFiles="true">
-              <logicalFolder displayName="clusters" name="clusters" projectFiles="true">
+            <logicalFolder name="z3device" displayName="z3device" projectFiles="true">
+              <logicalFolder name="clusters" displayName="clusters" projectFiles="true">
                 <itemPath>../src/config/default/zigbee/z3device/clusters/identifyCluster.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/clusters/haClusters.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/clusters/groupsCluster.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/clusters/commissioningCluster.c</itemPath>
               </logicalFolder>
-              <logicalFolder displayName="common" name="common" projectFiles="true">
+              <logicalFolder name="common" displayName="common" projectFiles="true">
                 <itemPath>../src/config/default/zigbee/z3device/common/errH.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/common/zgpTranslationTable.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/common/zigbee_init.c</itemPath>
@@ -1361,7 +1352,7 @@
                 <itemPath>../src/config/default/zigbee/z3device/common/hs2xy.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/common/zgb_task.c</itemPath>
               </logicalFolder>
-              <logicalFolder displayName="multiSensor" name="multiSensor" projectFiles="true">
+              <logicalFolder name="multiSensor" displayName="multiSensor" projectFiles="true">
                 <itemPath>../src/config/default/zigbee/z3device/multiSensor/tsIdentifyCluster.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/multiSensor/msPdt.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/multiSensor/msDiagnosticsCluster.c</itemPath>
@@ -1383,24 +1374,28 @@
                 <itemPath>../src/config/default/zigbee/z3device/multiSensor/multiSensor.c</itemPath>
                 <itemPath>../src/config/default/zigbee/z3device/multiSensor/hsHumidityMeasurementCluster.c</itemPath>
               </logicalFolder>
-              <logicalFolder displayName="stack_interface" name="stack_interface" projectFiles="true">
-                <logicalFolder displayName="bdb" name="bdb" projectFiles="true">
+              <logicalFolder name="stack_interface"
+                             displayName="stack_interface"
+                             projectFiles="true">
+                <logicalFolder name="bdb" displayName="bdb" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/bdb/BDB_Unpack.c</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/bdb/BDB_API.c</itemPath>
                 </logicalFolder>
-                <logicalFolder displayName="configServer" name="configServer" projectFiles="true">
+                <logicalFolder name="configServer"
+                               displayName="configServer"
+                               projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/configServer/CS_Unpack.c</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/configServer/CS_API.c</itemPath>
                 </logicalFolder>
-                <logicalFolder displayName="nwk" name="nwk" projectFiles="true">
+                <logicalFolder name="nwk" displayName="nwk" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/nwk/NWK_API.c</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/nwk/NWK_Unpack.c</itemPath>
                 </logicalFolder>
-                <logicalFolder displayName="zcl" name="zcl" projectFiles="true">
+                <logicalFolder name="zcl" displayName="zcl" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/zcl/ZCL_API.c</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/zcl/ZCL_Unpack.c</itemPath>
                 </logicalFolder>
-                <logicalFolder displayName="zdo" name="zdo" projectFiles="true">
+                <logicalFolder name="zdo" displayName="zdo" projectFiles="true">
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/zdo/ZDO_API.c</itemPath>
                   <itemPath>../src/config/default/zigbee/z3device/stack_interface/zdo/ZDO_Unpack.c</itemPath>
                 </logicalFolder>
@@ -1417,17 +1412,17 @@
           <itemPath>../src/config/default/freertos_hooks.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder displayName="FreeRTOS" name="FreeRTOS" projectFiles="true">
-        <logicalFolder displayName="Source" name="Source" projectFiles="true">
-          <logicalFolder displayName="portable" name="portable" projectFiles="true">
-            <logicalFolder displayName="GCC" name="GCC" projectFiles="true">
-              <logicalFolder displayName="SAM" name="SAM" projectFiles="true">
-                <logicalFolder displayName="ARM_CM4F" name="ARM_CM4F" projectFiles="true">
+      <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
+        <logicalFolder name="Source" displayName="Source" projectFiles="true">
+          <logicalFolder name="portable" displayName="portable" projectFiles="true">
+            <logicalFolder name="GCC" displayName="GCC" projectFiles="true">
+              <logicalFolder name="SAM" displayName="SAM" projectFiles="true">
+                <logicalFolder name="ARM_CM4F" displayName="ARM_CM4F" projectFiles="true">
                   <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F/port.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder displayName="MemMang" name="MemMang" projectFiles="true">
+            <logicalFolder name="MemMang" displayName="MemMang" projectFiles="true">
               <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_4.c</itemPath>
             </logicalFolder>
           </logicalFolder>
@@ -1440,8 +1435,8 @@
           <itemPath>../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder displayName="wolfcrypt" name="wolfcrypt" projectFiles="true">
-        <logicalFolder displayName="port" name="port" projectFiles="true">
+      <logicalFolder name="wolfcrypt" displayName="wolfcrypt" projectFiles="true">
+        <logicalFolder name="port" displayName="port" projectFiles="true">
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha512_sam6156.c</itemPath>
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_tdes_sam6150.c</itemPath>
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/pic32mz-crypt.c</itemPath>
@@ -1536,6 +1531,8 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hc128.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c64.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_cortexm.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/eccsi.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sakke.c</itemPath>
       </logicalFolder>
       <itemPath>../src/app_ble_conn_handler.c</itemPath>
       <itemPath>../src/app_idle_task.c</itemPath>
@@ -1543,7 +1540,9 @@
       <itemPath>../src/app_user_edits.c</itemPath>
       <itemPath>../src/app.c</itemPath>
     </logicalFolder>
-    <logicalFolder displayName="Important Files" name="ExternalFiles" projectFiles="false">
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
       <itemPath>Makefile</itemPath>
       <itemPath>ble_zigbee_multisensor.mc3</itemPath>
     </logicalFolder>
@@ -1554,15 +1553,15 @@
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <targetDevice>WBZ451</targetDevice>
-        <targetHeader/>
-        <targetPluginBoard/>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
         <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.0.107"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.2.230"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
       </packs>
       <ScriptingSettings>
@@ -1570,10 +1569,10 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../src/config/default/ble/lib/ble_stack.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/default/zigbee/lib/zigbee_alldevice_lib.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/default/driver/pds/pds.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/default/driver/device_support/pic32cx_bz2_device_support.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/ble/lib/ble_stack_bz2_lib.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -1581,7 +1580,7 @@
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
           <parseOnProdLoad>false</parseOnProdLoad>
-          <alternateLoadableFile/>
+          <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
         </subordinates>
@@ -1589,9 +1588,9 @@
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
-        <makeCustomizationPreStep/>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
-        <makeCustomizationPostStep/>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
@@ -1599,13 +1598,13 @@
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value="-include&quot;lib/Zigbee_AllDevice_Makerules.h&quot;"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories" value="../src;../src/app_ble;../src/config/default;../src/config/default/ble/lib/include;../src/config/default/ble/middleware_ble;../src/config/default/ble/profile_ble;../src/config/default/ble/service_ble;../src/config/default/crypto;../src/config/default/driver/pds/include;../src/config/default/peripheral;../src/config/default/zigbee;../src/config/default/zigbee/configs;../src/config/default/zigbee/lib/inc;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
+        <property key="extra-include-directories"
+                  value="../src;../src/app_ble;../src/config/default;../src/config/default/ble/lib/include;../src/config/default/ble/middleware_ble;../src/config/default/ble/profile_ble;../src/config/default/ble/service_ble;../src/config/default/crypto;../src/config/default/driver/pds/include;../src/config/default/peripheral;../src/config/default/zigbee;../src/config/default/zigbee/configs;../src/config/default/zigbee/lib/inc;../src/config/default/zigbee/lib/inc/hal/cortexm4/pic32cx/include;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -1614,7 +1613,8 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value="HAL_USE_FLASH_ACCESS;HAVE_CONFIG_H;PIC32CX_CHIP_SOC;WOLFSSL_IGNORE_FILE_WARN;Z3DEVICE_APP;_PIC32CX_;_SUPER_SET_LIB_;_USE_LIB_"/>
+        <property key="preprocessor-macros"
+                  value="HAL_USE_FLASH_ACCESS;HAVE_CONFIG_H;PIC32CX_CHIP_SOC;WOLFSSL_IGNORE_FILE_WARN;Z3DEVICE_APP;_PIC32CX_;_SUPER_SET_LIB_;_USE_LIB_"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>
@@ -1656,7 +1656,6 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -1696,7 +1695,6 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -1705,7 +1703,8 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories" value="../src;../src/config/default;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F"/>
+        <property key="extra-include-directories"
+                  value="../src;../src/config/default;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -1724,7 +1723,6 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
-        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>
@@ -1739,9 +1737,12 @@
       </C32Global>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="ToolFirmwareFilePath" value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UpdateOptions" value="ToolFirmwareOption.UseLatest"/>
-        <property key="ToolFirmwareToolPack" value="Press to select which tool pack to use"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="2.000"/>
@@ -1749,7 +1750,10 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -1759,15 +1763,19 @@
         <property key="memories.exclude.configurationmemory" value="true"/>
         <property key="memories.flashdata" value="true"/>
         <property key="memories.id" value="true"/>
-        <property key="memories.instruction.ram.ranges" value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1000000-10fffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Misra/wireless_apps_pic32cxbz2_wbz45/apps/multiprotocol/ble_zigbee_multisensor/firmware/ble_zigbee_multisensor.X/debug/default/ble_zigbee_multisensor_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
         <property key="programoptions.pgmspeed" value="Med"/>
         <property key="programoptions.preservedataflash" value="false"/>
-        <property key="programoptions.preservedataflash.ranges" value="${memories.dataflash.default}"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
         <property key="programoptions.preserveeeprom" value="false"/>
         <property key="programoptions.preserveeeprom.ranges" value=""/>
         <property key="programoptions.preserveprogram.ranges" value=""/>
@@ -1777,14 +1785,19 @@
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
-        <property key="toolpack.updateoptions" value="toolpack.updateoptions.uselatestoolpack"/>
-        <property key="toolpack.updateoptions.packversion" value="Press to select which tool pack to use"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
       </Tool>
       <pkob4hybrid>
         <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="ToolFirmwareFilePath" value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UpdateOptions" value="ToolFirmwareOption.UseLatest"/>
-        <property key="ToolFirmwareToolPack" value="Press to select which tool pack to use"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="2.000"/>
@@ -1792,7 +1805,10 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -1802,16 +1818,17 @@
         <property key="memories.exclude.configurationmemory" value="true"/>
         <property key="memories.flashdata" value="true"/>
         <property key="memories.id" value="true"/>
-        <property key="memories.instruction.ram.ranges" value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1000000-10fffff"/>
-        <property key="programmerToGoFilePath" value="C:/Misra/wireless_apps_pic32cxbz2_wbz45/apps/multiprotocol/ble_zigbee_multisensor/firmware/ble_zigbee_multisensor.X/debug/default/ble_zigbee_multisensor_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
         <property key="programoptions.pgmspeed" value="Med"/>
         <property key="programoptions.preservedataflash" value="false"/>
-        <property key="programoptions.preservedataflash.ranges" value="${memories.dataflash.default}"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
         <property key="programoptions.preserveeeprom" value="false"/>
         <property key="programoptions.preserveeeprom.ranges" value=""/>
         <property key="programoptions.preserveprogram.ranges" value=""/>
@@ -1821,8 +1838,10 @@
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
-        <property key="toolpack.updateoptions" value="toolpack.updateoptions.uselatestoolpack"/>
-        <property key="toolpack.updateoptions.packversion" value="Press to select which tool pack to use"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
       </pkob4hybrid>
     </conf>
   </confs>

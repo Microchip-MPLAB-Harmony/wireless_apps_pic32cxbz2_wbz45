@@ -102,7 +102,8 @@ typedef struct _EventToMemoryIdMapping_t
   PDS_MemId_t    itemId;
 } EventToMemoryIdMapping_t;
 
-#if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASICextern OSAL_SEM_HANDLE_TYPE semZgpInternalHandler;
+#if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
+extern OSAL_SEM_HANDLE_TYPE semZgpInternalHandler;
 #endif
 /******************************************************************************
                     Prototypes section

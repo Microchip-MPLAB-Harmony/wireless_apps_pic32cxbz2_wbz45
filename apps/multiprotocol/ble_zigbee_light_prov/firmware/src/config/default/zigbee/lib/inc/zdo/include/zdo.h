@@ -1559,6 +1559,28 @@ void ZDO_WakeUpInd(void);
 void ZDO_WakeUpReq(ZDO_WakeUpReq_t *req);
 
 /**************************************************************************//**
+  \brief Forces the stack to do polling after wakup from deep sleep
+
+   This function should be used by the application to start polling when waking up from deep sleep.
+  
+  \param None
+  
+  \return None
+  
+ ******************************************************************************/
+void ZDO_ResumePollFromDeepSleepReq(void);
+
+/******************************************************************************
+  \brief Backup ZDO Parameters  
+******************************************************************************/
+void ZDO_BackupZdoParams(void);
+
+/******************************************************************************
+  \brief Restore ZDO Parameters  
+******************************************************************************/
+void ZDO_RestoreZdoParams(void);
+
+/**************************************************************************//**
   \brief Sets channel to ZDO information base
 
    This function sets channel to ZDO information base.

@@ -66,7 +66,7 @@
 //  C-type: uint16_t
 //  Can be set: By Server
 //  Persistent: Yes
-#define ZCL_OTAU_DEFAULT_BLOCK_REQ_PERIOD 300
+#define ZCL_OTAU_DEFAULT_BLOCK_REQ_PERIOD 200
 
 #if (APP_Z3_DEVICE_TYPE ==  APP_DEVICE_TYPE_COMBINED_INTERFACE)
 
@@ -102,7 +102,7 @@
 
     // The recovery pds writes happens for every OTAU_RECOVERY_BLOCK_SIZE_MIN to avoid frequent writing of flash.
     // This increases the endurance of the flash
-    #define OTAU_RECOVERY_BLOCK_SIZE_MIN    (NVM_PAGE_SIZE * 4) // 16 KB
+    #define OTAU_RECOVERY_BLOCK_SIZE_MIN    (NVM_FLASH_PAGESIZE * 4) // 16 KB
 
     // The amount of servers the OTAU client can listen to during upgrade server
     // discovery
@@ -164,7 +164,7 @@
     //  Can be set: at any time before an OTAU start
     //  Persistent: No
     #define CS_ZCL_OTAU_FILE_VERSION CS_STACK_VERSION_VALUE
-    //#define CS_ZCL_OTAU_FILE_VERSION 0X50030701
+
     // The default address of an upgrade server
     // 
     //  The parameter indicates how the OTAU client will search for OTAU servers in the

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Release notes
 nav_order: 99
 ---
@@ -6,6 +6,51 @@ nav_order: 99
 ![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
+# Microchip MPLABÂ® Harmony 3 Release Notes
+
+## Harmony 3 Wireless BLE, Zigbee, and IEEE 802.15.4 MAC Application example for PIC32CXBZ family  **v2.0.0**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board 	 |       12            |
+
+### New Features
+- WBZ451 BLE Central Transparent UART based code PHY for Long range BLE Application.
+- WBZ451 BLE Peripheral HID Profile support BLE Keyboard Application.
+- WBZ451 BLE Peripheral ANCS(Apple Notification Center Service client) profile for Notification Provider (NP) such as iPhone application.
+- WBZ451 BLE Peripheral Pathloss threshold RSSI based Application.
+- WBZ451 BLE Peripheral Transparent UART based code PHY for Long range BLE Application.
+- WBZ451 BLE Peripheral Multiple Advertising Sets (Two Set Advertising) Application.
+- WBZ451 Zigbee Custom Device type Application.
+- WBZ451 Zigbee Custom Cluster Server Application.
+- WBZ451 Zigbee Custom Cluster Client Application.
+- WBZ451 Zigbee Custom Occupancy Light Clinet Application.
+- WBZ451 Zigbee Multisensor DeepSleep Application.
+- WBZ451 IEEE 802.15.4 MAC Harmony compoenent based application.
+
+### Bug fixes and Improvements
+- New applications release.
+
+### Known Issues
+- False Positive MISRA C deviations - 12 (MISRA C-2012 Rule 8.6 & MISRA C-2012 Rule 17.7)
+
+### Limitations
+- None
+
+### Development Tools
+
+- [MPLABÂ® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLABÂ® X IDE plug-ins:
+  - MPLABÂ® Code Configurator (MCC) `v5.3.7`
+- [MPLABÂ® XC32 C/C++ Compiler v4.35](https://www.microchip.com/mplab/compilers)
+- **DFP 1.1.230 or above version**
+
+
+--------------------------------------------------------------------------------------------------------------------
 # Microchip MPLABÂ® Harmony 3 Release Notes
 
 ## Harmony 3 Wireless IEEE 802.15.4 P2P Phy Application example for PIC32CXBZ family  **v1.2.0**
@@ -42,7 +87,7 @@ Following table provides number of Wireless examples available for different dev
 --------------------------------------------------------------------------------------------------------------------
 # Microchip MPLABÂ® Harmony 3 Release Notes
 
-## Harmony 3 Wireless BLE application examples for PIC32CXBZ family  **v1.1.0**
+## Harmony 3 Wireless Zigbee application examples for PIC32CXBZ family  **v1.1.0**
 
 ### Development kit and demo application support
 

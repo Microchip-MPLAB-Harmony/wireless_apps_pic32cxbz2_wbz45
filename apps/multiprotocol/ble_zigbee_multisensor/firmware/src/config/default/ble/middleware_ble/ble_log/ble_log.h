@@ -36,10 +36,12 @@
   Description:
     This file contains the BLE Log functions for this project.
  *******************************************************************************/
-
+/** @addtogroup BLE_MW BLE Middleware
+ *  @{ */
 
 /**
- * @addtogroup BLE_LOG
+ * @defgroup BLE_LOG BLE Log (BLE_LOG)
+ * @brief Handling Bluetooth system log from LIB
  * @{
  * @brief Header file for the BLE Log (ble_log) module.
  * @note Definitions and prototypes for the BLE Log application programming interface.
@@ -57,6 +59,14 @@
 #include <string.h>
 #include "bt_sys_log.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -67,7 +77,7 @@
  * @{ */
 
 /**@defgroup BLE_LOG_TYPE Definitions of BLE log
- * @brief The definition of BLE log
+ * @brief The definition of BLE log.
  * @{ */
 #define BLE_LOG_TYPE_HCI_COMMAND            0x01                                            /**< HCI Command. */
 #define BLE_LOG_TYPE_HCI_ACL_TX             0x02                                            /**< HCI ACL Tx Packet. */
@@ -113,7 +123,17 @@ void BLE_LOG_EventRegister(BLE_LOG_EventCb_T eventCb);
 void BLE_LOG_StackLogHandler(BT_SYS_LogEvent_T *p_log);
 
 /**@} */ //BLE_LOG_FUNS
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
 #endif
+//DOM-IGNORE-END
+
+
+#endif
+
+/** @} */
 
 /**
   @}

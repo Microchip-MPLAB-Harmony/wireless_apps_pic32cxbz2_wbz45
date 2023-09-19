@@ -49,6 +49,9 @@
 #include "ble_trspc/ble_trspc.h"
 #include "definitions.h"
 
+#include "app_trspc_handler.h"
+
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Variables

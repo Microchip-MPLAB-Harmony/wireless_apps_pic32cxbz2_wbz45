@@ -10,21 +10,21 @@
 		"shortDescription": "This example application users to enable BLE Scanning on WBZ451 Curiosity board using MPLAB Code Configurator(MCC). BLE Scanning is scanning for devices that are advertising. In BLE a central or observer always starts with scanning.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.00"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.0.0"
+				"semverRange": ">=4.21"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "1.0.107"
+			"semverRange": "1.2.230"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.1.4"
+			"semverRange": ">=5.3.7"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

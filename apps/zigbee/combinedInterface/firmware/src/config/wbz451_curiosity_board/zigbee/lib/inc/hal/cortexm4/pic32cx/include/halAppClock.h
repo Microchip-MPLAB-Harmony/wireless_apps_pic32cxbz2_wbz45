@@ -1,3 +1,4 @@
+
 /*******************************************************************************
   HAL AppClock Header File
 
@@ -143,5 +144,21 @@ void halDelayUs(uint16_t us);
   interval - time of sleep
 ******************************************************************************/
 void halAdjustSleepInterval(uint32_t interval);
+/**************************************************************************//**
+\brief Takes backup of current sys time
+
+\param[in]
+  interval - time of sleep
+******************************************************************************/
+void halBackupSystemTime(void);
+
+/**************************************************************************//**
+\brief restoring of current sys time
+
+\param[in]
+  interval - time of sleep
+******************************************************************************/
+void halRestoreSystemTime(void);
+
 #endif
 // eof halAppClock.h
