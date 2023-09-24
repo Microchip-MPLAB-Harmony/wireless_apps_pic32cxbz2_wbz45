@@ -61,7 +61,7 @@ The following applications are provided to demonstrate the typical use case of o
 
 | IEEE 802.15.4 Standalone P2P PHY Application Examples | Families |
 | --- | :---: |
-| [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/readme.md) | PIC32CX-BZ |
+| [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/PHY/p2p_phy/readme.md) | PIC32CX-BZ |
 | [IEEE 802 15.4 MAC](apps/ieee_802_15_4/MAC/push_pull_mac_app/readme.md) | PIC32CX-BZ |
 
 | Zigbee Examples | Families |

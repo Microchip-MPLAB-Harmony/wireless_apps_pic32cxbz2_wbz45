@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: demoapp_ffd
+frameworkPath: C:\MCC
+processor: PIC32CX1012BZ25048
+projectName: demoapp_ffd
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.2.230\BZ25\atdf\PIC32CX1012BZ25048.atdf
