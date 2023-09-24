@@ -1,0 +1,638 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" data-whc_version="24.1">
+    <head><link rel="shortcut icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><link rel="icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Getting Started Getting Started with Peripheral Building Blocks Introduction The HID over GATT profile defines the procedures and features to be used by Bluetooth low energy HID Devices using GATT and ..."/><meta name="copyright" content="(C) Copyright 2023"/><meta name="generator" content="DITA-OT"/><title>4.1.2.11 BLE HID over GATT Profile Service</title><!--  Generated with Oxygen version 24.1, build number 2022062014.  --><meta name="wh-path2root" content=""/><meta name="wh-toc-id" content="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225-d1763e388"/><meta name="wh-source-relpath" content="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.xml"/><meta name="wh-out-relpath" content="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.html"/>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css"/>
+    
+    <!-- Template default styles  -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2022062014"/>
+    
+    
+    <script src="./oxygen-webhelp/lib/jquery/jquery-3.5.1.min.js"></script>
+    
+    <script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script>
+<link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/microchip.css?buildId=2022062014"/><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/notes.css?buildId=2022062014"/>
+<script src="mchp-context-help.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async="" type="text/javascript"></script>
+    <script src="https://assets.adobedtm.com/6a72a357eb48/a636c708c7fe/launch-0b0023397020.min.js"></script><!-- Adobe Analytics -->
+</head>
+
+    <body id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">
+            Jump to main content
+        </a>
+        
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <a href="index.html" class=" wh_logo d-none d-sm-block "><img src="oxygen-webhelp\template\resources/images/microchip.png" alt="PIC32CXBZ2 Application Developer's Guide "/></a>
+                    <div class=" wh_publication_title "><a href="index.html">PIC32CXBZ2 Application Developer's Guide </a></div>
+                    
+                </div>
+                
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        
+         
+        
+        <div class=" wh_search_input navbar-form wh_topic_page_search search " role="form">
+            
+            
+            
+            <form id="searchForm" method="get" role="search" action="search.html"><div class="d-flex justify-contents-around"><div class="flex-grow-1"></div><div class="position-relative flex-grow-1"><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required"/><button type="submit" class="wh_search_button" aria-label="Search"><span class="search_input_text">Search</span></button></div><div class="align-self-center flex-grow-1 ml-2"><div class="d-flex justify-content-end"><div class="dropdown"><a style="font-size: 1em; padding: 7px 12px !important;" class="btn py-3 px-3 btn-outline-light dropdown-toggle" href="#" role="button" id="devicesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Pages</a><div style="font-size: 1em;" class="dropdown-menu" aria-labelledby="devicesMenu"><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/pic32cx-bz2">PIC32CX-BZ2</a><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/wbz451"> WBZ451</a></div></div></div></div></div></form>
+            
+            <div class="mchp-color-stripe-grid-container">
+  <div class="mchp-main-bar mchp-orange-bar"></div>
+  <div class="mchp-main-bar mchp-blue-bar"></div>
+  <div class="mchp-main-bar mchp-green-bar"></div>
+</div>
+            
+        </div>
+        
+        <div class="container-fluid" id="wh_topic_container">
+            <div class="row">
+
+                <nav class="wh_tools d-print-none navbar-expand-md" aria-label="Tools">
+                    
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><div class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div></li><li><div class="topicref" data-id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"><div class="title"><a href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1</ph>
+Building Block Examples</a></div></div></li><li><div class="topicref" data-id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4"><div class="title"><a href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2</ph>
+Peripheral</a></div></div></li><li class="active"><div class="topicref" data-id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225"><div class="title"><a href="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.11</ph>
+BLE HID over GATT Profile Service </a></div></div></li></ol></div>
+                    
+                    
+                    
+                    <div class="wh_right_tools">
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        
+                        
+                        
+                        
+                        <div class=" wh_print_link print d-none d-md-inline-block "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                        
+                        <button type="button" id="wh_toc_button" class="custom-toggler navbar-toggler collapsed wh_toggle_button navbar-light" aria-expanded="false" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    
+                </nav>
+            </div>
+            
+            
+            
+            
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-12 d-md-block d-none d-print-none" aria-label="Table of Contents Container">
+                            <div id="wh_publication_toc_content">
+		                        
+                            	<div class=" wh_publication_toc " data-tooltip-position="right"><span class="expand-button-action-labels"><span id="button-expand-action" role="button" aria-label="Expand"></span><span id="button-collapse-action" role="button" aria-label="Collapse"></span><span id="button-pending-action" role="button" aria-label="Pending"></span></span><ul role="tree" aria-label="Table of Contents"><li role="treeitem"><div data-tocid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9" class="topicref introduction" data-id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424.html" id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9-link">Introduction</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17" class="topicref" data-id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633.html" id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">1</ph>
+Quick references </a><div class="wh-tooltip"><p class="shortdesc">Enter a short description of your topic here (optional).</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39" class="topicref" data-id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">2</ph>
+Getting Started with WBZ451 Curiosity Board</a><div class="wh-tooltip"><p class="shortdesc">This section covers the evaluation board features and running the preprogrammed demo         example. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109" class="topicref" data-id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">3</ph>
+Getting Started with Software Development</a><div class="wh-tooltip"><p class="shortdesc">This section gives a detailed information on the steps to install IDE, compiler, tool         chain, BLE, Zigbee stacks and application examples on the PC. </p></div></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212" class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html" id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223" class="topicref" data-id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html" id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1</ph>
+Building Block Examples</a></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231" class="topicref" data-id="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C.html" id="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.1</ph>
+Central</a></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297" class="topicref" data-id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2</ph>
+Peripheral</a></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682-d1763e305" class="topicref" data-id="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html" id="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682-d1763e305-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.1</ph>
+  <strong class="ph b">Peripheral - FreeRTOS BLE Stack and App Initialize</strong></a></div></div></li><li role="treeitem"><div data-tocid="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702-d1763e315" class="topicref" data-id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702-d1763e315-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.2</ph>
+BLE Sleep Mode Legacy Advertisements</a></div></div></li><li role="treeitem"><div data-tocid="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4-d1763e323" class="topicref" data-id="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4.html" id="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4-d1763e323-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.3</ph>
+BLE Extended Advertisements</a></div></div></li><li role="treeitem"><div data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81-d1763e331" class="topicref" data-id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81.html" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81-d1763e331-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.4</ph>
+BLE Deep Sleep Advertising</a></div></div></li><li role="treeitem"><div data-tocid="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D-d1763e339" class="topicref" data-id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D-d1763e339-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.5</ph>
+BLE Connection</a></div></div></li><li role="treeitem"><div data-tocid="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36-d1763e347" class="topicref" data-id="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html" id="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36-d1763e347-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.6</ph>
+BLE Transparent UART</a></div></div></li><li role="treeitem"><div data-tocid="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8-d1763e355" class="topicref" data-id="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8.html" id="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8-d1763e355-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.7</ph>
+BLE Custom service</a></div></div></li><li role="treeitem"><div data-tocid="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00-d1763e363" class="topicref" data-id="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00.html" id="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00-d1763e363-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.8</ph>
+BLE Transparent UART Peripheral with LE Coded Phy</a></div></div></li><li role="treeitem"><div data-tocid="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE-d1763e371" class="topicref" data-id="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE.html" id="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE-d1763e371-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.9</ph>
+BLE ANCS Application</a></div></div></li><li role="treeitem"><div data-tocid="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839-d1763e379" class="topicref" data-id="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839.html" id="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839-d1763e379-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.10</ph>
+BLE Multiple Advertising Sets</a></div></div></li><li role="treeitem" class="active"><div data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225-d1763e388" class="topicref" data-id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.html" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225-d1763e388-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.11</ph>
+BLE HID over GATT Profile Service </a></div></div></li><li role="treeitem"><div data-tocid="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B-d1763e396" class="topicref" data-id="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B.html" id="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B-d1763e396-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.12</ph>
+Path Loss Feature in Legacy Advertisements</a></div></div></li></ul></li><li role="treeitem"><div data-tocid="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93-d1763e404" class="topicref" data-id="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93.html" id="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93-d1763e404-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.3</ph>
+BLE Multirole Multilink Transparent UART </a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412" class="topicref" data-id="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6.html" id="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.4</ph>
+Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Application Examples that showcase BLE Stack Init + Chip Peripheral running</p></div></div></div></li></ul></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431" class="topicref" data-id="GUID-92137358-930E-4654-9431-E8BA0E260468" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-92137358-930E-4654-9431-E8BA0E260468.html" id="GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.2</ph>
+Advanced Applications</a></div></div></li><li role="treeitem"><div data-tocid="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC-d1763e469" class="topicref" data-id="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC.html" id="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC-d1763e469-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.3</ph>
+BLE Virtual Sniffer</a></div></div></li><li role="treeitem"><div data-tocid="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008-d1763e477" class="topicref" data-id="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008.html" id="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008-d1763e477-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.4</ph>
+PIC32CXBZ2 Three-Wire PTA Coexistence Design</a></div></div></li></ul></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485" class="topicref" data-id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">5</ph>
+Getting Started with Zigbee Applications</a><div class="wh-tooltip"><p class="shortdesc">This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632" class="topicref" data-id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23.html" id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">6</ph>
+Getting Started With Multiprotocol Applications</a><div class="wh-tooltip"><p class="shortdesc">Documentation describing steps to test and develop the precompiled BLE and Zigbee coexistence application examples.</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683" class="topicref" data-id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE.html" id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">7</ph>
+Flashing hex from MPLAB DISCOVER using MPLAB IPE</a><div class="wh-tooltip"><p class="shortdesc">This section provides a detailed procedure of how to download an already existing     application hex file from MPLAB DISCOVER and flash the hex file into WBZ451 Curiosity Board     using MPLAB IPE.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694" class="topicref" data-id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html" id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8</ph>
+ Getting Started with IEEE 802.15.4 P2P Phy Application</a></div></div></li><li role="treeitem"><div data-tocid="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750" class="topicref" data-id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A.html" id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">9</ph>
+Getting Started with IEEE 802.15.4 MAC Application Examples</a></div></div></li><li role="treeitem"><div data-tocid="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759" class="topicref" data-id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B.html" id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">10</ph>
+Getting started with Thread Applications</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767" class="topicref" data-id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD.html" id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">11</ph>
+How-to: Adding Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Guidance on how to add analog/digital peripherals to your application</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812" class="topicref" data-id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">12</ph>
+How-to: Low Power Design</a><div class="wh-tooltip"><p class="shortdesc">Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844" class="topicref" data-id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13</ph>
+How-to: Firmware and OTA Updates</a><div class="wh-tooltip"><p class="shortdesc">This section documents how to enable FW updates in your design, whether its serial or over the air</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255" class="topicref" data-id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50.html" id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">14</ph>
+Wireless System Services API</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944" class="topicref" data-id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7.html" id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">15</ph>
+Support Documentation</a><div class="wh-tooltip"><p class="shortdesc">This section has documentation that is generic and used as supporting document with our application example documentation</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992" class="topicref" data-id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0.html" id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">16</ph>
+Porting Guide for WBZ451 to PIC32CX1012BZ25048</a></div></div></li><li role="treeitem"><div data-tocid="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000" class="topicref" data-id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27.html" id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">17</ph>
+Porting Guide for WBZ451 to WBZ450</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008" class="topicref backmatter backmatter_parent" data-id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html" id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link">Microchip Information</a></div></div></li></ul></div>
+		                        
+                            </div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-7 col-md-9 col-sm-12" id="wh_topic_body">
+                        <button id="wh_close_publication_toc_button" class="close-toc-button d-none" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        <button id="wh_close_topic_toc_button" class="close-toc-button d-none" aria-label="Toggle topic table of content" aria-controls="wh_topic_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C4E00FB7-D337-4E4A-8023-3FF06E68D25F"><h1 class="- topic/title title topictitle1" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C4E00FB7-D337-4E4A-8023-3FF06E68D25F" style="">4.1.2.11 BLE HID over GATT Profile Service </h1><div class="- topic/body body"><p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p><p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p><section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__INTRODUCTION" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__INTRODUCTION"><h2 class="- topic/title title sectiontitle">Introduction</h2>
+            <p class="- topic/p p">The HID over GATT profile defines the procedures and features to be used by Bluetooth
+                low energy HID Devices using GATT and Bluetooth HID Hosts using GATT. This profile
+                is an adaptation of the USB HID specification to operate over a Bluetooth low energy
+                wireless link.</p>
+            <p class="- topic/p p">The HID Over GATT Profile (HOGP) is a Bluetooth SIG (Special Interest Group) standard
+                that defines how HID information is exposed and exchanged over the Generic Attribute
+                (GATT) protocol in BLE. HOGP extends the capabilities of BLE devices to support HID
+                functionality.</p>
+            <p class="- topic/p p">HOGP is built on top of the BLE protocol stack and uses GATT for communication. It
+                leverages the GATT Server-Client architecture to enable HID devices to send and
+                receive HID reports.</p></section><section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__RECOMMENDED-READS" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__RECOMMENDED-READS"><h2 class="- topic/title title sectiontitle">Recommended Reads</h2><ol class="- topic/ol ol" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-17001D0D-4F6A-47BA-B644-1B5B58318C00" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-17001D0D-4F6A-47BA-B644-1B5B58318C00"><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8"><p class="- topic/p p"><a class="- topic/xref xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank" rel="external noopener">BLE Software Specification</a></p></li><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-34F2A086-05E3-44B5-8C5C-64E146D9A6B8"><p class="- topic/p p"><a class="- topic/xref xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize</a></p></li><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-82DAC20B-A0FB-4C94-A2B4-C4AF60D6F967" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-82DAC20B-A0FB-4C94-A2B4-C4AF60D6F967"><p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.html">Low Power Notes</a></p></li></ol></section><section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__HARDWARE-REQUIRED" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__HARDWARE-REQUIRED"><h2 class="- topic/title title sectiontitle">Hardware Required</h2><div class="table-container"><table class="- topic/table table" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8" data-cols="2"><caption></caption><colgroup><col/><col/></colgroup><thead class="- topic/thead thead"><tr class="- topic/row"><th class="- topic/entry entry colsep-0 rowsep-0" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__1"> <strong class="+ topic/ph hi-d/b ph b">Tool</strong></th><th class="- topic/entry entry colsep-0 rowsep-0" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__2"> <strong class="+ topic/ph hi-d/b ph b">Qty</strong></th></tr></thead><tbody class="- topic/tbody tbody"><tr class="- topic/row"><td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__1"><span class="- topic/ph ph">WBZ451</span> Curiosity Board</td><td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__2">1</td></tr><tr class="- topic/row"><td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__1">Micro USB cable</td><td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-417A8A7B-4B11-4340-9362-CD3343841EF8__entry__2">1</td></tr></tbody></table></div></section><section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SDK-SETUP" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SDK-SETUP"><h2 class="- topic/title title sectiontitle">SDK Setup</h2><ol class="- topic/ol ol" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4CBB6317-A2DE-486F-BCE0-42062FCF6301" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4CBB6317-A2DE-486F-BCE0-42062FCF6301"><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7BE36147-8D27-4F88-939B-A394D40FC357" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7BE36147-8D27-4F88-939B-A394D40FC357"><p class="- topic/p p"><a class="- topic/xref xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="This section gives a detailed information on the steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on the PC.">Gettting Started with Software Development</a></p></li></ol></section><section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE"><h2 class="- topic/title title sectiontitle">Programming the precompiled hex file or Application Example</h2><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Programming the hex file using MPLABX IPE</strong></p><ol class="- topic/ol ol" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A"><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><p class="- topic/p p">Precompiled Hex file is located in "<span class="- topic/ph ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\ble_hogps_app\firmware\ble_hogps_app.X\dist\default\production"
+                        folder</p></li><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><p class="- topic/p p">Follow the steps mentioned <a class="- topic/xref xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank" rel="external noopener">here</a></p></li></ol><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Caution:</strong> Users should choose the correct Device and Tool information</p><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Programming the Application using MPLABX IDE</strong></p><ol class="- topic/ol ol" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498"><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><p class="- topic/p p">Follow steps mentioned in of <a class="- topic/xref xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="This section gives a detail explanation on how to open, build and program an existing application example.">Running a Precompiled Example</a> document</p></li><li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><p class="- topic/p p">Open and program the Application Example "lle_hogps_app.X\" located in "<span class="- topic/ph ph">&lt;Harmony Content
+        Path&gt;\wireless_apps_pic32cxbz2_wbz45</span>\apps\ble\building_blocks\peripheral\ble_hogps_app\firmware\ble_hogps_app.X"
+                        using MPLABX IDE</p></li></ol><p class="- topic/p p"><dfn class="- topic/term term">&lt;Harmony Content Path&gt;</dfn> <a class="- topic/xref xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content Path</a></p><p class="- topic/p p"></p></section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HQR_KQL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HQR_KQL_VYB"><h2 class="- topic/title title sectiontitle">Application building component </h2>
+            
+            <p class="- topic/p p">Below captured are the  components used to create the HID Over GATT Profile Service
+                application. The MCC support the HID profile </p>
+            <p class="- topic/p p">&lt;&lt;&lt;&lt;IMAGE&gt;&gt;&gt;&gt;&gt;&gt;</p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_JNK_BQL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_JNK_BQL_VYB">
+            <p class="- topic/p p"></p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_N4P_DQL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_N4P_DQL_VYB"><h2 class="- topic/title title sectiontitle">Role Descriptions</h2>
+            
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">GATT Server Role</strong></p>
+            <p class="- topic/p p">In the context of HOGP, the GATT Server role is typically assumed by the HID device.
+                The GATT Server exposes HID services and characteristics, making the device
+                accessible to GATT Clients. It supports</p>
+            <p class="- topic/p p">– One or more instances of HID Service</p>
+            <p class="- topic/p p">– One or more instances of battery services</p>
+            <p class="- topic/p p">– Single instance of device information service </p>
+            <p class="- topic/p p">– Optionally, one instance of Scan server role of Scan parameter profile. </p>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b"><strong class="+ topic/ph hi-d/b ph b">GATT Client Role </strong></strong></p>
+            <p class="- topic/p p">GATT Clients, such as smartphones or computers, interact with HID devices by
+                discovering and accessing HID services and characteristics. They initiate actions
+                based on user input or requirements.</p>
+            <p class="- topic/p p">-It supports Scan Client role of the Scan parameter profile</p>
+            <p class="- topic/p p"></p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_EFL_2TL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_EFL_2TL_VYB"><h2 class="- topic/title title sectiontitle">Pairing and Security</h2>
+            
+            <p class="- topic/p p">Security is crucial when dealing with HID devices, especially in scenarios where
+                sensitive data may be transmitted. </p>
+            <p class="- topic/p p">The HID Host shall bond with the HID Device. The HID Host shall support LE Security
+                Mode 1 and Security Level 2 and optionally Security Level 3. </p>
+            <p class="- topic/p p"></p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_W41_GTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_W41_GTL_VYB"><h2 class="- topic/title title sectiontitle">Demo Description</h2>
+            
+            <p class="- topic/p p">The HID Over GATT Profile (HOGP) application on the Curiosity board simulates a
+                keyboard and utilizes Device in a state machine. This guide will walk you through
+                the application's key features, states, and interactions, allowing you to harness
+                the power of HID technology on your Curiosity board.</p>
+            <p class="- topic/p p">This application implements the HID over GATT profile, Human Interface Device
+                Service, Battery Service and Device information in a peripheral role.</p>
+            <p class="- topic/p p"></p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_H23_HTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_H23_HTL_VYB"><h2 class="- topic/title title sectiontitle">Working Flow</h2>
+            
+            <div class="- topic/p p">
+                <div class=""><img class="- topic/image image break break" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__IMAGE_NH5_LVL_VYB" src="GUID-CDEFBB52-65F1-4634-A1EB-9399D0DD761A-low.png"/></div>
+            </div>
+            <div class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Initial Power Off and On:</strong><ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YDL_JTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YDL_JTL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8579A72B-39B2-4AE2-A6D8-32629546470B" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8579A72B-39B2-4AE2-A6D8-32629546470B"><strong class="+ topic/ph hi-d/b ph b">Power Off:</strong> The device is initially powered off.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-73667DC2-3EE4-463A-91CC-F2E800029828" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-73667DC2-3EE4-463A-91CC-F2E800029828"><strong class="+ topic/ph hi-d/b ph b">Power On:</strong><ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_A4L_MTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_A4L_MTL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-676C2743-12E8-43DC-B6FF-357D4F04ECAD" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-676C2743-12E8-43DC-B6FF-357D4F04ECAD">Upon powering on, the device checks for the existence of pairing
+                                data.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D9E32940-1D40-451E-865D-671858CD89EC" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D9E32940-1D40-451E-865D-671858CD89EC">If pairing data doesn't exist, the device enters the
+                                APP_HOGPS_STATE_ADV state with a timeout of timeout_adv
+                                seconds.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8B81DF4C-E463-49EE-BCEE-AB9CF1239E56" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8B81DF4C-E463-49EE-BCEE-AB9CF1239E56">If a connection is established within the timeout period, the
+                                following actions occur on the computer's side:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NZC_NTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NZC_NTL_VYB">
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7AEEC86C-DC81-4788-B638-4D890C6E256E" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7AEEC86C-DC81-4788-B638-4D890C6E256E">The device stores new pairing data.</li>
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0D6338D1-DEB2-4F2A-A16A-AFFF26BC5671" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0D6338D1-DEB2-4F2A-A16A-AFFF26BC5671">The device removes any previous pairing data if it
+                                        exists.</li>
+                                </ul></li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C47F92C7-2AA7-4749-BD3E-4653D6B8FA79" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C47F92C7-2AA7-4749-BD3E-4653D6B8FA79">After successful pairing, the device enters the APP_HOGPS_STATE_CONN
+                                state.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-81B45A1A-F1A4-4AEA-A0AD-29389F772FC7" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-81B45A1A-F1A4-4AEA-A0AD-29389F772FC7">If the connection fails to establish within the timeout, the device
+                                enters the APP_HOGPS_STATE_IDLE (Extreme Deep Sleep) state.</li>
+                        </ul>
+                    </li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3737F048-B0C4-48E9-A3D4-DB2DD7D687EA" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3737F048-B0C4-48E9-A3D4-DB2DD7D687EA"><strong class="+ topic/ph hi-d/b ph b">Connected State (APP_HOGPS_STATE_CONN):</strong><ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_QKR_PTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_QKR_PTL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2C4F0C8D-C8DF-408E-B155-3BE8C5B35AD5" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2C4F0C8D-C8DF-408E-B155-3BE8C5B35AD5"><strong class="+ topic/ph hi-d/b ph b">Idle Timeout:</strong> While in the connected state, if Button 1 is
+                                not pressed for 3 minutes, the device enters the
+                                APP_HOGPS_STATE_IDLE (Extreme Deep Sleep) state to conserve
+                                power.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-92E7A3A0-5AAD-489B-948D-D32DCE86E007" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-92E7A3A0-5AAD-489B-948D-D32DCE86E007"><strong class="+ topic/ph hi-d/b ph b">Long Press Button 1:</strong> In the connected state, if Button 1 is
+                                    long-pressed:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_H2M_QTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_H2M_QTL_VYB">
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-072F8A98-A4A5-45A1-851D-A09BB89011D2" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-072F8A98-A4A5-45A1-851D-A09BB89011D2">The device starts a new pairing process.</li>
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F5A2A998-30D8-4ED9-9FA7-75A6DF326AC6" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F5A2A998-30D8-4ED9-9FA7-75A6DF326AC6">The device enters the APP_HOGPS_STATE_ADV state.</li>
+                                </ul></li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EEB4EE86-5F8C-481F-B4E4-2FC48BA83CEB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EEB4EE86-5F8C-481F-B4E4-2FC48BA83CEB"><strong class="+ topic/ph hi-d/b ph b">Button 1 Press (Device):</strong> In the connected state, pressing
+                                Button 1 on the device results in showing "abcde" as output.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EFD2BBB5-3DED-4F3C-B5F1-8F5A71A7ADF4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EFD2BBB5-3DED-4F3C-B5F1-8F5A71A7ADF4"><strong class="+ topic/ph hi-d/b ph b">Button 1 Press (Computer):</strong> On the computer side, pressing
+                                Caps Lock while in the connected state shows either "capon" or
+                                "capof."</li>
+                        </ul><ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_UH2_STL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_UH2_STL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BC30D951-5250-4786-9B41-AF6D0255F561" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BC30D951-5250-4786-9B41-AF6D0255F561"><strong class="+ topic/ph hi-d/b ph b">Connection Termination:</strong> In the connected state, the following
+                                events can lead to disconnection and state transitions:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MBG_TTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MBG_TTL_VYB">
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C7C2F0A4-9691-47B5-BC1D-D760450253EE" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C7C2F0A4-9691-47B5-BC1D-D760450253EE">If the computer removes the device from its device list or
+                                        turns off Bluetooth.</li>
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5ADB2D9E-CF62-411B-A23D-203426A789A8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5ADB2D9E-CF62-411B-A23D-203426A789A8">If the device goes out of range.</li>
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2427DC1D-3A6A-4670-87A0-E7FDA38AE122" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2427DC1D-3A6A-4670-87A0-E7FDA38AE122">In either case, the device enters the
+                                        APP_HOGPS_STATE_ADV_DIR state with a timeout of
+                                        timeout_adv_dir seconds.</li>
+                                </ul></li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A3E12216-28CF-4249-AB5B-A54F18A77233" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A3E12216-28CF-4249-AB5B-A54F18A77233"><strong class="+ topic/ph hi-d/b ph b">Reconnection State (APP_HOGPS_STATE_ADV_DIR):</strong><ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_AXH_5TL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_AXH_5TL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E43B40EA-090A-4945-9035-C73A44427C5F" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E43B40EA-090A-4945-9035-C73A44427C5F"><strong class="+ topic/ph hi-d/b ph b">Long Press Button 1:</strong> While in the APP_HOGPS_STATE_ADV_DIR, a
+                                long press of Button 1 by the device starts a new pairing
+                                process.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BCD29FCC-1BCA-4B40-8004-CFD1F944EE23" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BCD29FCC-1BCA-4B40-8004-CFD1F944EE23"><strong class="+ topic/ph hi-d/b ph b">Connection Attempt Result:</strong> Depending on the result of the
+                                connection attempt:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_UN1_VTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_UN1_VTL_VYB">
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A808A4AB-E417-4EDC-9CBE-B33DD87F6687" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A808A4AB-E417-4EDC-9CBE-B33DD87F6687">If the connection is successful, the device transitions back
+                                        to the APP_HOGPS_STATE_CONN state.</li>
+                                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E9E3149C-B2AC-439C-B68C-8E79B1F8FF59" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E9E3149C-B2AC-439C-B68C-8E79B1F8FF59">If the connection attempt fails (e.g., due to a timeout or
+                                        unsuccessful pairing), the device enters the
+                                        APP_HOGPS_STATE_IDLE (Extreme Deep Sleep) state.</li>
+                                </ul></li>
+                        </ul>
+                    </li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F3F39771-69DA-4BC3-97D2-629212E678C0" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F3F39771-69DA-4BC3-97D2-629212E678C0"><strong class="+ topic/ph hi-d/b ph b">Direct Transition with Existing Pairing Data:</strong>
+                        <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NCW_VTL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NCW_VTL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-FF5A5A5B-5D04-48C9-983C-DD8E4897766F" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-FF5A5A5B-5D04-48C9-983C-DD8E4897766F"><strong class="+ topic/ph hi-d/b ph b">Initial Power On (With Existing Pairing Data):</strong></li>
+                        </ul></li>
+                </ul>                   If pairing data already exists during the initial power on,
+                the device directly enters the APP_HOGPS_STATE_ADV_DIR state without going through
+                the APP_HOGPS_STATE_ADV state</div>
+            <p class="- topic/p p"></p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_TYG_R5L_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_TYG_R5L_VYB"><h2 class="- topic/title title sectiontitle">States and their Descriptions</h2>
+            
+            <ol class="- topic/ol ol" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__OL_OGK_QWL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__OL_OGK_QWL_VYB">
+                <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5913B0F2-302F-4B85-8EC6-D8C31F462D95" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5913B0F2-302F-4B85-8EC6-D8C31F462D95"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_IDLE:</strong> In this state, the application enters Extreme Deep
+                    Sleep mode to minimize power consumption. It remains in this state when not
+                    actively engaged.</li>
+                <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7BBED523-D9D1-4722-B28C-64C922A2DA84" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7BBED523-D9D1-4722-B28C-64C922A2DA84"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_ADV:</strong> When in this state, the application is waiting for
+                    pairing to occur, and it does so for a duration specified by timeout_adv (60
+                    seconds by default).</li>
+                <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F5DCBB9F-DBAF-4DA8-9349-952EB713648F" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F5DCBB9F-DBAF-4DA8-9349-952EB713648F"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_ADV_DIR:</strong> In this state, the application is waiting for
+                    reconnection and awaits the pairing process to start. The duration for this
+                    state is determined by timeout_adv_dir (30 seconds by default).</li>
+                <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BE6F85C2-1DDB-443F-9E6E-89A129621520" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-BE6F85C2-1DDB-443F-9E6E-89A129621520"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_CONN:</strong> The application enters this state when it is ready
+                    to send keys or receive events. It responds to Button 1 presses in this
+                    state.</li>
+            </ol>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HB1_GYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HB1_GYL_VYB"><h2 class="- topic/title title sectiontitle">Button 1 Interactions</h2>
+            
+            <div class="- topic/p p">
+                <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JLG_3YL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JLG_3YL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-51BEC43B-F7BA-4475-8A82-53888D3B3F00" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-51BEC43B-F7BA-4475-8A82-53888D3B3F00"><strong class="+ topic/ph hi-d/b ph b">Press Button 1 (Short Press) in APP_HOGPS_STATE_CONN:</strong> This action
+                        results in the display of "abcde" on the connected computer. It is a basic
+                        input action.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-21A1CB70-DD99-4DED-85DD-93935DBB991D" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-21A1CB70-DD99-4DED-85DD-93935DBB991D"><strong class="+ topic/ph hi-d/b ph b">Long Press Button 1 in APP_HOGPS_STATE_CONN:</strong> A long press of Button 1
+                        in the connected state leads to the disconnection of the device from the
+                        computer and initiates a new pairing process.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B39E0476-4FB0-439D-A66E-6423584C9DD2" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B39E0476-4FB0-439D-A66E-6423584C9DD2"><strong class="+ topic/ph hi-d/b ph b">Long Press Button 1 in APP_HOGPS_STATE_ADV_DIR:</strong> A long press of
+                        Button 1 in the ADV_DIR state starts a new pairing process.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-6453AD3C-E18C-47AF-AACE-07259F5D48C4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-6453AD3C-E18C-47AF-AACE-07259F5D48C4"><strong class="+ topic/ph hi-d/b ph b">Press Button 1 in APP_HOGPS_STATE_IDLE:</strong> Pressing Button 1 in the Idle
+                        state wakes the device up from Extreme Deep Sleep mode.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_GNR_KYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_GNR_KYL_VYB"><h2 class="- topic/title title sectiontitle">LED indications</h2>
+            
+            <div class="- topic/p p">The LEDs on the Curiosity Board indicate the current state of the application: <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_USR_LYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_USR_LYL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0A6C1C21-E638-45B7-90C9-E9ED133F3EDC" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0A6C1C21-E638-45B7-90C9-E9ED133F3EDC"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_IDLE:</strong> In this state, all LEDs are turned off to
+                        conserve power.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-565FA6AA-FABF-4D73-8B89-DB92EFA770B8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-565FA6AA-FABF-4D73-8B89-DB92EFA770B8"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_ADV:</strong> A blue LED flashes once every 3 seconds, with an
+                        on-time of 50 ms and an off-time of 2950 ms.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-363CF2AA-F2F3-4F85-81CF-F55E15EEE239" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-363CF2AA-F2F3-4F85-81CF-F55E15EEE239"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_ADV_DIR:</strong> A blue LED flashes twice every 3 seconds,
+                        with an on-time of 50 ms and an off-time of 50 ms.</li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B0D991B9-CFC9-4173-B827-13563C20A660" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B0D991B9-CFC9-4173-B827-13563C20A660"><strong class="+ topic/ph hi-d/b ph b">APP_HOGPS_STATE_CONN:</strong> A blue LED flashes twice every 1.5 seconds,
+                        with an on-time of 50 ms and an off-time of 150 ms.</li>
+                </ul></div>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HKR_PYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HKR_PYL_VYB"><h2 class="- topic/title title sectiontitle">Connection Timeout</h2>
+            
+            <p class="- topic/p p">The application is designed to terminate the connection and enter Extreme Deep Sleep
+                mode if Button 1 is not pressed for 3 minutes during an active connection, likely to
+                save power</p>
+        </section>
+        <section class="- topic/section section" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_SLT_SYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_SLT_SYL_VYB"><h2 class="- topic/title title sectiontitle">Testing</h2>
+            
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Environment Setup</strong></p>
+            <div class="- topic/p p">
+                <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MNN_5YL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MNN_5YL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EC988FE8-2485-4987-BBFF-5DF5BE430BF8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-EC988FE8-2485-4987-BBFF-5DF5BE430BF8">A Microsoft Window 10 computer, “the computer” is used instead in the
+                        following section.</li>
+                </ul>
+                <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_CTM_WYL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_CTM_WYL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4B3C97D7-D089-44E2-87D4-928F955C3D9E" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4B3C97D7-D089-44E2-87D4-928F955C3D9E">A WBZ451 Curiosity Board , "the curiosity board" is used instead in the
+                        following section</li>
+                </ul>
+            </div>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Test 1: Establishing Connection and Simulting Keyboard Behavior</strong></p>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Objective</strong>: Demonstrate connection establishment, keyboard simulation, and
+                reconnection with the curiosity board.</p>
+            <div class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Steps</strong>:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_T2D_JZL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_T2D_JZL_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4253AED1-8679-4DD4-9D55-1CBF5F4B0F1D" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4253AED1-8679-4DD4-9D55-1CBF5F4B0F1D">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_OKQ_XZL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_OKQ_XZL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B659A6A2-DCE7-4C66-AE30-9ABD19C781DB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B659A6A2-DCE7-4C66-AE30-9ABD19C781DB">Remove the existing "Microchip Keyboard" pairing over BLE if it
+                                exists.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B27F13D2-3525-41CD-A683-9FEAD25DC910" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B27F13D2-3525-41CD-A683-9FEAD25DC910">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_HRB_YZL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_HRB_YZL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-01734118-85F0-490B-BEE4-809AFC1E8038" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-01734118-85F0-490B-BEE4-809AFC1E8038">Compile and program the application.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-665CE437-57F2-4C31-9F29-26E7CA61679C" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-665CE437-57F2-4C31-9F29-26E7CA61679C">The curiosity board will enter APP_HOGPS_STATE_ADV and wait for
+                                pairing for timeout_adv seconds.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C1CA23DB-5BAD-4585-A15A-A50891101BA9" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C1CA23DB-5BAD-4585-A15A-A50891101BA9">On the computer: <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JQN_ZZL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JQN_ZZL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F7895BC4-A0A1-42C1-8870-75B92A11343B" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F7895BC4-A0A1-42C1-8870-75B92A11343B">Open "Settings -&gt; Bluetooth &amp; other devices -&gt; Add a device -&gt;
+                                Bluetooth."</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CB7FE61B-6244-46F1-8771-40A3B0DE1C2A" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CB7FE61B-6244-46F1-8771-40A3B0DE1C2A">Click "Microchip Keyboard" to connect and pair with the curiosity
+                                board.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-440742B6-69D7-43C3-8BD2-3FBE10AD0D71" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-440742B6-69D7-43C3-8BD2-3FBE10AD0D71">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_Q3Z_ZZL_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_Q3Z_ZZL_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-69A256F7-B63D-4CA0-9980-1310574C5736" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-69A256F7-B63D-4CA0-9980-1310574C5736">It will enter APP_HOGPS_STATE_CONN when the connection is
+                                established.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8C32AC47-6661-4F10-B5CE-EB045B1333AD" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8C32AC47-6661-4F10-B5CE-EB045B1333AD">On the computer: <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NNB_B1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NNB_B1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DABE6DD4-8C2F-438D-A954-7D046ECF4865" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DABE6DD4-8C2F-438D-A954-7D046ECF4865">Open a text editor (e.g., Notepad) and click the left mouse button
+                                to focus on it.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-57D40F34-7043-46A1-AE56-718C1BA67DA4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-57D40F34-7043-46A1-AE56-718C1BA67DA4">On the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_TWJ_B1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_TWJ_B1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E0B7CDFC-EB4F-4118-BDBB-7ADF74B02C0C" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E0B7CDFC-EB4F-4118-BDBB-7ADF74B02C0C">Press Button 1.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7AF0D61D-EDFB-41C8-B5E3-A861023AC4F4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7AF0D61D-EDFB-41C8-B5E3-A861023AC4F4">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JYV_B1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_JYV_B1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-03C8B030-AFF9-44CF-94B1-D712FC602E06" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-03C8B030-AFF9-44CF-94B1-D712FC602E06">The text editor will display "abcde."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8909F296-7E47-4EDB-BD0F-D9B44EC0CB91" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8909F296-7E47-4EDB-BD0F-D9B44EC0CB91">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_DPD_C1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_DPD_C1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-AE3827AC-889D-4EC2-8C49-B4361675BB14" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-AE3827AC-889D-4EC2-8C49-B4361675BB14">Turn on Caps Lock, and the text editor will display "CAPON."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-467FACAC-D446-48B1-9C28-F1CA85338A9D" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-467FACAC-D446-48B1-9C28-F1CA85338A9D">On the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_J5R_C1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_J5R_C1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A20C5111-891A-4CEE-B136-F262BA706AA2" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-A20C5111-891A-4CEE-B136-F262BA706AA2">Press Button 1.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-89ADC3B8-CAA1-479E-A8A8-3B66781D993B" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-89ADC3B8-CAA1-479E-A8A8-3B66781D993B">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_VZY_C1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_VZY_C1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C7A7EA5E-D210-4C36-8843-1DD5AA8697C4" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-C7A7EA5E-D210-4C36-8843-1DD5AA8697C4">The text editor will display "ABCDE."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-60276DCB-540F-4518-ADBE-7728089F2C55" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-60276DCB-540F-4518-ADBE-7728089F2C55">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_IK3_D1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_IK3_D1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B2E0EEB1-2B4E-49A3-9285-B3352F58A0B2" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B2E0EEB1-2B4E-49A3-9285-B3352F58A0B2">Turn off Caps Lock, and the text editor will display "capof."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5D1A80C7-4A6C-47C6-A221-74A72F5BC298" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5D1A80C7-4A6C-47C6-A221-74A72F5BC298">On the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ATQ_D1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ATQ_D1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D31BBB59-150A-4588-B872-DBB1CED85D0F" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D31BBB59-150A-4588-B872-DBB1CED85D0F">Unplug the USB cable to power off.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4C6B2325-6F8C-4A22-8798-9679AE88275B" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-4C6B2325-6F8C-4A22-8798-9679AE88275B">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_B4B_21M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_B4B_21M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D8E1290F-F93D-45D6-9186-8593FDE107B8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D8E1290F-F93D-45D6-9186-8593FDE107B8">The status of "Microchip Keyboard" should show as "Paired"
+                                (disconnected).</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DD59B5B9-A302-4051-B645-F71CB80E6DBD" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DD59B5B9-A302-4051-B645-F71CB80E6DBD">On the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ZLJ_21M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ZLJ_21M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DDB93CF0-DD95-4016-8898-38E23F232EFA" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DDB93CF0-DD95-4016-8898-38E23F232EFA">Plug the USB cable to power on.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3C23E45C-1846-465C-8A03-1E13B75F3716" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3C23E45C-1846-465C-8A03-1E13B75F3716">The curiosity board will enter APP_HOGPS_STATE_ADV_DIR and wait for
+                                reconnection for timeout_adv_dir seconds.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2EE150B2-8F02-417D-A225-E617326D1FAF" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-2EE150B2-8F02-417D-A225-E617326D1FAF">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_DKZ_21M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_DKZ_21M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-494817A6-41A8-47B8-AD00-3D9A1F9E09B1" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-494817A6-41A8-47B8-AD00-3D9A1F9E09B1">The status of "Microchip Keyboard" should show as "Connected."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8DA0D6E9-6522-48BC-A06D-FD3AD7C38921" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8DA0D6E9-6522-48BC-A06D-FD3AD7C38921">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YPH_F1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YPH_F1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D381EC61-C4CF-4532-A4BB-A1842DA28450" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D381EC61-C4CF-4532-A4BB-A1842DA28450">It will enter APP_HOGPS_STATE_CONN when the reconnection is
+                                successful.</li>
+                        </ul></li>
+                </ul></div>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Test 2: Reconnecting to Curiosity Board</strong></p>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Objective: </strong>Demonstrate how to reconnect to the curiosity board after it has
+                disconnected.</p>
+            <div class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Steps</strong>:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_XPZ_Q1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_XPZ_Q1M_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-864C1294-32EE-49AB-8209-9773A61EA2FF" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-864C1294-32EE-49AB-8209-9773A61EA2FF">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MT2_S1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_MT2_S1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D408E34F-A600-4A11-82FB-26D0CA2095C8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-D408E34F-A600-4A11-82FB-26D0CA2095C8">Move it far away from the computer to disconnect.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CE65885F-6E64-44DF-975E-D6C98753A913" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CE65885F-6E64-44DF-975E-D6C98753A913">The curiosity board will enter APP_HOGPS_STATE_ADV_DIR and wait for
+                                reconnection for timeout_adv_dir seconds.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F773108B-EDC9-4CDD-866E-F363384500C1" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-F773108B-EDC9-4CDD-866E-F363384500C1">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_RZP_S1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_RZP_S1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5565B413-281A-419F-8326-DD1404B0A5DD" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-5565B413-281A-419F-8326-DD1404B0A5DD">The status of "Microchip Keyboard" should show as "Paired."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9C81B912-F6FC-487E-AAC2-A617D4507BD8" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9C81B912-F6FC-487E-AAC2-A617D4507BD8">For the curiosity board: <ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_F5X_S1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_F5X_S1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0A6900A2-EA51-4631-88AF-1B7EB9F504DA" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-0A6900A2-EA51-4631-88AF-1B7EB9F504DA">Move it close back to the computer and press Button 1 to wake it
+                                up.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-AC7C87D9-EE42-463C-887F-A8A0C26C6132" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-AC7C87D9-EE42-463C-887F-A8A0C26C6132">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_QMG_T1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_QMG_T1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-368B3932-F15B-4B7F-B966-AD76F16792CA" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-368B3932-F15B-4B7F-B966-AD76F16792CA">It will automatically reconnect to the computer after successful
+                                disconnection.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-32D45C03-03EC-4392-A4D7-A0A8EB696388" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-32D45C03-03EC-4392-A4D7-A0A8EB696388">The curiosity board will enter APP_HOGPS_STATE_CONN when the
+                                reconnection is successful.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DEC39786-7092-4416-91CF-79D7DF53B368" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-DEC39786-7092-4416-91CF-79D7DF53B368">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NQQ_T1M_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_NQQ_T1M_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9A9F5333-68D7-4519-BF17-FB9C16ECEC40" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9A9F5333-68D7-4519-BF17-FB9C16ECEC40">The status of "Microchip Keyboard" should show as "Connected."</li>
+                        </ul></li>
+                </ul></div>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Test 3: Removing and Redoing Pairing</strong></p>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Objective</strong>: Demonstrate the removal of existing pairing data and redoing the
+                pairing with the curiosity board.</p>
+            <div class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Steps</strong>:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_LFX_MBM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_LFX_MBM_VYB">
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8DFB9682-B7E4-4729-8099-F4A8862E12C6" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-8DFB9682-B7E4-4729-8099-F4A8862E12C6">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_P1G_4BM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_P1G_4BM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-974B0810-6E11-4838-9D7F-976F39899B7B" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-974B0810-6E11-4838-9D7F-976F39899B7B">Remove the existing "Microchip Keyboard."</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-946EB94A-CC44-4975-BC8F-719A5F8E537F" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-946EB94A-CC44-4975-BC8F-719A5F8E537F">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_PPN_4BM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_PPN_4BM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CC7B26A6-5204-4EAA-B1D0-A63E1974C24E" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-CC7B26A6-5204-4EAA-B1D0-A63E1974C24E">Unplug the USB cable to power off.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B412B657-A24D-4AF7-B06A-89AB9E231723" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-B412B657-A24D-4AF7-B06A-89AB9E231723">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YFL_PBM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_YFL_PBM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3E00C59B-FBD6-4FD7-BB4C-425A5E7683FA" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-3E00C59B-FBD6-4FD7-BB4C-425A5E7683FA">Plug the USB cable to power on.</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9988E735-1367-4CD1-A4A0-FD6D994541C1" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-9988E735-1367-4CD1-A4A0-FD6D994541C1">The curiosity board will enter APP_HOGPS_STATE_ADV_DIR and wait for
+                                reconnection for timeout_adv_dir seconds.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-204BF49B-CA08-4A40-B692-AEFA02584035" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-204BF49B-CA08-4A40-B692-AEFA02584035">On the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_VTX_PBM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_VTX_PBM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-05CC491B-E8CD-40FB-9528-7341568A4B2C" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-05CC491B-E8CD-40FB-9528-7341568A4B2C">Long-press Button 1.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-47628191-64FA-4F78-8BF5-DD25DE3EEC8E" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-47628191-64FA-4F78-8BF5-DD25DE3EEC8E">On the computer:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_TLJ_QBM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_TLJ_QBM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-09901925-C967-48CE-BB68-610A501F3FA7" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-09901925-C967-48CE-BB68-610A501F3FA7">Open "Settings -&gt; Bluetooth &amp; other devices -&gt; Add a device -&gt;
+                                Bluetooth."</li>
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7361CEC6-5DD4-4F2E-8A8E-02FCB3C6F39D" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-7361CEC6-5DD4-4F2E-8A8E-02FCB3C6F39D">Click "Microchip Keyboard" to connect and pair with the curiosity
+                                board.</li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-882AC9E1-4A53-43E2-A8D0-3CFF3D72F3ED" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-882AC9E1-4A53-43E2-A8D0-3CFF3D72F3ED">For the curiosity board:<ul class="- topic/ul ul" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ENT_QBM_VYB" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__UL_ENT_QBM_VYB">
+                            <li class="- topic/li li" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E7A5899A-31FE-4674-AE7E-D079C29B68C0" data-ofbid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__GUID-E7A5899A-31FE-4674-AE7E-D079C29B68C0">It will enter APP_HOGPS_STATE_CONN when the connection is
+                                established.</li>
+                        </ul>These testing procedures provide a step-by-step guide for validating
+                        the behavior of the curiosity board in different scenarios, including
+                        initial pairing, disconnection, reconnection, and pairing data removal.</li>
+                </ul></div>
+        </section></div></article></main></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" aria-label="On this page" class="col-lg-2 d-none d-lg-block navbar d-print-none"> 
+                            <div id="wh_topic_toc_content">
+		                        
+	                            <div class=" wh_topic_toc "><div class="wh_topic_label">On this page</div><ul><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__INTRODUCTION" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__INTRODUCTION">Introduction</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__RECOMMENDED-READS" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__RECOMMENDED-READS">Recommended Reads</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__HARDWARE-REQUIRED" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__HARDWARE-REQUIRED">Hardware Required</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SDK-SETUP" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SDK-SETUP">SDK Setup</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__PROGRAMMING-THE-PRECOMPILED-HEX-FILE-OR-APPLICATION-EXAMPLE">Programming the precompiled hex file or Application Example</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HQR_KQL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HQR_KQL_VYB">Application building component </a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_N4P_DQL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_N4P_DQL_VYB">Role Descriptions</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_EFL_2TL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_EFL_2TL_VYB">Pairing and Security</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_W41_GTL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_W41_GTL_VYB">Demo Description</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_H23_HTL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_H23_HTL_VYB">Working Flow</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_TYG_R5L_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_TYG_R5L_VYB">States and their Descriptions</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HB1_GYL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HB1_GYL_VYB">Button 1 Interactions</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_GNR_KYL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_GNR_KYL_VYB">LED indications</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HKR_PYL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_HKR_PYL_VYB">Connection Timeout</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_SLT_SYL_VYB" data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225__SECTION_SLT_SYL_VYB">Testing</a></div></li></ul></div>
+	                        	
+                        	</div>
+                        </nav>
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div> 
+        <div class="mchp_disclaimer"><p class="mchp_disclaimer_text">The online versions of the documents are provided as a courtesy. Verify all content and data in the device’s PDF documentation found on the device product page.</p></div><footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container mx-auto ">
+    <div class="footer">
+  <div class="mchp-wh-footer">
+    <div class="mchp-footer">
+      <div class="mchp-footer-tier1">
+        <div class="spacer"></div>
+        <div class="mchp-footer-container">
+          <div class="mchp-footer-links mchp-social-media-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Facebook" src="oxygen-webhelp/template/resources/images/201016-corp-facebook.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.linkedin.com/company/microchip-technology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip LinkedIn" src="oxygen-webhelp/template/resources/images/201016-corp-linkedin.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://twitter.com/MicrochipTech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Twitter" src="oxygen-webhelp/template/resources/images/201016-corp-twitter.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.youtube.com/user/MicrochipTechnology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip YouTube" src="oxygen-webhelp/template/resources/images/201016-corp-youtube.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.instagram.com/microchiptechnologyinc/" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Instagram" src="oxygen-webhelp/template/resources/images/201016-corp-instagram.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.weibo.com/microchiptech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Weibo" src="oxygen-webhelp/template/resources/images/201016-corp-weibo.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.microchip.com/en-us/about/blog" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Blog" src="oxygen-webhelp/template/resources/images/201016-corp-blog.png"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://www.microchip.com/about-us/contact-us" class="mchp-link__link">Contact</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information" class="mchp-link__link">Legal</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy" class="mchp-link__link">Privacy Policy</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/microchip-cookie-statement" class="mchp-link__link">Cookies</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://careers.microchip.com/" class="mchp-link__link">Careers</a>
+                  <span class="mchp-link__separator"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-newsletter">
+            <div class="cmp-text">
+              <p>Stay on the leading edge with our blog</p>
+            </div>
+            <div class="mchp-button-wrapper">
+              <a role="button" href="https://www.microchip.com/en-us/about/blog" class="mchp-button mchp-button-regular solid">
+                <span class="mchp-button__span">MicroSolutions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="graphic">
+          <img src="oxygen-webhelp/template/resources/images/footer-graphic.png"/>
+        </div>
+      </div>
+      <div class="mchp-footer-tier2">
+        <p class="mchp-copyright">© Copyright 1998-2022 Microchip Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-2724382-19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());   
+    gtag('config', 'UA-2724382-19');
+  </script>
+</div>
+  </div>
+</footer>
+        
+        <div id="go2top" class="d-print-none">
+            <span class="oxy-icon oxy-icon-up"></span>
+        </div>
+        
+        <div id="modal_img_large" class="modal">
+            <span class="close oxy-icon oxy-icon-remove"></span>
+            <div id="modal_img_container"></div>
+            <div id="caption"></div>
+        </div>
+        
+        
+        
+        
+        <script type="text/javascript">_satellite.pageBottom();</script><!-- Adobe Analytics -->
+        </body>
+</html>

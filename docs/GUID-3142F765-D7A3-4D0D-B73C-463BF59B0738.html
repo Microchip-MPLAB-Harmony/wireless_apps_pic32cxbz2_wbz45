@@ -1,0 +1,469 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" data-whc_version="24.1">
+    <head><link rel="shortcut icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><link rel="icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="In this userguide, the TeraTerm is used for providing Console inputs. On the Menu bar of Tera Term, Goto setup, select serial port and then set the baud rate to 115200 as shown in the following ..."/><meta name="copyright" content="(C) Copyright 2023"/><meta name="generator" content="DITA-OT"/><title>8.5 Operating Modes</title><!--  Generated with Oxygen version 24.1, build number 2022062014.  --><meta name="wh-path2root" content=""/><meta name="wh-toc-id" content="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738-d1763e734"/><meta name="wh-source-relpath" content="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.xml"/><meta name="wh-out-relpath" content="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.html"/>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css"/>
+    
+    <!-- Template default styles  -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2022062014"/>
+    
+    
+    <script src="./oxygen-webhelp/lib/jquery/jquery-3.5.1.min.js"></script>
+    
+    <script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script>
+<link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/microchip.css?buildId=2022062014"/><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/notes.css?buildId=2022062014"/>
+<script src="mchp-context-help.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async="" type="text/javascript"></script>
+    <script src="https://assets.adobedtm.com/6a72a357eb48/a636c708c7fe/launch-0b0023397020.min.js"></script><!-- Adobe Analytics -->
+</head>
+
+    <body id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">
+            Jump to main content
+        </a>
+        
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <a href="index.html" class=" wh_logo d-none d-sm-block "><img src="oxygen-webhelp\template\resources/images/microchip.png" alt="PIC32CXBZ2 Application Developer's Guide "/></a>
+                    <div class=" wh_publication_title "><a href="index.html">PIC32CXBZ2 Application Developer's Guide </a></div>
+                    
+                </div>
+                
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        
+         
+        
+        <div class=" wh_search_input navbar-form wh_topic_page_search search " role="form">
+            
+            
+            
+            <form id="searchForm" method="get" role="search" action="search.html"><div class="d-flex justify-contents-around"><div class="flex-grow-1"></div><div class="position-relative flex-grow-1"><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required"/><button type="submit" class="wh_search_button" aria-label="Search"><span class="search_input_text">Search</span></button></div><div class="align-self-center flex-grow-1 ml-2"><div class="d-flex justify-content-end"><div class="dropdown"><a style="font-size: 1em; padding: 7px 12px !important;" class="btn py-3 px-3 btn-outline-light dropdown-toggle" href="#" role="button" id="devicesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Pages</a><div style="font-size: 1em;" class="dropdown-menu" aria-labelledby="devicesMenu"><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/pic32cx-bz2">PIC32CX-BZ2</a><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/wbz451"> WBZ451</a></div></div></div></div></div></form>
+            
+            <div class="mchp-color-stripe-grid-container">
+  <div class="mchp-main-bar mchp-orange-bar"></div>
+  <div class="mchp-main-bar mchp-blue-bar"></div>
+  <div class="mchp-main-bar mchp-green-bar"></div>
+</div>
+            
+        </div>
+        
+        <div class="container-fluid" id="wh_topic_container">
+            <div class="row">
+
+                <nav class="wh_tools d-print-none navbar-expand-md" aria-label="Tools">
+                    
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><div class="topicref" data-id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18"><div class="title"><a href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8</ph>
+ Getting Started with IEEE 802.15.4 P2P Phy Application</a></div></div></li><li class="active"><div class="topicref" data-id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738"><div class="title"><a href="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.5</ph>
+Operating Modes</a></div></div></li></ol></div>
+                    
+                    
+                    
+                    <div class="wh_right_tools">
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        
+                        
+                        
+                        
+                        <div class=" wh_print_link print d-none d-md-inline-block "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                        
+                        <button type="button" id="wh_toc_button" class="custom-toggler navbar-toggler collapsed wh_toggle_button navbar-light" aria-expanded="false" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    
+                </nav>
+            </div>
+            
+            
+            
+            
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-12 d-md-block d-none d-print-none" aria-label="Table of Contents Container">
+                            <div id="wh_publication_toc_content">
+		                        
+                            	<div class=" wh_publication_toc " data-tooltip-position="right"><span class="expand-button-action-labels"><span id="button-expand-action" role="button" aria-label="Expand"></span><span id="button-collapse-action" role="button" aria-label="Collapse"></span><span id="button-pending-action" role="button" aria-label="Pending"></span></span><ul role="tree" aria-label="Table of Contents"><li role="treeitem"><div data-tocid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9" class="topicref introduction" data-id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424.html" id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9-link">Introduction</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17" class="topicref" data-id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633.html" id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">1</ph>
+Quick references </a><div class="wh-tooltip"><p class="shortdesc">Enter a short description of your topic here (optional).</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39" class="topicref" data-id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">2</ph>
+Getting Started with WBZ451 Curiosity Board</a><div class="wh-tooltip"><p class="shortdesc">This section covers the evaluation board features and running the preprogrammed demo         example. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109" class="topicref" data-id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">3</ph>
+Getting Started with Software Development</a><div class="wh-tooltip"><p class="shortdesc">This section gives a detailed information on the steps to install IDE, compiler, tool         chain, BLE, Zigbee stacks and application examples on the PC. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212" class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html" id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485" class="topicref" data-id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">5</ph>
+Getting Started with Zigbee Applications</a><div class="wh-tooltip"><p class="shortdesc">This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632" class="topicref" data-id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23.html" id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">6</ph>
+Getting Started With Multiprotocol Applications</a><div class="wh-tooltip"><p class="shortdesc">Documentation describing steps to test and develop the precompiled BLE and Zigbee coexistence application examples.</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683" class="topicref" data-id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE.html" id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">7</ph>
+Flashing hex from MPLAB DISCOVER using MPLAB IPE</a><div class="wh-tooltip"><p class="shortdesc">This section provides a detailed procedure of how to download an already existing     application hex file from MPLAB DISCOVER and flash the hex file into WBZ451 Curiosity Board     using MPLAB IPE.</p></div></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694" class="topicref" data-id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html" id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8</ph>
+ Getting Started with IEEE 802.15.4 P2P Phy Application</a></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-FD0DA0D6-A339-4EA1-A3DC-A090B3F44E05-d1763e702" class="topicref" data-id="GUID-FD0DA0D6-A339-4EA1-A3DC-A090B3F44E05" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-FD0DA0D6-A339-4EA1-A3DC-A090B3F44E05.html" id="GUID-FD0DA0D6-A339-4EA1-A3DC-A090B3F44E05-d1763e702-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.1</ph>
+Reference Documentation</a></div></div></li><li role="treeitem"><div data-tocid="GUID-6E27C8C5-A17B-4C9E-8527-CE32F3C68405-d1763e710" class="topicref" data-id="GUID-6E27C8C5-A17B-4C9E-8527-CE32F3C68405" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-6E27C8C5-A17B-4C9E-8527-CE32F3C68405.html" id="GUID-6E27C8C5-A17B-4C9E-8527-CE32F3C68405-d1763e710-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.2</ph>
+Software Requirements</a></div></div></li><li role="treeitem"><div data-tocid="GUID-F073AA25-D5B2-4CEB-8C81-6DAA9F12BB7A-d1763e718" class="topicref" data-id="GUID-F073AA25-D5B2-4CEB-8C81-6DAA9F12BB7A" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-F073AA25-D5B2-4CEB-8C81-6DAA9F12BB7A.html" id="GUID-F073AA25-D5B2-4CEB-8C81-6DAA9F12BB7A-d1763e718-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.3</ph>
+Hardware Requirements</a></div></div></li><li role="treeitem"><div data-tocid="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F-d1763e726" class="topicref" data-id="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html" id="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F-d1763e726-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.4</ph>
+Creating a New MCC Harmony Project</a></div></div></li><li role="treeitem" class="active"><div data-tocid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738-d1763e734" class="topicref" data-id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.html" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738-d1763e734-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.5</ph>
+Operating Modes</a></div></div></li><li role="treeitem"><div data-tocid="GUID-637578B7-6092-40CF-88A5-FCF506D998C9-d1763e742" class="topicref" data-id="GUID-637578B7-6092-40CF-88A5-FCF506D998C9" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html" id="GUID-637578B7-6092-40CF-88A5-FCF506D998C9-d1763e742-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8.6</ph>
+Command Table</a></div></div></li></ul></li><li role="treeitem"><div data-tocid="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750" class="topicref" data-id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A.html" id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">9</ph>
+Getting Started with IEEE 802.15.4 MAC Application Examples</a></div></div></li><li role="treeitem"><div data-tocid="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759" class="topicref" data-id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B.html" id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">10</ph>
+Getting started with Thread Applications</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767" class="topicref" data-id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD.html" id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">11</ph>
+How-to: Adding Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Guidance on how to add analog/digital peripherals to your application</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812" class="topicref" data-id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">12</ph>
+How-to: Low Power Design</a><div class="wh-tooltip"><p class="shortdesc">Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844" class="topicref" data-id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13</ph>
+How-to: Firmware and OTA Updates</a><div class="wh-tooltip"><p class="shortdesc">This section documents how to enable FW updates in your design, whether its serial or over the air</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255" class="topicref" data-id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50.html" id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">14</ph>
+Wireless System Services API</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944" class="topicref" data-id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7.html" id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">15</ph>
+Support Documentation</a><div class="wh-tooltip"><p class="shortdesc">This section has documentation that is generic and used as supporting document with our application example documentation</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992" class="topicref" data-id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0.html" id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">16</ph>
+Porting Guide for WBZ451 to PIC32CX1012BZ25048</a></div></div></li><li role="treeitem"><div data-tocid="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000" class="topicref" data-id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27.html" id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">17</ph>
+Porting Guide for WBZ451 to WBZ450</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008" class="topicref backmatter backmatter_parent" data-id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html" id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link">Microchip Information</a></div></div></li></ul></div>
+		                        
+                            </div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-12" id="wh_topic_body">
+                        <button id="wh_close_publication_toc_button" class="close-toc-button d-none" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        
+                        
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-B966DAF8-DB03-456B-8CEE-5935E7199920">
+<h1 class="- topic/title title topictitle1" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-B966DAF8-DB03-456B-8CEE-5935E7199920" style="">8.5 Operating Modes</h1>
+<div class="- topic/body body">
+        <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_GSK_454_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_GSK_454_HWB">
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CDFE621B-F945-4FF1-8CA1-54CD75E9ED98" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CDFE621B-F945-4FF1-8CA1-54CD75E9ED98">In this userguide, the TeraTerm is
+                used for providing Console inputs. On the Menu bar of Tera Term, Goto setup, select
+                serial port and then set the baud rate to <strong class="+ topic/ph hi-d/b ph b">115200</strong> as shown in the following
+                    figure.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_I44_VF2_LWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_I44_VF2_LWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-34. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-877EFF07-8A7D-400F-8470-511025CA7114" class="fig--title">Tera Term Settings</span></span></figcaption>
+                    
+                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_J44_VF2_LWB" src="GUID-1FC0B024-FE58-4638-B81C-0A8F5E6F2128-low.png"/></div>
+                </figure></li>
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-DE0E7F1F-62C1-4875-B0D6-2E4FF3A847E2" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-DE0E7F1F-62C1-4875-B0D6-2E4FF3A847E2">Flash the application to <span class="- topic/ph ph">WBZ451</span> board after build is succesful (as described
+                    <a class="- topic/xref xref" href="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html#GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F__FIG_STG_1VK_GWB">here</a>). The P2P application requires 2 devices, where the
+                source address of peer device 1 is the destination address of peer device 2 and vice
+                versa. The source address and destination address can be modified in
+                    <code class="+ topic/ph pr-d/codeph ph codeph">app_p2p_phy_config.h</code> file as well as via MCC Project graph
+                configuration Window as shown <a class="- topic/xref xref" href="GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html#GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F__GUID-F88F06E4-DE42-417A-8EE6-DC2BCFD916D5">here</a>
+            </li>
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F5B6A1F8-D9F3-4DAF-B875-24144AA5D27F" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F5B6A1F8-D9F3-4DAF-B875-24144AA5D27F">Once the firmware is flashed to the
+                    <span class="- topic/ph ph">WBZ451</span> board, the following print will appear
+                in console window (here Tera Term is used). Specific commands (detailed description
+                and reference available in <a class="- topic/xref xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-DFC768DD-153D-46E0-8595-5C30947269B2">Command Table Description</a> section) should be given to switch between
+                different application modes (explained in detail in the following section). </li>
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-A6951252-5B41-4B7E-ACE4-DD583B1C38E0" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-A6951252-5B41-4B7E-ACE4-DD583B1C38E0">The additional Tera Term settings
+                should be followed as per the following figure. <figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_BXY_4V4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_BXY_4V4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-35. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-BE4C15C6-D40B-47D4-9CCC-3F3DE0519B11" class="fig--title">Console Settings</span></span></figcaption>
+                    
+                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_CXY_4V4_HWB" src="GUID-A4EC22ED-DC5A-4217-8EE7-CA9867D8C72F-low.png"/></div>
+                </figure></li>
+        </ul>
+        <ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1276C987-D93E-4B46-95CA-B5B1F659316E" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1276C987-D93E-4B46-95CA-B5B1F659316E">The following figure shows the simple
+                flow diagram on the high level process flow from application level to PHY level.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-7B626C60-8FFE-4978-9D3D-0661811AA819" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-7B626C60-8FFE-4978-9D3D-0661811AA819"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-36. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-6927F96B-AD91-422F-942C-8F04FC04E173" class="fig--title">Application
+                        FlowChart</span></span></figcaption>
+                    
+                    <div class=""><img class="- topic/image image" src="GUID-51ED78BB-DEBB-4C83-9D8B-46779FF5FAB6-low.png"/></div>
+                </figure></li>
+        </ul>
+        <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_FZJ_PXH_PWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_FZJ_PXH_PWB">
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-AE948A10-7F82-4518-BD8F-BD82BDF298AD" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-AE948A10-7F82-4518-BD8F-BD82BDF298AD">The P2P PHY application has 2 source files: <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_S2R_2YH_PWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_S2R_2YH_PWB">
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-09D89B66-75C9-47DB-ABB8-ADFA8293CB11" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-09D89B66-75C9-47DB-ABB8-ADFA8293CB11"><strong class="+ topic/ph hi-d/b ph b">app_phy_cmd_processor.c</strong> which is an interface between console and
+                        app/phy layer.</li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-73F31889-135E-4EFE-BAF0-36275621B30F" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-73F31889-135E-4EFE-BAF0-36275621B30F"><strong class="+ topic/ph hi-d/b ph b">app_p2p_phy.c </strong>which is an interface between user command via console
+                        and Phy layer.</li>
+                </ul></li>
+        </ul>
+        <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_P3G_X4J_GWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_P3G_X4J_GWB">
+            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C44C9C35-F643-4117-B2BF-1D5B159D64D1" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C44C9C35-F643-4117-B2BF-1D5B159D64D1"><strong class="+ topic/ph hi-d/b ph b">The application features 5 modes
+                    </strong><ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_Q3G_X4J_GWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_Q3G_X4J_GWB">
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E85C6705-000A-4C44-937B-31CD4AE546F3" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E85C6705-000A-4C44-937B-31CD4AE546F3"><strong class="+ topic/ph hi-d/b ph b">Data Mode</strong> – It is
+                        basic chat feature, where once user enters bytes, it will appear on the peer
+                        device console. User can give time period as well, where the timer starts
+                        once the user starts to enter first byte of data. Even if the user did not
+                        press enter, once the timer expires the data will be sent automatically. <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_KGQ_WK2_LWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_KGQ_WK2_LWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1025455E-594C-4C1D-8025-CCA0354DDAB8" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1025455E-594C-4C1D-8025-CCA0354DDAB8">Data format can be given in format <strong class="+ topic/ph hi-d/b ph b">xx :data</strong>, where <strong class="+ topic/ph hi-d/b ph b">xx</strong>
+                                is <strong class="+ topic/ph hi-d/b ph b">device index</strong>. (for example: <strong class="+ topic/ph hi-d/b ph b">01 :Microchip</strong> -
+                                    <strong class="+ topic/ph hi-d/b ph b">01</strong> specifies <strong class="+ topic/ph hi-d/b ph b">Device table index</strong> and
+                                    <strong class="+ topic/ph hi-d/b ph b">Microchip</strong> specifies <strong class="+ topic/ph hi-d/b ph b">user data</strong>), and actual data
+                                comes after “:” .<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_HNS_3N2_LWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_HNS_3N2_LWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-37. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-69903BDC-C100-4B4F-BB3A-37611DF6176F" class="fig--title">Data Mode Example</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_INS_3N2_LWB" src="GUID-737C453B-1BEB-4F54-81C0-6D0F6B6E65E9-low.png"/></div>
+                                </figure></li>
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-43F3B388-F268-4620-A0CC-707D87FC02E0" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-43F3B388-F268-4620-A0CC-707D87FC02E0">The data can also be sent without any index, in such scenario, the
+                                data will be sent to device details (address) stored in index 1 of
+                                the device table. If the info in index 1 of the device table is not
+                                valid, then the data will be broadcasted.</li>
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E82D07DC-3270-4F45-BB7C-2D3DF45FC3B5" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E82D07DC-3270-4F45-BB7C-2D3DF45FC3B5">For Broadcasting data, format is <strong class="+ topic/ph hi-d/b ph b">ff :data</strong> (Example : ff
+                                :Microchip).</li>
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-22F36A84-7FED-413B-B101-6B289BB7A5E9" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-22F36A84-7FED-413B-B101-6B289BB7A5E9">The device table can be updated with short address and ieee address
+                                as per user preference using the console command
+                                    <strong class="+ topic/ph hi-d/b ph b">updateDeviceTable</strong>. Commands supported in the application
+                                are described in <a class="- topic/xref xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-A653B3AF-7AF6-45EF-8446-BE5ACF4D87C0">COMMAND TABLE</a> section.</li>
+                        </ul><ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_H1B_CW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_H1B_CW4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-49A1D501-83B8-4356-AE1F-6336E59D05C7" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-49A1D501-83B8-4356-AE1F-6336E59D05C7">To enter data mode,
+                                    <strong class="+ topic/ph hi-d/b ph b">+++,time(in microseconds)</strong> should be given in
+                                    console.<div class="- topic/note note notype note_notype" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_G3P_RK2_LWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_G3P_RK2_LWB"><span class="note__title">Note:</span> User input can be provided
+                                    through console in Data Mode only. In all the test modes, the
+                                    payload data is defined in the application. Data Payload
+                                    Modifications should be done in the application, if required.
+                                    Max payload limit in data mode is <strong class="+ topic/ph hi-d/b ph b">232 bytes.</strong>(due to
+                                    Fragmentation of payload feature in application) . As per IEEE
+                                    802.15.4 Spec, Max payload size is 127 octets = 116 octets + Max
+                                    possible Frame Overhead. In App Fragmentation, 116 x 2 = 232
+                                    octets + Max possible Frame Overhead = 254 Octets. </div></li>
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F272DAD6-D815-4396-BCD0-65B1F1B15F6A" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-F272DAD6-D815-4396-BCD0-65B1F1B15F6A">The following figure
+                                show the operation of device in data mode, which is accessible using
+                                the cmd +++, time (in microseconds). </li>
+                        </ul><figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_OBQ_SV4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_OBQ_SV4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-38. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-02F17028-C114-4130-A927-8D550C24F166" class="fig--title">Data Mode</span></span></figcaption>
+                            
+                            <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_PBQ_SV4_HWB" src="GUID-B450C468-2D07-4DE0-A75B-CA52D4C51E6C-low.png"/></div>
+                        </figure><ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_WKQ_5V4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_WKQ_5V4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E2CE0387-43DE-4F38-ACB9-0E5E9392CB71" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-E2CE0387-43DE-4F38-ACB9-0E5E9392CB71">To exit Data Mode,
+                                    <strong class="+ topic/ph hi-d/b ph b">&amp;&amp;&amp; </strong>command should be given in console. Once
+                                exit from data mode, Device performance parameters like Packet error
+                                rate, no. of bytes sent will be displayed.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_YXW_2W4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_YXW_2W4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-39. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CFB2A2F8-95B8-4FB4-B3E8-52D6547219CD" class="fig--title">Exit Data
+                                        Mode</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_ZXW_2W4_HWB" src="GUID-9AA4E9FE-6BF1-4DEB-B910-8446BB9D2361-low.png"/></div>
+                                </figure></li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-D88D36DD-C20C-4703-B7AF-502947F6F18E" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-D88D36DD-C20C-4703-B7AF-502947F6F18E"><strong class="+ topic/ph hi-d/b ph b">Continuous Test Mode</strong> –
+                        Predefined payload of 116 bytes is set in application. Each packet with 116
+                        bytes is sent one by one after the previously sent packets received ack from
+                        the  peer device. Max payload size of 116 is set as an example. <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_QK4_FW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_QK4_FW4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-01303596-5082-4C3D-9D22-9D352A962871" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-01303596-5082-4C3D-9D22-9D352A962871">To enter Continuous
+                                Test Mode, the command <strong class="+ topic/ph hi-d/b ph b">contTestMode </strong> need to be given in the
+                                    console.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_SY2_KW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_SY2_KW4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-40. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-516D05D9-90CA-46CE-BCDD-6B5018D0D929" class="fig--title">Continuous
+                                        Test Mode</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_TY2_KW4_HWB" src="GUID-723A9C55-62D0-4B31-B4C2-23C51BB3BC45-low.png"/></div>
+                                </figure></li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-2B468404-C3AD-43BF-81F6-5C0BA521B4F3" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-2B468404-C3AD-43BF-81F6-5C0BA521B4F3"><strong class="+ topic/ph hi-d/b ph b">Periodic Test Mode </strong>---
+                        User can provide a time as input. After periodic expiry of the user
+                        configured time, the predefined payload of 116 bytes will be sent to peer
+                        device. Once the tx is done, without waiting for ack, the next transmit
+                        starts once the timer expires after a configured time.<ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_T44_LW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_T44_LW4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-710C1B90-87BD-4002-B090-443155E684E6" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-710C1B90-87BD-4002-B090-443155E684E6">To enter Periodic
+                                Test Mode, the command <strong class="+ topic/ph hi-d/b ph b">periodTestMode,time(in microseconds)</strong>
+                                need to be provided.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_EFN_5W4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_EFN_5W4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-41. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-48C67928-129E-4AFD-9AB5-89DFDFA7C839" class="fig--title">Periodic
+                                        Test Mode</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_FFN_5W4_HWB" src="GUID-5FE7972E-7A76-464D-A360-934DF86905AF-low.png"/></div>
+                                </figure></li>
+                        </ul><ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_R3G_X4J_GWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_R3G_X4J_GWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CC3C09C0-61B1-4221-B299-E0F6FC233B0E" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-CC3C09C0-61B1-4221-B299-E0F6FC233B0E">
+                                <div class="- topic/note note notype note_notype" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_AKM_KFQ_GWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_AKM_KFQ_GWB"><span class="note__title">Note:</span> For all the above modes, the total no.
+                                    of packets sent, bytes sent, packets which received ack and PER
+                                    value are displayed at the end.</div>
+                            </li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-18EAEBB2-6996-4DC5-8DBF-9F74F90DCD68" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-18EAEBB2-6996-4DC5-8DBF-9F74F90DCD68"><strong class="+ topic/ph hi-d/b ph b">Throughput Test Mode</strong> –
+                        Time period of 1 second is set as default in application. The max payload is
+                        predefined (116 bytes), which is sent once <strong class="+ topic/ph hi-d/b ph b">tx done cb</strong> is called. The
+                        packets are sent continuously until the timer expires. The total no. of
+                        packets sent, bytes sent, packets which received ack and PER value per
+                        second are displayed at the end.<ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_VP2_WW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_VP2_WW4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1770A75D-AEED-40F9-B968-FC941CA46EF4" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-1770A75D-AEED-40F9-B968-FC941CA46EF4">To enter Throughput
+                                Test Mode, the command <strong class="+ topic/ph hi-d/b ph b">throughputTestMode</strong> need to be
+                                    provided.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_FB3_DX4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_FB3_DX4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-42. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-48D0FB59-D559-4678-90C2-9BBCB5C4A27C" class="fig--title">Throughput
+                                        Test Mode</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_GB3_DX4_HWB" src="GUID-BDD0E1C0-812D-4AF8-A4E0-EDFE9F528675-low.png"/></div>
+                                </figure></li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-57E8BB4F-7347-41DD-98C8-6498AF2CFEC0" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-57E8BB4F-7347-41DD-98C8-6498AF2CFEC0"><strong class="+ topic/ph hi-d/b ph b">PER Test Mode </strong>---
+                        Packet limit is fixed to 100 for this mode. 100 packets are sent
+                        continuously. Each packets are of max payload limit. The total no. of
+                        packets sent, bytes sent, packets which received ack and PER value are
+                        displayed at the end.<ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_LHS_XW4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_LHS_XW4_HWB">
+                            <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C2230018-B76B-4453-87CD-B36AAF644097" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-C2230018-B76B-4453-87CD-B36AAF644097">To enter PER Test
+                                Mode, the command <strong class="+ topic/ph hi-d/b ph b">perTestMode</strong> need to be provided.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_JGT_2X4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_JGT_2X4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-43. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-B69AF312-EF48-4A43-9F3F-8C9F3E0E735C" class="fig--title">PER Test
+                                        Mode</span></span></figcaption>
+                                    
+                                    <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_KGT_2X4_HWB" src="GUID-E1AE88CF-C002-408D-B2AC-3D1BAA23EF0D-low.png"/></div>
+                                </figure></li>
+                        </ul></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-BC99E5D4-82F5-4693-9740-1726A8E82585" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-BC99E5D4-82F5-4693-9740-1726A8E82585">Each mode operates
+                        independently, only one mode can be enabled at a time.</li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-3ACFE119-5CB6-432A-A521-95DB9091117F" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-3ACFE119-5CB6-432A-A521-95DB9091117F">To stop running test modes,
+                        the command <strong class="+ topic/ph hi-d/b ph b">stopTestMode</strong> should be used. All the active running test
+                        modes will be stopped. This command can be applied to stop the test modes
+                            only.<figure class="- topic/fig fig fignone" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_NYS_5X4_HWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_NYS_5X4_HWB"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 8-44. <span id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-2A889213-4BAA-483C-9BBD-3D4B854FBAFB" class="fig--title">Stop Active Test
+                                Modes</span></span></figcaption>
+                            
+                            <div class=""><img class="- topic/image image" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__IMAGE_OYS_5X4_HWB" src="GUID-1D9A8FDB-1BDF-4B2B-A365-70CF3FBE5B72-low.png"/></div>
+                        </figure></li>
+                    <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-FB27E33B-6E1F-4268-A142-43E5560295C8" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-FB27E33B-6E1F-4268-A142-43E5560295C8">
+                        <div class="- topic/note note notype note_notype" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_LZM_LFQ_GWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__NOTE_LZM_LFQ_GWB"><span class="note__title">Note:</span> 
+                            <ul class="- topic/ul ul" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_YSJ_ZJ2_LWB" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__UL_YSJ_ZJ2_LWB">
+                                <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-07B18A5E-1A91-4F4E-8422-75BE9ECF6703" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-07B18A5E-1A91-4F4E-8422-75BE9ECF6703">Commands to navigate/switch to different modes in application
+                                    are described in <a class="- topic/xref xref" href="GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html#GUID-637578B7-6092-40CF-88A5-FCF506D998C9__GUID-A653B3AF-7AF6-45EF-8446-BE5ACF4D87C0">COMMAND TABLE</a> section.</li>
+                                <li class="- topic/li li" id="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-EBBF2EAB-C692-4280-93E5-F7AB09655747" data-ofbid="GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__GUID-EBBF2EAB-C692-4280-93E5-F7AB09655747">While the packets are being received, the following info will be
+                                    displayed: LQI(Link Quality Indicator), RSSI(Received Signal
+                                    Strength), Received packet Count and Length of received payload
+                                    in bytes. (Refer to Peer device 2 terminal of  <a class="- topic/xref xref" href="#GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738__FIG_OBQ_SV4_HWB"><span>Figure 8-38</span></a>).</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul></li>
+        </ul>
+    </div>
+</article></main></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div> 
+        <div class="mchp_disclaimer"><p class="mchp_disclaimer_text">The online versions of the documents are provided as a courtesy. Verify all content and data in the device’s PDF documentation found on the device product page.</p></div><footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container mx-auto ">
+    <div class="footer">
+  <div class="mchp-wh-footer">
+    <div class="mchp-footer">
+      <div class="mchp-footer-tier1">
+        <div class="spacer"></div>
+        <div class="mchp-footer-container">
+          <div class="mchp-footer-links mchp-social-media-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Facebook" src="oxygen-webhelp/template/resources/images/201016-corp-facebook.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.linkedin.com/company/microchip-technology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip LinkedIn" src="oxygen-webhelp/template/resources/images/201016-corp-linkedin.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://twitter.com/MicrochipTech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Twitter" src="oxygen-webhelp/template/resources/images/201016-corp-twitter.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.youtube.com/user/MicrochipTechnology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip YouTube" src="oxygen-webhelp/template/resources/images/201016-corp-youtube.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.instagram.com/microchiptechnologyinc/" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Instagram" src="oxygen-webhelp/template/resources/images/201016-corp-instagram.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.weibo.com/microchiptech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Weibo" src="oxygen-webhelp/template/resources/images/201016-corp-weibo.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.microchip.com/en-us/about/blog" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Blog" src="oxygen-webhelp/template/resources/images/201016-corp-blog.png"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://www.microchip.com/about-us/contact-us" class="mchp-link__link">Contact</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information" class="mchp-link__link">Legal</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy" class="mchp-link__link">Privacy Policy</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/microchip-cookie-statement" class="mchp-link__link">Cookies</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://careers.microchip.com/" class="mchp-link__link">Careers</a>
+                  <span class="mchp-link__separator"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-newsletter">
+            <div class="cmp-text">
+              <p>Stay on the leading edge with our blog</p>
+            </div>
+            <div class="mchp-button-wrapper">
+              <a role="button" href="https://www.microchip.com/en-us/about/blog" class="mchp-button mchp-button-regular solid">
+                <span class="mchp-button__span">MicroSolutions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="graphic">
+          <img src="oxygen-webhelp/template/resources/images/footer-graphic.png"/>
+        </div>
+      </div>
+      <div class="mchp-footer-tier2">
+        <p class="mchp-copyright">© Copyright 1998-2022 Microchip Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-2724382-19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());   
+    gtag('config', 'UA-2724382-19');
+  </script>
+</div>
+  </div>
+</footer>
+        
+        <div id="go2top" class="d-print-none">
+            <span class="oxy-icon oxy-icon-up"></span>
+        </div>
+        
+        <div id="modal_img_large" class="modal">
+            <span class="close oxy-icon oxy-icon-remove"></span>
+            <div id="modal_img_container"></div>
+            <div id="caption"></div>
+        </div>
+        
+        
+        
+        
+        <script type="text/javascript">_satellite.pageBottom();</script><!-- Adobe Analytics -->
+        </body>
+</html>

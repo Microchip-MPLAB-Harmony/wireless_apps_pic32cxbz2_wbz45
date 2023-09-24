@@ -1,0 +1,594 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" data-whc_version="24.1">
+    <head><link rel="shortcut icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><link rel="icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Getting Started Getting Started with Peripheral Building Blocks Introduction This document will help users to enable Deep sleep mode with BLE Advertisements on WBZ451 Curiosity board using MPLAB Code ..."/><meta name="copyright" content="(C) Copyright 2023"/><meta name="generator" content="DITA-OT"/><title>4.1.2.4 BLE Deep Sleep Advertising</title><!--  Generated with Oxygen version 24.1, build number 2022062014.  --><meta name="wh-path2root" content=""/><meta name="wh-toc-id" content="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81-d1763e331"/><meta name="wh-source-relpath" content="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81.xml"/><meta name="wh-out-relpath" content="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81.html"/>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css"/>
+    
+    <!-- Template default styles  -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2022062014"/>
+    
+    
+    <script src="./oxygen-webhelp/lib/jquery/jquery-3.5.1.min.js"></script>
+    
+    <script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script>
+<link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/microchip.css?buildId=2022062014"/><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/notes.css?buildId=2022062014"/>
+<script src="mchp-context-help.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async="" type="text/javascript"></script>
+    <script src="https://assets.adobedtm.com/6a72a357eb48/a636c708c7fe/launch-0b0023397020.min.js"></script><!-- Adobe Analytics -->
+</head>
+
+    <body id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">
+            Jump to main content
+        </a>
+        
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <a href="index.html" class=" wh_logo d-none d-sm-block "><img src="oxygen-webhelp\template\resources/images/microchip.png" alt="PIC32CXBZ2 Application Developer's Guide "/></a>
+                    <div class=" wh_publication_title "><a href="index.html">PIC32CXBZ2 Application Developer's Guide </a></div>
+                    
+                </div>
+                
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        
+         
+        
+        <div class=" wh_search_input navbar-form wh_topic_page_search search " role="form">
+            
+            
+            
+            <form id="searchForm" method="get" role="search" action="search.html"><div class="d-flex justify-contents-around"><div class="flex-grow-1"></div><div class="position-relative flex-grow-1"><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required"/><button type="submit" class="wh_search_button" aria-label="Search"><span class="search_input_text">Search</span></button></div><div class="align-self-center flex-grow-1 ml-2"><div class="d-flex justify-content-end"><div class="dropdown"><a style="font-size: 1em; padding: 7px 12px !important;" class="btn py-3 px-3 btn-outline-light dropdown-toggle" href="#" role="button" id="devicesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Pages</a><div style="font-size: 1em;" class="dropdown-menu" aria-labelledby="devicesMenu"><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/pic32cx-bz2">PIC32CX-BZ2</a><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/wbz451"> WBZ451</a></div></div></div></div></div></form>
+            
+            <div class="mchp-color-stripe-grid-container">
+  <div class="mchp-main-bar mchp-orange-bar"></div>
+  <div class="mchp-main-bar mchp-blue-bar"></div>
+  <div class="mchp-main-bar mchp-green-bar"></div>
+</div>
+            
+        </div>
+        
+        <div class="container-fluid" id="wh_topic_container">
+            <div class="row">
+
+                <nav class="wh_tools d-print-none navbar-expand-md" aria-label="Tools">
+                    
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><div class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div></li><li><div class="topicref" data-id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"><div class="title"><a href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1</ph>
+Building Block Examples</a></div></div></li><li><div class="topicref" data-id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4"><div class="title"><a href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2</ph>
+Peripheral</a></div></div></li><li class="active"><div class="topicref" data-id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81"><div class="title"><a href="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.4</ph>
+BLE Deep Sleep Advertising</a></div></div></li></ol></div>
+                    
+                    
+                    
+                    <div class="wh_right_tools">
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        
+                        
+                        
+                        
+                        <div class=" wh_print_link print d-none d-md-inline-block "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                        
+                        <button type="button" id="wh_toc_button" class="custom-toggler navbar-toggler collapsed wh_toggle_button navbar-light" aria-expanded="false" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    
+                </nav>
+            </div>
+            
+            
+            
+            
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-12 d-md-block d-none d-print-none" aria-label="Table of Contents Container">
+                            <div id="wh_publication_toc_content">
+		                        
+                            	<div class=" wh_publication_toc " data-tooltip-position="right"><span class="expand-button-action-labels"><span id="button-expand-action" role="button" aria-label="Expand"></span><span id="button-collapse-action" role="button" aria-label="Collapse"></span><span id="button-pending-action" role="button" aria-label="Pending"></span></span><ul role="tree" aria-label="Table of Contents"><li role="treeitem"><div data-tocid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9" class="topicref introduction" data-id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424.html" id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9-link">Introduction</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17" class="topicref" data-id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633.html" id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">1</ph>
+Quick references </a><div class="wh-tooltip"><p class="shortdesc">Enter a short description of your topic here (optional).</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39" class="topicref" data-id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">2</ph>
+Getting Started with WBZ451 Curiosity Board</a><div class="wh-tooltip"><p class="shortdesc">This section covers the evaluation board features and running the preprogrammed demo         example. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109" class="topicref" data-id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">3</ph>
+Getting Started with Software Development</a><div class="wh-tooltip"><p class="shortdesc">This section gives a detailed information on the steps to install IDE, compiler, tool         chain, BLE, Zigbee stacks and application examples on the PC. </p></div></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212" class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html" id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223" class="topicref" data-id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html" id="GUID-17DABF04-E5D8-4201-A746-2FC244450A19-d1763e223-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1</ph>
+Building Block Examples</a></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231" class="topicref" data-id="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C.html" id="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C-d1763e231-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.1</ph>
+Central</a></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297" class="topicref" data-id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html" id="GUID-B3B46369-F5B4-401B-8405-658BE34988F4-d1763e297-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2</ph>
+Peripheral</a></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682-d1763e305" class="topicref" data-id="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html" id="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682-d1763e305-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.1</ph>
+  <strong class="ph b">Peripheral - FreeRTOS BLE Stack and App Initialize</strong></a></div></div></li><li role="treeitem"><div data-tocid="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702-d1763e315" class="topicref" data-id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html" id="GUID-820CEA03-90AE-484F-87C9-9CF2CE652702-d1763e315-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.2</ph>
+BLE Sleep Mode Legacy Advertisements</a></div></div></li><li role="treeitem"><div data-tocid="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4-d1763e323" class="topicref" data-id="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4.html" id="GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4-d1763e323-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.3</ph>
+BLE Extended Advertisements</a></div></div></li><li role="treeitem" class="active"><div data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81-d1763e331" class="topicref" data-id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81.html" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81-d1763e331-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.4</ph>
+BLE Deep Sleep Advertising</a></div></div></li><li role="treeitem"><div data-tocid="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D-d1763e339" class="topicref" data-id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html" id="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D-d1763e339-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.5</ph>
+BLE Connection</a></div></div></li><li role="treeitem"><div data-tocid="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36-d1763e347" class="topicref" data-id="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html" id="GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36-d1763e347-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.6</ph>
+BLE Transparent UART</a></div></div></li><li role="treeitem"><div data-tocid="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8-d1763e355" class="topicref" data-id="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8.html" id="GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8-d1763e355-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.7</ph>
+BLE Custom service</a></div></div></li><li role="treeitem"><div data-tocid="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00-d1763e363" class="topicref" data-id="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00.html" id="GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00-d1763e363-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.8</ph>
+BLE Transparent UART Peripheral with LE Coded Phy</a></div></div></li><li role="treeitem"><div data-tocid="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE-d1763e371" class="topicref" data-id="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE.html" id="GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE-d1763e371-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.9</ph>
+BLE ANCS Application</a></div></div></li><li role="treeitem"><div data-tocid="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839-d1763e379" class="topicref" data-id="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839.html" id="GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839-d1763e379-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.10</ph>
+BLE Multiple Advertising Sets</a></div></div></li><li role="treeitem"><div data-tocid="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225-d1763e388" class="topicref" data-id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.html" id="GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225-d1763e388-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.11</ph>
+BLE HID over GATT Profile Service </a></div></div></li><li role="treeitem"><div data-tocid="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B-d1763e396" class="topicref" data-id="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B.html" id="GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B-d1763e396-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.2.12</ph>
+Path Loss Feature in Legacy Advertisements</a></div></div></li></ul></li><li role="treeitem"><div data-tocid="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93-d1763e404" class="topicref" data-id="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93.html" id="GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93-d1763e404-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.3</ph>
+BLE Multirole Multilink Transparent UART </a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412" class="topicref" data-id="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6.html" id="GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6-d1763e412-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.1.4</ph>
+Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Application Examples that showcase BLE Stack Init + Chip Peripheral running</p></div></div></div></li></ul></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431" class="topicref" data-id="GUID-92137358-930E-4654-9431-E8BA0E260468" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-92137358-930E-4654-9431-E8BA0E260468.html" id="GUID-92137358-930E-4654-9431-E8BA0E260468-d1763e431-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.2</ph>
+Advanced Applications</a></div></div></li><li role="treeitem"><div data-tocid="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC-d1763e469" class="topicref" data-id="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC.html" id="GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC-d1763e469-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.3</ph>
+BLE Virtual Sniffer</a></div></div></li><li role="treeitem"><div data-tocid="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008-d1763e477" class="topicref" data-id="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008.html" id="GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008-d1763e477-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4.4</ph>
+PIC32CXBZ2 Three-Wire PTA Coexistence Design</a></div></div></li></ul></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485" class="topicref" data-id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">5</ph>
+Getting Started with Zigbee Applications</a><div class="wh-tooltip"><p class="shortdesc">This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632" class="topicref" data-id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23.html" id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">6</ph>
+Getting Started With Multiprotocol Applications</a><div class="wh-tooltip"><p class="shortdesc">Documentation describing steps to test and develop the precompiled BLE and Zigbee coexistence application examples.</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683" class="topicref" data-id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE.html" id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">7</ph>
+Flashing hex from MPLAB DISCOVER using MPLAB IPE</a><div class="wh-tooltip"><p class="shortdesc">This section provides a detailed procedure of how to download an already existing     application hex file from MPLAB DISCOVER and flash the hex file into WBZ451 Curiosity Board     using MPLAB IPE.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694" class="topicref" data-id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html" id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8</ph>
+ Getting Started with IEEE 802.15.4 P2P Phy Application</a></div></div></li><li role="treeitem"><div data-tocid="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750" class="topicref" data-id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A.html" id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">9</ph>
+Getting Started with IEEE 802.15.4 MAC Application Examples</a></div></div></li><li role="treeitem"><div data-tocid="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759" class="topicref" data-id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B.html" id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">10</ph>
+Getting started with Thread Applications</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767" class="topicref" data-id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD.html" id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">11</ph>
+How-to: Adding Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Guidance on how to add analog/digital peripherals to your application</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812" class="topicref" data-id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">12</ph>
+How-to: Low Power Design</a><div class="wh-tooltip"><p class="shortdesc">Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844" class="topicref" data-id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13</ph>
+How-to: Firmware and OTA Updates</a><div class="wh-tooltip"><p class="shortdesc">This section documents how to enable FW updates in your design, whether its serial or over the air</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255" class="topicref" data-id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50.html" id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">14</ph>
+Wireless System Services API</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944" class="topicref" data-id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7.html" id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">15</ph>
+Support Documentation</a><div class="wh-tooltip"><p class="shortdesc">This section has documentation that is generic and used as supporting document with our application example documentation</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992" class="topicref" data-id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0.html" id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">16</ph>
+Porting Guide for WBZ451 to PIC32CX1012BZ25048</a></div></div></li><li role="treeitem"><div data-tocid="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000" class="topicref" data-id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27.html" id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">17</ph>
+Porting Guide for WBZ451 to WBZ450</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008" class="topicref backmatter backmatter_parent" data-id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html" id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link">Microchip Information</a></div></div></li></ul></div>
+		                        
+                            </div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-7 col-md-9 col-sm-12" id="wh_topic_body">
+                        <button id="wh_close_publication_toc_button" class="close-toc-button d-none" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        <button id="wh_close_topic_toc_button" class="close-toc-button d-none" aria-label="Toggle topic table of content" aria-controls="wh_topic_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-2063798D-0C60-4BD2-B8DE-96FFA46017C0">
+    <h1 class="- topic/title title topictitle1" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-2063798D-0C60-4BD2-B8DE-96FFA46017C0" style="">4.1.2.4 BLE Deep Sleep Advertising</h1>
+    <div class="- topic/body body">
+        <p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html">Getting Started</a></p>
+        <p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html">Getting Started with Peripheral Building Blocks</a></p>
+        <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b"><a class="- topic/xref xref" href=""></a></strong></p>
+        <p class="- topic/p p"></p>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E5A5126A-BEC8-4541-9415-F6005C391E89" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E5A5126A-BEC8-4541-9415-F6005C391E89"><h2 class="- topic/title title sectiontitle">Introduction</h2><p class="- topic/p p">This document will help users to enable Deep sleep mode with BLE Advertisements on <span class="- topic/ph ph">WBZ451</span> Curiosity board using MPLAB Code Configurator(MCC).
+                In this basic application example,  the Deep Sleep advertisement interval will be
+                set to 960 millisecond. The advertisement interval will dictate the application Deep
+                sleep time.</p><p class="- topic/p p">Users can choose to just run the precompiled Application Example hex file on the <span class="- topic/ph ph">WBZ451</span> Curiosity Board and experience the demo or can go
+                through the steps involved in developing this Application from scratch.</p>
+            <p class="- topic/p p">It is recommend to follow the examples in order, by learning the basic concepts first
+                and then progressing to the more advanced topics.</p>
+            <p class="- topic/p p"> </p></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F90C9AF2-9298-4F77-908D-493BCF52E866" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F90C9AF2-9298-4F77-908D-493BCF52E866"><h2 class="- topic/title title sectiontitle">Recommended Reading</h2><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0FDC7D3C-A2C7-4E26-8B55-6DED37A0837B" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0FDC7D3C-A2C7-4E26-8B55-6DED37A0837B">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F4E594AF-3505-4731-B020-7CC914D9F770" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F4E594AF-3505-4731-B020-7CC914D9F770"><p class="- topic/p p"><a class="- topic/xref xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html?GUID-222749FE-01C5-43B6-A5C7-CD82B3FC7F5F" target="_blank" rel="external noopener">BLE Software
+                Specification</a></p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F4E594AF-3505-4731-B020-7CC914D9F770" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F4E594AF-3505-4731-B020-7CC914D9F770"><a class="- topic/xref xref" href="GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html">FreeRtos BLE App Initialize</a></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-08004E28-D962-4C38-8922-0966276D8552" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-08004E28-D962-4C38-8922-0966276D8552"><a class="- topic/xref xref" href="GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.html">Low Power Notes</a><p class="- topic/p p"></p></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7EA51B0D-8E4A-4555-BD4B-0D1B90A07BB1" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7EA51B0D-8E4A-4555-BD4B-0D1B90A07BB1"><h2 class="- topic/title title sectiontitle">Hardware Requirement</h2><div class="- topic/p p"><div class="table-container"><table class="- topic/table table frame-all" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6" data-cols="2"><caption class="- topic/title title tablecap" data-caption-side="top" data-is-repeated="true"><span class="table--title-label"><span class="table--title-label">Table 4-1. </span></span><span class="table--title" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-CA7D474F-4070-45DC-AA5A-DDA84E7444BD"></span></caption><colgroup><col style="width:50%"/><col style="width:50%"/></colgroup><thead class="- topic/thead thead">
+                    <tr class="- topic/row">
+                        <th class="- topic/entry entry colsep-1 rowsep-1" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__1">Tool</th>
+                        <th class="- topic/entry entry colsep-0 rowsep-1" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__2">Qty</th>
+                    </tr>
+                </thead><tbody class="- topic/tbody tbody">
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__1"><span class="- topic/ph ph">WBZ451</span> Curiosity Board</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__2">1</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__1">Micro USB cable</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__2">1</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-0" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__1"><a class="- topic/xref xref" href="https://www.microchip.com/en-us/development-tool/ATPOWERDEBUGGER" target="_blank" rel="external noopener">Power Debugger</a>/Multimeter</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F6D6776C-7CE6-49ED-B33B-2B18BF03B4F6__entry__2">1</td>
+                    </tr>
+                </tbody></table></div></div><p class="- topic/p p"></p></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-21D0FA9A-083B-41A6-8D3F-BE24E852031A" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-21D0FA9A-083B-41A6-8D3F-BE24E852031A"><h2 class="- topic/title title sectiontitle">SDK Setup</h2><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-949EBFC3-9B6F-4ECA-81D5-697770A33391" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-949EBFC3-9B6F-4ECA-81D5-697770A33391">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-D9769041-9371-410D-ACE1-60CE6935B3AA" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-D9769041-9371-410D-ACE1-60CE6935B3AA"><p class="- topic/p p"><a class="- topic/xref xref" href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" title="This section gives a detailed information on the steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on the PC.">Getting Started with Software Development</a></p><p class="- topic/p p"></p></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C2836D07-01B1-49EF-AAC2-CE48326BC119" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C2836D07-01B1-49EF-AAC2-CE48326BC119"><h2 class="- topic/title title sectiontitle">Software Requirement</h2><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3D55523A-68C6-4AFB-92B8-A0254DE87FA8" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3D55523A-68C6-4AFB-92B8-A0254DE87FA8">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6E8CE911-B215-4859-8547-D0E9DC32E3B3" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6E8CE911-B215-4859-8547-D0E9DC32E3B3"><p class="- topic/p p"> <a class="- topic/xref xref" href="https://ttssh2.osdn.jp/index.html.en" target="_blank" rel="external noopener">TeraTerm</a></p><p class="- topic/p p"></p></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6BE272DC-6424-4165-B344-CBF5ECDA37D7" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6BE272DC-6424-4165-B344-CBF5ECDA37D7"><h2 class="- topic/title title sectiontitle">Smartphone App</h2><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-D0E22E80-27E9-4CD4-817B-0AA74AC5FCAB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-D0E22E80-27E9-4CD4-817B-0AA74AC5FCAB">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-68DAA3DD-7158-4AF9-8991-C2AF11D8E7F7" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-68DAA3DD-7158-4AF9-8991-C2AF11D8E7F7"><p class="- topic/p p">Light Blue</p><p class="- topic/p p"></p></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-223374A9-C495-4FB3-B331-1874CE132816" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-223374A9-C495-4FB3-B331-1874CE132816"><h2 class="- topic/title title sectiontitle">Programming the precompiled hex file or Application
+            Example</h2><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Programming the hex file using MPLABX IPE</strong></p><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-86DFBE12-A651-42BA-B28A-3BBE8A45957A">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-615EAAB4-CA37-48DC-B8D6-A517E037C6B2"><p class="- topic/p p">Precompiled Hex file is located in "&lt;Harmony Content
+                Path&gt;\wireless_apps_pic32cxbz2_wbz45\apps\ble\building_blocks\peripheral\deep_sleep_adv\hex" folder</p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-32A5BDB1-E7AC-43F3-8DE0-1C2A0C6B2BA4"><p class="- topic/p p">For the instructions, refer to <a class="- topic/xref xref" href="https://microchipdeveloper.com/ipe:programming-device" target="_blank" rel="external noopener">Programming A Device</a>. </p></li>
+            </ol><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Caution:</strong> Users must  choose the correct Device and Tool information.</p><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Programming the Application using MPLABX IDE</strong></p><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-38E32D75-4A7E-4FCA-AB19-EAC72582B498">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-33A1AC6E-81BD-4873-9C21-CC3BF516AAC9"><p class="- topic/p p">Follownthe steps mentioned in  <a class="- topic/xref xref" href="GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html" title="This section gives a detail explanation on how to open, build and program an existing application example.">Running a Precompiled
+                            Example</a> . </p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-87FDAD2C-721F-4193-A9F9-C5DFD00D8841"><p class="- topic/p p">Open and program the Application Example "ble_deep_sleep_adv.x" located in "&lt;Harmony Content
+                Path&gt;\wireless_apps_pic32cxbz2_wbz45\apps\ble\building_blocks\peripheral\deep_sleep_adv\firmware" using MPLABX IDE</p></li>
+            </ol><p class="- topic/p p"><dfn class="- topic/term term">&lt;Harmony Content Path&gt;</dfn> <a class="- topic/xref xref" href="GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html#GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C__GUID-C6B23D06-5DF8-4D73-B997-AC22020FE9D3">how to find what is my Harmony Content
+            Path</a></p></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7AEB4551-8490-4AF3-AAD0-B605BC8A1DD8" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7AEB4551-8490-4AF3-AAD0-B605BC8A1DD8"><h2 class="- topic/title title sectiontitle">Demo Description</h2><p class="- topic/p p">This Application Example enables users to enter Deep
+            sleep mode while transmitting Connectable, Undirected BLE Advertisements. On power on reset demo will enter "Deep Sleep Mode", when the USR_BTN(SW2) is pressed the device onboard
+            led(green) starts blinking which denotes start of advertisements, Device will enter Deep sleep mode periodically based on the advertisement interval which is set to 960 milliseconds for
+            this example. When device connects with the mobile App the onboard led start to glow solid, which indicates the connection established and the device will enter Standby Sleep Mode during
+            Idle state.</p><p class="- topic/p p"></p></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-137E096D-51A6-4909-A4B9-DB6AD83C8AD7" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-137E096D-51A6-4909-A4B9-DB6AD83C8AD7"><h2 class="- topic/title title sectiontitle">Testing</h2><p class="- topic/p p">Connect the <span class="- topic/ph ph">WBZ451</span> Curiosity board to
+            PC, program the precompiled hex file or application example as mentioned. Upon flashing, there will not be any indication on the board, since the device enters deep sleep mode. User can
+            press the USR_BTN(SW2) available on the board to start Deep sleep Advertising. To connect to the <span class="- topic/ph ph">WBZ451</span>, User can open the Light Blue App on Smartphone to scan
+            for Advertisements. Device name "BLE_DSADV" will appear.</p><div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_VDM_JVD_C5B" src="GUID-D4315947-A500-4F3A-8283-2FE14C82BE37-low.png"/></div></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-48F0CD47-35F7-4174-9EB7-2F5D4C925553" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-48F0CD47-35F7-4174-9EB7-2F5D4C925553"><h2 class="- topic/title title sectiontitle">Current Consumption Measurement</h2><p class="- topic/p p">Connect the Multimeter/Power Debugger to
+            Power Measurement Header J6. Power on the Board. If using Power Debugger, users can use Data Visualizer to measure the current consumption.</p><div class="- topic/p p">Current measured in <strong class="+ topic/ph hi-d/b ph b">Deep Sleep</strong> mode is around 1.6 uA.<figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_LQB_T4C_SYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_LQB_T4C_SYB">
+                    <div class=""><img class="- topic/image image" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_MHZ_V4C_SYB" src="GUID-A4EEC7ED-5E80-410C-81CE-D34C6B674938-low.png"/></div>
+                </figure></div><div class="- topic/p p">
+                <figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-4A4E9EAB-E61F-47E6-89E3-20F63EA1226C" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-4A4E9EAB-E61F-47E6-89E3-20F63EA1226C">
+                    <p class="- topic/p p">Current measured in <strong class="+ topic/ph hi-d/b ph b">Deep Sleep + Advertising</strong> mode is around 124 uA
+                        average.</p>
+                </figure>
+                <figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_ZLB_X4C_SYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_ZLB_X4C_SYB">
+                    <div class=""><img class="- topic/image image" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_TWD_Z4C_SYB" src="GUID-B440873B-64DA-4CF7-AA32-B140F71A0326-low.png"/></div>
+                </figure>
+            </div><div class="- topic/p p">
+                <figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A9A4B052-BD53-44BA-926B-D4470BE30620" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A9A4B052-BD53-44BA-926B-D4470BE30620">
+                    <p class="- topic/p p">Current measured in <strong class="+ topic/ph hi-d/b ph b">Connected + Standby Sleep</strong> mode is 541.7 uA and
+                        average current consumption is around 1.11 mA</p>
+                </figure>
+                <figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_ED4_Z4C_SYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_ED4_Z4C_SYB">
+                    <div class=""><img class="- topic/image image" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_YZQ_DPC_SYB" src="GUID-45C25401-1386-4539-B3CD-13FF3AA984C3-low.png"/></div>
+                </figure>
+            </div><p class="- topic/p p">Users of this Early adopter package must  go through the known issues document and understand the
+                limitations if any with the current low power mode implementation.</p></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-49D50497-1913-485A-9D9B-F744A1C9AC9C" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-49D50497-1913-485A-9D9B-F744A1C9AC9C"><h2 class="- topic/title title sectiontitle">Developing this Application from scratch using MPLAB Code
+            Configurator</h2><p class="- topic/p p">This section explains the steps required by a user to develop this application example from scratch using MPLABx Code Configurator.</p><strong class="+ topic/ph hi-d/b ph b">Tip:</strong> New users of MPLAB
+            Code Configurator are recommended to go through the <a class="- topic/xref xref" href="https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-B5D058F5-1D0B-4720-8649-ACE5C0EEE2C0" target="_blank" rel="external noopener">overview</a><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-813E21EC-C440-4BF4-9129-D1E7F977859F" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-813E21EC-C440-4BF4-9129-D1E7F977859F">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3F0533A3-5200-445C-8D92-89F730507BFA" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3F0533A3-5200-445C-8D92-89F730507BFA"><p class="- topic/p p">Create a new MCC Harmony Project -- <a class="- topic/xref xref" href="GUID-B86E8493-D00D-46EF-8624-D412342147F0.html">link</a> for
+                instructions</p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6FE7EE72-BC39-48D1-A4D1-0404D6CA9A2A" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6FE7EE72-BC39-48D1-A4D1-0404D6CA9A2A"><p class="- topic/p p">Import component configuration --This step helps users setup the basic components and configuration required to develop this
+                application. Users should follow the instructions mentioned <a class="- topic/xref xref" href="GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162.html">here</a> to import the component
+                configuration.</p><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Tip:</strong> Import and Export functionality of component configuration will help users to start from a known working setup of configuration</p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-264372A8-447A-44ED-9A57-8993B38DF10B" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-264372A8-447A-44ED-9A57-8993B38DF10B"><p class="- topic/p p">Accept Dependencies or satisfiers, select "Yes".</p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-B5F57CD6-89DE-4D44-B0B3-A65BE753685C" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-B5F57CD6-89DE-4D44-B0B3-A65BE753685C">Verify if the Project Graph window has all the expected configuration.<div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_NN5_RVD_C5B" src="GUID-B933E65B-7842-464F-B51D-6442CC3FE26E-low.png"/></div></div></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A4C19FCA-2304-42E3-A5A6-5C550A9F715E" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A4C19FCA-2304-42E3-A5A6-5C550A9F715E"><h2 class="- topic/title title sectiontitle">Verify Deep Sleep, Advertisement, System Sleep
+                and RTC Clock Source Configuration</h2><div class="- topic/p p"><ol class="- topic/ol ol" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3651E909-11A4-4C2C-9486-97BC0592275A" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3651E909-11A4-4C2C-9486-97BC0592275A">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6DE73596-DA7E-4921-AF76-10200F1ACC9C" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6DE73596-DA7E-4921-AF76-10200F1ACC9C">Select <strong class="+ topic/ph hi-d/b ph b">BLE_Stack</strong> component in
+                        project graph.<div class="- topic/p p">
+                            <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_EWG_TVD_C5B" src="GUID-8B5DD242-65A6-45B4-9F35-23647DF66FBF-low.png"/></div>
+                        </div><div class="- topic/p p">
+                            <div class="- topic/note note notype note_notype" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__NOTE_BS3_52N_TYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__NOTE_BS3_52N_TYB"><span class="note__title">Note:</span>  Advertising Interval Min can be modified to
+                                adjust Deep Sleep Advertising interval.</div>
+                        </div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Tip:</strong> Advertisement payload can be configured by user
+                        here.</p></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-4AADFD0F-73D7-4AE0-A47E-31ED8827E68E" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-4AADFD0F-73D7-4AE0-A47E-31ED8827E68E">Select clock configuration.<div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_S51_XVD_C5B" src="GUID-94CABEBF-0765-429A-BD41-9831F2CE23FF-low.png"/></div></div></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E933B4EE-953F-45E1-834F-EDE96F1ED780" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E933B4EE-953F-45E1-834F-EDE96F1ED780">Configure RTC clock configuration.<div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_KQL_YVD_C5B" src="GUID-974FBA3F-C066-4161-91A4-770126A2EE5B-low.png"/></div></div></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E50645DA-57FD-49F0-AEA2-44913CDCEE43" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E50645DA-57FD-49F0-AEA2-44913CDCEE43">Select Device Support Configure PMU Mode configuration.<div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_QDL_ZVD_C5B" src="GUID-786994CD-EC90-418A-AF74-36F782ACC3F8-low.png"/></div></div></li>
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-305D3B29-E07D-4DE1-83E1-7CFB7DCF6AD1" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-305D3B29-E07D-4DE1-83E1-7CFB7DCF6AD1">Configure LED GPIO Configuration.<div class="- topic/p p">
+                            <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_J2W_ST2_C5B" src="GUID-8CBA8E7E-45B5-45EA-A5FA-E09296213194-low.png"/></div>
+                        </div><div class="- topic/p p">
+                            <div class="- topic/note note notype note_notype" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__NOTE_F5Z_V2N_TYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__NOTE_F5Z_V2N_TYB"><span class="note__title">Note:</span> The above GPIO configuration is used for
+                                indication of the device state in this example and is
+                                optional.</div>
+                        </div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Tip:</strong> The configuration bits will be generated after user
+                            generates the code.</p></li>
+            </ol></div></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-76B31218-70DA-4848-9E20-56E6BE9063C7" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-76B31218-70DA-4848-9E20-56E6BE9063C7"><h2 class="- topic/title title sectiontitle">Generating Code</h2><p class="- topic/p p">Follow the instructions on how to generate a code, as described in <a class="- topic/xref xref" href="GUID-9C28F407-4879-4174-9963-2CF34161398E.html"><span><span>15.3 </span><span>MPLAB Code Configurator(MCC) Code Generation</span></span></a>.</p><p class="- topic/p p">After generating the program source from MCC interface by clicking Generate Code, the BLE configuration
+            can be found in the following project directories.</p><div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_KYW_WT2_C5B" src="GUID-F8F3D8BD-13AE-423D-9A10-965276610B54-low.png"/></div></div><p class="- topic/p p">The <a class="- topic/xref xref" href="http://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20Harmony%20OSAL%20Libraries%20Help%20v2.06.pdf" target="_blank" rel="external noopener">OSAL</a>, RF System, BLE System initialization routine executed during
+            program initialization can be found in the project files. This initialization routine is automatically generated by the MCC.</p><div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_VZV_152_C5B" src="GUID-C6E92089-B51F-4489-87AA-EC814F45BF9F-low.png"/></div></div><p class="- topic/p p">The BLE stack initialization routine excuted during Application Initialization can be found in project
+            files. This intitialization routine is automatically generated by the MCC. This call initializes and configures the GAP, GATT, SMP, L2CAP and BLE middleware layers.</p><p class="- topic/p p">During system
+            sleep, clock (system PLL) will be disabled and system tick will be turned off. FreeRTOS timer needs to be componsated for the time spent in sleep. RTC timer which works in the sleep mode
+            is used to accomplish this. RTC timer will be initialized after BLE stack initialization.</p><div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_JKB_C52_C5B" src="GUID-0E47FC35-2F24-4C1B-95EC-1E2DA4E7B67A-low.png"/></div></div><div class="- topic/p p"><div class="table-container"><table class="- topic/table table frame-all" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D" data-cols="2"><caption class="- topic/title title tablecap" data-caption-side="top" data-is-repeated="true"><span class="table--title-label"><span class="table--title-label">Table 4-2. </span></span><span class="table--title" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3AD24C80-4397-4D96-9ACA-5ACA2AE24D38"></span></caption><colgroup><col style="width:50%"/><col style="width:50%"/></colgroup><thead class="- topic/thead thead">
+                    <tr class="- topic/row">
+                        <th class="- topic/entry entry colsep-1 rowsep-1" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">Source Files</th>
+                        <th class="- topic/entry entry colsep-0 rowsep-1" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">Usage</th>
+                    </tr>
+                </thead><tbody class="- topic/tbody tbody">
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">app.c</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">Application State machine, includes calls for Initialization of all BLE stack (GAP,GATT, SMP, L2CAP) related component configurations</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">app_ble.c</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">Source Code for the BLE stack related component configurations, code related to function calls from app.c</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">app_ble_handler.c</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">All GAP, GATT, SMP and L2CAP Event handlers</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">app_ble_dsadv.c</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-1" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">Source Code for utilizing the deep sleep advertising functionality</td>
+                    </tr>
+                    <tr class="- topic/row">
+                        <td class="- topic/entry entry colsep-1 rowsep-0" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__1">device_deep_sleep.c</td>
+                        <td class="- topic/entry entry colsep-0 rowsep-0" headers="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-0D9332F9-65C8-4FFC-ACC5-DD0BC90D1A7D__entry__2">Source Code for deep Sleep and wake up related system configurations</td>
+                    </tr>
+                </tbody></table></div></div></section>
+        <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Tip:</strong> app.c is autogenerated and has a state machine based Application code sample, users can use this template to develop their application. </p>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E7CB9B27-75A9-4A03-B60C-658DE8722A06" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E7CB9B27-75A9-4A03-B60C-658DE8722A06"><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Header Files</strong></p><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C46D1A9F-8D63-485C-95E8-1E44796A1B9D" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C46D1A9F-8D63-485C-95E8-1E44796A1B9D"><p class="- topic/p p"><code class="+ topic/ph pr-d/codeph ph codeph">ble_gap.h</code>- This header file contains BLE GAP functions and is automatically
+                        included in the app.c file</p></li>
+            </ul><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Function Calls</strong></p>MCC generates and adds the following code to initialize the BLE Stack GAP, GATT, L2CAP and SMP in APP_BleStackInit() and Deep Sleep Advertising
+            Functionality in APP_BleDsadvStart(flag) function<ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-8B597AE8-C842-4C1D-A6BD-A4A713177F0C" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-8B597AE8-C842-4C1D-A6BD-A4A713177F0C"><p class="- topic/p p">APP_BleStackInit() and APP_BleDsadvStart(flag) are the API's that will be called inside the Applications Initial State --
+                APP_STATE_INIT in app.c.</p></li>
+            </ul></section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AF8A2E92-D354-4BEA-B4D7-2DE10A0FE36D" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AF8A2E92-D354-4BEA-B4D7-2DE10A0FE36D"><h2 class="- topic/title title sectiontitle">System Manual
+                Configurations</h2>
+            
+            <p class="- topic/p p">The following code modifications must be done to utilize the deep sleep Advertising
+                functionality.</p>
+            <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Step 1 - Initialization.c</strong></p>
+            <ul class="- topic/ul ul">
+                <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-9B02262A-8105-4EEE-8004-D852E1D86F4F" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-9B02262A-8105-4EEE-8004-D852E1D86F4F">CLK_Initialize();<p class="- topic/p p">This API call
+                        will be originally available in SYS_Initialize function and should be called
+                        part of _on_reset() function inside initialization.c file.</p><div class="- topic/p p">
+                        <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_KPN_F52_C5B" src="GUID-491D46B9-A709-4ABA-8CD8-4E0C514148E2-low.png"/></div>
+                    </div></li>
+                <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-291C802C-0FF7-475F-BBA9-A8F700507840" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-291C802C-0FF7-475F-BBA9-A8F700507840">
+                    <p class="- topic/p p">void SYS_Initialize (void* data)</p>
+                    <p class="- topic/p p">The below generated code should be removed from the SYS_Initialize
+                        Function.</p>
+                    <div class="- topic/p p">
+                        <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_W3R_G52_C5B" src="GUID-94DED3BC-5C0F-4FE6-8FE6-40BB05D641E2-low.png"/></div>
+                    </div>
+                    <p class="- topic/p p">Add the below code inside <strong class="+ topic/ph hi-d/b ph b">SYS_Initialize</strong> Function.</p>
+                    <div class="- topic/p p">
+                        <pre class="+ topic/pre pr-d/codeblock pre codeblock"><code>DEVICE_DeepSleepWakeSrc_T wakeSrc;
+DEVICE_GetDeepSleepWakeUpSrc(&amp;wakeSrc);
+if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE) //Initialize RTC if wake source is none(i.e power on reset)
+{
+ RTC_Initialize();
+}</code></pre>
+                    </div>
+                    <div class="- topic/p p">
+                        <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_MFT_H52_C5B" src="GUID-082242A3-2F5B-44B7-A79B-244D7749F3FE-low.png"/></div>
+                    </div>
+                    <p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Step 2 - startup_xc32.c</strong></p>
+                    <ul class="- topic/ul ul">
+                        <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3C4BE3E1-F4CE-47CF-9BC4-BD41D35D6D2B" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3C4BE3E1-F4CE-47CF-9BC4-BD41D35D6D2B">PCHE_SetupRam()<p class="- topic/p p">Copy
+                                the below code into the startup_xc32.c</p><div class="- topic/p p">
+                                <pre class="+ topic/pre pr-d/codeblock pre codeblock"><code>__attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCHE_SetupRam(void)
+{
+  // Set Flash Wait states and enable pre-fetch
+  // clear PFMWS and ADRWS
+  PCHE_REGS-&gt;PCHE_CHECON = (PCHE_REGS-&gt;PCHE_CHECON &amp; (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                  | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+ 
+  // write completion delay
+  for(int i=1; i&lt;10; i++)
+  {
+      asm ("NOP");
+  }
+}</code></pre>
+                            </div><div class="- topic/p p">
+                                <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_BRY_J52_C5B" src="GUID-1702FD90-4C7B-4EAC-9249-C109B92106BB-low.png"/></div>
+                            </div><p class="- topic/p p">Copy the below code into the Reset_Handler Handler Function after
+                                __pic32c_data_initialization() Function Call.</p><div class="- topic/p p">
+                                <pre class="+ topic/pre pr-d/codeblock pre codeblock"><code>if (!(DSU_REGS-&gt;DSU_DID &amp; DSU_DID_REVISION_Msk))   //HW A0 version
+   {
+       PCHE_SetupRam();
+   }</code></pre>
+                            </div><div class="- topic/p p">
+                                <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_UJD_L52_C5B" src="GUID-083F9A8A-2070-4A8F-B0D0-C048DDA15BAD-low.png"/></div>
+                            </div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Step 3 - heap_4.c</strong></p><p class="- topic/p p">Modify with the below code inside
+                                heap_4.c (available as part of FreeRTOS--&gt;MemMang)</p><div class="- topic/p p">
+                                <pre class="+ topic/pre pr-d/codeblock pre codeblock"><code>static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt; Original Code
+ 
+static uint8_t  __attribute__((section (".bss.ucHeap"), noload)) ucHeap[ configTOTAL_HEAP_SIZE ]; --&gt;Modified Code</code></pre>
+                            </div><div class="- topic/p p">
+                                <div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_J4S_M52_C5B" src="GUID-20B62661-50E1-4754-ABB6-25769C3E53F5-low.png"/></div>
+                            </div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Step 4 - device_deep_sleep.c</strong>(optional)</p><p class="- topic/p p">User can
+                                configure the  peripheral ports to minimize the current consumption.
+                                Those configurations must be placed in the function
+                                “Device_GpioConfig”.</p><div class="- topic/p p">According to WBZ451 curiosity board pins
+                                assignment, the function provides example code to setup the GPIO
+                                pins and the peripheral. To setup the board configuration,  refer to
+                                the configuration examples. <figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_HMD_HMK_VYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_HMD_HMK_VYB">
+                                    <div class=""><img class="- topic/image image" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_OJY_KMK_VYB" src="GUID-5AD58FE9-3684-499C-BBBA-E63229F1A5C8-low.png"/></div>
+                                </figure></div>The “Device_GpioConfig” will be inside
+                            “DEVICE_EnterDeepSleep” to enter Deep sleep.<figure class="- topic/fig fig fignone" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_IRM_PMK_VYB" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__FIG_IRM_PMK_VYB">
+                                <div class=""><img class="- topic/image image" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_UCF_SMK_VYB" src="GUID-A2037723-3D10-40F1-80E1-0E044A4F182D-low.png"/></div>
+                            </figure></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="- topic/section section" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2"><h2 class="- topic/title title sectiontitle">User Application Development</h2><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Include</strong></p><div class="- topic/p p"><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E625729E-B9FE-4B1C-BAEE-4F6DDED32152" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E625729E-B9FE-4B1C-BAEE-4F6DDED32152">user action is required as mentioned here</li>
+            </ul><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AE459E11-03FE-4D2B-81AC-666050F36652" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AE459E11-03FE-4D2B-81AC-666050F36652"><code class="+ topic/ph pr-d/codeph ph codeph">app_ble_dsadv.h</code> into
+                        app.c file</li>
+            </ul><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3D45720F-8DD9-4AF9-A365-163B482E06E2" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-3D45720F-8DD9-4AF9-A365-163B482E06E2">definitions.h in all the files where
+                        port pin macros are used.<p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Tip:</strong><code class="+ topic/ph pr-d/codeph ph codeph"> definitions.h</code> is
+                            not specific to just port peripheral, instead it should be included in
+                            all application source files where peripheral functionality will be
+                            exercised.</p></li>
+            </ul></div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Enter Deep Sleep mode</strong></p><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6E21895C-31E9-4AA4-989A-D6D8D8F93210" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6E21895C-31E9-4AA4-989A-D6D8D8F93210"><p class="- topic/p p">DEVICE_EnterDeepSleep(false,0);</p><p class="- topic/p p">This API can be called to put the device to deep sleep mode.</p></li>
+            </ul><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Start Deep Sleep Advertisement</strong></p><ul class="- topic/ul ul">
+            <li class="- topic/li li" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-87B9BFC8-3A75-4445-82D7-4AA735222D25" data-ofbid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-87B9BFC8-3A75-4445-82D7-4AA735222D25">APP_BleDsadvStart(false);<p class="- topic/p p">This API can be called to start the Deep sleep Advertising.</p><p class="- topic/p p">This API is called in the Applications
+                initialstate - APP_STATE_INIT in app.c</p><div class="- topic/p p"><div class=""><img class="- topic/image image break break" id="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__IMAGE_IPD_452_C5B" src="GUID-1A9C0E95-88C0-4646-9091-840E2A6B545E-low.png"/></div></div><p class="- topic/p p">Users can exercise various other
+                BLE Advertisement functionalities by using <a class="- topic/xref xref" href="https://onlinedocs.microchip.com/pr/GUID-C5EAF60E-9124-427C-A0F1-F2DBE662EA92-en-US-1/index.html" target="_blank" rel="external noopener">BLE Stack API</a>.</p></li>
+            </ul></section>
+    </div>
+    <article class="- topic/topic topic nested1" aria-labelledby="TOPIC_V5L_VXP_35B__GUID-3C9874E0-EF12-49BB-863B-8BA89D3F636F" id="TOPIC_V5L_VXP_35B">
+        <h2 class="- topic/title title topictitle2" id="TOPIC_V5L_VXP_35B__GUID-3C9874E0-EF12-49BB-863B-8BA89D3F636F" style=""> Extreme Deep Sleep Support:</h2>
+        <div class="- topic/body body">
+            <p class="- topic/p p">To include Extreme Deep Sleep Support into the Current Application refer <a class="- topic/xref xref" href="">Extreme Deep Sleep Support</a> for <span class="- topic/ph ph">WBZ451</span> Document.</p>
+            <section class="- topic/section section" id="TOPIC_V5L_VXP_35B__GUID-8FC495BA-2541-49CD-B7EE-627DF0EFA7DA" data-ofbid="TOPIC_V5L_VXP_35B__GUID-8FC495BA-2541-49CD-B7EE-627DF0EFA7DA"><h3 class="- topic/title title sectiontitle">Where to go from here</h3><ul class="- topic/ul ul" id="TOPIC_V5L_VXP_35B__UL_BMS_CBQ_35B" data-ofbid="TOPIC_V5L_VXP_35B__UL_BMS_CBQ_35B">
+                <li class="- topic/li li" id="TOPIC_V5L_VXP_35B__GUID-690A7369-A200-4256-A619-EF22E39E02A7" data-ofbid="TOPIC_V5L_VXP_35B__GUID-690A7369-A200-4256-A619-EF22E39E02A7"><p class="- topic/p p"> <a class="- topic/xref xref" href="GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html">BLE Connection</a></p></li>
+                </ul></section>
+        </div>
+    </article>
+</article></main></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" aria-label="On this page" class="col-lg-2 d-none d-lg-block navbar d-print-none"> 
+                            <div id="wh_topic_toc_content">
+		                        
+	                            <div class=" wh_topic_toc "><div class="wh_topic_label">On this page</div><ul><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E5A5126A-BEC8-4541-9415-F6005C391E89" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-E5A5126A-BEC8-4541-9415-F6005C391E89">Introduction</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F90C9AF2-9298-4F77-908D-493BCF52E866" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-F90C9AF2-9298-4F77-908D-493BCF52E866">Recommended Reading</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7EA51B0D-8E4A-4555-BD4B-0D1B90A07BB1" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7EA51B0D-8E4A-4555-BD4B-0D1B90A07BB1">Hardware Requirement</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-21D0FA9A-083B-41A6-8D3F-BE24E852031A" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-21D0FA9A-083B-41A6-8D3F-BE24E852031A">SDK Setup</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C2836D07-01B1-49EF-AAC2-CE48326BC119" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-C2836D07-01B1-49EF-AAC2-CE48326BC119">Software Requirement</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6BE272DC-6424-4165-B344-CBF5ECDA37D7" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-6BE272DC-6424-4165-B344-CBF5ECDA37D7">Smartphone App</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-223374A9-C495-4FB3-B331-1874CE132816" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-223374A9-C495-4FB3-B331-1874CE132816">Programming the precompiled hex file or Application
+            Example</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7AEB4551-8490-4AF3-AAD0-B605BC8A1DD8" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-7AEB4551-8490-4AF3-AAD0-B605BC8A1DD8">Demo Description</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-137E096D-51A6-4909-A4B9-DB6AD83C8AD7" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-137E096D-51A6-4909-A4B9-DB6AD83C8AD7">Testing</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-48F0CD47-35F7-4174-9EB7-2F5D4C925553" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-48F0CD47-35F7-4174-9EB7-2F5D4C925553">Current Consumption Measurement</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-49D50497-1913-485A-9D9B-F744A1C9AC9C" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-49D50497-1913-485A-9D9B-F744A1C9AC9C">Developing this Application from scratch using MPLAB Code
+            Configurator</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A4C19FCA-2304-42E3-A5A6-5C550A9F715E" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-A4C19FCA-2304-42E3-A5A6-5C550A9F715E">Verify Deep Sleep, Advertisement, System Sleep
+                and RTC Clock Source Configuration</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-76B31218-70DA-4848-9E20-56E6BE9063C7" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-76B31218-70DA-4848-9E20-56E6BE9063C7">Generating Code</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AF8A2E92-D354-4BEA-B4D7-2DE10A0FE36D" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-AF8A2E92-D354-4BEA-B4D7-2DE10A0FE36D">System Manual
+                Configurations</a></div></li><li class="section-item"><div class="section-title"><a href="#GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2" data-tocid="GUID-C8852409-BBBF-444F-A6A6-0CFAAE393B81__GUID-5F491E2B-E79E-4CA1-B300-B395F2957CD2">User Application Development</a></div></li><li class="topic-item"><a href="#TOPIC_V5L_VXP_35B" data-tocid="TOPIC_V5L_VXP_35B"> Extreme Deep Sleep Support:</a><ul><li class="section-item"><div class="section-title"><a href="#TOPIC_V5L_VXP_35B__GUID-8FC495BA-2541-49CD-B7EE-627DF0EFA7DA" data-tocid="TOPIC_V5L_VXP_35B__GUID-8FC495BA-2541-49CD-B7EE-627DF0EFA7DA">Where to go from here</a></div></li></ul></li></ul></div>
+	                        	
+                        	</div>
+                        </nav>
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div> 
+        <div class="mchp_disclaimer"><p class="mchp_disclaimer_text">The online versions of the documents are provided as a courtesy. Verify all content and data in the device’s PDF documentation found on the device product page.</p></div><footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container mx-auto ">
+    <div class="footer">
+  <div class="mchp-wh-footer">
+    <div class="mchp-footer">
+      <div class="mchp-footer-tier1">
+        <div class="spacer"></div>
+        <div class="mchp-footer-container">
+          <div class="mchp-footer-links mchp-social-media-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Facebook" src="oxygen-webhelp/template/resources/images/201016-corp-facebook.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.linkedin.com/company/microchip-technology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip LinkedIn" src="oxygen-webhelp/template/resources/images/201016-corp-linkedin.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://twitter.com/MicrochipTech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Twitter" src="oxygen-webhelp/template/resources/images/201016-corp-twitter.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.youtube.com/user/MicrochipTechnology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip YouTube" src="oxygen-webhelp/template/resources/images/201016-corp-youtube.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.instagram.com/microchiptechnologyinc/" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Instagram" src="oxygen-webhelp/template/resources/images/201016-corp-instagram.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.weibo.com/microchiptech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Weibo" src="oxygen-webhelp/template/resources/images/201016-corp-weibo.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.microchip.com/en-us/about/blog" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Blog" src="oxygen-webhelp/template/resources/images/201016-corp-blog.png"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://www.microchip.com/about-us/contact-us" class="mchp-link__link">Contact</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information" class="mchp-link__link">Legal</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy" class="mchp-link__link">Privacy Policy</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/microchip-cookie-statement" class="mchp-link__link">Cookies</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://careers.microchip.com/" class="mchp-link__link">Careers</a>
+                  <span class="mchp-link__separator"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-newsletter">
+            <div class="cmp-text">
+              <p>Stay on the leading edge with our blog</p>
+            </div>
+            <div class="mchp-button-wrapper">
+              <a role="button" href="https://www.microchip.com/en-us/about/blog" class="mchp-button mchp-button-regular solid">
+                <span class="mchp-button__span">MicroSolutions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="graphic">
+          <img src="oxygen-webhelp/template/resources/images/footer-graphic.png"/>
+        </div>
+      </div>
+      <div class="mchp-footer-tier2">
+        <p class="mchp-copyright">© Copyright 1998-2022 Microchip Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-2724382-19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());   
+    gtag('config', 'UA-2724382-19');
+  </script>
+</div>
+  </div>
+</footer>
+        
+        <div id="go2top" class="d-print-none">
+            <span class="oxy-icon oxy-icon-up"></span>
+        </div>
+        
+        <div id="modal_img_large" class="modal">
+            <span class="close oxy-icon oxy-icon-remove"></span>
+            <div id="modal_img_container"></div>
+            <div id="caption"></div>
+        </div>
+        
+        
+        
+        
+        <script type="text/javascript">_satellite.pageBottom();</script><!-- Adobe Analytics -->
+        </body>
+</html>

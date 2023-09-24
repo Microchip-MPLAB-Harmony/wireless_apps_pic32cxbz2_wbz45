@@ -1,0 +1,295 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" data-whc_version="24.1">
+    <head><link rel="shortcut icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><link rel="icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="copyright" content="(C) Copyright 2023"/><meta name="generator" content="DITA-OT"/><meta name="description" content="Zigbee Over the Air Update(OTAU) is discussed in this section"/>        
+      <title>13.5.3 Zigbee Over The Air Update Demo</title><!--  Generated with Oxygen version 24.1, build number 2022062014.  --><meta name="wh-path2root" content=""/><meta name="wh-toc-id" content="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C-d1763e1213"/><meta name="wh-source-relpath" content="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C.xml"/><meta name="wh-out-relpath" content="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C.html"/>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css"/>
+    
+    <!-- Template default styles  -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2022062014"/>
+    
+    
+    <script src="./oxygen-webhelp/lib/jquery/jquery-3.5.1.min.js"></script>
+    
+    <script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script>
+<link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/microchip.css?buildId=2022062014"/><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/notes.css?buildId=2022062014"/>
+<script src="mchp-context-help.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async="" type="text/javascript"></script>
+    <script src="https://assets.adobedtm.com/6a72a357eb48/a636c708c7fe/launch-0b0023397020.min.js"></script><!-- Adobe Analytics -->
+</head>
+
+    <body id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">
+            Jump to main content
+        </a>
+        
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <a href="index.html" class=" wh_logo d-none d-sm-block "><img src="oxygen-webhelp\template\resources/images/microchip.png" alt="PIC32CXBZ2 Application Developer's Guide "/></a>
+                    <div class=" wh_publication_title "><a href="index.html">PIC32CXBZ2 Application Developer's Guide </a></div>
+                    
+                </div>
+                
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        
+         
+        
+        <div class=" wh_search_input navbar-form wh_topic_page_search search " role="form">
+            
+            
+            
+            <form id="searchForm" method="get" role="search" action="search.html"><div class="d-flex justify-contents-around"><div class="flex-grow-1"></div><div class="position-relative flex-grow-1"><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required"/><button type="submit" class="wh_search_button" aria-label="Search"><span class="search_input_text">Search</span></button></div><div class="align-self-center flex-grow-1 ml-2"><div class="d-flex justify-content-end"><div class="dropdown"><a style="font-size: 1em; padding: 7px 12px !important;" class="btn py-3 px-3 btn-outline-light dropdown-toggle" href="#" role="button" id="devicesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Pages</a><div style="font-size: 1em;" class="dropdown-menu" aria-labelledby="devicesMenu"><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/pic32cx-bz2">PIC32CX-BZ2</a><a class="dropdown-item" target="_blank" href="https://www.microchip.com/en-us/product/wbz451"> WBZ451</a></div></div></div></div></div></form>
+            
+            <div class="mchp-color-stripe-grid-container">
+  <div class="mchp-main-bar mchp-orange-bar"></div>
+  <div class="mchp-main-bar mchp-blue-bar"></div>
+  <div class="mchp-main-bar mchp-green-bar"></div>
+</div>
+            
+        </div>
+        
+        <div class="container-fluid" id="wh_topic_container">
+            <div class="row">
+
+                <nav class="wh_tools d-print-none navbar-expand-md" aria-label="Tools">
+                    
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><div class="topicref" data-id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B"><div class="title"><a href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13</ph>
+How-to: Firmware and OTA Updates</a><div class="wh-tooltip"><p class="shortdesc">This section documents how to enable FW updates in your design, whether its serial or over the air</p></div></div></div></li><li><div class="topicref" data-id="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4"><div class="title"><a href="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5</ph>
+Microchip Utility Tool</a><div class="wh-tooltip"><p class="shortdesc">Microchip Utility Tool is windows based GUI Tool used for firmware upgrade.</p></div></div></div></li><li class="active"><div class="topicref" data-id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C"><div class="title"><a href="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C.html"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.3</ph>
+Zigbee Over The Air Update Demo</a><div class="wh-tooltip"><p class="shortdesc">Zigbee Over the Air Update(OTAU) is discussed in this section</p></div></div></div></li></ol></div>
+                    
+                    
+                    
+                    <div class="wh_right_tools">
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        
+                        
+                        
+                        
+                        <div class=" wh_print_link print d-none d-md-inline-block "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                        
+                        <button type="button" id="wh_toc_button" class="custom-toggler navbar-toggler collapsed wh_toggle_button navbar-light" aria-expanded="false" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    
+                </nav>
+            </div>
+            
+            
+            
+            
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-12 d-md-block d-none d-print-none" aria-label="Table of Contents Container">
+                            <div id="wh_publication_toc_content">
+		                        
+                            	<div class=" wh_publication_toc " data-tooltip-position="right"><span class="expand-button-action-labels"><span id="button-expand-action" role="button" aria-label="Expand"></span><span id="button-collapse-action" role="button" aria-label="Collapse"></span><span id="button-pending-action" role="button" aria-label="Pending"></span></span><ul role="tree" aria-label="Table of Contents"><li role="treeitem"><div data-tocid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9" class="topicref introduction" data-id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424.html" id="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424-d1763e9-link">Introduction</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17" class="topicref" data-id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633.html" id="GUID-C0EB31FA-0642-4A8C-8974-E4DD62E36633-d1763e17-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">1</ph>
+Quick references </a><div class="wh-tooltip"><p class="shortdesc">Enter a short description of your topic here (optional).</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39" class="topicref" data-id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html" id="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6-d1763e39-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">2</ph>
+Getting Started with WBZ451 Curiosity Board</a><div class="wh-tooltip"><p class="shortdesc">This section covers the evaluation board features and running the preprogrammed demo         example. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109" class="topicref" data-id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html" id="GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7-d1763e109-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">3</ph>
+Getting Started with Software Development</a><div class="wh-tooltip"><p class="shortdesc">This section gives a detailed information on the steps to install IDE, compiler, tool         chain, BLE, Zigbee stacks and application examples on the PC. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212" class="topicref" data-id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html" id="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46-d1763e212-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">4</ph>
+Bluetooth Low Energy Applications</a><div class="wh-tooltip"><p class="shortdesc">This section provides details on documentation describing the steps to test and develop         the precompiled BLE application examples. </p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485" class="topicref" data-id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html" id="GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132-d1763e485-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">5</ph>
+Getting Started with Zigbee Applications</a><div class="wh-tooltip"><p class="shortdesc">This is a generic document, which gives the user an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. It shows how the protocol configurations(such as application, device types, clusters, commissioning) can be enabled/disabled, configured in a step by step manner, using Microchip's embedded software development framework tools. Microchip Harmony Framework is a full-featured, production grade, embedded software development platform from Microchip. It provides a framework for creating zigbee devices running on PIC32CX-BZ/WBZ family of device and modules.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632" class="topicref" data-id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23.html" id="GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23-d1763e632-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">6</ph>
+Getting Started With Multiprotocol Applications</a><div class="wh-tooltip"><p class="shortdesc">Documentation describing steps to test and develop the precompiled BLE and Zigbee coexistence application examples.</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683" class="topicref" data-id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE.html" id="GUID-64131DE4-2C60-4116-A206-EF72A41E71CE-d1763e683-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">7</ph>
+Flashing hex from MPLAB DISCOVER using MPLAB IPE</a><div class="wh-tooltip"><p class="shortdesc">This section provides a detailed procedure of how to download an already existing     application hex file from MPLAB DISCOVER and flash the hex file into WBZ451 Curiosity Board     using MPLAB IPE.</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694" class="topicref" data-id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html" id="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18-d1763e694-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">8</ph>
+ Getting Started with IEEE 802.15.4 P2P Phy Application</a></div></div></li><li role="treeitem"><div data-tocid="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750" class="topicref" data-id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A.html" id="GUID-5C1924BD-FC6E-4FD5-9786-55FDC1B4035A-d1763e750-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">9</ph>
+Getting Started with IEEE 802.15.4 MAC Application Examples</a></div></div></li><li role="treeitem"><div data-tocid="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759" class="topicref" data-id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B.html" id="GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B-d1763e759-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">10</ph>
+Getting started with Thread Applications</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767" class="topicref" data-id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD.html" id="GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD-d1763e767-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">11</ph>
+How-to: Adding Chip Peripherals</a><div class="wh-tooltip"><p class="shortdesc">Guidance on how to add analog/digital peripherals to your application</p></div></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812" class="topicref" data-id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html" id="GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE-d1763e812-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">12</ph>
+How-to: Low Power Design</a><div class="wh-tooltip"><p class="shortdesc">Enable low power modes - Sleep/Standby or Deep Sleep/Backup Modes in your design</p></div></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844" class="topicref" data-id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html" id="GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B-d1763e844-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13</ph>
+How-to: Firmware and OTA Updates</a><div class="wh-tooltip"><p class="shortdesc">This section documents how to enable FW updates in your design, whether its serial or over the air</p></div></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0-d1763e855" class="topicref" data-id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0.html" id="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0-d1763e855-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.1</ph>
+Bootloader</a></div></div></li><li role="treeitem"><div data-tocid="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761-d1763e863" class="topicref" data-id="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761.html" id="GUID-003E64BA-98A3-40EA-8417-ED7F09C14761-d1763e863-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.2</ph>
+Device Firmware Upgrade Over Serial</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-908446A4-F490-4063-9096-66C4831F9BE4-d1763e871" class="topicref" data-id="GUID-908446A4-F490-4063-9096-66C4831F9BE4" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-908446A4-F490-4063-9096-66C4831F9BE4-d1763e871-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-908446A4-F490-4063-9096-66C4831F9BE4.html" id="GUID-908446A4-F490-4063-9096-66C4831F9BE4-d1763e871-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.3</ph>
+Device Firmware Upgrade Over BLE</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6-d1763e991" class="topicref" data-id="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6-d1763e991-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6.html" id="GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6-d1763e991-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.4</ph>
+Device Firmware Upgrade Over Zigbee Link</a><div class="wh-tooltip"><p class="shortdesc"></p></div></div></div></li><li role="treeitem" aria-expanded="true"><div data-tocid="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4-d1763e1183" class="topicref" data-id="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-A3F96AEA-7517-4859-9799-149B152B5BC4-d1763e1183-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4.html" id="GUID-A3F96AEA-7517-4859-9799-149B152B5BC4-d1763e1183-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5</ph>
+Microchip Utility Tool</a><div class="wh-tooltip"><p class="shortdesc">Microchip Utility Tool is windows based GUI Tool used for firmware upgrade.</p></div></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-4F84E615-EC93-4752-AF4D-B9477527B4FA-d1763e1194" class="topicref" data-id="GUID-4F84E615-EC93-4752-AF4D-B9477527B4FA" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-4F84E615-EC93-4752-AF4D-B9477527B4FA.html" id="GUID-4F84E615-EC93-4752-AF4D-B9477527B4FA-d1763e1194-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.1</ph>
+Introduction</a></div></div></li><li role="treeitem"><div data-tocid="GUID-95F50FC6-4CEE-4EA3-BB70-939637997C8B-d1763e1202" class="topicref" data-id="GUID-95F50FC6-4CEE-4EA3-BB70-939637997C8B" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-95F50FC6-4CEE-4EA3-BB70-939637997C8B.html" id="GUID-95F50FC6-4CEE-4EA3-BB70-939637997C8B-d1763e1202-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.2</ph>
+Tools Description</a><div class="wh-tooltip"><p class="shortdesc"></p></div></div></div></li><li role="treeitem" aria-expanded="true" class="active"><div data-tocid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C-d1763e1213" class="topicref" data-id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C-d1763e1213-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C.html" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C-d1763e1213-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.3</ph>
+Zigbee Over The Air Update Demo</a><div class="wh-tooltip"><p class="shortdesc">Zigbee Over the Air Update(OTAU) is discussed in this section</p></div></div></div><ul role="group" class="navbar-nav nav-list"><li role="treeitem"><div data-tocid="GUID-A40B634A-339D-4B50-9146-1FA15512D537-d1763e1224" class="topicref" data-id="GUID-A40B634A-339D-4B50-9146-1FA15512D537" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-A40B634A-339D-4B50-9146-1FA15512D537.html" id="GUID-A40B634A-339D-4B50-9146-1FA15512D537-d1763e1224-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.3.1</ph>
+ISD Protocol</a><div class="wh-tooltip"><p class="shortdesc">Zigbee server communicates with the PC Tools using ISD protocol</p></div></div></div></li></ul></li><li role="treeitem"><div data-tocid="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6-d1763e1235" class="topicref" data-id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6.html" id="GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6-d1763e1235-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.4</ph>
+<strong class="ph b">Serial Bootloader Demo</strong></a></div></div></li><li role="treeitem"><div data-tocid="GUID-931E0477-A4B1-4887-BC2C-370DC398B29C-d1763e1244" class="topicref" data-id="GUID-931E0477-A4B1-4887-BC2C-370DC398B29C" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-931E0477-A4B1-4887-BC2C-370DC398B29C.html" id="GUID-931E0477-A4B1-4887-BC2C-370DC398B29C-d1763e1244-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">13.5.5</ph>
+Programming using IPECMD.exe </a><div class="wh-tooltip"><p class="shortdesc">Image(*.hex) file can be programmed into the device</p></div></div></div></li></ul></li></ul></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255" class="topicref" data-id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50.html" id="GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50-d1763e1255-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">14</ph>
+Wireless System Services API</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944" class="topicref" data-id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7.html" id="GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7-d1763e1944-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">15</ph>
+Support Documentation</a><div class="wh-tooltip"><p class="shortdesc">This section has documentation that is generic and used as supporting document with our application example documentation</p></div></div></div></li><li role="treeitem"><div data-tocid="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992" class="topicref" data-id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0.html" id="GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0-d1763e1992-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">16</ph>
+Porting Guide for WBZ451 to PIC32CX1012BZ25048</a></div></div></li><li role="treeitem"><div data-tocid="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000" class="topicref" data-id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27" data-state="leaf"><span role="button" class="wh-expand-btn"></span><div class="title"><a href="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27.html" id="GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27-d1763e2000-link"><ph xmlns="http://www.oxygenxml.com/ns/webhelp/toc">17</ph>
+Porting Guide for WBZ451 to WBZ450</a></div></div></li><li role="treeitem" aria-expanded="false"><div data-tocid="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008" class="topicref backmatter backmatter_parent" data-id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link" class="wh-expand-btn"></span><div class="title"><a href="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html" id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d1763e2008-link">Microchip Information</a></div></div></li></ul></div>
+		                        
+                            </div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-12" id="wh_topic_body">
+                        <button id="wh_close_publication_toc_button" class="close-toc-button d-none" aria-label="Toggle publishing table of content" aria-controls="wh_publication_toc" aria-expanded="true">
+                            <span class="close-toc-icon-container">
+                                <span class="close-toc-icon"></span>     
+                            </span>
+                        </button>
+                        
+                        
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E381FB8F-61B3-439B-A2A3-4CB9DEAAFEE7"><h1 class="- topic/title title topictitle1" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E381FB8F-61B3-439B-A2A3-4CB9DEAAFEE7" style="">13.5.3 Zigbee Over The Air Update Demo</h1><div class="- topic/body body"><p class="- topic/shortdesc shortdesc">Zigbee Over the Air Update(OTAU) is discussed in this section</p><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Hardware Requirements</strong></p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-0E7FEC4D-C873-40C6-B541-A7127FF7728C" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-0E7FEC4D-C873-40C6-B541-A7127FF7728C"><p class="- topic/p p">Two or more WBZ451 Curiosity Board</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E68DBF94-135A-4DED-A0E6-6F1FB5D3A780" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E68DBF94-135A-4DED-A0E6-6F1FB5D3A780"><p class="- topic/p p">USB Cables</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-A6A40B39-D779-4996-A953-95B83F2F5A2A" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-A6A40B39-D779-4996-A953-95B83F2F5A2A"><p class="- topic/p p">PC</p></li></ul><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Software Requirements</strong></p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-44F11AE1-4AB9-4305-B8E1-5856007B39A6" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-44F11AE1-4AB9-4305-B8E1-5856007B39A6"><p class="- topic/p p">MPLABX IDE/IPE</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B845335E-EC09-4977-935B-757DE2EE44DC" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B845335E-EC09-4977-935B-757DE2EE44DC"><p class="- topic/p p">MicrochipUtilityTool.exe</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-DC745D2F-BABF-4E49-91D9-1F907BED9D78" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-DC745D2F-BABF-4E49-91D9-1F907BED9D78"><p class="- topic/p p">Zigbee OTAU Server and Client Image(*.hex)</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-DDC76119-3D1D-499F-8479-9946A216CD01" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-DDC76119-3D1D-499F-8479-9946A216CD01"><p class="- topic/p p">Zigbee OTA Image(*.zigbee)</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EE5E1892-D1DD-43A0-877F-ED139E63A0DE" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EE5E1892-D1DD-43A0-877F-ED139E63A0DE"><p class="- topic/p p">Terminal Emulator like TeraTerm</p></li></ul><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Procedure</strong></p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-373542CA-086D-4C6D-AB50-5FDBA21FA87B" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-373542CA-086D-4C6D-AB50-5FDBA21FA87B"><p class="- topic/p p">Program, Zigbee OTA Server Image into One WBZ451 Curiosity board</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-AC9DB285-2AA2-485B-999A-26B4020AE921" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-AC9DB285-2AA2-485B-999A-26B4020AE921"><p class="- topic/p p">Program, Zigbee Client Image into One or more WBZ451 Curiosity Boards</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-FBEF9339-E46C-4830-BC27-F377C7166E8D" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-FBEF9339-E46C-4830-BC27-F377C7166E8D"><p class="- topic/p p">Connect Server and Client/Clients board with USB to PC and start TeraTerm for each board</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-8B5E4B68-F067-472C-972C-6A7DDC8B9624" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-8B5E4B68-F067-472C-972C-6A7DDC8B9624"><p class="- topic/p p">Type resetToFN on every board’s Tera Term</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-D3953CAA-2FD2-41FA-BAC1-BA27C46D7A01" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-D3953CAA-2FD2-41FA-BAC1-BA27C46D7A01"><p class="- topic/p p">Wait for network to establish. The following type of messages will appear on Tera Term</p></li></ul><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-081721CE-E5C8-4791-BFF6-2C6D08DE73A1" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-081721CE-E5C8-4791-BFF6-2C6D08DE73A1"><p class="- topic/p p">Device joined: Address 0xABCD MACID 0x000000000000EFBA ExtendedPANID 0x0000000000003578</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-6EC361D8-C0D4-4F7E-81A4-A7924A5A755A" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-6EC361D8-C0D4-4F7E-81A4-A7924A5A755A"><p class="- topic/p p">Device joined: Address 0x1234 MACID 0x000000000000QRST ExtendedPANID 0x000000000000789A</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-26828389-11A3-4840-987F-5EBFFE5CFA5C" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-26828389-11A3-4840-987F-5EBFFE5CFA5C"><p class="- topic/p p">Note: Numbers above are for illustration purposes only. These numbers will be different.</p></li></ul><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-52707223-A835-4EF8-8D81-0F245AE8528C" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-52707223-A835-4EF8-8D81-0F245AE8528C"><p class="- topic/p p">Close Server Terra Term</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-08190F33-47C8-4C17-812A-92C860944960" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-08190F33-47C8-4C17-812A-92C860944960"><p class="- topic/p p">Start MicrochipUtilityTool.exe</p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-1D4D5A31-2BB4-4D25-BA87-37139E119FD3" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-1D4D5A31-2BB4-4D25-BA87-37139E119FD3"><p class="- topic/p p">Follow steps mentioned in the following picture. The demo shows two devices</p></li></ul></li></ul><ol class="- topic/ol ol" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-533C078D-46E2-40C9-A5BD-3D3EC6AFF7D6" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-533C078D-46E2-40C9-A5BD-3D3EC6AFF7D6"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-2673FA3F-4413-4BE0-AFCB-6626816ADEAD" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-2673FA3F-4413-4BE0-AFCB-6626816ADEAD"><p class="- topic/p p">Click on Zigbee OTAU Tab</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-CD0EC7FF-01AB-4436-BA55-8ACB559E50E9" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-CD0EC7FF-01AB-4436-BA55-8ACB559E50E9"><p class="- topic/p p">Select Baud Rate as 115200 from the drop-down menu</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-14185280-5C81-4BEB-B071-A83889A5EA20" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-14185280-5C81-4BEB-B071-A83889A5EA20"><p class="- topic/p p">Select Zigbee OTA Server Serial Port from the drop-down menu</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EDCBB2C8-5347-46C7-A983-85155B1D726E" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EDCBB2C8-5347-46C7-A983-85155B1D726E"><p class="- topic/p p">Click on Connect/Disconnect Button</p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-051C83E4-8B40-4CF2-AB5C-793CE3A33316" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-051C83E4-8B40-4CF2-AB5C-793CE3A33316"><div class="- topic/p p">Click Ok on popup windows<figure class="- topic/fig fig fignone" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-6869EA87-5475-4BAE-9A66-792B6B40BE32" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-6869EA87-5475-4BAE-9A66-792B6B40BE32"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 13-94. <span id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-517C2BBA-4558-48FB-85C1-2E2F1E437E71" class="fig--title">Figure 4: Zigbee Server Connection</span></span>. <span class="- topic/desc desc figdesc"></span></figcaption><div class=""><img class="- topic/image image" src="GUID-76114D40-996E-4F64-AFB2-556099B2FB9D-low.jpg"/></div></figure></div></li></ul></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-82C7E30F-E858-4518-85AC-CEC9311FC2E6" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-82C7E30F-E858-4518-85AC-CEC9311FC2E6"><p class="- topic/p p">Wait for connected device to appear on the device list</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-C8710E4F-68A3-4A6F-8068-B7FF660AF8AD" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-C8710E4F-68A3-4A6F-8068-B7FF660AF8AD"><p class="- topic/p p">Click on Select File button from each device list and select *.zigbee file for each device(up to 5)</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E9DB4D58-CBEF-4852-9CCC-86387E19EF49" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-E9DB4D58-CBEF-4852-9CCC-86387E19EF49"><p class="- topic/p p">Click on Zigbee Update button</p><div class="- topic/p p"><figure class="- topic/fig fig fignone" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-BFE21D5E-80E5-4BC2-82E2-67367E428B7F" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-BFE21D5E-80E5-4BC2-82E2-67367E428B7F"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 13-95. <span id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-61D64A49-97CD-40E8-8D06-E8F9E0E2D852" class="fig--title">Figure 5: Zigbee OTAU Process Start</span></span>. <span class="- topic/desc desc figdesc"></span></figcaption><div class=""><img class="- topic/image image" src="GUID-7275F818-0875-4E66-92F9-186807FC848B-low.jpg"/></div></figure></div></li></ol><p class="- topic/p p">Image keeps transferring frame by frame to each client node. Progress bar keep advancing. % Progress keeps advancing for selected device in the device list till all reach 100% for every selected client node. OTA Status shows OTAU Done. Tera Term connected with client shows Image Transferred Successfully and reboots after 5 sec into new Image as last command sent from Tool is reboot client devices after 5 sec.</p><div class="- topic/p p"><figure class="- topic/fig fig fignone" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-BD0E6F6E-D919-4C8E-9BB4-CCE65B69937B" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-BD0E6F6E-D919-4C8E-9BB4-CCE65B69937B"><figcaption class="- topic/title title figcap"><span class="figtitleprefix fig--title-label">Figure 13-96. <span id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-937EDA40-E6D3-459B-BE68-FE652BB80932" class="fig--title">Figure 6: Zigbee OTAU Process Finish</span></span>. <span class="- topic/desc desc figdesc"></span></figcaption><div class=""><img class="- topic/image image" src="GUID-B4EB6948-3EC2-4DCF-9634-2041B8C64389-low.jpg"/></div></figure></div><p class="- topic/p p"><strong class="+ topic/ph hi-d/b ph b">Summary</strong></p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-69C2DE32-49A0-42F3-87A7-4AC614EA77E4" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-69C2DE32-49A0-42F3-87A7-4AC614EA77E4"><p class="- topic/p p">Maximum 5 client can be updated at a time. This limitation comes from Zigbee Server.</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-F3674FD6-09EC-4A08-BF2C-D4AE01F5E89F" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-F3674FD6-09EC-4A08-BF2C-D4AE01F5E89F"><p class="- topic/p p">Maximum 48 bytes payload can be sent in a frame at a time</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B0F057B0-56B2-41E1-BFD2-0D8AE8EFC60F" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B0F057B0-56B2-41E1-BFD2-0D8AE8EFC60F"><p class="- topic/p p">Out of Full packet size of 89 bytes, 39 bytes are header.</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B834D784-319D-40FB-A676-FF2695D4966F" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B834D784-319D-40FB-A676-FF2695D4966F"><p class="- topic/p p">It takes long time to transmit all the image data to client</p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-30EE605F-D390-46D5-BCC3-6705258CA171" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-30EE605F-D390-46D5-BCC3-6705258CA171"><p class="- topic/p p">setMinimunBlockPeriod xx can be used set interpacket timing. It is recommended xx should be &gt; 100 ms</p></li></ul></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B33E0CD8-A3B1-4FFF-AE43-CE0480212F80" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-B33E0CD8-A3B1-4FFF-AE43-CE0480212F80"><p class="- topic/p p">The Image used for this demo has 200 ms interpacket timing. Default is set to 1000 ms interpacket timing. It takes 32 min 17 sec to transmit entire image, Image Size = 307784 bytes.</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-5AFF9977-1E36-409A-BA79-D80686017BEA" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-5AFF9977-1E36-409A-BA79-D80686017BEA"><p class="- topic/p p">Once the OTAU is started, File transfer can be initiated into new nodes appeared in the device list.</p></li><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-63CD6FFA-006F-44B3-865F-178965599BEB" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-63CD6FFA-006F-44B3-865F-178965599BEB"><p class="- topic/p p">Time out (status = 0x95) in client node is not transmitted to OTA Server.</p><ul class="- topic/ul ul"><li class="- topic/li li" id="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EF2710D2-4972-44FE-9CC9-B9EA806CF315" data-ofbid="GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C__GUID-EF2710D2-4972-44FE-9CC9-B9EA806CF315"><p class="- topic/p p">A 30 sec timeout has been introduced in the Tool to exit OTA process for not getting any update from the OTA server during OTA process.</p></li></ul></li></ul><p class="- topic/p p"></p></div></article></main></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div> 
+        <div class="mchp_disclaimer"><p class="mchp_disclaimer_text">The online versions of the documents are provided as a courtesy. Verify all content and data in the device’s PDF documentation found on the device product page.</p></div><footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container mx-auto ">
+    <div class="footer">
+  <div class="mchp-wh-footer">
+    <div class="mchp-footer">
+      <div class="mchp-footer-tier1">
+        <div class="spacer"></div>
+        <div class="mchp-footer-container">
+          <div class="mchp-footer-links mchp-social-media-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Facebook" src="oxygen-webhelp/template/resources/images/201016-corp-facebook.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.linkedin.com/company/microchip-technology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip LinkedIn" src="oxygen-webhelp/template/resources/images/201016-corp-linkedin.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://twitter.com/MicrochipTech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Twitter" src="oxygen-webhelp/template/resources/images/201016-corp-twitter.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.youtube.com/user/MicrochipTechnology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip YouTube" src="oxygen-webhelp/template/resources/images/201016-corp-youtube.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.instagram.com/microchiptechnologyinc/" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Instagram" src="oxygen-webhelp/template/resources/images/201016-corp-instagram.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.weibo.com/microchiptech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Weibo" src="oxygen-webhelp/template/resources/images/201016-corp-weibo.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.microchip.com/en-us/about/blog" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Blog" src="oxygen-webhelp/template/resources/images/201016-corp-blog.png"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://www.microchip.com/about-us/contact-us" class="mchp-link__link">Contact</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information" class="mchp-link__link">Legal</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy" class="mchp-link__link">Privacy Policy</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/microchip-cookie-statement" class="mchp-link__link">Cookies</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://careers.microchip.com/" class="mchp-link__link">Careers</a>
+                  <span class="mchp-link__separator"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-newsletter">
+            <div class="cmp-text">
+              <p>Stay on the leading edge with our blog</p>
+            </div>
+            <div class="mchp-button-wrapper">
+              <a role="button" href="https://www.microchip.com/en-us/about/blog" class="mchp-button mchp-button-regular solid">
+                <span class="mchp-button__span">MicroSolutions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="graphic">
+          <img src="oxygen-webhelp/template/resources/images/footer-graphic.png"/>
+        </div>
+      </div>
+      <div class="mchp-footer-tier2">
+        <p class="mchp-copyright">© Copyright 1998-2022 Microchip Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-2724382-19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());   
+    gtag('config', 'UA-2724382-19');
+  </script>
+</div>
+  </div>
+</footer>
+        
+        <div id="go2top" class="d-print-none">
+            <span class="oxy-icon oxy-icon-up"></span>
+        </div>
+        
+        <div id="modal_img_large" class="modal">
+            <span class="close oxy-icon oxy-icon-remove"></span>
+            <div id="modal_img_container"></div>
+            <div id="caption"></div>
+        </div>
+        
+        
+        
+        
+        <script type="text/javascript">_satellite.pageBottom();</script><!-- Adobe Analytics -->
+        </body>
+</html>

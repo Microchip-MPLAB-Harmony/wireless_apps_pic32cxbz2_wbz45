@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<keywords publicationid="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C"
+          language="en-US"
+          version="3"
+          documenttitle="PIC32CXBZ2 Application Developer's Guide"
+          pubtype="Online Reference"
+          pubsubtype=""
+          pubuserguidesubtype=""
+          pubproducthierarchy=""
+          devices="PIC32CX-BZ2, WBZ451"
+          revisiondate="23/06/2023 00:00:00"
+          revisionletter="C"
+          isbn=""
+          pubid=""
+          reachid=""
+          description=""
+          lastmodified="24/09/2023 05:52:43"
+          covertitle="PIC32CXBZ2 Application Developer's Guide"
+          frontcover="">
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Bootloader</register>
+      <title>Bootloader</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.DFU.BOOTLOADER</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Bootloader</register>
+      <title>Bootloader</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.DFU.BOOTLOADER</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Bootloader</register>
+      <title>Bootloader</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.DFU.BOOTLOADER</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register> Getting Started with IEEE 802.15.4 P2P
+        Phy Application</register>
+      <title>Getting Started with IEEE 802.15.4 P2P Phy Application</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.P2P_PHY_APP</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register> Getting Started with IEEE 802.15.4 P2P
+        Phy Application</register>
+      <title>Getting Started with IEEE 802.15.4 P2P Phy Application</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.P2P_PHY_APP</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register> Getting Started with IEEE 802.15.4 P2P
+        Phy Application</register>
+      <title>Getting Started with IEEE 802.15.4 P2P Phy Application</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.P2P_PHY_APP</keyword>
+   </keyworditem>
+</keywords>
