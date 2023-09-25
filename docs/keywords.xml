@@ -14,74 +14,41 @@
           pubid=""
           reachid=""
           description=""
-          lastmodified="24/09/2023 05:52:43"
+          lastmodified="25/09/2023 17:10:20"
           covertitle="PIC32CXBZ2 Application Developer's Guide"
           frontcover="">
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
                 nocomponent="true"
                 parent="">
       <device>PIC32CX-BZ2</device>
       <module/>
       <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
       <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV_GUIDE</keyword>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
                 nocomponent="true"
                 parent="">
       <device>WBZ451</device>
       <module/>
       <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
       <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV_GUIDE</keyword>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
                 nocomponent="true"
                 parent="">
       <device/>
       <module/>
       <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
+      <register>Bluetooth Low Energy Applications</register>
+      <title>Bluetooth Low Energy Applications</title>
       <bitfield/>
-      <keyword>BZ2_APP_DEV_GUIDE</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
-                nocomponent="true"
-                parent="">
-      <device>PIC32CX-BZ2</device>
-      <module/>
-      <component/>
-      <register>Central</register>
-      <title>Central</title>
-      <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
-                nocomponent="true"
-                parent="">
-      <device>WBZ451</device>
-      <module/>
-      <component/>
-      <register>Central</register>
-      <title>Central</title>
-      <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
-                nocomponent="true"
-                parent="">
-      <device/>
-      <module/>
-      <component/>
-      <register>Central</register>
-      <title>Central</title>
-      <bitfield/>
-      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+      <keyword>BZ2_APP_DEV.BLE</keyword>
    </keyworditem>
    <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
                 nocomponent="true"
@@ -116,6 +83,39 @@
       <bitfield/>
       <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
    </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Central</register>
+      <title>Central</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
+   </keyworditem>
    <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
                 nocomponent="true"
                 parent="">
@@ -149,38 +149,38 @@
       <bitfield/>
       <keyword>BZ2_APP_DEV.WBZ45_EVB</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
                 nocomponent="true"
                 parent="">
       <device>PIC32CX-BZ2</device>
       <module/>
       <component/>
-      <register>Bluetooth Low Energy Applications</register>
-      <title>Bluetooth Low Energy Applications</title>
+      <register>Introduction</register>
+      <title>Introduction</title>
       <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE</keyword>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV_GUIDE</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
                 nocomponent="true"
                 parent="">
       <device>WBZ451</device>
       <module/>
       <component/>
-      <register>Bluetooth Low Energy Applications</register>
-      <title>Bluetooth Low Energy Applications</title>
+      <register>Introduction</register>
+      <title>Introduction</title>
       <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV.BLE</keyword>
+      <keyword>WBZ451;BZ2_APP_DEV_GUIDE</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
                 nocomponent="true"
                 parent="">
       <device/>
       <module/>
       <component/>
-      <register>Bluetooth Low Energy Applications</register>
-      <title>Bluetooth Low Energy Applications</title>
+      <register>Introduction</register>
+      <title>Introduction</title>
       <bitfield/>
-      <keyword>BZ2_APP_DEV.BLE</keyword>
+      <keyword>BZ2_APP_DEV_GUIDE</keyword>
    </keyworditem>
    <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
                 nocomponent="true"

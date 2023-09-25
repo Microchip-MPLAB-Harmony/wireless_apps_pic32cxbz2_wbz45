@@ -34,6 +34,8 @@ The following applications are provided to demonstrate the typical use case of o
 | --- | :---: |
 | [BLE Sensor App](apps/ble/advanced_applications/ble_sensor/readme.md) | PIC32CX-BZ |
 | [BLE Throughput](apps/ble/advanced_applications/ble_throughput/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral ANCS](apps/ble/advanced_applications/ble_ancs_app/readme.md) | PIC32CX-BZ |
+| [BLE Peripheral HOGPS or HID Profile](apps/ble/advanced_applications/ble_hogps_app/readme.md) | PIC32CX-BZ |
 | [BLE Central Connection](apps/ble/building_blocks/central/central_conn/readme.md) | PIC32CX-BZ |
 | [BLE Central Legacy Scan](apps/ble/building_blocks/central/legacy_scan/readme.md) | PIC32CX-BZ |
 | [BLE Central Scan Ext Adv](apps/ble/building_blocks/central/scan_ext_adv/readme.md) | PIC32CX-BZ |
@@ -46,8 +48,6 @@ The following applications are provided to demonstrate the typical use case of o
 | [BLE peripheral transparent UART](apps/ble/building_blocks/peripheral/profiles_services/custom_service/readme.md) | PIC32CX-BZ |
 | [BLE Custom Service](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md) | PIC32CX-BZ |
 | [BLE Deep Sleep Adv](apps/ble/building_blocks/peripheral/deep_sleep_adv/readme.md) | PIC32CX-BZ |
-| [BLE Peripheral ANCS](apps/ble/building_blocks/peripheral/ble_ancs_app/readme.md) | PIC32CX-BZ |
-| [BLE Peripheral HOGPS or HID Profile](apps/ble/building_blocks/peripheral/ble_hogps_app/readme.md) | PIC32CX-BZ |
 | [BLE Peripheral PATH Loss Advertisement](apps/ble/building_blocks/peripheral/legacy_adv_pathloss/readme.md) | PIC32CX-BZ |
 | [BLE peripheral Code PHY transparent UART](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart_codedPhy/readme.md) | PIC32CX-BZ |
 | [BLE Peripheral BLE Multiple Advertising Sets](apps/ble/building_blocks/peripheral/two_set_adv/readme.md) | PIC32CX-BZ |
@@ -61,18 +61,18 @@ The following applications are provided to demonstrate the typical use case of o
 
 | IEEE 802.15.4 Standalone P2P PHY Application Examples | Families |
 | --- | :---: |
-| [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/PHY/p2p_phy/readme.md) | PIC32CX-BZ |
-| [IEEE 802 15.4 MAC](apps/ieee_802_15_4/MAC/push_pull_mac_app/readme.md) | PIC32CX-BZ |
+| [IEEE 802.15.4 P2P PHY](apps/ieee_802_15_4/PHY/p2p_phy/readme.md) | PIC32CX-BZ |
+| [IEEE 802 15.4 MAC Push Pull](apps/ieee_802_15_4/MAC/push_pull_mac_app/readme.md) | PIC32CX-BZ |
 
 | Zigbee Examples | Families |
 | --- | :---: |
 | [Zigbee Combined Interface (Coordinator)](apps/zigbee/combinedInterface/readme.md) | PIC32CX-BZ |
 | [Zigbee Extended Lights (Router)](apps/zigbee/ext_light/readme.md) | PIC32CX-BZ |
 | [Zigbee End Device (End Device)](apps/zigbee/multisensor/readme.md) | PIC32CX-BZ |
-| [Zigbee Combined Interface](apps/zigbee/custom_cluster_server/readme.md) | PIC32CX-BZ |
-| [Zigbee Combined Interface](apps/zigbee/custom_occupancy_light/readme.md) | PIC32CX-BZ |
-| [Zigbee Combined Interface](apps/zigbee/custome_cluster_client/readme.md) | PIC32CX-BZ |
-| [Zigbee Combined Interface](apps/zigbee/multisensor_deepSleep/readme.md) | PIC32CX-BZ |
+| [Zigbee Custom Cluster Server](apps/zigbee/custom_cluster_server/readme.md) | PIC32CX-BZ |
+| [Zigbee Custom Occupancy Light](apps/zigbee/custom_occupancy_light/readme.md) | PIC32CX-BZ |
+| [Zigbee Custom Cluster Client](apps/zigbee/custome_cluster_client/readme.md) | PIC32CX-BZ |
+| [Zigbee Multisensor DeepSleep](apps/zigbee/multisensor_deepSleep/readme.md) | PIC32CX-BZ |
 
 | Multiprotocol(BLE+Zigbee) Examples | Families |
 | --- | :---: |

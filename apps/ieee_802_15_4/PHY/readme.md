@@ -11,6 +11,7 @@ various functionaities of the transceiver.
 User can switch between different modes via CLI commands. Refer to the following docs for more details.
 
 -   **[IEEE 802.15.4 P2P PHY Application Examples](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424)**
+-   **[IEEE 802.15.4 PHY API REFERENCE MANUAL](https://onlinedocs.microchip.com/oxy/GUID-064E0446-1800-4952-AC2C-15F8AFAB1DA2-en-US-1/index.html)**
 
 MPLAB® Harmony 3 is an extension of the MPLAB® ecosystem for creating embedded firmware solutions for Microchip 32-bit SAM and PIC® microcontroller and microprocessor devices.  Refer to the following links for more information.
 

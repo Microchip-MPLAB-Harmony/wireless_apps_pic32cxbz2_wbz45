@@ -206,6 +206,7 @@ typedef enum APP_Mode_T
     APP_SYSTIMER_START_PERIODIC_TEST_MODE,
     APP_SYSTIMER_EXPIRY_PERIODIC_TEST_MODE,
     APP_SYSTIMER_EXPIRY_DATA_ENTRY,
+    APP_PACKET_DISP_EVENT,
             
 }APP_Mode_T;
 
@@ -242,6 +243,7 @@ void app_P2P_Phy_stopActiveModes(void);
 void app_P2P_Phy_appModePostDataTxDoneCbSwitchHandler(void);
 void app_P2P_Phy_appModePostDataTxSwitchHandler(void);
 APP_NWK_PARAM *app_P2P_Phy_AssignNWKParams(void);
+void appPacketDisplay(APP_Msg_T *appMess);
 /**
 * @brief Converts a 16-Bit value into  a 2 Byte array
 *

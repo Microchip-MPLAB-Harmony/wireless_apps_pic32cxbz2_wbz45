@@ -221,7 +221,7 @@
 
 /*******************************************************************************
   Function:
-     OSAL_RESULT OSAL_SEM_Pend(OSAL_SEM_HANDLE_TYPE* semID, uint16_t waitMS)
+     OSAL_RESULT OSAL_SEM_Pend(OSAL_SEM_HANDLE_TYPE* semID, uint32_t waitMS)
 
   Summary:
     Waits on a semaphore. Returns true if the semaphore was obtained within the
@@ -265,7 +265,7 @@
     None.
 
     */
-//OSAL_RESULT OSAL_SEM_Pend(OSAL_SEM_HANDLE_TYPE* semID, uint16_t waitMS);
+//OSAL_RESULT OSAL_SEM_Pend(OSAL_SEM_HANDLE_TYPE* semID, uint32_t waitMS);
 
 // *****************************************************************************
 /* Function:
@@ -588,7 +588,7 @@
 
 // *****************************************************************************
 /* Function:
-    OSAL_RESULT OSAL_MUTEX_Lock(OSAL_MUTEX_HANDLE_TYPE* mutexID, uint16_t waitMS)
+    OSAL_RESULT OSAL_MUTEX_Lock(OSAL_MUTEX_HANDLE_TYPE* mutexID, uint32_t waitMS)
 
   Summary:
     Locks a mutex.
@@ -633,7 +633,7 @@
     None.
 
  */
-//OSAL_RESULT OSAL_MUTEX_Lock(OSAL_MUTEX_HANDLE_TYPE* mutexID, uint16_t waitMS);
+//OSAL_RESULT OSAL_MUTEX_Lock(OSAL_MUTEX_HANDLE_TYPE* mutexID, uint32_t waitMS);
 
 // *****************************************************************************
 /* Function:

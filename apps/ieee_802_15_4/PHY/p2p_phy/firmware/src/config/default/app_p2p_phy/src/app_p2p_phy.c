@@ -63,7 +63,7 @@ extern TaskHandle_t xSYS_CMD_Tasks;
 APP_NWK_PARAM appNwkParam;
 DEVICE_TABLE deviceTable[NUM_OF_DEVICES]; 
 bool dataModeTimerStartFlag;
-
+static PHY_FrameInfo_t txFrameInfo;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -201,8 +201,8 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
             }
             else if(((contDataModeflag == false) && (payloadMaxLimitFlag == true) && (payloadFragmentLimit == false)))
             {
-                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
-                SYS_CONSOLE_PRINT("\r\n No of Bytes sent in 1st iteration %d\n",(aMaxPHYPacketSize - appNwkParam.frameOverHead));
+//                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
+//                SYS_CONSOLE_PRINT("\r\n No of Bytes sent in 1st iteration %d\n",(aMaxPHYPacketSize - appNwkParam.frameOverHead));
                 app_P2P_Phy_ParseUserdefinedData(readBytesConsole, (aMaxPHYPacketSize - appNwkParam.frameOverHead));    
             }
             else if((payloadMaxLimitFlag == true) && (payloadFragmentLimit == true))
@@ -218,7 +218,7 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
             }
             else
             { 
-                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
+//                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
                 app_P2P_Phy_ParseUserdefinedData(readBytesConsole, len);
             }
             osalResult = osalResult;
@@ -267,7 +267,7 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
             }
             if((contDataModeflag == true) && (payloadMaxLimitFlag == true) && (payloadFragmentLimit == false))
             {
-                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
+//                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
                 SYS_CONSOLE_PRINT("\r\n No of Bytes sent in 1st iteration %d\n",(aMaxPHYPacketSize - appNwkParam.frameOverHead));
                 app_P2P_Phy_ParseUserdefinedData(readBytesConsole, (aMaxPHYPacketSize - appNwkParam.frameOverHead));
             }
@@ -286,7 +286,7 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
             }
             else
             { 
-                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
+//                SYS_CONSOLE_PRINT("\r\n No of Bytes %d\n",len);
                 app_P2P_Phy_ParseUserdefinedData(readBytesConsole, len);
             }
             }
@@ -321,7 +321,7 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
                     
         case APP_CONTINUOUS_DATA_TEST_MODE:
         {
-            PAL_TimerDelay(1000000);
+//            PAL_TimerDelay(1000000);
             app_P2P_Phy_TestMode(CONT_TEST_MODE);
             break;
         }
@@ -344,15 +344,31 @@ void app_P2P_Phy_TaskHandler(APP_Msg_T *appModeSwitch){
             break;
         }                     
                     
+        case APP_PACKET_DISP_EVENT:
+        {
+            appPacketDisplay(appModeSwitch);
+            break;
+        }
+                    
         default:
         {
-            SYS_CONSOLE_MESSAGE("\r\nIDLE MODE\r\n");
+//            SYS_CONSOLE_MESSAGE("\r\nIDLE MODE\r\n");
             break; 
         }
                     
     }
 }
 
+void appPacketDisplay(APP_Msg_T *appMess)
+{
+//    SYS_CONSOLE_MESSAGE("\r\n RX PKT\r\n");
+    SYS_CONSOLE_MESSAGE("\r\n");
+    for(uint8_t i = 1; i <= appMess->msgData[0]; i++)
+    {
+        SYS_CONSOLE_PRINT("%c",appMess->msgData[i]);
+    }
+    SYS_CONSOLE_MESSAGE("\r\n");
+}
 //If device index is 0xff/255 all the valid entries in the table will be displayed
 void app_P2P_Phy_GetDeviceTableInfo(uint8_t dev_index)
 {  
@@ -667,7 +683,7 @@ APP_OP_STATE_T app_P2P_Phy_SetNWKParams(APP_NWK_PARAM *appnwkParam)
 
 void app_P2P_Phy_TestMode(APP_TEST_MODE_T testStates)
 {
-    SYS_CONSOLE_MESSAGE("\n===============================================\n");
+//    SYS_CONSOLE_MESSAGE("\n===============================================\n");
     appStatesParam.appOpModes = TEST_MODE;
     switch(testStates)
     {
@@ -710,7 +726,7 @@ void app_P2P_Phy_TestMode(APP_TEST_MODE_T testStates)
         }
         default:
         {
-            SYS_CONSOLE_MESSAGE("\r\nNo test mode selected\r\n");
+//            SYS_CONSOLE_MESSAGE("\r\nNo test mode selected\r\n");
             break;
         }
     }
@@ -794,7 +810,7 @@ void app_P2P_Phy_ParseUserdefinedData(uint8_t *userData, uint8_t userDataLen){
             }
             else
             {
-                SYS_CONSOLE_PRINT("\r Device Index Out of Range\n");
+//                SYS_CONSOLE_PRINT("\r Device Index Out of Range\n");
                 if(deviceTable[DEST_DEV_INDEX].valid == true)
                 {
 //                    SYS_CONSOLE_PRINT("\r Unicast Data to first device in device table\n");
@@ -845,7 +861,7 @@ void app_P2P_Phy_ParseUserdefinedData(uint8_t *userData, uint8_t userDataLen){
  */
 void app_P2P_Phy_TransmitFrame(uint8_t *payload, uint8_t payloadLength, uint8_t devIndex, uint8_t msduHandle, bool unicast, bool ackReq, bool frameRetry)
 {     
-    PHY_FrameInfo_t txFrameInfo;//naming convention shd be taken care
+//    PHY_FrameInfo_t txFrameInfo;//naming convention shd be taken care
 	uint8_t frameLength = 0;
 	uint8_t *framePtr, *tempFramePtr;
 	uint16_t tempValue = 0, frameControlField = 0, dstShortAddr = 0, srcShortAddr = 0;
@@ -947,11 +963,11 @@ void app_P2P_Phy_TransmitFrame(uint8_t *payload, uint8_t payloadLength, uint8_t 
         {
             modeSwitchFlag.perTestMode = true;
         }
-        SYS_CONSOLE_PRINT("\r\nTX Done, PKT No. %d\r\n", msduHandle);
+//        SYS_CONSOLE_PRINT("\r\nTX Done, PKT No. %d\r\n", msduHandle);
     }
     else
     {
-        SYS_CONSOLE_PRINT("\r\nPHY Busy, PKT No. %d\r\n", msduHandle);
+//        SYS_CONSOLE_PRINT("\r\nPHY Busy, PKT No. %d\r\n", msduHandle);
     } 
     app_P2P_Phy_appModePostDataTxSwitchHandler();
 }
@@ -999,29 +1015,34 @@ void PHY_TxDoneCallback(PHY_Retval_t status, PHY_FrameInfo_t *frame)
 {
     
     appNwkParam.txDoneCbStatus = status;
-    appPhyCmdProcessor_PhyStatusPrint(appNwkParam.txDoneCbStatus);
+//    appPhyCmdProcessor_PhyStatusPrint(appNwkParam.txDoneCbStatus);
     appNwkParam.nBytesSent += frame->mpdu[0];
+
+//    appNwkParam.nBytesSent += frame->mpdu[0];
     if(appNwkParam.ackReq == true)
     {
         if((appNwkParam.txDoneCbStatus == PHY_SUCCESS) && ((appNwkParam.unicastFlagUserDefData == true) || (appNwkParam.unicastFlagPredefData == true)))
         {
-            SYS_CONSOLE_PRINT("\r\nACK RCVD for PKT: %d\r\n", frame->mpdu[3]);
+//            SYS_CONSOLE_PRINT("\r\nACK RCVD for PKT: %d\r\n", frame->mpdu[3]);
             appNwkParam.nPacketsRcvdAck += 1U;
             deviceTable[SOURCE_DEV_INDEX].txPacketCnt += 1U;
         }
         else
         {
-            SYS_CONSOLE_PRINT("\r\nNo ACK for PKT: %d\r\n", frame->mpdu[3]);
+//            SYS_CONSOLE_PRINT("\r\nNo ACK for PKT: %d\r\n", frame->mpdu[3]);
         }
     }
-    SYS_CONSOLE_PRINT("\r\nTXPKTCNT: ");
-    SYS_CONSOLE_PRINT("%8x\n",deviceTable[SOURCE_DEV_INDEX].txPacketCnt);
-    SYS_CONSOLE_MESSAGE("\r\n");
+//    SYS_CONSOLE_PRINT("\r\nTXPKTCNT: ");
+//    SYS_CONSOLE_PRINT("%8x\n",deviceTable[SOURCE_DEV_INDEX].txPacketCnt);
+//    SYS_CONSOLE_MESSAGE("\r\n");
     app_P2P_Phy_appModePostDataTxDoneCbSwitchHandler();
 }
 
 void PHY_RxFrameCallback(PHY_FrameInfo_t *rxFrame)
 {
+    APP_Msg_T *p_appMes;
+    APP_Msg_T appMes;
+    p_appMes = &appMes;
     uint8_t recBuffer[LARGE_BUFFER_SIZE], seqNumber=0;
     memset(recBuffer, 0, sizeof(recBuffer));
     uint8_t payloadLength = (uint8_t)rxFrame->mpdu[0];
@@ -1032,25 +1053,34 @@ void PHY_RxFrameCallback(PHY_FrameInfo_t *rxFrame)
     int8_t recRSSI =  (int8_t )(rxFrame->mpdu[payloadLength + LQI_LEN + ED_VAL_LEN]) + PHY_GetRSSIBaseVal();
     uint8_t LQI = rxFrame->mpdu[payloadLength + LQI_LEN];
     seqNumber = rxFrame->mpdu[3];
+    seqNumber = seqNumber;
     // Free-up the buffer which was used for reception once the frame is extracted.
 	bmm_buffer_free(rxFrame->buffer_header);
     payloadLength = payloadLength - appNwkParam.frameOverHead;
-    SYS_CONSOLE_PRINT("\r\nRXPKT <pktno: %d>\n", seqNumber);
-    SYS_CONSOLE_PRINT("\r\nLen %d\r\n",payloadLength);
-    SYS_CONSOLE_PRINT("\r\n");
-    for(uint8_t i = 0; i<payloadLength; i++)
-    {
-        SYS_CONSOLE_PRINT("%c",recBuffer[i]);
-    }
-    SYS_CONSOLE_MESSAGE("\n"); 
+//    SYS_CONSOLE_PRINT("\r\nRXPKT <pktno: %d>\n", seqNumber);
+//    SYS_CONSOLE_PRINT("\r\nLen %d\r\n",payloadLength);
+//    SYS_CONSOLE_PRINT("\r\n");
+//    for(uint8_t i = 0; i<payloadLength; i++)
+//    {
+//        SYS_CONSOLE_PRINT("%c",recBuffer[i]);
+//    }
+//    SYS_CONSOLE_MESSAGE("\n"); 
     deviceTable[SOURCE_DEV_INDEX].rxPacketCnt  +=  1U;
     deviceTable[SOURCE_DEV_INDEX].lqi = LQI;
     deviceTable[SOURCE_DEV_INDEX].rssiVal = recRSSI;
-    SYS_CONSOLE_PRINT("\r\nLQI:%i", LQI);    
-    SYS_CONSOLE_PRINT("\r\nRSSI:%i", recRSSI);
-    SYS_CONSOLE_PRINT("\r\nPKTCNT:");
-    SYS_CONSOLE_PRINT("%8x\n",deviceTable[SOURCE_DEV_INDEX].rxPacketCnt);
-    SYS_CONSOLE_MESSAGE("\r\n");
+        p_appMes->msgId = (uint8_t)APP_PACKET_DISP_EVENT;
+        p_appMes->msgData[0] = payloadLength;
+        for(int8_t i = 0; i<((int8_t)payloadLength); i++)
+        {
+            p_appMes->msgData[i+1] = recBuffer[i]; 
+        }
+        osalResult = OSAL_QUEUE_Send(&appData.appQueue, p_appMes, 0);     
+        osalResult = osalResult;
+//    SYS_CONSOLE_PRINT("\r\nLQI:%i", LQI);    
+//    SYS_CONSOLE_PRINT("\r\nRSSI:%i", recRSSI);
+//    SYS_CONSOLE_PRINT("\r\nPKTCNT:");
+//    SYS_CONSOLE_PRINT("%8x\n",deviceTable[SOURCE_DEV_INDEX].rxPacketCnt);
+//    SYS_CONSOLE_MESSAGE("\r\n");
 }
 
 /** 
@@ -1072,7 +1102,10 @@ void app_P2P_Phy_ConfigDataReception(void)
    #endif
    /*RX_AACK_ON Mode is enabled if Promiscuous Mode is not used,else RX is switched on in RX_ON Mode*/
    rxStatus = PHY_RxEnable(PHY_STATE_RX_ON); 
-   rxStatus = rxStatus;
+   if(rxStatus != PHY_RX_ON)
+   {
+       return;
+   }
    
 }
 
