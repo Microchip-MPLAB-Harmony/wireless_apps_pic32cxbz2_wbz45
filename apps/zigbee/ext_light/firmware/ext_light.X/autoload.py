@@ -332,8 +332,8 @@ def write_ota_config_file():
     settings.setString("configuration.header.bota_flash_img_id", zotaOpt.flashImgIDTxt.getText())
     
 def AbsolutePath(absolutePath, absoluteTarget):
-    absoluteDir = absolutePath.split(os.path.sep)
-    targetDir = absoluteTarget.split(os.path.sep)
+    absoluteDir = absolutePath.split('\\')
+    targetDir = absoluteTarget.split('\\')
     
     targetIndex = len(absoluteDir)
     index = 0
@@ -349,11 +349,11 @@ def AbsolutePath(absolutePath, absoluteTarget):
     
     targetPath = ""
     for index in range(targetIndex):
-        targetPath += str(absoluteDir[index]) + os.path.sep
+        targetPath += str(absoluteDir[index]) + "\\"
         
     for index in range(len(targetDir)):
         if targetDir[index] != "..":
-            targetPath += str(targetDir[index]) + os.path.sep
+            targetPath += str(targetDir[index]) + "\\"
     
     targetPath = targetPath[:len(targetPath)-1]
     return targetPath
@@ -361,8 +361,8 @@ def AbsolutePath(absolutePath, absoluteTarget):
     
     
 def RelativePath(absolutePath, relativeTarget):
-    absoluteDir = absolutePath.split(os.path.sep)
-    relativeDir = relativeTarget.split(os.path.sep)
+    absoluteDir = absolutePath.split('\\')
+    relativeDir = relativeTarget.split('\\')
 
     length = len(relativeDir)
     if len(absoluteDir) < length:
@@ -386,13 +386,13 @@ def RelativePath(absolutePath, relativeTarget):
     index = CommonDirIndex + 1
     while index < len(absoluteDir):
         if (len(absoluteDir[index]) > 0):
-            relativePath += str("..{}",format(os.path.sep))
+            relativePath += str("..\\")
         index += 1
 
     # add rest of the file name
     index = CommonDirIndex + 1
     while index < len(relativeDir) - 1:
-        relativePath += (str(relativeDir[index]) + os.path.sep)
+        relativePath += (str(relativeDir[index]) + "\\")
         index += 1
     relativePath += str(relativeDir[len(relativeDir) - 1])
 
@@ -444,12 +444,12 @@ class SignFirmwarePane():
         if( g1_auth_mthd==2) and 'SecureSign' in g_ecdsa_mthd:
             g_alreadyLogin = ss_check_log_in(proj_path)
 
-        if path.exists(proj_path+"{}securesign.exe", format(os.path.sep)) and path.exists(proj_path+"{}internal_autoload.py", format(os.path.sep)):
+        if path.exists(proj_path+"\\securesign.exe") and path.exists(proj_path+"\\internal_autoload.py"):
             g_ss_option = 1
         else:
             g_ss_option = 0
         
-        infoImg = ImageIcon(proj_path + "{}info-10.png", format(os.path.sep))
+        infoImg = ImageIcon(proj_path + "\\info-10.png")
         
         seqLabel = JLabel("Sequence Number:")
         seqLabel.setHorizontalTextPosition(JLabel.LEADING)
@@ -894,7 +894,7 @@ class OTAPane():
         read_config_file()
         
         path   = ide.expandProjectMacrosEx("${ProjectName}", g_confName, "${ProjectDir}", False)
-        infoImg = ImageIcon(path + "{}info-10.png", format(os.path.sep))
+        infoImg = ImageIcon(path + "\\info-10.png")
         
         OutputFileLabel = JLabel("Output File Name:")
         OutputFileLabel.setHorizontalTextPosition(JLabel.LEADING)

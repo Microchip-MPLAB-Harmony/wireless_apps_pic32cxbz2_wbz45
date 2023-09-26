@@ -457,9 +457,7 @@ typedef struct mlme_disassociate_conf_tag {
    Remarks:
     None 
  */
-/**
- * @brief This is the MLME-BEACON-NOTIFY.indication message structure.
- */
+
 typedef struct mlme_beacon_notify_ind_tag {
 	/** This identifies the message as \ref MLME_BEACON_NOTIFY_INDICATION */
 	enum msg_code cmdcode;

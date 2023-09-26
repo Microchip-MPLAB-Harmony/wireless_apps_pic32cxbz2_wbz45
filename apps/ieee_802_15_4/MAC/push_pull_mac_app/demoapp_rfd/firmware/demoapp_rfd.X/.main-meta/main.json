@@ -10,7 +10,7 @@
 		"shortDescription": "Demonstrates the bidirectional capabilities of 802.15.4 MAC(End Devices).",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.10"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{

@@ -6,7 +6,7 @@
 
   Summary:
     This file contains MAC Callback's,Confirmation Callback's,Indication Callback's
-	declarations
+    declarations
 
   Description:
    The IEEE standard 802.15.4 MAC Layer defines the protocol and compatible
@@ -78,7 +78,7 @@
    Summary:
     This macro holds the stack Major number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -90,7 +90,7 @@
    Summary:
     This macro holds the stack Minor number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -101,7 +101,7 @@
    Summary:
     This macro holds the stack patch number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -113,7 +113,7 @@
    Summary:
     This macro holds the MAC SW version as a String 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -152,7 +152,7 @@ Example:
    Summary:
     This macro holds MAC Software Version Information in 32-bit bitfield
    Description:
-	None
+    None
    Remarks:
     None 
 */
@@ -554,9 +554,9 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	The alternate PAN coordinator subfield shall be set if the device is
+    The alternate PAN coordinator subfield shall be set if the device is
     capable of becoming a PAN coordinator. Otherwise, the alternate 
-	PAN coordinator subfield shall be set to 0.
+    PAN coordinator subfield shall be set to 0.
    Description:
     None
    Remarks:
@@ -570,7 +570,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	The device type subfield shall be set if the device is an FFD. Otherwise,
+    The device type subfield shall be set if the device is an FFD. Otherwise,
     the device type subfield shall be set to 0 to indicate an RFD.
    Description:
     None
@@ -585,7 +585,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	The power source subfield shall be set if the device is receiving power
+    The power source subfield shall be set if the device is receiving power
     from the alternating current mains. Otherwise, the power source subfield
     shall be set to 0
    Description:
@@ -601,7 +601,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	The receiver on when idle subfield shall be set if the device does not
+    The receiver on when idle subfield shall be set if the device does not
     disable its receiver to conserve power during idle periods. Otherwise, the
     receiver on when idle subfield shall be set to 0.
    Description:
@@ -617,7 +617,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	The allocate address subfield shall be set if the device wishes the
+    The allocate address subfield shall be set if the device wishes the
     coordinator to allocate a short address as a result of the association
     procedure. If this subfield is set to 0, the special short address of
     0xfffe shall be allocated to the device and returned through the
@@ -636,7 +636,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	Symbolic constant for disassociate reason - initiated by parent(WPAN_MLME_DisassociateReq()).
+    Symbolic constant for disassociate reason - initiated by parent(WPAN_MLME_DisassociateReq()).
    Description:
     None
    Remarks:
@@ -650,7 +650,7 @@ typedef struct mac_sec_pib_tag {
  
    Summary:
     Flag value for capability information field
-	Symbolic constant for disassociate reason - initiated by child(WPAN_MLME_DisassociateReq()).
+    Symbolic constant for disassociate reason - initiated by child(WPAN_MLME_DisassociateReq()).
    Description:
     None
    Remarks:
@@ -717,9 +717,9 @@ typedef struct mac_sec_pib_tag {
 
   Example:
     <code>
-    MAC_Retval_t WPAN_Init = PHY_FAILURE;
+    MAC_Retval_t retVal = FAILURE;
  
-    retVal = MAC_Init();
+    retVal = WPAN_Init();
     if (MAC_SUCCESS =! retVal)
     {
         while(1);
@@ -770,10 +770,9 @@ bool WPAN_Task(void);
 // *****************************************************************************
 /*
   Function:
-    WPAN_MCPS_Datareq(uint8_t SrcAddrMode, WPAN_AddrSpec_t 
+    bool WPAN_MCPS_Datareq(uint8_t SrcAddrMode, WPAN_AddrSpec_t 
     *DstAddrSpec, uint8_t msduLength, uint8_t *msdu, uint8_t 
-     msduHandle, uint8_t TxOptions,uint8_t SecurityLevel, 
-     uint8_t *KeySource, uint8_t KeyIdMode, uint8_t KeyIndex)
+    msduHandle, uint8_t TxOptions)
 
   Summary:
     Initiate MCPS-DATA.request service and have it placed in the MCPS-SAP queue.
@@ -791,7 +790,7 @@ bool WPAN_Task(void);
     SrcAddrMode     - Address Mode of the source address.
     DstAddrSpec     - Pointer to WPAN_AddrSpec_t structure for destination.
     msduHandle      - Handle (identification) of the MSDU.
-    DstAddrSpec     - Bitmap for transmission options. Valid values:
+    TxOptions     - Bitmap for transmission options. Valid values:
                       - @ref WPAN_TXOPT_OFF,
                       - @ref WPAN_TXOPT_ACK,
                       - @ref WPAN_TXOPT_INDIRECT,
@@ -807,6 +806,29 @@ bool WPAN_Task(void);
 
   Returns:
     true - success; false - buffer not available or queue full.
+
+  Example:
+    <code>
+    uint8_t src_addr_mode;
+    WPAN_AddrSpec_t dst_addr;
+    uint8_t msduHandle = 0;
+    uint8_t data = (uint8_t)rand();
+    src_addr_mode = WPAN_ADDRMODE_SHORT;
+    dst_addr.AddrMode = WPAN_ADDRMODE_SHORT;
+    dst_addr.PANId = DEFAULT_PAN_ID;
+    bool retVal = false;
+ 
+    retVal = WPAN_MCPS_Datareq(src_addr_mode,
+            &dst_addr,
+            1, 
+            &data,
+            msduHandle,
+            WPAN_TXOPT_ACK);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
 
   Remarks:
     On the receipt of WPAN_MCPS_Datareq, MAC layer will perform respective operation 
@@ -862,6 +884,18 @@ bool WPAN_MCPS_Datareq(uint8_t SrcAddrMode,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    uint8_t msduHandle = 0;
+    bool retVal = false;
+ 
+    retVal = WPAN_MCPS_PurgeReq(msduHandle);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MCPS_PurgeReq, MAC layer will perform respective 
     operation and asynchronously invokes USR_MCPS_PurgeConf with proper status.
@@ -907,6 +941,25 @@ bool WPAN_MCPS_PurgeReq(uint8_t msduHandle);
 
   Returns:
     true - success; false - buffer not available or queue full.
+
+  Example:
+    <code>
+    WPAN_AddrSpec_t coordAddrSpec;
+    coordAddrSpec.AddrMode = WPAN_ADDRMODE_SHORT;
+    coordAddrSpec.PANId = 0x1111;
+    coordAddrSpec.Addr.shortAddress = 0x0000U;
+    bool retVal = false;
+ 
+    retVal = WPAN_MLME_AssociateReq(
+                     13,
+                     0,
+                     &CoordAddrSpec,
+                     WPAN_CAP_ALLOCADDRESS);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
 
   Remarks:
     On the receipt of WPAN_MLME_AssociationReq, MAC layer will perform respective 
@@ -954,9 +1007,28 @@ bool WPAN_MLME_AssociateReq(uint8_t LogicalChannel,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    usr_mlme_associate_ind_t *mlmeAssocInd;
+    usr_mlme_associate_ind_t assocInd;
+    assocInd.CapabilityInformation = mlmeAssocInd->CapabilityInformation;
+    assocInd.DeviceAddress = mlmeAssocInd->DeviceAddress;
+    uint16_t associate_short_addr = 0x0001U;
+ 
+    bool retVal = false;
+    retVal = WPAN_MLME_AssociateResp(assocInd.DeviceAddress,
+                    associate_short_addr,
+                    ASSOCIATION_SUCCESSFUL);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+
+    </code>
+
   Remarks:
-    On the receipt of WPAN_MLME_AssociationRes, MAC layer will perform respective 
-    operation and asynchronously invokes USR_MLME_COMM_STATUS_Ind with proper 
+    On the receipt of WPAN_MLME_AssociationResp, MAC layer will perform respective 
+    operation and asynchronously invokes USR_MLME_AssociateInd with proper 
     status.
 */
 
@@ -1003,6 +1075,23 @@ bool WPAN_MLME_AssociateResp(uint64_t DeviceAddress,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    WPAN_AddrSpec_t DeviceAddrSpec;
+    DeviceAddrSpec.AddrMode = WPAN_ADDRMODE_SHORT;
+    DeviceAddrSpec.PANId = 0x1111;
+    DeviceAddrSpec.Addr.shortAddress = 0x0001;
+    uint16_t DisassociateReason = WPAN_DISASSOC_BYCHILD;
+    bool TxIndirect = true;
+ 
+    bool retVal = false;
+    retVal = WPAN_MLME_DisassociateReq(&DeviceAddrSpec, WPAN_DISASSOC_BYCHILD, true); 
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_DisassociateReq, MAC layer will perform 
     respective operation and asynchronously invokes USR_MLME_DisassociateConf
@@ -1020,7 +1109,7 @@ bool WPAN_MLME_DisassociateReq(WPAN_AddrSpec_t *DeviceAddrSpec,
 // *****************************************************************************
 /*
   Function:
-    bool WPAN_MLME_GetReq(uint8_t PIBAttribute, uint8_t PIBAttributeIndex)
+    bool WPAN_MLME_GetReq(uint8_t PIBAttribute)
 
   Summary:
     It Initiates MLME-GET.request service and have it placed in the MLME-SAP queue.
@@ -1042,6 +1131,18 @@ bool WPAN_MLME_DisassociateReq(WPAN_AddrSpec_t *DeviceAddrSpec,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    uint8_t phyCurrentPage;
+ 
+    bool retVal = false;
+    retVal = WPAN_MLME_GetReq(phyCurrentPage)
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_GetReq, MAC layer will perform respective operation 
     and asynchronously invokes USR_MLME_GetConf with proper status.
@@ -1062,7 +1163,7 @@ bool WPAN_MLME_GetReq(uint8_t PIBAttribute);
 /*
   Function:
     bool WPAN_MLME_OrphanResp(uint64_t OrphanAddress, uint16_t ShortAddress,
-	bool AssociatedMember);
+	bool AssociatedMember)
 
   Summary:
     Initiate MLME-ORPHAN.response service and have it placed in MLME_SAP queue.
@@ -1087,6 +1188,19 @@ bool WPAN_MLME_GetReq(uint8_t PIBAttribute);
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    uint64_t OrphanAddress = 0x0000111100001111;
+    uint16_t shortaddr = 0x0001;
+ 
+    bool retVal = false;
+    retVal = WPAN_MLME_OrphanResp(OrphanAddress,shortaddr, true)
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_OrphanResp, MAC layer will perform respective 
     operation and asynchronously invokes USR_MLME_CommStatusInd()with proper 
@@ -1104,7 +1218,7 @@ bool WPAN_MLME_OrphanResp(uint64_t OrphanAddress,
 // *****************************************************************************
 /*
   Function:
-    bool WPAN_MLME_PollReq(WPAN_AddrSpec_t *CoordAddrSpec);
+    bool WPAN_MLME_PollReq(WPAN_AddrSpec_t *CoordAddrSpec)
 
   Summary:
     Initiate MLME-POLL.request service and have it placed in the MLME-SAP queue.
@@ -1125,6 +1239,21 @@ bool WPAN_MLME_OrphanResp(uint64_t OrphanAddress,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+    <code>
+    WPAN_AddrSpec_t coordAddrSpec;
+    coordAddrSpec.AddrMode = WPAN_ADDRMODE_SHORT;
+    coordAddrSpec.PANId = DEFAULT_PAN_ID;
+    coordAddrSpec.Addr.shortAddress = 0x0000U;
+ 
+    bool retVal = false;
+    retVal = WPAN_MLME_PollReq(&coordAddrSpec);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_PollReq, MAC layer will perform respective operation 
     and asynchronously invokes USR_MLME_PollConf()with proper status.
@@ -1137,7 +1266,7 @@ bool WPAN_MLME_PollReq(WPAN_AddrSpec_t *CoordAddrSpec);
 // *****************************************************************************
 /*
   Function:
-    Bool WPAN_MLME_ResetReq(bool SetDefaultPib)
+    bool WPAN_MLME_ResetReq(bool SetDefaultPib)
 
   Summary:
     Initiate MLME-RESET.request service and have it placed in the MLME-SAP queue.
@@ -1158,6 +1287,17 @@ bool WPAN_MLME_PollReq(WPAN_AddrSpec_t *CoordAddrSpec);
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+  <code>
+    bool setDefault = true;
+    bool retVal = false;
+    retVal = WPAN_MLME_ResetReq(setDefault);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_ResetReq, MAC layer will perform respective 
     operation and asynchronously invokes USR_MLME_ResetConf()with proper status.
@@ -1169,8 +1309,7 @@ bool WPAN_MLME_ResetReq(bool SetDefaultPib);
 // *****************************************************************************
 /*
   Function:
-    bool WPAN_MLME_SetReq(uint8_t PIBAttribute, uint8_t PIBAttributeIndex,
-		void *PIBAttributeValue)
+    bool WPAN_MLME_SetReq(uint8_t PIBAttribute, void *PIBAttributeValue)
 
   Summary:
     Initiate MLME-SET.request service and have it placed in MLME_SAP queue.
@@ -1185,11 +1324,22 @@ bool WPAN_MLME_ResetReq(bool SetDefaultPib);
 
   Parameters:
     PIBAttribute         -  PIB attribute to be set.
-    PIBAttributeIndex    -  Index of the PIB attribute to be set
     PIBAttributeValue    -  Pointer to new PIB attribute value.
 
   Returns:
     true - success; false - buffer not available or queue full.
+
+  Example:
+  <code>
+    bool retVal = false;
+    uint8_t beacon_payload_len = 20;
+    
+    retVal = WPAN_MLME_SetReq(macBeaconPayloadLength, &beacon_payload_len);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
 
   Remarks:
     On the receipt of WPAN_MLME_SetReq, MAC layer will perform respective operation 
@@ -1200,7 +1350,7 @@ bool WPAN_MLME_ResetReq(bool SetDefaultPib);
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
 bool WPAN_MLME_SetReq(uint8_t PIBAttribute,
 		uint8_t PIBAttributeIndex,
-		void *PIBAttributeValue);
+        void *PIBAttributeValue);
 
 #else
 bool WPAN_MLME_SetReq(uint8_t PIBAttribute,
@@ -1214,7 +1364,7 @@ bool WPAN_MLME_SetReq(uint8_t PIBAttribute,
 /*
   Function:
     bool WPAN_MLME_RxEnableReq(bool DeferPermit, uint32_t RxOnTime,
-		uint32_t RxOnDuration)
+               uint32_t RxOnDuration)
 
   Summary:
     Initiate MLME-RX-ENABLE.request service and have it placed in the MLME-SAP 
@@ -1239,6 +1389,19 @@ bool WPAN_MLME_SetReq(uint8_t PIBAttribute,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+  <code>
+    bool retVal = false;
+    bool DeferPermit = true;
+    uint32_t RxOnTime = 0x000000;
+    uint32_t RxOnDuration = 100;
+    retVal = WPAN_MLME_RxEnableReq(DeferPermit, RxOnTime, RxOnDuration);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full"); 
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_RxEnableReq, MAC layer will perform respective 
     operation and asynchronously invokes USR_MLME_RxEnableConf()with proper 
@@ -1261,7 +1424,7 @@ bool WPAN_MLME_RxEnableReq(bool DeferPermit,
 /*
   Function:
     bool WPAN_MLME_ScanReq(uint8_t ScanType, uint32_t ScanChannels,
-		uint8_t ScanDuration, uint8_t ChannelPage)
+        uint8_t ScanDuration, uint8_t ChannelPage)
 
   Summary:
     It initiates MLME-SCAN.request service and have it placed in the MLME-SAP 
@@ -1295,6 +1458,22 @@ bool WPAN_MLME_RxEnableReq(bool DeferPermit,
 
   Returns:
     true - success; false - buffer not available or queue full.
+
+  Example:
+  <code>
+    bool retVal = false;
+    uint8_t current_channel = 13;
+    uint8_t current_channel_page = 0;
+    uint8_t scan_duration = 5;
+    retVal = WPAN_MLME_ScanReq(MLME_SCAN_TYPE_ACTIVE,
+                            SCAN_CHANNEL(current_channel),
+                            scan_duration,
+                            current_channel_page);
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
 
   Remarks:
     On the receipt of WPAN_MLME_ScanReq, MAC layer will perform respective operation 
@@ -1348,6 +1527,28 @@ bool WPAN_MLME_ScanReq(uint8_t ScanType,
   Returns:
     true - success; false - buffer not available or queue full.
 
+  Example:
+  <code>
+    bool retVal = false;
+    uint8_t current_channel = 13;
+    uint8_t current_channel_page = 0;
+    uint16_t panid = 0x1111;
+    uint8_t default_beacon_order = 15;
+    uint8_t default_superframe_order = 15;
+    retVal = WPAN_MLME_StartReq(panid,
+            current_channel,
+            current_channel_page,
+            default_beacon_order,
+            default_superframe_order,
+            true, false,
+            false
+            );
+    if (true =! retVal)
+    {
+        printf("buffer not available or queue full");
+    }
+    </code>
+
   Remarks:
     On the receipt of WPAN_MLME_StartReq, MAC layer will perform respective 
     operation and asynchronously invokes USR_MLME_StartConf()with proper status.
@@ -1397,8 +1598,19 @@ bool WPAN_MLME_StartReq(uint16_t PANId,
   Returns:
     None.
 
+  Example:
+    <code>
+    USR_MCPS_DataConf(uint8_t msduHandle, uint8_t status, uint32_t Timestamp)
+    {
+         msduHandle = msduHandle;
+         status = status;
+         Timestamp = Timestamp;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1418,8 +1630,7 @@ void USR_MCPS_DataConf(uint8_t msduHandle,
   Function:
     USR_MCPS_DataInd(WPAN_AddrSpec_t * SrcAddrSpec, 
     WPAN_AddrSpec_t * DstAddrSpec,uint8_t msduLength,uint8_t * msdu, 
-    uint8_t mpduLinkQuality,uint8_t DSN, uint32_t Timestamp, 
-    uint8_t SecurityLevel, uint8_t KeyIdMode, uint8_t KeyIndex)
+    uint8_t mpduLinkQuality,uint8_t DSN, uint32_t Timestamp)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1451,8 +1662,30 @@ void USR_MCPS_DataConf(uint8_t msduHandle,
   Returns:
     None.
 
+  Example:
+    <code>
+    USR_MCPS_DataInd(WPAN_AddrSpec_t * SrcAddrSpec,
+        WPAN_AddrSpec_t * DstAddrSpec,
+        uint8_t msduLength,
+        uint8_t * msdu,
+        uint8_t mpduLinkQuality,
+        uint8_t DSN,
+        uint32_t Timestamp)
+
+    {
+        SrcAddrSpec = SrcAddrSpec;
+        DstAddrSpec = DstAddrSpec;
+        msduLength = msduLength;
+        msdu = msdu;
+        mpduLinkQuality = mpduLinkQuality;
+        DSN = DSN;
+        Timestamp = Timestamp;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1488,7 +1721,7 @@ uint8_t DSN);
 // *****************************************************************************
 /*
   Function:
-    void USR_MCPS_PurgeConf(uint8_t msduHandle, uint8_t status);
+    void USR_MCPS_PurgeConf(uint8_t msduHandle, uint8_t status)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1507,8 +1740,19 @@ uint8_t DSN);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MCPS_PurgeConf(uint8_t msduHandle, uint8_t status)
+
+    {
+         msduHandle = msduHandle;
+         status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1523,7 +1767,7 @@ void USR_MCPS_PurgeConf(uint8_t msduHandle,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_AssociateConf(uint16_t AssocShortAddress, uint8_t status);
+    void USR_MLME_AssociateConf(uint16_t AssocShortAddress, uint8_t status)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1542,8 +1786,19 @@ void USR_MCPS_PurgeConf(uint8_t msduHandle,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_AssociateConf(uint16_t AssocShortAddress, uint8_t status)
+
+    {
+         AssocShortAddress = AssocShortAddress;
+         status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1557,8 +1812,7 @@ void USR_MLME_AssociateConf(uint16_t AssocShortAddress,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_AssociateInd(uint64_t DeviceAddress,
-		uint8_t CapabilityInformation);
+    void USR_MLME_AssociateInd(uint64_t DeviceAddress, uint8_t CapabilityInformation)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1582,8 +1836,19 @@ void USR_MLME_AssociateConf(uint16_t AssocShortAddress,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_AssociateInd(uint64_t DeviceAddress, uint8_t CapabilityInformation)
+
+    {
+         DeviceAddress = DeviceAddress;
+         CapabilityInformation = CapabilityInformation;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1598,7 +1863,7 @@ void USR_MLME_AssociateInd(uint64_t DeviceAddress,
 /*
   Function:
     void USR_MLME_BeaconNotifyInd(uint8_t BSN, WPAN_Pandescriptor_t *PANDescriptor,
-		uint8_t PendAddrSpec, uint8_t *AddrList, uint8_t sduLength, uint8_t *sdu);
+       uint8_t PendAddrSpec, uint8_t *AddrList, uint8_t sduLength, uint8_t *sdu)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1621,8 +1886,20 @@ void USR_MLME_AssociateInd(uint64_t DeviceAddress,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_BeaconNotifyInd(uint8_t BSN, WPAN_Pandescriptor_t *PANDescriptor,
+         uint8_t PendAddrSpec, uint8_t *AddrList, uint8_t sduLength, uint8_t *sdu)
+
+    {
+         DeviceAddress = DeviceAddress;
+         CapabilityInformation = CapabilityInformation;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1641,8 +1918,8 @@ void USR_MLME_BeaconNotifyInd(uint8_t BSN,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_BeaconNotifyInd(uint8_t BSN, WPAN_Pandescriptor_t *PANDescriptor,
-		uint8_t PendAddrSpec, uint8_t *AddrList, uint8_t sduLength, uint8_t *sdu);
+    void USR_MLME_CommStatusInd(WPAN_AddrSpec_t *SrcAddrSpec,
+       WPAN_AddrSpec_t *DstAddrSpec, uint8_t status)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1662,8 +1939,21 @@ void USR_MLME_BeaconNotifyInd(uint8_t BSN,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_CommStatusInd(WPAN_AddrSpec_t *SrcAddrSpec,
+          WPAN_AddrSpec_t *DstAddrSpec, uint8_t status)
+
+    {
+         SrcAddrSpec = SrcAddrSpec;
+         DstAddrSpec = DstAddrSpec;
+         status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1679,7 +1969,7 @@ void USR_MLME_CommStatusInd(WPAN_AddrSpec_t *SrcAddrSpec,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_DisassociateConf(uint8_t status, WPAN_AddrSpec_t *DeviceAddrSpec);
+    void USR_MLME_DisassociateConf(uint8_t status, WPAN_AddrSpec_t *DeviceAddrSpec)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1700,8 +1990,19 @@ void USR_MLME_CommStatusInd(WPAN_AddrSpec_t *SrcAddrSpec,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_DisassociateConf(uint8_t status, WPAN_AddrSpec_t *DeviceAddrSpec)
+    {
+         SrcAddrSpec = SrcAddrSpec;
+         DstAddrSpec = DstAddrSpec;
+         status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1716,7 +2017,7 @@ void USR_MLME_DisassociateConf(uint8_t status,
 /*
   Function:
     void USR_MLME_DisassociateInd(uint64_t DeviceAddress,
-		uint8_t DisassociateReason);
+		uint8_t DisassociateReason)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1738,8 +2039,18 @@ void USR_MLME_DisassociateConf(uint8_t status,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_DisassociateInd(uint64_t DeviceAddress, uint8_t DisassociateReason)
+    {
+         DeviceAddress = DeviceAddress;
+         DisassociateReason = DisassociateReason;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1753,8 +2064,7 @@ void USR_MLME_DisassociateInd(uint64_t DeviceAddress,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_GetConf(uint8_t status,uint8_t PIBAttribute,
-          uint8_t PIBAttributeIndex, void *PIBAttributeValue)
+    void USR_MLME_GetConf(uint8_t status,uint8_t PIBAttribute, void *PIBAttributeValue)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1769,14 +2079,24 @@ void USR_MLME_DisassociateInd(uint64_t DeviceAddress,
   Parameters:
     status            - Result of requested PIB attribute get operation.
     PIBAttribute      - Retrieved PIB attribute.
-    PIBAttributeIndex - Index of the PIB attribute to be read.
-    PIBAttributeValue - Pointer to data containing retrieved PIB attribute                    
+    PIBAttributeValue - Pointer to data containing retrieved PIB attribute
 
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_GetConf(uint8_t status,uint8_t PIBAttribute, void *PIBAttributeValue)
+    {
+       status = status;
+       PIBAttribute = PIBAttribute;
+       PIBAttributeValue = PIBAttributeValue;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1811,8 +2131,18 @@ void *PIBAttributeValue);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_OrphanInd(uint64_t OrphanAddress)
+
+    {
+        OrphanAddress = OrphanAddress;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1843,8 +2173,17 @@ void USR_MLME_OrphanInd(uint64_t OrphanAddress);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_PollConf(uint8_t status)
+    {
+        status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1873,8 +2212,17 @@ void USR_MLME_PollConf(uint8_t status);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_ResetConf(uint8_t status)
+    {
+        status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1885,7 +2233,7 @@ void USR_MLME_ResetConf(uint8_t status);
 // *****************************************************************************
 /*
   Function:
-    USR_MLME_RxEnableConf(uint8_t status)
+    void USR_MLME_RxEnableConf(uint8_t status)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1903,8 +2251,17 @@ void USR_MLME_ResetConf(uint8_t status);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_RxEnableConf(uint8_t status)
+    {
+       status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1921,7 +2278,7 @@ void USR_MLME_RxEnableConf(uint8_t status);
 /*
   Function:
     void USR_MLME_ScanConf(uint8_t status, uint8_t ScanType,uint8_t ChannelPage,
-		uint32_t UnscannedChannels, uint8_t ResultListSize, void *ResultList)
+       uint32_t UnscannedChannels, uint8_t ResultListSize, void *ResultList)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1944,8 +2301,23 @@ void USR_MLME_RxEnableConf(uint8_t status);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_ScanConf(uint8_t status, uint8_t ScanType,uint8_t ChannelPage,
+      uint32_t UnscannedChannels, uint8_t ResultListSize, void *ResultList)
+    {
+       status = status;
+       ScanType = ScanType;
+       ChannelPage = ChannelPage;
+       UnscannedChannels = UnscannedChannels;
+       ResultListSize = ResultListSize;
+       ResultList = ResultList;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -1961,8 +2333,7 @@ void USR_MLME_ScanConf(uint8_t status,
 // *****************************************************************************
 /*
   Function:
-    void USR_MLME_SetConf(uint8_t status, uint8_t PIBAttribute,
-		uint8_t PIBAttributeIndex)
+    void USR_MLME_SetConf(uint8_t status, uint8_t PIBAttribute)
 
   Summary:
     Callback function that must be implemented by application (NHLE) for MAC
@@ -1976,14 +2347,23 @@ void USR_MLME_ScanConf(uint8_t status,
 
   Parameters:
     status            - Result of requested PIB attribute set operation.  
-    PIBAttribute      - Updated PIB attribute.   
-    PIBAttributeIndex - Index of updated PIB attribute.        
+    PIBAttribute      - Updated PIB attribute.              
 
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_SetConf(uint8_t status, uint8_t PIBAttribute);
+    {
+       status = status;
+       PIBAttribute = PIBAttribute;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -2021,8 +2401,17 @@ void USR_MLME_SetConf(uint8_t status,
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_StartConf(uint8_t status)
+    {
+        status = status;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -2058,8 +2447,21 @@ void USR_MLME_StartConf(uint8_t status);
   Returns:
     None.
 
+  Example:
+    <code>
+    void USR_MLME_SyncLossInd(uint8_t LossReason, uint16_t PANId,
+         uint8_t LogicalChannel, uint8_t ChannelPage)
+    {
+       LossReason = LossReason;
+       PANId = PANId;
+       LogicalChannel = LogicalChannel;
+       ChannelPage = ChannelPage;
+    }
+    </code>
+
   Remarks:
-    None.
+    There is weak function for this callback. User has to define own implementation 
+    for required operation on the reception of particular callback.
 
 */
 
@@ -2079,7 +2481,7 @@ void USR_MLME_SyncLossInd(uint8_t LossReason,
     This function gets the size of a PIB attribute.
 
   Precondition:
-    None. 
+    WPAN_Init() should have been called before calling this function. 
 
   Parameters:
     pibAttributeId   - PIB attribute.     
@@ -2097,7 +2499,7 @@ uint8_t MAC_GetPibAttributeSize(uint8_t pibAttributeId);
 // *****************************************************************************
 /*
   Function:
-    uint32_t MAC_ReadyToSleep(void);
+    uint32_t MAC_ReadyToSleep(void)
 
   Summary:
     Checks if the mac stack is ready to sleep.
@@ -2106,7 +2508,7 @@ uint8_t MAC_GetPibAttributeSize(uint8_t pibAttributeId);
     or idle in case of no beacon support.
 
   Precondition:
-    None. 
+    WPAN_Init() should have been called before calling this function.. 
 
   Parameters:
     None.     
@@ -2115,8 +2517,21 @@ uint8_t MAC_GetPibAttributeSize(uint8_t pibAttributeId);
     32bit time duration in microseconds for which the mac is ready to sleep.
     Uint32_t ? 0- If MAC is busy, 1 ? If MAC is not busy, ready to sleep.
 
+  Example:
+    <code>
+
+    if(MAC_ReadyToSleep())
+    {           
+        prinf("MAC is idle, device can sleep now");                    
+    }
+    else
+    {
+        prinf("MAC is busy now");
+    }
+    </code>
+
   Remarks:
-    None.
+    Application or the next higher layer can use this API to find the MAC state.
 
 */
 
@@ -2126,7 +2541,7 @@ uint32_t MAC_ReadyToSleep(void);
 // *****************************************************************************
 /*
   Function:
-    void MAC_Wakeup(void);
+    void MAC_Wakeup(void)
 
   Summary:
     MAC Wakeup Callback Function from application
@@ -2137,13 +2552,18 @@ uint32_t MAC_ReadyToSleep(void);
 
 
   Precondition:
-    None. 
+    WPAN_Init() should have been called before calling this function. 
 
   Parameters:
     None.     
 
   Returns:
     None.
+
+  Example:
+    <code>
+    MAC_Wakeup();
+    </code>
 
   Remarks:
     None.

@@ -4359,6 +4359,26 @@
          <value>__ROOTVIEW</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="APP_TX_POWER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;APP_TX_POWER&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="CHINA_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;CHINA_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="CREATE_PHY_RTOS_TASK"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
   &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;CREATE_PHY_RTOS_TASK&quot;&gt;
@@ -4384,6 +4404,61 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="CUSTOM_ANT_GAIN"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;CUSTOM_ANT_GAIN&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;3&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="ETSI_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;ETSI_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="FCC_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;FCC_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="JAPAN_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;JAPAN_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="KOREA_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;KOREA_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="PHY_INTEGER_BMMLARGEBUFFERS"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
   &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;PHY_INTEGER_BMMLARGEBUFFERS&quot;&gt;
@@ -4402,6 +4477,28 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="TAIWAN_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;TAIWAN_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="IEEE_802154_PHY" name="USE_CUSTOM_ANT_GAIN"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;IEEE_802154_PHY&gt;
+  &lt;IEEE_802154_PHY dnOrder=&quot;0&quot; id=&quot;USE_CUSTOM_ANT_GAIN&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;IEEE_802154_PHY&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/IEEE_802154_PHY&gt;
+&lt;/IEEE_802154_PHY&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="cmsis" name="#&amp;__MCC_Group_Parrent_id"/>
          <value>__ROOTVIEW</value>
       </entry>
@@ -4409,14 +4506,14 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;417&quot; canvasWidth=&quot;1242&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;417&quot; canvasWidth=&quot;1177&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_PIC32CX_BZ2_Curiosity&quot; x=&quot;30&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;340&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;HarmonyCore&quot; x=&quot;500&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_MAC&quot; x=&quot;630&quot; y=&quot;120&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;410&quot; y=&quot;120&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_MAC&quot; x=&quot;761&quot; y=&quot;360&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;550&quot; y=&quot;320&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;cmsis&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;120&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;dfp&quot; x=&quot;30&quot; y=&quot;80&quot;/&gt;
@@ -4424,11 +4521,11 @@
         &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;850&quot; y=&quot;220&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;nvm&quot; x=&quot;680&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;pdsSystem&quot; x=&quot;840&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;1040&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;rtc&quot; x=&quot;850&quot; y=&quot;140&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;550&quot; y=&quot;120&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;rtc&quot; x=&quot;1040&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;sercom0&quot; x=&quot;206&quot; y=&quot;305&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;sys_console&quot; x=&quot;392&quot; y=&quot;296&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;sys_time&quot; x=&quot;250&quot; y=&quot;100&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;sys_time&quot; x=&quot;402&quot; y=&quot;119&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;17&quot; id=&quot;tc0&quot; x=&quot;250&quot; y=&quot;220&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;18&quot; id=&quot;trng&quot; x=&quot;180&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
@@ -6656,7 +6753,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_wolfcrypt" name="wolfcrypt_asn1"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_wolfcrypt&gt;
   &lt;lib_wolfcrypt dnOrder=&quot;0&quot; id=&quot;wolfcrypt_asn1&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_wolfcrypt&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/lib_wolfcrypt&gt;
 &lt;/lib_wolfcrypt&gt;
 </value>
@@ -7637,6 +7736,15 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="CHINA_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;CHINA_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="CUSTOM_ANT_ENABLE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;CUSTOM_ANT_ENABLE&quot;&gt;
@@ -7657,21 +7765,10 @@
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="CUSTOM_ANT_REGION"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
-  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;CUSTOM_ANT_REGION&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/pic32cx_bz2_devsupport&gt;
-&lt;/pic32cx_bz2_devsupport&gt;
-</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="DEVICE_CHECON_PFMWS"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;DEVICE_CHECON_PFMWS&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;1&quot;/&gt;
-    &lt;/Values&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/pic32cx_bz2_devsupport&gt;
 &lt;/pic32cx_bz2_devsupport&gt;
 </value>
@@ -7758,6 +7855,24 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="ETSI_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;ETSI_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="FCC_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;FCC_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="FREERTOS_CONFIG_PATH"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;FREERTOS_CONFIG_PATH&quot;&gt;
@@ -7778,12 +7893,39 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="JAPAN_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;JAPAN_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="KOREA_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;KOREA_REGION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="PDS_LOADED"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;PDS_LOADED&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="PIC32CX_BZ2_48PIN_DEVICE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;PIC32CX_BZ2_48PIN_DEVICE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/pic32cx_bz2_devsupport&gt;
 &lt;/pic32cx_bz2_devsupport&gt;
 </value>
@@ -7832,6 +7974,15 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="SYSTEM_PMU_MODE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;SYSTEM_PMU_MODE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="TAIWAN_REGION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;TAIWAN_REGION&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/pic32cx_bz2_devsupport&gt;
 &lt;/pic32cx_bz2_devsupport&gt;
@@ -11502,7 +11653,12 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tc0" name="TC_TIMER_INTENSET_MC1"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tc0&gt;
   &lt;tc0 dnOrder=&quot;0&quot; id=&quot;TC_TIMER_INTENSET_MC1&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;visible&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;false&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tc0&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tc0&gt;
@@ -11530,7 +11686,7 @@
       &lt;/Long&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tc0&quot; value=&quot;47999&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tc0&quot; value=&quot;-1&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tc0&gt;
 &lt;/tc0&gt;
@@ -11548,7 +11704,9 @@
         &lt;Value dnOrder=&quot;0&quot;&gt;false&lt;/Value&gt;
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
-    &lt;Values dnOrder=&quot;1&quot;/&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tc0&quot; value=&quot;0.0&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/tc0&gt;
 &lt;/tc0&gt;
 </value>
@@ -11766,7 +11924,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\src\phy_rx_frame_cb.c</file>
-         <hash>ad64dad4b8179ac2ff1af338446ff105be29018d2ca8efd1e608096ad8aba8ea</hash>
+         <hash>a51271afb016f5c8c47d07ced0b61173a473e0ba30130befb0492d50db787523</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccMul_pb.h</file>
@@ -11878,7 +12036,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tc\plib_tc0.c</file>
-         <hash>bd4aa06bd92c0c8151ae2b5b1a2d66d10386234c5ea23f59f9f21d81af10e1ce</hash>
+         <hash>d715f9988d25dd610d7b252e3e363b2cc43f805ba2665add58146b09048064bd</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\pwdbased.c</file>
@@ -12074,7 +12232,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_MAC\mac\inc\mac_api.h</file>
-         <hash>47bebbc592b792cf18dc65da86892def84caf2e62130dd35d2e0884d244759e2</hash>
+         <hash>32a528d2ed949b56279a4ad63dcbff9f1358f3038eabbba82a3a978a74b1da08</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CX1012BZ25048_DFP\instance\gpioa.h</file>
@@ -12126,7 +12284,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\configuration.h</file>
-         <hash>42022ac854cd76d198260632dc614368e49b7026d9457589f97217795d166c3e</hash>
+         <hash>fa13f1df7a52779cdc7a7a214e5ce858babc611bda8d1cfd78efd66c53ab1ec8</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.h</file>
@@ -12398,7 +12556,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\tasks.c</file>
-         <hash>846944bf46336a95595e6731990b9c3a1ec8301925ee0e0dbe83f476baf4906c</hash>
+         <hash>f594902e03723362692f36d45027678743a8b505110b9168e3072d79b41ece68</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos_extend.c</file>
@@ -12418,7 +12576,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>7d13184f3c35df3fb2ab3c7305e0d0c70eb001ddc162fcc17542b3bd03ffdda0</hash>
+         <hash>5e991711524d398d98bd7829db0373bba6dc12a90fb2d3d0e335bcba950562ac</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\queue.h</file>
@@ -12982,7 +13140,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\inc\phy.h</file>
-         <hash>221d8c0bcf9794e9c45bfa9bd28595064669e962cb39534c894bfd1a18db6ef2</hash>
+         <hash>f5d4781f4faed81150040ad4c4ccff78cc8f583fa28a5e6f07f8664ec4c3decd</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\deprecated_definitions.h</file>
@@ -13202,7 +13360,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>a03cfb4e262579ee8742a0690de21421f4fd9b350220b2b944f325de588559d1</hash>
+         <hash>a9ac8e559866288b21c565b22848fd51c803df974e1b65c2f4c141eacb229bd3</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\compress.h</file>
@@ -13214,7 +13372,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_MAC\mac\inc\mac_msg_types.h</file>
-         <hash>e740165890ba2c6c350d274b44bf75c0ea120f36e94c98f8d05410fd6e1e3d2a</hash>
+         <hash>0853e400e1c75e04c657e66196cd6f1544809301af6b34e060e9d22f13c45ebf</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\int\src\sys_int.c</file>
@@ -13330,7 +13488,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\pal\inc\pal.h</file>
-         <hash>87e8b13679888c541d7f2e3c6fb9958bea03156836762b70879e4b5524f44800</hash>
+         <hash>d8c0da049a693ae22381db2d8234c63e1a949119687d38efcf65e418d5744963</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CX1012BZ25048_DFP\instance\tcc1.h</file>

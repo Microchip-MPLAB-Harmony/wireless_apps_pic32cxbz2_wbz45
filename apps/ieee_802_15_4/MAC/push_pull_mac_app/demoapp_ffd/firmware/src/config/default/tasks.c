@@ -21,7 +21,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -115,7 +115,7 @@ void SYS_Tasks ( void )
     /* Maintain Middleware & Other Libraries */
     
     /* Create FreeRTOS task for IEEE_802154_MAC */
-	 (void)xTaskCreate((TaskFunction_t) _WPAN_Tasks,
+     (void)xTaskCreate((TaskFunction_t) _WPAN_Tasks,
                 "WPAN_Tasks",
                 1024,
                 NULL,

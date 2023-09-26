@@ -20,7 +20,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -155,6 +155,7 @@ extern "C" {
 #define HAVE_HASHDRBG
 #define WC_NO_HARDEN
 #define SINGLE_THREADED
+#define NO_ASN
 #define NO_SIG_WRAPPER
 #define NO_ERROR_STRINGS
 #define NO_WOLFSSL_MEMORY
