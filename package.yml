@@ -3,14 +3,11 @@ package:
   name: "wireless_apps_pic32cxbz2_wbz45"
   type: "application"
   status: "production"
-  required: true
-  version: "dev"
+  required: false
+  version: "2.0.0"
 
   dependencies:
     - name: "csp"
-      type: "package"
-      version: "3.17.0"
-    - name: "dev_packs"
       type: "package"
       version: "3.17.0"
     - name: "bsp"

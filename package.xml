@@ -6,7 +6,6 @@
         <Dependency name="core" version="v3.16.0"/>
         <Dependency name="crypto" version="v3.8.0"/>
         <Dependency name="csp" version="v3.17.0"/>
-        <Dependency name="dev_packs" version="v3.17.0"/>
         <Dependency name="wireless_ble" version="v1.1.0"/>
         <Dependency name="wireless_zigbee" version="v5.1.0"/>		
         <Dependency name="wireless_system_pic32cxbz_wbz" version="v1.3.0"/>
