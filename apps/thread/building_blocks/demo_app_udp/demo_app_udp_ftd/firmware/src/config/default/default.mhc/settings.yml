@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: ot-sample-app-ftd
+frameworkPath: D:\THREAD_Projects\MCC_THREAD
+processor: WBZ451
+projectName: ot-sample-app-ftd
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.2.230\WBZ451\atdf\WBZ451.atdf
