@@ -2,7 +2,7 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 # Examples applications
 
-The following applications are provided to demonstrate the typical use case of BLE, Zigbee and Multiprotocol(BLE + Zigbee) with PIC32CX_BZ2/WBZ45x devices.
+The following applications are provided to demonstrate the typical use case of BLE, Zigbee, Multiprotocol(BLE + Zigbee) and Thread with PIC32CX_BZ2/WBZ45x devices.
 
 ## BLE
 
@@ -45,3 +45,13 @@ The following applications are provided to demonstrate the typical use case of B
 ### IEEE 802.15.4 P2P PHY Application based on Standalone PHY
 * [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/PHY/readme.md)
 * [IEEE 802.15.4 P2P PHY App](apps/ieee_802_15_4/MAC/readme.md)
+
+
+## Thread
+
+### Thread Application Examples
+* [cli_ftd - CLI Application for full thread device](thread/readme.md)
+* [cli_mtd - CLI Application for minimal thread device](thread/readme.md)
+* [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](thread/readme.md)
+* [demo_app_udp_ftd - Thread UDP demo application for full thread device](thread/readme.md)
+* [demo_app_udp_mtd - Thread UDP demo application for minimal thread device](thread/readme.md)

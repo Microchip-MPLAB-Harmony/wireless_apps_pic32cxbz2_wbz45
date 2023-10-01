@@ -10,7 +10,7 @@
 		"shortDescription": "Demo application UDP exhibits the basic Network formation for a MTD, joining to a Thread network, configuring the different network parameters for sending and receiving UDP packets",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.10"
+			"semverRange": ">=6.15"
 		},
 		"compiler": [
 			{

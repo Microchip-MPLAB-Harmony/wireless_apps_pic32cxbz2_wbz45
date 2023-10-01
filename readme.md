@@ -1,6 +1,6 @@
 ![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
-# MPLAB® Harmony  3 Wireless BLE, Zigbee and IEEE 802.15.4 Standalone Phy Application Examples
+# MPLAB® Harmony  3 Wireless BLE, Zigbee, IEEE 802.15.4 Standalone Phy  and Thread Application Examples
 
 MPLAB® Harmony  is an extension of the MPLAB® ecosystem for creating
 embedded firmware solutions for Microchip 32-bit SAM and PIC® microcontroller
@@ -79,6 +79,16 @@ The following applications are provided to demonstrate the typical use case of o
 | [ble_zigbee_basic - Simple steps to bring the multiprotocol base project from H3 project generation](apps/multiprotocol/ble_zigbee_basic/readme.md) | PIC32CX-BZ |
 | [ble_zigbee_light_prov - Zigbee light control and Zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_light_prov/readme.md) | PIC32CX-BZ |
 | [ble_zigbee_multisensor - Zigbee Multisensor device and zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_multisensor/readme.md) | PIC32CX-BZ |
+
+| Thread Application Examples | Families |
+| --- | :---: |
+| [cli_ftd - CLI Application for full thread device](apps/thread/readme.md) | PIC32CX-BZ |
+| [cli_mtd - CLI Application for minimal thread device](apps/thread/readme.md) | PIC32CX-BZ |
+| [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](apps/thread/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_ftd - Thread UDP demo application for full thread device](apps/thread/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_mtd - Thread UDP demo application for minimal thread device](apps/thread/readme.md) | PIC32CX-BZ |
+
+
 ____
 
 [![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/blob/master/mplab_harmony_license.md)

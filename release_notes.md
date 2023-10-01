@@ -8,6 +8,42 @@ nav_order: 99
 
 # Microchip MPLABÂ® Harmony 3 Release Notes
 
+## Harmony 3 Thread Application examples for PIC32CXBZ family  **v3.0.0**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board |       5            |
+
+### New Features
+- WBZ451 Thread Harmony component based building block applications.
+
+### Bug fixes and Improvements
+- New applications release.
+
+
+### Known Issues
+
+
+### Additional Notes
+- Thread SDK Applications are not tested with bootloader.
+- The Sleepy End Device (SED) is tested for a maximum duration of 10 hours.
+
+### Development Tools
+
+- [MPLABÂ® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLABÂ® X IDE plug-ins:
+  - MPLABÂ® Code Configurator (MCC) `v5.3.7`
+- [MPLABÂ® XC32 C/C++ Compiler v4.21](https://www.microchip.com/mplab/compilers)
+- **DFP 1.2.230 or above version**
+
+
+--------------------------------------------------------------------------------------------------------------------
+# Microchip MPLABÂ® Harmony 3 Release Notes
+
 ## Harmony 3 Wireless BLE, Zigbee, and IEEE 802.15.4 MAC Application example for PIC32CXBZ family  **v2.0.0**
 
 ### Development kit and demo application support
