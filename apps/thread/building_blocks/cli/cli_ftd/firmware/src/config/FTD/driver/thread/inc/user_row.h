@@ -33,7 +33,7 @@
  */
 
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -56,15 +56,12 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 
 #ifndef USER_ROW_H_
 #define USER_ROW_H_
 
-// The SAM R21 provides a user readable Non-Volatile Memory (NVM) space
-// referred to as the user row in the data sheet.
-// The base address for the application is 0x804008.
 #define PIC32CX_USER_ROW 0x804008
 
 // User row structure

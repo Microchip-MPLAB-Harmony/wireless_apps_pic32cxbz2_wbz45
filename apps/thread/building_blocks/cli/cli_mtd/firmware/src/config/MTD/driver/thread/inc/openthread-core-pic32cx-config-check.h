@@ -27,7 +27,6 @@
  */
 
 
-// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -50,13 +49,13 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
 
-#ifndef OPENTHREAD_CORE_SAMR21_CONFIG_CHECK_H_
-#define OPENTHREAD_CORE_SAMR21_CONFIG_CHECK_H_
+
+#ifndef OPENTHREAD_CORE_pic32cx_CONFIG_CHECK_H_
+#define OPENTHREAD_CORE_pic32cx_CONFIG_CHECK_H_
 
 #if OPENTHREAD_CONFIG_RADIO_915MHZ_OQPSK_SUPPORT
 #error "Platform pic32cx doesn't support configuration option: OPENTHREAD_CONFIG_RADIO_915MHZ_OQPSK_SUPPORT"
 #endif
 
-#endif /* OPENTHREAD_CORE_SAMR21_CONFIG_CHECK_H_ */
+#endif /* OPENTHREAD_CORE_pic32cx_CONFIG_CHECK_H_ */

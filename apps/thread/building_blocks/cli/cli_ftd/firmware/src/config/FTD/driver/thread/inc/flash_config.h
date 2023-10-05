@@ -11,7 +11,7 @@
     This file contains PDS File and Item configuration details.
  *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -34,7 +34,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 #ifndef _PDS_CONFIG_H
 #define _PDS_CONFIG_H
@@ -55,13 +55,13 @@
 #define CHILD_TABLE_ENTRY_SIZE                          17 /*sizeof (Settings::ChildInfo)*/
 
 /* Parent Info Size */
-#define PARENT_INFO_SIZE								10 //sizeof (Settings::ParentInfo)
+#define PARENT_INFO_SIZE                                10 //sizeof (Settings::ParentInfo)
 
 /* Network Info Size */
-#define NWK_INFO_SIZE									38 //sizeof (Settings::NetworkInfo)
+#define NWK_INFO_SIZE                                   38 //sizeof (Settings::NetworkInfo)
 
 /* SLAAC Iid Size */
-#define SLAAC_IID_SIZE									34 //sizeof (Settings::SlaacIidSecretKey)
+#define SLAAC_IID_SIZE                                  34 //sizeof (Settings::SlaacIidSecretKey)
 
 /* DAD Info size */
 #define DAD_INFO_SIZE                                   2 //sizeof (Settings::DadInfo) 
@@ -84,23 +84,23 @@
 
 
 /******************************************************************************************************************
- *                       Flash Item to PDS Item Mapping 								                          *
+ *                       Flash Item to PDS Item Mapping                                                            *
  ******************************************************************************************************************/
 
 typedef enum _pdsItemID {
     PDS_ITEM_ACTIVE_DATASET = PDS_MODULE_OT_OFFSET, ///< Active Operational Dataset.
     PDS_ITEM_PENDING_DATASET,                       ///< Pending Operational Dataset.
     PDS_ITEM_NETWORK_INFO,                          ///< Thread network information.
-    PDS_ITEM_PARENT_INFO, 							///< Parent information.
-    PDS_ITEM_CHILD_INFO, 							///< Child information.
-    PDS_ITEM_SLAAC_IID_SECRET_KEY, 					///< SLAAC key to generate semantically opaque IID.
-    PDS_ITEM_DAD_INFO, 								///< Duplicate Address Detection (DAD) information.
-    PDS_ITEM_SRP_ECDSA_KEY, 							///< Off-mesh routable (OMR) prefix.
-    PDS_ITEM_SRP_CLIENT_INFO, 						///< On-link prefix for infrastructure link.
-    PDS_ITEM_SRP_SERVER_INFO, 						///< SRP client ECDSA public/private key pair.
-    PDS_ITEM_BR_ULA_PREFIX, 						///< The SRP client info (selected SRP server address).
-    PDS_ITEM_BR_ON_LINK_PREFIXES, 						///< The SRP server info (UDP port).
-    PDS_ITEM_MAX, 									/// < Add any new item before max enum value.   
+    PDS_ITEM_PARENT_INFO,                           ///< Parent information.
+    PDS_ITEM_CHILD_INFO,                            ///< Child information.
+    PDS_ITEM_SLAAC_IID_SECRET_KEY,                  ///< SLAAC key to generate semantically opaque IID.
+    PDS_ITEM_DAD_INFO,                              ///< Duplicate Address Detection (DAD) information.
+    PDS_ITEM_SRP_ECDSA_KEY,                         ///< Off-mesh routable (OMR) prefix.
+    PDS_ITEM_SRP_CLIENT_INFO,                       ///< On-link prefix for infrastructure link.
+    PDS_ITEM_SRP_SERVER_INFO,                       ///< SRP client ECDSA public/private key pair.
+    PDS_ITEM_BR_ULA_PREFIX,                         ///< The SRP client info (selected SRP server address).
+    PDS_ITEM_BR_ON_LINK_PREFIXES,                   ///< The SRP server info (UDP port).
+    PDS_ITEM_MAX,                                   /// < Add any new item before max enum value.   
 }pdsItemID_t;
 
 /******************************************************************************************************************/

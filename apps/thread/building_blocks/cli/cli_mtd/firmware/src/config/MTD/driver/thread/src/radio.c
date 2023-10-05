@@ -33,7 +33,6 @@
  */
 
 
-//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -56,14 +55,14 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-//DOM-IGNORE-END
+
 
 #include <string.h>
 
 #include "definitions.h"
 #include "phy.h"
 #include "stack_config.h"
-#include "uart.h"
+#include <uart.h>
 
 #include <openthread/config.h>
 #include <openthread/platform/alarm-milli.h>
@@ -72,10 +71,10 @@
 
 #include "platform-pic32cx.h"
 
-#include "common/logging.hpp"
-#include "utils/code_utils.h"
-#include "utils/soft_source_match_table.h"
-#include "utils/mac_frame.h"
+#include <common/logging.hpp>
+#include <utils/code_utils.h>
+#include <utils/soft_source_match_table.h>
+#include <utils/mac_frame.h>
 
 enum
 {
@@ -85,7 +84,7 @@ enum
 #define OT_RADIO_2P4GHZ_OQPSK_CHANNEL_MIN 11
 #define OT_RADIO_2P4GHZ_OQPSK_CHANNEL_MAX 26
 
-#define OT_RADIO_RX_BUFFERS_NUM			  5U
+#define OT_RADIO_RX_BUFFERS_NUM          5U
 
 static otRadioFrame sTransmitFrame;
 static uint8_t sTransmitPsdu[OT_RADIO_FRAME_MAX_SIZE + 1];
@@ -162,7 +161,7 @@ static void __attribute__((used)) radioSleep()
 
 static void __attribute__((used)) radioWakeup() 
 {
-	PHY_TrxWakeup();
+    PHY_TrxWakeup();
 }
 
 static void __attribute__((used)) radioRxEnable()
@@ -653,7 +652,7 @@ otError otPlatRadioTransmit(otInstance *aInstance, otRadioFrame *aFrame)
     {
         performRetry = true;
     }
-	
+
 #if OPENTHREAD_CONFIG_THREAD_VERSION >= OT_THREAD_VERSION_1_2
     if (otMacFrameIsSecurityEnabled(aFrame) && otMacFrameIsKeyIdMode1(aFrame) && !aFrame->mInfo.mTxInfo.mIsARetx && !aFrame->mInfo.mTxInfo.mIsSecurityProcessed)
     {

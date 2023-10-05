@@ -32,7 +32,6 @@
  */
 
 
-//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -55,7 +54,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-//DOM-IGNORE-END
+
 
 #include "definitions.h"
 

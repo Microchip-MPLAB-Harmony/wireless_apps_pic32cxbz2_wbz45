@@ -32,7 +32,6 @@
  */
 
 
-//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -55,7 +54,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-//DOM-IGNORE-END
+
 
 #include <stdio.h>
 #include <string.h>
@@ -131,8 +130,8 @@ void otPlatFlashRead(otInstance *aInstance, uint8_t aSwapIndex, uint32_t aOffset
 #else
 #include "platform-pic32cx.h"
 #define SETTINGS_BUFFER_SIZE 1024
-#include "settings.h"
-#include "../openthread/include/openthread/dataset.h"
+#include <settings.h>
+#include <openthread/dataset.h>
 #include "flash_config.h"
 
 
@@ -277,7 +276,7 @@ void otPlatSettingsInit(otInstance *aInstance) {
     sSettingsBufItemIndex[PDS_ITEM_BR_ON_LINK_PREFIXES - PDS_MODULE_OT_OFFSET] = PDS_ITEM_BR_ON_LINK_PREFIXES_OFFSET;
 
     /* Restore all Items and store in sSettingsBuf */
-	flashRestoreItemsAll();
+    flashRestoreItemsAll();
     
     /* After restoring from PDS, check the valid child info entries in PDS and update the ChildInfoCount*/
     for (uint8_t i = 0; i < OPENTHREAD_CONFIG_MLE_MAX_CHILDREN; i++) {
@@ -481,7 +480,7 @@ pdsItemID_t getPdsItemidfromKeyid (uint16_t key)
 
 uint16_t getOffsetfromItemid (pdsItemID_t itemId)
 {
-	uint16_t offset = sSettingsBufItemIndex[itemId - PDS_MODULE_OT_OFFSET];
+    uint16_t offset = sSettingsBufItemIndex[itemId - PDS_MODULE_OT_OFFSET];
     return offset;
 }
 #endif

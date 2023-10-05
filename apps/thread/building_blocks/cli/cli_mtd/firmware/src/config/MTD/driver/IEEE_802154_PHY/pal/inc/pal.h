@@ -627,7 +627,7 @@ static inline uint32_t pal_sub_time_us(uint32_t a, uint32_t b)
 
 /*
   Function:
-	PAL_Status_t PAL_GetRandomNumber(uint8_t *rnOutput, uint16_t rnLength)
+    PAL_Status_t PAL_GetRandomNumber(uint8_t *rnOutput, uint16_t rnLength)
 
   Summary:
     Random number generation
@@ -646,15 +646,15 @@ static inline uint32_t pal_sub_time_us(uint32_t a, uint32_t b)
     None
   Example:
     <code>  
-	uint64_t randomNumber;    
+    uint64_t randomNumber;    
     if (PAL_SUCCESS != PAL_GetRandomNumber((uint8_t*)&randomNumber, sizeof(randomNumber))) {
-		return PAL_FAILURE;
-	}    
+        return PAL_FAILURE;
+    }    
     PHY_PibSet(macIeeeAddress,(PibValue_t *) &randomNumber);
     </code>
 
   Remarks:
-	None
+    None
 */
 
 PAL_Status_t PAL_GetRandomNumber(uint8_t *rnOutput, uint16_t rnLength);
@@ -663,7 +663,7 @@ PAL_Status_t PAL_GetRandomNumber(uint8_t *rnOutput, uint16_t rnLength);
 
 /*
   Function:
-	PAL_Status_t PAL_GetTrxAntennaGain(int8_t *antGain)
+    PAL_Status_t PAL_GetTrxAntennaGain(int8_t *antGain)
 
   Summary:
     Gets the Antenna gain from the information block of device support library
@@ -683,7 +683,7 @@ PAL_Status_t PAL_GetRandomNumber(uint8_t *rnOutput, uint16_t rnLength);
  
   Example:
     <code>  
-	int8_t antGain = INT8_MAX;
+    int8_t antGain = INT8_MAX;
     
     PAL_GetTrxAntennaGain(&antGain);
     printf ("Antenna Gain of the module - %i", antGain);
@@ -698,7 +698,7 @@ PAL_Status_t PAL_GetTrxAntennaGain(int8_t *antGain);
 
 /*
   Function:
-	int8_t PAL_GetTrxTransmitPowerMax(void)
+    int8_t PAL_GetTrxTransmitPowerMax(void)
 
   Summary:
     Gets the transceiver's maximum transmit power in dBm
@@ -720,7 +720,7 @@ PAL_Status_t PAL_GetTrxAntennaGain(int8_t *antGain);
  
   Example:
     <code>  
-	int8_t txpwrMax = INT8_MAX;
+    int8_t txpwrMax = INT8_MAX;
     
     txpwrMax = PAL_GetTrxTransmitPowerMax();
     printf ("Maximum Tx Pwr Value - %i", txpwrMax);

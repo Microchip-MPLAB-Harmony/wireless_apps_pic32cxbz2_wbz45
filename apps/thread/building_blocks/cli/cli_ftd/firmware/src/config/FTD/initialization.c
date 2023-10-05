@@ -523,18 +523,18 @@ void SYS_Initialize ( void* data )
     /* MISRAC 2012 deviation block end */
 
     /* Initialization for IEEE_802154_PHY */
-		
-	PHY_Init();
+    
+    PHY_Init();
     
     /* End of Initialization for IEEE_802154_PHY */
 
     CRYPT_WCCB_Initialize();
     
-	/*Open Thread System Initialization*/
-	otSysInit(0U,0U);
-	
-	/* Creation of openthread Task Queue */
-	OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
+    /*Open Thread System Initialization*/
+    otSysInit(0U,0U);
+    
+    /* Creation of openthread Task Queue */
+    OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
 
 
     /* MISRAC 2012 deviation block end */

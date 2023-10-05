@@ -84,16 +84,16 @@
 */
 
 typedef union {
-	/** PIB Attribute Bool */
-	bool pib_value_bool;
-	/** PIB Attribute 8-bit */
-	uint8_t pib_value_8bit;
-	/** PIB Attribute 16-bit */
-	uint16_t pib_value_16bit;
-	/** PIB Attribute 32-bit */
-	uint32_t pib_value_32bit;
-	/** PIB Attribute 64-bit */
-	uint64_t pib_value_64bit;
+    /** PIB Attribute Bool */
+    bool pib_value_bool;
+    /** PIB Attribute 8-bit */
+    uint8_t pib_value_8bit;
+    /** PIB Attribute 16-bit */
+    uint16_t pib_value_16bit;
+    /** PIB Attribute 32-bit */
+    uint32_t pib_value_32bit;
+    /** PIB Attribute 64-bit */
+    uint64_t pib_value_64bit;
 } PibValue_t;
 
 // *****************************************************************************
@@ -112,15 +112,15 @@ typedef union {
  
 typedef enum param_tag {
     /** Antenna Diversity */
-	ANT_DIVERSITY     = 0x00,
+    ANT_DIVERSITY     = 0x00,
     /** Antenna Configured - ANTENNA_1/ANTENNA_2*/
-	ANT_SELECT        = 0x01,
+    ANT_SELECT        = 0x01,
     /** Antenna Control */
-	ANT_CTRL          = 0x02,
+    ANT_CTRL          = 0x02,
     /** Promiscuous Mode*/
-	AACK_PROMSCS_MODE = 0x03,
+    AACK_PROMSCS_MODE = 0x03,
     /** Tx Power Configured*/
-	TX_PWR            = 0x06,
+    TX_PWR            = 0x06,
     /** Rx Sensitivity*/
     RX_SENS           = 0x07,
     /** RX Reduced Power Consumption*/
@@ -149,10 +149,10 @@ typedef enum param_tag {
  
 typedef struct frame_info_tag
 {
-	/** Pointer to buffer header of frame */
-	buffer_t *buffer_header;
-	/** Pointer to MPDU */
-	uint8_t *mpdu;
+    /** Pointer to buffer header of frame */
+    buffer_t *buffer_header;
+    /** Pointer to MPDU */
+    uint8_t *mpdu;
 } PHY_FrameInfo_t;
 
 // *****************************************************************************
@@ -171,8 +171,8 @@ typedef struct frame_info_tag
  */
  
 typedef enum sleep_mode_tag {
-	SLEEP_MODE_1,
-	DEEP_SLEEP_MODE
+    SLEEP_MODE_1,
+    DEEP_SLEEP_MODE
 } PHY_SleepMode_t;
 
 // *****************************************************************************
@@ -197,10 +197,10 @@ typedef enum sleep_mode_tag {
  */
  
 typedef enum csma_mode_tag {
-	NO_CSMA_NO_IFS,
-	NO_CSMA_WITH_IFS,
-	CSMA_UNSLOTTED,
-	CSMA_SLOTTED
+    NO_CSMA_NO_IFS,
+    NO_CSMA_WITH_IFS,
+    CSMA_UNSLOTTED,
+    CSMA_SLOTTED
 } PHY_CSMAMode_t;
 
 // *****************************************************************************
@@ -218,11 +218,11 @@ typedef enum csma_mode_tag {
  */
  
 typedef enum continuous_tx_mode_tag {
-	/* Continuous Wave mode to transmit 
-	 * the signal at Fc +&- 0.5MHz frequency */
-	CW_MODE = 0,
-	/* PRBS mode to Pseudorandom Binary Sequence frame continuously */
-	PRBS_MODE = 1
+    /* Continuous Wave mode to transmit 
+     * the signal at Fc +&- 0.5MHz frequency */
+    CW_MODE = 0,
+    /* PRBS mode to Pseudorandom Binary Sequence frame continuously */
+    PRBS_MODE = 1
 } PHY_ContinuousTxMode_t;
 
 
@@ -239,34 +239,34 @@ typedef enum continuous_tx_mode_tag {
  */
  
 typedef enum phy_return_value_tag {
-	/* General Success condition*/
-    PHY_SUCCESS                 = 0x00, 
-	/* Transceiver is currently sleeping */
-    PHY_TRX_ASLEEP              = 0x81,
-	/* Transceiver is currently awake */
-	PHY_TRX_AWAKE               = 0x82, 
-	/* 15.4 subsytem request is aborted due to BT subsystem High priority request */                                 
-    PHY_RF_REQ_ABORTED          = 0x83, 
-	/* RF is not available for 802.15.4 subsytem*/
-    PHY_RF_UNAVAILABLE          = 0x84, 
-	/* General failure condition */
-	PHY_FAILURE                 = 0x85,
-	/* PHY busy condition */	
-	PHY_BUSY                    = 0x86, 
-	/* Frame pending at PHY */
-	PHY_FRAME_PENDING           = 0x87,
-	/*A parameter in the set/get request is either not supported or is out ofthe valid range*/	
-    PHY_INVALID_PARAMETER       = 0x88,
-	/*A SET/GET request was issued with the identifier of a PIB attribute that is not supported	*/
-    PHY_UNSUPPORTED_ATTRIBUTE   = 0x89, 
-	/* The CCA attempt has detected a busy channel.*/
-    PHY_CHANNEL_BUSY            = 0x8A,
-	/* The CCA attempt has detected an idle channel.*/	
-    PHY_CHANNEL_IDLE            = 0x8B,
-	/* TRX received no ack for the previously sent packet*/	
-    PHY_NO_ACK                  = 0x8C, 
-	/* Transmit is failed due to Channel access failure*/
-    PHY_CHANNEL_ACCESS_FAILURE  = 0x8D  
+    /* General Success condition*/
+       PHY_SUCCESS                 = 0x00, 
+    /* Transceiver is currently sleeping */
+       PHY_TRX_ASLEEP              = 0x81,
+    /* Transceiver is currently awake */
+    PHY_TRX_AWAKE               = 0x82, 
+    /* 15.4 subsytem request is aborted due to BT subsystem High priority request */                                 
+       PHY_RF_REQ_ABORTED          = 0x83, 
+    /* RF is not available for 802.15.4 subsytem*/
+       PHY_RF_UNAVAILABLE          = 0x84, 
+    /* General failure condition */
+    PHY_FAILURE                 = 0x85,
+    /* PHY busy condition */	
+    PHY_BUSY                    = 0x86, 
+    /* Frame pending at PHY */
+    PHY_FRAME_PENDING           = 0x87,
+    /*A parameter in the set/get request is either not supported or is out ofthe valid range*/	
+       PHY_INVALID_PARAMETER       = 0x88,
+    /*A SET/GET request was issued with the identifier of a PIB attribute that is not supported	*/
+       PHY_UNSUPPORTED_ATTRIBUTE   = 0x89, 
+    /* The CCA attempt has detected a busy channel.*/
+       PHY_CHANNEL_BUSY            = 0x8A,
+    /* The CCA attempt has detected an idle channel.*/	
+       PHY_CHANNEL_IDLE            = 0x8B,
+    /* TRX received no ack for the previously sent packet*/	
+       PHY_NO_ACK                  = 0x8C, 
+    /* Transmit is failed due to Channel access failure*/
+       PHY_CHANNEL_ACCESS_FAILURE  = 0x8D  
             
 }PHY_Retval_t;
 
@@ -283,10 +283,10 @@ typedef enum phy_return_value_tag {
  */
  
 typedef enum phy_trx_state_tag{
-	/* Transceiver to be configured to Transceiver OFF state*/
-	PHY_STATE_TRX_OFF,
-	/* Transceiver to be configured to Receiver ON state */
-	PHY_STATE_RX_ON
+    /* Transceiver to be configured to Transceiver OFF state*/
+    PHY_STATE_TRX_OFF,
+    /* Transceiver to be configured to Receiver ON state */
+    PHY_STATE_RX_ON
 }PHY_TrxState_t;
 
  // *****************************************************************************
@@ -301,19 +301,19 @@ typedef enum phy_trx_state_tag{
  */
 
 typedef enum phy_trx_status_tag{
-	/* Transceiver is in Transceiver OFF state*/
-    PHY_TRX_OFF = 0x08,
-	/* Transceiver is in Receiver ON state */
-    PHY_RX_ON   = 0x16,
-	/* Transceiver is in Transmit ON state */
-    PHY_TX_ON   = 0x19,
-	/* Transceiver is currently receiving the packet*/
-    PHY_BUSY_RX = 0x11,
-	/* Transceiver is currently transmitting the packet */
-    PHY_BUSY_TX = 0x12,
-	/* Transceiver is in sleep state */
-    PHY_TRX_SLEEP  = 0x0F,
-	/* Transceiver is in Deep sleep state */
+    /* Transceiver is in Transceiver OFF state*/
+       PHY_TRX_OFF = 0x08,
+    /* Transceiver is in Receiver ON state */
+       PHY_RX_ON   = 0x16,
+    /* Transceiver is in Transmit ON state */
+       PHY_TX_ON   = 0x19,
+    /* Transceiver is currently receiving the packet*/
+       PHY_BUSY_RX = 0x11,
+    /* Transceiver is currently transmitting the packet */
+       PHY_BUSY_TX = 0x12,
+    /* Transceiver is in sleep state */
+       PHY_TRX_SLEEP  = 0x0F,
+    /* Transceiver is in Deep sleep state */
     PHY_TRX_DEEP_SLEEP = 0x20
 }PHY_TrxStatus_t;
 
@@ -380,9 +380,9 @@ typedef union
     Seting this attribute enables the device as PAN Coordinator 
    Description:
     if only source addressing fields are included in a data or MAC command frame, 
-	the frame shall be accepted only if the device is the PAN coordinator and 
-	the source PAN identifier matches macPANId, for details refer to 
-	IEEE 802.15.4-2006, Section 7.5.6.2 (third-level filter rule six
+    the frame shall be accepted only if the device is the PAN coordinator and 
+    the source PAN identifier matches macPANId, for details refer to 
+    IEEE 802.15.4-2006, Section 7.5.6.2 (third-level filter rule six
    Remarks:
     None 
  */
@@ -426,7 +426,7 @@ typedef union
    Summary:
     This macro holds the stack Major number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -438,7 +438,7 @@ typedef union
    Summary:
     This macro holds the stack Minor number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -449,7 +449,7 @@ typedef union
    Summary:
     This macro holds the stack patch number 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -461,7 +461,7 @@ typedef union
    Summary:
     This macro holds the PHY SW version as a String 
    Description:
-	None
+    None
    Remarks:
     None 
  */
@@ -500,7 +500,7 @@ Example:
    Summary:
     This macro holds PHY Software Version Information in 32-bit bitfield
    Description:
-	None
+    None
    Remarks:
     None 
 */
@@ -690,7 +690,7 @@ PHY_Retval_t PHY_Reset(bool setDefaultPib);
     txFrame     - Pointer to the PHY_FrameInfo_t structure or
                   to frame array to be transmitted
                 txFrame->mpdu - Pointer to the PHY Payload. mpdu[0] should hold 
-						the length of the payload(N) + 1 (for length field length)
+                         the length of the payload(N) + 1 (for length field length)
                 txFrame->mpdu[1-N] - Hold the phyPayload
   
     csmaMode    - Indicates mode of csma-ca to be performed for this frame
@@ -736,8 +736,8 @@ PHY_Retval_t PHY_Reset(bool setDefaultPib);
     None
 */
 PHY_Retval_t PHY_TxFrame(PHY_FrameInfo_t *txFrame, PHY_CSMAMode_t csmaMode,
-		bool performFrameRetry);
-		
+        bool performFrameRetry);
+
 // *****************************************************************************
 /*
   Function:
@@ -773,7 +773,7 @@ PHY_Retval_t PHY_TxFrame(PHY_FrameInfo_t *txFrame, PHY_CSMAMode_t csmaMode,
     frame       - Pointer to the PHY_FrameInfo_t structure or
                   to frame array to be transmitted
                 txFrame->mpdu - Pointer to the PHY Payload. mpdu[0] should hold 
-						the length of the payload(N) + 1 (for length field length)
+                        the length of the payload(N) + 1 (for length field length)
                 txFrame->mpdu[1-N] - Hold the phyPayload     
 
   Returns:
@@ -1135,9 +1135,9 @@ void PHY_RxFrameCallback(PHY_FrameInfo_t *rxFrame);
     bool trxSleepStatus = false;
  
     if (PHY_SUCCESS == PHY_TrxSleep(sleepMode))
-	{
-		trxSleepStatus = true;
-	}  
+    {
+        trxSleepStatus = true;
+    }
     </code>
 
   Remarks:
@@ -1177,9 +1177,9 @@ PHY_Retval_t PHY_TrxSleep(PHY_SleepMode_t mode);
     bool trxSleepStatus = false;
 
     if (PHY_SUCCESS == PHY_TrxSleep(sleepMode))
-	{
-		trxSleepStatus = true;
-	}
+    {
+       trxSleepStatus = true;
+    }
 
     if (PHY_SUCCESS == PHY_TrxWakeup())
     {
@@ -1506,7 +1506,7 @@ PHY_Retval_t PHY_ConfigTxPwr(bool type, int8_t pwrValue);
     bool antDiv = ANTENNA_DIVERSITY_DISABLE;
     uint8_t antennaSel =  ANTENNA_CTRL_1;
 
-	PHY_ConfigAntennaDiversity(antDiv, antennaSel);
+    PHY_ConfigAntennaDiversity(antDiv, antennaSel);
     
     PHY_GetTrxConfig(ANT_DIV, &antDiv); 
     PHY_GetTrxConfig(ANT_SELECT, &antennaSel);    
@@ -1549,7 +1549,7 @@ PHY_Retval_t  PHY_ConfigAntennaDiversity(bool divCtrl, uint8_t antCtrl);
     <code>
     uint8_t pdtLevel =  0x03;
  
-	PHY_ConfigRxSensitivity(pdtLevel);
+    PHY_ConfigRxSensitivity(pdtLevel);
     PHY_GetTrxConfig(RX_SENS, &pdtLevel); 
      
     </code>
@@ -1588,7 +1588,7 @@ PHY_Retval_t PHY_ConfigRxSensitivity(uint8_t pdtLevel);
     <code>
     bool promCtrl =  true;
  
-	PHY_ConfigRxPromiscuousMode(promCtrl);
+    PHY_ConfigRxPromiscuousMode(promCtrl);
     
     PHY_GetTrxConfig(AACK_PROMSCS_MODE, &promCtrl); 
      
@@ -1839,7 +1839,7 @@ PHY_TrxStatus_t PHY_GetTrxStatus(void);
     <code>
     int8_t trxBaseRSSI;
  
-	trxBaseRSSI = PHY_GetRSSIBaseVal();
+    trxBaseRSSI = PHY_GetRSSIBaseVal();
     
     </code>
 
@@ -1871,7 +1871,7 @@ int8_t PHY_GetRSSIBaseVal(void);
   Example:
     <code>
     uint32_t phySwVersion;
-	phySwVersion = PHY_GetSWVersion();
+    phySwVersion = PHY_GetSWVersion();
     
     </code>
 
@@ -1907,7 +1907,7 @@ uint32_t PHY_GetSWVersion(void);
     uint8_t pwrRegIndex = 0x04;
     int8_t pwrDbm;
  
-	PHY_ConvertTxPwrRegValToDbm(pwrRegIndex, &pwrDbm);
+    PHY_ConvertTxPwrRegValToDbm(pwrRegIndex, &pwrDbm);
     
     </code>
 
@@ -1919,16 +1919,16 @@ PHY_Retval_t PHY_ConvertTxPwrRegValToDbm(uint8_t regValue, int8_t *dbmValue);
 // *****************************************************************************
 /*
   Function:
-	bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t *addrMode)
+    bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t *addrMode)
 
   Summary:
     Function to check whether Any frame is pending from higher layer upon 
-	reception of Datarequest command frame (Ex: MAC/APP)
+    reception of Datarequest command frame (Ex: MAC/APP)
 
   Description:
     Function to check whether Any frame is pending from higher layer upon 
-	reception of Datarequest command frame (Ex: MAC/APP)
-	so that the automatic acknowledgement frame will have proper FramePeding bit status
+    reception of Datarequest command frame (Ex: MAC/APP)
+    so that the automatic acknowledgement frame will have proper FramePeding bit status
  
   Precondition:
     PHY_Init() should have been called before calling this function.
@@ -1943,17 +1943,17 @@ PHY_Retval_t PHY_ConvertTxPwrRegValToDbm(uint8_t regValue, int8_t *dbmValue);
 
   Example:
     <code>
-    	bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t *addrMode)
-		{
-			bool isFramePening = false;
-			return isFramePending;
-		}  
+        bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t *addrMode)
+        {
+            bool isFramePening = false;
+            return isFramePending;
+        }  
     </code>
 
   Remarks:
     This function is invloked by phy layer on thereception of Datarequest frame in ISR context.
-	The higher layer has to implement this function approprietely to set the framepending bit in Acknoewledgement frame.
-	This function is weak by default with FramePending bit set to false. 
+    The higher layer has to implement this function approprietely to set the framepending bit in Acknoewledgement frame.
+    This function is weak by default with FramePending bit set to false. 
 */
 
 bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t *addrMode);

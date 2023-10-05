@@ -26,7 +26,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -49,7 +49,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -65,7 +65,7 @@
 #include <openthread-core-config.h>
 #include <openthread/config.h>
 
-#include "openthread-system.h"
+#include <openthread-system.h>
 #include <openthread/diag.h>
 #include <openthread/tasklet.h>
 #include <openthread/platform/logging.h>
@@ -101,15 +101,15 @@ void otTaskletsSignalPending(otInstance *aInstance)
 void taskOpenThread(void *pvParam)
 {
     OT_Msg_T   otMessage;
-	instance = (otInstance *) pvParam;
-	
-	
+    instance = (otInstance *) pvParam;
+    
+    
 pseudo_reset:   
 
     instance = otInstanceInitSingle();
-	assert(instance);
+    assert(instance);
 
-	otAppCliInit(instance);
+    otAppCliInit(instance);
     
     while (true)
     {
@@ -117,10 +117,10 @@ pseudo_reset:
         {
              /* Block to wait for something to be available from the queues or
               semaphore that have been added to the set.*/
-				OSAL_QUEUE_Receive(&OTQueue, &otMessage, OSAL_WAIT_FOREVER);
+                OSAL_QUEUE_Receive(&OTQueue, &otMessage, OSAL_WAIT_FOREVER);
                 switch (otMessage.OTMsgId & PLAT_MODULE_ID_MASK)
                 {
-					case PLAT_UART_MODULE_ID:
+                    case PLAT_UART_MODULE_ID:
                     {
                         pic32cxUartProcess(otMessage.OTMsgId);
                         break;

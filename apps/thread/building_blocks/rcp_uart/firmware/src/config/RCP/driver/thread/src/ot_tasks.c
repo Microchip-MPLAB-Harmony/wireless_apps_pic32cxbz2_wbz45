@@ -26,7 +26,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -49,7 +49,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -65,7 +65,7 @@
 #include <openthread-core-config.h>
 #include <openthread/config.h>
 
-#include "openthread-system.h"
+#include <openthread-system.h>
 #include <openthread/diag.h>
 #include <openthread/tasklet.h>
 #include <openthread/platform/logging.h>
@@ -104,9 +104,9 @@ void otTaskletsSignalPending(otInstance *aInstance)
 void taskOpenThread(void *pvParam)
 {
     OT_Msg_T   otMessage;
-	instance = (otInstance *) pvParam;
-	
-	/* Create the queue set large enough to hold an event for every space in
+    instance = (otInstance *) pvParam;
+    
+    /* Create the queue set large enough to hold an event for every space in
     every queue and semaphore that is to be added to the set. */
     OSAL_QUEUE_CreateSet(&xQueueSet, 20 + 20);
     /* Add the queues and semaphores to the set.  Reading from these queues and
@@ -114,13 +114,13 @@ void taskOpenThread(void *pvParam)
        returned the queue or semaphore handle from this point on. */
     OSAL_QUEUE_AddToSet( &OTQueue, &xQueueSet );
     OSAL_QUEUE_AddToSet( &semPhyInternalHandler, &xQueueSet );
-	
+    
 pseudo_reset:   
 
     instance = otInstanceInitSingle();
-	assert(instance);
+    assert(instance);
 
-	otAppNcpInit(instance); 
+    otAppNcpInit(instance); 
     
     while (true)
     {
@@ -137,10 +137,10 @@ pseudo_reset:
             }
             else if(xActivatedMember == OTQueue )
             {
-				OSAL_QUEUE_Receive(&OTQueue, &otMessage, 0);
+                OSAL_QUEUE_Receive(&OTQueue, &otMessage, 0);
                 switch (otMessage.OTMsgId & PLAT_MODULE_ID_MASK)
                 {
-					case PLAT_UART_MODULE_ID:
+                    case PLAT_UART_MODULE_ID:
                     {
                         pic32cxUartProcess(otMessage.OTMsgId);
                         break;
@@ -163,7 +163,7 @@ pseudo_reset:
                     default:
                         break;
                 }
-			}
+            }
 
         }
         

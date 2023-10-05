@@ -27,7 +27,6 @@
  */
 
 
-//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -50,21 +49,20 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-//DOM-IGNORE-END
 
 
 #include "aes_alt.h"
-#include "mbedtls/aes.h"
+#include <mbedtls/aes.h>
 #include "pic32cx-mbedtls-config.h"
 #ifdef MBEDTLS_AES_ALT
 
 #include <common/code_utils.hpp>
 #include <string.h>
 
-#include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
+#include <wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h>
 
 #include "configuration.h"
-#include "wolfcrypt/aes.h"
+#include <wolfcrypt/aes.h>
 
 static struct Aes wcAes;
 

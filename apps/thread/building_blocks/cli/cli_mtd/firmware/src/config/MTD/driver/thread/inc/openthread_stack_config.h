@@ -26,7 +26,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -49,7 +49,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 #ifndef _PREINCLUDE_H    /* Guard against multiple inclusion */
 #define _PREINCLUDE_H
@@ -135,9 +135,9 @@ extern "C" {
 #define OPENTHREAD_CONFIG_CLI_UART_RX_BUFFER_SIZE                    (512)
 
 
-#define OPENTHREAD_MTD												 (1)
-#define OPEN_THREAD_UART_ENABLE										 (1)
-#define OPENTHREAD_CONFIG_MLE_CHILD_TIMEOUT_DEFAULT 				 (240)
+#define OPENTHREAD_MTD                                               (1)
+#define OPEN_THREAD_UART_ENABLE                                      (1)
+#define OPENTHREAD_CONFIG_MLE_CHILD_TIMEOUT_DEFAULT                  (240)
 #define OPENTHREAD_CONFIG_JOINER_ENABLE                              (1)
 
 
