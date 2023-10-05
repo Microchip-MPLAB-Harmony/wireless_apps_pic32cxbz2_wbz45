@@ -79,6 +79,7 @@
   This is purely to enable the application to use specific IDs across modules.
 
 */
+#define PDS_MODULE_OT_OFFSET       (1 << 11)
 #define PDS_MODULE_APP_OFFSET      (1 << 12)
 #define PDS_MODULE_BT_OFFSET       (1 << 13)
 #define PDS_MODULE_ZB_OFFSET       (1 << 14)

@@ -50,8 +50,8 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "peripheral/tc/plib_tc0.h"
-#include "peripheral/tc/plib_tc3.h"
 #include "peripheral/rcon/plib_rcon.h"
+#include "peripheral/tc/plib_tc3.h"
 #include "peripheral/tc/plib_tc2.h"
 #include "peripheral/nvm/plib_nvm.h"
 #include "peripheral/adchs/plib_adchs.h"

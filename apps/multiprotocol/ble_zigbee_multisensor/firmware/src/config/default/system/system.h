@@ -1,20 +1,28 @@
 /*******************************************************************************
-  ZLL Device Version Header File
+  Driver Layer Interface Header
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    N_Deviceinfo_Version.h
+    driver.h
 
   Summary:
-    This file contains the ZLL Device Version.
+    Driver layer data types and definitions.
 
   Description:
-    This file contains the ZLL Device Version.
+    This file defines the common macros and definitions for the driver layer
+    modules.
+
+  Remarks:
+    The parent directory to the "system" directory should be added to the
+    compiler's search path for header files such that the following include
+    statement will successfully include this file.
+
+    #include "system/system.h"
  *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
+//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
@@ -36,22 +44,25 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*******************************************************************************/
-// DOM-IGNORE-END
+ *******************************************************************************/
+//DOM-IGNORE-END
 
-#ifndef _N_DEVICEINFO_VERSION_H_
-#define _N_DEVICEINFO_VERSION_H_
+#ifndef SYSTEM_H
+#define SYSTEM_H
 
-#define PRODUCT                 "ZB"
-#define MAJOR_NUM               "5"
-#define MINOR_NUM               "1"
-#define MINOR_DERIVATIVE_NUM    "1"
-#define BRANCH_ID               "3"
-#define BRANCH_ITERATION_NUM    "1"
-#define RELEASE_M               "P"
 
-/* Release Version Information */
-#define VER_PRODUCT_INFO    PRODUCT"_V"MAJOR_NUM"."MINOR_NUM"."MINOR_DERIVATIVE_NUM"_"BRANCH_ID"."BRANCH_ITERATION_NUM"_"RELEASE_M
-#define N_DEVICE_INFO_PLATFORM_VERSION    VER_PRODUCT_INFO
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
 
-#endif // _N_DEVICEINFO_VERSION_H_
+#include "system/system_common.h"
+#include "system/system_module.h"
+
+
+#endif // SYSTEM_H
+/*******************************************************************************
+ End of File
+*/
+

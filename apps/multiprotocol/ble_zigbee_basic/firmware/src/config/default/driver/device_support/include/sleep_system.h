@@ -173,6 +173,16 @@ void DEVICE_SLEEP_ConfigAclbClk(bool enable);
 */
 void DEVICE_SLEEP_ConfigRfXtal(bool enable);
 
+// *****************************************************************************
+/**
+@brief The API is used to bring the wireless subsystem in low power mode.\n
+       It should be called when the application requests the device into deep sleep or xtreme deep sleep mode.
+*
+*@param None
+*
+*@retval None
+*/
+void DEVICE_SLEEP_ConfigWssLowPowerMode(void);
 
 #ifdef __cplusplus
 }
