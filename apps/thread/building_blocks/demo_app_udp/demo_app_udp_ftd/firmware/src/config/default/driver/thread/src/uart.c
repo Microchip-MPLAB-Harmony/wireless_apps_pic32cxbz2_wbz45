@@ -33,7 +33,6 @@
  */
 
 
-//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -56,11 +55,11 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-//DOM-IGNORE-END
+
 
 #include "definitions.h"
 #include "platform-pic32cx.h"
-#include "utils/uart.h"
+#include <utils/uart.h>
 
 extern OSAL_QUEUE_HANDLE_TYPE OTQueue;
 OSAL_SEM_HANDLE_TYPE OtUartSemHandler;
@@ -97,7 +96,7 @@ static DRV_USART_BUFFER_HANDLE uartReadBufferHandle;
 static void uartBufferEventHandler(DRV_USART_BUFFER_EVENT event, DRV_USART_BUFFER_HANDLE bufferHandle, uintptr_t context)
 {
     OT_Msg_T otUARTMsg;
-	
+
     if (event == DRV_USART_BUFFER_EVENT_COMPLETE)
     {
         if (bufferHandle == uartWriteBufferHandle)
@@ -199,18 +198,18 @@ otError otPlatUartEnable(void)
     sReceive.mHead = 0;
     sReceive.mTail = 0;
 
-	#if OPEN_THREAD_UART_ENABLE
+    #if OPEN_THREAD_UART_ENABLE
     uartHandle = DRV_USART_Open(DRV_USART_INDEX_0, DRV_IO_INTENT_READWRITE);
     DRV_USART_BufferEventHandlerSet(uartHandle, uartBufferEventHandler, (uintptr_t)0);
     DRV_USART_ReadBufferAdd(uartHandle, (uint8_t *)&sReceive.mBuffer[sReceive.mTail], sizeof(uint8_t), &uartReadBufferHandle);
     #endif
-	
+
     return OT_ERROR_NONE;
 }
 
 otError otPlatUartDisable(void)
 {
-	#if OPEN_THREAD_UART_ENABLE
+    #if OPEN_THREAD_UART_ENABLE
     DRV_USART_Close(uartHandle);
     #endif
     return OT_ERROR_NONE;
@@ -220,10 +219,10 @@ otError otPlatUartSend(const uint8_t *aBuf, uint16_t aBufLength)
 {
     otError error = OT_ERROR_NONE;
 
-	sTransmitBuffer = aBuf;
-	#if OPEN_THREAD_UART_ENABLE
+    sTransmitBuffer = aBuf;
+    #if OPEN_THREAD_UART_ENABLE
     DRV_USART_WriteBufferAdd(uartHandle, (uint8_t *)sTransmitBuffer, (size_t)aBufLength, &uartWriteBufferHandle);
-	#endif
+    #endif
     return error;
 }
 

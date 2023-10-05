@@ -26,7 +26,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-// DOM-IGNORE-BEGIN
+
 /*******************************************************************************
 * Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
@@ -49,7 +49,7 @@
 * implied, are granted under any patent or other intellectual property rights of 
 * Microchip or any third party.
  *******************************************************************************/
-// DOM-IGNORE-END
+
 
 #ifndef _STACKCONFIG_H    /* Guard against multiple inclusion */
 #define _STACKCONFIG_H
@@ -133,9 +133,9 @@ extern "C" {
 #define OPENTHREAD_CONFIG_TMF_NETDATA_SERVICE_ENABLE                 (1)
 
 
-#define OPENTHREAD_FTD												 (1)
-#define OPENTHREAD_CONFIG_MLE_MAX_CHILDREN							 (10)
-#define OPENTHREAD_CONFIG_MLE_IP_ADDRS_PER_CHILD					 (4)
+#define OPENTHREAD_FTD                                               (1)
+#define OPENTHREAD_CONFIG_MLE_MAX_CHILDREN                           (10)
+#define OPENTHREAD_CONFIG_MLE_IP_ADDRS_PER_CHILD                     (4)
 
 
 

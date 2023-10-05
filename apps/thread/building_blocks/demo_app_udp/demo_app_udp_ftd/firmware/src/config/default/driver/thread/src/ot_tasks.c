@@ -1,48 +1,55 @@
+/*
+ *  Copyright (c) 2023, The OpenThread Authors.
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions are met:
+ *  1. Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *  2. Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *  3. Neither the name of the copyright holder nor the
+ *     names of its contributors may be used to endorse or promote products
+ *     derived from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ *  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ *  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ *  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ *  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ *  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ *  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ *  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ */
+
+
 /*******************************************************************************
- System Tasks File
-
-  File Name:
-    tasks.c
-
-  Summary:
-    This file contains source code necessary to maintain system's polled tasks.
-
-  Description:
-    This file contains source code necessary to maintain system's polled tasks.
-    It implements the "SYS_Tasks" function that calls the individual "Tasks"
-    functions for all polled MPLAB Harmony modules in the system.
-
-  Remarks:
-    This file requires access to the systemObjects global data structure that
-    contains the object handles to all MPLAB Harmony module objects executing
-    polled in the system.  These handles are passed into the individual module
-    "Tasks" functions to identify the instance of the module to maintain.
+* Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
+  
+* The software and documentation is provided by Microchip and its contributors 
+* "as is" and any express, implied or statutory warranties, including, but not 
+* limited to, the implied warranties of merchantability, fitness for a particular 
+* purpose and non-infringement of third party intellectual property rights are 
+* disclaimed to the fullest extent permitted by law. In no event shall Microchip 
+* or its contributors be liable for any direct, indirect, incidental, special,
+* exemplary, or consequential damages (including, but not limited to, procurement 
+* of substitute goods or services; loss of use, data, or profits; or business 
+* interruption) however caused and on any theory of liability, whether in contract, 
+* strict liability, or tort (including negligence or otherwise) arising in any way 
+* out of the use of the software and documentation, even if advised of the 
+* possibility of such damage.
+* 
+* Except as expressly permitted hereunder and subject to the applicable license terms 
+* for any third-party software incorporated in the software and any applicable open 
+* source software license terms, no license or other rights, whether express or 
+* implied, are granted under any patent or other intellectual property rights of 
+* Microchip or any third party.
  *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
-// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -58,7 +65,7 @@
 #include <openthread-core-config.h>
 #include <openthread/config.h>
 
-#include "openthread-system.h"
+#include <openthread-system.h>
 #include <openthread/diag.h>
 #include <openthread/tasklet.h>
 #include <openthread/platform/logging.h>
@@ -93,13 +100,13 @@ void otTaskletsSignalPending(otInstance *aInstance)
 void taskOpenThread(void *pvParam)
 {
     OT_Msg_T   otMessage;
-	instance = (otInstance *) pvParam;
-	
-	
+    instance = (otInstance *) pvParam;
+    
+    
 pseudo_reset:   
 
     instance = otInstanceInitSingle();
-	assert(instance);
+    assert(instance);
 
     
     while (true)
@@ -108,14 +115,9 @@ pseudo_reset:
         {
              /* Block to wait for something to be available from the queues or
               semaphore that have been added to the set.*/
-				OSAL_QUEUE_Receive(&OTQueue, &otMessage, OSAL_WAIT_FOREVER);
+                OSAL_QUEUE_Receive(&OTQueue, &otMessage, OSAL_WAIT_FOREVER);
                 switch (otMessage.OTMsgId & PLAT_MODULE_ID_MASK)
                 {
-					case PLAT_UART_MODULE_ID:
-                    {
-                        pic32cxUartProcess(otMessage.OTMsgId);
-                        break;
-                    }
                     case PLAT_RADIO_MODULE_ID:
                     {
                         pic32cxRadioProcess(instance, otMessage.OTMsgId);
