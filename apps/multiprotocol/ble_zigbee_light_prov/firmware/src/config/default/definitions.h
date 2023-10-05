@@ -50,10 +50,11 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "peripheral/tc/plib_tc0.h"
-#include "peripheral/rcon/plib_rcon.h"
 #include "peripheral/tc/plib_tc3.h"
+#include "peripheral/rcon/plib_rcon.h"
 #include "peripheral/tc/plib_tc2.h"
 #include "peripheral/nvm/plib_nvm.h"
+#include "peripheral/adchs/plib_adchs.h"
 #include "zigbee/z3device_configs/stackConfig.h"
 #include "zigbee/z3device_configs/zigbeeAppConfig.h"
 #include "zigbee/z3device/common/include/zgb_task.h"
@@ -62,7 +63,6 @@
 #include "zigbee/lib/inc/systemenvironment/include/sysTaskManager.h"
 #include "configserver/include/configserver.h"
 #include "systemenvironment/include/sysSleep.h"
-#include "peripheral/adchs/plib_adchs.h"
 #include "peripheral/trng/plib_trng.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.

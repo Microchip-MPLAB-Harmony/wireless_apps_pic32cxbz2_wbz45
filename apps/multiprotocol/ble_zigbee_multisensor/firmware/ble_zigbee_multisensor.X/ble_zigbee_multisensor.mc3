@@ -5663,7 +5663,8 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ZIGBEE_MULTI_SENSOR&gt;
   &lt;ZIGBEE_MULTI_SENSOR dnOrder=&quot;0&quot; id=&quot;AUTOMATIC_CONFIGURATION&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; value=&quot;true&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/ZIGBEE_MULTI_SENSOR&gt;
 &lt;/ZIGBEE_MULTI_SENSOR&gt;
@@ -8780,7 +8781,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ZIGBEE_MULTI_SENSOR&gt;
   &lt;ZIGBEE_MULTI_SENSOR dnOrder=&quot;0&quot; id=&quot;MANUAL_CONFIGURATION&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; value=&quot;true&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; value=&quot;false&quot;/&gt;
       &lt;User dnOrder=&quot;1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/ZIGBEE_MULTI_SENSOR&gt;
@@ -10680,7 +10681,7 @@
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;HarmonyCore&quot; x=&quot;720&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;PROFILE_TRSP&quot; x=&quot;383&quot; y=&quot;84&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;SERVICE_TRS&quot; x=&quot;209&quot; y=&quot;13&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; x=&quot;222&quot; y=&quot;421&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; x=&quot;223&quot; y=&quot;420&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;bz_prov&quot; x=&quot;453&quot; y=&quot;298&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;cmsis&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;core&quot; x=&quot;29&quot; y=&quot;119&quot;/&gt;
@@ -18716,7 +18717,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zcl\src\zclOtauClientPdt.c</file>
-         <hash>255e7a5edc853ca253410688a8e54b5251a2147fb5869c2696ca42af9a672304</hash>
+         <hash>6cfa6d01467097703818f618c48bf7fd69ffe9ed54982aa7a9ea2fc37ede2ebc</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zcl\include\zclIasZoneCluster.h</file>
@@ -19156,7 +19157,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.c</file>
-         <hash>6aa188897a9fd2fdf986d8abe286535868ede7ac775ac4f628ce01ae4b2da852</hash>
+         <hash>9e3b04fc21dce9eebf65a662234eb59976206fa0095d556a49cb0e7dc858e4c2</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\aps\include\apsCommandReq.h</file>
@@ -19188,7 +19189,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal.h</file>
-         <hash>c2cefdf10c48e2b0cc9ac3f137d4b4d1141f3eb5c8492d7334e1de29e6e7ea52</hash>
+         <hash>4e5d7ca0ea22a3304eee868454bca732052c88930eed7e54349bc08c7350d0fc</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_iccarm.h</file>
@@ -19205,6 +19206,10 @@
       <entry>
          <file>..\src\config\default\zigbee\z3device\stack_interface\zdo\ZDO_API.c</file>
          <hash>24bda46dae9fa828d196cef3e1924908ce0afdde5fd3ebd289340be22d66fec3</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\system\int\sys_int_mapping.h</file>
+         <hash>5abf8528dabc1b17378f5d137870597037214fddf33880fa40e9263352da3008</hash>
       </entry>
       <entry>
          <file>..\src\app_zigbee\app_zigbee.c</file>
@@ -19507,6 +19512,10 @@
          <hash>dae20c2a4b465e3ddac4804ef6cd3b641efe54736a9c4fae7b149d5e7b0b71f5</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\system\system.h</file>
+         <hash>2b75f8e370e5cb2c54f70da7351ee149f0d5a7673e700f39b373099716b31b55</hash>
+      </entry>
+      <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nwkCommon.h</file>
          <hash>8d68f2d39d5851c1907ba5596530ea3d02ee2a67d3d88341efa2b48b2ba21bea</hash>
       </entry>
@@ -19547,6 +19556,10 @@
          <hash>30e75f6ac2fafd738b6be58fc8fecc66829aa17bd6187121163823873795edb8</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\system\system_common.h</file>
+         <hash>c9f34bd226f8efab12f5766e77f8355996cd0430b50e0f6ee30258664c494984</hash>
+      </entry>
+      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionRouter_Bindings.h</file>
          <hash>1e2812252bf4ad2d96bcd231d28332569e96ce839be817de2105b7cf307a8dde</hash>
       </entry>
@@ -19557,6 +19570,10 @@
       <entry>
          <file>..\src\config\default\driver\device_support\pic32cx_bz2_device_support.a</file>
          <hash>cb582400ebea2782c2b50ee9ad56b16e852606edbd7573e0ce96b61cf45dea96</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\system\debug\sys_debug.h</file>
+         <hash>bc6fa321b0be542d074e4564065b7fd69f52556486ac3d892d315b51c434f9ec</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -19621,6 +19638,10 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\memory.h</file>
          <hash>1f6df07d9d407cd0ded0dde0bc549d7183577904c6e0deda6b0cf525f4f81997</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\system\system_module.h</file>
+         <hash>96c74368801b0a7aaa25aec3ec2cb0d483250385f103ffc1ff64089b4ca2c6d9</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nlmeLeave.h</file>
@@ -19748,7 +19769,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\zcl\src\zclOtauClientDiscovery.c</file>
-         <hash>5270f940cc6fffa38c1e5ddc16055122bc60432da95697d3251d2487a8e722ac</hash>
+         <hash>57f18179b2451ad36533843c4ca434ef41549b6c7ccb832cd5bb971004ab3ee2</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\stack_interface\zgb_api.h</file>
@@ -19845,6 +19866,10 @@
       <entry>
          <file>..\src\config\default\peripheral\trng\plib_trng.h</file>
          <hash>ec9ba6d8690f41be428a6004d5c6434facf8c7e5fb0ab6a18a8ae30df7f17c90</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\system\int\src\sys_int.c</file>
+         <hash>4281667cc2b84c9e4be1f0dfb3f7d42b77d36c5dcf6513d29ff40262f746cfc6</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_int.c</file>
@@ -19979,6 +20004,14 @@
          <hash>99839bd3c219b9267576e3899c21c4a76e1c3e30a8b731db1ed8e13c268ca0f9</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\driver\driver.h</file>
+         <hash>042fdd289460dbddb8e805850af7e3ac9aea95468e37414959781ebc5b2f454d</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\driver\driver_common.h</file>
+         <hash>5217965f6720b4fdf717e99ce9df4f2c9fbd82bbbc9655847166d1eefa806fee</hash>
+      </entry>
+      <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ge_448.h</file>
          <hash>49be8c8a3492cda368b6b82907f8d7cc70a29150f8c61bdca9a67c609199aed5</hash>
       </entry>
@@ -20096,7 +20129,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\hal\cortexm4\common\src\appTimer.c</file>
-         <hash>e9211e4346f49660778f6c7f46fe7f7cdb35ce7eb9fbba71eeaa56692d6d8ab3</hash>
+         <hash>3528ca5a43f52f7de4bbc642097f87467c808cd81639524924d9c09a04964d89</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nlmeDirectJoin.h</file>
@@ -20276,7 +20309,7 @@
       </entry>
       <entry>
          <file>..\src\app_idle_task.c</file>
-         <hash>2858cab1b45650b379b294fe5b84d8cd0b08f0210f0d28cda1fe74d53e0200d5</hash>
+         <hash>215a2c2d7d7c95d85b0d1b0a606b4bf7847fa573dfbe500debe0a1d7ba14e083</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zdo\include\private\zdoAddrResolvingInt.h</file>
@@ -20580,7 +20613,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Cmi\include\N_Cmi.h</file>
-         <hash>9ff21c03722326530ba4e22fd70a8c1bcea8a4ae0f753e8eafb0d211036c8a09</hash>
+         <hash>dc79ee95de2b46b1ec5da7bcdb02a0eafda0dc5393915ff6134eb142952a7122</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\mac_phy\include\macRxEnable.h</file>
@@ -20887,6 +20920,10 @@
          <hash>995991862870ca8f244a0b788532607b458ce51164b1b3b71479eca292a95ca2</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\system\int\sys_int.h</file>
+         <hash>dc104ae181fd5309e1bb42896246644fae95915a8e639b23ecfccc8840850274</hash>
+      </entry>
+      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionEnddevice_Init.h</file>
          <hash>83c4a770e7557cd38d4de0c7789e3cdd178227e4bf49aabc48c7268a381c051a</hash>
       </entry>
@@ -20984,7 +21021,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>7f9c81f9eaa999c94250b7068c93150d8de6637d32a2f9b0be25400478e953dd</hash>
+         <hash>d871608853ba6694e0b7cc0805f6524c66a9f0babd53ab2f54e80cae14b6ff6f</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\chacha20_poly1305.h</file>
@@ -21768,7 +21805,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>bba238ff75409749deeb577d175e87dca9a682bfc5f4cbdc0c37eb902ef5b8b7</hash>
+         <hash>0a088f65ad8a098d752957aa63c23c45b2f65117af63e51b72e9c829f51a04fc</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
@@ -21935,8 +21972,16 @@
          <hash>0e1bcd1e00a293e3cbe8193db69658aa8bb5c425f38a792695f449c0460d5b4d</hash>
       </entry>
       <entry>
+         <file>..\src\config\default\device_deep_sleep.c</file>
+         <hash>f833b8ee4d360ada44bf84234fd634af9fe6c10d302a5cb115adf4ad1747e58b</hash>
+      </entry>
+      <entry>
          <file>..\src\config\default\zigbee\z3device\otau\ofd\include\ofdMemoryDriver.h</file>
          <hash>32397a6c418c1694079d8ca2456ead033b44402f35ce035f279180834cc78363</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\device_deep_sleep.h</file>
+         <hash>5d50b08c07ef32b4b93ba2a2586e500bfe075674c79ef2bc339ea9d467206b5b</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hw.h</file>
@@ -22052,7 +22097,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\z3device\common\z3DevicePic32cx.c</file>
-         <hash>432303a4bda90a6e8cdf197b474de17851369bc3aeea9ef54958947c1907aad1</hash>
+         <hash>023a30983c680721e24f2b727952678c4b6de45d73bfa62eaf2091fa8bc92c47</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\semphr.h</file>
@@ -22096,7 +22141,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos.c</file>
-         <hash>0b0cc4b1178dc0fb47543d6505b90b99883d1f385673f9eb51019b69c18112f9</hash>
+         <hash>c252eb6a2b4fbc0a8a4e78cd3fd71571ee18a885c8a951a1effb535aee84dece</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\systemresource\systemenvironment\src\sysSleep.c</file>

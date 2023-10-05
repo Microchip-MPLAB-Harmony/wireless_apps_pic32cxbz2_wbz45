@@ -343,28 +343,6 @@
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="BLE_STACK_LIB" name="CUSTOM_ANT_GAIN"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;BLE_STACK_LIB&gt;
-  &lt;BLE_STACK_LIB dnOrder=&quot;0&quot; id=&quot;CUSTOM_ANT_GAIN&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;BLE_STACK_LIB&quot; value=&quot;3&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/BLE_STACK_LIB&gt;
-&lt;/BLE_STACK_LIB&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="BLE_STACK_LIB" name="CUSTOM_ANT_REGION"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;BLE_STACK_LIB&gt;
-  &lt;BLE_STACK_LIB dnOrder=&quot;0&quot; id=&quot;CUSTOM_ANT_REGION&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;BLE_STACK_LIB&quot; value=&quot;ETSI&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/BLE_STACK_LIB&gt;
-&lt;/BLE_STACK_LIB&gt;
-</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="BLE_STACK_LIB" name="DM_MAX_CONN_INTERVAL"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;BLE_STACK_LIB&gt;
   &lt;BLE_STACK_LIB dnOrder=&quot;0&quot; id=&quot;DM_MAX_CONN_INTERVAL&quot;&gt;
@@ -1825,17 +1803,6 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;BLE_STACK_LIB&gt;
   &lt;BLE_STACK_LIB dnOrder=&quot;0&quot; id=&quot;SMP_SC_ONLY&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/BLE_STACK_LIB&gt;
-&lt;/BLE_STACK_LIB&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="BLE_STACK_LIB" name="USE_CUSTOM_ANT_GAIN"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;BLE_STACK_LIB&gt;
-  &lt;BLE_STACK_LIB dnOrder=&quot;0&quot; id=&quot;USE_CUSTOM_ANT_GAIN&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;BLE_STACK_LIB&quot; value=&quot;false&quot;/&gt;
-    &lt;/Values&gt;
   &lt;/BLE_STACK_LIB&gt;
 &lt;/BLE_STACK_LIB&gt;
 </value>
@@ -8966,7 +8933,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\toolchain_specifics.h</file>
-         <hash>fb1c58b7fb94545ef6247f18ea3001b719e06ec29bf39bfd68fe3927f709eaa3</hash>
+         <hash>6fc0551b0fa3362678b3d7a227386fafa343140d31e4da3ad4af972e61cd0acb</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\list.h</file>
@@ -9005,10 +8972,6 @@
          <hash>8b04c8fa30c462cde302683f211c3655f2cbfab4470d9476a49bf830ea135b87</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_scm.h</file>
-         <hash>1a0d8d30a9ca570ff37a7282f7e0153161fa1b30c2233efdc0545430e1c51cf1</hash>
-      </entry>
-      <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ClearFlags_pb.h</file>
          <hash>d4d6010f2c736d325c8f5f0f9fdadcff2395c698424f2d095480fe4a93e8d516</hash>
       </entry>
@@ -9023,10 +8986,6 @@
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ramecc.h</file>
          <hash>c7de5a38e6430b373d7a5f58d5234c33627372dbe14071a1fba96a949db51a41</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_scm.c</file>
-         <hash>14174f73b90d548b445983fba60539bd54d5416988702c4ee85beb83e4ff8097</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\console\src\sys_console_uart.c</file>
@@ -9110,7 +9069,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_gap.h</file>
-         <hash>c12bf44aec070746bb233fffed5e83f7b01fa26db3df95fbcb96c59e9d37c6a4</hash>
+         <hash>8791d375a4af13fe7366bed0bb76a4627900b49e0a5ea17092dec23faf874d5e</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang.h</file>
@@ -9226,11 +9185,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\nvic\plib_nvic.c</file>
-         <hash>972b1a24ab3964f5934889e83de11f2117ae7cfb10d715ee707ddc09351b19d7</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_dd.h</file>
-         <hash>93fba4604ba4225dda055dfc852a186d72da5fb6789e6e4e7c4e03e8b4751aa4</hash>
+         <hash>c2effab01b7fdf39cde6e1f79c476d6c051b160caddfa9de88d4070611f653bd</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\types.h</file>
@@ -9238,15 +9193,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\bt_sys.h</file>
-         <hash>321f5142a66c6dd50d1abdcbbc4a923d35315320047e19b988a0e6a19c4f3cd9</hash>
+         <hash>bb5d725fbbe138379f79207ff488e3c69602cfe5c77897cff65db74623f14616</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\dh.c</file>
          <hash>24cda6a23fdbb8608cbe41ab07387330ba40ddb3a51204d463b0d606f5fa77e9</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_gcm\ble_dd.c</file>
-         <hash>e594f4d1ac65111192d9b696ece9a37e2a9e4b8a7a1b8608b1f4ca1559499c54</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device_cache.h</file>
@@ -9262,7 +9213,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\sercom\usart\plib_sercom_usart_common.h</file>
-         <hash>3feca67a173d19d45961676a16f6153a6d849ecac98e906b62a343258c8bf43b</hash>
+         <hash>f19dafabe0928d60dd83d7e19f35889f200e3fbadff09e2f42523d320acf780a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\sp_int.h</file>
@@ -9338,7 +9289,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.h</file>
-         <hash>aeb73e24e5a518024b1c3f7dce953a5cbacead08f55e80ae465fc8d2e522e477</hash>
+         <hash>39b2476052565e9b20debaa1266d19d5072cff729d06d053e629dc57699ec485</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\blake2b.c</file>
@@ -9354,7 +9305,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\exceptions.c</file>
-         <hash>b268111879b5fa0ab2eaf79fc5d4bd1aa046c54d97805246ce08964100a70bfb</hash>
+         <hash>89852728a9a1cc4c9746839cc3caf5308b8698c0c30bf6bfbad0db9e552a387e</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\blake2s.c</file>
@@ -9490,7 +9441,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\sercom\usart\plib_sercom0_usart.h</file>
-         <hash>26eb39fe2d947459729ac959257b5abd0a09abf2c2e547d42c95ebca03d8404a</hash>
+         <hash>0df2c338e8de7443bc597e108b579c4f29d23090bba433ebddf71d0eac3d218a</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_utility.c</file>
@@ -9506,11 +9457,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\sercom\usart\plib_sercom0_usart.c</file>
-         <hash>5b728a15182efe0bb12c5258ff95b69c194b2fed7de8d12a117634047642fea5</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_util\mw_dfu.h</file>
-         <hash>74fa355306e28c959c40579b043bc5ac68d069e3bb5d0368ff98f3bd485073f2</hash>
+         <hash>5ee6e3e192047f38828fe73dd11ec50e09dc314c95951865b6c72973182a2947</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\hmac.h</file>
@@ -9610,7 +9557,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>199834a34cde8f93c4453d135460b25451d22773b4b591b18489824e6c6d8053</hash>
+         <hash>deb85284f461e7ad0c8f2d1f6b10ab9203de1a0519ac647ca6067aa8baf278a9</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\queue.h</file>
@@ -9662,7 +9609,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\include\pds_config.h</file>
-         <hash>653ba70d38cccc317efcffba5bf708a4e13eebe3ec1ca6cf22d8469df2435e75</hash>
+         <hash>e5fa60f8b50cca742ec0d4c4ed29410d917b598af9b3a0f05491c8dc10ed879b</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccAddSub_pb.h</file>
@@ -9694,7 +9641,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.c</file>
-         <hash>fb163251aaf5e3adcb9b301bbbbda3e4dd97ff2bfc55594aba20217cafde2b22</hash>
+         <hash>7e9363d009637de36f9c42ca8fb15419f02741d62ffc6122439832c037cc9ef0</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ripemd.h</file>
@@ -9718,11 +9665,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\nvm\plib_nvm.c</file>
-         <hash>9cf1e8ddd876d087a0a1533ad7487f86e7905bb49f1f92b04764f20aac0e4cb5</hash>
+         <hash>66a70d8a03f2b9b4bcb2f5dabf3d0573901e971112326a5078efb42e1274c9db</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal.h</file>
-         <hash>c2cefdf10c48e2b0cc9ac3f137d4b4d1141f3eb5c8492d7334e1de29e6e7ea52</hash>
+         <hash>4e5d7ca0ea22a3304eee868454bca732052c88930eed7e54349bc08c7350d0fc</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\cpuid.h</file>
@@ -9783,10 +9730,6 @@
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\sercom3.h</file>
          <hash>e7cfdec3eb17c3544201da217bc2a59dd7ea575cf8f14cd33f0622db90b72949</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_util\mw_dfu.c</file>
-         <hash>648dca2ad01ca2fbddd5df3710927db05d06685138f38c4e6787f0fa08eeb3ab</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\projdefs.h</file>
@@ -9954,7 +9897,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\sys_tasks.h</file>
-         <hash/>
+         <hash>8e1a48dc226e9af26c57fc69ba76d2de0279f4bbc96e071a57fd0911a782545d</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\error-crypt.h</file>
@@ -10154,7 +10097,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\include\pds.h</file>
-         <hash>78ef8465abe334342d2d36b0bba88a23b343f809a7e09a96e2c44e686c7c6b74</hash>
+         <hash>99b2cbb998b879a49fca3198d33cd549f57a2ed59a17f1e5e524dfd6d2753cc1</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\chacha.h</file>
@@ -10294,7 +10237,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\ble_stack_bz2_lib.a</file>
-         <hash>390b497db094111bd855b7696c12232cd991b2cccc0aa14ee79baed50fd717c6</hash>
+         <hash>1a2d9577d096a0cfb065cec61cbb1f107e3fa63e5abafea2029ed7d2c6194a3c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dscon.h</file>
@@ -10334,7 +10277,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_handler.h</file>
-         <hash>a94a458be76264c1d1bdfe8d8709fb4374fbde229157cf3fa2ac552b0ffbcaff</hash>
+         <hash>89a8f5e630215a7aa97acf414ea9b80fc6209547cbe6ea42333a3112f2911497</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\rsa.h</file>
@@ -10346,7 +10289,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>f7782a791824609a8fa1a0634a6cbef2b1d4685865d5f3eae631d7b6be4eb563</hash>
+         <hash>0b9a25c52b02cf2a9b0a0f743846d65ba94a1cf442402a8c996f610605a8e7e4</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
@@ -10470,7 +10413,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.h</file>
-         <hash>a74f357a6217aac608dc97d5bcbf2e2d0e1434679954ddddfcfdb178d956fa66</hash>
+         <hash>ac7dab0680feb2ac41ea8adf75169caa070472c252b8313d870d438fa41fc75e</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device_vectors.h</file>
@@ -10506,7 +10449,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.c</file>
-         <hash>a59ff95468a43423b8117ecaa921e25031a109f88eabf8652dc426b38a18ef8b</hash>
+         <hash>8aa428912797b55bda9df829051970a1eea644215da1fb5fe54138f10c2b5527</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_x86_64.c</file>
@@ -10598,7 +10541,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\gpio\plib_gpio.c</file>
-         <hash>9fe516fc88117c33ababdf4c4ddae000b53cf1a2f6e120534ea342a135536449</hash>
+         <hash>d84b22c953108f682cd12eb84438916406b347398e9058c894d4b334cfac80f6</hash>
       </entry>
       <entry>
          <file>..\src\main.c</file>
@@ -10630,7 +10573,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\startup_xc32.c</file>
-         <hash>a814f932cb7628e8082ab583d2e183617edffd456c46141abf71f15fce33c2c2</hash>
+         <hash>6945b6a1826ae28babaae6cd59e20b8e74e464d4de4fa6fdbb92158ffaa02257</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_definitions.h</file>
@@ -10682,7 +10625,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos.c</file>
-         <hash>0b0cc4b1178dc0fb47543d6505b90b99883d1f385673f9eb51019b69c18112f9</hash>
+         <hash>c252eb6a2b4fbc0a8a4e78cd3fd71571ee18a885c8a951a1effb535aee84dece</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\pkcs7.c</file>

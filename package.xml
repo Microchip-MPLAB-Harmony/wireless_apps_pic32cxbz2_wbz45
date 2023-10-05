@@ -7,12 +7,13 @@
         <Dependency name="crypto" version="v3.8.0"/>
         <Dependency name="csp" version="v3.17.0"/>
         <Dependency name="wireless_ble" version="v1.1.0"/>
-        <Dependency name="wireless_zigbee" version="v5.1.0"/>		
+        <Dependency name="wireless_zigbee" version="v5.1.1"/>		
         <Dependency name="wireless_system_pic32cxbz_wbz" version="v1.3.0"/>
-        <Dependency name="wireless_pic32cxbz_wbz" version="dev"/>
+        <Dependency name="wireless_pic32cxbz_wbz" version="v1.2.0"/>
         <Dependency name="wolfssl" version="v5.4.0"/>
-		<Dependency name="wireless_15_4_phy" version="v1.1.0-rc.3"/>
-		<Dependency name="wireless_thread" version="v1.0.0-rc.3"/>
+	<Dependency name="wireless_15_4_phy" version="v1.1.0"/>
+	<Dependency name="wireless_thread" version="v1.0.0"/>
+	<Dependency name="wireless_15_4_mac" version="v1.0.0"/>	
         <Dependency name="openthread" version="mchp_harmony_wireless_thread_v1.0.0"/>
 </Dependencies>
 </Package>

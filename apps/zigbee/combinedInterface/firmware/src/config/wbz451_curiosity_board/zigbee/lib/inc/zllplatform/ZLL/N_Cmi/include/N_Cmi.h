@@ -50,10 +50,10 @@
 #include <mac_phy/include/macCommon.h>
 
 #include "zllplatform/infrastructure/N_Address/include/N_Address.h"
-#include "zllplatform/zll/N_Beacon/include/N_Beacon.h"
-#include "zllplatform/zll/N_Security/include/N_Security.h"
+#include "zllplatform/ZLL/N_Beacon/include/N_Beacon.h"
+#include "zllplatform/ZLL/N_Security/include/N_Security.h"
 #include "zllplatform/infrastructure/N_Types/include/N_Types.h"
-#include "zllplatform/zll/N_Connection/include/N_Connection.h"
+#include "zllplatform/ZLL/N_Connection/include/N_Connection.h"
 
 #include "aps/include/apsdeData.h"
 #include "zdo/include/zdo.h"

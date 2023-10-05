@@ -195,9 +195,10 @@ static void APP_BleConfigBasic(void)
     BLE_GAP_AdvDataParams_T         appAdvData;
     uint8_t scanRspData[]={0x0B, 0x09, 0x70, 0x69, 0x63, 0x33, 0x32, 0x63, 0x78, 0x2D, 0x62, 0x7A};
     BLE_GAP_AdvDataParams_T         appScanRspData;
+    
 
     // Configure advertising parameters
-    BLE_GAP_SetAdvTxPowerLevel(9,&advTxPower);      /* Advertising TX Power */
+    BLE_GAP_SetAdvTxPowerLevel(15,&advTxPower);      /* Advertising TX Power */
     
     (void)memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
     advParam.intervalMin = 32;     /* Advertising Interval Min */
@@ -225,14 +226,13 @@ static void APP_BleConfigAdvance(void)
 
     BLE_SMP_Config_T                smpParam;
 
-
     BLE_DM_Config_T                 dmConfig;
     BLE_GAP_ServiceOption_T         gapServiceOptions;
     
 
     // Configure Device Name
     BLE_GAP_SetDeviceName(sizeof(devName), devName);    /* Device Name */
-
+    
 
     // GAP Service option
     gapServiceOptions.charDeviceName.enableWriteProperty = false;             /* Enable Device Name Write Property */
@@ -240,7 +240,6 @@ static void APP_BleConfigAdvance(void)
     gapServiceOptions.charPeriPreferConnParam.enable = false;                    /* Enable Peripheral Preferred Connection Parameters */
 
     BLE_GAP_ConfigureBuildInService(&gapServiceOptions);
-
 
 
 

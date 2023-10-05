@@ -23,6 +23,7 @@ Following table provides number of Wireless examples available for different dev
 
 ### Bug fixes and Improvements
 - New applications release.
+- Zigbee Applications Linux Compatability Issue Fix
 
 
 ### Known Issues
@@ -34,7 +35,7 @@ Following table provides number of Wireless examples available for different dev
 
 ### Development Tools
 
-- [MPLABÂ® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide)
+- [MPLABÂ® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide) or Higher
 - MPLABÂ® X IDE plug-ins:
   - MPLABÂ® Code Configurator (MCC) `v5.3.7`
 - [MPLABÂ® XC32 C/C++ Compiler v4.21](https://www.microchip.com/mplab/compilers)

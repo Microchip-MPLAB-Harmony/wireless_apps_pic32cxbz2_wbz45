@@ -65,7 +65,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-
+uint16_t conn_handle;
 
 
 
@@ -146,6 +146,7 @@ void APP_Tasks ( void )
     APP_Msg_T    appMsg[1];
     APP_Msg_T   *p_appMsg;
     p_appMsg=appMsg;
+    uint16_t result;
 
     /* Check the application's current state. */
     switch ( appData.state )
@@ -185,7 +186,37 @@ void APP_Tasks ( void )
                     // Pass BLE LOG Event Message to User Application for handling
                     APP_BleStackLogHandler((BT_SYS_LogEvent_T *)p_appMsg->msgData);
                 }
+                else if(p_appMsg->msgId==APP_MSG_CONNECT_CB)
+                {
+                    APP_Msg_T appMsg;
+                   // Create an instance of the BLE_GAP_SetPathLossReportingParams_T structure
+                    BLE_GAP_SetPathLossReportingParams_T params;
 
+                        // Fill in the structure fields with appropriate values
+                    params.connHandle = conn_handle/* Set the connection handle */;
+                    params.highThreshold = 60 /* Set the high threshold */;
+                    params.highHysteresis = 3/* Set the high hysteresis */;
+                    params.lowThreshold = 30/* Set the low threshold */;
+                    params.lowHysteresis = 3/* Set the low hysteresis */;
+                    params.minTimeSpent = 1/* Set the minimum time spent */;
+                   result = BLE_GAP_SetPathLossReportingParams(&params);
+                   if(result == 0)
+                   {
+                       appMsg.msgId = APP_MSG_PATHLOSS_CB;
+                       
+                       OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
+                   }
+                   else
+                   {
+                       appMsg.msgId = APP_MSG_CONNECT_CB;
+                       
+                       OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
+                   }
+                }      
+               else if(p_appMsg->msgId==APP_MSG_PATHLOSS_CB)
+                {
+                    result = BLE_GAP_SetPathLossReportingEnable(conn_handle, 0x01);
+                } 
 
 
             }

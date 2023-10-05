@@ -10,6 +10,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>D:/svn/chimera/RTP_A2/H3/wireless_apps_pic32cxbz2_wbz45/apps/ble/advanced_applications/ble_sensor</sourceRootElem>
+                <sourceRootElem>D:\svn\chimera\RTP_A2\compare\wireless_apps_pic32cxbz2_wbz45\apps\ble\advanced_applications\ble_sensor\firmware\ble_sensor.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

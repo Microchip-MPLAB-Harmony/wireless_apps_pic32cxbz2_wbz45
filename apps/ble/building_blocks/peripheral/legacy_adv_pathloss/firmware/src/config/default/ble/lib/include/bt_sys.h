@@ -145,12 +145,11 @@ typedef enum BT_SYS_ErrCode_T{
 /**@brief Bluetooth system configuration. */
 typedef struct BT_SYS_Cfg_T
 {
+    int8_t      	antennaGain;                        /**< Antenna gain. */
     uint8_t     	addrValid:1;                        /**< Set true if devAddr field is valid. */
     uint8_t     	rssiOffsetValid:1;                  /**< Set true if rssiOffset field is valid. */
-    uint8_t     	antennaGainValid:1;                 /**< Set true if antennaGain field is valid. */
     uint8_t     	devAddr[BT_SYS_DEV_ADDR_LEN];       /**< Device address. */
     int8_t      	rssiOffset;                         /**< RSSI offset. */
-    int8_t      	antennaGain;                        /**< Antenna gain. */
 } BT_SYS_Cfg_T;
 
 /**@brief Bluetooth system initialization. */

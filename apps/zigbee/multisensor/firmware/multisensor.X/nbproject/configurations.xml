@@ -36,8 +36,6 @@
                 <itemPath>../src/config/default/driver/pds/include/pds.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <itemPath>../src/config/default/driver/driver_common.h</itemPath>
-            <itemPath>../src/config/default/driver/driver.h</itemPath>
           </logicalFolder>
           <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal_freertos_extend.h</itemPath>
@@ -78,21 +76,6 @@
             <logicalFolder name="trng" displayName="trng" projectFiles="true">
               <itemPath>../src/config/default/peripheral/trng/plib_trng.h</itemPath>
             </logicalFolder>
-          </logicalFolder>
-          <logicalFolder name="system" displayName="system" projectFiles="true">
-            <logicalFolder name="cache" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/default/system/cache/sys_cache.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="debug" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
-              <itemPath>../src/config/default/system/int/sys_int_mapping.h</itemPath>
-            </logicalFolder>
-            <itemPath>../src/config/default/system/system_module.h</itemPath>
-            <itemPath>../src/config/default/system/system_common.h</itemPath>
-            <itemPath>../src/config/default/system/system.h</itemPath>
           </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="lib" displayName="lib" projectFiles="true">
@@ -1149,14 +1132,6 @@
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="system" displayName="system" projectFiles="true">
-            <logicalFolder name="cache" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/default/system/cache/sys_cache.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
-            </logicalFolder>
-          </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="systemresource"
                            displayName="systemresource"
@@ -1473,7 +1448,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>

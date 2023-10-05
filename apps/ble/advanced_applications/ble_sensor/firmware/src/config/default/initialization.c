@@ -48,7 +48,6 @@
 #include "device.h"
 
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -204,7 +203,6 @@ SYSTEM_OBJECTS sysObj;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-#define REGULATORY_REGION "ETSI"
 
 #define QUEUE_LENGTH_BLE        (32)
 #define QUEUE_ITEM_SIZE_BLE     (sizeof(void *))
@@ -245,22 +243,19 @@ OSAL_QUEUE_HANDLE_TYPE bleRequestQueueHandle;
 // <editor-fold defaultstate="collapsed" desc="SYS_CONSOLE Instance 0 Initialization Data">
 
 
-/* Declared in console device implementation (sys_console_uart.c) */
-extern const SYS_CONSOLE_DEV_DESC sysConsoleUARTDevDesc;
-
 static const SYS_CONSOLE_UART_PLIB_INTERFACE sysConsole0UARTPlibAPI =
 {
     .read_t = (SYS_CONSOLE_UART_PLIB_READ)SERCOM0_USART_Read,
-	.readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
-	.readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
+    .readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
+    .readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
     .write_t = (SYS_CONSOLE_UART_PLIB_WRITE)SERCOM0_USART_Write,
-	.writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
-	.writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
+    .writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
+    .writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
 };
 
 static const SYS_CONSOLE_UART_INIT_DATA sysConsole0UARTInitData =
 {
-    .uartPLIB = &sysConsole0UARTPlibAPI,    
+    .uartPLIB = &sysConsole0UARTPlibAPI,
 };
 
 static const SYS_CONSOLE_INIT sysConsole0Init =
@@ -332,7 +327,6 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 
 
 
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Local initialization functions
@@ -340,7 +334,6 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
 // *****************************************************************************
 
 /* MISRAC 2012 deviation block end */
-
 
 /*******************************************************************************
   Function:
@@ -389,7 +382,7 @@ void SYS_Initialize ( void* data )
 
     BT_SYS_Cfg_T        btSysCfg;
     BT_SYS_Option_T     btOption;
-
+  
     CLK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
@@ -412,10 +405,10 @@ void SYS_Initialize ( void* data )
     SERCOM0_USART_Initialize();
 
     EIC_Initialize();
-    
+
     TCC0_CompareInitialize();
-    
-    
+
+
 
     /* MISRAC 2012 deviation block start */
     /* Following MISRA-C rules deviated in this block  */
@@ -478,9 +471,8 @@ void SYS_Initialize ( void* data )
 
     /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
      H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
+        sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
    /* MISRAC 2012 deviation block end */
-
 
     // Create BLE Stack Message QUEUE
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);

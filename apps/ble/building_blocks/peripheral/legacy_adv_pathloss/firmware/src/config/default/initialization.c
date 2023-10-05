@@ -228,7 +228,6 @@ OSAL_QUEUE_HANDLE_TYPE bleRequestQueueHandle;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-#define REGULATORY_REGION "ETSI"
 
 
 
@@ -460,7 +459,10 @@ void SYS_Initialize ( void* data )
     // Retrieve BLE calibration data
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
-    btSysCfg.antennaGainValid = IB_GetAntennaGain(&btSysCfg.antennaGain);
+    if (!IB_GetAntennaGain(&btSysCfg.antennaGain))
+    {
+        btSysCfg.antennaGain = 3;
+    }
 
     //Configure BLE option
     btOption.hciMode = false;

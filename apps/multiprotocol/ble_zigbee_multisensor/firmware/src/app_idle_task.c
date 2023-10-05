@@ -364,6 +364,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
         APP_IDLE_NVIC_SYSTICK_CTRL_REG &= ~APP_IDLE_NVIC_SYSTICK_ENABLE_BIT;
         
         ulRtcCntBeforeSleep = RTC_Timer32CounterGet();
+		RTC_BackupRegisterSet(0U, ulRtcCntBeforeSleep);
 
         app_idle_setRtcTimeout(xExpectedIdleTime, ulRtcCntBeforeSleep);
 
@@ -397,6 +398,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
         }
 
         /* Enter system sleep mode */
+		ZB_BackupStackParams(xExpectedIdleTime);
 		ZB_StopStackTimerBeforeSleep();
         DEVICE_EnterSleepMode();
 

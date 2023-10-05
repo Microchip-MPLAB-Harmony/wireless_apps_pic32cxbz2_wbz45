@@ -4,7 +4,7 @@
 
 
 project: scan_ext_adv
-creation_date: 2023-08-22T23:02:40.820+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2023-10-03T14:08:27.884-07:00[America/Phoenix]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.3.7
@@ -16,7 +16,7 @@ compiler: XC32 (v4.21)
 modules:
     - {name: "csp", version: "v3.17.0"}
     - {name: "bsp", version: "v3.16.0"}    
-    - {name: "core", version: "v3.13.1"}
+    - {name: "core", version: "v3.13.0"}
     - {name: "wireless_pic32cxbz_wbz", version: "v1.2.0"}
     - {name: "wireless_ble", version: "v1.1.0"}
     - {name: "wireless_system_pic32cxbz_wbz", version: "v1.3.0"}

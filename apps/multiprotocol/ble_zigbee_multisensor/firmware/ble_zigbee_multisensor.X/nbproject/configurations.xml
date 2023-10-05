@@ -101,6 +101,8 @@
                 <itemPath>../src/config/default/driver/pds/include/pds.h</itemPath>
               </logicalFolder>
             </logicalFolder>
+            <itemPath>../src/config/default/driver/driver.h</itemPath>
+            <itemPath>../src/config/default/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal_freertos.h</itemPath>
@@ -141,6 +143,18 @@
             <logicalFolder name="trng" displayName="trng" projectFiles="true">
               <itemPath>../src/config/default/peripheral/trng/plib_trng.h</itemPath>
             </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/default/system/int/sys_int_mapping.h</itemPath>
+              <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
+            </logicalFolder>
+            <itemPath>../src/config/default/system/system_module.h</itemPath>
+            <itemPath>../src/config/default/system/system_common.h</itemPath>
+            <itemPath>../src/config/default/system/system.h</itemPath>
           </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="lib" displayName="lib" projectFiles="true">
@@ -839,6 +853,7 @@
           <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/default/framework_defs.h</itemPath>
           <itemPath>../src/config/default/sys_tasks.h</itemPath>
+          <itemPath>../src/config/default/device_deep_sleep.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -1241,6 +1256,11 @@
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="systemresource"
                            displayName="systemresource"
@@ -1410,6 +1430,7 @@
           <itemPath>../src/config/default/device_sleep.c</itemPath>
           <itemPath>../src/config/default/tasks.c</itemPath>
           <itemPath>../src/config/default/freertos_hooks.c</itemPath>
+          <itemPath>../src/config/default/device_deep_sleep.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -1598,6 +1619,7 @@
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value="-include&quot;lib/Zigbee_AllDevice_Makerules.h&quot;"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -1656,6 +1678,7 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -1695,6 +1718,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -1723,6 +1747,7 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
+        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>

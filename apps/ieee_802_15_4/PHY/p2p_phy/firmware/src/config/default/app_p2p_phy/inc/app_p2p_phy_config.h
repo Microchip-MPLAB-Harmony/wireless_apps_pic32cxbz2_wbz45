@@ -41,8 +41,8 @@
  * TAL PIB default values
  */
 #define CHANNEL_TRANSMIT_RECEIVE            11U
-#define SRC_ADDR                            0x2U
-#define IEEE_ADDR                           0x2U
+#define SRC_ADDR                            0x1U
+#define IEEE_ADDR                           0x1U
 #define SRC_PAN_ID                          0xcafeU
 #define MAXBE                               5U
 #define MINBE                               3U
@@ -51,8 +51,8 @@
 #define CCA_MODE                            1U
 #define TRANSMIT_POWER                      4
 #define APP_PAYLOAD_BUFFER_SIZE             500U
-#define DST_ADDR                            0x1U
-#define DST_IEEE_ADDR                       0x1U
+#define DST_ADDR                            0x2U
+#define DST_IEEE_ADDR                       0x2U
 #define NUM_OF_DEVICES                      64U
 #define ED_SCAN_DURATION                    8U
 /* === TYPES =============================================================== */

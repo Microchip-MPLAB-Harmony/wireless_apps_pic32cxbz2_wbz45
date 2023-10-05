@@ -49,7 +49,7 @@
                             Includes section
 *******************************************************************************/
 #include <zcl/include/zclOtauManager.h>
-#include <zcl/include/zclOtauCluster.h>
+#include <zcl/include/zclOTAUCluster.h>
 #include <zcl/include/zclOtauClient.h>
 #include <pds/include/wlPdsMemIds.h>
 #include <systemenvironment/include/sysTypes.h>

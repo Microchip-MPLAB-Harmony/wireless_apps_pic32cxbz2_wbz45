@@ -54,10 +54,10 @@
 
 #if (MICROCHIP_APPLICATION_SUPPORT == 1)
 #include <bdb/include/bdbZllBindings.h>
-#include <zllplatform/zll/n_zdp/include/N_Zdp.h>
-#include <zllplatform/zll/n_zdp/include/N_Zdp_Bindings.h>
-#include <zllplatform/zll/n_cmi/include/N_Cmi.h>
-#include <zllplatform/zll/n_enddevicerobustness/include/N_EndDeviceRobustness.h>
+#include <zllplatform/ZLL/N_Zdp/include/N_Zdp.h>
+#include <zllplatform/ZLL/N_Zdp/include/N_Zdp_Bindings.h>
+#include <zllplatform/ZLL/N_Cmi/include/N_Cmi.h>
+#include <zllplatform/ZLL/N_EndDeviceRobustness/include/N_EndDeviceRobustness.h>
 #endif
 
 /******************************************************************************

@@ -627,6 +627,7 @@ static void initApp(void)
   ExtAddr_t extAddr;
   DeviceType_t deviceType;
   //Reads the UID set in configuration.h
+  uint8_t deepSleepWakeupSrc;
   CS_ReadParameter(CS_UID_ID,&extAddr);
   if (extAddr == 0 || extAddr > APS_MAX_UNICAST_EXT_ADDRESS)
   {
@@ -650,10 +651,22 @@ static void initApp(void)
   
   //BSP_OpenLeds();
   appDeviceInit();
+  CS_ReadParameter(CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC_ID, &deepSleepWakeupSrc);
+
+  /* Check if it is not wakeup from deep sleep. */
+  if(deepSleepWakeupSrc == 0U)
+  {
 #ifdef _ZCL_REPORTING_SUPPORT_
     resetReportConfig();
     ZCL_StartReporting();
 #endif
+  }
+  else
+  {
+#ifdef OTAU_CLIENT
+    ZCL_RestoreOtauparams();
+#endif
+  }
 #ifdef _GREENPOWER_SUPPORT_
 #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
   ZGP_AppInit();
@@ -847,6 +860,10 @@ void SYS_BackupStackParams(uint32_t expectedSleepTime)
   ZDO_BackupZdoParams();
   CS_BackupNwkParams();
   HAL_BackupRunningTimers(expectedSleepTime);
+  APP_BackupZCLAttributes();
+#ifdef OTAU_CLIENT
+  ZCL_BackupOtauparams();
+#endif
 }
 
 

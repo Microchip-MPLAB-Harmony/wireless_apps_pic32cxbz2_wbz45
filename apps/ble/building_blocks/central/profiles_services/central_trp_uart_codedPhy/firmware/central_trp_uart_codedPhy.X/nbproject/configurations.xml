@@ -695,7 +695,7 @@
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>
-      <itemPath>central_trp_uart.mc3</itemPath>
+      <itemPath>central_trp_uart_codedPhy.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

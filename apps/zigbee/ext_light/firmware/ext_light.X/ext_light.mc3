@@ -95,7 +95,7 @@
       </entry>
    </usedClasses>
    <usedLibraries class="java.util.ArrayList">
-      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.1.4"/>
+      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.3.2"/>
    </usedLibraries>
    <tokenMap class="java.util.TreeMap">
       <entry>
@@ -1505,7 +1505,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;562&quot; canvasWidth=&quot;1127&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BootloaderServices&quot; x=&quot;30&quot; y=&quot;360&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;170&quot; y=&quot;60&quot;/&gt;
@@ -1531,7 +1532,6 @@
         &lt;ElementPosition dnOrder=&quot;21&quot; id=&quot;trng&quot; x=&quot;640&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;562&quot; canvasWidth=&quot;1127&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -8468,7 +8468,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\zcl\src\zclOtauClientDiscovery.c</file>
-         <hash>5270f940cc6fffa38c1e5ddc16055122bc60432da95697d3251d2487a8e722ac</hash>
+         <hash>57f18179b2451ad36533843c4ca434ef41549b6c7ccb832cd5bb971004ab3ee2</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha512.c</file>
@@ -8792,7 +8792,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\osal\osal.h</file>
-         <hash>c2cefdf10c48e2b0cc9ac3f137d4b4d1141f3eb5c8492d7334e1de29e6e7ea52</hash>
+         <hash>4e5d7ca0ea22a3304eee868454bca732052c88930eed7e54349bc08c7350d0fc</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\dmac.h</file>
@@ -8876,7 +8876,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\osal\osal_freertos.c</file>
-         <hash>0b0cc4b1178dc0fb47543d6505b90b99883d1f385673f9eb51019b69c18112f9</hash>
+         <hash>c252eb6a2b4fbc0a8a4e78cd3fd71571ee18a885c8a951a1effb535aee84dece</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\z3device\light\lightBasicCluster.c</file>
@@ -9304,7 +9304,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\definitions.h</file>
-         <hash>285227c6d7c4c8803fe09993aa5b37448817155ee2c224dd65f6f69d34704197</hash>
+         <hash>28eb7ebee65d77f1b496f76048784f1d00fd41c626ddc92255466397bc1f2c4f</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\systemenvironment\include\sysEventsHandler.h</file>
@@ -10728,7 +10728,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\systemresource\zcl\src\zclOtauClientPdt.c</file>
-         <hash>255e7a5edc853ca253410688a8e54b5251a2147fb5869c2696ca42af9a672304</hash>
+         <hash>6cfa6d01467097703818f618c48bf7fd69ffe9ed54982aa7a9ea2fc37ede2ebc</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ge_operations.h</file>
@@ -11748,7 +11748,7 @@
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_Cmi\include\N_Cmi.h</file>
-         <hash>9ff21c03722326530ba4e22fd70a8c1bcea8a4ae0f753e8eafb0d211036c8a09</hash>
+         <hash>dc79ee95de2b46b1ec5da7bcdb02a0eafda0dc5393915ff6134eb142952a7122</hash>
       </entry>
       <entry>
          <file>..\src\config\wbz451_curiosity_board\zigbee\lib\inc\zllplatform\ZLL\N_EndDeviceRobustness\include\N_EndDeviceRobustness_Init.h</file>

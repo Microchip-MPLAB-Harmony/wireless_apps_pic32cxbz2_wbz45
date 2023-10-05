@@ -48,7 +48,7 @@
 #define configCPU_CLOCK_HZ                      ( 64000000UL )
 #define configTICK_RATE_HZ                      ( ( TickType_t ) 1000 )
 #define configMAX_PRIORITIES                    ( 5UL )
-#define configMINIMAL_STACK_SIZE                ( 256 )
+#define configMINIMAL_STACK_SIZE                ( 128 )
 #define configSUPPORT_DYNAMIC_ALLOCATION        1
 #define configSUPPORT_STATIC_ALLOCATION         0
 #define configTOTAL_HEAP_SIZE                   ( ( size_t ) 40960 )
@@ -113,7 +113,7 @@
 #define INCLUDE_xTaskGetIdleTaskHandle          0
 #define INCLUDE_eTaskGetState                   0
 #define INCLUDE_xTimerPendFunctionCall          0
-#define INCLUDE_xTaskAbortDelay                 1
+#define INCLUDE_xTaskAbortDelay                 0
 #define INCLUDE_xTaskGetHandle                  0
 #define INCLUDE_xQueueGetMutexHolder            0
 #define INCLUDE_xSemaphoreGetMutexHolder        0

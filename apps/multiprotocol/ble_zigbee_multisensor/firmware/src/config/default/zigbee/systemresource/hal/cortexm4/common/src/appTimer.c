@@ -51,6 +51,8 @@
 #include <systemenvironment/include/sysAssert.h>
 #include <hal/cortexm4/pic32cx/include/halDbg.h>
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
+#include <configserver/include/configserver.h>
+#include "peripheral/rtc/plib_rtc.h"
 /******************************************************************************
                    External global variables section
 ******************************************************************************/
@@ -289,6 +291,18 @@ void HAL_RestoreRunningTimers(void)
      p->service.next = backupTimers[i].service.next;
      p = p->service.next;
   }
+  uint8_t deepSleepWakeupSrc;
+  CS_ReadParameter(CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC_ID, &deepSleepWakeupSrc);
+  /* Wakeup from deep sleep due to INT0 interrupt. */
+  if(deepSleepWakeupSrc == 1U)
+  {     
+    uint32_t rtcDifference = SYS_calculateDifference(RTC_BackupRegisterGet(0U), RTC_Timer32CounterGet());
+    rtcDifference = rtcDifference * configTICK_RATE_HZ;
+    uint32_t completedTickPeriod = rtcDifference / RTC_Timer32FrequencyGet();
+    halAdjustSleepInterval(completedTickPeriod);
+  }
+  /* Wakeup from deep sleep due to RTC timeout interrupt. */
+  if(deepSleepWakeupSrc == 2U)
   {
       halAdjustSleepInterval(backupxExpectedIdleTime-1);
   }
