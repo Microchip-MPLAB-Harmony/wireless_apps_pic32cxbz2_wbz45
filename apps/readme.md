@@ -50,8 +50,8 @@ The following applications are provided to demonstrate the typical use case of B
 ## Thread
 
 ### Thread Application Examples
-* [cli_ftd - CLI Application for full thread device](thread/readme.md)
-* [cli_mtd - CLI Application for minimal thread device](thread/readme.md)
+* [cli_ftd - CLI Application for Full Thread Device](thread/readme.md)
+* [cli_mtd - CLI Application for Minimal Thread Device](thread/readme.md)
 * [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](thread/readme.md)
-* [demo_app_udp_ftd - Thread UDP demo application for full thread device](thread/readme.md)
-* [demo_app_udp_mtd - Thread UDP demo application for minimal thread device](thread/readme.md)
+* [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](thread/readme.md)
+* [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](thread/readme.md)

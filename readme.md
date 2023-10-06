@@ -82,11 +82,11 @@ The following applications are provided to demonstrate the typical use case of o
 
 | Thread Application Examples | Families |
 | --- | :---: |
-| [cli_ftd - CLI Application for full thread device](apps/thread/readme.md) | PIC32CX-BZ |
-| [cli_mtd - CLI Application for minimal thread device](apps/thread/readme.md) | PIC32CX-BZ |
+| [cli_ftd - CLI Application for Full Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
+| [cli_mtd - CLI Application for Minimal Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
 | [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](apps/thread/readme.md) | PIC32CX-BZ |
-| [demo_app_udp_ftd - Thread UDP demo application for full thread device](apps/thread/readme.md) | PIC32CX-BZ |
-| [demo_app_udp_mtd - Thread UDP demo application for minimal thread device](apps/thread/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
 
 
 ____

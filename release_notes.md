@@ -6,9 +6,9 @@ nav_order: 99
 ![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
-# Microchip MPLABÂ® Harmony 3 Release Notes
+# Microchip MPLAB® Harmony 3 Release Notes
 
-## Harmony 3 Thread Application examples for PIC32CXBZ family  **v3.0.0**
+## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.0.0**
 
 ### Development kit and demo application support
 
@@ -30,15 +30,15 @@ Following table provides number of Wireless examples available for different dev
 
 
 ### Additional Notes
-- Thread SDK Applications are not tested with bootloader.
+- Thread Applications are not tested with bootloader.
 - The Sleepy End Device (SED) is tested for a maximum duration of 10 hours.
 
 ### Development Tools
 
-- [MPLABÂ® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide) or Higher
-- MPLABÂ® X IDE plug-ins:
-  - MPLABÂ® Code Configurator (MCC) `v5.3.7`
-- [MPLABÂ® XC32 C/C++ Compiler v4.21](https://www.microchip.com/mplab/compilers)
+- [MPLAB® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator (MCC) `v5.3.7`
+- [MPLAB® XC32 C/C++ Compiler v4.21](https://www.microchip.com/mplab/compilers)
 - **DFP 1.2.230 or above version**
 
 
@@ -186,3 +186,9 @@ Following table provides number of Wireless examples available for different dev
   - MPLABÂ® Code Configurator (MCC) `v5.1.9`
 - [MPLABÂ® XC32 C/C++ Compiler v4.10](https://www.microchip.com/mplab/compilers)
 - **DFP 1.0.107 or above version**
+
+
+--------------------------------------------------------------------------------------------------------------------
+## Trademarks
+The Microchip name and logo, the Microchip logo and MPLAB are registered trademarks of Microchip Technology Incorporated in the U.S.A. and other countries.
+All other trademarks mentioned herein are property of their respective companies.
