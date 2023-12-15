@@ -330,73 +330,24 @@ def write_ota_config_file():
     settings.setString("configuration.header.aes_key", zotaOpt.AESKeyTxt.getText())
     settings.setString("configuration.header.iv", zotaOpt.IVTxt.getText())    
     settings.setString("configuration.header.bota_flash_img_id", zotaOpt.flashImgIDTxt.getText())
-    
+
 def AbsolutePath(absolutePath, absoluteTarget):
-    absoluteDir = absolutePath.split('\\')
-    targetDir = absoluteTarget.split('\\')
-    
-    targetIndex = len(absoluteDir)
-    index = 0
-    while index < len(absoluteDir):
-        if targetDir[index] == "..":
-            targetIndex -= 1
-        else:
-            break
-        index += 1
-            
-    if targetIndex < 0:
-        return None
-    
-    targetPath = ""
-    for index in range(targetIndex):
-        targetPath += str(absoluteDir[index]) + "\\"
-        
-    for index in range(len(targetDir)):
-        if targetDir[index] != "..":
-            targetPath += str(targetDir[index]) + "\\"
-    
-    targetPath = targetPath[:len(targetPath)-1]
+    targetPath = os.path.join(absolutePath, absoluteTarget)
     return targetPath
     
-    
-    
 def RelativePath(absolutePath, relativeTarget):
-    absoluteDir = absolutePath.split('\\')
-    relativeDir = relativeTarget.split('\\')
+    absolutePath = os.path.abspath(absolutePath)
+    relativeTarget = os.path.abspath(relativeTarget)
 
-    length = len(relativeDir)
-    if len(absoluteDir) < length:
-        length = len(absoluteDir)
-        
-    CommonDirIndex = 0xffff
-    # Find common directory
-    for index in range(length):
-        if absoluteDir[index] == relativeDir[index]:
-            CommonDirIndex = index
-        else:
-            break
-    
-    # if we couldn't find, return None
-    if (CommonDirIndex == 0xffff):
+    if not relativeTarget.startswith(absolutePath):
         return None
-    
-    relativePath = ""
 
-    # add the prefix
-    index = CommonDirIndex + 1
-    while index < len(absoluteDir):
-        if (len(absoluteDir[index]) > 0):
-            relativePath += str("..\\")
-        index += 1
+    survivedPath = relativeTarget[len(absolutePath):]
+    if survivedPath in ('', os.sep):
+        return '.'
 
-    # add rest of the file name
-    index = CommonDirIndex + 1
-    while index < len(relativeDir) - 1:
-        relativePath += (str(relativeDir[index]) + "\\")
-        index += 1
-    relativePath += str(relativeDir[len(relativeDir) - 1])
-
-    return relativePath
+    survivedPath = survivedPath[len(os.sep):]
+    return survivePath
     
 class SignFirmwarePane():
     
