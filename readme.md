@@ -61,8 +61,8 @@ The following applications are provided to demonstrate the typical use case of o
 
 | IEEE 802.15.4 Standalone P2P PHY Application Examples | Families |
 | --- | :---: |
-| [IEEE 802.15.4 P2P PHY](apps/ieee_802_15_4/PHY/p2p_phy/readme.md) | PIC32CX-BZ |
-| [IEEE 802 15.4 MAC Push Pull](apps/ieee_802_15_4/MAC/push_pull_mac_app/readme.md) | PIC32CX-BZ |
+| [IEEE 802.15.4 P2P PHY](apps/ieee_802_15_4/PHY/readme.md) | PIC32CX-BZ |
+| [IEEE 802 15.4 MAC Push Pull](apps/ieee_802_15_4/MAC/readme.md) | PIC32CX-BZ |
 
 | Zigbee Examples | Families |
 | --- | :---: |
@@ -79,6 +79,7 @@ The following applications are provided to demonstrate the typical use case of o
 | [ble_zigbee_basic - Simple steps to bring the multiprotocol base project from H3 project generation](apps/multiprotocol/ble_zigbee_basic/readme.md) | PIC32CX-BZ |
 | [ble_zigbee_light_prov - Zigbee light control and Zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_light_prov/readme.md) | PIC32CX-BZ |
 | [ble_zigbee_multisensor - Zigbee Multisensor device and zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_multisensor/readme.md) | PIC32CX-BZ |
+| [ble_zigbee_light_prov_wbz450 - Zigbee light control and Zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_light_prov_wbz450/readme.md) | PIC32CX-BZ |
 
 | Thread Application Examples | Families |
 | --- | :---: |

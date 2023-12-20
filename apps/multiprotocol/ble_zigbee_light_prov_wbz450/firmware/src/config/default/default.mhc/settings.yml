@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: ble_zigbee_light_prov
+frameworkPath: D:\TestWBZ
+processor: WBZ450
+projectName: ble_zigbee_light_prov
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.0.107\WBZ450\atdf\WBZ450.atdf

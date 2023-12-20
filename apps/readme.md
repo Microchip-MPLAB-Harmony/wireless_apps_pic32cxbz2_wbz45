@@ -39,6 +39,12 @@ The following applications are provided to demonstrate the typical use case of B
 * [BLE Peripheral ANCS](apps/ble/advanced_applications/ble_ancs_app/readme.md)
 * [BLE Peripheral HOGPS or HID Profile](apps/ble/advanced_applications/ble_hogps_app/readme.md)
 
+### BLE and Zigbee Multiprotocol Applications
+* [ble_zigbee_basic - Simple steps to bring the multiprotocol base project from H3 project generation](apps/multiprotocol/ble_zigbee_basic/readme.md)
+* [ble_zigbee_light_prov - Zigbee light control and Zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_light_prov/readme.md)
+* [ble_zigbee_multisensor - Zigbee Multisensor device and zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_multisensor/readme.md)
+* [ble_zigbee_light_prov_wbz450 - Zigbee light control and Zigbee commissioning over BLE](apps/multiprotocol/ble_zigbee_light_prov_wbz450/readme.md)
+
 
 ## IEEE 802.15.4
 

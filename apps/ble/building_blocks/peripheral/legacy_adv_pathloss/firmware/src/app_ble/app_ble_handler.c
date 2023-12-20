@@ -70,35 +70,15 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event)
     {
         case BLE_GAP_EVT_CONNECTED:
         {
-            
-            char buffer[10];
-            
-            
             /* TODO: implement your application code.*/
             SERCOM0_USART_Write((uint8_t *)"Connected\r\n",11); 
+            // Assuming connHandle is a 16-bit value, you can use uint16_t
             conn_handle= p_event->eventField.evtConnect.connHandle;
-            snprintf(buffer, sizeof(buffer), "%u", conn_handle);
-            
-            //SERCOM0_USART_Write((uint8_t *)conn_handle, sizeof(conn_handle));
-            SERCOM0_USART_Write((uint8_t*)buffer, strlen(buffer));
-            
-             SYS_CONSOLE_PRINT("\n\r[BLE] Connection Handle: 0x%X\n\r",conn_handle);
-             
-            // Create an instance of the BLE_GAP_SetPathLossReportingParams_T structure
-            BLE_GAP_SetPathLossReportingParams_T params;
-
-            // Fill in the structure fields with appropriate values
-            params.connHandle = conn_handle/* Set the connection handle */;
-            params.highThreshold = 60 /* Set the high threshold */;
-            params.highHysteresis = 3/* Set the high hysteresis */;
-            params.lowThreshold = 30/* Set the low threshold */;
-            params.lowHysteresis = 3/* Set the low hysteresis */;
-            params.minTimeSpent = 1/* Set the minimum time spent */;
-
-            // Call the function with the filled structure
-            uint16_t result = BLE_GAP_SetPathLossReportingParams(&params);
-              BLE_GAP_SetPathLossReportingEnable(conn_handle, 0x01);
-                
+            SYS_CONSOLE_PRINT("[BLE] Connection Handle: 0x%X\n\r", conn_handle);
+            APP_Msg_T appMsg;
+            appMsg.msgId = APP_MSG_CONNECT_CB;
+            // Send the message via the queue
+            OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
              
         }
         break;
