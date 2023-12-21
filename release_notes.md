@@ -8,7 +8,7 @@ nav_order: 99
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
-## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.1.0**
+## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.0.1**
 
 ### Development kit and demo application support
 
