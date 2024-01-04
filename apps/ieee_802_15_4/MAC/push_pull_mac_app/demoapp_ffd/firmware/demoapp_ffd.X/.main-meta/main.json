@@ -5,7 +5,7 @@
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_demoapp_ffd",
 		"version": "1.0.0",
-		"displayName": "Demo application for Coordinator(FFD)",
+		"displayName": "15.4 Star MAC FFD PAN Coordinator Application",
 		"projectName": "demoapp_ffd",
 		"shortDescription": "Demonstrates the bidirectional capabilities of 802.15.4 MAC(Coordinator).",
 		"ide": {
@@ -61,7 +61,7 @@
 				"category": "com.microchip.portal.fileRef",
 				"content": {
 					"metaDataVersion": "1.0.0",
-					"fileName": "./../../../../../../readme.md",
+					"fileName": "./../../../../readme.md",
 					"mimeType": "text/markdown"
 				}
 			}

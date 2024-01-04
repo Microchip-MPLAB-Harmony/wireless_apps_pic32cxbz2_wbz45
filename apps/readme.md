@@ -56,8 +56,12 @@ The following applications are provided to demonstrate the typical use case of B
 ## Thread
 
 ### Thread Application Examples
-* [cli_ftd - CLI Application for Full Thread Device](thread/readme.md)
-* [cli_mtd - CLI Application for Minimal Thread Device](thread/readme.md)
-* [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](thread/readme.md)
-* [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](thread/readme.md)
-* [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](thread/readme.md)
+* [cli_ftd - CLI Application for Full Thread Device](thread/building_blocks/cli/readme.md)
+* [cli_mtd - CLI Application for Minimal Thread Device](thread/building_blocks/cli/readme.md)
+* [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](thread/building_blocks/rcp_uart/readme.md)
+* [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](thread/building_blocks/demo_app_udp/readme.md)
+* [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](thread/building_blocks/demo_app_udp/readme.md)
+* [coap_ftd_client - Thread CoAP FTD client demo application](thread/advanced_applications/CoAP/coap_ftd_client/readme.md)
+* [coap_ftd_server - Thread CoAP FTD server demo application](thread/advanced_applications/CoAP/coap_ftd_server/readme.md)
+* [coap_sed_client - Thread CoAP MTD/SED client demo application](thread/advanced_applications/CoAP/coap_sed_client/readme.md)
+* [coap_sed_server - Thread CoAP MTD/SED server demo application](thread/advanced_applications/CoAP/coap_sed_server/readme.md)

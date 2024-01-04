@@ -4,7 +4,7 @@ package:
   type: "application"
   status: "production"
   required: false
-  version: "v3.0.1"
+  version: "v3.1.0"
 
   dependencies:
     - name: "csp"
@@ -27,10 +27,10 @@ package:
       version: "v1.1.0"
     - name: "wireless_pic32cxbz_wbz"
       type: "package"
-      version: "v1.2.0"      
+      version: "v1.3.0"      
     - name: "wireless_system_pic32cxbz_wbz"
       type: "package"
-      version: "v1.3.0"      
+      version: "v1.5.0"      
     - name: "wolfssl"
       type: "package"
       version: "v5.4.0"

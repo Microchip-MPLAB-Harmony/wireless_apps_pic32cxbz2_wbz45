@@ -8,6 +8,41 @@ nav_order: 99
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.1.0**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board |       4            |
+
+### New Features
+- WBZ451 Thread CoAP Harmony component based applications.
+
+### Bug fixes and Improvements
+- New applications release.
+
+### Known Issues
+- None
+
+### Limitations
+- None
+
+### Development Tools
+
+- [MPLAB® X IDE v6.15](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator (MCC) `v5.3.7`
+- [MPLAB® XC32 C/C++ Compiler v4.35](https://www.microchip.com/mplab/compilers)
+- **DFP 1.2.230 or above version**
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Microchip MPLAB® Harmony 3 Release Notes
+
 ## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.0.1**
 
 ### Development kit and demo application support

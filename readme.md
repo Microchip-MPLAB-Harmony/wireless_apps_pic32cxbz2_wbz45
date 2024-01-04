@@ -23,7 +23,7 @@ This repository contains the MPLAB® Harmony 3 Wireless BLE solutions and exampl
 | Folder     | Description                                               |
 | ---        | ---                                                       |
 | apps       | [Example applications for PIC32CXB2/WBZ45x devices](./apps/readme.md)         |
-| docs       | [Wireless Application Example help documentation](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424)                       |
+| docs       | [Wireless Application Example help documentation](https://onlinedocs.microchip.com/Oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-3/index.html?GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424)                       |
 
 
 ## Code Examples
@@ -83,12 +83,15 @@ The following applications are provided to demonstrate the typical use case of o
 
 | Thread Application Examples | Families |
 | --- | :---: |
-| [cli_ftd - CLI Application for Full Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
-| [cli_mtd - CLI Application for Minimal Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
-| [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](apps/thread/readme.md) | PIC32CX-BZ |
-| [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
-| [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](apps/thread/readme.md) | PIC32CX-BZ |
-
+| [cli_ftd - CLI Application for Full Thread Device](apps/thread/building_blocks/cli/readme.md) | PIC32CX-BZ |
+| [cli_mtd - CLI Application for Minimal Thread Device](apps/thread/building_blocks/cli/readme.md) | PIC32CX-BZ |
+| [rcp_uart - Radio Co-Processor (RCP) Thread device(UART to communicate with the host)](apps/thread/building_blocks/rcp_uart/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_ftd - Thread UDP demo application for Full Thread Device](apps/thread/building_blocks/demo_app_udp/readme.md) | PIC32CX-BZ |
+| [demo_app_udp_mtd - Thread UDP demo application for Minimal Thread Device](apps/thread/building_blocks/demo_app_udp/readme.md) | PIC32CX-BZ |
+| [coap_ftd_client - Thread CoAP FTD client demo application](apps/thread/advanced_applications/CoAP/coap_ftd_client/readme.md) | PIC32CX-BZ |
+| [coap_ftd_server - Thread CoAP FTD server demo application](apps/thread/advanced_applications/CoAP/coap_ftd_server/readme.md) | PIC32CX-BZ |
+| [coap_sed_client - Thread CoAP MTD/SED client demo application](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md) | PIC32CX-BZ |
+| [coap_sed_server - Thread CoAP MTD/SED server demo application](apps/thread/advanced_applications/CoAP/coap_sed_server/readme.md) | PIC32CX-BZ |
 
 ____
 

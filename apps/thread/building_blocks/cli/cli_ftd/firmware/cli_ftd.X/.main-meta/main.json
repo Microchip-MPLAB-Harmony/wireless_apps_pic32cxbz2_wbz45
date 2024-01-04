@@ -5,7 +5,7 @@
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_cli_ftd",
 		"version": "1.0.0",
-		"displayName": "Full Thread Command Line Application",
+		"displayName": "Thread FTD CLI Application",
 		"projectName": "cli_ftd",
 		"shortDescription": "Command Line application for full thread device.",
 		"ide": {
@@ -59,7 +59,7 @@
 				"category": "com.microchip.portal.fileRef",
 				"content": {
 					"metaDataVersion": "1.0.0",
-					"fileName": "./../../../../../../readme.md",
+					"fileName": "./../../../readme.md",
 					"mimeType": "text/markdown"
 				}
 			}
