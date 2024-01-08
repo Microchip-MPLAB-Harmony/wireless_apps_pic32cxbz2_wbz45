@@ -1,22 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <keywords publicationid="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C"
           language="en-US"
-          version="3"
+          version="4"
           documenttitle="PIC32CXBZ2 Application Developer's Guide"
           pubtype="Online Reference"
           pubsubtype=""
           pubuserguidesubtype=""
           pubproducthierarchy=""
           devices="PIC32CX-BZ2, WBZ451"
-          revisiondate="23/06/2023 00:00:00"
-          revisionletter="C"
+          revisiondate="12/10/2023 00:00:00"
+          revisionletter="D"
           isbn=""
           pubid=""
           reachid=""
           description=""
-          lastmodified="25/09/2023 17:10:20"
+          lastmodified="05/01/2024 15:43:49"
           covertitle="PIC32CXBZ2 Application Developer's Guide"
           frontcover="">
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Introduction</register>
+      <title>Introduction</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV_GUIDE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Getting Started with WBZ451 Curiosity Board</register>
+      <title>Getting Started with WBZ451 Curiosity Board</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.WBZ45_EVB</keyword>
+   </keyworditem>
    <keyworditem topicid="GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46"
                 nocomponent="true"
                 parent="">
@@ -115,72 +181,6 @@
       <title>Central</title>
       <bitfield/>
       <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
-                nocomponent="true"
-                parent="">
-      <device>PIC32CX-BZ2</device>
-      <module/>
-      <component/>
-      <register>Getting Started with WBZ451 Curiosity Board</register>
-      <title>Getting Started with WBZ451 Curiosity Board</title>
-      <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.WBZ45_EVB</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
-                nocomponent="true"
-                parent="">
-      <device>WBZ451</device>
-      <module/>
-      <component/>
-      <register>Getting Started with WBZ451 Curiosity Board</register>
-      <title>Getting Started with WBZ451 Curiosity Board</title>
-      <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV.WBZ45_EVB</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6"
-                nocomponent="true"
-                parent="">
-      <device/>
-      <module/>
-      <component/>
-      <register>Getting Started with WBZ451 Curiosity Board</register>
-      <title>Getting Started with WBZ451 Curiosity Board</title>
-      <bitfield/>
-      <keyword>BZ2_APP_DEV.WBZ45_EVB</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
-                nocomponent="true"
-                parent="">
-      <device>PIC32CX-BZ2</device>
-      <module/>
-      <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
-      <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV_GUIDE</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
-                nocomponent="true"
-                parent="">
-      <device>WBZ451</device>
-      <module/>
-      <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
-      <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV_GUIDE</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
-                nocomponent="true"
-                parent="">
-      <device/>
-      <module/>
-      <component/>
-      <register>Introduction</register>
-      <title>Introduction</title>
-      <bitfield/>
-      <keyword>BZ2_APP_DEV_GUIDE</keyword>
    </keyworditem>
    <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
                 nocomponent="true"
