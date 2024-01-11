@@ -20,7 +20,7 @@ Following table provides number of Wireless examples available for different dev
 - New applications release.
 
 ### Known Issues
-- None
+- The CoAP FTD server application doesn't work with the latest compiler version, v4.35.
 
 ### Limitations
 - None
