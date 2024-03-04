@@ -60,6 +60,19 @@
 // Section: RTOS "Tasks" Routine
 // *****************************************************************************
 // *****************************************************************************
+#define PHY_RTOS_TASK_PRIORITY            4
+
+/* Handle for the APP_Tasks. */
+TaskHandle_t xPHY_Tasks;
+
+static void _PHY_Tasks(  void *pvParameters  )
+{     
+    while(true)
+    {
+        PHY_Tasks();
+    }
+}
+
 
 
 
@@ -105,7 +118,14 @@ void SYS_Tasks ( void )
     
 
     /* Maintain Middleware & Other Libraries */
-    
+        /* Create FreeRTOS task for IEEE_802154_PHY */
+     (void)xTaskCreate((TaskFunction_t) _PHY_Tasks,
+                "PHY_Tasks",
+                1024,
+                NULL,
+                PHY_RTOS_TASK_PRIORITY,
+                &xPHY_Tasks);
+
 (void) xTaskCreate(taskOpenThread,
                        "ot-task",
                        4096,

@@ -20,7 +20,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -76,8 +76,8 @@ volatile static SERCOM_USART_RING_BUFFER_OBJECT sercom0USARTObj;
 
 volatile static uint8_t SERCOM0_USART_ReadBuffer[SERCOM0_USART_READ_BUFFER_SIZE];
 
-#define SERCOM0_USART_WRITE_BUFFER_SIZE     256U
-#define SERCOM0_USART_WRITE_BUFFER_9BIT_SIZE  (256U >> 1U)
+#define SERCOM0_USART_WRITE_BUFFER_SIZE     1024U
+#define SERCOM0_USART_WRITE_BUFFER_9BIT_SIZE  (1024U >> 1U)
 #define SERCOM0_USART_TX_INT_DISABLE()      SERCOM0_REGS->USART_INT.SERCOM_INTENCLR = SERCOM_USART_INT_INTENCLR_DRE_Msk
 #define SERCOM0_USART_TX_INT_ENABLE()       SERCOM0_REGS->USART_INT.SERCOM_INTENSET = SERCOM_USART_INT_INTENSET_DRE_Msk
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -72,14 +72,16 @@
 #if (OPENTHREAD_CONFIG_LOG_OUTPUT == OPENTHREAD_CONFIG_LOG_OUTPUT_PLATFORM_DEFINED)
 
 
-#define LOG_PARSE_BUFFER_SIZE 128
+#define LOG_PARSE_BUFFER_SIZE 512
 #define LOG_TIMESTAMP_ENABLE 1
 
-char sLogString[LOG_PARSE_BUFFER_SIZE + 1];
+#if OPEN_THREAD_LOG_ENABLED
+SYS_CONSOLE_HANDLE LoggerConsoleHandle;
 
 static void logOutput(otLogLevel aLogLevel, otLogRegion aLogRegion, const char *aFormat, va_list ap)
 {
     int len = 0;
+	char sLogString[LOG_PARSE_BUFFER_SIZE + 1];
 
     len = vsnprintf(sLogString, LOG_PARSE_BUFFER_SIZE, aFormat, ap);
 
@@ -92,29 +94,29 @@ exit:
         len = LOG_PARSE_BUFFER_SIZE - 1;
     }
 
+    sLogString[len++] = '\r';
     sLogString[len++] = '\n';
-    
-//    LOGSPI_SS_Set();
-    
-    for (uint8_t i = 0; i < len; i++)
-    {
-//        uint8_t rx_byte = 0;
-//        uint8_t tx_byte = sLogString[i];
-
-    }    
-    
-//    LOGSPI_SS_Clear();
+#if OPEN_THREAD_LOG_ENABLED    
+	SYS_CONSOLE_Write(LoggerConsoleHandle,&sLogString,len);
+#endif
 
     return;
 }
+#endif
 
 void pic32cxLogInit(void)
 {
-//    SERCOM1_SPI_Initialize();
+#if OPEN_THREAD_LOG_ENABLED  
+	LoggerConsoleHandle = SYS_CONSOLE_HandleGet(SYS_CONSOLE_INDEX_0);
+#endif
 }
 
 OT_TOOL_WEAK void otPlatLog(otLogLevel aLogLevel, otLogRegion aLogRegion, const char *aFormat, ...)
 {
+#if OPEN_THREAD_LOG_ENABLED 
+	OSAL_CRITSECT_DATA_TYPE intStatus;
+    intStatus = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+	
     va_list ap;
 
     va_start(ap, aFormat);
@@ -122,6 +124,9 @@ OT_TOOL_WEAK void otPlatLog(otLogLevel aLogLevel, otLogRegion aLogRegion, const 
     logOutput(aLogLevel, aLogRegion, aFormat, ap);
 
     va_end(ap);
+	
+	OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW,intStatus);
+#endif
 }
 
 #elif (OPENTHREAD_CONFIG_LOG_OUTPUT == OPENTHREAD_CONFIG_LOG_OUTPUT_APP)

@@ -170,7 +170,7 @@ void APP_Tasks ( void )
                 {
                     case APP_MSG_SLEEP_REQ:
                     {
-                        DEVICE_EnterDeepSleep(false, DEVICE_SLEEP_TIME); 
+                        threadDeviceSleep(); 
                     }                        
                 } 
             }

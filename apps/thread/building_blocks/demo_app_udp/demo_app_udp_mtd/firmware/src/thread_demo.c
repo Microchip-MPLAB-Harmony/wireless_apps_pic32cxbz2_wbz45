@@ -72,6 +72,7 @@ SYS_CONSOLE_HANDLE appConsoleHandle;
 
 bool dataInitialized = false;
 bool deviceStateUpdated = false;
+extern bool otIsIdle(void);
 
 static void printIpv6Address(void)
 {
@@ -289,6 +290,21 @@ int app_printf(const char *format, ...)
     SYS_CONSOLE_Message(appConsoleHandle,(const char *)&s);
     return ret;
 
+}
+
+void threadDeviceSleep(void)
+{
+    if(otIsIdle())
+    {
+       DEVICE_EnterDeepSleep(false, DEVICE_SLEEP_TIME);
+    }
+    else
+    {
+        APP_Msg_T sleepReq;
+
+        sleepReq.msgId = APP_MSG_SLEEP_REQ;      
+        OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);
+    }
 }
 /*******************************************************************************
  End of File

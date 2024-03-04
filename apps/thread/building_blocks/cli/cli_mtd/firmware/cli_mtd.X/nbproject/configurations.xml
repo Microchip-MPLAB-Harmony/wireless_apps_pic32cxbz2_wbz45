@@ -60,7 +60,6 @@
                 <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
                   <itemPath>../src/config/MTD/driver/thread/inc/crypto/pic32cx-mbedtls-config.h</itemPath>
                   <itemPath>../src/config/MTD/driver/thread/inc/crypto/check_config.h</itemPath>
-                  <itemPath>../src/config/MTD/driver/thread/inc/crypto/aes_alt.h</itemPath>
                 </logicalFolder>
                 <itemPath>../src/config/MTD/driver/thread/inc/openthread_stack_config.h</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/inc/openthread-core-pic32cx-config-check.h</itemPath>
@@ -109,6 +108,8 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/platform/alarm-micro.h</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/platform/logging.h</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/platform/diag.h</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/platform/border_routing.h</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/platform/dns.h</itemPath>
                     </logicalFolder>
                     <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/netdiag.h</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/server.h</itemPath>
@@ -166,6 +167,8 @@
                     <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/error.h</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/random_noncrypto.h</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/multi_radio.h</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/mesh_diag.h</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/include/openthread/radio_stats.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
                 <logicalFolder name="src" displayName="src" projectFiles="true">
@@ -185,6 +188,10 @@
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_srp_server.hpp</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_history.hpp</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_commissioner.hpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_mac_filter.hpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_dns.hpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_bbr.hpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_br.hpp</itemPath>
                   </logicalFolder>
                   <logicalFolder name="core" displayName="core" projectFiles="true">
                     <logicalFolder name="backbone_router"
@@ -263,6 +270,7 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/frame_data.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/settings.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/callback.hpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/preference.hpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="config" displayName="config" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/coap.h</itemPath>
@@ -306,6 +314,9 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/channel_monitor.h</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/netdata_publisher.h</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/radio_link.h</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/network_diagnostic.h</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/mesh_forwarder.h</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/config/mesh_diag.h</itemPath>
                     </logicalFolder>
                     <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/crypto/hkdf_sha256.hpp</itemPath>
@@ -438,6 +449,7 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/energy_scan_server.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/discover_scanner.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/mle_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/child_supervision.hpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="utils" displayName="utils" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/jam_detector.hpp</itemPath>
@@ -451,8 +463,8 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/slaac_address.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/srp_client_buffers.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/channel_manager.hpp</itemPath>
-                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/child_supervision.hpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/ping_sender.hpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/mesh_diag.hpp</itemPath>
                     </logicalFolder>
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/core/openthread-core-config.h</itemPath>
                   </logicalFolder>
@@ -980,6 +992,12 @@
       <itemPath>../src/app.h</itemPath>
       <itemPath>../src/stack_config.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+      <itemPath>cli_mtd.mc3</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -1057,6 +1075,11 @@
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_output.cpp</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_coap_secure.cpp</itemPath>
                     <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_dataset.cpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_extension_example.c</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_dns.cpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_mac_filter.cpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_br.cpp</itemPath>
+                    <itemPath>../src/config/MTD/driver/thread/openthread/src/cli/cli_bbr.cpp</itemPath>
                   </logicalFolder>
                   <logicalFolder name="core" displayName="core" projectFiles="true">
                     <logicalFolder name="api" displayName="api" projectFiles="true">
@@ -1112,6 +1135,8 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/api/tcp_api.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/api/srp_client_api.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/api/random_noncrypto_api.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/api/radio_stats_api.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/api/mesh_diag_api.cpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="backbone_router"
                                    displayName="backbone_router"
@@ -1152,6 +1177,7 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/heap.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/heap_string.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/instance.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/common/preference.cpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/crypto/aes_ccm.cpp</itemPath>
@@ -1226,6 +1252,7 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/net/tcp6_ext.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/net/nd_agent.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/net/netif.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/net/dns_platform.cpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="radio" displayName="radio" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/radio/trel_packet.cpp</itemPath>
@@ -1279,6 +1306,7 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/thread_netif.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/announce_sender.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/router_table.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/thread/child_supervision.cpp</itemPath>
                     </logicalFolder>
                     <logicalFolder name="utils" displayName="utils" projectFiles="true">
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/history_tracker.cpp</itemPath>
@@ -1287,13 +1315,13 @@
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/srp_client_buffers.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/power_calibration.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/channel_manager.cpp</itemPath>
-                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/child_supervision.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/heap.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/slaac_address.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/jam_detector.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/parse_cmdline.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/flash.cpp</itemPath>
                       <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/channel_monitor.cpp</itemPath>
+                      <itemPath>../src/config/MTD/driver/thread/openthread/src/core/utils/mesh_diag.cpp</itemPath>
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
@@ -1404,10 +1432,9 @@
               </logicalFolder>
               <logicalFolder name="src" displayName="src" projectFiles="true">
                 <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
-                  <itemPath>../src/config/MTD/driver/thread/src/crypto/aes_alt.c</itemPath>
+                  <itemPath>../src/config/MTD/driver/thread/src/crypto/crypto.c</itemPath>
                 </logicalFolder>
                 <itemPath>../src/config/MTD/driver/thread/src/flash.c</itemPath>
-                <itemPath>../src/config/MTD/driver/thread/src/cxx_helpers.c</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/src/diag.c</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/src/ot_tasks.c</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/src/logging.c</itemPath>
@@ -1417,6 +1444,7 @@
                 <itemPath>../src/config/MTD/driver/thread/src/alarm.c</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/src/uart.c</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/src/misc.c</itemPath>
+                <itemPath>../src/config/MTD/driver/thread/src/cxx_helpers.cpp</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="usart" displayName="usart" projectFiles="true">
@@ -1611,12 +1639,6 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/app_user_edits.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <itemPath>Makefile</itemPath>
-      <itemPath>cli_mtd.mc3</itemPath>
-    </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -1628,12 +1650,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.2.230"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1641,8 +1663,8 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>../src/config/MTD/driver/device_support/pic32cx_bz2_device_support.a</linkerLibFileItem>
-            <linkerLibFileItem>../src/config/MTD/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.1.0.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/MTD/driver/pds/pds.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/MTD/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.2.0.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>

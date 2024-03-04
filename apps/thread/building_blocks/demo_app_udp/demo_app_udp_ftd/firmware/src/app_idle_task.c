@@ -14,7 +14,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -53,7 +53,23 @@ void app_idle_task( void )
             }
             else if (RF_Cal_Needed)
             {
-                RF_Timer_Cal(WSS_ENABLE_ZB);
+            
+               PHY_TrxStatus_t trxStatus = PHY_GetTrxStatus();
+               OSAL_CRITSECT_DATA_TYPE intStatus;
+               if (trxStatus == PHY_TRX_SLEEP)
+               {
+                   PHY_TrxWakeup();
+                   intStatus = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+                   RF_Timer_Cal(WSS_ENABLE_ZB);
+                   OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, intStatus);
+                   PHY_TrxSleep(SLEEP_MODE_1);
+               }
+               else
+               {
+                   RF_Timer_Cal(WSS_ENABLE_ZB);
+               }
+            
+
             }
         }
     }

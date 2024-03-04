@@ -433,7 +433,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -442,9 +442,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    EVSYS_Initialize();
-
     SERCOM0_USART_Initialize();
+
+    EVSYS_Initialize();
 
     TC0_TimerInitialize();
 
@@ -522,8 +522,10 @@ void SYS_Initialize ( void* data )
     
     /* MISRAC 2012 deviation block end */
 
+    CRYPT_WCCB_Initialize();
     /* Initialization for IEEE_802154_PHY */
-    
+        OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
+
     PHY_Init();
     
     /* End of Initialization for IEEE_802154_PHY */
@@ -535,7 +537,6 @@ void SYS_Initialize ( void* data )
     /* Creation of openthread Task Queue */
     OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
 
-    CRYPT_WCCB_Initialize();
 
     /* MISRAC 2012 deviation block end */
     APP_Initialize();

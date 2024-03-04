@@ -70,7 +70,7 @@ namespace Mle {
 #if OPENTHREAD_FTD
 
 /**
- * This class implements MLE functionality required by the Thread Router and Leader roles.
+ * Implements MLE functionality required by the Thread Router and Leader roles.
  *
  */
 class MleRouter : public Mle
@@ -82,7 +82,7 @@ class MleRouter : public Mle
 
 public:
     /**
-     * This constructor initializes the object.
+     * Initializes the object.
      *
      * @param[in]  aInstance     A reference to the OpenThread instance.
      *
@@ -90,7 +90,7 @@ public:
     explicit MleRouter(Instance &aInstance);
 
     /**
-     * This method indicates whether or not the device is router-eligible.
+     * Indicates whether or not the device is router-eligible.
      *
      * @retval true   If device is router-eligible.
      * @retval false  If device is not router-eligible.
@@ -99,7 +99,7 @@ public:
     bool IsRouterEligible(void) const;
 
     /**
-     * This method sets whether or not the device is router-eligible.
+     * Sets whether or not the device is router-eligible.
      *
      * If @p aEligible is false and the device is currently operating as a router, this call will cause the device to
      * detach and attempt to reattach as a child.
@@ -113,7 +113,7 @@ public:
     Error SetRouterEligible(bool aEligible);
 
     /**
-     * This method indicates whether a node is the only router on the network.
+     * Indicates whether a node is the only router on the network.
      *
      * @retval TRUE   It is the only router in the network.
      * @retval FALSE  It is a child or is not a single router in the network.
@@ -122,7 +122,7 @@ public:
     bool IsSingleton(void) const;
 
     /**
-     * This method generates an Address Solicit request for a Router ID.
+     * Generates an Address Solicit request for a Router ID.
      *
      * @param[in]  aStatus  The reason for requesting a Router ID.
      *
@@ -134,7 +134,7 @@ public:
     Error BecomeRouter(ThreadStatusTlv::Status aStatus);
 
     /**
-     * This method causes the Thread interface to become a Leader and start a new partition.
+     * Causes the Thread interface to become a Leader and start a new partition.
      *
      * @retval kErrorNone           Successfully become a Leader and started a new partition.
      * @retval kErrorNotCapable     Device is not capable of becoming a leader
@@ -143,8 +143,26 @@ public:
      */
     Error BecomeLeader(void);
 
+#if (OPENTHREAD_CONFIG_THREAD_VERSION >= OT_THREAD_VERSION_1_3_1)
     /**
-     * This method returns the Leader Weighting value for this Thread interface.
+     * Gets the device properties which are used to determine the Leader Weight.
+     *
+     * @returns The current device properties.
+     *
+     */
+    const DeviceProperties &GetDeviceProperties(void) const { return mDeviceProperties; }
+
+    /**
+     * Sets the device properties which are then used to determine and set the Leader Weight.
+     *
+     * @param[in]  aDeviceProperties    The device properties.
+     *
+     */
+    void SetDeviceProperties(const DeviceProperties &aDeviceProperties);
+#endif
+
+    /**
+     * Returns the Leader Weighting value for this Thread interface.
      *
      * @returns The Leader Weighting value for this Thread interface.
      *
@@ -152,7 +170,10 @@ public:
     uint8_t GetLeaderWeight(void) const { return mLeaderWeight; }
 
     /**
-     * This method sets the Leader Weighting value for this Thread interface.
+     * Sets the Leader Weighting value for this Thread interface.
+     *
+     * Directly sets the Leader Weight to the new value replacing its previous value (which may have been
+     * determined from a previous call to `SetDeviceProperties()`).
      *
      * @param[in]  aWeight  The Leader Weighting value.
      *
@@ -162,7 +183,7 @@ public:
 #if OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE
 
     /**
-     * This method returns the preferred Partition Id when operating in the Leader role for certification testing.
+     * Returns the preferred Partition Id when operating in the Leader role for certification testing.
      *
      * @returns The preferred Partition Id value.
      *
@@ -170,7 +191,7 @@ public:
     uint32_t GetPreferredLeaderPartitionId(void) const { return mPreferredLeaderPartitionId; }
 
     /**
-     * This method sets the preferred Partition Id when operating in the Leader role for certification testing.
+     * Sets the preferred Partition Id when operating in the Leader role for certification testing.
      *
      * @param[in]  aPartitionId  The preferred Leader Partition Id.
      *
@@ -179,7 +200,7 @@ public:
 #endif
 
     /**
-     * This method sets the preferred Router Id. Upon becoming a router/leader the node
+     * Sets the preferred Router Id. Upon becoming a router/leader the node
      * attempts to use this Router Id. If the preferred Router Id is not set or if it
      * can not be used, a randomly generated router Id is picked.
      * This property can be set when he device role is detached or disabled.
@@ -193,13 +214,13 @@ public:
     Error SetPreferredRouterId(uint8_t aRouterId);
 
     /**
-     * This method gets the Partition Id which the device joined successfully once.
+     * Gets the Partition Id which the device joined successfully once.
      *
      */
     uint32_t GetPreviousPartitionId(void) const { return mPreviousPartitionId; }
 
     /**
-     * This method sets the Partition Id which the device joins successfully.
+     * Sets the Partition Id which the device joins successfully.
      *
      * @param[in]  aPartitionId   The Partition Id.
      *
@@ -207,7 +228,7 @@ public:
     void SetPreviousPartitionId(uint32_t aPartitionId) { mPreviousPartitionId = aPartitionId; }
 
     /**
-     * This method sets the Router Id.
+     * Sets the Router Id.
      *
      * @param[in]  aRouterId   The Router Id.
      *
@@ -215,17 +236,17 @@ public:
     void SetRouterId(uint8_t aRouterId);
 
     /**
-     * This method returns the next hop towards an RLOC16 destination.
+     * Returns the next hop towards an RLOC16 destination.
      *
      * @param[in]  aDestination  The RLOC16 of the destination.
      *
      * @returns A RLOC16 of the next hop if a route is known, kInvalidRloc16 otherwise.
      *
      */
-    uint16_t GetNextHop(uint16_t aDestination);
+    uint16_t GetNextHop(uint16_t aDestination) { return mRouterTable.GetNextHop(aDestination); }
 
     /**
-     * This method returns the NETWORK_ID_TIMEOUT value.
+     * Returns the NETWORK_ID_TIMEOUT value.
      *
      * @returns The NETWORK_ID_TIMEOUT value.
      *
@@ -233,7 +254,7 @@ public:
     uint8_t GetNetworkIdTimeout(void) const { return mNetworkIdTimeout; }
 
     /**
-     * This method sets the NETWORK_ID_TIMEOUT value.
+     * Sets the NETWORK_ID_TIMEOUT value.
      *
      * @param[in]  aTimeout  The NETWORK_ID_TIMEOUT value.
      *
@@ -241,37 +262,7 @@ public:
     void SetNetworkIdTimeout(uint8_t aTimeout) { mNetworkIdTimeout = aTimeout; }
 
     /**
-     * This method returns the route cost to a RLOC16.
-     *
-     * @param[in]  aRloc16  The RLOC16 of the destination.
-     *
-     * @returns The route cost to a RLOC16.
-     *
-     */
-    uint8_t GetRouteCost(uint16_t aRloc16) const;
-
-    /**
-     * This method returns the link cost to the given Router.
-     *
-     * @param[in]  aRouterId  The Router ID.
-     *
-     * @returns The link cost to the Router.
-     *
-     */
-    uint8_t GetLinkCost(uint8_t aRouterId);
-
-    /**
-     * This method returns the minimum cost to the given router.
-     *
-     * @param[in]  aRloc16  The short address of the given router.
-     *
-     * @returns The minimum cost to the given router (via direct link or forwarding).
-     *
-     */
-    uint8_t GetCost(uint16_t aRloc16);
-
-    /**
-     * This method returns the ROUTER_SELECTION_JITTER value.
+     * Returns the ROUTER_SELECTION_JITTER value.
      *
      * @returns The ROUTER_SELECTION_JITTER value.
      *
@@ -279,7 +270,7 @@ public:
     uint8_t GetRouterSelectionJitter(void) const { return mRouterSelectionJitter; }
 
     /**
-     * This method sets the ROUTER_SELECTION_JITTER value.
+     * Sets the ROUTER_SELECTION_JITTER value.
      *
      * @returns The ROUTER_SELECTION_JITTER value.
      *
@@ -287,7 +278,7 @@ public:
     Error SetRouterSelectionJitter(uint8_t aRouterJitter);
 
     /**
-     * This method returns the current router selection jitter timeout value.
+     * Returns the current router selection jitter timeout value.
      *
      * @returns The current router selection jitter timeout value.
      *
@@ -295,7 +286,7 @@ public:
     uint8_t GetRouterSelectionJitterTimeout(void) const { return mRouterSelectionJitterTimeout; }
 
     /**
-     * This method returns the ROUTER_UPGRADE_THRESHOLD value.
+     * Returns the ROUTER_UPGRADE_THRESHOLD value.
      *
      * @returns The ROUTER_UPGRADE_THRESHOLD value.
      *
@@ -303,7 +294,7 @@ public:
     uint8_t GetRouterUpgradeThreshold(void) const { return mRouterUpgradeThreshold; }
 
     /**
-     * This method sets the ROUTER_UPGRADE_THRESHOLD value.
+     * Sets the ROUTER_UPGRADE_THRESHOLD value.
      *
      * @param[in]  aThreshold  The ROUTER_UPGRADE_THRESHOLD value.
      *
@@ -311,7 +302,7 @@ public:
     void SetRouterUpgradeThreshold(uint8_t aThreshold) { mRouterUpgradeThreshold = aThreshold; }
 
     /**
-     * This method returns the ROUTER_DOWNGRADE_THRESHOLD value.
+     * Returns the ROUTER_DOWNGRADE_THRESHOLD value.
      *
      * @returns The ROUTER_DOWNGRADE_THRESHOLD value.
      *
@@ -319,7 +310,7 @@ public:
     uint8_t GetRouterDowngradeThreshold(void) const { return mRouterDowngradeThreshold; }
 
     /**
-     * This method sets the ROUTER_DOWNGRADE_THRESHOLD value.
+     * Sets the ROUTER_DOWNGRADE_THRESHOLD value.
      *
      * @param[in]  aThreshold  The ROUTER_DOWNGRADE_THRESHOLD value.
      *
@@ -327,7 +318,25 @@ public:
     void SetRouterDowngradeThreshold(uint8_t aThreshold) { mRouterDowngradeThreshold = aThreshold; }
 
     /**
-     * This method returns if the REED is expected to become Router soon.
+     * Returns the MLE_CHILD_ROUTER_LINKS value.
+     *
+     * @returns The MLE_CHILD_ROUTER_LINKS value.
+     *
+     */
+    uint8_t GetChildRouterLinks(void) const { return mChildRouterLinks; }
+
+    /**
+     * Sets the MLE_CHILD_ROUTER_LINKS value.
+     *
+     * @param[in]  aChildRouterLinks  The MLE_CHILD_ROUTER_LINKS value.
+     *
+     * @retval kErrorNone          Successfully set the value.
+     * @retval kErrorInvalidState  Thread protocols are enabled.
+     */
+    Error SetChildRouterLinks(uint8_t aChildRouterLinks);
+
+    /**
+     * Returns if the REED is expected to become Router soon.
      *
      * @retval TRUE   If the REED is going to become a Router soon.
      * @retval FALSE  If the REED is not going to become a Router soon.
@@ -336,7 +345,7 @@ public:
     bool IsExpectedToBecomeRouterSoon(void) const;
 
     /**
-     * This method removes a link to a neighbor.
+     * Removes a link to a neighbor.
      *
      * @param[in]  aNeighbor  A reference to the neighbor object.
      *
@@ -344,7 +353,7 @@ public:
     void RemoveNeighbor(Neighbor &aNeighbor);
 
     /**
-     * This method invalidates a direct link to a neighboring router (due to failed link-layer acks).
+     * Invalidates a direct link to a neighboring router (due to failed link-layer acks).
      *
      * @param[in]  aRouter  A reference to the router object.
      *
@@ -352,7 +361,7 @@ public:
     void RemoveRouterLink(Router &aRouter);
 
     /**
-     * This method indicates whether or not the RLOC16 is an MTD child of this device.
+     * Indicates whether or not the RLOC16 is an MTD child of this device.
      *
      * @param[in]  aRloc16  The RLOC16.
      *
@@ -363,7 +372,7 @@ public:
     bool IsMinimalChild(uint16_t aRloc16);
 
     /**
-     * This method indicates whether or not the given Thread partition attributes are preferred.
+     * Indicates whether or not the given Thread partition attributes are preferred.
      *
      * @param[in]  aSingletonA   Whether or not the Thread Partition A has a single router.
      * @param[in]  aLeaderDataA  A reference to Thread Partition A's Leader Data.
@@ -381,7 +390,7 @@ public:
                                  const LeaderData &aLeaderDataB);
 
     /**
-     * This method checks if the destination is reachable.
+     * Checks if the destination is reachable.
      *
      * @param[in]  aMeshDest   The RLOC16 of the destination.
      * @param[in]  aIp6Header  A reference to the IPv6 header of the message.
@@ -393,7 +402,7 @@ public:
     Error CheckReachability(uint16_t aMeshDest, const Ip6::Header &aIp6Header);
 
     /**
-     * This method resolves 2-hop routing loops.
+     * Resolves 2-hop routing loops.
      *
      * @param[in]  aSourceMac   The RLOC16 of the previous hop.
      * @param[in]  aDestRloc16  The RLOC16 of the final destination.
@@ -402,7 +411,7 @@ public:
     void ResolveRoutingLoops(uint16_t aSourceMac, uint16_t aDestRloc16);
 
     /**
-     * This method checks if a given Router ID has correct value.
+     * Checks if a given Router ID has correct value.
      *
      * @param[in]  aRouterId  The Router ID value.
      *
@@ -413,7 +422,7 @@ public:
     static bool IsRouterIdValid(uint8_t aRouterId) { return aRouterId <= kMaxRouterId; }
 
     /**
-     * This method fills an ConnectivityTlv.
+     * Fills an ConnectivityTlv.
      *
      * @param[out]  aTlv  A reference to the tlv to be filled.
      *
@@ -421,7 +430,7 @@ public:
     void FillConnectivityTlv(ConnectivityTlv &aTlv);
 
     /**
-     * This method generates an MLE Child Update Request message to be sent to the parent.
+     * Generates an MLE Child Update Request message to be sent to the parent.
      *
      * @retval kErrorNone     Successfully generated an MLE Child Update Request message.
      * @retval kErrorNoBufs   Insufficient buffers to generate the MLE Child Update Request message.
@@ -433,7 +442,7 @@ public:
 
 #if OPENTHREAD_CONFIG_MLE_STEERING_DATA_SET_OOB_ENABLE
     /**
-     * This method sets steering data out of band
+     * Sets steering data out of band
      *
      * @param[in]  aExtAddress  Value used to set steering data
      *                          All zeros clears steering data
@@ -445,7 +454,7 @@ public:
 #endif
 
     /**
-     * This method gets the assigned parent priority.
+     * Gets the assigned parent priority.
      *
      * @returns The assigned parent priority value, -2 means not assigned.
      *
@@ -453,7 +462,7 @@ public:
     int8_t GetAssignParentPriority(void) const { return mParentPriority; }
 
     /**
-     * This method sets the parent priority.
+     * Sets the parent priority.
      *
      * @param[in]  aParentPriority  The parent priority value.
      *
@@ -464,7 +473,7 @@ public:
     Error SetAssignParentPriority(int8_t aParentPriority);
 
     /**
-     * This method gets the longest MLE Timeout TLV for all active MTD children.
+     * Gets the longest MLE Timeout TLV for all active MTD children.
      *
      * @param[out]  aTimeout  A reference to where the information is placed.
      *
@@ -476,7 +485,7 @@ public:
     Error GetMaxChildTimeout(uint32_t &aTimeout) const;
 
     /**
-     * This function sets the callback that is called when processing an MLE Discovery Request message.
+     * Sets the callback that is called when processing an MLE Discovery Request message.
      *
      * @param[in]  aCallback A pointer to a function that is called to deliver MLE Discovery Request data.
      * @param[in]  aContext  A pointer to application-specific context.
@@ -488,14 +497,14 @@ public:
     }
 
     /**
-     * This method resets the MLE Advertisement Trickle timer interval.
+     * Resets the MLE Advertisement Trickle timer interval.
      *
      */
     void ResetAdvertiseInterval(void);
 
 #if OPENTHREAD_CONFIG_TIME_SYNC_ENABLE
     /**
-     * This method generates an MLE Time Synchronization message.
+     * Generates an MLE Time Synchronization message.
      *
      * @retval kErrorNone     Successfully sent an MLE Time Synchronization message.
      * @retval kErrorNoBufs   Insufficient buffers to generate the MLE Time Synchronization message.
@@ -506,7 +515,7 @@ public:
 
 #if OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE
     /**
-     * This method sets the delay before registering Backbone Router service.
+     * Sets the delay before registering Backbone Router service.
      *
      * @param[in]  aDelay  The delay before registering Backbone Router service.
      *
@@ -515,7 +524,7 @@ public:
 #endif
 
     /**
-     * This method gets the maximum number of IP addresses that each MTD child may register with this device as parent.
+     * Gets the maximum number of IP addresses that each MTD child may register with this device as parent.
      *
      * @returns The maximum number of IP addresses that each MTD child may register with this device as parent.
      *
@@ -524,7 +533,7 @@ public:
 
 #if OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE
     /**
-     * This method sets/restores the maximum number of IP addresses that each MTD child may register with this
+     * Sets/restores the maximum number of IP addresses that each MTD child may register with this
      * device as parent.
      *
      * @param[in]  aMaxIpAddresses  The maximum number of IP addresses that each MTD child may register with this
@@ -537,7 +546,7 @@ public:
     Error SetMaxChildIpAddresses(uint8_t aMaxIpAddresses);
 
     /**
-     * This method sets whether the device was commissioned using CCM.
+     * Sets whether the device was commissioned using CCM.
      *
      * @param[in]  aEnabled  TRUE if the device was commissioned using CCM, FALSE otherwise.
      *
@@ -545,7 +554,7 @@ public:
     void SetCcmEnabled(bool aEnabled) { mCcmEnabled = aEnabled; }
 
     /**
-     * This function sets whether the Security Policy TLV version-threshold for routing (VR field) is enabled.
+     * Sets whether the Security Policy TLV version-threshold for routing (VR field) is enabled.
      *
      * @param[in]  aEnabled  TRUE to enable Security Policy TLV version-threshold for routing, FALSE otherwise.
      *
@@ -554,22 +563,35 @@ public:
 #endif
 
 private:
-    static constexpr uint16_t kDiscoveryMaxJitter            = 250;  // Max jitter delay Discovery Responses (in msec).
-    static constexpr uint32_t kStateUpdatePeriod             = 1000; // State update period (in msec).
-    static constexpr uint16_t kUnsolicitedDataResponseJitter = 500;  // Max delay for unsol Data Response (in msec).
+    static constexpr uint16_t kDiscoveryMaxJitter            = 250; // Max jitter delay Discovery Responses (in msec).
+    static constexpr uint16_t kChallengeTimeout              = 2;   // Challenge timeout (in sec).
+    static constexpr uint16_t kUnsolicitedDataResponseJitter = 500; // Max delay for unsol Data Response (in msec).
+    static constexpr uint8_t  kLeaderDowngradeExtraDelay     = 10;  // Extra delay to downgrade leader (in sec).
+    static constexpr uint8_t  kDefaultLeaderWeight           = 64;
 
     // Threshold to accept a router upgrade request with reason
     // `kBorderRouterRequest` (number of BRs acting as router in
     // Network Data).
     static constexpr uint8_t kRouterUpgradeBorderRouterRequestThreshold = 2;
 
+    static constexpr uint8_t kLinkRequestMinMargin    = OPENTHREAD_CONFIG_MLE_LINK_REQUEST_MARGIN_MIN;
+    static constexpr uint8_t kPartitionMergeMinMargin = OPENTHREAD_CONFIG_MLE_PARTITION_MERGE_MARGIN_MIN;
+    static constexpr uint8_t kChildRouterLinks        = OPENTHREAD_CONFIG_MLE_CHILD_ROUTER_LINKS;
+    static constexpr uint8_t kMaxChildIpAddresses     = OPENTHREAD_CONFIG_MLE_IP_ADDRS_PER_CHILD;
+
+    static constexpr uint8_t kMinCriticalChildrenCount = 6;
+
+    static constexpr uint16_t kChildSupervisionDefaultIntervalForOlderVersion =
+        OPENTHREAD_CONFIG_CHILD_SUPERVISION_OLDER_VERSION_CHILD_DEFAULT_INTERVAL;
+
     void  HandleDetachStart(void);
     void  HandleChildStart(AttachMode aMode);
+    void  HandleSecurityPolicyChanged(void);
     void  HandleLinkRequest(RxInfo &aRxInfo);
     void  HandleLinkAccept(RxInfo &aRxInfo);
     Error HandleLinkAccept(RxInfo &aRxInfo, bool aRequest);
     void  HandleLinkAcceptAndRequest(RxInfo &aRxInfo);
-    Error HandleAdvertisement(RxInfo &aRxInfo);
+    Error HandleAdvertisement(RxInfo &aRxInfo, uint16_t aSourceAddress, const LeaderData &aLeaderData);
     void  HandleParentRequest(RxInfo &aRxInfo);
     void  HandleChildIdRequest(RxInfo &aRxInfo);
     void  HandleChildUpdateRequest(RxInfo &aRxInfo);
@@ -581,8 +603,9 @@ private:
     void HandleTimeSync(RxInfo &aRxInfo);
 #endif
 
-    Error ProcessRouteTlv(RxInfo &aRxInfo);
-    Error ProcessRouteTlv(RxInfo &aRxInfo, RouteTlv &aRouteTlv);
+    Error ProcessRouteTlv(const RouteTlv &aRouteTlv, RxInfo &aRxInfo);
+    Error ReadAndProcessRouteTlvOnFed(RxInfo &aRxInfo, uint8_t aParentId);
+
     void  StopAdvertiseTrickleTimer(void);
     Error SendAddressSolicit(ThreadStatusTlv::Status aStatus);
     void  SendAddressSolicitResponse(const Coap::Message    &aRequest,
@@ -609,11 +632,11 @@ private:
     Error SendDiscoveryResponse(const Ip6::Address &aDestination, const Message &aDiscoverRequestMessage);
     void  SetStateRouter(uint16_t aRloc16);
     void  SetStateLeader(uint16_t aRloc16, LeaderStartMode aStartMode);
+    void  SetStateRouterOrLeader(DeviceRole aRole, uint16_t aRloc16, LeaderStartMode aStartMode);
     void  StopLeader(void);
     void  SynchronizeChildNetworkData(void);
+    Error ProcessAddressRegistrationTlv(RxInfo &aRxInfo, Child &aChild);
     Error UpdateChildAddresses(const Message &aMessage, uint16_t aOffset, uint16_t aLength, Child &aChild);
-    void  UpdateRoutes(const RouteTlv &aRouteTlv, uint8_t aRouterId);
-    bool  UpdateLinkQualityOut(const RouteTlv &aRouteTlv, Router &aNeighbor, bool &aResetAdvInterval);
     bool  HasNeighborWithGoodLinkQuality(void) const;
 
     static void HandleAddressSolicitResponse(void                *aContext,
@@ -637,6 +660,10 @@ private:
     void        HandleTimeTick(void);
 
     TrickleTimer mAdvertiseTrickleTimer;
+
+#if (OPENTHREAD_CONFIG_THREAD_VERSION >= OT_THREAD_VERSION_1_3_1)
+    DeviceProperties mDeviceProperties;
+#endif
 
     ChildTable  mChildTable;
     RouterTable mRouterTable;
@@ -669,7 +696,7 @@ private:
     uint8_t mRouterSelectionJitter;        ///< The variable to save the assigned jitter value.
     uint8_t mRouterSelectionJitterTimeout; ///< The Timeout prior to request/release Router ID.
 
-    uint8_t mLinkRequestDelay;
+    uint8_t mChildRouterLinks;
 
     int8_t mParentPriority; ///< The assigned parent priority value, -2 means not assigned.
 #if OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE
@@ -707,8 +734,6 @@ public:
     bool IsSingleton(void) const { return false; }
 
     uint16_t GetNextHop(uint16_t aDestination) const { return Mle::GetNextHop(aDestination); }
-
-    uint8_t GetCost(uint16_t) { return 0; }
 
     Error RemoveNeighbor(Neighbor &) { return BecomeDetached(); }
     void  RemoveRouterLink(Router &) { IgnoreError(BecomeDetached()); }

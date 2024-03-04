@@ -74,16 +74,16 @@
 
 __attribute__((weak)) void PHY_RxFrameCallback(PHY_FrameInfo_t *rxFrame)
 {
-	/* Keep compiler happy. */
-	(void)rxFrame;
+    /* Keep compiler happy. */
+    (void)rxFrame;
 }
 
 __attribute__((weak)) bool PHY_IsFramePendingFromNextLayer(PHY_Addr_t *addr, uint8_t* addrMode )
 {
     bool isFramePending = true;
-	
-	(void)addr;
-	(void)addrMode;
+    
+    (void)addr;
+    (void)addrMode;
     return isFramePending;
 }
 

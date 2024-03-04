@@ -104,7 +104,7 @@ extern "C" {
  
 //#define OT_PLATFORM                                                  (external)
 #define PACKAGE_NAME                                                 "OPENTHREAD"
-#define PACKAGE_VERSION                                              "mchp_harmony_wireless_thread_v1.0.0"
+#define PACKAGE_VERSION                                              "thread-reference-20230706"
 
 #define OPENTHREAD_CONFIG_FILE                                       "openthread-core-pic32cx-config.h"
 #define OPENTHREAD_CORE_CONFIG_PLATFORM_CHECK_FILE                   "openthread-core-pic32cx-config-check.h"
@@ -122,6 +122,7 @@ extern "C" {
 #define OPENTHREAD_CONFIG_THREAD_VERSION                             (OT_THREAD_VERSION_1_3)
 #define OPENTHREAD_CONFIG_COAP_API_ENABLE                            (1)
 #define OPENTHREAD_CONFIG_COAP_BLOCKWISE_TRANSFER_ENABLE             (1)
+#define OPENTHREAD_CONFIG_COAP_MAX_BLOCK_LENGTH                      (512)
 #define OPENTHREAD_CONFIG_COAP_SECURE_API_ENABLE                     (1)
 #define OPENTHREAD_CONFIG_MAC_DEFAULT_MAX_FRAME_RETRIES_INDIRECT     (1)
 #define OPENTHREAD_CONFIG_MLE_STEERING_DATA_SET_OOB_ENABLE           (1)
@@ -132,18 +133,25 @@ extern "C" {
 #define OPENTHREAD_CONFIG_SRP_CLIENT_ENABLE                          (1)
 #define OPENTHREAD_CONFIG_TMF_NETDATA_SERVICE_ENABLE                 (1)
 #define OPENTHREAD_CONFIG_CLI_UART_TX_BUFFER_SIZE                    (2048)
-#define OPENTHREAD_CONFIG_CLI_UART_RX_BUFFER_SIZE                    (512)
 
 
 #define OPENTHREAD_FTD                                               (1)
-#define OPEN_THREAD_UART_ENABLE                                      (1)
+#define OPENTHREAD_CONFIG_LOG_MAX_SIZE                               (512)
+#define OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE                   (1)
 #define OPENTHREAD_CONFIG_JOINER_ENABLE                              (1)
 #define OPENTHREAD_CONFIG_COMMISSIONER_ENABLE                        (0)
-#define OPENTHREAD_CONFIG_MLE_MAX_CHILDREN                           (10)
+#define OPENTHREAD_CONFIG_MLE_MAX_CHILDREN                           (20)
+#define SYS_PDS_NUM_MAX_CHILDREN_ENTRY                               (20)
 #define OPENTHREAD_CONFIG_MLE_IP_ADDRS_PER_CHILD                     (4)
+#define OPENTHREAD_CONFIG_NUM_MESSAGE_BUFFERS                        (64)
 
+#define OPEN_THREAD_UART_ENABLE                                      (1)
+#define OPENTHREAD_CONFIG_MLE_LINK_METRICS_SUBJECT_ENABLE            (1)
 
-
+#define OPENTHREAD_CONFIG_DHCP6_CLIENT_ENABLE                       (1)              
+#define OPENTHREAD_CONFIG_DUA_ENABLE                                (1) 
+#define OPENTHREAD_CONFIG_MLR_ENABLE                                (1)
+#define OPENTHREAD_CONFIG_DNS_CLIENT_ENABLE                         (1)
 
 
 

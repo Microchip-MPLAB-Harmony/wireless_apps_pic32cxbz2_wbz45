@@ -42,6 +42,7 @@
 #include <openthread/instance.h>
 #include <openthread/platform/toolchain.h>
 
+#include "common/callback.hpp"
 #include "common/error.hpp"
 #include "common/locator.hpp"
 #include "common/non_copyable.hpp"
@@ -60,7 +61,7 @@ namespace ot {
  */
 
 /**
- * This enumeration type represents events emitted from OpenThread Notifier.
+ * Type represents events emitted from OpenThread Notifier.
  *
  */
 enum Event : uint32_t
@@ -96,23 +97,24 @@ enum Event : uint32_t
     kEventActiveDatasetChanged             = OT_CHANGED_ACTIVE_DATASET,               ///< Active Dataset changed
     kEventPendingDatasetChanged            = OT_CHANGED_PENDING_DATASET,              ///< Pending Dataset changed
     kEventNat64TranslatorStateChanged      = OT_CHANGED_NAT64_TRANSLATOR_STATE,       ///< Nat64Translator state changed
+    kEventParentLinkQualityChanged         = OT_CHANGED_PARENT_LINK_QUALITY,          ///< Parent link quality changed
 };
 
 /**
- * This type represents a list of events.
+ * Represents a list of events.
  *
  */
 class Events
 {
 public:
     /**
-     * This type represents a bit-field indicating a list of events (with values from `Event`)
+     * Represents a bit-field indicating a list of events (with values from `Event`)
      *
      */
     typedef otChangedFlags Flags;
 
     /**
-     * This constructor initializes the `Events` list (as empty).
+     * Initializes the `Events` list (as empty).
      *
      */
     Events(void)
@@ -121,13 +123,13 @@ public:
     }
 
     /**
-     * This method clears the `Events` list.
+     * Clears the `Events` list.
      *
      */
     void Clear(void) { mEventFlags = 0; }
 
     /**
-     * This method indicates whether the `Events` list contains a given event.
+     * Indicates whether the `Events` list contains a given event.
      *
      * @param[in] aEvent  The event to check.
      *
@@ -137,7 +139,7 @@ public:
     bool Contains(Event aEvent) const { return (mEventFlags & aEvent) != 0; }
 
     /**
-     * This method indicates whether the `Events` list contains any of a given set of events.
+     * Indicates whether the `Events` list contains any of a given set of events.
      *
      * @param[in] aEvents  The events set to check (must be a collection of `Event` constants combined using `|`).
      *
@@ -147,7 +149,7 @@ public:
     bool ContainsAny(Flags aEvents) const { return (mEventFlags & aEvents) != 0; }
 
     /**
-     * This method indicates whether the `Events` list contains all of a given set of events.
+     * Indicates whether the `Events` list contains all of a given set of events.
      *
      * @param[in] aEvents  The events set to check (must be collection of `Event` constants combined using `|`).
      *
@@ -157,7 +159,7 @@ public:
     bool ContainsAll(Flags aEvents) const { return (mEventFlags & aEvents) == aEvents; }
 
     /**
-     * This method adds a given event to the `Events` list.
+     * Adds a given event to the `Events` list.
      *
      * @param[in] aEvent  The event to add.
      *
@@ -165,7 +167,7 @@ public:
     void Add(Event aEvent) { mEventFlags |= aEvent; }
 
     /**
-     * This method indicates whether the `Events` list is empty.
+     * Indicates whether the `Events` list is empty.
      *
      * @returns TRUE if the list is empty, FALSE otherwise.
      *
@@ -173,7 +175,7 @@ public:
     bool IsEmpty(void) const { return (mEventFlags == 0); }
 
     /**
-     * This method gets the `Events` list as bit-field `Flags` value.
+     * Gets the `Events` list as bit-field `Flags` value.
      *
      * @returns The list as bit-field `Flags` value.
      *
@@ -185,7 +187,7 @@ private:
 };
 
 /**
- * This class implements the OpenThread Notifier.
+ * Implements the OpenThread Notifier.
  *
  * For core internal modules, `Notifier` class emits events directly to them by invoking method `HandleNotifierEvents()`
  * on the module instance.
@@ -199,7 +201,7 @@ class Notifier : public InstanceLocator, private NonCopyable
 {
 public:
     /**
-     * This constructor initializes a `Notifier` instance.
+     * Initializes a `Notifier` instance.
      *
      *  @param[in] aInstance     A reference to OpenThread instance.
      *
@@ -207,7 +209,7 @@ public:
     explicit Notifier(Instance &aInstance);
 
     /**
-     * This method registers an `otStateChangedCallback` handler.
+     * Registers an `otStateChangedCallback` handler.
      *
      * @param[in]  aCallback     A pointer to the handler function that is called to notify of the changes.
      * @param[in]  aContext      A pointer to arbitrary context information.
@@ -220,7 +222,7 @@ public:
     Error RegisterCallback(otStateChangedCallback aCallback, void *aContext);
 
     /**
-     * This method removes/unregisters a previously registered `otStateChangedCallback` handler.
+     * Removes/unregisters a previously registered `otStateChangedCallback` handler.
      *
      * @param[in]  aCallback     A pointer to the callback function pointer.
      * @param[in]  aContext      A pointer to arbitrary context information.
@@ -229,7 +231,7 @@ public:
     void RemoveCallback(otStateChangedCallback aCallback, void *aContext);
 
     /**
-     * This method schedules signaling of an event.
+     * Schedules signaling of an event.
      *
      * @param[in]  aEvent     The event to signal.
      *
@@ -237,7 +239,7 @@ public:
     void Signal(Event aEvent);
 
     /**
-     * This method schedules signaling of am event only if the event has not been signaled before (first time signal).
+     * Schedules signaling of am event only if the event has not been signaled before (first time signal).
      *
      * @param[in]  aEvent     The event to signal.
      *
@@ -245,7 +247,7 @@ public:
     void SignalIfFirst(Event aEvent);
 
     /**
-     * This method indicates whether or not an event signal callback is pending/scheduled.
+     * Indicates whether or not an event signal callback is pending/scheduled.
      *
      * @returns TRUE if a callback is pending, FALSE otherwise.
      *
@@ -253,7 +255,7 @@ public:
     bool IsPending(void) const { return !mEventsToSignal.IsEmpty(); }
 
     /**
-     * This method indicates whether or not an event has been signaled before.
+     * Indicates whether or not an event has been signaled before.
      *
      * @param[in]  aEvent    The event to check.
      *
@@ -264,7 +266,7 @@ public:
     bool HasSignaled(Event aEvent) const { return mSignaledEvents.Contains(aEvent); }
 
     /**
-     * This template method updates a variable of a type `Type` with a new value and signals the given event.
+     * Updates a variable of a type `Type` with a new value and signals the given event.
      *
      * If the variable is already set to the same value, this method returns `kErrorAlready` and the event is
      * signaled using `SignalIfFirst()` (i.e., signal is scheduled only if event has not been signaled before).
@@ -308,11 +310,7 @@ private:
 
     static constexpr uint16_t kFlagsStringBufferSize = kFlagsStringLineLimit + kMaxFlagNameLength;
 
-    struct ExternalCallback
-    {
-        otStateChangedCallback mHandler;
-        void                  *mContext;
-    };
+    typedef Callback<otStateChangedCallback> ExternalCallback;
 
     void EmitEvents(void);
 

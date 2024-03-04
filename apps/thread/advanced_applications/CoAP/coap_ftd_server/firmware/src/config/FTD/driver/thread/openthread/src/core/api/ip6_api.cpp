@@ -146,9 +146,8 @@ otMessage *otIp6NewMessageFromBuffer(otInstance              *aInstance,
                                      uint16_t                 aDataLength,
                                      const otMessageSettings *aSettings)
 {
-    return (aSettings != nullptr)
-               ? AsCoreType(aInstance).Get<Ip6::Ip6>().NewMessage(aData, aDataLength, AsCoreType(aSettings))
-               : AsCoreType(aInstance).Get<Ip6::Ip6>().NewMessage(aData, aDataLength);
+    return AsCoreType(aInstance).Get<Ip6::Ip6>().NewMessageFromData(aData, aDataLength,
+                                                                    Message::Settings::From(aSettings));
 }
 
 otError otIp6AddUnsecurePort(otInstance *aInstance, uint16_t aPort)
@@ -188,6 +187,11 @@ otError otIp6AddressFromString(const char *aString, otIp6Address *aAddress)
     return AsCoreType(aAddress).FromString(aString);
 }
 
+otError otIp6PrefixFromString(const char *aString, otIp6Prefix *aPrefix)
+{
+    return AsCoreType(aPrefix).FromString(aString);
+}
+
 void otIp6AddressToString(const otIp6Address *aAddress, char *aBuffer, uint16_t aSize)
 {
     AssertPointerIsNotNull(aBuffer);
@@ -223,15 +227,7 @@ bool otIp6IsAddressUnspecified(const otIp6Address *aAddress) { return AsCoreType
 
 otError otIp6SelectSourceAddress(otInstance *aInstance, otMessageInfo *aMessageInfo)
 {
-    Error                             error = kErrorNone;
-    const Ip6::Netif::UnicastAddress *netifAddr;
-
-    netifAddr = AsCoreType(aInstance).Get<Ip6::Ip6>().SelectSourceAddress(AsCoreType(aMessageInfo));
-    VerifyOrExit(netifAddr != nullptr, error = kErrorNotFound);
-    aMessageInfo->mSockAddr = netifAddr->GetAddress();
-
-exit:
-    return error;
+    return AsCoreType(aInstance).Get<Ip6::Ip6>().SelectSourceAddress(AsCoreType(aMessageInfo));
 }
 
 #if OPENTHREAD_FTD && OPENTHREAD_CONFIG_TMF_PROXY_MLR_ENABLE && OPENTHREAD_CONFIG_COMMISSIONER_ENABLE

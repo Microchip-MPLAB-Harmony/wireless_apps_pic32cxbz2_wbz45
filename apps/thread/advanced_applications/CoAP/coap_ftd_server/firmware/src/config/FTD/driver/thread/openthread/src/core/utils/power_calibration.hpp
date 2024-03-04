@@ -49,7 +49,7 @@ namespace ot {
 namespace Utils {
 
 /**
- * This class implements power calibration module.
+ * Implements power calibration module.
  *
  * The power calibration module implements the radio platform power calibration APIs. It mainly stores the calibrated
  * power table and the target power table, provides an API for the platform to get the raw power setting of the
@@ -62,7 +62,7 @@ public:
     explicit PowerCalibration(Instance &aInstance);
 
     /**
-     * Add a calibrated power of the specificed channel to the power calibration table.
+     * Add a calibrated power of the specified channel to the power calibration table.
      *
      * @param[in] aChannel                The radio channel.
      * @param[in] aActualPower            The actual power in 0.01dBm.
@@ -99,22 +99,31 @@ public:
     Error SetChannelTargetPower(uint8_t aChannel, int16_t aTargetPower);
 
     /**
-     * Get the raw power setting for the given channel.
+     * Get the power settings for the given channel.
      *
      * Platform radio layer should parse the raw power setting based on the radio layer defined format and set the
      * parameters of each radio hardware module.
      *
      * @param[in]      aChannel                The radio channel.
+     * @param[out]     aTargetPower            A pointer to the target power in 0.01 dBm. May be set to nullptr if
+     *                                         the caller doesn't want to get the target power.
+     * @param[out]     aActualPower            A pointer to the actual power in 0.01 dBm. May be set to nullptr if
+     *                                         the caller doesn't want to get the actual power.
      * @param[out]     aRawPowerSetting        A pointer to the raw power setting byte array.
      * @param[in,out]  aRawPowerSettingLength  On input, a pointer to the size of @p aRawPowerSetting.
      *                                         On output, a pointer to the length of the raw power setting data.
      *
      * @retval  kErrorNone         Successfully got the target power.
-     * @retval  kErrorInvalidArgs  The @p aChannel is invalid or @p aRawPowerSetting is nullptr.
-     * @retval  kErrorNotFound     The raw power setting for the @p aChannel was not found.
+     * @retval  kErrorInvalidArgs  The @p aChannel is invalid, @p aRawPowerSetting or @p aRawPowerSettingLength is
+     *                             nullptr or @aRawPowerSettingLength is too short.
+     * @retval  kErrorNotFound     The power settings for the @p aChannel was not found.
      *
      */
-    Error GetRawPowerSetting(uint8_t aChannel, uint8_t *aRawPowerSetting, uint16_t *aRawPowerSettingLength);
+    Error GetPowerSettings(uint8_t   aChannel,
+                           int16_t  *aTargetPower,
+                           int16_t  *aActualPower,
+                           uint8_t  *aRawPowerSetting,
+                           uint16_t *aRawPowerSettingLength);
 
 private:
     class CalibratedPowerEntry

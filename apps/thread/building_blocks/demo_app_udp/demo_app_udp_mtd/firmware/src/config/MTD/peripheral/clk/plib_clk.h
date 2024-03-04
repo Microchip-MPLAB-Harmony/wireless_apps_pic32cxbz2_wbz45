@@ -26,7 +26,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -76,7 +76,7 @@
 
 // *****************************************************************************
 /* Function:
-    void CLK_Initialize( void )
+    void CLOCK_Initialize( void )
 
   Summary:
     Initializes hardware of the System Clock and Peripheral Clock.
@@ -95,7 +95,7 @@
 
   Example:
     <code>
-    CLK_Initialize ( );
+    CLOCK_Initialize ( );
 
     </code>
 
@@ -103,7 +103,7 @@
     None.
 */
 
-void CLK_Initialize( void );
+void CLOCK_Initialize( void );
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

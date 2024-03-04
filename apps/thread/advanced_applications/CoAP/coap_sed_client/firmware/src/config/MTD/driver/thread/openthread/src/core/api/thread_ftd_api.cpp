@@ -79,6 +79,18 @@ otError otThreadSetPreferredRouterId(otInstance *aInstance, uint8_t aRouterId)
     return AsCoreType(aInstance).Get<Mle::MleRouter>().SetPreferredRouterId(aRouterId);
 }
 
+#if (OPENTHREAD_CONFIG_THREAD_VERSION >= OT_THREAD_VERSION_1_3_1)
+const otDeviceProperties *otThreadGetDeviceProperties(otInstance *aInstance)
+{
+    return &AsCoreType(aInstance).Get<Mle::MleRouter>().GetDeviceProperties();
+}
+
+void otThreadSetDeviceProperties(otInstance *aInstance, const otDeviceProperties *aDeviceProperties)
+{
+    AsCoreType(aInstance).Get<Mle::MleRouter>().SetDeviceProperties(AsCoreType(aDeviceProperties));
+}
+#endif
+
 uint8_t otThreadGetLocalLeaderWeight(otInstance *aInstance)
 {
     return AsCoreType(aInstance).Get<Mle::MleRouter>().GetLeaderWeight();
@@ -141,6 +153,16 @@ uint8_t otThreadGetRouterUpgradeThreshold(otInstance *aInstance)
 void otThreadSetRouterUpgradeThreshold(otInstance *aInstance, uint8_t aThreshold)
 {
     AsCoreType(aInstance).Get<Mle::MleRouter>().SetRouterUpgradeThreshold(aThreshold);
+}
+
+uint8_t otThreadGetChildRouterLinks(otInstance *aInstance)
+{
+    return AsCoreType(aInstance).Get<Mle::MleRouter>().GetChildRouterLinks();
+}
+
+otError otThreadSetChildRouterLinks(otInstance *aInstance, uint8_t aChildRouterLinks)
+{
+    return AsCoreType(aInstance).Get<Mle::MleRouter>().SetChildRouterLinks(aChildRouterLinks);
 }
 
 otError otThreadReleaseRouterId(otInstance *aInstance, uint8_t aRouterId)
@@ -380,5 +402,23 @@ otError otThreadSetRouterIdRange(otInstance *aInstance, uint8_t aMinRouterId, ui
     return AsCoreType(aInstance).Get<RouterTable>().SetRouterIdRange(aMinRouterId, aMaxRouterId);
 }
 #endif
+
+bool otThreadIsRouterIdAllocated(otInstance *aInstance, uint8_t aRouterId)
+{
+    return AsCoreType(aInstance).Get<RouterTable>().IsAllocated(aRouterId);
+}
+
+void otThreadGetNextHopAndPathCost(otInstance *aInstance,
+                                   uint16_t    aDestRloc16,
+                                   uint16_t   *aNextHopRloc16,
+                                   uint8_t    *aPathCost)
+{
+    uint8_t  pathcost;
+    uint16_t nextHopRloc16;
+
+    AsCoreType(aInstance).Get<RouterTable>().GetNextHopAndPathCost(
+        aDestRloc16, (aNextHopRloc16 != nullptr) ? *aNextHopRloc16 : nextHopRloc16,
+        (aPathCost != nullptr) ? *aPathCost : pathcost);
+}
 
 #endif // OPENTHREAD_FTD

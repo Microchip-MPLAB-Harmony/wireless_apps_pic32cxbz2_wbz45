@@ -266,9 +266,9 @@ SYSTEM_OBJECTS sysObj;
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 OSAL_QUEUE_HANDLE_TYPE OTQueue;
 #define OT_TASK_QUEUE_SIZE 8
-OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -433,7 +433,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -522,13 +522,6 @@ void SYS_Initialize ( void* data )
     
     /* MISRAC 2012 deviation block end */
 
-    
-    /*Open Thread System Initialization*/
-    otSysInit(0U,0U);
-    
-    /* Creation of openthread Task Queue */
-    OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
-
     CRYPT_WCCB_Initialize();
     /* Initialization for IEEE_802154_PHY */
         OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
@@ -536,6 +529,13 @@ void SYS_Initialize ( void* data )
     PHY_Init();
     
     /* End of Initialization for IEEE_802154_PHY */
+
+    
+    /*Open Thread System Initialization*/
+    otSysInit(0U,0U);
+    
+    /* Creation of openthread Task Queue */
+    OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
 
 
     /* MISRAC 2012 deviation block end */

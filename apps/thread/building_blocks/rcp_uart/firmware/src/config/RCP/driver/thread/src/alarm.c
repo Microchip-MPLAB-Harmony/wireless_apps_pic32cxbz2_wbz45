@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -60,105 +60,203 @@
 #include "definitions.h"
 #include "platform-pic32cx.h"
 #include <openthread/platform/alarm-milli.h>
-
+#include <openthread/platform/alarm-micro.h>
 #include "configuration.h"
-#include "timers.h"
-
-#define TEST_SYS_TIME_RUNNING
-#define SYS_TIMER_32BIT_MASK_MSB 0xFFFFFFFF00000000
-#define SYS_TIMER_MSB_SHIFT_COUNT  32
-#define NO_BLOCK_WAIT   0
-#define INIT_TIMER_INTERVAL_MS   1000
-
-typedef union {
-    TickType_t sysTime32;
-    uint64_t sysTime64;
-}otSysTime_t;
-
-static otSysTime_t otSysTime;
-
-static uint32_t          sDeltaTime = 0;
-static uint32_t          sStartTime = 0;
-static bool sMilliTimerFired = true;
-
-static TimerHandle_t sMilliTimerHandle = NULL;
-
-
-extern OSAL_QUEUE_HANDLE_TYPE OTQueue;
 
 void vApplicationDaemonTaskStartupHook( void )
 {
     
 }
 
-static void milliTimeCallback(TimerHandle_t xTimer)
+#define INIT_TIMER_INTERVAL   1000
+
+static SYS_TIME_HANDLE sMilliTimerHandle = SYS_TIME_HANDLE_INVALID;
+static bool sMilliTimerFired = true;
+static uint32_t milliPeriod = 0;
+
+#if OPENTHREAD_CONFIG_PLATFORM_USEC_TIMER_ENABLE
+static SYS_TIME_HANDLE sMicroTimerHandle = SYS_TIME_HANDLE_INVALID;
+static bool sMicroTimerFired = true;
+static uint32_t microPeriod = 0;
+#endif
+
+extern OSAL_QUEUE_HANDLE_TYPE OTQueue;
+
+#define XTAL_ACCURACY       40 // The crystal used on PIC32CX-BZ2 devices has ±20ppm accuracy.
+
+typedef enum timer_type_tag
+{
+    ALARM_MILLI,
+    ALARM_MICRO
+}timerType_t;
+
+static void sStartTimerAt (timerType_t timerType, SYS_TIME_HANDLE timerHandle, uint32_t period, SYS_TIME_CALLBACK callBack,
+    uintptr_t context)
+{
+    if(SYS_TIME_HANDLE_INVALID != timerHandle)
+    {
+          SYS_TIME_TimerReload(timerHandle, 0, period , callBack, context, SYS_TIME_PERIODIC);
+          SYS_TIME_TimerStart(timerHandle);
+    }
+    else
+    {
+        if(timerType == ALARM_MILLI)
+        {
+            sMilliTimerHandle = SYS_TIME_CallbackRegisterMS( callBack, context, SYS_TIME_CountToMS(period), SYS_TIME_PERIODIC);   
+        }
+#if OPENTHREAD_CONFIG_PLATFORM_USEC_TIMER_ENABLE
+        else
+        {
+            sMicroTimerHandle = SYS_TIME_CallbackRegisterUS( callBack, context, SYS_TIME_CountToUS(period), SYS_TIME_PERIODIC);   
+        }
+#endif
+    }
+}
+        
+        
+
+/*********************  Milli Timer Implementation ****************************/
+static void milliTimerCallback(uintptr_t context)
 {
     OT_Msg_T otAlarmMsg;
+    
+    SYS_TIME_HANDLE *timerHandle = (SYS_TIME_HANDLE *)context ;
+    
+    if((NULL != timerHandle) && (*timerHandle == sMilliTimerHandle) && (milliPeriod != 0))
+    {
+		/* Stop the Periodic Milli Timer once it expires. 
+		 * Higher layer will start the timer again*/
+        SYS_TIME_TimerStop(sMilliTimerHandle);
+		milliPeriod = 0;
+    }  
     sMilliTimerFired = true;
     otAlarmMsg.OTMsgId = OT_MSG_TMR_MILLI_CB_DONE;
-    xTimerStop(sMilliTimerHandle, NO_BLOCK_WAIT);
-    OSAL_QUEUE_Send(&OTQueue, &otAlarmMsg,0);
+    
+    OSAL_QUEUE_Send(&OTQueue, &otAlarmMsg, 0);
 }
+
 void otPlatAlarmMilliStartAt(otInstance *aInstance, uint32_t aT0, uint32_t aDt)
 {
     OT_UNUSED_VARIABLE(aInstance);
 
-    sDeltaTime = aDt;
-    sStartTime = aT0;
     /* Timer is already running, stop the timer first and reload the timer with new interval*/
-    if(!sMilliTimerFired)
+    if((!sMilliTimerFired) && (sMilliTimerHandle != SYS_TIME_HANDLE_INVALID))
     {
-        xTimerStop(sMilliTimerHandle, NO_BLOCK_WAIT);
+        SYS_TIME_TimerStop(sMilliTimerHandle);
     }
+    
     if(aDt)
-    {
-      if(NULL != sMilliTimerHandle)
-      {
-          xTimerChangePeriod(sMilliTimerHandle, (aDt / portTICK_PERIOD_MS), NO_BLOCK_WAIT);
-          xTimerStart(sMilliTimerHandle, NO_BLOCK_WAIT);
-      }
-      else
-      {
-          sMilliTimerHandle = xTimerCreate("Milli_Timer", (aDt / portTICK_PERIOD_MS), false, ( void * ) 0, milliTimeCallback);
-          xTimerStart(sMilliTimerHandle, NO_BLOCK_WAIT);
-      }
-      sMilliTimerFired = false;
+    {   
+		/* Start the Periodic Micro Timer with aDt */
+        sStartTimerAt(ALARM_MILLI, sMilliTimerHandle, (uint32_t)SYS_TIME_MSToCount(aDt), milliTimerCallback, (uintptr_t)&sMilliTimerHandle);
+        sMilliTimerFired = false;
+        
     }
     else
-    {
-        milliTimeCallback(NULL);
+    {	
+		/* Directly invoke callback if aDt = 0 */
+        milliTimerCallback((uintptr_t)&sMilliTimerHandle);
     }
+    
+    milliPeriod = aDt;
 }
 
 void otPlatAlarmMilliStop(otInstance *aInstance)
 {
     OT_UNUSED_VARIABLE(aInstance);
-    if(sMilliTimerHandle != NULL)
+    
+    if(sMilliTimerHandle != SYS_TIME_HANDLE_INVALID)
     {
-        xTimerStop(sMilliTimerHandle, NO_BLOCK_WAIT);
+        SYS_TIME_TimerStop(sMilliTimerHandle);
     }
 }
 
 uint32_t otPlatAlarmMilliGetNow(void)
 {
-    uint32_t currTickCount = 0;
-    if(otSysTime.sysTime32 > xTaskGetTickCount())
+    uint32_t currTimeMs = 0;
+
+    currTimeMs = SYS_TIME_CountToMS(SYS_TIME_CounterGet());
+    
+    return currTimeMs ;
+}
+#if OPENTHREAD_CONFIG_PLATFORM_USEC_TIMER_ENABLE
+/***********************MicroSec Timer Implementation**************************/
+static void microTimerCallback(uintptr_t context)
+{
+    OT_Msg_T otAlarmMsg;
+    SYS_TIME_HANDLE *timerHandle = (SYS_TIME_HANDLE *)context ;
+    
+    if((NULL != timerHandle) && (*timerHandle == sMicroTimerHandle) && (microPeriod != 0))
     {
-        otSysTime.sysTime64 = otSysTime.sysTime64 & SYS_TIMER_32BIT_MASK_MSB;
-        otSysTime.sysTime64 = otSysTime.sysTime64 >> SYS_TIMER_MSB_SHIFT_COUNT;
-        otSysTime.sysTime64++;
-        otSysTime.sysTime64 = otSysTime.sysTime64 << SYS_TIMER_MSB_SHIFT_COUNT;
+		/* Stop the Periodic Micro Timer once it expires. 
+		 * Higher layer will start the timer again*/
+        SYS_TIME_TimerStop(sMicroTimerHandle);
+		microPeriod = 0;
+    } 
+    
+    sMicroTimerFired = true;
+    otAlarmMsg.OTMsgId = OT_MSG_TMR_MICRO_CB_DONE;
+    OSAL_QUEUE_Send(&OTQueue, &otAlarmMsg,0);
+}
+
+void otPlatAlarmMicroStartAt(otInstance *aInstance, uint32_t aT0, uint32_t aDt)
+{
+    OT_UNUSED_VARIABLE(aInstance);
+
+    /* Timer is already running, stop the timer first and reload the timer with new interval*/
+    if((!sMicroTimerFired) && (sMicroTimerHandle != SYS_TIME_HANDLE_INVALID) && (aDt != 0))
+    {
+        SYS_TIME_TimerStop(sMicroTimerHandle);
     }
-    currTickCount = xTaskGetTickCount();
-    otSysTime.sysTime64 &= SYS_TIMER_32BIT_MASK_MSB;
-    otSysTime.sysTime64 |= (uint64_t)currTickCount;
-    return (uint32_t)otSysTime.sysTime64;
+    
+    if(aDt)
+    {
+		/* Start the Periodic Micro Timer with aDt */
+        sStartTimerAt(ALARM_MICRO, sMicroTimerHandle, SYS_TIME_USToCount(aDt), microTimerCallback, (uintptr_t)&sMicroTimerHandle);       
+        sMicroTimerFired = false;
+    }
+    else
+    {
+		/* Directly invoke callback if aDt = 0 */
+        microTimerCallback((uintptr_t)&sMicroTimerHandle);
+    }
+    
+    microPeriod = aDt;
+}
+
+void otPlatAlarmMicroStop(otInstance *aInstance)
+{
+    OT_UNUSED_VARIABLE(aInstance);
+    if(sMicroTimerHandle != SYS_TIME_HANDLE_INVALID)
+    {
+        SYS_TIME_TimerStop(sMicroTimerHandle);
+    }
 }
 
 
+#endif
+
+uint32_t otPlatAlarmMicroGetNow(void)
+{
+    uint32_t currTimeUs = 0;  
+    
+    currTimeUs = SYS_TIME_CountToUS(SYS_TIME_CounterGet());
+    
+    return currTimeUs ;
+}
+
+/******************************************************************************/
 void pic32cxAlarmInit(void)
 {
-  sMilliTimerHandle = xTimerCreate("Milli_Timer", (INIT_TIMER_INTERVAL_MS / portTICK_PERIOD_MS), false, ( void * ) 0, milliTimeCallback);
+	/* Create SYS Time Periodic timer for alarmMilliTimer*/
+    sMilliTimerHandle = SYS_TIME_TimerCreate(0, SYS_TIME_MSToCount(INIT_TIMER_INTERVAL), 
+			&milliTimerCallback, (uintptr_t)&sMilliTimerHandle, SYS_TIME_PERIODIC);
+			
+#if OPENTHREAD_CONFIG_PLATFORM_USEC_TIMER_ENABLE
+	/* Create SYS Time Periodic timer for alarmMicroTimer */
+    sMicroTimerHandle = SYS_TIME_TimerCreate(0, SYS_TIME_USToCount(INIT_TIMER_INTERVAL), 
+			&microTimerCallback, (uintptr_t)&sMicroTimerHandle, SYS_TIME_PERIODIC);
+#endif
 }
 
 void pic32cxAlarmProcess(otInstance *aInstance, OT_MsgId_T otAlarmMsgId)
@@ -173,6 +271,13 @@ void pic32cxAlarmProcess(otInstance *aInstance, OT_MsgId_T otAlarmMsgId)
         else
 #endif
         {
+#if OPENTHREAD_CONFIG_PLATFORM_USEC_TIMER_ENABLE
+            if(OT_MSG_TMR_MICRO_CB_DONE == otAlarmMsgId)
+            {
+                otPlatAlarmMicroFired(aInstance);
+            }
+#endif
+            
             if(OT_MSG_TMR_MILLI_CB_DONE == otAlarmMsgId)
             {
                 otPlatAlarmMilliFired(aInstance);
@@ -180,12 +285,18 @@ void pic32cxAlarmProcess(otInstance *aInstance, OT_MsgId_T otAlarmMsgId)
         }
 }
 
-
 uint64_t otPlatTimeGet(void)
 {   
     uint64_t countNow = 0;
     
     countNow = SYS_TIME_Counter64Get();
-
+  
     return (((uint64_t)countNow * 1000000) / SYS_TIME_FrequencyGet());
+}
+
+uint16_t otPlatTimeGetXtalAccuracy(void)
+{
+    uint16_t accuracy = 0;
+    accuracy = XTAL_ACCURACY;
+    return accuracy;
 }

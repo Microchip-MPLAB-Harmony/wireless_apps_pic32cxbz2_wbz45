@@ -104,7 +104,7 @@ extern "C" {
  
 //#define OT_PLATFORM                                                  (external)
 #define PACKAGE_NAME                                                 "OPENTHREAD"
-#define PACKAGE_VERSION                                              "mchp_harmony_wireless_thread_v1.0.0"
+#define PACKAGE_VERSION                                              "thread-reference-20230706"
 
 #define OPENTHREAD_CONFIG_FILE                                       "openthread-core-pic32cx-config.h"
 #define OPENTHREAD_CORE_CONFIG_PLATFORM_CHECK_FILE                   "openthread-core-pic32cx-config-check.h"
@@ -126,6 +126,7 @@ extern "C" {
 #define OPENTHREAD_CONFIG_MAC_SOFTWARE_TX_SECURITY_ENABLE            (1) 
 #define OPENTHREAD_CONFIG_LINK_RAW_ENABLE                            (1)
 #define OPENTHREAD_CONFIG_MAC_SOFTWARE_TX_TIMING_ENABLE              (1)
+#define SYS_PDS_NUM_MAX_CHILDREN_ENTRY								 (1)
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus

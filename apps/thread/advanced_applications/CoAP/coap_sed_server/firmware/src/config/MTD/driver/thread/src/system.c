@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -68,8 +68,6 @@
 
 #include <utils/code_utils.h>
 
-const uint8_t systemUniqueId[OT_EXT_ADDRESS_SIZE] = {0x3e, 0x51, 0xf0, 0x0b, 0x47, 0x3e, 0x51, 0x00};
-
 const char __attribute__((section(".text"),used)) otLicense[] = " \
                             Copyright (c) 2023, The OpenThread Authors.\
                             All rights reserved.\
@@ -99,14 +97,6 @@ const char __attribute__((section(".text"),used)) otLicense[] = " \
 
 
 otInstance *sInstance;
-
-void pic32cxGetIeeeEui64(otInstance *aInstance, uint8_t *aIeeeEui64)
-{
-    for (uint8_t i = 0; i < OT_EXT_ADDRESS_SIZE; i++)
-    {
-        aIeeeEui64[i] = systemUniqueId[i];
-    }
-}
 
 void otSysInit(int argc, char *argv[])
 {

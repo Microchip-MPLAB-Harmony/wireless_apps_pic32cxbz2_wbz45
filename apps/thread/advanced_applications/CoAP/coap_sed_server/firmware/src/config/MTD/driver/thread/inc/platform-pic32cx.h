@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -78,6 +78,7 @@ typedef enum ot_MsgId_t
     OT_MSG_RADIO_TX_DONE = 0x0202,
     OT_MSG_RADIO_SCAN_DONE = 0x0203,
     OT_MSG_TMR_MILLI_CB_DONE = 0x0301,
+	OT_MSG_TMR_MICRO_CB_DONE = 0x0302,
     OT_MSG_TASKLET_PROCESS_PENDING = 0x0401
 } OT_MsgId_T;
 

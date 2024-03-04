@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@
 #include <assert.h>
 #include <openthread-core-config.h>
 #include <openthread/config.h>
-
+#include <openthread/logging.h>
 #include <openthread-system.h>
 #include <openthread/diag.h>
 #include <openthread/tasklet.h>
@@ -77,6 +77,7 @@
 // *****************************************************************************
 
 void taskOpenThread(void *pvParam);
+bool otIsIdle(void);
 
 TaskHandle_t taskHandleOpenThread;
 
@@ -97,10 +98,20 @@ void otTaskletsSignalPending(otInstance *aInstance)
     OSAL_QUEUE_Send(&OTQueue, &otTaskletMsg,0);
 }
 
+bool otIsIdle(void)
+{
+    if(otTaskletsArePending(instance))
+    {
+        return false;
+    }
+
+    return true;
+}
+
 
 void taskOpenThread(void *pvParam)
 {
-    OT_Msg_T   otMessage;
+    OT_Msg_T   otMessage = {0};
     instance = (otInstance *) pvParam;
     
     
@@ -108,8 +119,9 @@ pseudo_reset:
 
     instance = otInstanceInitSingle();
     assert(instance);
-
+    otSysProcessDrivers(instance);
     otAppCliInit(instance);
+    otLoggingSetLevel(OT_LOG_LEVEL_NONE);
     
     while (true)
     {

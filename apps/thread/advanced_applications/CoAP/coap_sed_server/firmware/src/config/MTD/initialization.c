@@ -201,9 +201,9 @@ SYSTEM_OBJECTS sysObj;
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 OSAL_QUEUE_HANDLE_TYPE OTQueue;
 #define OT_TASK_QUEUE_SIZE 8
-OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -411,7 +411,7 @@ void SYS_Initialize ( void* data )
 
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -424,9 +424,9 @@ void SYS_Initialize ( void* data )
 
     SERCOM0_USART_Initialize();
 
-    TC0_TimerInitialize();
-
     RTC_Initialize();
+
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 
@@ -496,6 +496,7 @@ void SYS_Initialize ( void* data )
 
 
 
+
     /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
     H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
         
@@ -507,19 +508,20 @@ void SYS_Initialize ( void* data )
         sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
    /* MISRAC 2012 deviation block end */
 
+    /* Initialization for IEEE_802154_PHY */
+        OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
+
+    PHY_Init();
+    
+    /* End of Initialization for IEEE_802154_PHY */
+
+    CRYPT_WCCB_Initialize();
     
     /*Open Thread System Initialization*/
     otSysInit(0U,0U);
     
     /* Creation of openthread Task Queue */
     OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
-
-    CRYPT_WCCB_Initialize();
-    /* Initialization for IEEE_802154_PHY */
-    
-    PHY_Init();
-    
-    /* End of Initialization for IEEE_802154_PHY */
 
 
     /* MISRAC 2012 deviation block end */

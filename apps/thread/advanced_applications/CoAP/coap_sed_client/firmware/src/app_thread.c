@@ -59,7 +59,7 @@
 
 static otDeviceRole s_appthreadstate = OT_DEVICE_ROLE_DISABLED;
 static TimerHandle_t s_sedtimerhandle = NULL;
-//extern bool otIsIdle(void);
+extern bool otIsIdle(void);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -168,7 +168,7 @@ void APP_ThreadAppInit(void)
 
 void APP_ThreadDeviceSleep(void)
 {
-    if(1/*otIsIdle()*/)
+    if(otIsIdle())
     {
        DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
     }
