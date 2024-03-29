@@ -4,7 +4,7 @@
 
 
 project: rcp_uart
-creation_date: 2024-03-01T15:18:05.337+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-03-28T20:58:17.448+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.5.0
@@ -14,14 +14,14 @@ harmony_version: v1.3.2
 compiler: XC32 4.35
 
 modules:
-    - {name: "csp", version: "v3.18.2"}
-    - {name: "wireless_pic32cxbz_wbz", version: "v1.3.0-2-g3bd0826"}
+    - {name: "csp", version: "v3.18.3"}
+    - {name: "wireless_pic32cxbz_wbz", version: "v1.3.1"}
     - {name: "core", version: "v3.13.3"}
     - {name: "dev_packs", version: "v3.18.1"}
     - {name: "openthread", version: "thread-reference-20230706"}
-    - {name: "wireless_15_4_phy", version: "v1.2.0-rc.1"}
+    - {name: "wireless_15_4_phy", version: "v1.2.0"}
     - {name: "wolfssl", version: "v5.4.0"}
-    - {name: "wireless_thread", version: "v1.1.0-rc.1"}
+    - {name: "wireless_thread", version: "v1.1.0"}
     - {name: "crypto", version: "v3.8.1"}
     - {name: "CMSIS-FreeRTOS", version: "v10.5.1"}
 

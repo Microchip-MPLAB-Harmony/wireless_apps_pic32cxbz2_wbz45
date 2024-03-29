@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023, The OpenThread Authors.
+ *  Copyright (c) 2024, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@
 
 
 /*******************************************************************************
-* Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
+* Copyright (C) [2024], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
 * The software and documentation is provided by Microchip and its contributors 
 * "as is" and any express, implied or statutory warranties, including, but not 

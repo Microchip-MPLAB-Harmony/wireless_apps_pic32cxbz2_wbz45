@@ -73,6 +73,7 @@ SYS_CONSOLE_HANDLE appConsoleHandle;
 bool dataInitialized = false;
 bool deviceStateUpdated = false;
 extern bool otIsIdle(void);
+extern APP_DATA appData;
 
 static void printIpv6Address(void)
 {
@@ -296,6 +297,7 @@ void threadDeviceSleep(void)
 {
     if(otIsIdle())
     {
+       vQueueDelete(appData.appQueue);
        DEVICE_EnterDeepSleep(false, DEVICE_SLEEP_TIME);
     }
     else

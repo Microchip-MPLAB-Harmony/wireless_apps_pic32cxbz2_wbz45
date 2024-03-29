@@ -60,7 +60,7 @@
 static otDeviceRole s_appthreadstate = OT_DEVICE_ROLE_DISABLED;
 static TimerHandle_t s_sedtimerhandle = NULL;
 extern bool otIsIdle(void);
-
+extern APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Local Functions
@@ -170,6 +170,7 @@ void APP_ThreadDeviceSleep(void)
 {
     if(otIsIdle())
     {
+       vQueueDelete(appData.appQueue);
        DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
     }
     else

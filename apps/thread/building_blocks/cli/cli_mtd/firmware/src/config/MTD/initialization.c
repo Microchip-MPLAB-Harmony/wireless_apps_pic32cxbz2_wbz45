@@ -442,9 +442,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    SERCOM0_USART_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM0_USART_Initialize();
 
     TC0_TimerInitialize();
 
@@ -522,7 +522,6 @@ void SYS_Initialize ( void* data )
     
     /* MISRAC 2012 deviation block end */
 
-    CRYPT_WCCB_Initialize();
     /* Initialization for IEEE_802154_PHY */
         OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
 
@@ -530,6 +529,7 @@ void SYS_Initialize ( void* data )
     
     /* End of Initialization for IEEE_802154_PHY */
 
+    CRYPT_WCCB_Initialize();
     
     /*Open Thread System Initialization*/
     otSysInit(0U,0U);

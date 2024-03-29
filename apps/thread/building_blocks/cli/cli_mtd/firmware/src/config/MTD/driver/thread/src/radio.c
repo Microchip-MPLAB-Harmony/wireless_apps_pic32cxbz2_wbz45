@@ -34,7 +34,7 @@
 
 
 /*******************************************************************************
-* Copyright (C) [2023], Microchip Technology Inc., and its subsidiaries. All rights reserved.
+* Copyright (C) [2024], Microchip Technology Inc., and its subsidiaries. All rights reserved.
   
 * The software and documentation is provided by Microchip and its contributors 
 * "as is" and any express, implied or statutory warranties, including, but not 
@@ -88,7 +88,7 @@ enum
 #define OT_RADIO_2P4GHZ_OQPSK_CHANNEL_MIN 11
 #define OT_RADIO_2P4GHZ_OQPSK_CHANNEL_MAX 26
 
-#define OT_RADIO_RX_BUFFERS_NUM			  5U
+#define OT_RADIO_RX_BUFFERS_NUM			  9U
 
 /* Variable holding the details on frame to be transmitted */
 static otRadioFrame sTransmitFrame;
@@ -594,7 +594,13 @@ void PHY_RxFrameCallback(PHY_FrameInfo_t *rxFrame)
         }
     }
     
+	if(receivedFrame == NULL)
+	{
+		bmm_buffer_free((buffer_t *)rxFrame->buffer_header);
+	}
+	
     otEXPECT(receivedFrame != NULL);
+	
     
     if(rxFrame != NULL)
     {

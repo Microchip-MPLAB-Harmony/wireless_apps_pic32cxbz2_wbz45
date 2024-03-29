@@ -14,13 +14,13 @@ Following table provides number of Wireless examples available for different dev
 | WBZ451 Curiosity Board     |       9             |
 
 ### New Features
-- Regenerated all thread application with new thread SDK v1.1.0-rc.1
+- Regenerated all thread application with new thread SDK v1.1.0
 
 ### Bug fixes and Improvements
 - None
 
 ### Known Issues
-- UDP SED application will not wakeup from sleep after some consecutive sleep wakeup cycle.
+- None
 
 ### Limitations
 - None
