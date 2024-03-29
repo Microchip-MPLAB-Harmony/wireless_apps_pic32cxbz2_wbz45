@@ -496,6 +496,7 @@ void SYS_Initialize ( void* data )
     /* Creation of openthread Task Queue */
     OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
 
+    CRYPT_WCCB_Initialize();
     /* Initialization for IEEE_802154_PHY */
         OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
 
@@ -503,7 +504,6 @@ void SYS_Initialize ( void* data )
     
     /* End of Initialization for IEEE_802154_PHY */
 
-    CRYPT_WCCB_Initialize();
 
     /* MISRAC 2012 deviation block end */
     APP_Initialize();

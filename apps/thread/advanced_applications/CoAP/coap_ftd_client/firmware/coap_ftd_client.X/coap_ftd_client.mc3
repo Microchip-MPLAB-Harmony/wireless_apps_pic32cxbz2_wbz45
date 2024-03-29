@@ -4663,7 +4663,7 @@
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_WBZ451_Curiosity&quot; x=&quot;30&quot; y=&quot;340&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;460&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;HarmonyCore&quot; x=&quot;900&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;410&quot; y=&quot;100&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;410&quot; y=&quot;103&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;OPEN_THREAD&quot; x=&quot;1070&quot; y=&quot;220&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;app_thread_coap&quot; x=&quot;2&quot; y=&quot;233&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;cmsis&quot; x=&quot;18&quot; y=&quot;147&quot;/&gt;
@@ -9876,7 +9876,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\definitions.h</file>
-         <hash>4dc380705b799abad889ec32bc308defe7a56b9d21639a2ff477819dd5c764c7</hash>
+         <hash>2a73d7c70077ce687806607eef6d679dbf133deab7ff92bbdb03e92147433957</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\device.h</file>
@@ -13192,7 +13192,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\initialization.c</file>
-         <hash>289112ecefc8717cf6ba0ffff925d06434d9d41d7c8e203c6005d32d4671877c</hash>
+         <hash>29b7797aef046ddd037543ab3a187a5840c26f025d3660f68cc0eb252c35d80d</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\interrupts.c</file>
@@ -13412,7 +13412,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\tasks.c</file>
-         <hash>e06fee51a55feec34182f32bee678fbcbf025256738d7d342a252b21db86e268</hash>
+         <hash>d8a72dea8817d9bf3392db4fd8fc5ae985d55ed983fe1f887d21e7e7018e8a9b</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\toolchain_specifics.h</file>

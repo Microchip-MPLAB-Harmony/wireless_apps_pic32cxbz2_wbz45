@@ -266,9 +266,9 @@ SYSTEM_OBJECTS sysObj;
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 OSAL_QUEUE_HANDLE_TYPE OTQueue;
 #define OT_TASK_QUEUE_SIZE 8
-OSAL_SEM_HANDLE_TYPE semPhyInternalHandler;
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -442,9 +442,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    EVSYS_Initialize();
-
     SERCOM0_USART_Initialize();
+
+    EVSYS_Initialize();
 
     TC0_TimerInitialize();
 
@@ -522,14 +522,6 @@ void SYS_Initialize ( void* data )
     
     /* MISRAC 2012 deviation block end */
 
-    CRYPT_WCCB_Initialize();
-    
-    /*Open Thread System Initialization*/
-    otSysInit(0U,0U);
-    
-    /* Creation of openthread Task Queue */
-    OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
-
     /* Initialization for IEEE_802154_PHY */
         OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
 
@@ -537,6 +529,14 @@ void SYS_Initialize ( void* data )
     
     /* End of Initialization for IEEE_802154_PHY */
 
+    
+    /*Open Thread System Initialization*/
+    otSysInit(0U,0U);
+    
+    /* Creation of openthread Task Queue */
+    OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
+
+    CRYPT_WCCB_Initialize();
 
     /* MISRAC 2012 deviation block end */
     APP_Initialize();

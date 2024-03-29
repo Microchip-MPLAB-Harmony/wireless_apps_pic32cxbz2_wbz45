@@ -9691,7 +9691,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>3a9ef133f1cfe1d34b7e33dc2c32853baa13035779483afd8c10e650395c4a92</hash>
+         <hash>55619d3d08b77bbcc506095d7cee11ffc4ce0d1dd42b3a50ee215ca49e2e3304</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -13007,7 +13007,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>c99bf6cbfbd927434a118969a5201ee712c3b4755b3b931d38e8edd68a55aa87</hash>
+         <hash>4239f24c0bdbd91c36dd201f298207a1d4c0dac4d51d019068dbeb62b5902197</hash>
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.c</file>

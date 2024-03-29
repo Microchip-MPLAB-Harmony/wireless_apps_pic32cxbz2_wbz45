@@ -420,13 +420,13 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    SERCOM0_USART_Initialize();
-
     EVSYS_Initialize();
 
-    RTC_Initialize();
+    SERCOM0_USART_Initialize();
 
     TC0_TimerInitialize();
+
+    RTC_Initialize();
 
     NVM_Initialize();
 
@@ -508,6 +508,7 @@ void SYS_Initialize ( void* data )
         sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
    /* MISRAC 2012 deviation block end */
 
+    CRYPT_WCCB_Initialize();
     
     /*Open Thread System Initialization*/
     otSysInit(0U,0U);
@@ -522,7 +523,6 @@ void SYS_Initialize ( void* data )
     
     /* End of Initialization for IEEE_802154_PHY */
 
-    CRYPT_WCCB_Initialize();
 
     /* MISRAC 2012 deviation block end */
     APP_Initialize();

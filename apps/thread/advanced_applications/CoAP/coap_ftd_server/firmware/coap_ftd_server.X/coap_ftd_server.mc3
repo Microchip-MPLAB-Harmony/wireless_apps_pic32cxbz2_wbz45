@@ -9871,7 +9871,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\definitions.h</file>
-         <hash>274561f3cee74cf5d0b2a846902e6b920e2322d9612adc9bde1f5f633f73cca8</hash>
+         <hash>01120ca2614ecde911be6051b7e0d6e0cb94922da094fb54119244430a20f5be</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\device.h</file>
@@ -13187,7 +13187,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\initialization.c</file>
-         <hash>251d6ce0f5098c1fc0cd61510a5613c504b67734cb894d7605719354a30ac771</hash>
+         <hash>dcdedc3e208afbeb843280db304bbdf022c16c246a9eea7818bc3c69d7b7100b</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\interrupts.c</file>

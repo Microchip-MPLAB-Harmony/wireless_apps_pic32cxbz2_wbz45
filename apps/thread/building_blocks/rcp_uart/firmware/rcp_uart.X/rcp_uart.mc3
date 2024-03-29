@@ -17568,7 +17568,7 @@
       </entry>
       <entry>
          <file>..\src\config\RCP\definitions.h</file>
-         <hash>39dcb29e00f03aecac5065c42be9384a1565eef1d5bd4cc52316649e45a05f58</hash>
+         <hash>1223e148d40d567189dcd4500ee22179f8ab012c851b7f7655454a2c64a0c8df</hash>
       </entry>
       <entry>
          <file>..\src\config\RCP\device.h</file>
@@ -19904,7 +19904,7 @@
       </entry>
       <entry>
          <file>..\src\config\RCP\initialization.c</file>
-         <hash>53866bd3e6146c4502493a45b1be621ae66b85d6e307ed6d181578ae738a9c9c</hash>
+         <hash>1c8b77ba7fdb63cb138afb3b3a3a83ea20333db9757c381cfcd4caf0dddd6354</hash>
       </entry>
       <entry>
          <file>..\src\config\RCP\interrupts.c</file>

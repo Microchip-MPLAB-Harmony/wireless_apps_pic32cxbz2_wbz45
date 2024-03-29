@@ -4,7 +4,7 @@
 
 
 project: cli_mtd
-creation_date: 2024-03-28T17:54:51.771+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-03-29T14:24:11.464+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.5.0
@@ -14,8 +14,8 @@ harmony_version: v1.3.2
 compiler: XC32 4.35
 
 modules:
-    - {name: "wireless_pic32cxbz_wbz", version: "v1.3.1"}
     - {name: "csp", version: "v3.18.3"}
+    - {name: "wireless_pic32cxbz_wbz", version: "v1.3.1"}
     - {name: "core", version: "v3.13.3"}
     - {name: "dev_packs", version: "v3.18.1"}
     - {name: "openthread", version: "thread-reference-20230706"}
