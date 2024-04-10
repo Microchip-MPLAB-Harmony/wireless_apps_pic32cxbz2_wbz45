@@ -300,6 +300,12 @@ void vPortSetupTimerInterrupt( void )
 void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
 {
     bool isSystemCanSleep = false;
+    
+    /* Do not enter sleep if UART is in use */
+    if(SERCOM0_USART_WriteCountGet())
+        return;
+    else if ((SERCOM0_REGS->USART_INT.SERCOM_INTFLAG & SERCOM_USART_INT_INTFLAG_DRE_Msk) != SERCOM_USART_INT_INTFLAG_DRE_Msk)
+        return;
 
     /* If a context switch is pending or a task is waiting for the scheduler
     to be unsuspended then abandon the low power entry. */
