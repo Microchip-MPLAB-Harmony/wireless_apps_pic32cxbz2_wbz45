@@ -93,6 +93,12 @@ The following applications are provided to demonstrate the typical use case of o
 | [coap_sed_client - Thread CoAP MTD/SED client demo application](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md) | PIC32CX-BZ |
 | [coap_sed_server - Thread CoAP MTD/SED server demo application](apps/thread/advanced_applications/CoAP/coap_sed_server/readme.md) | PIC32CX-BZ |
 
+| Multiprotocol(BLE+Thread) Examples | Families |
+| --- | :---: |
+| [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](apps/multiprotocol/ble_thread_prov_ftd_light/readme.md) | PIC32CX-BZ |
+| [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](apps/multiprotocol/ble_thread_prov_mtd_light/readme.md) | PIC32CX-BZ |
+| [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](apps/multiprotocol/ble_thread_prov_sed_sensor/readme.md) | PIC32CX-BZ |
+
 ____
 
 [![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/blob/master/mplab_harmony_license.md)

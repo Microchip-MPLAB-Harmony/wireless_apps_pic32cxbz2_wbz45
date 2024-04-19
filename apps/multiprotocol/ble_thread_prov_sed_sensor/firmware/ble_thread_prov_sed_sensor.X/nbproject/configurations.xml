@@ -1,0 +1,2065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="65">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
+        <itemPath>../src/app_ble/app_ble_handler.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_utility.h</itemPath>
+        <itemPath>../src/app_ble/app_trsps_handler.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_dsadv.h</itemPath>
+        <itemPath>../src/app_ble/app_ble_log_handler.h</itemPath>
+        <itemPath>../src/app_ble/app_ble.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
+        <itemPath>../src/app_prov/app_prov.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_thread" displayName="app_thread" projectFiles="true">
+        <itemPath>../src/app_thread/app_thread_common.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_trps" displayName="app_trps" projectFiles="true">
+        <itemPath>../src/app_trps/app_trps.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="ble" displayName="ble" projectFiles="true">
+            <logicalFolder name="lib" displayName="lib" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+                <itemPath>../src/config/default/ble/lib/include/ble_dtm.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/att_uuid.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/host_hci_defs.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/mba_error_defs.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/gatt.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/gap_defs.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/ble_smp.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/hci.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/bt_sys_log.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/bt_sys.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/ble_gap.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/ble_l2cap.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/stack_mgr.h</itemPath>
+                <itemPath>../src/config/default/ble/lib/include/bt_sys_pta.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="middleware_ble"
+                           displayName="middleware_ble"
+                           projectFiles="true">
+              <logicalFolder name="ble_dm" displayName="ble_dm" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_dds.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_internal.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/byte_stream.h</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_assert.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="profile_ble" displayName="profile_ble" projectFiles="true">
+              <logicalFolder name="ble_trsps" displayName="ble_trsps" projectFiles="true">
+                <itemPath>../src/config/default/ble/profile_ble/ble_trsps/ble_trsps.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="service_ble" displayName="service_ble" projectFiles="true">
+              <logicalFolder name="ble_trs" displayName="ble_trs" projectFiles="true">
+                <itemPath>../src/config/default/ble/service_ble/ble_trs/ble_trs.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+            <itemPath>../src/config/default/crypto/crypto.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="device_support"
+                           displayName="device_support"
+                           projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+                <itemPath>../src/config/default/driver/device_support/include/rf_system.h</itemPath>
+                <itemPath>../src/config/default/driver/device_support/include/pmu_system.h</itemPath>
+                <itemPath>../src/config/default/driver/device_support/include/sleep_system.h</itemPath>
+                <itemPath>../src/config/default/driver/device_support/include/info_block.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="IEEE_802154_PHY"
+                           displayName="IEEE_802154_PHY"
+                           projectFiles="true">
+              <logicalFolder name="pal" displayName="pal" projectFiles="true">
+                <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/pal/inc/pal.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="phy" displayName="phy" projectFiles="true">
+                <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/inc/phy.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/inc/phy_constants.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/inc/phy_tasks.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/inc/ieee_phy_const.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="resources" displayName="resources" projectFiles="true">
+                <logicalFolder name="buffer" displayName="buffer" projectFiles="true">
+                  <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                    <itemPath>../src/config/default/driver/IEEE_802154_PHY/resources/buffer/inc/bmm.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="queue" displayName="queue" projectFiles="true">
+                  <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                    <itemPath>../src/config/default/driver/IEEE_802154_PHY/resources/queue/inc/qmm.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="pds" displayName="pds" projectFiles="true">
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+                <itemPath>../src/config/default/driver/pds/include/pds_config.h</itemPath>
+                <itemPath>../src/config/default/driver/pds/include/pds.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="thread" displayName="thread" projectFiles="true">
+              <logicalFolder name="inc" displayName="inc" projectFiles="true">
+                <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                  <itemPath>../src/config/default/driver/thread/inc/crypto/pic32cx-mbedtls-config.h</itemPath>
+                  <itemPath>../src/config/default/driver/thread/inc/crypto/check_config.h</itemPath>
+                </logicalFolder>
+                <itemPath>../src/config/default/driver/thread/inc/openthread-mbedtls-config.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/openthread-core-pic32cx-config.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/user_row.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/platform-pic32cx.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/openthread_stack_config.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/flash_config.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/openthread-core-pic32cx-config-check.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
+                <logicalFolder name="examples" displayName="examples" projectFiles="true">
+                  <logicalFolder name="platforms" displayName="platforms" projectFiles="true">
+                    <logicalFolder name="utils" displayName="utils" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/soft_source_match_table.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/code_utils.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/settings.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/uart.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/mac_frame.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/encoding.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/link_metrics.h</itemPath>
+                    </logicalFolder>
+                    <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/openthread-system.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="include" displayName="include" projectFiles="true">
+                  <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
+                    <logicalFolder name="platform" displayName="platform" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/border_routing.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/spi-slave.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/alarm-milli.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/flash.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/time.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/diag.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/dso_transport.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/trel.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/udp.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/debug_uart.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/messagepool.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/settings.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/radio.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/misc.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/dns.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/infra_if.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/entropy.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/crypto.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/otns.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/logging.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/alarm-micro.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/memory.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/include/openthread/platform/toolchain.h</itemPath>
+                    </logicalFolder>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/netdata_publisher.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/netdiag.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/mesh_diag.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/icmp6.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/link_raw.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/jam_detection.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/thread.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/error.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/netdata.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/channel_monitor.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/ping_sender.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/logging.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dataset.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/channel_manager.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/udp.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/instance.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/diag.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/tcp_ext.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/radio_stats.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/message.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/ncp.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/backbone_router_ftd.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dns.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/thread_ftd.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/link.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/ip6.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/config.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/random_crypto.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/border_routing.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/network_time.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/cli.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/history_tracker.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/border_router.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/child_supervision.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/multi_radio.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dns_client.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/srp_client_buffers.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dataset_updater.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dataset_ftd.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/srp_server.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/joiner.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/tcp.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/nat64.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/heap.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/coap.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/commissioner.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/border_agent.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/tasklet.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/srp_client.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/link_metrics.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/crypto.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/backbone_router.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/random_noncrypto.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/server.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/coap_secure.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/trel.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/sntp.h</itemPath>
+                    <itemPath>../src/config/default/driver/thread/openthread/include/openthread/dnssd_server.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="src" displayName="src" projectFiles="true">
+                  <logicalFolder name="core" displayName="core" projectFiles="true">
+                    <logicalFolder name="backbone_router"
+                                   displayName="backbone_router"
+                                   projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/backbone_tmf.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_local.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/ndproxy_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/multicast_listeners_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_leader.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="border_router"
+                                   displayName="border_router"
+                                   projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/border_router/routing_manager.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="coap" displayName="coap" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap_message.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap_secure.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="common" displayName="common" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/tasklet.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_string.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/locator.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/bit_vector.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/owning_list.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/serial_number.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/appender.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/as_core_type.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/array.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/instance.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/numeric_limits.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/preference.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/binary_search.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/error.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/encoding.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/ptr_wrapper.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/owned_ptr.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/code_utils.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/logging.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/random.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/timer.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/pool.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/type_traits.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/non_copyable.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/notifier.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/linked_list.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_data.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/equatable.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/time.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/frame_builder.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/extension.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/new.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/trickle_timer.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/string.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/debug.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/locator_getters.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/message.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/iterator_utils.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_array.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/num_utils.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/callback.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/log.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/settings_driver.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/crc16.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/const_cast.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/arg_macros.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/settings.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/frame_data.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/data.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/retain_ptr.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/time_ticker.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_allocatable.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/clearable.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/uptime.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="config" displayName="config" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/tmf.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/openthread-core-config-check.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/ip6.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/backbone_router.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dnssd_server.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/mesh_forwarder.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/crypto.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/joiner.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/history_tracker.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/commissioner.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/border_agent.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/srp_client.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/channel_monitor.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/parent_search.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dataset_updater.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/mle.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/child_supervision.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/announce_sender.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/mac.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dtls.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dns_dso.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/time_sync.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/power_calibration.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dhcp6_server.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/coap.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/border_router.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/netdata_publisher.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/logging.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dhcp6_client.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/dns_client.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/link_quality.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/misc.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/srp_server.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/border_routing.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/diag.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/mesh_diag.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/platform.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/sntp_client.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/ping_sender.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/network_diagnostic.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/nat64.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/radio_link.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/link_raw.h</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/config/channel_manager.h</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/aes_ccm.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/storage.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/hmac_sha256.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/sha256.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/context_size.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/ecdsa.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/aes_ecb.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/hkdf_sha256.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/mbedtls.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="diags" displayName="diags" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/diags/factory_diags.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="mac" displayName="mac" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/link_raw.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/data_poll_sender.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/channel_mask.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/data_poll_handler.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/sub_mac.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_filter.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_frame.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_links.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="meshcop" displayName="meshcop" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/energy_scan_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_local.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dtls.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_updater.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/announce_begin_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/timestamp.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/network_name.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/commissioner.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/panid_query_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/joiner.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/joiner_router.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop_leader.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/border_agent.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/extended_panid.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="net" displayName="net" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_headers.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_address.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/tcp6.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/srp_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/checksum.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/netif.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/tcp6_ext.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nat64_translator.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dhcp6_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dnssd_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/sntp_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_filter.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_mpl.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/icmp6.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/srp_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip4_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nd_agent.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nd6.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dhcp6_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_dso.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dhcp6.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_client.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/socket.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/udp6.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="radio" displayName="radio" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_packet.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_link.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/radio.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/max_power_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_interface.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="thread" displayName="thread" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_diagnostic_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_notifier.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/child_mask.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_router.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/energy_scan_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mlr_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/announce_begin_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/discover_scanner.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/uri_paths.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/child_supervision.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/tmf.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/neighbor_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/key_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/anycast_locator.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_metrics_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/thread_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_local.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/radio_selector.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mlr_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/version.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/announce_sender.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/csl_tx_scheduler.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_service.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/dua_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mesh_forwarder.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_publisher.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/address_resolver.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_leader.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/src_match_controller.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/router_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_leader_ftd.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/time_sync_service.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/indirect_sender_frame_context.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_metrics_types.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/panid_query_server.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/thread_netif.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_metrics.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_quality.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/topology.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/child_table.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/lowpan.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/indirect_sender.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_tlvs.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_diagnostic.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_tlvs.hpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="utils" displayName="utils" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/parse_cmdline.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/heap.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/slaac_address.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/mesh_diag.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/power_calibration.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/jam_detector.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/channel_manager.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/otns.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/flash.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/srp_client_buffers.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/ping_sender.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/history_tracker.hpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/channel_monitor.hpp</itemPath>
+                    </logicalFolder>
+                    <itemPath>../src/config/default/driver/thread/openthread/src/core/openthread-core-config.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="third_party" displayName="third_party" projectFiles="true">
+                  <logicalFolder name="mbedtls" displayName="mbedtls" projectFiles="true">
+                    <logicalFolder name="repo" displayName="repo" projectFiles="true">
+                      <logicalFolder name="configs" displayName="configs" projectFiles="true">
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-suite-b.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-thread.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-mini-tls1_1.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-no-entropy.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-ccm-psk-tls1_2.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/configs/config-symmetric-only.h</itemPath>
+                      </logicalFolder>
+                      <logicalFolder name="include" displayName="include" projectFiles="true">
+                        <logicalFolder name="mbedtls" displayName="mbedtls" projectFiles="true">
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/md4.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/debug.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/platform_util.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ecdsa.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pkcs11.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/x509_crt.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pkcs5.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl_cookie.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/constant_time.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ecp_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/compat-1.3.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/config_psa.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ecp.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/camellia.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/oid.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/aria.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pem.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/rsa.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/md2.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/cmac.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/chachapoly.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/arc4.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/psa_util.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/certs.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/platform_time.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/sha256.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ecdh.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/havege.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/poly1305.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/memory_buffer_alloc.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/cipher.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pk_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pkcs12.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/check_config.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/timing.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/x509_csr.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/threading.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/bignum.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/nist_kw.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/version.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/sha1.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/entropy_poll.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/dhm.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/net.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/cipher_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/sha512.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/md5.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/aesni.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ecjpake.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ripemd160.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/md_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/bn_mul.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/gcm.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/hmac_drbg.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl_ciphersuites.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/config.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/blowfish.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl_ticket.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/chacha20.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/md.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/des.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/platform.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ssl_cache.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/asn1write.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/entropy.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/asn1.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/xtea.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/base64.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/hkdf.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/x509_crl.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/rsa_internal.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/pk.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ccm.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/ctr_drbg.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/x509.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/padlock.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/error.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/aes.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/mbedtls/net_sockets.h</itemPath>
+                        </logicalFolder>
+                        <logicalFolder name="psa" displayName="psa" projectFiles="true">
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_struct.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_driver_common.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_driver_contexts_composites.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_se_driver.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_builtin_composites.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_types.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_sizes.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_driver_contexts_primitives.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_values.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_platform.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_builtin_primitives.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_config.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_compat.h</itemPath>
+                          <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include/psa/crypto_extra.h</itemPath>
+                        </logicalFolder>
+                      </logicalFolder>
+                      <logicalFolder name="library" displayName="library" projectFiles="true">
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_common.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_mac.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/constant_time_internal.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_tls13_keys.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_reader.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_trace.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/common.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_aead.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_ecp.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecp_invasive.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_slot_management.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_se.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_error.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_storage.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/check_crypto_config.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_hash.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/constant_time_invasive.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_core.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_driver_wrappers.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_rsa.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_cipher.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_random_impl.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_invasive.h</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_its.h</itemPath>
+                      </logicalFolder>
+                    </logicalFolder>
+                    <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/mbedtls-config.h</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <itemPath>../src/config/default/driver/driver.h</itemPath>
+            <itemPath>../src/config/default/driver/driver_common.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
+            <itemPath>../src/config/default/osal/osal_definitions.h</itemPath>
+            <itemPath>../src/config/default/osal/osal_freertos.h</itemPath>
+            <itemPath>../src/config/default/osal/osal.h</itemPath>
+            <itemPath>../src/config/default/osal/osal_freertos_extend.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="adchs" displayName="adchs" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs.h</itemPath>
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs_common.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/clk/plib_clk.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="cmcc" displayName="cmcc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/cmcc/plib_cmcc.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="evsys" displayName="evsys" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/evsys/plib_evsys.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/gpio/plib_gpio.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/nvic/plib_nvic.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/nvm/plib_nvm.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rcon" displayName="rcon" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rcon/plib_rcon.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rtc" displayName="rtc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rtc/plib_rtc.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="sercom" displayName="sercom" projectFiles="true">
+              <logicalFolder name="usart" displayName="usart" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h</itemPath>
+                <itemPath>../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="trng" displayName="trng" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/trng/plib_trng.h</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="cache" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/default/system/cache/sys_cache.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/default/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/default/system/console/sys_console.h</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console_local.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
+              <itemPath>../src/config/default/system/int/sys_int_mapping.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="time" displayName="time" projectFiles="true">
+              <itemPath>../src/config/default/system/time/src/sys_time_local.h</itemPath>
+              <itemPath>../src/config/default/system/time/sys_time_definitions.h</itemPath>
+              <itemPath>../src/config/default/system/time/sys_time.h</itemPath>
+            </logicalFolder>
+            <itemPath>../src/config/default/system/system_common.h</itemPath>
+            <itemPath>../src/config/default/system/system_module.h</itemPath>
+            <itemPath>../src/config/default/system/system.h</itemPath>
+          </logicalFolder>
+          <itemPath>../src/config/default/device_cache.h</itemPath>
+          <itemPath>../src/config/default/configuration.h</itemPath>
+          <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
+          <itemPath>../src/config/default/config.h</itemPath>
+          <itemPath>../src/config/default/definitions.h</itemPath>
+          <itemPath>../src/config/default/user.h</itemPath>
+          <itemPath>../src/config/default/sys_tasks.h</itemPath>
+          <itemPath>../src/config/default/framework_defs.h</itemPath>
+          <itemPath>../src/config/default/FreeRTOSConfig.h</itemPath>
+          <itemPath>../src/config/default/interrupts.h</itemPath>
+          <itemPath>../src/config/default/device_vectors.h</itemPath>
+          <itemPath>../src/config/default/device.h</itemPath>
+          <itemPath>../src/config/default/device_sleep.h</itemPath>
+          <itemPath>../src/config/default/device_deep_sleep.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
+        <logicalFolder name="Source" displayName="Source" projectFiles="true">
+          <logicalFolder name="include" displayName="include" projectFiles="true">
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_wrappers.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/FreeRTOS.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/timers.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/croutine.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/semphr.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_prototypes.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/projdefs.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stream_buffer.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/list.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/portable.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stack_macros.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/deprecated_definitions.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/event_groups.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/task.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/queue.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/message_buffer.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="portable" displayName="portable" projectFiles="true">
+            <logicalFolder name="GCC" displayName="GCC" projectFiles="true">
+              <logicalFolder name="SAM" displayName="SAM" projectFiles="true">
+                <logicalFolder name="ARM_CM4F" displayName="ARM_CM4F" projectFiles="true">
+                  <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F/portmacro.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="packs" displayName="packs" projectFiles="true">
+        <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
+          <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
+            <logicalFolder name="Core" displayName="Core" projectFiles="true">
+              <logicalFolder name="Include" displayName="Include" projectFiles="true">
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armclang.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armclang_ltm.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cachel1_armv7.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/core_cm4.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armcc.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_iccarm.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="WBZ451_DFP" displayName="WBZ451_DFP" projectFiles="true">
+          <logicalFolder name="component" displayName="component" projectFiles="true">
+            <itemPath>../src/packs/WBZ451_DFP/component/ramecc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/rcon.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/cru.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/freqm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/tc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/hmatrixb.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pukcc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/dscon.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/cfg.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/fuses.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/trng.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/adchs.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/tcc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/btzbsys.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/qspi.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pche.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/ac.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/gpio.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/dmt.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/nvm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/rtc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/ccl.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/icm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pfw.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/eic.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/dsu.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/sercom.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/zigbee.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/wdt.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pac.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pmu.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/dmac.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/cmcc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/arb.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/ble.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/aes.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/pps.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/component/evsys.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="instance" displayName="instance" projectFiles="true">
+            <itemPath>../src/packs/WBZ451_DFP/instance/sercom1.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/rtc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/pche.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tc3.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/gpioa.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tcc0.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tc1.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/icm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/freqm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/dmt.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tcc2.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/ac.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/wdt.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/sercom3.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/nvm.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/evsys.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/pac.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/fuses.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/pmu.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/zigbee.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/trng.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/pfw.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tc0.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/dsu.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/eic.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/rcon.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/qspi.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/ccl.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/aes.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/sercom2.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/cmcc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tc2.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/pps.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/gpiob.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/sercom0.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/arb.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/tcc1.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/ramecc.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/hmatrix.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/ble.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/cfg.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/cru.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/dscon.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/adchs.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/btzbsys.h</itemPath>
+            <itemPath>../src/packs/WBZ451_DFP/instance/dmac.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="pio" displayName="pio" projectFiles="true">
+            <itemPath>../src/packs/WBZ451_DFP/pio/wbz451.h</itemPath>
+          </logicalFolder>
+          <itemPath>../src/packs/WBZ451_DFP/wbz451.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="sensors" displayName="sensors" projectFiles="true">
+        <logicalFolder name="inc" displayName="inc" projectFiles="true">
+          <itemPath>../src/sensors/inc/temp_sensor.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="system" displayName="system" projectFiles="true">
+        <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+          <itemPath>../src/config/default/system/tmr/sys_tmr.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="wolfcrypt" displayName="wolfcrypt" projectFiles="true">
+        <logicalFolder name="port" displayName="port" projectFiles="true">
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_SelfTest_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Services_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Smult_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_aes_hwInt.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_tdes_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Hardware_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEcDsa_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_tdes_hwInt.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_pukcl_functions.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_FastCopy_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha512_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha384_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_PrimeGen_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GCD_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Fmult_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_CondCopy_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_tdes_sam6150.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_aes_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_rsa_pukcl.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Comp_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_typedef_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha_sam11105.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_JumpTable_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Swap_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Headers_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/pic32mz-crypt.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_cf_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccAddSub_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha1_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccQuickDualMul_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEccDbl_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccDbl_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccConv_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Rc_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha224_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEccConv_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_mapping_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_aes_sam6149.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEcDsa_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_rng_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccAdd_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha256_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ExpMod_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Div_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ZpEccMul_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_ecc_pukcl.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Fill_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Rng_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha_hw.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_CRT_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_Square_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_ecc_ba414e.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_ClearFlags_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEccMul_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_RedMod_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/CryptoLib_GF2NEccAdd_pb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_pukcl_definitions.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_aes_u2238.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_crya_saml11.h</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_sha_sam6156.h</itemPath>
+        </logicalFolder>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/logging.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ge_operations.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/fips_test.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sha3.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/misc.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs11.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/fe_operations.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ed25519.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/kdf.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pwdbased.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/des3.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wc_encrypt.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rsa.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sakke.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/dsa.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/types.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sha.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/arc4.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/aes.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/md4.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sha256.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/cpuid.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs7.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs12.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wc_port.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/chacha20_poly1305.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/blake2.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/eccsi.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ecc.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ripemd.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/curve448.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/hash.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/error-crypt.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/settings.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/cryptocb.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/mem_track.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wolfmath.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/curve25519.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/asn.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/selftest.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-impl.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/memory.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/certs_test.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sha512.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/poly1305.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/hmac.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sp.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/md2.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/camellia.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/cmac.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-int.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/fe_448.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_superclass.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/chacha.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wc_pkcs11.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/siphash.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wolfevent.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/dh.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/md5.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/random.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sp_int.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/signature.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/visibility.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/compress.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/srp.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/asn_public.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ge_448.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ed448.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/integer.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/tfm.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_class.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/coding.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/falcon.h</itemPath>
+      </logicalFolder>
+      <itemPath>../src/app_error_defs.h</itemPath>
+      <itemPath>../src/app_thread.h</itemPath>
+      <itemPath>../src/app_ble_conn_handler.h</itemPath>
+      <itemPath>../src/app_idle_task.h</itemPath>
+      <itemPath>../src/app.h</itemPath>
+      <itemPath>../src/app_config.h</itemPath>
+      <itemPath>../src/stack_config.h</itemPath>
+      <itemPath>../src/app_adv.h</itemPath>
+      <itemPath>../src/app_thread_udp.h</itemPath>
+      <itemPath>../src/app_ble_sensor.h</itemPath>
+      <itemPath>../src/app_timer.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+      <itemPath>ble_thread_prov_sed_sensor.mc3</itemPath>
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+      <itemPath>../src/config/default/WBZ451.ld</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
+        <itemPath>../src/app_ble/app_ble_handler.c</itemPath>
+        <itemPath>../src/app_ble/app_ble_utility.c</itemPath>
+        <itemPath>../src/app_ble/app_trsps_handler.c</itemPath>
+        <itemPath>../src/app_ble/app_ble_log_handler.c</itemPath>
+        <itemPath>../src/app_ble/app_ble.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
+        <itemPath>../src/app_prov/app_prov_thread.c</itemPath>
+        <itemPath>../src/app_prov/app_prov.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_thread" displayName="app_thread" projectFiles="true">
+        <itemPath>../src/app_thread/app_thread_common.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="app_trps" displayName="app_trps" projectFiles="true">
+        <itemPath>../src/app_trps/app_trps.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="default" displayName="default" projectFiles="true">
+          <logicalFolder name="ble" displayName="ble" projectFiles="true">
+            <logicalFolder name="middleware_ble"
+                           displayName="middleware_ble"
+                           projectFiles="true">
+              <logicalFolder name="ble_dm" displayName="ble_dm" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.c</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.c</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_dds.c</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.c</itemPath>
+                <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
+                <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="profile_ble" displayName="profile_ble" projectFiles="true">
+              <logicalFolder name="ble_trsps" displayName="ble_trsps" projectFiles="true">
+                <itemPath>../src/config/default/ble/profile_ble/ble_trsps/ble_trsps.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="service_ble" displayName="service_ble" projectFiles="true">
+              <logicalFolder name="ble_trs" displayName="ble_trs" projectFiles="true">
+                <itemPath>../src/config/default/ble/service_ble/ble_trs/ble_trs.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+            <itemPath>../src/config/default/crypto/src/crypto.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="IEEE_802154_PHY"
+                           displayName="IEEE_802154_PHY"
+                           projectFiles="true">
+              <logicalFolder name="pal" displayName="pal" projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/pal/src/pal.c</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="phy" displayName="phy" projectFiles="true">
+                <logicalFolder name="src" displayName="src" projectFiles="true">
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/src/phy_rx_frame_cb.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/src/phy_tx_frame_done_cb.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/src/phy_task.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_PHY/phy/src/phy_ed_end_cb.c</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="resources" displayName="resources" projectFiles="true">
+                <logicalFolder name="buffer" displayName="buffer" projectFiles="true">
+                  <logicalFolder name="src" displayName="src" projectFiles="true">
+                    <itemPath>../src/config/default/driver/IEEE_802154_PHY/resources/buffer/src/bmm.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="queue" displayName="queue" projectFiles="true">
+                  <logicalFolder name="src" displayName="src" projectFiles="true">
+                    <itemPath>../src/config/default/driver/IEEE_802154_PHY/resources/queue/src/qmm.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="thread" displayName="thread" projectFiles="true">
+              <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
+                <logicalFolder name="examples" displayName="examples" projectFiles="true">
+                  <logicalFolder name="platforms" displayName="platforms" projectFiles="true">
+                    <logicalFolder name="utils" displayName="utils" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/soft_source_match_table.c</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/mac_frame.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/settings_ram.c</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/link_metrics.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/debug_uart.c</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/examples/platforms/utils/otns_utils.cpp</itemPath>
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="src" displayName="src" projectFiles="true">
+                  <logicalFolder name="core" displayName="core" projectFiles="true">
+                    <logicalFolder name="api" displayName="api" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/netdata_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/thread_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/coap_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/dataset_updater_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/logging_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/mesh_diag_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/dataset_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/udp_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/nat64_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/child_supervision_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/icmp6_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/instance_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/sntp_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/tcp_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/dns_server_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/ip6_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/backbone_router_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/multi_radio_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/diags_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/border_router_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/tasklet_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/netdata_publisher_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/border_routing_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/radio_stats_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/channel_monitor_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/message_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/netdiag_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/srp_client_buffers_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/link_metrics_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/history_tracker_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/srp_client_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/coap_secure_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/jam_detection_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/srp_server_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/joiner_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/dns_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/backbone_router_ftd_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/thread_ftd_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/server_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/border_agent_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/heap_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/link_raw_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/dataset_ftd_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/ping_sender_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/channel_manager_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/tcp_ext_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/error_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/commissioner_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/crypto_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/network_time_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/random_crypto_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/random_noncrypto_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/trel_api.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/api/link_api.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="backbone_router"
+                                   displayName="backbone_router"
+                                   projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_local.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/ndproxy_table.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/bbr_leader.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/multicast_listeners_table.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/backbone_router/backbone_tmf.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="coap" displayName="coap" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap_message.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/coap/coap_secure.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="common" displayName="common" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/string.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/tlvs.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/frame_builder.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/message.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/time_ticker.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/data.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/frame_data.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/trickle_timer.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/settings.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/tasklet.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/preference.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/log.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/error.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/binary_search.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/crc16.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/timer.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/uptime.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_data.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/heap_string.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/random.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/notifier.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/appender.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/common/instance.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/hmac_sha256.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/aes_ecb.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/mbedtls.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/aes_ccm.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/crypto_platform.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/sha256.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/storage.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/crypto/hkdf_sha256.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="diags" displayName="diags" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/diags/factory_diags.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="mac" displayName="mac" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/data_poll_sender.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/sub_mac.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/sub_mac_callbacks.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/channel_mask.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_links.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_frame.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/data_poll_handler.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/mac_filter.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/mac/link_raw.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="meshcop" displayName="meshcop" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/commissioner.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/panid_query_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/timestamp.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/extended_panid.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop_tlvs.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/joiner.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/joiner_router.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/meshcop_leader.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_manager_ftd.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_local.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/border_agent.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dataset_updater.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/network_name.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/dtls.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/energy_scan_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/meshcop/announce_begin_client.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="net" displayName="net" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_mpl.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/udp6.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dhcp6_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/sntp_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nat64_translator.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_platform.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nd6.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_address.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_dso.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/socket.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/srp_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip4_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/icmp6.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/netif.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_filter.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/checksum.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/srp_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6_headers.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dns_client.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/nd_agent.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dhcp6_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/tcp6_ext.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/dnssd_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/ip6.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/net/tcp6.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="radio" displayName="radio" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/radio.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_packet.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_interface.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/radio_platform.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/radio_callbacks.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/radio/trel_link.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="thread" displayName="thread" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/topology.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/time_sync_service.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/lowpan.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/panid_query_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_leader.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/router_table.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_leader_ftd.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_service.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/thread_netif.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_metrics.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/neighbor_table.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/child_table.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/key_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mesh_forwarder_ftd.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/indirect_sender.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_tlvs.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mesh_forwarder.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/discover_scanner.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_tlvs.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/child_supervision.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/uri_paths.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/dua_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_notifier.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/radio_selector.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mle_router.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mesh_forwarder_mtd.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_metrics_types.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/tmf.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_diagnostic.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/anycast_locator.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/link_quality.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/energy_scan_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/announce_sender.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/csl_tx_scheduler.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/mlr_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/announce_begin_server.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_publisher.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/address_resolver.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/network_data_local.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/thread/src_match_controller.cpp</itemPath>
+                    </logicalFolder>
+                    <logicalFolder name="utils" displayName="utils" projectFiles="true">
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/history_tracker.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/flash.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/power_calibration.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/channel_monitor.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/srp_client_buffers.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/heap.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/channel_manager.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/ping_sender.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/mesh_diag.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/jam_detector.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/otns.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/parse_cmdline.cpp</itemPath>
+                      <itemPath>../src/config/default/driver/thread/openthread/src/core/utils/slaac_address.cpp</itemPath>
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="third_party" displayName="third_party" projectFiles="true">
+                  <logicalFolder name="mbedtls" displayName="mbedtls" projectFiles="true">
+                    <logicalFolder name="repo" displayName="repo" projectFiles="true">
+                      <logicalFolder name="library" displayName="library" projectFiles="true">
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/threading.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_tls.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_mac.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/aesni.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/memory_buffer_alloc.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pkcs12.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_ticket.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/havege.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/sha512.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_tls13_keys.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_ciphersuites.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pem.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pk_wrap.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/oid.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/aria.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_reader.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/mps_trace.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/base64.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509_create.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/asn1write.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecp.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/cmac.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/rsa_internal.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/entropy_poll.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/md2.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/rsa.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/blowfish.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_ecp.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_aead.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_srv.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/aes.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/xtea.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_cache.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/md4.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_slot_management.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/hkdf.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pk.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/poly1305.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_se.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_storage.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_hash.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/certs.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_client.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/hmac_drbg.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ccm.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/md.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509_crt.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ripemd160.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/nist_kw.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/version.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_driver_wrappers.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecdsa.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/des.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_cli.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/cipher_wrap.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/platform.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/sha1.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/chachapoly.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/debug.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/net_sockets.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecjpake.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_rsa.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509write_csr.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/constant_time.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/timing.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pkcs11.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_its_file.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/version_features.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/platform_util.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/gcm.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto_cipher.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_cookie.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/asn1parse.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509_crl.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pkcs5.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pkparse.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ssl_msg.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/error.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/entropy.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/md5.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ctr_drbg.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/cipher.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509_csr.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecdh.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/ecp_curves.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/psa_crypto.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/arc4.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/dhm.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/pkwrite.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/sha256.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/camellia.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/bignum.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/chacha20.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/x509write_crt.c</itemPath>
+                        <itemPath>../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library/padlock.c</itemPath>
+                      </logicalFolder>
+                    </logicalFolder>
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                  <itemPath>../src/config/default/driver/thread/src/crypto/crypto.c</itemPath>
+                </logicalFolder>
+                <itemPath>../src/config/default/driver/thread/src/uart.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/misc.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/ot_tasks.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/radio.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/cxx_helpers.cpp</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/alarm.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/entropy.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/flash.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/diag.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/logging.c</itemPath>
+                <itemPath>../src/config/default/driver/thread/src/system.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
+            <itemPath>../src/config/default/osal/osal_freertos.c</itemPath>
+            <itemPath>../src/config/default/osal/osal_freertos_extend.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="adchs" displayName="adchs" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/clk/plib_clk.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="cmcc" displayName="cmcc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/cmcc/plib_cmcc.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="evsys" displayName="evsys" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/evsys/plib_evsys.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/gpio/plib_gpio.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/nvic/plib_nvic.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/nvm/plib_nvm.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rcon" displayName="rcon" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rcon/plib_rcon.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rtc" displayName="rtc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rtc/plib_rtc_timer.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="sercom" displayName="sercom" projectFiles="true">
+              <logicalFolder name="usart" displayName="usart" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="trng" displayName="trng" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/trng/plib_trng.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
+            <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="cache" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/default/system/cache/sys_cache.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/default/system/console/src/sys_console_uart.c</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="time" displayName="time" projectFiles="true">
+              <itemPath>../src/config/default/system/time/src/sys_time.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>../src/config/default/freertos_hooks.c</itemPath>
+          <itemPath>../src/config/default/interrupts.c</itemPath>
+          <itemPath>../src/config/default/exceptions.c</itemPath>
+          <itemPath>../src/config/default/startup_xc32.c</itemPath>
+          <itemPath>../src/config/default/initialization.c</itemPath>
+          <itemPath>../src/config/default/tasks.c</itemPath>
+          <itemPath>../src/config/default/libc_syscalls.c</itemPath>
+          <itemPath>../src/config/default/device_sleep.c</itemPath>
+          <itemPath>../src/config/default/device_deep_sleep.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
+        <logicalFolder name="Source" displayName="Source" projectFiles="true">
+          <logicalFolder name="portable" displayName="portable" projectFiles="true">
+            <logicalFolder name="GCC" displayName="GCC" projectFiles="true">
+              <logicalFolder name="SAM" displayName="SAM" projectFiles="true">
+                <logicalFolder name="ARM_CM4F" displayName="ARM_CM4F" projectFiles="true">
+                  <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F/port.c</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="MemMang" displayName="MemMang" projectFiles="true">
+              <itemPath>../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_4.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/queue.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/list.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/event_groups.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/croutine.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c</itemPath>
+          <itemPath>../src/third_party/rtos/FreeRTOS/Source/timers.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="sensors" displayName="sensors" projectFiles="true">
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <itemPath>../src/sensors/src/temp_sensor.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="wolfcrypt" displayName="wolfcrypt" projectFiles="true">
+        <logicalFolder name="port" displayName="port" projectFiles="true">
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_tdes_sam6150.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_ecc_ba414e.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha224_sam6156.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha224_sam11105.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha256_sam6156.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha1_sam6156.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sam_u2803.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_ecc_pukcl.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_rng_sam6334.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha256_sam11105.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha384_sam6156.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_aes_u2238.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha1_sam11105.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/pic32mz-crypt.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_sha512_sam6156.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_wolfcryptcb.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_pukcl_functions.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_rng_u2242.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_aes_sam6149.c</itemPath>
+          <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_rsa_pukcl.c</itemPath>
+        </logicalFolder>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_448.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/aes.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/pwdbased.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/dsa.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hash.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_int.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hmac.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/blake2s.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha256.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/blake2b.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_cortexm.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ed448.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wc_port.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve25519.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/error.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_arm32.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/random.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/eccsi.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/siphash.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sakke.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rc2.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/memory.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c32.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/cpuid.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ripemd.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/pkcs12.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/cryptocb.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ge_low_mem.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ecc.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/md2.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wc_dsp.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/integer.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wolfevent.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/poly1305.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/asn.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/dh.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/md4.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rsa.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_armthumb.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/chacha20_poly1305.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve448.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/srp.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/md5.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/tfm.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/logging.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_x86_64.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/pkcs7.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/chacha.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ed25519.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_low_mem.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ge_operations.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_operations.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha3.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_arm64.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c64.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha512.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wc_encrypt.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wolfmath.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/signature.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_dsp32.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/cmac.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ge_448.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ecc_fp.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/camellia.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/des3.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/arc4.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/asm.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/kdf.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/wc_pkcs11.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/compress.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/falcon.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/coding.c</itemPath>
+      </logicalFolder>
+      <itemPath>../src/app_thread.c</itemPath>
+      <itemPath>../src/app_ble_conn_handler.c</itemPath>
+      <itemPath>../src/app_idle_task.c</itemPath>
+      <itemPath>../src/app.c</itemPath>
+      <itemPath>../src/app_user_edits.c</itemPath>
+      <itemPath>../src/main.c</itemPath>
+      <itemPath>../src/app_adv.c</itemPath>
+      <itemPath>../src/app_thread_udp.c</itemPath>
+      <itemPath>../src/app_ble_sensor.c</itemPath>
+      <itemPath>../src/app_timer.c</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../src</Elem>
+    <Elem>../../../ble_thread_prov_mtd_light/firmware/src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>WBZ451</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>pkob4hybrid</platformTool>
+        <languageToolchain>XC32</languageToolchain>
+        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <packs>
+        <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
+      </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../src/config/default/driver/device_support/pic32cx_bz2_device_support.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/ble/lib/ble_stack_bz2_lib.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.2.0.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/driver/pds/pds.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+        <archiverTool>
+        </archiverTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+        <subordinates>
+        </subordinates>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <C32>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe"
+                  value="-include&quot;../src/config/default/driver/thread/inc/openthread_stack_config.h&quot;"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories"
+                  value="../src;../src/app_ble;../src/config/default;../src/config/default/ble/lib/include;../src/config/default/ble/middleware_ble;../src/config/default/ble/profile_ble;../src/config/default/ble/service_ble;../src/config/default/driver//IEEE_802154_PHY/pal/inc;../src/config/default/driver//IEEE_802154_PHY/phy/inc/;../src/config/default/driver//IEEE_802154_PHY/resources/buffer/inc/;../src/config/default/driver//IEEE_802154_PHY/resources/queue/inc/;../src/config/default/driver/pds/include;../src/config/default/driver/thread/inc;../src/config/default/driver/thread/inc/crypto;../src/config/default/driver/thread/openthread/examples/platforms;../src/config/default/driver/thread/openthread/examples/platforms/utils;../src/config/default/driver/thread/openthread/include;../src/config/default/driver/thread/openthread/src;../src/config/default/driver/thread/openthread/src/core;../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include;../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library;../src/config/default/driver/thread/openthread/third_party/tcplp;../src/config/default/driver/thread/openthread/third_party/tcplp/bsdtcp;../src/config/default/driver/thread/openthread/third_party/tcplp/bsdtcp/cc;../src/config/default/driver/thread/openthread/third_party/tcplp/lib;../src/config/default/driver/thread/src;../src/config/default/driver/thread/src/crypto;../src/config/default/driver/threadopethread/src/ncp;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value="-O2"/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros"
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+        <property key="strict-ansi" value="false"/>
+        <property key="support-ansi" value="false"/>
+        <property key="tentative-definitions" value="-fcommon"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-include&quot;../src/config/default/driver/thread/inc/openthread_stack_config.h&quot;"/>
+      </C32>
+      <C32-AR>
+        <property key="additional-options-chop-files" value="false"/>
+      </C32-AR>
+      <C32-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="enable-symbols" value="true"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=""/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC32asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="warning-level" value=""/>
+      </C32-AS>
+      <C32-CO>
+        <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
+      </C32-CO>
+      <C32-LD>
+        <property key="additional-options-use-response-files" value="false"/>
+        <property key="additional-options-write-sla" value="false"/>
+        <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
+        <property key="code-dinit" value="false"/>
+        <property key="ebase-addr" value=""/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="exclude-standard-libraries" value="false"/>
+        <property key="extra-lib-directories" value=""/>
+        <property key="fill-flash-options-addr" value=""/>
+        <property key="fill-flash-options-const" value=""/>
+        <property key="fill-flash-options-how" value="0"/>
+        <property key="fill-flash-options-inc-const" value="1"/>
+        <property key="fill-flash-options-increment" value=""/>
+        <property key="fill-flash-options-seq" value=""/>
+        <property key="fill-flash-options-what" value="0"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="heap-size" value="1024"/>
+        <property key="input-libraries" value=""/>
+        <property key="kseg-length" value=""/>
+        <property key="kseg-origin" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"/>
+        <property key="no-device-startup-code" value="true"/>
+        <property key="no-startup-files" value="false"/>
+        <property key="oXC32ld-extra-opts" value=""/>
+        <property key="optimization-level" value=""/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="true"/>
+        <property key="report-memory-usage" value="false"/>
+        <property key="serial-length" value=""/>
+        <property key="serial-origin" value=""/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
+      </C32-LD>
+      <C32CPP>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe"
+                  value="-include&quot;../src/config/default/driver/thread/inc/openthread_stack_config.h&quot;"/>
+        <property key="check-new" value="false"/>
+        <property key="eh-specs" value="true"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exceptions" value="true"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories"
+                  value="../src;../src/config/default;../src/config/default/driver//IEEE_802154_PHY/pal/inc;../src/config/default/driver//IEEE_802154_PHY/phy/inc/;../src/config/default/driver//IEEE_802154_PHY/resources/buffer/inc/;../src/config/default/driver//IEEE_802154_PHY/resources/queue/inc/;../src/config/default/driver/thread/inc;../src/config/default/driver/thread/inc/crypto;../src/config/default/driver/thread/openthread/examples/platforms;../src/config/default/driver/thread/openthread/examples/platforms/utils;../src/config/default/driver/thread/openthread/include;../src/config/default/driver/thread/openthread/src;../src/config/default/driver/thread/openthread/src/core;../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/include;../src/config/default/driver/thread/openthread/third_party/mbedtls/repo/library;../src/config/default/driver/thread/openthread/third_party/tcplp;../src/config/default/driver/thread/openthread/third_party/tcplp/bsdtcp;../src/config/default/driver/thread/openthread/third_party/tcplp/bsdtcp/cc;../src/config/default/driver/thread/openthread/third_party/tcplp/lib;../src/config/default/driver/thread/src;../src/config/default/driver/thread/src/crypto;../src/config/default/driver/threadopethread/src/ncp;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/WBZ451_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/ARM_CM4F"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value="-O2"/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="rtti" value="true"/>
+        <property key="strict-ansi" value="false"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-include&quot;../src/config/default/driver/thread/inc/openthread_stack_config.h&quot;"/>
+      </C32CPP>
+      <C32Global>
+        <property key="appendMe" value=""/>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="false"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
+      <Tool>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
+        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface.jtag" value="2wire"/>
+        <property key="communication.speed" value="2.000"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="debugoptions.simultaneous.debug" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="true"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.configurationmemory2" value="true"/>
+        <property key="memories.dataflash" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.exclude.configurationmemory" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.ranges" value="1000000-2001ffff"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.pgmentry.voltage" value="low"/>
+        <property key="programoptions.pgmspeed" value="Med"/>
+        <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveeeprom.ranges" value=""/>
+        <property key="programoptions.preserveprogram.ranges" value=""/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.program.otpconfig" value="false"/>
+        <property key="programoptions.programcalmem" value="false"/>
+        <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="Never"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
+      </Tool>
+      <pkob4hybrid>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
+        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface.jtag" value="2wire"/>
+        <property key="communication.speed" value="2.000"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="debugoptions.simultaneous.debug" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="true"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.configurationmemory2" value="true"/>
+        <property key="memories.dataflash" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.exclude.configurationmemory" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.ranges" value="1000000-2001ffff"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.pgmentry.voltage" value="low"/>
+        <property key="programoptions.pgmspeed" value="Med"/>
+        <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveeeprom.ranges" value=""/>
+        <property key="programoptions.preserveprogram.ranges" value=""/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.program.otpconfig" value="false"/>
+        <property key="programoptions.programcalmem" value="false"/>
+        <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="Never"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
+      </pkob4hybrid>
+    </conf>
+  </confs>
+</configurationDescriptor>

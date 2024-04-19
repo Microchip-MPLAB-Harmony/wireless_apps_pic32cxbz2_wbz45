@@ -2,7 +2,7 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 # Examples applications
 
-The following applications are provided to demonstrate the typical use case of BLE, Zigbee, Multiprotocol(BLE + Zigbee) and Thread with PIC32CX_BZ2/WBZ45x devices.
+The following applications are provided to demonstrate the typical use case of BLE, Zigbee, Multiprotocol(BLE + Zigbee),Thread and Multiprotocol(BLE + Thread) with PIC32CX_BZ2/WBZ45x devices.
 
 ## BLE
 
@@ -65,3 +65,10 @@ The following applications are provided to demonstrate the typical use case of B
 * [coap_ftd_server - Thread CoAP FTD server demo application](thread/advanced_applications/CoAP/coap_ftd_server/readme.md)
 * [coap_sed_client - Thread CoAP MTD/SED client demo application](thread/advanced_applications/CoAP/coap_sed_client/readme.md)
 * [coap_sed_server - Thread CoAP MTD/SED server demo application](thread/advanced_applications/CoAP/coap_sed_server/readme.md)
+
+
+# Multiprotocol(BLE+Thread) Applications
+
+- [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](multiprotocol/ble_thread_prov_ftd_light/readme.md)
+- [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](multiprotocol/ble_thread_prov_mtd_light/readme.md)
+- [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](multiprotocol/ble_thread_prov_sed_sensor/readme.md)

@@ -8,4 +8,8 @@ The following the precompiled Multiprotocol(BLE+Zigbee) application examples
 - [ble_zigbee_multisensor - Zigbee Multisensor device and zigbee commissioning over BLE](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43)
 - [ble_zigbee_light_prov_wbz450 - Zigbee light control and Zigbee commissioning over BLE on WBZ450](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-707BAEEE-0EFF-428F-AFEC-C2E6C5E65BA9)
 
+# Multiprotocol(BLE+Thread) Applications
 
+- [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+- [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+- [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
