@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <keywords publicationid="GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C"
           language="en-US"
-          version="4"
+          version="5"
           documenttitle="PIC32CXBZ2 Application Developer's Guide"
           pubtype="Online Reference"
           pubsubtype=""
           pubuserguidesubtype=""
           pubproducthierarchy=""
           devices="PIC32CX-BZ2, WBZ451"
-          revisiondate="12/10/2023 00:00:00"
-          revisionletter="D"
+          revisiondate="01/04/2024 00:00:00"
+          revisionletter="E"
           isbn=""
           pubid=""
           reachid=""
           description=""
-          lastmodified="09/01/2024 12:59:07"
+          lastmodified="19/04/2024 06:18:36"
           covertitle="PIC32CXBZ2 Application Developer's Guide"
           frontcover="">
    <keyworditem topicid="GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424"
@@ -116,39 +116,6 @@
       <bitfield/>
       <keyword>BZ2_APP_DEV.BLE</keyword>
    </keyworditem>
-   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
-                nocomponent="true"
-                parent="">
-      <device>PIC32CX-BZ2</device>
-      <module/>
-      <component/>
-      <register>Building Block Examples</register>
-      <title>Building Block Examples</title>
-      <bitfield/>
-      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
-                nocomponent="true"
-                parent="">
-      <device>WBZ451</device>
-      <module/>
-      <component/>
-      <register>Building Block Examples</register>
-      <title>Building Block Examples</title>
-      <bitfield/>
-      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
-   </keyworditem>
-   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
-                nocomponent="true"
-                parent="">
-      <device/>
-      <module/>
-      <component/>
-      <register>Building Block Examples</register>
-      <title>Building Block Examples</title>
-      <bitfield/>
-      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
-   </keyworditem>
    <keyworditem topicid="GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C"
                 nocomponent="true"
                 parent="">
@@ -182,6 +149,39 @@
       <bitfield/>
       <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK.CENTRAL</keyword>
    </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>WBZ451;BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-17DABF04-E5D8-4201-A746-2FC244450A19"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Building Block Examples</register>
+      <title>Building Block Examples</title>
+      <bitfield/>
+      <keyword>BZ2_APP_DEV.BLE.BUILDING_BLOCK</keyword>
+   </keyworditem>
    <keyworditem topicid="GUID-399616BF-E65E-43B3-9831-4B19472A5EF0"
                 nocomponent="true"
                 parent="">
@@ -214,6 +214,2283 @@
       <title>Bootloader</title>
       <bitfield/>
       <keyword>BZ2_APP_DEV.DFU.BOOTLOADER</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CBFFF24C-4BA1-47FC-8AC4-7731929F39A5"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Mode_T</register>
+      <title>APP_OTA_HDL_Mode_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CBFFF24C-4BA1-47FC-8AC4-7731929F39A5"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Mode_T</register>
+      <title>APP_OTA_HDL_Mode_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CBFFF24C-4BA1-47FC-8AC4-7731929F39A5"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Mode_T</register>
+      <title>APP_OTA_HDL_Mode_T</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-92E7736F-5413-4A33-A7CB-4731DB34B39D"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_EvtHandler</register>
+      <title>APP_OTA_EvtHandler</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_EvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-92E7736F-5413-4A33-A7CB-4731DB34B39D"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_EvtHandler</register>
+      <title>APP_OTA_EvtHandler</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_EvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-92E7736F-5413-4A33-A7CB-4731DB34B39D"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_EvtHandler</register>
+      <title>APP_OTA_EvtHandler</title>
+      <bitfield/>
+      <keyword>APP_OTA_EvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-FBB2BFC4-2C4B-4772-8FA0-983E5933D3D4"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Complete</register>
+      <title>APP_OTA_HDL_Complete</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Complete</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-FBB2BFC4-2C4B-4772-8FA0-983E5933D3D4"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Complete</register>
+      <title>APP_OTA_HDL_Complete</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Complete</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-FBB2BFC4-2C4B-4772-8FA0-983E5933D3D4"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Complete</register>
+      <title>APP_OTA_HDL_Complete</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Complete</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-B60E4C4F-5960-49AB-9D58-FA4478D807B6"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Init</register>
+      <title>APP_OTA_HDL_Init</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-B60E4C4F-5960-49AB-9D58-FA4478D807B6"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Init</register>
+      <title>APP_OTA_HDL_Init</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-B60E4C4F-5960-49AB-9D58-FA4478D807B6"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Init</register>
+      <title>APP_OTA_HDL_Init</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-79AF944E-7E79-4F1B-A5C9-305D6E2F1C54"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Prepare</register>
+      <title>APP_OTA_HDL_Prepare</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Prepare</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-79AF944E-7E79-4F1B-A5C9-305D6E2F1C54"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Prepare</register>
+      <title>APP_OTA_HDL_Prepare</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Prepare</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-79AF944E-7E79-4F1B-A5C9-305D6E2F1C54"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Prepare</register>
+      <title>APP_OTA_HDL_Prepare</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Prepare</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-86B0620A-487B-42E4-B14A-900C325C8F74"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_SetOTAMode</register>
+      <title>APP_OTA_HDL_SetOTAMode</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_SetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-86B0620A-487B-42E4-B14A-900C325C8F74"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_SetOTAMode</register>
+      <title>APP_OTA_HDL_SetOTAMode</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_SetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-86B0620A-487B-42E4-B14A-900C325C8F74"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_SetOTAMode</register>
+      <title>APP_OTA_HDL_SetOTAMode</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_SetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DB38933D-09B1-4BD1-9BE8-3BC43C5870EB"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Start</register>
+      <title>APP_OTA_HDL_Start</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Start</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DB38933D-09B1-4BD1-9BE8-3BC43C5870EB"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Start</register>
+      <title>APP_OTA_HDL_Start</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Start</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DB38933D-09B1-4BD1-9BE8-3BC43C5870EB"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Start</register>
+      <title>APP_OTA_HDL_Start</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Start</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6A676CE1-9475-4B6D-AE01-8E4961BF00DC"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Updating</register>
+      <title>APP_OTA_HDL_Updating</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Updating</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6A676CE1-9475-4B6D-AE01-8E4961BF00DC"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Updating</register>
+      <title>APP_OTA_HDL_Updating</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Updating</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6A676CE1-9475-4B6D-AE01-8E4961BF00DC"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Updating</register>
+      <title>APP_OTA_HDL_Updating</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Updating</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-940847B5-E800-48A3-9934-BDF510A9666D"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_BleGapConnEvtHandler</register>
+      <title>APP_BleGapConnEvtHandler</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_BleGapConnEvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-940847B5-E800-48A3-9934-BDF510A9666D"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_BleGapConnEvtHandler</register>
+      <title>APP_BleGapConnEvtHandler</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_BleGapConnEvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-940847B5-E800-48A3-9934-BDF510A9666D"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_BleGapConnEvtHandler</register>
+      <title>APP_BleGapConnEvtHandler</title>
+      <bitfield/>
+      <keyword>APP_BleGapConnEvtHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D5E7B8C5-9CB4-40A0-8DB9-3B4C6A66E8CE"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_GetBleState</register>
+      <title>APP_GetBleState</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_GetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D5E7B8C5-9CB4-40A0-8DB9-3B4C6A66E8CE"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_GetBleState</register>
+      <title>APP_GetBleState</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_GetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D5E7B8C5-9CB4-40A0-8DB9-3B4C6A66E8CE"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_GetBleState</register>
+      <title>APP_GetBleState</title>
+      <bitfield/>
+      <keyword>APP_GetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-9DCAF883-CC0F-4D07-848D-D39C1DA512E5"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_GetConnHandleByIndex</register>
+      <title>APP_GetConnHandleByIndex</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_GetConnHandleByIndex</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-9DCAF883-CC0F-4D07-848D-D39C1DA512E5"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_GetConnHandleByIndex</register>
+      <title>APP_GetConnHandleByIndex</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_GetConnHandleByIndex</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-9DCAF883-CC0F-4D07-848D-D39C1DA512E5"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_GetConnHandleByIndex</register>
+      <title>APP_GetConnHandleByIndex</title>
+      <bitfield/>
+      <keyword>APP_GetConnHandleByIndex</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BCCAF48-DE26-4E7B-A94D-A1560B775CC4"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_GetConnInfoByConnHandle</register>
+      <title>APP_GetConnInfoByConnHandle</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_GetConnInfoByConnHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BCCAF48-DE26-4E7B-A94D-A1560B775CC4"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_GetConnInfoByConnHandle</register>
+      <title>APP_GetConnInfoByConnHandle</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_GetConnInfoByConnHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BCCAF48-DE26-4E7B-A94D-A1560B775CC4"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_GetConnInfoByConnHandle</register>
+      <title>APP_GetConnInfoByConnHandle</title>
+      <bitfield/>
+      <keyword>APP_GetConnInfoByConnHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-53A92559-C8B7-4045-970D-455EB3B190E5"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnData_T</register>
+      <title>APP_BLE_ConnData_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_BLE_ConnData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-53A92559-C8B7-4045-970D-455EB3B190E5"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnData_T</register>
+      <title>APP_BLE_ConnData_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_BLE_ConnData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-53A92559-C8B7-4045-970D-455EB3B190E5"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnData_T</register>
+      <title>APP_BLE_ConnData_T</title>
+      <bitfield/>
+      <keyword>APP_BLE_ConnData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A18401FE-608E-4562-9544-A14814D47777"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnList_T</register>
+      <title>APP_BLE_ConnList_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_BLE_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A18401FE-608E-4562-9544-A14814D47777"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnList_T</register>
+      <title>APP_BLE_ConnList_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_BLE_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A18401FE-608E-4562-9544-A14814D47777"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_BLE_ConnList_T</register>
+      <title>APP_BLE_ConnList_T</title>
+      <bitfield/>
+      <keyword>APP_BLE_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_CTRL_RSP_ID_STATUS_LEN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_CTRL_RSP_ID_STATUS_LEN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>APP_TRPS_CTRL_RSP_ID_STATUS_LEN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Control_Response_ID_status_Length</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>WBZ451;Control_Response_ID_status_Length</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-332DFF7E-D9EC-4308-B212-7D8E6B36DAB8"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Control Response ID status Length</register>
+      <title>Control Response ID status Length</title>
+      <bitfield/>
+      <keyword>Control_Response_ID_status_Length</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A414641C-76BE-469B-9072-FC17022ADFF5"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_DiscEvtProc</register>
+      <title>APP_TRPS_DiscEvtProc</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_DiscEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A414641C-76BE-469B-9072-FC17022ADFF5"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_DiscEvtProc</register>
+      <title>APP_TRPS_DiscEvtProc</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_DiscEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A414641C-76BE-469B-9072-FC17022ADFF5"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_DiscEvtProc</register>
+      <title>APP_TRPS_DiscEvtProc</title>
+      <bitfield/>
+      <keyword>APP_TRPS_DiscEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4C7F16E0-6963-4C6C-9BAC-9AE0D41789B7"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_EventHandler</register>
+      <title>APP_TRPS_EventHandler</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_EventHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4C7F16E0-6963-4C6C-9BAC-9AE0D41789B7"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_EventHandler</register>
+      <title>APP_TRPS_EventHandler</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_EventHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4C7F16E0-6963-4C6C-9BAC-9AE0D41789B7"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_EventHandler</register>
+      <title>APP_TRPS_EventHandler</title>
+      <bitfield/>
+      <keyword>APP_TRPS_EventHandler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CA0E784B-D0E6-4D70-B485-6D9E6022B744"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Init</register>
+      <title>APP_TRPS_Init</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CA0E784B-D0E6-4D70-B485-6D9E6022B744"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Init</register>
+      <title>APP_TRPS_Init</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-CA0E784B-D0E6-4D70-B485-6D9E6022B744"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Init</register>
+      <title>APP_TRPS_Init</title>
+      <bitfield/>
+      <keyword>APP_TRPS_Init</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-58B9BA26-60FE-4271-B40C-7EC8F4F7B192"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_SendNotification</register>
+      <title>APP_TRPS_SendNotification</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_SendNotification</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-58B9BA26-60FE-4271-B40C-7EC8F4F7B192"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_SendNotification</register>
+      <title>APP_TRPS_SendNotification</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_SendNotification</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-58B9BA26-60FE-4271-B40C-7EC8F4F7B192"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_SendNotification</register>
+      <title>APP_TRPS_SendNotification</title>
+      <bitfield/>
+      <keyword>APP_TRPS_SendNotification</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-61F29AB6-C3E0-44E4-B77A-DC259FD83C2C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CmdResp_T</register>
+      <title>APP_TRPS_CmdResp_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_CmdResp_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-61F29AB6-C3E0-44E4-B77A-DC259FD83C2C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CmdResp_T</register>
+      <title>APP_TRPS_CmdResp_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_CmdResp_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-61F29AB6-C3E0-44E4-B77A-DC259FD83C2C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CmdResp_T</register>
+      <title>APP_TRPS_CmdResp_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_CmdResp_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E28C9796-BFFB-4D8D-85E8-3D32F3F3CC53"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Ctrl_T</register>
+      <title>APP_TRPS_Ctrl_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_Ctrl_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E28C9796-BFFB-4D8D-85E8-3D32F3F3CC53"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Ctrl_T</register>
+      <title>APP_TRPS_Ctrl_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_Ctrl_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E28C9796-BFFB-4D8D-85E8-3D32F3F3CC53"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_Ctrl_T</register>
+      <title>APP_TRPS_Ctrl_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_Ctrl_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-927B1C36-F5B5-48D8-8F28-D8A4FE5026F8"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CtrlCmd_T</register>
+      <title>APP_TRPS_CtrlCmd_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_CtrlCmd_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-927B1C36-F5B5-48D8-8F28-D8A4FE5026F8"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CtrlCmd_T</register>
+      <title>APP_TRPS_CtrlCmd_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_CtrlCmd_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-927B1C36-F5B5-48D8-8F28-D8A4FE5026F8"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CtrlCmd_T</register>
+      <title>APP_TRPS_CtrlCmd_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_CtrlCmd_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-0904E9A3-4DFA-48B3-B59C-5A4A911E07C9"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_NotifyData_T</register>
+      <title>APP_TRPS_NotifyData_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_NotifyData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-0904E9A3-4DFA-48B3-B59C-5A4A911E07C9"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_NotifyData_T</register>
+      <title>APP_TRPS_NotifyData_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_NotifyData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-0904E9A3-4DFA-48B3-B59C-5A4A911E07C9"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_NotifyData_T</register>
+      <title>APP_TRPS_NotifyData_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_NotifyData_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2815D98C-88B9-44C6-8B5E-FC9DC91AB639"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_ErrorHandle</register>
+      <title>APP_OTA_HDL_ErrorHandle</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_ErrorHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2815D98C-88B9-44C6-8B5E-FC9DC91AB639"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_ErrorHandle</register>
+      <title>APP_OTA_HDL_ErrorHandle</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_ErrorHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2815D98C-88B9-44C6-8B5E-FC9DC91AB639"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_ErrorHandle</register>
+      <title>APP_OTA_HDL_ErrorHandle</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_ErrorHandle</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-01FF8B34-B517-435D-B4A7-10E11D215A5F"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_GetOTAMode</register>
+      <title>APP_OTA_HDL_GetOTAMode</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_GetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-01FF8B34-B517-435D-B4A7-10E11D215A5F"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_GetOTAMode</register>
+      <title>APP_OTA_HDL_GetOTAMode</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_GetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-01FF8B34-B517-435D-B4A7-10E11D215A5F"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_GetOTAMode</register>
+      <title>APP_OTA_HDL_GetOTAMode</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_GetOTAMode</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Error Codes Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>WBZ451;Error Codes Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>Error Codes Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Error_Codes_Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>WBZ451;Error_Codes_Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6987A03A-ADB1-42E6-918B-E0AB1447964C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Error Codes Def-2</register>
+      <title>Error Codes Def-2</title>
+      <bitfield/>
+      <keyword>Error_Codes_Def-2</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A7AE34A9-87E8-4AC1-8D72-8002DBC06789"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TIMEOUT</register>
+      <title>APP_TIMER_TIMEOUT</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_TIMEOUT</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A7AE34A9-87E8-4AC1-8D72-8002DBC06789"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TIMEOUT</register>
+      <title>APP_TIMER_TIMEOUT</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_TIMEOUT</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A7AE34A9-87E8-4AC1-8D72-8002DBC06789"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TIMEOUT</register>
+      <title>APP_TIMER_TIMEOUT</title>
+      <bitfield/>
+      <keyword>APP_TIMER_TIMEOUT</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DD9E2B64-B9E7-4B9F-B28A-ECF9A4668A89"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TimerId_T</register>
+      <title>APP_TIMER_TimerId_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_TimerId_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DD9E2B64-B9E7-4B9F-B28A-ECF9A4668A89"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TimerId_T</register>
+      <title>APP_TIMER_TimerId_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_TimerId_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-DD9E2B64-B9E7-4B9F-B28A-ECF9A4668A89"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_TimerId_T</register>
+      <title>APP_TIMER_TimerId_T</title>
+      <bitfield/>
+      <keyword>APP_TIMER_TimerId_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-22E72B1B-A789-4A9B-85FD-C1830AE41DD6"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_IsTimerExisted</register>
+      <title>APP_TIMER_IsTimerExisted</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_IsTimerExisted</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-22E72B1B-A789-4A9B-85FD-C1830AE41DD6"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_IsTimerExisted</register>
+      <title>APP_TIMER_IsTimerExisted</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_IsTimerExisted</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-22E72B1B-A789-4A9B-85FD-C1830AE41DD6"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_IsTimerExisted</register>
+      <title>APP_TIMER_IsTimerExisted</title>
+      <bitfield/>
+      <keyword>APP_TIMER_IsTimerExisted</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-663C8EEC-EBB2-4718-AF16-0259D1634561"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Reset</register>
+      <title>APP_OTA_HDL_Reset</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_HDL_Reset</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-663C8EEC-EBB2-4718-AF16-0259D1634561"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Reset</register>
+      <title>APP_OTA_HDL_Reset</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_HDL_Reset</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-663C8EEC-EBB2-4718-AF16-0259D1634561"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_HDL_Reset</register>
+      <title>APP_OTA_HDL_Reset</title>
+      <bitfield/>
+      <keyword>APP_OTA_HDL_Reset</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6D689B6A-8D10-44E3-8C28-0D17E58D870B"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_SetTimer</register>
+      <title>APP_TIMER_SetTimer</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_SetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6D689B6A-8D10-44E3-8C28-0D17E58D870B"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_SetTimer</register>
+      <title>APP_TIMER_SetTimer</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_SetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6D689B6A-8D10-44E3-8C28-0D17E58D870B"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_SetTimer</register>
+      <title>APP_TIMER_SetTimer</title>
+      <bitfield/>
+      <keyword>APP_TIMER_SetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0701C6C-5685-4F72-8BB6-86C491F5106F"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_Timeout_Handler</register>
+      <title>APP_OTA_Timeout_Handler</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_Timeout_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0701C6C-5685-4F72-8BB6-86C491F5106F"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_Timeout_Handler</register>
+      <title>APP_OTA_Timeout_Handler</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_Timeout_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0701C6C-5685-4F72-8BB6-86C491F5106F"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_Timeout_Handler</register>
+      <title>APP_OTA_Timeout_Handler</title>
+      <bitfield/>
+      <keyword>APP_OTA_Timeout_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BA13BF9-A9CF-47CE-A8CB-4A902FC8B206"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Enums</register>
+      <title>15_4_P2P_Phy_App Enums</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BA13BF9-A9CF-47CE-A8CB-4A902FC8B206"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Enums</register>
+      <title>15_4_P2P_Phy_App Enums</title>
+      <bitfield/>
+      <keyword>WBZ451;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8BA13BF9-A9CF-47CE-A8CB-4A902FC8B206"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Enums</register>
+      <title>15_4_P2P_Phy_App Enums</title>
+      <bitfield/>
+      <keyword>15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-738DF609-9803-4FA9-91E5-25D8E08FF8B2"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_Mode_T</register>
+      <title>APP_Mode_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-738DF609-9803-4FA9-91E5-25D8E08FF8B2"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_Mode_T</register>
+      <title>APP_Mode_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-738DF609-9803-4FA9-91E5-25D8E08FF8B2"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_Mode_T</register>
+      <title>APP_Mode_T</title>
+      <bitfield/>
+      <keyword>APP_Mode_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8F4088F1-5CA1-4E03-A205-A2BD9CD6A829"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>DEVICE_TABLE</register>
+      <title>DEVICE_TABLE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;DEVICE_TABLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8F4088F1-5CA1-4E03-A205-A2BD9CD6A829"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>DEVICE_TABLE</register>
+      <title>DEVICE_TABLE</title>
+      <bitfield/>
+      <keyword>WBZ451;DEVICE_TABLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8F4088F1-5CA1-4E03-A205-A2BD9CD6A829"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>DEVICE_TABLE</register>
+      <title>DEVICE_TABLE</title>
+      <bitfield/>
+      <keyword>DEVICE_TABLE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-EFC7A6D6-20AE-4722-8342-33C1B0633869"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>CCA</register>
+      <title>CCA</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;CCA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-EFC7A6D6-20AE-4722-8342-33C1B0633869"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>CCA</register>
+      <title>CCA</title>
+      <bitfield/>
+      <keyword>WBZ451;CCA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-EFC7A6D6-20AE-4722-8342-33C1B0633869"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>CCA</register>
+      <title>CCA</title>
+      <bitfield/>
+      <keyword>CCA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-650C54A5-5839-41AE-89A4-9C04D89C5714"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>CSMA</register>
+      <title>CSMA</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;CSMA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-650C54A5-5839-41AE-89A4-9C04D89C5714"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>CSMA</register>
+      <title>CSMA</title>
+      <bitfield/>
+      <keyword>WBZ451;CSMA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-650C54A5-5839-41AE-89A4-9C04D89C5714"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>CSMA</register>
+      <title>CSMA</title>
+      <bitfield/>
+      <keyword>CSMA</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F8C09A37-7D47-49DF-B9CF-7BAA4112B301"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>ED_SCAN</register>
+      <title>ED_SCAN</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;ED_SCAN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F8C09A37-7D47-49DF-B9CF-7BAA4112B301"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>ED_SCAN</register>
+      <title>ED_SCAN</title>
+      <bitfield/>
+      <keyword>WBZ451;ED_SCAN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F8C09A37-7D47-49DF-B9CF-7BAA4112B301"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>ED_SCAN</register>
+      <title>ED_SCAN</title>
+      <bitfield/>
+      <keyword>ED_SCAN</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_STATES_PARAM</register>
+      <title>APP_STATES_PARAM</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_STATES_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_STATES_PARAM</register>
+      <title>APP_STATES_PARAM</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_STATES_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_STATES_PARAM</register>
+      <title>APP_STATES_PARAM</title>
+      <bitfield/>
+      <keyword>APP_STATES_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C3DCAEFB-F548-4E77-9887-8689398F94A1"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>SYSTIMER_FLAGS</register>
+      <title>SYSTIMER_FLAGS</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;SYSTIMER_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C3DCAEFB-F548-4E77-9887-8689398F94A1"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>SYSTIMER_FLAGS</register>
+      <title>SYSTIMER_FLAGS</title>
+      <bitfield/>
+      <keyword>WBZ451;SYSTIMER_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C3DCAEFB-F548-4E77-9887-8689398F94A1"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>SYSTIMER_FLAGS</register>
+      <title>SYSTIMER_FLAGS</title>
+      <bitfield/>
+      <keyword>SYSTIMER_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0E5C82C-569C-4FFB-809D-929A67D9AB6B"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CTRL_STATUS_CODE_T</register>
+      <title>APP_TRPS_CTRL_STATUS_CODE_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_CTRL_STATUS_CODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0E5C82C-569C-4FFB-809D-929A67D9AB6B"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CTRL_STATUS_CODE_T</register>
+      <title>APP_TRPS_CTRL_STATUS_CODE_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_CTRL_STATUS_CODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E0E5C82C-569C-4FFB-809D-929A67D9AB6B"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_CTRL_STATUS_CODE_T</register>
+      <title>APP_TRPS_CTRL_STATUS_CODE_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_CTRL_STATUS_CODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E59A9B66-D83B-4CAD-8348-562FB613CC35"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnEvtProc</register>
+      <title>APP_TRPS_ConnEvtProc</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_ConnEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E59A9B66-D83B-4CAD-8348-562FB613CC35"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnEvtProc</register>
+      <title>APP_TRPS_ConnEvtProc</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_ConnEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-E59A9B66-D83B-4CAD-8348-562FB613CC35"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnEvtProc</register>
+      <title>APP_TRPS_ConnEvtProc</title>
+      <bitfield/>
+      <keyword>APP_TRPS_ConnEvtProc</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C6AFAD38-982A-4C34-99F8-C00B7B4273BB"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_deInit</register>
+      <title>APP_TRPS_deInit</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_deInit</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C6AFAD38-982A-4C34-99F8-C00B7B4273BB"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_deInit</register>
+      <title>APP_TRPS_deInit</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_deInit</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C6AFAD38-982A-4C34-99F8-C00B7B4273BB"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_deInit</register>
+      <title>APP_TRPS_deInit</title>
+      <bitfield/>
+      <keyword>APP_TRPS_deInit</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8B4E6F25-6A3E-4E2D-A0EE-0449E4863420"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APPL_PERIOD_TEST_MODE</register>
+      <title>APPL_PERIOD_TEST_MODE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APPL_PERIOD_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8B4E6F25-6A3E-4E2D-A0EE-0449E4863420"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APPL_PERIOD_TEST_MODE</register>
+      <title>APPL_PERIOD_TEST_MODE</title>
+      <bitfield/>
+      <keyword>WBZ451;APPL_PERIOD_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-8B4E6F25-6A3E-4E2D-A0EE-0449E4863420"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APPL_PERIOD_TEST_MODE</register>
+      <title>APPL_PERIOD_TEST_MODE</title>
+      <bitfield/>
+      <keyword>APPL_PERIOD_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4DF9729B-BAFC-4305-B4B5-577F28797F81"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnList_T</register>
+      <title>APP_TRPS_ConnList_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4DF9729B-BAFC-4305-B4B5-577F28797F81"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnList_T</register>
+      <title>APP_TRPS_ConnList_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4DF9729B-BAFC-4305-B4B5-577F28797F81"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TRPS_ConnList_T</register>
+      <title>APP_TRPS_ConnList_T</title>
+      <bitfield/>
+      <keyword>APP_TRPS_ConnList_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-AC2A32B8-1F5D-4CFC-8E0B-B83A52E8CD45"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APPL_THROUGHPUT_TEST_MODE</register>
+      <title>APPL_THROUGHPUT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APPL_THROUGHPUT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-AC2A32B8-1F5D-4CFC-8E0B-B83A52E8CD45"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APPL_THROUGHPUT_TEST_MODE</register>
+      <title>APPL_THROUGHPUT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>WBZ451;APPL_THROUGHPUT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-AC2A32B8-1F5D-4CFC-8E0B-B83A52E8CD45"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APPL_THROUGHPUT_TEST_MODE</register>
+      <title>APPL_THROUGHPUT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>APPL_THROUGHPUT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Error Codes Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>WBZ451;Error Codes Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>Error Codes Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Error_Codes_Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>WBZ451;Error_Codes_Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-5AF018E7-5002-44C7-8C0F-AE7D83BDA49D"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Error Codes Def-1</register>
+      <title>Error Codes Def-1</title>
+      <bitfield/>
+      <keyword>Error_Codes_Def-1</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F280F94A-7926-43EF-9D5A-EBD53B9CDBC1"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_Reboot_Handler</register>
+      <title>APP_OTA_Reboot_Handler</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OTA_Reboot_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F280F94A-7926-43EF-9D5A-EBD53B9CDBC1"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OTA_Reboot_Handler</register>
+      <title>APP_OTA_Reboot_Handler</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OTA_Reboot_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-F280F94A-7926-43EF-9D5A-EBD53B9CDBC1"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OTA_Reboot_Handler</register>
+      <title>APP_OTA_Reboot_Handler</title>
+      <bitfield/>
+      <keyword>APP_OTA_Reboot_Handler</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D337D190-6F61-4EA0-AEE9-CA58B5C83335"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_LinkState_T</register>
+      <title>APP_BLE_LinkState_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_BLE_LinkState_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D337D190-6F61-4EA0-AEE9-CA58B5C83335"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_BLE_LinkState_T</register>
+      <title>APP_BLE_LinkState_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_BLE_LinkState_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D337D190-6F61-4EA0-AEE9-CA58B5C83335"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_BLE_LinkState_T</register>
+      <title>APP_BLE_LinkState_T</title>
+      <bitfield/>
+      <keyword>APP_BLE_LinkState_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D481FB40-2B38-4578-8BC7-9AA1AAE7F547"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_InitConnList</register>
+      <title>APP_InitConnList</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_InitConnList</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D481FB40-2B38-4578-8BC7-9AA1AAE7F547"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_InitConnList</register>
+      <title>APP_InitConnList</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_InitConnList</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-D481FB40-2B38-4578-8BC7-9AA1AAE7F547"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_InitConnList</register>
+      <title>APP_InitConnList</title>
+      <bitfield/>
+      <keyword>APP_InitConnList</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-184F3667-3719-4254-91C4-089B4E718F79"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_SetBleState</register>
+      <title>APP_SetBleState</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_SetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-184F3667-3719-4254-91C4-089B4E718F79"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_SetBleState</register>
+      <title>APP_SetBleState</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_SetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-184F3667-3719-4254-91C4-089B4E718F79"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_SetBleState</register>
+      <title>APP_SetBleState</title>
+      <bitfield/>
+      <keyword>APP_SetBleState</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TRPS_CTRL_LST_SIZE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TRPS_CTRL_LST_SIZE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>APP_TRPS_CTRL_LST_SIZE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;Maximum_Control_List_Size</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>WBZ451;Maximum_Control_List_Size</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4CF8DE3C-29BF-4F46-9C0C-17AF6E24421F"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>Maximum Control List Size</register>
+      <title>Maximum Control List Size</title>
+      <bitfield/>
+      <keyword>Maximum_Control_List_Size</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-25E9E0F6-C673-40B9-9EC3-914570527168"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_MODE_PARAMS</register>
+      <title>APP_MODE_PARAMS</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_MODE_PARAMS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-25E9E0F6-C673-40B9-9EC3-914570527168"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_MODE_PARAMS</register>
+      <title>APP_MODE_PARAMS</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_MODE_PARAMS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-25E9E0F6-C673-40B9-9EC3-914570527168"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_MODE_PARAMS</register>
+      <title>APP_MODE_PARAMS</title>
+      <bitfield/>
+      <keyword>APP_MODE_PARAMS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6E91C3E4-2A6D-42A7-BBD3-CA4B6B18892A"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APPL_DATA_MODE</register>
+      <title>APPL_DATA_MODE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APPL_DATA_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6E91C3E4-2A6D-42A7-BBD3-CA4B6B18892A"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APPL_DATA_MODE</register>
+      <title>APPL_DATA_MODE</title>
+      <bitfield/>
+      <keyword>WBZ451;APPL_DATA_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-6E91C3E4-2A6D-42A7-BBD3-CA4B6B18892A"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APPL_DATA_MODE</register>
+      <title>APPL_DATA_MODE</title>
+      <bitfield/>
+      <keyword>APPL_DATA_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C0D2B156-B4B8-471B-BB7D-06FDA8C13D3C"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APPL_CNT_TEST_MODE</register>
+      <title>APPL_CNT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APPL_CNT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C0D2B156-B4B8-471B-BB7D-06FDA8C13D3C"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APPL_CNT_TEST_MODE</register>
+      <title>APPL_CNT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>WBZ451;APPL_CNT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-C0D2B156-B4B8-471B-BB7D-06FDA8C13D3C"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APPL_CNT_TEST_MODE</register>
+      <title>APPL_CNT_TEST_MODE</title>
+      <bitfield/>
+      <keyword>APPL_CNT_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4078553E-F3E2-4E02-8F41-2D9C261A8DF9"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_ResetTimer</register>
+      <title>APP_TIMER_ResetTimer</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_ResetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4078553E-F3E2-4E02-8F41-2D9C261A8DF9"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_ResetTimer</register>
+      <title>APP_TIMER_ResetTimer</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_ResetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4078553E-F3E2-4E02-8F41-2D9C261A8DF9"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_ResetTimer</register>
+      <title>APP_TIMER_ResetTimer</title>
+      <bitfield/>
+      <keyword>APP_TIMER_ResetTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-BFBA4374-C877-4873-A71E-6E5324F5324F"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_StopTimer</register>
+      <title>APP_TIMER_StopTimer</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TIMER_StopTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-BFBA4374-C877-4873-A71E-6E5324F5324F"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TIMER_StopTimer</register>
+      <title>APP_TIMER_StopTimer</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TIMER_StopTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-BFBA4374-C877-4873-A71E-6E5324F5324F"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TIMER_StopTimer</register>
+      <title>APP_TIMER_StopTimer</title>
+      <bitfield/>
+      <keyword>APP_TIMER_StopTimer</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A6BAE4C-4665-4BF5-A625-D048BD590CEF"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Defines</register>
+      <title>15_4_P2P_Phy_App Defines</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A6BAE4C-4665-4BF5-A625-D048BD590CEF"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Defines</register>
+      <title>15_4_P2P_Phy_App Defines</title>
+      <bitfield/>
+      <keyword>WBZ451;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-4A6BAE4C-4665-4BF5-A625-D048BD590CEF"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Defines</register>
+      <title>15_4_P2P_Phy_App Defines</title>
+      <bitfield/>
+      <keyword>15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A5A9AB06-7BDA-49F9-83B7-4496976A5B5B"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_TEST_Mode_T</register>
+      <title>APP_TEST_Mode_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_TEST_MODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A5A9AB06-7BDA-49F9-83B7-4496976A5B5B"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_TEST_Mode_T</register>
+      <title>APP_TEST_Mode_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_TEST_MODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-A5A9AB06-7BDA-49F9-83B7-4496976A5B5B"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_TEST_Mode_T</register>
+      <title>APP_TEST_Mode_T</title>
+      <bitfield/>
+      <keyword>APP_TEST_MODE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_OP_STATE_T</register>
+      <title>APP_OP_STATE_T</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_OP_STATE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_OP_STATE_T</register>
+      <title>APP_OP_STATE_T</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_OP_STATE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_OP_STATE_T</register>
+      <title>APP_OP_STATE_T</title>
+      <bitfield/>
+      <keyword>APP_OP_STATE_T</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Functions</register>
+      <title>15_4_P2P_Phy_App Functions</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Functions</register>
+      <title>15_4_P2P_Phy_App Functions</title>
+      <bitfield/>
+      <keyword>WBZ451;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Functions</register>
+      <title>15_4_P2P_Phy_App Functions</title>
+      <bitfield/>
+      <keyword>15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-769877FB-8190-4D79-A21B-67B2A76CD688"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Structures</register>
+      <title>15_4_P2P_Phy_App Structures</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-769877FB-8190-4D79-A21B-67B2A76CD688"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Structures</register>
+      <title>15_4_P2P_Phy_App Structures</title>
+      <bitfield/>
+      <keyword>WBZ451;15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-769877FB-8190-4D79-A21B-67B2A76CD688"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>15_4_P2P_Phy_App Structures</register>
+      <title>15_4_P2P_Phy_App Structures</title>
+      <bitfield/>
+      <keyword>15_4_P2P_Phy_App</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-1EB023D2-F2C1-4E5A-A47F-CF04918F28E2"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APP_NWK_PARAM</register>
+      <title>APP_NWK_PARAM</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APP_NWK_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-1EB023D2-F2C1-4E5A-A47F-CF04918F28E2"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APP_NWK_PARAM</register>
+      <title>APP_NWK_PARAM</title>
+      <bitfield/>
+      <keyword>WBZ451;APP_NWK_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-1EB023D2-F2C1-4E5A-A47F-CF04918F28E2"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APP_NWK_PARAM</register>
+      <title>APP_NWK_PARAM</title>
+      <bitfield/>
+      <keyword>APP_NWK_PARAM</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ABC53259-394B-44F5-B0C2-A92BBA5206FE"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>MODE_SWITCH_FLAGS</register>
+      <title>MODE_SWITCH_FLAGS</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;MODE_SWITCH_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ABC53259-394B-44F5-B0C2-A92BBA5206FE"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>MODE_SWITCH_FLAGS</register>
+      <title>MODE_SWITCH_FLAGS</title>
+      <bitfield/>
+      <keyword>WBZ451;MODE_SWITCH_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-ABC53259-394B-44F5-B0C2-A92BBA5206FE"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>MODE_SWITCH_FLAGS</register>
+      <title>MODE_SWITCH_FLAGS</title>
+      <bitfield/>
+      <keyword>MODE_SWITCH_FLAGS</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2E5C58CA-0968-45C9-92CB-D867494C3BC0"
+                nocomponent="true"
+                parent="">
+      <device>PIC32CX-BZ2</device>
+      <module/>
+      <component/>
+      <register>APPL_PER_TEST_MODE</register>
+      <title>APPL_PER_TEST_MODE</title>
+      <bitfield/>
+      <keyword>PIC32CX-BZ2;APPL_PER_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2E5C58CA-0968-45C9-92CB-D867494C3BC0"
+                nocomponent="true"
+                parent="">
+      <device>WBZ451</device>
+      <module/>
+      <component/>
+      <register>APPL_PER_TEST_MODE</register>
+      <title>APPL_PER_TEST_MODE</title>
+      <bitfield/>
+      <keyword>WBZ451;APPL_PER_TEST_MODE</keyword>
+   </keyworditem>
+   <keyworditem topicid="GUID-2E5C58CA-0968-45C9-92CB-D867494C3BC0"
+                nocomponent="true"
+                parent="">
+      <device/>
+      <module/>
+      <component/>
+      <register>APPL_PER_TEST_MODE</register>
+      <title>APPL_PER_TEST_MODE</title>
+      <bitfield/>
+      <keyword>APPL_PER_TEST_MODE</keyword>
    </keyworditem>
    <keyworditem topicid="GUID-3E242310-437D-4F50-9E63-3C9EF144CD18"
                 nocomponent="true"

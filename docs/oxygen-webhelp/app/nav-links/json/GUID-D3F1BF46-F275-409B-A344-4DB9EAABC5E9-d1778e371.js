@@ -1,0 +1,1 @@
+define({"topics":[{"title":"<ph>3.2.1.1<\/ph>\nProtocol Exchange","href":"GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE.html","attributes":{"data-id":"GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE"},"menu":{"hasChildren":false},"tocID":"GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE-d1778e379","topics":[]}]});
