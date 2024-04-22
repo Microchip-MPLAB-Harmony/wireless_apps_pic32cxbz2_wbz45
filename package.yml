@@ -4,7 +4,7 @@ package:
   type: "application"
   status: "production"
   required: false
-  version: "v3.3.0"
+  version: "v3.2.0"
 
   dependencies:
     - name: "csp"
@@ -30,7 +30,7 @@ package:
       version: "v1.3.1"      
     - name: "wireless_system_pic32cxbz_wbz"
       type: "package"
-      version: "BLE_Thread_Combo"      
+      version: "v1.6.0"      
     - name: "wolfssl"
       type: "package"
       version: "v5.4.0"

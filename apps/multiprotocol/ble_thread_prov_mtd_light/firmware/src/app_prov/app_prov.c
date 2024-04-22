@@ -5,7 +5,7 @@
     Microchip Technology Inc.
 
   File Name:
-    app_bleprov.c
+    app_prov.c
 
   Summary:
     This file contains the BLE Provisioning Application functions 

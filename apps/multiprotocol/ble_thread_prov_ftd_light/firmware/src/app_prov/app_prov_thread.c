@@ -28,13 +28,13 @@
     Microchip Technology Inc.
 
   File Name:
-    app_prov.c
+    app_prov_thread.c
 
   Summary:
-    Todo.
+     This file contains the Application Thread provision for this project.
 
   Description:
-    Todo.
+    This file contains the Application Thread provision for this project.
  *******************************************************************************/
 
 // *****************************************************************************

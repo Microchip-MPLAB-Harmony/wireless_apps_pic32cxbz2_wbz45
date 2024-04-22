@@ -4,7 +4,7 @@
 
 
 project: ble_thread_prov_ftd_light
-creation_date: 2024-04-03T23:00:47.076+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-04-22T15:06:10.249+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.5.0
@@ -16,7 +16,7 @@ compiler: XC32 4.35
 modules:
     - {name: "csp", version: "v3.18.3"}
     - {name: "wireless_pic32cxbz_wbz", version: "v1.3.1"}
-    - {name: "wireless_system_pic32cxbz_wbz", version: "BLE_Thread_Combo"}
+    - {name: "wireless_system_pic32cxbz_wbz", version: "v1.6.0"}
     - {name: "wolfssl", version: "v5.4.0"}
     - {name: "crypto", version: "v3.8.1"}
     - {name: "CMSIS-FreeRTOS", version: "v10.5.1"}
