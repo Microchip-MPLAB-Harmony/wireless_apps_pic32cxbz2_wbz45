@@ -4686,7 +4686,7 @@
         &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;sercom0&quot; x=&quot;220&quot; y=&quot;331&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;17&quot; id=&quot;sys_console&quot; x=&quot;401&quot; y=&quot;417&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;18&quot; id=&quot;sys_time&quot; x=&quot;1140&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;19&quot; id=&quot;tc0&quot; x=&quot;560&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;19&quot; id=&quot;tc0&quot; x=&quot;560&quot; y=&quot;19&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;20&quot; id=&quot;trng&quot; x=&quot;400&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
@@ -9871,7 +9871,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\definitions.h</file>
-         <hash>01120ca2614ecde911be6051b7e0d6e0cb94922da094fb54119244430a20f5be</hash>
+         <hash>faa26e39f6c8eb1873b3ab6a759606425bfa7620e7b6ea85576b704c9cbfd5e6</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\device.h</file>
@@ -13187,7 +13187,7 @@
       </entry>
       <entry>
          <file>..\src\config\FTD\initialization.c</file>
-         <hash>dcdedc3e208afbeb843280db304bbdf022c16c246a9eea7818bc3c69d7b7100b</hash>
+         <hash>289112ecefc8717cf6ba0ffff925d06434d9d41d7c8e203c6005d32d4671877c</hash>
       </entry>
       <entry>
          <file>..\src\config\FTD\interrupts.c</file>

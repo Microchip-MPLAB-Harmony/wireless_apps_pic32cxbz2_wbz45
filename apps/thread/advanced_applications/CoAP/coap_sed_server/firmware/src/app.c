@@ -177,10 +177,10 @@ void APP_Tasks ( void )
                 {
                    APP_CoapServerDataReceiveHandler(p_appMsg->msgData[0],&p_appMsg->msgData[1]); 
                 }
-                else if(p_appMsg->msgId ==  APP_TIMER_SED_TIMEOUT_MSG)
-                {
-                   APP_ThreadDeviceSleep();
-                }
+//                else if(p_appMsg->msgId ==  APP_TIMER_SED_TIMEOUT_MSG)
+//                {
+//                   APP_ThreadDeviceSleep();
+//                }
                 else if(p_appMsg->msgId ==  APP_MSG_LED_TIMEOUT)
                 {
                    uint8_t     instance;

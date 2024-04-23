@@ -24065,7 +24065,7 @@
       </entry>
       <entry>
          <file>..\src\config\MTD\definitions.h</file>
-         <hash>c03c1c51512bbf3e2b949d441837f8cc52a500057654ad1d4ef75d2dce2bf97e</hash>
+         <hash>f9307d9f01982970a3f0a1e234d0231fb1e249e5954ae82d794a22a465e76cf4</hash>
       </entry>
       <entry>
          <file>..\src\config\MTD\device.h</file>
@@ -27397,7 +27397,7 @@
       </entry>
       <entry>
          <file>..\src\config\MTD\initialization.c</file>
-         <hash>f3e738169a40d16ad869488bb8b369b87c4153ff044298201048cd27cb473cdf</hash>
+         <hash>984a0134189b71ab3b57d582f57dc6539d7e8f69b69eede0332b5b4c3f99e033</hash>
       </entry>
       <entry>
          <file>..\src\config\MTD\interrupts.c</file>

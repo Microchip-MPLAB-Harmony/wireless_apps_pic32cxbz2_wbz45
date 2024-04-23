@@ -68,10 +68,20 @@ extern APP_DATA appData;
 
 static void APP_ThreadSEDTimeoutCb(TimerHandle_t xTimer)
 {
-    APP_Msg_T sleepReq;
-
-    sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
-    OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);   
+//    APP_Msg_T sleepReq;
+//
+//    sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
+//    OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);  
+     if(otIsIdle())
+    {
+            SERCOM0_USART_Disable();
+            DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
+    }
+    else
+    {
+        xTimerChangePeriod(s_sedtimerhandle, (500 / portTICK_PERIOD_MS), 0);
+        xTimerStart(s_sedtimerhandle, 0);
+    } 
 }
 
 static void APP_ThreadRoleChangeHandler(otChangedFlags aFlags)
@@ -163,21 +173,21 @@ void APP_ThreadAppInit(void)
   APP_LED_StatusLed(false);
 }
 
-void APP_ThreadDeviceSleep(void)
-{
-    if(otIsIdle())
-    {
-       vQueueDelete(appData.appQueue); 
-       DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
-    }
-    else
-    {
-        APP_Msg_T sleepReq;
-
-        sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
-        OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);
-    }
-}
+//void APP_ThreadDeviceSleep(void)
+//{
+//    if(otIsIdle())
+//    {
+//       vQueueDelete(appData.appQueue); 
+//       DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
+//    }
+//    else
+//    {
+//        APP_Msg_T sleepReq;
+//
+//        sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
+//        OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);
+//    }
+//}
 
 void APP_ThreadResetActiveTimer(void)
 {
