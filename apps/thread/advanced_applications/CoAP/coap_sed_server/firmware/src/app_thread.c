@@ -67,11 +67,7 @@ extern APP_DATA appData;
 // *****************************************************************************
 
 static void APP_ThreadSEDTimeoutCb(TimerHandle_t xTimer)
-{
-//    APP_Msg_T sleepReq;
-//
-//    sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
-//    OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);  
+{  
      if(otIsIdle())
     {
             SERCOM0_USART_Disable();
@@ -172,22 +168,6 @@ void APP_ThreadAppInit(void)
   s_sedtimerhandle = xTimerCreate("sed tmr", (APP_TIMER_SED_TIMEOUT_PERIOD / portTICK_PERIOD_MS), pdFALSE, ( void * ) 0, APP_ThreadSEDTimeoutCb);
   APP_LED_StatusLed(false);
 }
-
-//void APP_ThreadDeviceSleep(void)
-//{
-//    if(otIsIdle())
-//    {
-//       vQueueDelete(appData.appQueue); 
-//       DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
-//    }
-//    else
-//    {
-//        APP_Msg_T sleepReq;
-//
-//        sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
-//        OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);
-//    }
-//}
 
 void APP_ThreadResetActiveTimer(void)
 {
