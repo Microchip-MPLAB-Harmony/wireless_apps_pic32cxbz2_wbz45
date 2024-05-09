@@ -7,7 +7,7 @@
 		"version": "1.0.0",
 		"displayName": "BLE Thread Sensor Provisioning SED Application",
 		"projectName": "ble_thread_prov_sed_sensor",
-		"shortDescription": "This application demonstrates SED sensor provisiong over BLE and the Microchip Proprietary Transparent Service based BLE peripheral running concurrently with Thread protocol connects with mobile app.",
+		"shortDescription": "This application demonstrates SED sensor provisioning over BLE, and the SED sensor periodically notifies the FTD of temperature data.",
 		"ide": {
 			"name": "MPLABX",
 			"semverRange": ">=v6.20"

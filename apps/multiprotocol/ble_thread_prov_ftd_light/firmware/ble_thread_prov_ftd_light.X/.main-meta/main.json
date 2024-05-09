@@ -7,7 +7,7 @@
 		"version": "1.0.0",
 		"displayName": "BLE Thread Light Provisioning FTD Application",
 		"projectName": "ble_thread_prov_ftd_light",
-		"shortDescription": "This application demonstrates FTD provisiong over BLE, On/Off light over BLE/Thread and the Microchip Proprietary Transparent Service based BLE peripheral running concurrently with Thread protocol connects with mobile app.",
+		"shortDescription": "This application demonstrates FTD provisioning over BLE, On/Off light over BLE/Thread and the Microchip Proprietary Transparent Service based BLE peripheral running concurrently with Thread protocol connects with mobile app.",
 		"ide": {
 			"name": "MPLABX",
 			"semverRange": ">=v6.20"
