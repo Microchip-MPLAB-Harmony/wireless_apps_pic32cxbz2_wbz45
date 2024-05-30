@@ -14,17 +14,19 @@ Following table provides number of Wireless examples available for different dev
 | WBZ451 Curiosity Board     |       12             |
 
 ### New Features
-- Regenerated all thread application with new thread SDK v1.1.0
 - WBZ451 BLE and Thread Combo applications based on BLE Provision Service Harmony component.
 
 ### Bug fixes and Improvements
-- None
+- Regenerated all thread application with new thread SDK v1.1.0
 
 ### Known Issues
 - None
 
 ### Limitations
 - None
+
+### Additional Notes
+- UDP and CoAP demo applications are tested for a duration of 1 hour.
 
 ### Development Tools
 
