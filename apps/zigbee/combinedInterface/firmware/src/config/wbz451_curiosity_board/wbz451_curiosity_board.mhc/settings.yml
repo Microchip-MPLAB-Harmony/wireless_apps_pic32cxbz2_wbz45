@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: wbz451_curiosity_board
 folderName: combinedInterface
-frameworkPath: C:\CH1
+frameworkPath: D:\May_17_Harmonyrepo
 processor: WBZ451
 projectName: combinedInterface
 settings:

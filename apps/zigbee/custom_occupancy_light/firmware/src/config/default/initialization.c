@@ -417,7 +417,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -509,7 +509,7 @@ void SYS_Initialize ( void* data )
 
     CRYPT_WCCB_Initialize();
 	// Create ZIGBEE Stack Message QUEUE
-    OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
+    (void)OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
 
     // Retrieve Zigbee's data from Information Base
     ZB_CS_SYS_IBData_t zgbIBdata = {0};

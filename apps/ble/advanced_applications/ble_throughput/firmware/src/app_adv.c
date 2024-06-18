@@ -111,7 +111,7 @@ uint8_t APP_ADV_GetAdvertisingType(void) {
 }
 
 uint16_t APP_ADV_SetAdvertisingType(uint8_t advType) {
-    if (advType > BLE_GAP_ADV_TYPE_ADV_DIRECT_IND_LOW) {
+    if (advType > BLE_GAP_ADV_TYPE_ADV_DIRECT_LOW_IND) {
         return APP_RES_INVALID_PARA;
     }
 

@@ -50,7 +50,8 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "ble/lib/include/bt_sys.h"
-#include "peripheral/sercom/usart/plib_sercom0_usart.h"
+#include <string.h>
+#include "peripheral/evsys/plib_evsys.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -75,7 +76,7 @@
 *******************************************************************************/
 #include "driver/pds/include/pds.h"
 #include "driver/pds/include/pds_config.h"
-#include "peripheral/evsys/plib_evsys.h"
+#include "peripheral/sercom/usart/plib_sercom0_usart.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/nvic/plib_nvic.h"
@@ -83,7 +84,6 @@
 #include "peripheral/tc/plib_tc0.h"
 #include "peripheral/nvm/plib_nvm.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
-#include "peripheral/tcc/plib_tcc2.h"
 #include "zigbee/z3device_configs/stackConfig.h"
 #include "zigbee/z3device_configs/zigbeeAppConfig.h"
 #include "zigbee/z3device/common/include/zgb_task.h"
@@ -92,6 +92,7 @@
 #include "zigbee/lib/inc/systemenvironment/include/sysTaskManager.h"
 #include "configserver/include/configserver.h"
 #include "systemenvironment/include/sysSleep.h"
+#include "peripheral/tcc/plib_tcc2.h"
 #include "driver/usart/drv_usart.h"
 #include "peripheral/trng/plib_trng.h"
 #include "FreeRTOS.h"

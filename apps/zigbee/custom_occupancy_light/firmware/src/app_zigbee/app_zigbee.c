@@ -55,6 +55,7 @@
 #include "app_zigbee/app_zigbee.h"
 #include "app.h"
 #include <osal/osal_freertos.h>
+#include <z3device/common/include/zgb_task.h>
 // *****************************************************************************
 // *****************************************************************************
 // Section: Macros
@@ -98,22 +99,22 @@ void APP_ZigbeeStackCb(ZB_AppGenericCallbackParam_t *cb)
           (ZB_AppGenericCallbackParam_t*) OSAL_Malloc(sizeof(ZB_AppGenericCallbackParam_t));
 
   
-  appMsg.msgId = APP_MSG_ZB_STACK_CB;
+  appMsg.msgId = (uint8_t)APP_MSG_ZB_STACK_CB;
   
-  memcpy(newCB,cb,sizeof(ZB_AppGenericCallbackParam_t));
+  (void)memcpy(newCB,cb,sizeof(ZB_AppGenericCallbackParam_t));
 
-  if(cb->paramSize != 0)
+  if(cb->paramSize != 0U)
   {
     paramPtr = OSAL_Malloc(cb->paramSize);
-    memcpy(paramPtr,cb->parameters, cb->paramSize);
+    (void)memcpy(paramPtr,cb->parameters, cb->paramSize);
     newCB->parameters = paramPtr;
   }
   
-  memcpy(appMsg.msgData,&newCB,sizeof(newCB));
+  (void)memcpy((void *)appMsg.msgData,(const void *)&newCB,sizeof(newCB));
 #ifdef H3_INDEPENDENT 
-  OSAL_QUEUE_Send(&g_appQueue, &appMsg,0);
+  (void)OSAL_QUEUE_Send(&g_appQueue, &appMsg,0);
 #else
-  OSAL_QUEUE_Send(&appData.appQueue, &appMsg,0);
+  (void)OSAL_QUEUE_Send(&appData.appQueue, &appMsg,0);
 #endif 
 }
 

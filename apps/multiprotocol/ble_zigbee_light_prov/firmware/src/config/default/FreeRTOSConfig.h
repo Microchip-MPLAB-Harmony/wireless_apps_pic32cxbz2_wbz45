@@ -5,7 +5,7 @@
 /* MISRA C-2012 Rule 3.1, 5.4 deviated below. Deviation record ID -  
    H3_MISRAC_2012_R_3_1_DR_1 & H3_MISRAC_2012_R_5_4_DR_1*/
 /*
- * FreeRTOS Kernel V10.3.0
+ * FreeRTOS Kernel V10.4.0
  * Copyright (C) 2019 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -30,7 +30,7 @@
  *
  * 1 tab == 4 spaces!
  */
-
+ 
 /*-----------------------------------------------------------
  * Application specific definitions.
  *

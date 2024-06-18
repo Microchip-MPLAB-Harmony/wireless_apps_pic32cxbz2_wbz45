@@ -75,6 +75,7 @@
 #include <zcl/clusters/include/identifyCluster.h>
 #include <zcl/include/zcl.h>
 
+
 /******************************************************************************
                     Defines section
 ******************************************************************************/
@@ -107,6 +108,9 @@ static void processResetToFactoryDefaultsCmd(const ScanValue_t *args);
 
 static void processIdentifyCmd(const ScanValue_t *args);
 static void processIdentifyQueryCmd(const ScanValue_t *args);
+
+
+
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
 
 /******************************************************************************
@@ -197,6 +201,8 @@ const ConsoleCommand_t zclHelpCmds[]=
   {"disableDefaultResp", "d",  processDisableDefaultResponseBitCmd, "->Disable/Enable default response for ZCL command: disableDefaultResp [value - 0 for enable or 1 for disable]\r\n"},
   {"identify", "sddd", processIdentifyCmd, "->Send Identify command: identify [addrMode][addr][ep][idTime]\r\n"},
   {"identifyQuery", "sdd", processIdentifyQueryCmd, "->Send Identify Query command: identifyQuery [addrMode][addr][ep]\r\n"},
+
+  
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
   {0,0,0,0},
 };
@@ -388,7 +394,9 @@ static void processIdentifyQueryCmd(const ScanValue_t *args)
     args[2].uint8, srcEp);
 }
 
+
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
+
 
 #endif // APP_ENABLE_CONSOLE == 1
 

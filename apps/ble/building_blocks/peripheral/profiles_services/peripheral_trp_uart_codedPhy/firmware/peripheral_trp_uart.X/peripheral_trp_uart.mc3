@@ -1,4 +1,4 @@
-<config configName="default" projectName="peripheral_trp_uart" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.5.7">
+<config configName="default" projectName="peripheral_trp_uart" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.0">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -3377,11 +3377,11 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.c</file>
-         <hash>f22bb88b91f467eac993e26da0157a05a607f1db01990138a8bdf8c60dea67dd</hash>
+         <hash>93a1169c200274c8f1733c6e17da93d1090f8ed3fa718a310ec0f0b24f47b1cf</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.h</file>
-         <hash>5fedff3eac6e3fce6870b0bef958fc88b2ad54f9a5cd058df3850487ce4e51f3</hash>
+         <hash>08cc918598c70cde16bf48d5b48bf6fc965024a5aa0ccd2ca277a3d7035f3f28</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_dsadv.h</file>
@@ -3389,19 +3389,11 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_handler.c</file>
-         <hash>92cb83e8ee2becbbc9a5f2fca63f1d8b8029e959524c00a557bd7ab406f00c7e</hash>
+         <hash>a179f72cf7c18838f52b85b8493f20f1ac1d75c2e8f171bea508de80d2ec19c9</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_handler.h</file>
-         <hash>89a8f5e630215a7aa97acf414ea9b80fc6209547cbe6ea42333a3112f2911497</hash>
-      </entry>
-      <entry>
-         <file>..\src\app_ble\app_ble_log_handler.c</file>
-         <hash>7c2f953e791197cc2615dd73b868782a460fd2bcbf6e7bb907b1f34d97407f0d</hash>
-      </entry>
-      <entry>
-         <file>..\src\app_ble\app_ble_log_handler.h</file>
-         <hash>b19050cb5ad75a78197bd84efa37e80f8febb57be3fb21429afd3befb123c45a</hash>
+         <hash>1ca5022915742a51b68c7e4c97c94c31699daa49e70293e214e2271e840451d2</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble_utility.c</file>
@@ -3421,7 +3413,7 @@
       </entry>
       <entry>
          <file>..\src\app_idle_task.c</file>
-         <hash>877bf08187a664e2fe7a76d9eb4da2014ba5b24d44f8201f5e96acb9be315fa7</hash>
+         <hash>fdf686a9cf068ccb693ff4815330faf13e593c1df888c864bbc3525b7475b67a</hash>
       </entry>
       <entry>
          <file>..\src\app_idle_task.h</file>
@@ -3433,7 +3425,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\FreeRTOSConfig.h</file>
-         <hash>b13943cd17d70927e909b29f76e9c663e50b4909db6f56738d14a54e0144f722</hash>
+         <hash>b9be464a23f8626e0e2b014f454557e6a7faeb2c036a8b714043a0fdeb13a851</hash>
       </entry>
       <entry>
          <file>..\src\config\default\WBZ451.ld</file>
@@ -3441,7 +3433,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\ble_stack_bz2_lib.a</file>
-         <hash>1a2d9577d096a0cfb065cec61cbb1f107e3fa63e5abafea2029ed7d2c6194a3c</hash>
+         <hash>34d2ad65a11cbe0af1822d6bea24e4acdf9526c24c5c0f19761f7fff5563b71b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\att_uuid.h</file>
@@ -3449,51 +3441,43 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_dtm.h</file>
-         <hash>f83e17c278df49fb867426b4976a4bec4e58f4f7018d518de41f68f54897433d</hash>
+         <hash>51432e5c33fc18577b6ad3efa71ce303d8b86aaa192c2a0ae149e624827d71e2</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_gap.h</file>
-         <hash>8791d375a4af13fe7366bed0bb76a4627900b49e0a5ea17092dec23faf874d5e</hash>
+         <hash>f45071590c2c74225eb58deee93c729fdcb13d0266abf719ca039bbe695768b3</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_l2cap.h</file>
-         <hash>4048e811884554fccad3932e79b2c7d07fa3b10fd616305f564116a5c1f6451c</hash>
+         <hash>3382cc72a28e708acee49c1f678203c314a6359147f23973dea3719e15018789</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\ble_smp.h</file>
-         <hash>9004baed6b0818120a4088e0779e5cc58664de206261e037da667f9324d01280</hash>
+         <hash>bb7a8d0772aa60643b7883d01f129203e1397cc35471e6a28fa2e23f4d45df2b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\bt_sys.h</file>
-         <hash>bb5d725fbbe138379f79207ff488e3c69602cfe5c77897cff65db74623f14616</hash>
+         <hash>a94cc5c11ec07b2ba3c058162adc61c63ce06ee6af5dbb65c19b0d4b519e4ffe</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\bt_sys_log.h</file>
          <hash>6e274b42e61bcd4356a71dcfd70aea9fd5348520f2288d52c4c7598a108e3f49</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\ble\lib\include\bt_sys_pta.h</file>
-         <hash>04af6ed027bf968e606200b5d242dc1ae9e9bd13fb1dbe39d7e61dda97d367a1</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\ble\lib\include\gap_defs.h</file>
-         <hash>ac58c96ead85a551740f85adc84976e7362ad45a57e8147c50377ab94f794017</hash>
+         <hash>5f405e2c1e16543bbb3726e762824c9587b8045ca862c81bb5545d82206dad6e</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\gatt.h</file>
-         <hash>e18e4a99b729300fef13d4b11310462116f1a2781fdf0e2f06f5016fc703dc01</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\lib\include\hci.h</file>
-         <hash>9851a6f2884c7bbdbd093a83fff98bb7210e4983fd1a0f92b8be7c28b692bd4b</hash>
+         <hash>b93f1ae43b422e8fe151a5b91a551e7a59ab15fc9e07ff818e8d2ecc361755f2</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\host_hci_defs.h</file>
-         <hash>0f579fbd3b3c5af61d39685b6252c00b3f42dbe9b4c8022ee309bf2f7d6bbb29</hash>
+         <hash>2155ab76d903bc5d9ecb23ade6c544053eda326d6fa75d7b5fa9928017e15e74</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\mba_error_defs.h</file>
-         <hash>76eda3fe074762587b53951fcc7a40fda67aa9ff4d3e1cf17d4f230a40ef2f8d</hash>
+         <hash>240eb3db6ffd607372b13bfd2418fb402553ad6b8c9625d69005d6a7d0253c25</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\lib\include\stack_mgr.h</file>
@@ -3501,23 +3485,23 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm.c</file>
-         <hash>ed89223d199d87c6dda71c797e20241ad473574bd686340e686214758594c02e</hash>
+         <hash>49d85d07e9483b8b7f7e1151ff4262bc20980b704aa12b452cd7247cb1803de6</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm.h</file>
-         <hash>cb6a676fcb09f072a5687e605e3ec2ee9dc484c3b30139d77e6b3397a344864c</hash>
+         <hash>0633bc597a7ac107e17155f38cc22abb3653fbd523fc8bd3dfa88813d104c3b3</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_conn.c</file>
-         <hash>539784fbb036d762c48132ed14bc887d783b5084891ee86e53b1566db26eda3f</hash>
+         <hash>120cbf53e6d3dfa63bb04f2e10cb01da9ba906b84eee03dac3a12ed31e501988</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_conn.h</file>
-         <hash>85b0b872d48f017e5d46029a35bf1dffc45b8561b042b544385b727e5b462f1e</hash>
+         <hash>1d0b323b094f7bc591485104abd1a32a1f09fcf812ea1b43bb0ca5c6e719498f</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_dds.c</file>
-         <hash>fa385d562b868b0ffe5007b5adf4eb13e52b1b5a039eb48cfb64352f145b38a0</hash>
+         <hash>e1f3301051d1241753d5e39ad099d50d0aff66798642d95cddcbfbbe91d61503</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_dds.h</file>
@@ -3525,7 +3509,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_info.c</file>
-         <hash>1a0ccf621ceddac1cd3b5fe1308dba5e2fd6ea7f390d1b95213dbba464eb3635</hash>
+         <hash>f751ca2181af9e3609bf42b1400c193b4e9b0e9fa018741792e718608bf74c5c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_info.h</file>
@@ -3537,23 +3521,15 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_sm.c</file>
-         <hash>24cafcaea339a83d4e542477d9dc8d8a523afaa35dcf4db33d6a7a82fb472361</hash>
+         <hash>aefce7cc460613c3e97a2fa22d15d128bcacb5623b5763e599d1de0366794d49</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_dm\ble_dm_sm.h</file>
-         <hash>2dec7c517fdd319e6c36a6a3556b846dec3df124905609c0f0288e5da0044dc9</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_log\ble_log.c</file>
-         <hash>9efc2a03e4217cd50149f1a54a916963d456159cc7099115df39e9799720807b</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\ble\middleware_ble\ble_log\ble_log.h</file>
-         <hash>3cf964ad708de9c793c0d0fbc8f47dd671cecc4f599f20de0f07d78699f4eda9</hash>
+         <hash>7d315e3aaa3443420b90d9a5a6af65678a0abd66bdc142421c5d0f5c1e620da2</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_util\byte_stream.h</file>
-         <hash>bdc7c768812034f148987589e90e3e4299fea82b1208051689bd8b9747805b30</hash>
+         <hash>8cabf20f21b6253ab148930b0adb8f30c99af9ec714c8976961e4c3b28233c86</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\middleware_ble\ble_util\mw_aes.c</file>
@@ -3569,19 +3545,19 @@
       </entry>
       <entry>
          <file>..\src\config\default\ble\profile_ble\ble_trsps\ble_trsps.c</file>
-         <hash>fdd91fa4d52d5d1622685c3194041b9690e02099172bace53124d1b1111bb37d</hash>
+         <hash>6943f347d0d6a7df9459134aa6980ecc3b215bbe23f5dcee621fd4e1144c7aeb</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\profile_ble\ble_trsps\ble_trsps.h</file>
-         <hash>cb22fbc697827ca55bc8398dd045cc7f2dfa2d33b5024289366d7d0bd28f06c1</hash>
+         <hash>e8abce8ec6ecf0f4d265a3df13219577bfa4076193e8f0e4a68e58406dea450b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\service_ble\ble_trs\ble_trs.c</file>
-         <hash>05546bf923df08b4c18f78088b6bc95bf95399219670d5f7bb00ade573dd0277</hash>
+         <hash>e805cb8daed41ad46932f14da8390cbb094c52c649eadcc3b0089532d7194760</hash>
       </entry>
       <entry>
          <file>..\src\config\default\ble\service_ble\ble_trs\ble_trs.h</file>
-         <hash>64dd78a217e6c7b6f9519ee541d8ed816e69e6720066488eb8dc89875ac8bddc</hash>
+         <hash>4316ce923102fb56dc0c9f28b15d9919cdd264a973d9737a2f5d4a9cfca0ebcb</hash>
       </entry>
       <entry>
          <file>..\src\config\default\config.h</file>
@@ -3601,7 +3577,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>cf6889df389d3315b9f7988dfa139b34087a6f7e8950cef846958aea4132b81d</hash>
+         <hash>515b65b61c8759ae77f64a9eb7c2c256aaa850e935bc76345bbb2e8a2271d5b4</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -3669,7 +3645,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>dd2f32018323e1cadab8d2a1a8ea3664c1378b545f2d4a8196553e0002f94ac0</hash>
+         <hash>d1b62117feafa2e96056ff60e8e517f5ff669925ae21aa844306f6e4117f9eb8</hash>
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.c</file>
@@ -3685,7 +3661,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal.h</file>
-         <hash>c2cefdf10c48e2b0cc9ac3f137d4b4d1141f3eb5c8492d7334e1de29e6e7ea52</hash>
+         <hash>4e5d7ca0ea22a3304eee868454bca732052c88930eed7e54349bc08c7350d0fc</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_definitions.h</file>
@@ -3693,7 +3669,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos.c</file>
-         <hash>0b0cc4b1178dc0fb47543d6505b90b99883d1f385673f9eb51019b69c18112f9</hash>
+         <hash>c252eb6a2b4fbc0a8a4e78cd3fd71571ee18a885c8a951a1effb535aee84dece</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos.h</file>
@@ -3709,11 +3685,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.c</file>
-         <hash>d64881227e0721af573ba5084b658fbe3ca3401553100beba3d0f23b01733998</hash>
+         <hash>6a841d588bb78ec2a9a79d18afe5233f7dcfde172873a22827d98a20e3e64ef9</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.h</file>
-         <hash>39b2476052565e9b20debaa1266d19d5072cff729d06d053e629dc57699ec485</hash>
+         <hash>2d1939a0da512a64fea40fffe4c2f30f2d3d16344591a807c5814fc1e67fcc01</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\cmcc\plib_cmcc.c</file>
@@ -3725,7 +3701,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\evsys\plib_evsys.c</file>
-         <hash>b2e1a8004049e687fc5544133f3346f743ced50cdaf860c8e3c7f58df3cc163f</hash>
+         <hash>171913270aa095f1e8ff9192995129ff7bab22e5c793c4223f9046802e69d1e6</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\evsys\plib_evsys.h</file>
@@ -3809,7 +3785,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\system\debug\sys_debug.h</file>
-         <hash>bc6fa321b0be542d074e4564065b7fd69f52556486ac3d892d315b51c434f9ec</hash>
+         <hash>4162d9e1fab93b8b33f6c8a24726f5dc287ea05c31e3ab984c3c920c725d0882</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\int\src\sys_int.c</file>
@@ -4241,107 +4217,107 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\FreeRTOS_tasks.c</file>
-         <hash>8cb1eabe18f130b2b8980e880847f773fb12a4071c763d26c51624223b32a3a4</hash>
+         <hash>b0e2349f8d150fcb569570d73cf8a80da4eee689039a9f291e8b3c36af6f97f4</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\croutine.c</file>
-         <hash>e31cd1c9c280c919a92edc28885e9bebce589d4cfab71cefab832a73683200fb</hash>
+         <hash>0ca8c178b698a6ad5ce3f6f1246ab287bfb5510f3c04e1d00e5cfb49c57fc66b</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\event_groups.c</file>
-         <hash>a72063c3977fad098a87a5430e04e9fc5b892d703e01fbe09ea907f67aacf20e</hash>
+         <hash>42ca0bc7afdfb48e9089dff2b4b047e1515a93e7fce031756af6c49b2212c215</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\FreeRTOS.h</file>
-         <hash>b7a81501c3f4ff9537df5c9a5e0231f37638cdc8324965ae10064128fded840f</hash>
+         <hash>7e29c7d9c773561ec4d0125409036f102f1f15162e213d32568ddf3d8ceddfeb</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\croutine.h</file>
-         <hash>8df4c5eec7eb30262f09b7c47fc2eb0534a27721293b0d260a3398846494f9ac</hash>
+         <hash>b7060be39f6c8d0ffd169806382eed5a411776f0d69b0fb3ade6b07e678303f9</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\deprecated_definitions.h</file>
-         <hash>382f8a7a0e00240fb69911dff8d8515248beb9dadfe77c22c4e5544f49cc76eb</hash>
+         <hash>81d325362fc67518de04d5070609e537d0757e4cc6d6332e8118b4f81a4fdce7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\event_groups.h</file>
-         <hash>3b9cbd64db721c4317544700fff4e42ac68d989f71b7d610b31087bb19175839</hash>
+         <hash>2399a780de0eefe95067f5b7744d5e213ad9c793fc6468a8535a8e604f85cbba</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\list.h</file>
-         <hash>f9b239f168976f7b167e054fa72616826f55ae4d74d76b87c9e70b2df079363f</hash>
+         <hash>0848dc9696a2d4d11bb6957fedb6ec5dfb1c2326dfb66af5ca848b1b32a86b66</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\message_buffer.h</file>
-         <hash>504a77558f13b66fd1eec5adf4d81e274f0b54c12880424833c24f577be0800a</hash>
+         <hash>4883fce829d415b7d14d0567965cd97e41634339cd3a72a07b76baebedbc0a57</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\mpu_prototypes.h</file>
-         <hash>3fafd21399ef619a55b2f8112750d750685c8ae1cb458363d21ee37a105ac6e7</hash>
+         <hash>8cb02fee372e1cc1958022e054122d248c1c184cfc00eb3db6d0fbc0bfef87d1</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\mpu_wrappers.h</file>
-         <hash>c1fc47acdb79efb0fb8a0fb8a169ae4423fdc3a6d820b2f81d49e8e077c1ed48</hash>
+         <hash>d99486024fd44173ff23c14ee8561b6e0ce6ee41ad6d6a7e7b17ea97a5023e8b</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\portable.h</file>
-         <hash>39795c8dded505f24f53646ecd8192251851c74f366d2a5b0aae3fbfa68c191b</hash>
+         <hash>d26267188226020346bd048c9dd0e767b91c7023e5ee0d5f9aa7c7c1864de180</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\projdefs.h</file>
-         <hash>399814721d9735e91d74ca07be3974edb20639acb46a6792230ff9f61f67b353</hash>
+         <hash>3d37a1403a69a58a07e214f6a9759601cc0fbe53319c5b14e17f4de5fb8ec0b7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\queue.h</file>
-         <hash>39d58a203f1b67fdb1099293914a2af9722d223586cfc5ff06e230e047919dea</hash>
+         <hash>27b85dc3c610f83fee9208e0dd4d8dfa3168ea2259cbe1662e2f6a0ac55431f5</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\semphr.h</file>
-         <hash>b9b2ff28a0c80fa21443690bb28de64c8b9451cccd57e484de0bcf02fc367575</hash>
+         <hash>89a46fcd718990d24f9fea16c681527eec502712ca2d1b0a4e8d6c205f7452e1</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\stack_macros.h</file>
-         <hash>7d1d30b6c9ae34bebb26b14402f78a59a35ae826f460a1ad28534c9590b32151</hash>
+         <hash>d167d886d199615eeeca0acb935bf5c99b42c30a322273363ddc8dec03a58174</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\stream_buffer.h</file>
-         <hash>0607fcca1927ba782a29a3814481d69db3569e6e53a68ebf2c01f5598a3af2b8</hash>
+         <hash>51da6d9a7cc2cf1504b4f1564e814f422efb9b688fc6e58946f41d0fe23d2d22</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\task.h</file>
-         <hash>2bdfb8e3c1a76a5ccacb1b7815ca9acb63d1ba1f1bd29e5a75757d5e186c5056</hash>
+         <hash>0d71440d1d81d990fa79677c0836712a3e2655ff3ad75478f5a221e2f0583cf8</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\timers.h</file>
-         <hash>cfd11f78d92b398e8347f2b55dc1e79dffce83f63f7e570c6fc821334681ad12</hash>
+         <hash>19e373d04e2f01f9f69a9d3017a75a46b4f7b6e8016742702b10e112786d6181</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\list.c</file>
-         <hash>e735517f308fad5dd77d03b6858c16bdbc937bb9d0754735849fc7799ebe2b59</hash>
+         <hash>55a947c8bd1eec01ebafcb46ccc96cd33090cbdcd3f0114b9ea6a61ebdd6ee7a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\portable\GCC\SAM\ARM_CM4F\port.c</file>
-         <hash>89f24a509ec85bf502724334c2607eeb7a432e1f26afbc9b7291254b8f7971dc</hash>
+         <hash>b0bbd34c94672aecf577f6d721a6b267f56008425047a479a9c7071cc1c2a97a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\portable\GCC\SAM\ARM_CM4F\portmacro.h</file>
-         <hash>356ce2ec084883d8fc41d380910f828aee559f140e877629974752ea26a89792</hash>
+         <hash>284552cdf69a53d3c8afaf3f270f4bd11d8dd9ab462bb06d62b9ef99f3819619</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\portable\MemMang\heap_4.c</file>
-         <hash>c697b88e48e9906a19cabef187e5797a5a45009144f9e473262752c86a5d2c50</hash>
+         <hash>3a16d742be46814ed11142c370519f74d004e21afdcb2b3e0584a30011f52186</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\queue.c</file>
-         <hash>06a153c1ce111213af32dfc8797bd2e5c7819e264dfa338b4049f058dc1edb11</hash>
+         <hash>a4c20318c20a5f49a34fc757092818eb1065b19f142394a04889aa40d67a5023</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\stream_buffer.c</file>
-         <hash>4376714fecad0f72dc4c8b45236591a7e0ffe24dd018382f56e8b0dfc2230b28</hash>
+         <hash>b825d6bccefea8a8c06b4a2022dede20af67f5bc2a2e4976947b376bc41613a7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\timers.c</file>
-         <hash>0d16405e621a2c4b003b5f0324b9713cd4865364133df6f742f482a6b2dbc773</hash>
+         <hash>3b936fac70fa25b959b53990cd15c20fb85956cdbe22af4249fde0a94590ff01</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\certs_test.h</file>

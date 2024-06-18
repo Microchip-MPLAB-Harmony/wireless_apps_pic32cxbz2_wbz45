@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "ble/lib/include/bt_sys.h"
+#include <string.h>
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/sercom/usart/plib_sercom0_usart.h"
 /*******************************************************************************
@@ -116,6 +117,7 @@
 #include "framework_defs.h"
 #include "app_idle_task.h"
 #include "device_sleep.h"
+#include "device_deep_sleep.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"

@@ -242,7 +242,7 @@ static void APP_BleConfigAdvance(void)
     
     appAdvData.advHandle = 0;
     appAdvData.operation = BLE_GAP_EXT_ADV_DATA_OP_COMPLETE;
-    appAdvData.fragPreference = BLE_GAP_EXT_ADV_DATA_FRAG_PREF_ALL;
+    appAdvData.fragPreference = BLE_GAP_EXT_ADV_DATA_FRAG_ALL;
     appAdvData.advLen = sizeof(advData);
     appAdvData.p_advData=OSAL_Malloc(appAdvData.advLen);
     if(appAdvData.p_advData)
@@ -254,7 +254,7 @@ static void APP_BleConfigAdvance(void)
     
     appScanRspData.advHandle = 0;
     appScanRspData.operation = BLE_GAP_EXT_ADV_DATA_OP_COMPLETE;
-    appScanRspData.fragPreference = BLE_GAP_EXT_ADV_DATA_FRAG_PREF_ALL;
+    appScanRspData.fragPreference = BLE_GAP_EXT_ADV_DATA_FRAG_ALL;
     appScanRspData.advLen = sizeof(scanRspData);
     appScanRspData.p_advData=OSAL_Malloc(appScanRspData.advLen);
     if(appScanRspData.p_advData)

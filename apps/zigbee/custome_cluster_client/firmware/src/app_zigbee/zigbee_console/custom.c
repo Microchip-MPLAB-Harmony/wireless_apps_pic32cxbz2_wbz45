@@ -47,6 +47,7 @@
 #include <z3device/clusters/include/haClusters.h>
 #include <z3device/custom/include/customClusters.h>
 #include <zcl/clusters/include/identifyCluster.h>
+#include <systemenvironment/include/sysIdleHandler.h>
 #include <z3device/custom/include/customBasicCluster.h>
 #include <z3device/custom/include/customIdentifyCluster.h>
 #include <z3device/custom/include/customOnOffCluster.h>
@@ -95,11 +96,14 @@ static void customFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clus
 static void customConfigureReportingResp(ZCL_Notify_t *ntfy);
 #endif
 #endif
+static void isBusyOrPollCheck(SYS_EventId_t eventId, SYS_EventData_t data);
 
 #ifdef OTAU_CLIENT 
 static void customAddOTAUClientCluster(void);
 static void configureImageKeyDone(void);
 #endif
+
+
 /******************************************************************************
                     Local variables section
 ******************************************************************************/
@@ -156,6 +160,7 @@ static AppBindReq_t customBindReq =
   .callback          = customFindingBindingFinishedForACluster,
   .startIdentifyingFn= customIdetifyStartIdentifyingCb
 };
+static SYS_EventReceiver_t zdoBusyPollCheck = { .func = isBusyOrPollCheck};
 
 /******************************************************************************
                     Implementation section
@@ -165,6 +170,8 @@ static AppBindReq_t customBindReq =
 ******************************************************************************/
 void appDeviceInit(void)
 {
+
+ /* Execute only if it is wakenup from deep sleep. */
 
 #if APP_ENABLE_CONSOLE == 1
   initConsole();
@@ -196,6 +203,12 @@ void appDeviceInit(void)
   if (PDS_IsAbleToRestore(APP_CUSTOM_SCENES_MEM_ID))
     PDS_Restore(APP_CUSTOM_SCENES_MEM_ID);
 #endif
+#if defined (_SLEEP_WHEN_IDLE_)
+#if (ZB_COMMISSIONING_ON_STARTUP == 1)
+  SYS_EnableSleepWhenIdle();
+#endif
+#endif
+  SYS_SubscribeToEvent(BC_EVENT_POLL_REQUEST, &zdoBusyPollCheck);
   /**CHANGE* - cluster version need to be reinitilized here after PDS Restore same for all devices
     implement a common function to reinitilized */
   customFlowratemonitorInit();
@@ -237,6 +250,7 @@ void appDeviceTaskHandler(void)
 ********************************************************************************/
 static void customFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t clusterId)
 {
+
   ZCL_Cluster_t *serverCluster;
   switch(clusterId)
   {
@@ -269,6 +283,21 @@ static void customFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clus
       break;
 
 
+
+
+    case COLOR_CONTROL_CLUSTER_ID:
+        serverCluster = ZCL_GetCluster(APP_ENDPOINT_CUSTOM, COLOR_CONTROL_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
+        if(serverCluster)
+#if (ZB_COMMISSIONING_ON_STARTUP == 1)
+#ifdef _ZCL_REPORTING_SUPPORT_   
+     sendConfigureReportingToNotify(APP_ENDPOINT_CUSTOM, 0, 
+                                      COLOR_CONTROL_CLUSTER_ID, ZCL_ZLL_CLUSTER_CURRENT_HUE_SERVER_ATTRIBUTE_ID, 
+                                      COLOR_CONTROL_CUURENT_HUE_MAX_REPORT_PERIOD, customConfigureReportingResp); 
+#endif
+#else
+      ZCL_startReporting();
+#endif
+      break;
   }
 
 }
@@ -312,6 +341,24 @@ static void customAddOTAUClientCluster(void)
   customClientClusters[CUSTOM_CLIENT_CLUSTERS_COUNT - 1U] = ZCL_GetOtauClientCluster();
 }
 #endif // OTAU_CLIENT
+
+/**************************************************************************//**
+  \brief Processes BC_EVENT_POLL_REQUEST event
+
+  \param[in] eventId - id of raised event;
+  \param[in] data    - event's data.
+******************************************************************************/
+static void isBusyOrPollCheck(SYS_EventId_t eventId, SYS_EventData_t data)
+{
+#if defined (_SLEEP_WHEN_IDLE_)
+  bool *check = (bool *)data;
+
+  if (BC_EVENT_POLL_REQUEST == eventId)
+    *check |= isCommssioiningInProgress();
+#else
+  (void)eventId, (void)data;
+#endif
+}
 
 #endif // APP_DEVICE_TYPE_CUSTOM_DEVICE
 // eof custom.c

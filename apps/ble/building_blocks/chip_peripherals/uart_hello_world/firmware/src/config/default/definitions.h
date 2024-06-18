@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "ble/lib/include/bt_sys.h"
+#include <string.h>
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/sercom/usart/plib_sercom0_usart.h"
 /*******************************************************************************

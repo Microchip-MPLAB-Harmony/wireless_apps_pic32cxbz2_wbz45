@@ -217,13 +217,13 @@ void APP_BleL2capEvtHandler(BLE_L2CAP_Event_T *p_event)
 {
     switch(p_event->eventId)
     {
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_REQ:
         {
             /* TODO: implement your application code.*/
         }
         break;
 
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_RSP:
         {
             /* TODO: implement your application code.*/
         }

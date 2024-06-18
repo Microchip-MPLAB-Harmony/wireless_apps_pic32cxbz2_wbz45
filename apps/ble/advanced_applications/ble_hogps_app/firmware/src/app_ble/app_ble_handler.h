@@ -59,7 +59,7 @@
 #include "gatt.h"
 #include "ble_dtm.h"
 #include "ble_dm/ble_dm.h"
-#include "ble_log/ble_log.h"
+//#include "ble_log/ble_log.h"
 #include "app_led.h"
 
 // DOM-IGNORE-BEGIN

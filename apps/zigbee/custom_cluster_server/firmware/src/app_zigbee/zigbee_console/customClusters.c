@@ -77,7 +77,7 @@ ZCL_Cluster_t customServerClusters[CUSTOM_SERVER_CLUSTERS_COUNT] =
   DEFINE_IDENTIFY_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &customIdentifyClusterServerAttributes, &customIdentifyCommands),
   DEFINE_GROUPS_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &customGroupsClusterServerAttributes, &customGroupsCommands),
   DEFINE_COMMISSIONING_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &customCommissioningClusterServerAttributes, &customCommissioningClusterCommands),
-  DEFINE_FLOWRATEMONITOR_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &flowratemonitorServerClusterAttributes, &flowratemonitorServerClusterCommands),
+  DEFINE_FLOWRATEMONITOR_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &flowratemonitorServerClusterAttributes, &flowratemonitorClusterCommands),
 };
 
 void (*customServerClusterInitFunctions[CUSTOM_SERVER_CLUSTER_INIT_COUNT])() =

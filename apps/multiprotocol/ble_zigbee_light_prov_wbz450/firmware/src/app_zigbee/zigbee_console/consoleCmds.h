@@ -50,6 +50,18 @@
 #ifdef ZAPPSI_HOST
 #include <zsiHalSerialization.h>
 #endif
+
+/******************************************************************************
+                 External variables section
+******************************************************************************/
+extern bool fbRole;
+extern uint8_t srcEp;
+
+extern DescModeManagerMem_t descModeMem;
+extern const ConsoleCommand_t helpCmds[];
+extern const ConsoleCommand_t commissioningHelpCmds[];
+extern const ConsoleCommand_t zclHelpCmds[];
+
 /******************************************************************************
                         Typedefs section
 ******************************************************************************/

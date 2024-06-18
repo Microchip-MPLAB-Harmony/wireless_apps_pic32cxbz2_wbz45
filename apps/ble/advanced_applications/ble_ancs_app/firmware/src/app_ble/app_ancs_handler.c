@@ -270,7 +270,7 @@ void APP_AncsEvtHandler(BLE_ANCS_Event_T *p_event)
         {
             /* TODO: implement your application code.*/
             /* Require security permission to access characteristics. Inform application and pause the discovery. */
-            if ((p_event->eventField.evtErrInd.errCode == ATT_ERRCODE_INSUFFICIENT_ENCRYPTION) || (p_event->eventField.evtErrInd.errCode == ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION))
+            if ((p_event->eventField.evtErrInd.errCode == ATT_ERR_INSUF_ENC) || (p_event->eventField.evtErrInd.errCode == ATT_ERR_INSUF_AUTHN))
             {
                 BLE_DM_ProceedSecurity(p_event->eventField.evtErrInd.connHandle, 0);
             }

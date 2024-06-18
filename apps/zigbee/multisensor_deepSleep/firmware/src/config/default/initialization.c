@@ -312,8 +312,6 @@ void _on_reset(void)
         PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
                                         | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
     }
-    
-    CLK_Initialize();
 }
 
 
@@ -365,6 +363,14 @@ void SYS_Initialize ( void* data )
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+
+
+  
+    CLOCK_Initialize();
+    /* Configure Prefetch, Wait States */
+    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+
 
 	uint8_t deepSleepWakeupSrc;
 	
@@ -451,8 +457,8 @@ void SYS_Initialize ( void* data )
 
 
 
-    // Create ZIGBEE Stack Message QUEUE
-    OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
+	// Create ZIGBEE Stack Message QUEUE
+    (void)OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
 
     // Retrieve Zigbee's data from Information Base
     ZB_CS_SYS_IBData_t zgbIBdata = {0};

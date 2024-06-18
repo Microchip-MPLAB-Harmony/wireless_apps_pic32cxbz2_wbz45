@@ -17,7 +17,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -224,7 +224,7 @@ static void device_disablePmd(bool enableRtc)
     CFG_REGS->CFG_CFGCON0 &= ~CFG_CFGCON0_PMDLOCK_Msk;
 
     if (enableRtc)
-    CFG_REGS->CFG_PMD1SET = 0xFFFEFFFF; // Except RTCC (bit 16)
+        CFG_REGS->CFG_PMD1SET = 0xFFFEFFFF; // Except RTCC (bit 16)
     else
         CFG_REGS->CFG_PMD1SET = 0xFFFFFFFF;
 
@@ -242,7 +242,7 @@ static void device_disablePmd(bool enableRtc)
     if (!enableRtc)   //Disable RTC
     {
         RTC_Timer32Stop();
-}
+    }
 }
 
 static void device_ConfigDsCtrlRtcc(bool enable)
@@ -292,7 +292,6 @@ static void device_ConfigDeepSleepReg(void)
     devie_SysUnlock();
 
     DEVICE_SLEEP_ConfigWssLowPowerMode();
-
 
     device_ConfigDeepSleepEnableReg();
     device_ConfigDsCtrlReg();
@@ -389,7 +388,7 @@ void Device_GpioConfig(void)
 
     GPIOB_REGS->GPIO_TRISSET = 0xFFFF; //Set all pins as input 
     GPIOB_REGS->GPIO_CNPUSET = 0xF886; //PB1, PB2, PB7(User LED), 11(QSPI_SCK), 12 (QSPI DATA1), 13(QSPI DATA0) are pulled high
-    GPIOB_REGS->GPIO_CNPDSET = 0x0029; //pull down RB0,3,5 (LEDs)) 
+    GPIOB_REGS->GPIO_CNPDSET = 0x0029; //pull down RB0,3,5 (LEDs))
 }
 
 
@@ -420,7 +419,7 @@ bool DEVICE_ClearDeepSleepReg(void)
         //Note: Before cleaning deep sleep related register,
         //the application might consider to restore the GPIO settings before entering deep sleep
         //to avoid reseting the I/O status to default.
-        Device_GpioConfig();
+
         //Clear RCON reg
         RCON_REGS->RCON_RCONCLR = 0xFFFFFFFF;
 

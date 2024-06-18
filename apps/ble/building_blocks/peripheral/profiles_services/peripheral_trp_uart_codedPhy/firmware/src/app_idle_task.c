@@ -62,7 +62,10 @@ void app_idle_task( void )
             }
             else if ((RF_Cal_Needed) && (BT_RF_Suspended == BT_SYS_RF_SUSPENDED_NO_SLEEP))
             {
-                RF_Timer_Cal(WSS_ENABLE_BLE);
+            
+                   RF_Timer_Cal(WSS_ENABLE_BLE);
+            
+
             }
             BT_SYS_RfSuspendReq(0);
         }

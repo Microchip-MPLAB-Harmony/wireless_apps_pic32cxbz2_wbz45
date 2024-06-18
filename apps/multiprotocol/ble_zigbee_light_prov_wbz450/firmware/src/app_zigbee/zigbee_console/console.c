@@ -82,7 +82,7 @@ typedef struct
 {
   ScanValue_t *top;
   ScanValue_t args[MAX_NUM_OF_ARGS];
-  ScanValue_t end[0];
+  ScanValue_t end[1];									//MISRA 18.7 -Flexy array problem occurs by end[0] - Rectification 
 } ScanStack_t;
 
 /******************************************************************************
@@ -101,7 +101,19 @@ static const ConsoleCommand_t *commissioningcmdTable;
 ******************************************************************************/
 static uint8_t tokenizeStr(char *str, ScanStack_t *stk);
 static uint8_t unpackArgs(const ConsoleCommand_t *cmd, ScanStack_t *args);
-static void processCommand(char *str);
+static void processCommand(char *Str);                      // Event MISRA 8.3:	Declaration uses a different parameter name than "void processCommand(char *)".
+                                                            // Str != str - so changed t0 Str   
+
+/******************************************************************************
+            Function Prototype - avoids MISRA 8.4 Violations 
+ *****************************************************************************/
+uint8_t decimalStrToUlong(const char *str, uint64_t *out);
+uint8_t decimalStrToSlong(const char *str, int64_t *out);
+uint8_t hexStrToUlong(const char *str, uint64_t *out);
+void process_UART_evt(char* cmdBuf);
+void consoleRx(uint8_t data);
+
+
 ConsoleCommand_t *cmdForHelpCmd = NULL;
 
 /**************************************************************************//**
@@ -115,25 +127,36 @@ ConsoleCommand_t *cmdForHelpCmd = NULL;
 // No check for overflow
 uint8_t decimalStrToUlong(const char *str, uint64_t *out)
 {
-  uint64_t decCnt = 1;
-  uint64_t ret = 0;
+  uint64_t decCnt = 1U;
+  uint64_t ret = 0U;
   const char *p;
+  /*
+    Makes Event misra_c_2012_rule_10_1_violation:	
+    The expression "*str" of non-boolean essential 
+    type is being interpreted as a boolean value for the operator "!". */
 
-  if (!*str)
-    return 0;  // Empty
-
-  for (p = str; *p; p++);                    // Rewind to the end of string
-
-  for (p--; p >= str; p--, decCnt *= 10)     // locStrP points to the last symbol at the loop start
+  if (*str == (char)0)
   {
-    if (!isdigit((int)*p))
-      return 0;
+    return (uint8_t)0;                                              // Empty // to avoid 14.4 Violation added return 0U, occurs when function is called
+  }
 
-    ret += (*p - '0') * decCnt;
+  for (p = str; *p!=(char)0; p++)                           // Rewind to the end of string      
+  {                                                         // Added MISRA 15.6
+      // Do nothing                                         // Added {} to Avoid Event misra_c_2012_rule_15_6_violation:	
+  }                                                         // The body of the "for" loop is not a compound statement.
+                                                            // MISRA 14_4 cleared by replacing *p to *p=(char)0 inside for loop
+
+  for (p--; p >= str; p--)                                  // locStrP points to the last symbol at the loop start
+  {
+	if (!ISDigits((int)*p)) // MISRA 10.2 Error Fix - can`table to fix in Library File 
+    { return (uint8_t)0; }  // Making alternative isdigit to ISDigits function
+
+    ret += ((uint64_t)(*p) - (uint64_t)('0')) * decCnt;
+    decCnt *= (uint64_t)10;
   }
 
   *out = ret;
-  return 1;
+  return (uint8_t)1;
 }
 
 /**************************************************************************//**
@@ -147,25 +170,34 @@ uint8_t decimalStrToUlong(const char *str, uint64_t *out)
 uint8_t decimalStrToSlong(const char *str, int64_t *out)
 {
   uint64_t ret;
+  bool aD2Str=false;
 
   if (*str == '-')
   {
-    if (decimalStrToUlong(++str, &ret))
+    aD2Str = (bool)decimalStrToUlong(++str, &ret);          // Event misra_c_2012_rule_14_4_violation:	The condition expression 
+                                                            // "decimalStrToUlong(str, &ret)" does not have an essentially boolean type
+    if (aD2Str)                                             // Misra 10.4
     {
-      *out = -ret;
-      return 1;
+      *out = -(int64_t)ret;                                 // typeCasted - Avoid Misra 10.1 & 10.3 Expression 
+      return (uint8_t)1;                                    // "ret" of essential type unsigned is used as an operand to "-".   			  
     }
   }
-  else if (*str)
+  else if (*str!=(char)0)
   {
-    if (decimalStrToUlong(str, &ret))
+    aD2Str = (bool) decimalStrToUlong(str, &ret);
+    if(aD2Str)                                        	   // MISRA 10.4                                     
     {
-      *out = ret;
-      return 1;
+      *out = (int64_t)ret;
+      return (uint8_t)1;
     }
+  }
+  else
+  {
+     // Nothing happens, added comment avoid 16.6 MISRA Rule also "else" to avoid 
+     // Event misra_c_2012_rule_15_7_violation:	No non-empty terminating "else" statement.
   }
 
-  return 0;
+  return (uint8_t)0;
 }
 
 /**************************************************************************//**
@@ -178,33 +210,36 @@ uint8_t decimalStrToSlong(const char *str, int64_t *out)
 ******************************************************************************/
 uint8_t hexStrToUlong(const char *str, uint64_t *out)
 {
-  uint32_t shift = 0;
-  uint64_t ret = 0;
+  uint32_t shift = 0U;
+  uint64_t ret = 0U;
   const char *p;
 
-  if (!*str)
-    return 0;  // Empty
-
-  for (p = str; *p; p++);                  // Rewind to the end of string
-
-  for (p--; p >= str && shift < 64; p--, shift += 4)     // locStrP points to the last symbol at the loop start
+  if (*str == (char)0)
+  {
+    return (uint8_t)0;  // Empty
+  }
+  
+  for (p = str; *p!=(char)0; p++)                           // Rewind to the end of string
+  {
+        // Do nothing                                       // Added MISRA 15.6    
+  }
+     
+  for (p--; p >= str && shift < 64U; p--)  					// locStrP points to the last symbol at the loop start
   {
     char chr = *p;
-
     if (chr >= 'a' && chr <= 'f')
-      chr -= 'a' - 0xA;
+    {  chr -= 'a' - 0xA; }
     else if (chr >= 'A' && chr <= 'F')
-      chr -= 'A' - 0xA;
+    {  chr -= 'A' - 0xA; } 
     else if (chr >= '0' && chr <= '9')
-      chr -= '0';
+    {  chr -= '0'; }
     else
-      return 0;
-
+    {  return (uint8_t)0; }
     ret += (uint64_t)chr << shift;
+    shift += 4U;                                               //MISRA 14.2 - Changed  shift += 4U to post for loop lines 
   }
-
   *out = ret;
-  return 1;
+  return (uint8_t)1;
 }
 
 /**************************************************************************//**
@@ -219,45 +254,48 @@ uint8_t hexStrTouint8array(const char *str, uint8_t *out, uint8_t length)
 {
   uint32_t shift = 0;
   uint8_t i = 0U;
-  uint8_t local = 0U;
+  uint8_t localVar1 = 0U;                                    // local variable to localVar1 - To avoid MISRA 5.8 - already local variable declared
   uint8_t bytecount = 0U;
   const char *p;
 
-  if (!*str)
-    return 0;  // Empty
-
-  for (p = str; *p; p++);                  // Rewind to the end of string 
-
-
-  for (p--; p >= str && shift < (length * 8); p--, shift += 4)     // locStrP points to the last symbol at the loop start
+  if (*str == (char)0)
   {
-    char chr = *p;
-
-    if (chr >= 'a' && chr <= 'f')
-      chr -= 'a' - 0xA;
-    else if (chr >= 'A' && chr <= 'F')
-      chr -= 'A' - 0xA;
-    else if (chr >= '0' && chr <= '9')
-      chr -= '0';
-    else
-      return 0;
-    
-    ++bytecount;
-
-    if (bytecount == 1)
-    {
-      local = (uint8_t)chr;
-    }
-    else
-    {
-     local += (uint8_t)chr << 4;;
-     out[i++] = local;
-     bytecount = 0U;
-     local = 0U;
-    }
+    return (uint8_t)0;  // Empty
   }
 
-  return 1;
+  for (p = str; *p!=(char)0; p++)                                    // Rewind to the end of string 
+  {
+        // Do nothing                                       // Added MISRA 15.6    
+  }
+
+  for (p--; p >= str && shift < ((uint32_t)length * 8U); p--)
+  {                                                         // locStrP points to the last symbol at the loop start 
+    char chr = *p;                                          // MISRA 10.4
+    if (chr >= 'a' && chr <= 'f')
+    {  chr -= 'a' - 0xA; }
+    else if (chr >= 'A' && chr <= 'F')
+    {  chr -= 'A' - 0xA; }
+    else if (chr >= '0' && chr <= '9')
+    {  chr -= '0'; }
+    else
+    {  return (uint8_t)0; }
+    ++bytecount;
+
+    if (bytecount == (uint8_t)1)  // Added U to avoid MISRA 10.4
+    {
+      localVar1 = (uint8_t)chr;
+    }
+    else
+    {
+     localVar1 += (uint8_t)chr << 4;;
+     out[i++] = localVar1;
+     bytecount = 0;
+     localVar1 = 0;
+    }
+     shift += 4U;
+  }
+
+  return (uint8_t)1;
 }
 
 /**************************************************************************//**
@@ -330,13 +368,18 @@ static void APP_UartEvtUpload(char* cmdBuf)
 {
   APP_Msg_T   appMsg;
   APP_Msg_T   *p_appMsg;
-  appMsg.msgId = APP_MSG_UART_CMD_READY;
-  memcpy(appMsg.msgData, cmdBuf, sizeof(appMsg.msgData)); 
+  appMsg.msgId = (uint8_t) APP_MSG_UART_CMD_READY;          // TypeCasted 
+                                                            /*Event misra_c_2012_rule_10_3_violation:	
+                                                             * Implicit conversion of "APP_MSG_UART_CMD_READY" from essential 
+                                                             * type "anonymous enum" to different or narrower essential type "unsigned 8-bit int".*/
+  (void)memcpy(appMsg.msgData, cmdBuf, sizeof(appMsg.msgData));  //Added (void) MISRA 17.7
+                                                            // also Violates MISRA 21.15 -- MsgData is int8_t, but cmdBuf is Char 
+                                                            // cmdBuf typeCasted to uint8_t but can`t be modified
   p_appMsg = &appMsg;
 #ifdef H3_INDEPENDENT 
-  OSAL_QUEUE_SendISR(&g_appQueue, p_appMsg);
+  (void)OSAL_QUEUE_SendISR(&g_appQueue, p_appMsg);
 #else
-  OSAL_QUEUE_SendISR(&appData.appQueue, p_appMsg);
+  (void)OSAL_QUEUE_SendISR(&appData.appQueue, p_appMsg);    //Added (void) MISRA 17.7
 #endif  
 }
 /**************************************************************************//**
@@ -360,47 +403,60 @@ void consoleRx(_DRV_UART_AsyncDev_T *dev, uint8_t data)
 void consoleRx(uint8_t data)
 #endif
 {
-  static char cmdBuf[CMD_BUF_SIZE + 1];             // Additional space for end-of-string
-  static char *p = cmdBuf;
+  static char cmdBuff[CMD_BUF_SIZE + 1];             // Additional space for end-of-string
+  static char *p1 = cmdBuff;                         // Since *p already declared - static made visible and global in full console file 
+                                                    // make MISRA Violation 8.4
   char chr = (char)data;
 
   if ((chr != '\n') && (chr != '\r'))                             // Not EOL
   {
-    if (isprint((int)chr))
+    if (ISPrints((int)chr) == 1)					// MISRA 10.2 Error Fix
     {
-      if ((p - cmdBuf) < CMD_BUF_SIZE)  // Put to buffer
+													  //MISRA 18.2 occurs p1 and cmdbuff uses different location by 
+													  //if ((p1-cmdBuff) < CMD_BUF_SIZE)  // Put to buffer   - Rectified by 
+	  if((cmdBuff[CMD_BUF_SIZE]=='\0')&&(cmdBuff[CMD_BUF_SIZE-1]=='\0'))
       {
 #if FORCE_LOWCASE
         chr = tolower(chr);
 #endif
-        *p++ = chr;
+        *p1++ = chr;
         //consoleTx(chr);                   // Echo
       }
     }
     else if (chr == '\b')                   // Backspace: erase symbol
     {
-      if (p > cmdBuf)                     // There are symbols in buffer - delete'em
+      if (p1 > cmdBuff)                     // There are symbols in buffer - delete'em
       {
-        *(--p) = 0;                      // Rewind and terminate
-        //console_tx_str(VT100_ERASE_LINE"\r" CMD_PROMPT);// Reprint string
-        //console_tx_str(cmdBuf);
+        *(--p1) = (char) 0;                                  /* 0 -- type Casted to char to avoid
+                                                             * Event misra_c_2012_rule_10_3_violation:	Implicit conversion of "0"
+                                                             * from essential type "signed 8-bit int" to different or narrower essential type "character".
+                                                            */          
+        // Rewind and terminate
+        // console_tx_str(VT100_ERASE_LINE"\r" CMD_PROMPT);// Reprint string
+        // console_tx_str(cmdBuff);
       }
     }
-    else if (chr == VT100_ESCAPE)                  // Escape: flush buffer and erase symbols
-    {
-      p = cmdBuf;
+    else if (chr == (char) VT100_ESCAPE)                    // Escape: flush buffer and erase symbols
+    {                                                       // Type Casted VT100_ESCAPE to char MISRA 10.4
+      p1 = cmdBuff;
       //console_tx_str(VT100_ERASE_LINE"\r" CMD_PROMPT);
+    }
+    else
+    {
+        //Nothing happens // Added for Event misra_c_2012_rule_15_7_violation:	No non-empty terminating "else" statement.
     }
   }
   else                                            // End of command string
   {
-    if (p > cmdBuf)                         // Non-empty command
+												//MISRA 18.3 occurs p1 and cmdbuff uses different location by if (p1 > cmdBuff)
+												// p1 and cmdBuff not refers to same Object 
+	if ((cmdBuff[0]!='\0')&&(cmdBuff[1]!='\0')) // Non-empty command
     {
-      *p = 0;                              // Mark an end of string
-      APP_UartEvtUpload(cmdBuf);
+      *p1 = (char)0;                              // Mark an end of string
+      APP_UartEvtUpload(cmdBuff);
     }
 
-    p = cmdBuf;                              // Drop buffer
+    p1 = cmdBuff;                              // Drop buffer
     //console_tx_str(CRLF CMD_PROMPT);             // Command prompt
   }
 }
@@ -417,32 +473,32 @@ static void processCommand(char *Str)
 #else
   ScanStack_t stk;
 #endif
-  if (!tokenizeStr(Str, &stk))
-    return;
+  if (tokenizeStr(Str, &stk) == (uint8_t)0)                         // (uint8_t)0 -MISRA 10.4
+  { return;}
 
   if (stk.top == stk.args)                        // No command name
-    return;
+  { return; }
 
   /** Seek for a matching command */
-  for (const ConsoleCommand_t *cmd = cmdTable; cmd->name; cmd++)
+  for (const ConsoleCommand_t *cmd = cmdTable; cmd->name != NULL; cmd++)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
-      if (!unpackArgs(cmd, &stk))
-        consoleTxStr(cmd->helpMsg);
+      if (unpackArgs(cmd, &stk) == (uint8_t)0)                 // MISRA 10.4
+      {  consoleTxStr(cmd->helpMsg); }
       else
-        cmd->handler(stk.args + 1);
+      { cmd->handler(stk.args + 1); }
       return;
     }
   }
-  for (const ConsoleCommand_t *cmd = zclcmdTable; cmd->name; cmd++)
+  for (const ConsoleCommand_t *cmd = zclcmdTable; cmd->name !=NULL; cmd++)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
-      if (!unpackArgs(cmd, &stk))
-        consoleTxStr(cmd->helpMsg);
+      if (unpackArgs(cmd, &stk) == (uint8_t)0)   
+      { consoleTxStr(cmd->helpMsg); }
       else
-        cmd->handler(stk.args + 1);
+      { cmd->handler(stk.args + 1); }
       return;
     }
   }
@@ -451,37 +507,37 @@ static void processCommand(char *Str)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
-      if (!unpackArgs(cmd, &stk))
-        consoleTxStr(cmd->helpMsg);
+      if (unpackArgs(cmd, &stk)==(uint8_t)0)
+      { consoleTxStr(cmd->helpMsg);}
       else
-        cmd->handler(stk.args + 1);
+      { cmd->handler(stk.args + 1);}
       return;
     }
   }
 #endif
-  for (const ConsoleCommand_t *cmd = zdocmdTable; cmd->name; cmd++)
+  for (const ConsoleCommand_t *cmd = zdocmdTable; cmd->name != NULL; cmd++)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
-      if (!unpackArgs(cmd, &stk))
-        consoleTxStr(cmd->helpMsg);
+      if (unpackArgs(cmd, &stk)==(uint8_t)0)
+      { consoleTxStr(cmd->helpMsg);}
       else
-        cmd->handler(stk.args + 1);
+      { cmd->handler(stk.args + 1);}
       return;
     }
   }
-  for (const ConsoleCommand_t *cmd = commissioningcmdTable; cmd->name; cmd++)
+  for (const ConsoleCommand_t *cmd = commissioningcmdTable; cmd->name != NULL; cmd++)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
-      if (!unpackArgs(cmd, &stk))
-        consoleTxStr(cmd->helpMsg);
+      if (unpackArgs(cmd, &stk) == (uint8_t)0)
+      {  consoleTxStr(cmd->helpMsg); }
       else
-        cmd->handler(stk.args + 1);
+      { cmd->handler(stk.args + 1); }
       return;
     }
   }
-  for (const ConsoleCommand_t *cmd = zgpcmdTable; cmd->name; cmd++)
+  for (const ConsoleCommand_t *cmd = zgpcmdTable; cmd->name != NULL; cmd++)
   {
     if (strcmp(stk.args[0].str, cmd->name) == 0)    // Command match
     {
@@ -489,7 +545,7 @@ static void processCommand(char *Str)
       {
         int64_t temp;
         ScanValue_t *val = (&stk)->args + 1;
-        if(decimalStrToSlong(stk.args[1].str, &temp)) //(if the length of payload entered is > 0)
+        if(decimalStrToSlong(stk.args[1].str, &temp)== (uint8_t)1)//(if the length of payload entered is > 0)
         {
          // check length argument of datareq is non zero
           if(temp > 0)
@@ -500,15 +556,15 @@ static void processCommand(char *Str)
               return;
             }
 
-            for(uint8_t i = 0; i <= temp; i++)
+            for(uint8_t i = (uint8_t)0; i <= (uint8_t)temp; i++)
             {
               if (val->str[0] == '0' && (val->str[1] == 'x' || val->str[1] == 'X'))
               {
-                hexStrToUlong(&val->str[2], &val->uint64);
+                (void)hexStrToUlong(&val->str[2], &val->uint64);  //Added (void) MISRA 17.7
               }
               else                                    // Decimal
               {
-                decimalStrToSlong(val->str, &val->int64);
+                (void) decimalStrToSlong(val->str, &val->int64);  //Added (void) MISRA 17.7
               }
               val++;
             }
@@ -517,13 +573,15 @@ static void processCommand(char *Str)
           }
         }
         else 
-          consoleTxStr(cmd->helpMsg);// to know the syntax of the Cmd
-          return;
+        {
+            consoleTxStr(cmd->helpMsg);// to know the syntax of the Cmd
+        }
+        return;
        }
-      else if (!unpackArgs(cmd, &stk))//Other Cmds Handling
-        consoleTxStr(cmd->helpMsg);
+      else if (unpackArgs(cmd, &stk) == (uint8_t)0)//Other Cmds Handling
+      {  consoleTxStr(cmd->helpMsg);}
       else
-        cmd->handler(stk.args + 1);
+      {  cmd->handler(stk.args + 1);}
       return;
     }
   }
@@ -546,10 +604,10 @@ static uint8_t unpackArgs(const ConsoleCommand_t *cmd, ScanStack_t *args)
   ScanValue_t *val = args->args + 1;
 
   // Unpack arguments of command according to format specifier
-  for (; *fmt; fmt++, val++)
+  for (; *fmt; fmt++ )
   {
-    if (val >= args->top)
-      return 0;
+	if (args->args + 1 >= args->top)			//MISRA 18.3 Raises with if (val >= args->top)
+    {  return (uint8_t)0; }						// val and args->top not refers to same Object 
 
     switch (*fmt)
     {
@@ -557,8 +615,8 @@ static uint8_t unpackArgs(const ConsoleCommand_t *cmd, ScanStack_t *args)
         break;
 
       case 'c':                                   // Single char
-        if (val->str[1])                        // Check next char - must be zero terminator
-          return 0;
+        if (val->str[1] != (char)0)                        // Check next char - must be zero terminator
+        {  return (uint8_t)0;}
         val->chr = val->str[0];
         break;
 
@@ -567,25 +625,29 @@ static uint8_t unpackArgs(const ConsoleCommand_t *cmd, ScanStack_t *args)
         // Lookup for hex prefix. Negative hex is not supported
         if (val->str[0] == '0' && (val->str[1] == 'x' || val->str[1] == 'X'))
         {
-          if (!hexStrToUlong(&val->str[2], &val->uint64))
-            return 0;
+          if (hexStrToUlong(&val->str[2], &val->uint64) == (uint8_t)0)  // MISRA 10.4 - added U 
+          { return (uint8_t)0; }
         }
         else                                    // Decimal
         {
-          if (!decimalStrToSlong(val->str, &val->int64))
-            return 0;
+          if (decimalStrToSlong(val->str, &val->int64) == (uint8_t)0)  // MISRA 10.4 - added U
+          {  return (uint8_t)0; }
         }
         break;
 
       default:
-        break;
+      { 
+          // Empty default case to avoid MISRA 16.4 and 16.1
+          break;
+      }
     }
+    val++;
   }
 
   if (val != args->top)                           // Starvation of arguments
-    return 0;
+  { return (uint8_t)0; }
 
-  return 1;
+  return (uint8_t)1;
 }
 
 /**************************************************************************//**
@@ -610,16 +672,17 @@ static uint8_t tokenizeStr(char *str, ScanStack_t *stk)
 
   stk->top = stk->args;
 
-  for (; *str; str++)
+
+  for (; *str!=(char)0; str++)
   {
     switch (St)
     {
       case WHITE:
         if (*str == ' ')
-          break;
+        {  break; }
 
         if (stk->top >= stk->end)          // No more space in stack
-          return 0;
+        {  return (uint8_t)0; }
 
         if (*str == '"')
         {
@@ -635,12 +698,12 @@ static uint8_t tokenizeStr(char *str, ScanStack_t *stk)
 
       case TOK:
         if (*str == '"')                    // Quotes are forbidden inside of plain token
-          return 0;
+        {  return (uint8_t)0; }
 
         if (*str == ' ')
         {
           St = WHITE;
-          *str = 0;                       // Put terminator
+          *str =(char) 0;                       // Put terminator
         }
         break;
 
@@ -648,22 +711,27 @@ static uint8_t tokenizeStr(char *str, ScanStack_t *stk)
         if (*str == '"')
         {
           St = POST_QTOK;
-          *str = 0;
+          *str = (char)0;
         }
         break;
 
       case POST_QTOK:
         if (*str != ' ')
-          return 0;
+        {  return (uint8_t)0;}
         St = WHITE;
         break;
+      default:
+      {
+        // added Default to avoid MISRA  16.1
+        break;
+      }
     }
   }
 
   if (St == QTOK)                             // Scan ended while inside of quote
-    return 0;
+  {  return (uint8_t)0;}
 
-  return 1;
+  return (uint8_t)1;
 }
 
 #endif // APP_ENABLE_CONSOLE == 1

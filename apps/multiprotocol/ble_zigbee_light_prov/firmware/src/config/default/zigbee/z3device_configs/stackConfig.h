@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _STACK_CONFIG_H_
-#define _STACK_CONFIG_H_
+#ifndef STACK_CONFIG_H
+#define STACK_CONFIG_H
 
 #if (BDB_SUPPORT == 1)
 
@@ -76,7 +76,9 @@
 #define CS_DEVICE_POWER_TYPE   CS_DEVICE_POWER_MPA
 
 //Tx Power set by user.Considering Radiative power
+#ifndef CS_RF_TX_POWER
 #define CS_RF_TX_POWER   3
+#endif
 
 //Tx Power set on Channel 26 for FCC by user.
 #define CS_RF_MAX_CH26_TX_POWER  3
@@ -324,7 +326,7 @@
 //  C-type: NwkKeyAmount_t (typedef for uint8_t)
 //  Can be set: at compile time only
 //  Persistent: No
-#define CS_NWK_SECURITY_KEYS_AMOUNT 2
+#define CS_NWK_SECURITY_KEYS_AMOUNT 2U
 
 // Address of device responsible for authentication and key distribution (Trust
 // Center).
@@ -365,7 +367,7 @@
   //  C-type: uint8_t
   //  Can be set: at compile time only
   //  Persistent: No
-  #define CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT 5
+  #define CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT 5U
   
   // Depending on security key type and security mode this is either network key,
   // master key, link key or initial link key.
@@ -414,7 +416,7 @@
 //  C-type: uint8_t
 //  Can be set: at compile time only
 //  Persistent: No
-#define CS_GROUP_TABLE_SIZE 8
+#define CS_GROUP_TABLE_SIZE 8U
 
 // Maximum amount of records in the Neighbor Table.
 // 
@@ -426,7 +428,7 @@
 //  C-type: uint8_t
 //  Can be set: at compile time only
 //  Persistent: No
-#define CS_NEIB_TABLE_SIZE 5
+#define CS_NEIB_TABLE_SIZE 5U
 
 // Maximum amount of records in the network Route Table.
 // 
@@ -499,7 +501,7 @@
 //  C-type: uint8_t
 //  Can be set: at compile time only
 //  Persistent: No
-#define CS_APS_BINDING_TABLE_SIZE 14
+#define CS_APS_BINDING_TABLE_SIZE 14U
 
 // The number of buffers for data requests on the APS layer.
 // 
@@ -567,4 +569,4 @@
 #endif
 
 
-#endif // _STACK_CONFIG_H_
+#endif // STACK_CONFIG_H

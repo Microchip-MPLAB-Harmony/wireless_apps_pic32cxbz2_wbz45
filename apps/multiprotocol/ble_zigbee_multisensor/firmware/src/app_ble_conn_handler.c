@@ -190,7 +190,7 @@ void APP_BleGapConnEvtHandler(BLE_GAP_Event_T *p_event)
         {
             p_bleConn = APP_GetConnInfoByConnHandle(p_event->eventField.evtEncryptStatus.connHandle);
 
-            if (p_event->eventField.evtEncryptStatus.status != BLE_GAP_ENCRYPT_SUCCESS)
+            if (p_event->eventField.evtEncryptStatus.status != GAP_STATUS_SUCCESS)
             {
                 BLE_GAP_Disconnect(p_event->eventField.evtEncryptStatus.connHandle, GAP_DISC_REASON_REMOTE_TERMINATE);
             }

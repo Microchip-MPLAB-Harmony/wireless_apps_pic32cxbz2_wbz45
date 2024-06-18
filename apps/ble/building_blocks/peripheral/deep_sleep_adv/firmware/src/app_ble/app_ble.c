@@ -46,6 +46,7 @@
 
 
 
+
 #include "app_trsps_handler.h"
 
 
@@ -195,9 +196,10 @@ static void APP_BleConfigBasic(void)
     BLE_GAP_AdvDataParams_T         appAdvData;
     uint8_t scanRspData[]={0x0A, 0x09, 0x42, 0x4C, 0x45, 0x5F, 0x44, 0x53, 0x41, 0x44, 0x56};
     BLE_GAP_AdvDataParams_T         appScanRspData;
+    
 
     // Configure advertising parameters
-    BLE_GAP_SetAdvTxPowerLevel(9,&advTxPower);      /* Advertising TX Power */
+    BLE_GAP_SetAdvTxPowerLevel(15,&advTxPower);      /* Advertising TX Power */
     
     (void)memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
     advParam.intervalMin = 1536;     /* Advertising Interval Min */
@@ -225,14 +227,13 @@ static void APP_BleConfigAdvance(void)
 
     BLE_SMP_Config_T                smpParam;
 
-
     BLE_DM_Config_T                 dmConfig;
     BLE_GAP_ServiceOption_T         gapServiceOptions;
     
 
     // Configure Device Name
     BLE_GAP_SetDeviceName(sizeof(devName), devName);    /* Device Name */
-
+    
 
     // GAP Service option
     gapServiceOptions.charDeviceName.enableWriteProperty = false;             /* Enable Device Name Write Property */
@@ -240,7 +241,6 @@ static void APP_BleConfigAdvance(void)
     gapServiceOptions.charPeriPreferConnParam.enable = false;                    /* Enable Peripheral Preferred Connection Parameters */
 
     BLE_GAP_ConfigureBuildInService(&gapServiceOptions);
-
 
 
 
@@ -303,6 +303,7 @@ void APP_BleStackInitAdvance(void)
     /* Transparent Profile */
     BLE_TRSPS_Init();                                   /* Enable Server Role */
     BLE_TRSPS_EventRegister(APP_TrspsEvtHandler);   /* Enable Server Role */
+
 
 
 

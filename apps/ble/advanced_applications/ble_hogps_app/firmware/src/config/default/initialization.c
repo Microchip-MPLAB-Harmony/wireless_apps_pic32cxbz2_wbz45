@@ -331,9 +331,6 @@ void _on_reset(void)
         PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
                                         | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
     }
-
-    CLK_Initialize();
-    RF_SetIdleMode();
 }
 
 
@@ -389,15 +386,25 @@ void SYS_Initialize ( void* data )
 *******************************************************************************/
 
 
+  
+    CLOCK_Initialize();
+    /* Configure Prefetch, Wait States */
+    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+
+
+
 	GPIO_Initialize();
 
     EVSYS_Initialize();
 
-    RTC_Initialize();
-
     TC0_TimerInitialize();
 
+    RTC_Initialize();
+
     NVM_Initialize();
+
+	TRNG_Initialize();
 
 	BSP_Initialize();
 
@@ -465,13 +472,14 @@ void SYS_Initialize ( void* data )
     H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
         
     sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
-
+    
     /* MISRAC 2012 deviation block end */
 
     // Create BLE Stack Message QUEUE
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 
     // Retrieve BLE calibration data
+    (void)memset(&btSysCfg, 0, sizeof(BT_SYS_Cfg_T));
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
 
@@ -482,9 +490,11 @@ void SYS_Initialize ( void* data )
 
 
     //Configure BLE option
+    (void)memset(&btOption, 0, sizeof(BT_SYS_Option_T));
     btOption.hciMode = false;
     btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
     btOption.p_cmnMemAddr = s_btMem;
+    btOption.deFeatMask = 0;
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);

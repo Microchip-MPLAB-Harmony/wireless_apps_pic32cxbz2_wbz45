@@ -132,7 +132,10 @@ void app_idle_task( void )
             }
             else if ((RF_Cal_Needed) && (BT_RF_Suspended == BT_SYS_RF_SUSPENDED_NO_SLEEP))
             {
-                RF_Timer_Cal(WSS_ENABLE_BLE);
+            
+                   RF_Timer_Cal(WSS_ENABLE_BLE);
+            
+
             }
             BT_SYS_RfSuspendReq(0);
         }
@@ -188,7 +191,7 @@ static void app_idle_setRtcTimeout(TickType_t expectedIdleTick, uint32_t current
        2. RTC Clock : RTC_Timer32FrequencyGet
        3. expectedIdleTime (ms) * RTC clock (32 kHz) = compareValue value
     */
-    compareValue = (expectedIdleTick * RTC_Timer32FrequencyGet() + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
+    compareValue = ((uint64_t)expectedIdleTick * RTC_Timer32FrequencyGet() + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
 
 
     /* Give a compensation value to eliminate the offset between RTC and system timer

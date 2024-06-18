@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OTAU_CONFIG_H_
-#define _OTAU_CONFIG_H_
+#ifndef OTAU_CONFIG_H
+#define OTAU_CONFIG_H
 
 #include <zigbee/z3device_configs/zigbeeAppConfig.h>
 //-----------------------------------------------
@@ -92,7 +92,6 @@
     // #define APP_USE_FAKE_OFD_DRIVER 1
 
 
-    //#define OTA_IMAGE_CBC_KEY {0x01, 0x12, 0x23, 0x34, 0x45, 0x56, 0x67, 0x78, 0x89, 0x90, 0x99, 0x88, 0x77, 0x66, 0x55, 0x44}
     #define OTA_IMAGE_CBC_KEY {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99}
 
     #define OTA_IMAGE_CBC_IV {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -296,4 +295,4 @@
 #endif //#if (APP_Z3_DEVICE_TYPE ==  APP_DEVICE_TYPE_COMBINED_INTERFACE)
 #endif //#if (APP_USE_OTAU == 1)
 
-#endif // _OTAU_CONFIG_H_
+#endif // OTAU_CONFIG_H

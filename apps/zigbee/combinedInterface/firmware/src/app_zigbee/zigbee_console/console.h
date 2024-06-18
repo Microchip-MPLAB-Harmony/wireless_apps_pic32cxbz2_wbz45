@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CONSOLE_H
-#define _CONSOLE_H
+#ifndef CONSOLE_H
+#define CONSOLE_H
 
 /******************************************************************************
                     Includes section
@@ -60,8 +60,17 @@
   #define LOG_STRING(name, str) (void)0
 #endif
 
+int ISDigits(int);
+int ISPrints(int);
+
+#define ISDigits(a) (0? ISDigits(a) : (int)(((unsigned)(a)- 48U) < 10U))//'0'
+#define ISPrints(a) (0? ISPrints(a) : (int)(((unsigned)(a)-32U) < 95U))
+
+int uartprintf(const char *format, ...);
+
 #if APP_ENABLE_CONSOLE == 1
-#define appSnprintf(...) printf(__VA_ARGS__)
+/* Casting void to resolve MISRA 14.3 violation. */
+#define appSnprintf(...) (void)uartprintf(__VA_ARGS__)
 #else
 #define appSnprintf(...)  (void)0
 #endif
@@ -168,4 +177,4 @@ void initConsole(void);
 ******************************************************************************/
 void processConsole(uint16_t length);
 
-#endif // _CONSOLE_H
+#endif // CONSOLE_H

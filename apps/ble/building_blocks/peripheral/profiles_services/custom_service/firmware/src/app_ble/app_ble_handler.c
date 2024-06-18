@@ -225,13 +225,13 @@ void APP_BleL2capEvtHandler(BLE_L2CAP_Event_T *p_event)
 {
     switch(p_event->eventId)
     {
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_REQ:
         {
             /* TODO: implement your application code.*/
         }
         break;
 
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_RSP:
         {
             /* TODO: implement your application code.*/
         }
@@ -292,7 +292,7 @@ void APP_GattSEvtReadHandler(GATT_EvtRead_T p_event)
             case BUTTON_LED_HDL_CCCD_0:                            /**< Handle of characteristic 0 CCCD . */
             case BUTTON_LED_HDL_CHAR_1:                            /**< Handle of characteristic 1. */
             case BUTTON_LED_HDL_CHARVAL_1:                         /**< Handle of characteristic 1 value. */
-                error = ATT_ERRCODE_APPLICATION_ERROR;
+                error = ATT_ERR_APPLICATION_ERROR;
                 break;
             case BUTTON_LED_HDL_CHARVAL_0:                         /**< Handle of characteristic 0 value. */                
 //                SYS_CONSOLE_PRINT(" ATTR Handle Read 0x%X \r\n",p_event.attrHandle);
@@ -355,7 +355,7 @@ void APP_GattSEvtWriteHandler(GATT_EvtWrite_T p_event)
         (p_event.attrHandle > BUTTON_LED_END_HDL))
     {
         /* Not BLE Custom Service characteristic. */
-        error = ATT_ERRCODE_INVALID_HANDLE;
+        error = ATT_ERR_INVALID_HANDLE;
         return;
     }
     
@@ -365,7 +365,7 @@ void APP_GattSEvtWriteHandler(GATT_EvtWrite_T p_event)
             case BUTTON_LED_HDL_CHARVAL_0:                         /**< Handle of characteristic 0 value. */
             case BUTTON_LED_HDL_CCCD_0:                            /**< Handle of characteristic 0 CCCD . */
             case BUTTON_LED_HDL_CHAR_1:                            /**< Handle of characteristic 1. */
-                error = ATT_ERRCODE_APPLICATION_ERROR;
+                error = ATT_ERR_APPLICATION_ERROR;
                 break;
             case BUTTON_LED_HDL_CHARVAL_1:                         /**< Handle of characteristic 1 value. */
 //                SYS_CONSOLE_PRINT(" ATTR Handle %d \r\n",p_event.attrHandle);

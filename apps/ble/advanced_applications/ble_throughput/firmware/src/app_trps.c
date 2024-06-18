@@ -252,7 +252,7 @@ static void APP_TRPS_VendorCmdProc(APP_TRP_ConnList_T *p_connList_t, uint8_t *p_
                 if ((params.intervalMin >= BLE_GAP_CP_MIN_CONN_INTVAL_MIN) && (params.intervalMin <= BLE_GAP_CP_MIN_CONN_INTVAL_MAX) &&
                         (params.intervalMax >= BLE_GAP_CP_MAX_CONN_INTVAL_MIN) && (params.intervalMax <= BLE_GAP_CP_MAX_CONN_INTVAL_MAX) &&
                         (params.latency >= BLE_GAP_CP_LATENCY_MIN) && (params.latency <= BLE_GAP_CP_LATENCY_MAX) &&
-                        (params.supervisionTimeout >= BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MIN) && (params.supervisionTimeout <= BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MAX)) {
+                        (params.supervisionTimeout >= BLE_GAP_CP_CONN_SUPV_TIMEOUT_MIN) && (params.supervisionTimeout <= BLE_GAP_CP_CONN_SUPV_TIMEOUT_MAX)) {
                     //Update connection parameters
                     BLE_GAP_UpdateConnParam(p_connList_t->connHandle, &params);
                 }
@@ -268,7 +268,7 @@ static void APP_TRPS_VendorCmdProc(APP_TRP_ConnList_T *p_connList_t, uint8_t *p_
                 if ((params.intervalMin >= BLE_GAP_CP_MIN_CONN_INTVAL_MIN) && (params.intervalMin <= BLE_GAP_CP_MIN_CONN_INTVAL_MAX) &&
                         (params.intervalMax >= BLE_GAP_CP_MAX_CONN_INTVAL_MIN) && (params.intervalMax <= BLE_GAP_CP_MAX_CONN_INTVAL_MAX) &&
                         (params.latency >= BLE_GAP_CP_LATENCY_MIN) && (params.latency <= BLE_GAP_CP_LATENCY_MAX) &&
-                        (params.timeout >= BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MIN) && (params.timeout <= BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MAX)) {
+                        (params.timeout >= BLE_GAP_CP_CONN_SUPV_TIMEOUT_MIN) && (params.timeout <= BLE_GAP_CP_CONN_SUPV_TIMEOUT_MAX)) {
                     BLE_DM_ConnectionParameterUpdate(p_connList_t->connHandle, &params);
                 }
 #endif

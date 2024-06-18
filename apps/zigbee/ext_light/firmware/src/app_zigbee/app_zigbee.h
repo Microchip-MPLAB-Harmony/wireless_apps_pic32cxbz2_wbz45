@@ -62,12 +62,7 @@ extern "C" {
     
   
 extern OSAL_QUEUE_HANDLE_TYPE g_appQueue;
-extern void ZDO_ResetNetworkConf_Callback (void *resp);
-extern void ZDO_MgmtNwkUpdateNotf_CallBack(void *resp);
-extern void ZDO_WakeUpInd_CallBack(void *resp);
-extern void ZDO_BindIndication_CallBack(void *resp);
-extern void ZDO_UnbindIndication_CallBack(void *resp);
-extern void APP_ZigbeeStackInit();
+void APP_ZigbeeStackInit(void);
 
 #endif /* _APP_BLE_H */
 

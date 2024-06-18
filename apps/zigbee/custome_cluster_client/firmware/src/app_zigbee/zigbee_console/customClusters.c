@@ -118,7 +118,7 @@ ZCL_Cluster_t customClientClusters[CUSTOM_CLIENT_CLUSTERS_COUNT] =
   DEFINE_COLOR_CONTROL_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &customColorControlClusterClientAttributes, &customColorControlClusterClientCommands),
   DEFINE_SCENES_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &customScenesClusterClientAttributes, &customScenesClientCommands),
   DEFINE_COMMISSIONING_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &customCommissioningClusterClientAttributes, &customCommissioningClusterCommands),
-  DEFINE_FLOWRATEMONITOR_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &flowratemonitorClientClusterAttributes, &flowratemonitorClientClusterCommands),
+  DEFINE_FLOWRATEMONITOR_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &flowratemonitorClientClusterAttributes, &flowratemonitorClusterCommands),
 };
 
 

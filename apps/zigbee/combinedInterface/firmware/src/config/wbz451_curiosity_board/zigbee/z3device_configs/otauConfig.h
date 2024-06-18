@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OTAU_CONFIG_H_
-#define _OTAU_CONFIG_H_
+#ifndef OTAU_CONFIG_H
+#define OTAU_CONFIG_H
 
 #include <zigbee/z3device_configs/zigbeeAppConfig.h>
 //-----------------------------------------------
@@ -295,4 +295,4 @@
 #endif //#if (APP_Z3_DEVICE_TYPE ==  APP_DEVICE_TYPE_COMBINED_INTERFACE)
 #endif //#if (APP_USE_OTAU == 1)
 
-#endif // _OTAU_CONFIG_H_
+#endif // OTAU_CONFIG_H

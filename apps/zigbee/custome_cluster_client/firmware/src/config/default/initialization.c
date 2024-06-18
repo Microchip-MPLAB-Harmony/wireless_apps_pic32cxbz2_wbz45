@@ -266,6 +266,12 @@ SYSTEM_OBJECTS sysObj;
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+#define QUEUE_LENGTH_ZIGBEE (16)
+
+#define QUEUE_ITEM_SIZE_ZIGBEE (sizeof(void *))
+
+OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
+
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -291,12 +297,6 @@ SYSTEM_OBJECTS sysObj;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-
-#define QUEUE_LENGTH_ZIGBEE (16)
-
-#define QUEUE_ITEM_SIZE_ZIGBEE (sizeof(void *))
-
-OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
 
 
 
@@ -417,7 +417,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -427,9 +427,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    SERCOM0_USART_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM0_USART_Initialize();
 
     TC0_TimerInitialize();
 
@@ -504,7 +504,7 @@ void SYS_Initialize ( void* data )
 
     CRYPT_WCCB_Initialize();
 	// Create ZIGBEE Stack Message QUEUE
-    OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
+    (void)OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
 
     // Retrieve Zigbee's data from Information Base
     ZB_CS_SYS_IBData_t zgbIBdata = {0};

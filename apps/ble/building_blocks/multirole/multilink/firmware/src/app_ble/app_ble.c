@@ -46,6 +46,7 @@
 
 
 
+
 #include "app_trsps_handler.h"
 
 #include "app_trspc_handler.h"
@@ -71,7 +72,7 @@
 // Section: Global Variables
 // *****************************************************************************
 // *****************************************************************************
-static BLE_DD_Config_T         ddConfig;
+BLE_DD_Config_T         g_ddConfig;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -163,7 +164,7 @@ void APP_BleStackEvtHandler(STACK_Event_T *p_stackEvt)
     //Direct event to BLE middleware
     BLE_DM_BleEventHandler(p_stackEvt);
 
-    BLE_DD_BleEventHandler(&ddConfig, p_stackEvt);
+    BLE_DD_BleEventHandler(&g_ddConfig, p_stackEvt);
 
     //Direct event to BLE profiles
     /* Transparent Profile */
@@ -210,9 +211,10 @@ static void APP_BleConfigBasic(void)
     BLE_GAP_AdvDataParams_T         appAdvData;
     uint8_t scanRspData[]={0x0B, 0x09, 0x70, 0x69, 0x63, 0x33, 0x32, 0x63, 0x78, 0x2D, 0x62, 0x7A};
     BLE_GAP_AdvDataParams_T         appScanRspData;
+    
 
     // Configure advertising parameters
-    BLE_GAP_SetAdvTxPowerLevel(9,&advTxPower);      /* Advertising TX Power */
+    BLE_GAP_SetAdvTxPowerLevel(15,&advTxPower);      /* Advertising TX Power */
     
     (void)memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
     advParam.intervalMin = 32;     /* Advertising Interval Min */
@@ -240,7 +242,6 @@ static void APP_BleConfigAdvance(void)
 
     BLE_SMP_Config_T                smpParam;
 
-
     BLE_GAP_ScanningParams_T        scanParam;
     BLE_DM_Config_T                 dmConfig;
     BLE_GAP_ServiceOption_T         gapServiceOptions;
@@ -248,7 +249,7 @@ static void APP_BleConfigAdvance(void)
 
     // Configure Device Name
     BLE_GAP_SetDeviceName(sizeof(devName), devName);    /* Device Name */
-
+    
 
     // GAP Service option
     gapServiceOptions.charDeviceName.enableWriteProperty = false;             /* Enable Device Name Write Property */
@@ -256,7 +257,6 @@ static void APP_BleConfigAdvance(void)
     gapServiceOptions.charPeriPreferConnParam.enable = false;                    /* Enable Peripheral Preferred Connection Parameters */
 
     BLE_GAP_ConfigureBuildInService(&gapServiceOptions);
-
 
     // Configure scan parameters
     scanParam.type = BLE_GAP_SCAN_TYPE_PASSIVE_SCAN;      /* Scan Type */
@@ -285,9 +285,10 @@ static void APP_BleConfigAdvance(void)
 
 
     // Configure BLE_DD middleware parameters
-    ddConfig.waitForSecurity = false;
-    ddConfig.initDiscInCentral = true;
-    ddConfig.initDiscInPeripheral = false;
+    g_ddConfig.waitForSecurity = false;
+    g_ddConfig.initDiscInCentral = true;
+    g_ddConfig.initDiscInPeripheral = false;
+    g_ddConfig.disableConnectedDisc = false;
 }
 
 void APP_BleStackInitBasic(void)
@@ -341,6 +342,7 @@ void APP_BleStackInitAdvance(void)
     /* Transparent Profile */
     BLE_TRSPC_Init();                                   /* Enable Client Role */
     BLE_TRSPC_EventRegister(APP_TrspcEvtHandler);   /* Enable Client Role */
+
 
 
 

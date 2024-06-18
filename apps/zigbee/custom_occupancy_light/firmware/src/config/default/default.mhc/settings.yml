@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: default
 folderName: custom_occupancy_light
-frameworkPath: C:\CH37
+frameworkPath: D:\May_17_Harmonyrepo
 processor: WBZ451
 projectName: custom_occupancy_light
 settings:

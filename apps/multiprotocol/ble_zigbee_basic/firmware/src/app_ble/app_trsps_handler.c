@@ -43,8 +43,17 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+//#include <app_zigbee/app_zigbee_handler.h>
+//#include <app_zigbee/zigbee_console/console.h>
+//#include <zcl/include/zclZllIdentifyCluster.h>
+//#include <zcl/include/zclZllGroupsCluster.h>
+#include <zcl/include/zclZllOnOffCluster.h>
+//#include <zcl/include/zclZllScenesCluster.h>
+#include <z3device/light/include/lightOnOffCluster.h>
+//#include "ble/profile_ble/ble_trsps/ble_trsps.h"
 #include "app_trsps_handler.h"
 #include "peripheral/gpio/plib_gpio.h"
+
 
 
 // *****************************************************************************
@@ -103,9 +112,11 @@ void APP_TrspsEvtHandler(BLE_TRSPS_Event_T *p_event)
                 switch(cmd[1])
                 {
                     case 0x01:
+						lightOnOffClusterServerAttributes.onOff.value = 1;
                         RED_LED_Set();
                     break;
                     case 0x00:
+					    lightOnOffClusterServerAttributes.onOff.value = 0;
                         RED_LED_Clear();
                     break;
                 }

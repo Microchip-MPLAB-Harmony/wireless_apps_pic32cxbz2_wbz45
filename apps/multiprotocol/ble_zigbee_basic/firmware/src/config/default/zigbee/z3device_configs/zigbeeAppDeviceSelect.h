@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _Z3_DEVICETYPE_CONFIG_H_
-#define _Z3_DEVICETYPE_CONFIG_H_
+#ifndef Z3_DEVICETYPE_CONFIG_H
+#define Z3_DEVICETYPE_CONFIG_H
 
 /* Application Device Types Definitions - Do Not Change */
 #define APP_DEVICE_TYPE_COLOR_SCENE_CONTROLLER  1
@@ -84,6 +84,6 @@
 #define CS_BDB_SECONDARY_CHANNELS_MASK     0x5ef7000 //standard
 
 #ifndef CPU_CLK_HZ
-#define CPU_CLK_HZ              64000000  // Core CPU Clock
+#define CPU_CLK_HZ              64000000U  // Core CPU Clock
 #endif
 #endif

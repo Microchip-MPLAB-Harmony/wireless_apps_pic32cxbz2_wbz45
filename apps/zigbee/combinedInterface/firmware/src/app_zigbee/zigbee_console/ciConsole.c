@@ -92,6 +92,7 @@
 #include <zcl/include/zclOTAUCluster.h>
 #endif
 
+
 /******************************************************************************
                     Defines section
 ******************************************************************************/
@@ -171,10 +172,11 @@ static void processColorLoopSetCmd(const ScanValue_t *args);
 static void processStopMoveStepCmd(const ScanValue_t *args);
 static void processMoveColorTemperatureCmd(const ScanValue_t *args);
 static void processStepColorTemperatureCmd(const ScanValue_t *args);
-
-//IAS Zone and ACE cluster
+//IAS ACE cluster
 static void processACEGetPanelStatusChangedCommand(const ScanValue_t *args);
 static void processACEGetZoneStatusChangedCommand(const ScanValue_t *args);
+
+//IAS ZONE cluster
 static void processInitiateZoneEnrollmentProc(const ScanValue_t *args);
 
 //SCENES CLUSTER
@@ -199,6 +201,9 @@ static void processResetAlarmCmd(const ScanValue_t *args);
 static void processResetAllAlarmsCmd(const ScanValue_t *args);
 static void processResetAlarmLogCmd(const ScanValue_t *args);
 static void processGetAlarmCmd(const ScanValue_t *args);
+
+
+
 
 #endif // ZCL_COMMANDS_IN_CONSOLE == 1
 
@@ -353,7 +358,7 @@ const ConsoleCommand_t zclHelpCmds[]=
   {"setTimeStatus", "dddd", processSetTimeStatus, "-> setTimeStatus [master][synchronized][masterZoneDst][superseding]\r\n"},
   {"IasAceGetPanelStatusChangedCommand", "sdddddd",processACEGetPanelStatusChangedCommand,
     "->Panel StatusChanged Command Sent:[addrMode][addr][ep][panel_status][seconds_remaining][audible_noti][alarmstatus]\r\n"},
-  {"IasAceZoneStatusChangedCommand", "sdddddd",processACEGetZoneStatusChangedCommand,
+  {"IasAceZoneStatusChangedCommand", "sdddddd",processACEGetZoneStatusChangedCommand,  
     "->Zone StatusChanged Command Sent:[addrMode][addr][ep][zoneId][zone_status][audible][zone_label]\r\n"},
   {"ZoneInitiateNormalOperatingModeCommand", "sdd",processZoneInitiateNormalOperatingModeCommand,
     "->Send ZoneInitiateNormalOperatingModeCommand:[addrMode][addr][ep]\r\n"},
@@ -368,6 +373,7 @@ const ConsoleCommand_t zclHelpCmds[]=
   {"resetAlarmLog", "sdd", processResetAlarmLogCmd, "Sends resetAlarmLog command: resetAlarmLog [addrMode][addr][ep]\r\n"},
   {"getAlarm", "sdd", processGetAlarmCmd, "Sends get alarm command: getAlarm [addrMode][addr][ep]\r\n"},
 
+    
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
   {0,0,0,0},
 };
@@ -599,7 +605,6 @@ static void processMoveToLevelCmd(const ScanValue_t *args)
   levelControlSendMoveToLevel(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp,
     args[3].uint8, args[4].uint16, args[5].uint8, args[6].uint8, args[7].uint8);
 }
-
 /**************************************************************************//**
 \brief Processes Off with Effect command
 
@@ -610,6 +615,7 @@ static void processOffWithEffectCmd(const ScanValue_t *args)
   onOffSendOffWithEffect(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp,
     args[3].uint8, args[4].uint8);
 }
+
 
 /**************************************************************************//**
 \brief Processes On with recall global scene command
@@ -631,7 +637,6 @@ static void processOnWithTimedOffCmd(const ScanValue_t *args)
   onOffSendOnWithTimedOff(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp,
     args[3].uint8, args[4].uint16, args[5].uint16);
 }
-
 /**************************************************************************//**
 \brief Processes Move command
 
@@ -816,7 +821,6 @@ static void processIdentifyQueryCmd(const ScanValue_t *args)
 {
   identifySendIdentifyQuery(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp);
 }
-
 /**************************************************************************//**
 \brief Processes On/Off/Toggle command
 
@@ -835,7 +839,6 @@ static void processOnOffToggleCmd(const ScanValue_t *args)
 
   onOffSendOnOffToggle(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp, (OnOffToggle_t)command);
 }
-
 #ifdef OTAU_SERVER
 /**************************************************************************//**
 \brief Processes image notify command
@@ -1283,7 +1286,6 @@ static void processGetEndpointListCmd(const ScanValue_t *args)
                                  args[2].uint8   /* start index */
                                 );
 }
-
 /**************************************************************************//**
 \brief Processes EnhancedViewScene command
 
@@ -1294,7 +1296,6 @@ static void processSetPointChange(const ScanValue_t *args)
   ciSendSetpointRaiseLowerCommand(determineAddressMode(args), args[1].uint16, args[2].uint8,
     srcEp, args[3].int8, args[4].int8);
 }
-
 /**************************************************************************//**
 \brief Processes ACE Get Panel Status Change Command
 
@@ -1316,7 +1317,6 @@ static void processACEGetZoneStatusChangedCommand(const ScanValue_t *args)
     aceZoneStatusChangedCommand(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp,
     args[3].uint8, args[4].uint8, (ZCL_AudibleNotification_t)args[5].uint8, args[6].str);  
 }
-
 /**************************************************************************//**
 \brief Processes EnhancedAddScene command
 
@@ -1383,7 +1383,6 @@ static void processCopySceneCmd(const ScanValue_t *args)
 
 }
 
-
 /**************************************************************************//**
 \brief Processes EnhancedViewScene command
 
@@ -1444,6 +1443,7 @@ static void processGetAlarmCmd(const ScanValue_t *args)
 {
   alarmsSendGetAlarm(determineAddressMode(args), args[1].uint16, args[2].uint8, srcEp);
 }
+
 
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
 

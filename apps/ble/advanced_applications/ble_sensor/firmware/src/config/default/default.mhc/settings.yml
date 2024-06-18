@@ -1,9 +1,9 @@
 format_version: v1.0
 configName: default
-folderName: ble_sensor_tcc0
-frameworkPath: mcc
+folderName: ble_sensor
+frameworkPath: C:\BLE Chimera+Buckland
 processor: WBZ451
-projectName: ble_sensor_tcc0
+projectName: ble_sensor
 settings:
   PackageFilter: ''
   FORCE_OPTIMIZATION: 'false'

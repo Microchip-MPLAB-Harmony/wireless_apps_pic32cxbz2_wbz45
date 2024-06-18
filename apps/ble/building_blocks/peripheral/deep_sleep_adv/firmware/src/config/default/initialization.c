@@ -48,7 +48,6 @@
 #include "device.h"
 
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -233,7 +232,6 @@ OSAL_QUEUE_HANDLE_TYPE bleRequestQueueHandle;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-#define REGULATORY_REGION "ETSI"
 
 
 
@@ -296,7 +294,6 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
     }
 
 }
-
 void _on_reset(void)
 {
     //Need to clear register before configure any GPIO
@@ -315,8 +312,6 @@ void _on_reset(void)
         PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
                                         | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
     }
-    
-    CLK_Initialize();
 }
 
 
@@ -329,7 +324,6 @@ void _on_reset(void)
 // *****************************************************************************
 
 /* MISRAC 2012 deviation block end */
-
 
 /*******************************************************************************
   Function:
@@ -374,21 +368,16 @@ void SYS_Initialize ( void* data )
 
 
   
-    //CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
-    /*PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
-                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));*/
+    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
 
-    DEVICE_DeepSleepWakeSrc_T wakeSrc;
-    DEVICE_GetDeepSleepWakeUpSrc(&wakeSrc);
-    
+
 
 	GPIO_Initialize();
 
-    if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE)
-    {
-        RTC_Initialize();
-    }
+    RTC_Initialize();
 
     NVM_Initialize();
 
@@ -461,6 +450,7 @@ void SYS_Initialize ( void* data )
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 
     // Retrieve BLE calibration data
+    (void)memset(&btSysCfg, 0, sizeof(BT_SYS_Cfg_T));
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
 
@@ -471,9 +461,11 @@ void SYS_Initialize ( void* data )
 
 
     //Configure BLE option
+    (void)memset(&btOption, 0, sizeof(BT_SYS_Option_T));
     btOption.hciMode = false;
     btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
     btOption.p_cmnMemAddr = s_btMem;
+    btOption.deFeatMask = 0;
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);

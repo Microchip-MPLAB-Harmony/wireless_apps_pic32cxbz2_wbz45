@@ -323,6 +323,25 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
     }
 
 }
+void _on_reset(void)
+{
+    //Need to clear register before configure any GPIO
+    DEVICE_ClearDeepSleepReg();
+
+    // Initialize the RF Clock Generator
+    SYS_ClkGen_Config();
+
+    /* Can't call a RAM function before __pic32c_data_initialization
+       Must call a flash function, but in A0 HW version, RAM function is required to avoid HW issue.
+       Thus, will not config PCHE before __pic32c_data_initialization in A0 version.
+    */
+    // Configure Prefetch, Wait States
+    if (DSU_REGS->DSU_DID & DSU_DID_REVISION_Msk)   //A1 and later version
+    {
+        PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
+                                        | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+    }
+}
 
 
 
@@ -376,14 +395,9 @@ void SYS_Initialize ( void* data )
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
-    // Initialize the RF Clock Generator
-    SYS_ClkGen_Config();
-
-    // Configure Cache and Wait States
-    PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -392,9 +406,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    SERCOM0_USART_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM0_USART_Initialize();
 
     RTC_Initialize();
 
@@ -470,6 +484,7 @@ void SYS_Initialize ( void* data )
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 
     // Retrieve BLE calibration data
+    (void)memset(&btSysCfg, 0, sizeof(BT_SYS_Cfg_T));
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
 
@@ -480,9 +495,11 @@ void SYS_Initialize ( void* data )
 
 
     //Configure BLE option
+    (void)memset(&btOption, 0, sizeof(BT_SYS_Option_T));
     btOption.hciMode = false;
     btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
     btOption.p_cmnMemAddr = s_btMem;
+    btOption.deFeatMask = 0;
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);

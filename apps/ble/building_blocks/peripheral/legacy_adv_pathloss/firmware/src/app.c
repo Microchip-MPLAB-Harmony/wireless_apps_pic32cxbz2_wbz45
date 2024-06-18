@@ -189,8 +189,8 @@ void APP_Tasks ( void )
                 else if(p_appMsg->msgId==APP_MSG_CONNECT_CB)
                 {
                     APP_Msg_T appMsg;
-                   // Create an instance of the BLE_GAP_SetPathLossReportingParams_T structure
-                    BLE_GAP_SetPathLossReportingParams_T params;
+                   // Create an instance of the BLE_GAP_PathLossReportingParams_T structure
+                    BLE_GAP_PathLossReportingParams_T params;
 
                         // Fill in the structure fields with appropriate values
                     params.connHandle = conn_handle/* Set the connection handle */;

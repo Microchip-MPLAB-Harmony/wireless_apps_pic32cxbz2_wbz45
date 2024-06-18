@@ -65,18 +65,18 @@ void GPIO_Initialize ( void )
           /* PORTA Initialization */
     GPIOA_REGS->GPIO_CNPDSET = 0x7fffU; /* Pull-Down Enable */
     /* PORTB Initialization */
-    GPIOB_REGS->GPIO_ANSELCLR = 0xff; /* Digital Mode Enable */
+    GPIOB_REGS->GPIO_LAT = 0x0U; /* Initial Latch Value */
+    GPIOB_REGS->GPIO_TRISCLR = 0xffffU; /* Direction Control */
+    GPIOB_REGS->GPIO_ANSELCLR = 0x40U; /* Digital Mode Enable */
+    GPIOB_REGS->GPIO_CNPUSET = 0xf886U; /* Pull-Up Enable */
+    GPIOB_REGS->GPIO_CNPDSET = 0x29U; /* Pull-Down Enable */
 
 
     /* PPS Input Remapping */
 
     /* PPS Output Remapping */
 
-    /*  PB  */
-    GPIOB_REGS->GPIO_ANSELSET = 0x0040; //PB6 ANSEL for Temp sensor
-    GPIOB_REGS->GPIO_TRISSET = 0xFFFF;  //Set all pins as input
-    GPIOB_REGS->GPIO_CNPUSET = 0xF886;  //Pull up: PRB 1, 2, 7, 11, 12 , 13 ,14 , 15
-    GPIOB_REGS->GPIO_CNPDSET = 0x0029;  //Pull down RB0,3,5 for LED
+
 }
 
 // *****************************************************************************

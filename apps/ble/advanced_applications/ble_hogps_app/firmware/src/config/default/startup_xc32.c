@@ -112,21 +112,6 @@ void __attribute__((optimize("-O1"),long_call))Dummy_App_Func(void)
     return;
 }
 
-__attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCHE_SetupRam(void)
-{
-    // Set Flash Wait states and enable pre-fetch
-    // clear PFMWS and ADRWS
-    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
-                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
-
-    // write completion delay
-    for(int i=1; i<10; i++)
-    {
-        asm ("NOP");
-    }
-}
-
-
 /**
  * \brief This is the code that gets called on processor reset.
  * To initialize the device, and call the main() routine.
@@ -166,10 +151,6 @@ void __attribute__((optimize("-O1"), section(".text.Reset_Handler"), long_call, 
      * Data initialization from the XC32 .dinit template */
     __pic32c_data_initialization();
 
-    if (!(DSU_REGS->DSU_DID & DSU_DID_REVISION_Msk))   //HW A0 version
-    {
-        PCHE_SetupRam();
-    }
 
 #  ifdef SCB_VTOR_TBLOFF_Msk
     /*  Set the vector-table base address in FLASH */

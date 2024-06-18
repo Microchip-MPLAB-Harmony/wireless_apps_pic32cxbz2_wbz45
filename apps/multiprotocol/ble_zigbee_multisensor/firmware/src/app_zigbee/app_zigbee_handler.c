@@ -66,11 +66,11 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event);
 void Cluster_Event_Handler(APP_Zigbee_Event_t event);
 void Zigbee_Event_Handler(APP_Zigbee_Event_t event);
 
-#define MIN_COLOR_LEVEL           0
-#define MAX_COLOR_LEVEL           0xfeff
+#define MIN_COLOR_LEVEL           0u      //Added to avoid MISRA_c_2014_10.4 Violation
+#define MAX_COLOR_LEVEL           0xfeffu
 
-#define MIN_SATURATION_LEVEL      0
-#define MAX_SATURATION_LEVEL      0xfe
+#define MIN_SATURATION_LEVEL      0u
+#define MAX_SATURATION_LEVEL      0xfeu
 // *****************************************************************************
 // *****************************************************************************
 // Section: Functions
@@ -111,6 +111,7 @@ void APP_Zigbee_Handler(APP_Zigbee_Event_t event)
         break;
 
         default:
+            /*default none handler */
         break;
     }
 }
@@ -601,7 +602,13 @@ void Cluster_Event_Handler(APP_Zigbee_Event_t event)
           }
         }
         break;
+        
+        //Custom Clusters       
+
+
+
         default:
+           //Default no process 
         break;
     }
 }

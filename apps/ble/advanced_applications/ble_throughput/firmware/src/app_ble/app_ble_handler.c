@@ -239,13 +239,13 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event) {
         {
             p_bleConn = APP_GetConnInfoByConnHandle(p_event->eventField.evtEncryptStatus.connHandle);
 
-            if (p_event->eventField.evtEncryptStatus.status != BLE_GAP_ENCRYPT_SUCCESS) {
+            if (p_event->eventField.evtEncryptStatus.status != GAP_STATUS_SUCCESS) {
                 BLE_GAP_Disconnect(p_event->eventField.evtEncryptStatus.connHandle, GAP_DISC_REASON_REMOTE_TERMINATE);
             }
 
             if (p_bleConn) {
                 /* Set Encryption */
-                if (p_event->eventField.evtEncryptStatus.status == BLE_GAP_ENCRYPT_SUCCESS) {
+                if (p_event->eventField.evtEncryptStatus.status == GAP_STATUS_SUCCESS) {
                     p_bleConn->secuData.encryptionStatus = 1; //enable
                 } else {
                     p_bleConn->secuData.encryptionStatus = 0; //disable
@@ -356,12 +356,12 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event) {
 
 void APP_BleL2capEvtHandler(BLE_L2CAP_Event_T *p_event) {
     switch (p_event->eventId) {
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_REQ:
         {
         }
             break;
 
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_RSP:
         {
             /* TODO: implement your application code.*/
         }
