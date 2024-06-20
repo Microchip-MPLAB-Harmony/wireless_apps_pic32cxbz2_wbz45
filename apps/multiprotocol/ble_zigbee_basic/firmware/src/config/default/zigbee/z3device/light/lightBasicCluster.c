@@ -77,6 +77,13 @@ PROGMEM_DECLARE(ZCL_BasicClusterServerCommands_t lightBasicClusterServerCommands
   ZCL_DEFINE_BASIC_CLUSTER_COMMANDS(resetToFactoryDefaultsInd)
 };
 
+static uint8_t swBuild[] = {15, 97, 98, 99, 100, 101, 102, 103, 104} ;//'a','b','c','d','e','f','g','h'};
+static uint8_t productURL[] = {31, 11, 119, 119, 46, 109, 105, 99, 114, 111, 99, 104, 105, 112}; //www.microchip.com
+static uint8_t productCode[]= {31, 88, 89, 90, 49, 50, 51,}; //XYZ123
+static uint8_t dateCode[]= {15, 50, 48, 49, 53, 48, 57, 48, 49 }; //20150901
+static uint8_t modelIdentifier[] = {31, 90, 76, 79, 68, 101, 118, 105, 99, 101}; //ZLODevice
+static uint8_t manufacturerName[] = {31, 77, 105, 99 ,114 ,111 ,99 ,104 ,105, 112, 32}; //Microchip
+
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
@@ -94,18 +101,18 @@ void lightBasicClusterInit(void)
   lightBasicClusterServerAttributes.applicationVersion.value  = APP_VERSION;
   lightBasicClusterServerAttributes.stackVersion.value        = STACK_VERSION;
   lightBasicClusterServerAttributes.hwVersion.value           = HW_VERSION;
-  memcpy(lightBasicClusterServerAttributes.manufacturerName.value, "\x1f Microchip ", 12);
-  memcpy(lightBasicClusterServerAttributes.modelIdentifier.value, "\x1f ZLODevice", 11);
-  memcpy(lightBasicClusterServerAttributes.dateCode.value, "\xf 20150901", 10);
+  (void)memcpy(lightBasicClusterServerAttributes.manufacturerName.value, manufacturerName, sizeof(manufacturerName));
+  (void)memcpy(lightBasicClusterServerAttributes.modelIdentifier.value, modelIdentifier, sizeof(modelIdentifier));
+  (void)memcpy(lightBasicClusterServerAttributes.dateCode.value, dateCode, sizeof(dateCode));
 
 #if ZLO_CLUSTER_ENHANCEMENTS == 1
   lightBasicClusterServerAttributes.genericDeviceClass.value  = LIGHTING_DEVICE_CLASS;
   lightBasicClusterServerAttributes.genericDeviceType.value   = LED_BULB_DEVICE_TYPE;
-  memcpy(lightBasicClusterServerAttributes.productCode.value, "\x1f\x4XYZ123", 8);
-  memcpy(lightBasicClusterServerAttributes.productURL.value, "\x1f www.microchip.com", 15);
+  (void)memcpy(lightBasicClusterServerAttributes.productCode.value, productCode, sizeof(productCode));
+  (void)memcpy(lightBasicClusterServerAttributes.productURL.value, productURL, sizeof(productURL));
 #endif
 
-  memcpy(lightBasicClusterServerAttributes.swBuildId.value, "\xf abcdefgh", 10);
+  (void)memcpy(lightBasicClusterServerAttributes.swBuildId.value, swBuild, sizeof(swBuild));
 #if ZLO_EXTRA_CLUSTERS_SUPPORT == 1
   lightBasicClusterClientAttributes.clusterVersion.value      = BASIC_CLUSTER_VERSION;
 #endif
@@ -126,16 +133,20 @@ static ZCL_Status_t resetToFactoryDefaultsInd(ZCL_Addressing_t *addressing, uint
   
   for (uint8_t i=0; i<LIGHT_SERVER_CLUSTER_INIT_COUNT; i++)
   {
-    if (lightServerClusterInitFunctions[i])
+    if ((lightServerClusterInitFunctions[i]) != NULL)
+    {
       (lightServerClusterInitFunctions[i])();
+    }
   }
 
   for (uint8_t i=0; i < LIGHT_CLIENT_CLUSTER_INIT_COUNT; i++)
   {
-    if (lightClientClusterInitFunctions[i])
+    if ((lightClientClusterInitFunctions[i]) != NULL)
+    {
       (lightClientClusterInitFunctions[i])();
+    }
   }
-   PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
+   (void)PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
 
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;
@@ -151,10 +162,11 @@ static ZCL_Status_t resetToFactoryDefaultsInd(ZCL_Addressing_t *addressing, uint
 void basicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
+  }
   fillCommandRequest(req, ZCL_BASIC_CLUSTER_SERVER_RESET_TO_FACTORY_DEFAULTS_COMMAND_ID, 0, srcEp);
   fillDstAddressing(&req->dstAddressing, mode, addr, ep, BASIC_CLUSTER_ID);
 

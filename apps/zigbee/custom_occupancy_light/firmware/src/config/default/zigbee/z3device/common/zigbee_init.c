@@ -55,12 +55,11 @@
 #include <mac_phy/mac_hwd_phy/RF231_RF212/PHY/include/phySet.h>
 #include <hal/cortexm4/pic32cx/include/halAppClock.h>
 
-#define VECTOR_TABLE_SIZE (128)
-#define QUEUE_LENGTH (8)
+#define VECTOR_TABLE_SIZE (128U)
+#define QUEUE_LENGTH (8U)
 #define QUEUE_ITEM_SIZE (sizeof(void *))
 
 // extern functions
-extern void APP_ZigbeeStackCb(void *response);
 
 // Queue Pointer received from Application
 extern OSAL_QUEUE_HANDLE_TYPE apiRequestQueueHandle; 
@@ -89,13 +88,13 @@ void ZB_EventRegister(ZB_AppGenericCallBack app_ZBStackCb)
   Remarks:
     See prototype in zgp_task.h.
 *******************************************************************************/
-void Zigbee_Init(OSAL_API_LIST_TYPE *osalAPIList,OSAL_QUEUE_HANDLE_TYPE *zigbeeRequestQueueHandle ,
-                 uint32_t *sram_vector_table , ZB_CS_SYS_IBData_t *zgbIBdata)
+void Zigbee_Init(OSAL_API_LIST_TYPE *osalApiList,OSAL_QUEUE_HANDLE_TYPE *zigbeeReqQueueHandle ,
+                 uint32_t *sramVectorTable , ZB_CS_SYS_IBData_t *zgbIBdata)
 {
   uint32_t *flash_vector_table     = (uint32_t *)0x00000000;
   uint8_t devicePowerType;
-  zos = osalAPIList;   // Store the OSAL functions to local pointer
-  apiRequestQueueHandle = *zigbeeRequestQueueHandle;    // API Request queue from application task
+  zos = osalApiList;   // Store the OSAL functions to local pointer
+  apiRequestQueueHandle = *zigbeeReqQueueHandle;    // API Request queue from application task
 
 
   /*Setting Device Power Type*/
@@ -109,17 +108,21 @@ void Zigbee_Init(OSAL_API_LIST_TYPE *osalAPIList,OSAL_QUEUE_HANDLE_TYPE *zigbeeR
     devicePowerType = (uint8_t) CS_DEVICE_POWER_LPA_ONLY;
     CS_WriteParameter(CS_DEVICE_POWER_ID, &devicePowerType);	
   }
+  else
+  {
+       //add else for avoid misra rule 15.7
+  }
 
-  if(sram_vector_table)
+  if(sramVectorTable != NULL)
   {
     // initialize the vector table in SRAM from the vector table in flash
     for (uint32_t i = 0; i < VECTOR_TABLE_SIZE; i++)
     {
-        sram_vector_table[i] = flash_vector_table[i];
+        sramVectorTable[i] = flash_vector_table[i];
     }
     // set the ARM core Vector Table Offset Register value to the sram vector table
     // from now on the ARM core will use the new vecrtor table to handle the exceptions.
-    SCB->VTOR = (uint32_t)&sram_vector_table;
+    SCB->VTOR = (uint32_t)&sramVectorTable;
   }
 
   if (!PHY_Init())
@@ -135,4 +138,16 @@ void Zigbee_Init(OSAL_API_LIST_TYPE *osalAPIList,OSAL_QUEUE_HANDLE_TYPE *zigbeeR
   
   //PHY_setTxPowerinDbm(power);  
 
+}
+/*******************************************************************************
+  Function:
+    void ZB_Sys_HpaInit(ZbHpaCpsSetCallback_t setHpaCpsCallback)
+
+  \param[in] callback to application 
+  Remarks:
+    See prototype in zgp_task.h.
+*******************************************************************************/
+void ZB_Sys_HpaInit(ZbHpaCpsSetCallback_t setHpaCpsCallback)
+{
+    ZB_HpaInit(setHpaCpsCallback);
 }

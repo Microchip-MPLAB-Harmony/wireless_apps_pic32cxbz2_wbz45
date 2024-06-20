@@ -44,8 +44,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _HALDBG_H
-#define _HALDBG_H
+#ifndef HALDBG_H
+#define HALDBG_H
 
 /******************************************************************************
                    Includes section
@@ -70,8 +70,8 @@ enum
   SLEEPTIMER_NULLCALLBACK_0                = 0x200a,
   ADC_NULLCALLBACK_0                       = 0x200b,
   EEPROM_EMULATION_NO_MEMORY               = 0x200c,
-  EEPROM_EMULATION_NOT_INITIALIZED_0       = 0x200d,
-  EEPROM_EMULATION_NOT_INITIALIZED_1       = 0x200e,
+  EEPROM_EMUL_NOT_INITIALIZED_0            = 0x200d,
+  EEPROM_EMUL_NOT_INITIALIZED_1            = 0x200e,
   EEPROM_EMULATION_NOT_INITIALIZED_2       = 0x200f,
   EEPROM_EMULATION_BAD_ADDRESS_0           = 0x2010,
   EEPROM_EMULATION_BAD_ADDRESS_1           = 0x2011,
@@ -101,6 +101,6 @@ enum
                    Prototypes section
 ******************************************************************************/
 
-#endif /* _HALDBG_H */
+#endif /* HALDBG_H */
 
 // eof halDbg.h

@@ -148,6 +148,15 @@ void halAesSetKeyIV(const uint8_t *key, const uint8_t *iv);
  ******************************************************************************/
 void halAesCBC_Decrypt(uint8_t *text,uint32_t length);
 
+/**************************************************************************//**
+\brief Aes HAL Handling of request
+
+\param[out] None
+\param[in] None
+\return None
+******************************************************************************/
+void halSmRequestHandler (void);
+
 #ifdef __cplusplus
 }
 #endif

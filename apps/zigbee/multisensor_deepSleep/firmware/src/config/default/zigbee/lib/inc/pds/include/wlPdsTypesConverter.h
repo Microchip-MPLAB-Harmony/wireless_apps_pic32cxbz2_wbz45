@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _WLPDS_TYPESCONVERTER
-#define _WLPDS_TYPESCONVERTER
+#ifndef WLPDS_TYPESCONVERTER
+#define WLPDS_TYPESCONVERTER
 
 /******************************************************************************
                    Includes section
@@ -78,7 +78,7 @@ be stored in the non-volatile memory and identified via BC_EXT_GEN_MEMORY_MEM_ID
 typedef struct
 {
   uint64_t         csUid;
-  uint8_t          txPower;
+  int8_t           txPower;
   uint64_t         extPanId;
   uint32_t         channelMask;
   uint8_t          channelPage;
@@ -134,5 +134,5 @@ bool pdsIsItemUnderSecurityControl(S_Nv_ItemId_t id);
 void fillExtendedBcSet(void);
 
 
-#endif // _WLPDS_TYPESCONVERTER
+#endif // WLPDS_TYPESCONVERTER
 /* eof wlPdsTypesConverter.h */

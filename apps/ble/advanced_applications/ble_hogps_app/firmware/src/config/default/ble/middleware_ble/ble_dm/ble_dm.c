@@ -99,8 +99,8 @@ bool BLE_DM_Init(void)
     if (BLE_DM_InfoInit() == false)
     {
         return false;
-}
-
+    }            
+    
     return BLE_DM_ConnInit();
 }
 
@@ -141,7 +141,7 @@ uint16_t BLE_DM_Config(BLE_DM_Config_T *p_config)
     }
 }
 
-uint16_t BLE_DM_ProceedSecurity(uint16_t connHandle, uint8_t repairing)
+uint16_t BLE_DM_ProceedSecurity(uint16_t connHandle, bool repairing)
 {
     return BLE_DM_SmPairing(connHandle, repairing);
 }

@@ -76,11 +76,11 @@
 // *****************************************************************************
 /* Service Declaration */
 static const uint8_t s_svcUuidOtas[] = {UUID_OTA_SERVICE_16};
-static const uint16_t s_svcUuidOtasLen = sizeof(s_svcUuidOtas);
+static const uint16_t s_svcUuidOtasLen = (uint16_t)sizeof(s_svcUuidOtas);
 
 /* Feature Characteristic Declaration */
 static const uint8_t s_charOtasFeature[] = {ATT_PROP_READ, UINT16_TO_BYTES(BLE_OTAS_HDL_FEATURE_VAL), UUID_OTA_CHAR_FEATURE};
-static const uint16_t s_charOtasFeatureLen = sizeof(s_charOtasFeature);
+static const uint16_t s_charOtasFeatureLen = (uint16_t)sizeof(s_charOtasFeature);
 
 /* Feature Characteristic Value */
 static const uint8_t s_chUuidOtasFeature[] = {UUID_OTA_CHAR_FEATURE};
@@ -89,7 +89,7 @@ static uint16_t s_otasFeatureValLen = 1;
 
 /* Control Point Characteristic Declaration */
 static const uint8_t s_charOtasCtrl[] = {(ATT_PROP_WRITE_REQ|ATT_PROP_NOTIFY), UINT16_TO_BYTES(BLE_OTAS_HDL_CTRL_VAL), UUID_OTA_CHAR_CTRL_PT};
-static const uint16_t s_charOtasCtrlLen = sizeof(s_charOtasCtrl);
+static const uint16_t s_charOtasCtrlLen = (uint16_t)sizeof(s_charOtasCtrl);
 
 /* Control Point Characteristic Value */
 static const uint8_t s_chUuidOtasCtrl[] = {UUID_OTA_CHAR_CTRL_PT};
@@ -98,11 +98,11 @@ static uint16_t s_otasCtrlValLen = 1;
 
 /* Control Point Client Characteristic Configuration Descriptor */
 static uint8_t s_descCccOtasCtrl[] = {UINT16_TO_BYTES(0x0000)};
-static const uint16_t s_descCccOtasCtrlLen = sizeof(s_descCccOtasCtrl);
+static const uint16_t s_descCccOtasCtrlLen =(uint16_t)sizeof(s_descCccOtasCtrl);
 
 /* Data Characteristic Declaration */
 static const uint8_t s_charOtasData[] = {ATT_PROP_WRITE_CMD|ATT_PROP_NOTIFY, UINT16_TO_BYTES(BLE_OTAS_HDL_DATA_VAL), UUID_OTA_CHAR_DATA};
-static const uint16_t s_charOtasDataLen = sizeof(s_charOtasData);
+static const uint16_t s_charOtasDataLen = (uint16_t)sizeof(s_charOtasData);
 
 /* Data Characteristic Value */
 static const uint8_t s_chUuidOtasData[] = {UUID_OTA_CHAR_DATA};
@@ -111,7 +111,7 @@ static uint16_t s_otasDataValLen = 1;
 
 /* Data Client Characteristic Configuration Descriptor */
 static uint8_t s_descCccOtasData[] = {UINT16_TO_BYTES(0x0000)};
-static const uint16_t s_descCccOtasDataLen = sizeof(s_descCccOtasData);
+static const uint16_t s_descCccOtasDataLen = (uint16_t)sizeof(s_descCccOtasData);
 
 /* Attributes list for OTA service */
 static GATTS_Attribute_T s_otasList[] =
@@ -121,7 +121,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_gattUuidPrimSvc,
         (uint8_t *) s_svcUuidOtas,
         (uint16_t *) &s_svcUuidOtasLen,
-        sizeof(s_svcUuidOtas),
+        (uint16_t)sizeof(s_svcUuidOtas),
         0,
         PERMISSION_READ
     },
@@ -130,7 +130,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charOtasFeature,
         (uint16_t *) &s_charOtasFeatureLen,
-        sizeof(s_charOtasFeature),
+        (uint16_t)sizeof(s_charOtasFeature),
         0,
         (PERMISSION_READ)
     },
@@ -139,7 +139,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) s_chUuidOtasFeature,
         (uint8_t *) s_otasFeatureVal,
         (uint16_t *) &s_otasFeatureValLen,
-        sizeof(s_otasFeatureVal),
+        (uint16_t)sizeof(s_otasFeatureVal),
         (SETTING_MANUAL_READ_RSP|SETTING_UUID_16),
         (PERMISSION_READ|PERMISSION_READ_ENC)
     },
@@ -148,7 +148,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charOtasCtrl,
         (uint16_t *) &s_charOtasCtrlLen,
-        sizeof(s_charOtasCtrl),
+        (uint16_t)sizeof(s_charOtasCtrl),
         0,
         (PERMISSION_READ)
     },
@@ -166,7 +166,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_descUuidCcc,
         s_descCccOtasCtrl,
         (uint16_t *) &s_descCccOtasCtrlLen,
-        sizeof(s_descCccOtasCtrl),
+        (uint16_t)sizeof(s_descCccOtasCtrl),
         (SETTING_MANUAL_WRITE_RSP|SETTING_CCCD),
         (PERMISSION_READ|PERMISSION_READ_ENC|PERMISSION_WRITE|PERMISSION_WRITE_ENC)
     },
@@ -175,7 +175,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charOtasData,
         (uint16_t *) &s_charOtasDataLen,
-        sizeof(s_charOtasData),
+        (uint16_t)sizeof(s_charOtasData),
         0,
         (PERMISSION_READ)
     },
@@ -193,7 +193,7 @@ static GATTS_Attribute_T s_otasList[] =
         (uint8_t *) g_descUuidCcc,
         s_descCccOtasData,
         (uint16_t *) &s_descCccOtasDataLen,
-        sizeof(s_descCccOtasData),
+        (uint16_t)sizeof(s_descCccOtasData),
         (SETTING_MANUAL_WRITE_RSP|SETTING_CCCD),
         (PERMISSION_READ|PERMISSION_READ_ENC|PERMISSION_WRITE|PERMISSION_WRITE_ENC)
     }
@@ -201,8 +201,8 @@ static GATTS_Attribute_T s_otasList[] =
 
 static const GATTS_CccdSetting_T s_otasCccdSetting[] = 
 {
-    {BLE_OTAS_HDL_CTRL_CCCD, (NOTIFICATION)},
-    {BLE_OTAS_HDL_DATA_CCCD, (NOTIFICATION)}
+    {(uint16_t)BLE_OTAS_HDL_CTRL_CCCD, (NOTIFICATION)},
+    {(uint16_t)BLE_OTAS_HDL_DATA_CCCD, (NOTIFICATION)}
 };
 
 /* OTA Service structure */
@@ -211,8 +211,8 @@ static GATTS_Service_T s_svcOtas =
     NULL,
     (GATTS_Attribute_T *) s_otasList,
     (GATTS_CccdSetting_T const *)s_otasCccdSetting,
-    BLE_OTAS_START_HDL,
-    BLE_OTAS_END_HDL,
+    (uint16_t)BLE_OTAS_START_HDL,
+    (uint16_t)BLE_OTAS_END_HDL,
     BLE_OTAS_CCCD_NUM
 };
 
@@ -224,6 +224,6 @@ static GATTS_Service_T s_svcOtas =
 
 uint16_t BLE_OTAS_Add(void)
 {
-    return GATTS_AddService(&s_svcOtas, (BLE_OTAS_END_HDL - BLE_OTAS_START_HDL + 1));
+    return GATTS_AddService(&s_svcOtas, (uint8_t)((uint16_t)BLE_OTAS_END_HDL - (uint16_t)BLE_OTAS_START_HDL + 1U));
 }
 

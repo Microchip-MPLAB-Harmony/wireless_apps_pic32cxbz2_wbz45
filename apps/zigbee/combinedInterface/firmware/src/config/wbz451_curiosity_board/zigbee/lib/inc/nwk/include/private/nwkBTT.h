@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_BTT_H
-#define _NWK_BTT_H
+#if !defined NWK_BTT_H
+#define NWK_BTT_H
 
 /******************************************************************************
                                 Includes section
@@ -170,6 +170,6 @@ NWK_PRIVATE NwkBTTTableAnswer_t nwkAddOwnBTR(const uint8_t sequenceNumber);
 #else
 #define nwkAddOwnBTR(sequenceNumber) (void)0
 #endif /* NWK_ALWAYS_REJECT_OWN_BROADCAST */
-#endif /* _NWK_BTT_H */
+#endif /* NWK_BTT_H */
 /** eof nwkBTT.h */
 

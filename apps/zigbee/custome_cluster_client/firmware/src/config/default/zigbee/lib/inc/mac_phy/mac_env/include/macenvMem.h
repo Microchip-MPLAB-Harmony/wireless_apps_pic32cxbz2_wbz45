@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACENVMEM_H
-#define _MACENVMEM_H
+#ifndef MACENVMEM_H
+#define MACENVMEM_H
 
 /******************************************************************************
                     Includes section
@@ -134,6 +134,6 @@ typedef struct
   PhyPibAttr_t phyAttr;
 } PIB_t;
 
-#endif /*_MACENVMEM_H*/
+#endif /*MACENVMEM_H*/
 
 // eof macphyPibMem.h

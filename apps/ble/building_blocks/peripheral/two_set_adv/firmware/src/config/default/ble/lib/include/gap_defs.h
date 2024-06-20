@@ -87,9 +87,9 @@ extern "C" {
 #define GAP_STATUS_CONNECTION_ACCEPT_TIMEOUT                 (0x10U)        /**< Connection Accept Timeout Exceeded. */
 #define GAP_STATUS_UNSUPPORTED_FEATURE                       (0x11U)        /**< Unsupported Feature or Parameter Value. */
 #define GAP_STATUS_INVALID_HCI_COMMAND_PARAMETERS            (0x12U)        /**< Invalid HCI Command Parameters. */
-#define GAP_STATUS_REMOTE_TERMINATE_CONNECTION               (0x13U)        /**< Remote User Terminated Connection. */
-#define GAP_STATUS_REMOTE_TERMINATE_CONNECTION_LOW_RESOURCE  (0x14U)        /**< Remote Device Terminated Connection due to Low Resources. */
-#define GAP_STATUS_REMOTE_TERMINATE_CONNECTION_POWEROFF      (0x15U)        /**< Remote Device Terminated Connection due to Power Off. */
+#define GAP_STATUS_REMOTE_TML_CONN               			 (0x13U)        /**< Remote User Terminated Connection. */
+#define GAP_STATUS_REMOTE_TML_CONN_LOW_RESOURCE  			 (0x14U)        /**< Remote Device Terminated Connection due to Low Resources. */
+#define GAP_STATUS_REMOTE_TML_CONN_POWEROFF      			 (0x15U)        /**< Remote Device Terminated Connection due to Power Off. */
 #define GAP_STATUS_LOCAL_HOST_TERMINATE_CONNECTION           (0x16U)        /**< Connection Terminated By Local Host. */
 #define GAP_STATUS_REPEATED_ATTEMPTS                         (0x17U)        /**< Repeated Attempts. */
 #define GAP_STATUS_PAIRING_NOT_ALLOWED                       (0x18U)        /**< Pairing Not Allowed. */
@@ -111,15 +111,12 @@ extern "C" {
 #define GAP_STATUS_INSTANT_PASSED                            (0x28U)        /**< Instant Passed. */
 #define GAP_STATUS_PAIRING_WITH_UNIT_KEY_NOT_SUPPORT         (0x29U)        /**< Pairing With Unit Key Not Supported. */
 #define GAP_STATUS_DIFFERENT_TRANSACTION_COLLISION           (0x2AU)        /**< Different Transaction Collision. */
-#define GAP_STATUS_RESERVED_FOR_FUTURE_USE1                  (0x2BU)        /**< Reserved for Future Use. */
 #define GAP_STATUS_QOS_UNACCEPTABLE_PARAMETER                (0x2CU)        /**< QoS Unacceptable Parameter. */
 #define GAP_STATUS_QOS_REJECTED                              (0x2DU)        /**< QoS Rejected. */
 #define GAP_STATUS_CHANNEL_CLASSIFICATION_NOT_SUPPORT        (0x2EU)        /**< Channel Classification Not Supported. */
 #define GAP_STATUS_INSUFFICIENT_SECURITY                     (0x2FU)        /**< Insufficient Security. */
 #define GAP_STATUS_PARAMETER_OUT_OF_MANDATORY_RANGE          (0x30U)        /**< Parameter Out Of Mandatory Range. */
-#define GAP_STATUS_RESERVED_FOR_FUTURE_USE2                  (0x31U)        /**< Reserved for Future Use. */
 #define GAP_STATUS_ROLE_SWITCH_PENDING                       (0x32U)        /**< Role Switch Pending. */
-#define GAP_STATUS_RESERVED_FOR_FUTURE_USE3                  (0x33U)        /**< Reserved for Future Use. */
 #define GAP_STATUS_RESERVED_SLOT_VIOLATION                   (0x34U)        /**< Reserved Slot Violation. */
 #define GAP_STATUS_ROLE_SWITCH_FAILED                        (0x35U)        /**< Role Switch Failed. */
 #define GAP_STATUS_EXTENDED_INQUIRY_RESPONSE_TOO_LARGE       (0x36U)        /**< Extended Inquiry Response Too Large. */

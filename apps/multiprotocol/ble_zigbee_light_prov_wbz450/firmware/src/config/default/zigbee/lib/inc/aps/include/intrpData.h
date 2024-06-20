@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _INTRP_DATA_H
-#define _INTRP_DATA_H
+#if !defined INTRP_DATA_H
+#define INTRP_DATA_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -232,6 +232,6 @@ void INTRP_DataInd(INTRP_DataInd_t *ind);
 void INTRP_DataIndRegisterCallback(INTRP_DataIndCallback_t callback);
 
 #endif /* _INTERPAN_ */
-#endif /* _INTRP_DATA_H */
+#endif /* INTRP_DATA_H */
 /** eof intrpData.h */
 

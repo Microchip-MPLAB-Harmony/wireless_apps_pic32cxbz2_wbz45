@@ -38,8 +38,8 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-#ifndef _CUSTOMTIMECLUSTER_H
-#define _CUSTOMTIMECLUSTER_H
+#ifndef CUSTOMTIMECLUSTER_H
+#define CUSTOMTIMECLUSTER_H
 /******************************************************************************
                     Includes section
 ******************************************************************************/
@@ -124,4 +124,4 @@ void timeSetTimezoneAndDSTAttributes(int32_t timeZone, uint32_t dstStart, uint32
 ******************************************************************************/
 void timeSetTimeStatus(bool master, bool synchronized, bool masterZoneDst, bool superseding);
 
-#endif // _CUSTOMTIMECLUSTER_H
+#endif // CUSTOMTIMECLUSTER_H

@@ -147,7 +147,7 @@ void CS_GetMemory(CS_MemoryItemId_t memoryId, void **memoryPtr)
 {
   CS_MemoryItem_t item = csGetItem(memoryId);
 
-  SYS_E_ASSERT_FATAL(((memoryId & CS_TYPE_MASK) == CS_MEM_PARAM_TYPE), CS_GET_MEM0);
+  SYS_E_ASSERT_FATAL((((uint16_t)memoryId & CS_TYPE_MASK) == CS_MEM_PARAM_TYPE), (uint16_t)CS_GET_MEM0);
 
   *memoryPtr = item.value.ramValue;
 }
@@ -219,21 +219,21 @@ static void csReadInternalParameter(CS_MemoryItemId_t parameterId, void *paramet
 {
   CS_MemoryItem_t item = csGetItem(parameterId);
 
-  SYS_E_ASSERT_FATAL(parameterValue, CS_READ_PARAM0);
+  SYS_E_ASSERT_FATAL((parameterValue != NULL), (uint16_t)CS_READ_PARAM0);
 
-  switch (parameterId & CS_TYPE_MASK)
+  switch ((uint16_t)parameterId & CS_TYPE_MASK)
   {
     case CS_RAM_PARAM_TYPE:
-      memcpy(parameterValue, item.value.ramValue, item.size);
+      (void)memcpy(parameterValue, item.value.ramValue, item.size);
       break;
 
     case CS_FLASH_PARAM_TYPE:
-      memcpy_P(parameterValue, item.value.flashValue, item.size);
+      (void)memcpy_P(parameterValue, item.value.flashValue, item.size);
       break;
 
     case CS_MEM_PARAM_TYPE:
     default:
-      SYS_E_ASSERT_FATAL(0U, CS_READ_PARAM1);
+      SYS_E_ASSERT_FATAL(0U, (uint16_t)CS_READ_PARAM1);
       break;
   }
   return;
@@ -307,10 +307,10 @@ static void csWriteParameterInternal(CS_MemoryItemId_t parameterId,
 {
   CS_MemoryItem_t item = csGetItem(parameterId);
 
-  SYS_E_ASSERT_FATAL(parameterValue, CS_WRITE_PARAM0);
-  SYS_E_ASSERT_FATAL(((parameterId & CS_TYPE_MASK) == CS_RAM_PARAM_TYPE), CS_WRITE_PARAM1);
+  SYS_E_ASSERT_FATAL((parameterValue != NULL), (uint16_t)CS_WRITE_PARAM0);
+  SYS_E_ASSERT_FATAL(((uint16_t)((uint16_t)parameterId & CS_TYPE_MASK) == CS_RAM_PARAM_TYPE), (uint16_t)CS_WRITE_PARAM1);
 
-  memcpy(item.value.ramValue, parameterValue, item.size);
+  (void)memcpy(item.value.ramValue, parameterValue, item.size);
 }
 #endif /* !defined(ZAPPSI_HOST) || defined(ZCL_SUPPORT) */
 
@@ -340,7 +340,7 @@ void CS_PdsDefaultValue(void)
   csSIB.csExtPANID = CCPU_TO_LE64(CS_EXT_PANID);
   csNIB.channelPage = CS_CHANNEL_PAGE;
   csNIB.deviceType = CS_DEVICE_TYPE;
-  csSIB.csRxOnWhenIdle = (CS_DEVICE_TYPE == DEVICE_TYPE_END_DEVICE) ? CS_RX_ON_WHEN_IDLE : true;
+  csSIB.csRxOnWhenIdle =(bool)((CS_DEVICE_TYPE == DEVICE_TYPE_END_DEVICE) ? CS_RX_ON_WHEN_IDLE : true);
   csSIB.csComplexDescriptorAvailable = CS_COMPLEX_DESCRIPTOR_AVAILABLE;
   csSIB.csUserDescriptorAvailable = CS_USER_DESCRIPTOR_AVAILABLE;
   csSIB.csNwkPanid = CCPU_TO_LE16(CS_NWK_PANID);
@@ -388,9 +388,9 @@ void CS_PdsDefaultValue(void)
 
   /* Buffers cleaning */
 #if defined(_ENABLE_PERSISTENT_SERVER_)
-  memset(&stackBuffers.csNeibTable, 0, CS_NEIB_TABLE_SIZE);
+  (void)memset(&stackBuffers.csNeibTable, 0, CS_NEIB_TABLE_SIZE);
   #if defined(_BINDING_) && (CS_APS_BINDING_TABLE_SIZE > 0)
-    memset(&stackBuffers.csApsBindingTable, 0, CS_APS_BINDING_TABLE_SIZE);
+    (void)memset(&stackBuffers.csApsBindingTable, 0, CS_APS_BINDING_TABLE_SIZE);
   #endif /* _BINDING_ */
   #if defined(_SECURITY_)
   {
@@ -401,11 +401,11 @@ void CS_PdsDefaultValue(void)
   #endif /* _SECURITY_ */
 #endif /* _ENABLE_PERSISTENT_SERVER_ */
 #if defined (_GROUP_TABLE_)
-  memset(&stackBuffers.csGroupTable, 0, CS_GROUP_TABLE_SIZE);
+  (void)memset(&stackBuffers.csGroupTable, 0, CS_GROUP_TABLE_SIZE);
 #endif /* _GROUP_TABLE_ */
 #if defined(_SECURITY_)
   #if defined _LINK_SECURITY_ && CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT > 0
-    memset(&stackBuffers.csApsKeyPairDescriptors, 0, CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT);
+    (void)memset(&stackBuffers.csApsKeyPairDescriptors, 0, CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT);
   #endif /* _LINK_SECURITY_ */
 #endif /* _SECURITY_ */
 #if defined(_PERMISSIONS_) && CS_PERMISSIONS_TABLE_SIZE > 0
@@ -432,28 +432,28 @@ static CS_MemoryItem_t csGetItem(CS_MemoryItemId_t itemId)
     .size = 0,
     .value = {0}
   };
-  uint8_t itemInternalId = itemId & CS_ID_MASK;
+  uint8_t itemInternalId = ((uint8_t)itemId & CS_ID_MASK);
 
   /* Read item info from the FLASH */
-  switch (itemId & CS_TYPE_MASK)
+  switch ((uint16_t)itemId & CS_TYPE_MASK)
   {
     case CS_RAM_PARAM_TYPE:
       //sysAssert(itemInternalId < ARRAY_SIZE(csVarItems), CS_GET_ITEM0);
-      memcpy_P(&item, &csVarItems[itemInternalId], sizeof(CS_MemoryItem_t));
+      (void)memcpy_P(&item, &csVarItems[itemInternalId], sizeof(CS_MemoryItem_t));
       break;
 
     case CS_FLASH_PARAM_TYPE:
       //sysAssert(itemInternalId < ARRAY_SIZE(csConstItems), CS_GET_ITEM1);
-      memcpy_P(&item, &csConstItems[itemInternalId], sizeof(CS_MemoryItem_t));
+      (void)memcpy_P(&item, &csConstItems[itemInternalId], sizeof(CS_MemoryItem_t));
       break;
 
     case CS_MEM_PARAM_TYPE:
       //sysAssert(itemInternalId < ARRAY_SIZE(csMemItems), CS_GET_ITEM2);
-       memcpy_P(&item, &csMemItems[itemInternalId], sizeof(CS_MemoryItem_t));
+       (void)memcpy_P(&item, &csMemItems[itemInternalId], sizeof(CS_MemoryItem_t));
        break;
 
     default:
-      SYS_E_ASSERT_FATAL(0U, CS_GET_ITEM3);
+      SYS_E_ASSERT_FATAL(0U, (uint16_t)CS_GET_ITEM3);
       break;
   }
 

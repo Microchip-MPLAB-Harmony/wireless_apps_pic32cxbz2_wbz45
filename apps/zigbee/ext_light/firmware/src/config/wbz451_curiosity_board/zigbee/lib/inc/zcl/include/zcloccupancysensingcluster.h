@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLOCCUPANCYSENSINGCLUSTER_H
-#define _ZCLOCCUPANCYSENSINGCLUSTER_H
+#ifndef ZCLOCCUPANCYSENSINGCLUSTER_H
+#define ZCLOCCUPANCYSENSINGCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -464,5 +464,5 @@ typedef struct PACK
 END_PACK
 
 
-#endif /* _ZCLOCCUPANCYSENSINGCLUSTER_H */
+#endif /* ZCLOCCUPANCYSENSINGCLUSTER_H */
 

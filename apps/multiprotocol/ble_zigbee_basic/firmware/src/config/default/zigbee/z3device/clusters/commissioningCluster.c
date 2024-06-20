@@ -60,13 +60,13 @@ static void fillEndpointInformationPayload(ZCL_EndpointInformation_t *payload)
 {
   ExtAddr_t ieeeAddr;
 
-  memcpy(&ieeeAddr, MAC_GetExtAddr(), sizeof(ExtAddr_t));
+  (void)memcpy(&ieeeAddr, MAC_GetExtAddr(), sizeof(ExtAddr_t));
 
   payload->ieeeAddress    = ieeeAddr;
   payload->networkAddress = NWK_GetShortAddr();
   payload->endpointId     = APP_SRC_ENDPOINT_ID;
   payload->profileId      = APP_PROFILE_ID;
-  payload->deviceId       = APP_Z3DEVICE_ID;
+  payload->deviceId       = (uint16_t)APP_Z3DEVICE_ID;
   payload->version        = APP_VERSION;
 }
 
@@ -80,15 +80,15 @@ static void fillEndpointInformationPayload(ZCL_EndpointInformation_t *payload)
 void commissioningSendEndpointInformation(ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
   {
     return;
   }
 
   // fill command request
   fillCommandRequest(req, ZCL_COMMISSIONING_CLUSTER_ENDPOINT_INFORMATION_COMMAND_ID,
-                     sizeof(ZCL_EndpointInformation_t), srcEp);
+                     (uint8_t)sizeof(ZCL_EndpointInformation_t), srcEp);
 
   // fill command payload
   fillEndpointInformationPayload((ZCL_EndpointInformation_t *)req->requestPayload);
@@ -122,7 +122,7 @@ uint8_t fillGetGroupIdentifiersResponsePayload(ZCL_GetGroupIdentifiersResponse_t
       payload->recordList[n].groupType = 0;
       n++;
 
-      size += sizeof(ZCL_GroupInformationRecord_t);
+      size += (uint8_t)sizeof(ZCL_GroupInformationRecord_t);
     }
 
     group = NWK_NextGroup(group);
@@ -148,15 +148,15 @@ uint8_t fillGetEndpointListResponsePayload(ZCL_GetEndpointListResponse_t *payloa
 {
   uint8_t size = sizeof(uint8_t) /*total*/ + sizeof(uint8_t) /*startIndex*/ + sizeof(uint8_t) /*count*/;
 
-  if (0 == startIndex)
+  if (0U == startIndex)
   {
     payload->recordList[0].networkAddress = NWK_GetShortAddr();
     payload->recordList[0].endpointId = APP_SRC_ENDPOINT_ID;
     payload->recordList[0].profileId = APP_PROFILE_ID;
-    payload->recordList[0].deviceId = APP_Z3DEVICE_ID;
+    payload->recordList[0].deviceId = (uint16_t)APP_Z3DEVICE_ID;
     payload->recordList[0].version = APP_VERSION;
 
-    size += sizeof(ZCL_EndpointInformationRecord_t);
+    size += (uint8_t)sizeof(ZCL_EndpointInformationRecord_t);
     payload->count = 1;
   }
   else
@@ -179,15 +179,15 @@ void commissioningSendGetGroupIdentifiers(ShortAddr_t addr, Endpoint_t ep, Endpo
 {
   ZCL_Request_t *req;
   ZCL_GetGroupIdentifiers_t *getGroupIdentifiersCmd;
-  
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
   {
     return;
   }
 
   // fill command request 
   fillCommandRequest(req, ZCL_COMMISSIONING_CLUSTER_GET_GROUP_IDENTIFIERS_COMMAND_ID,
-                     sizeof(ZCL_GetGroupIdentifiers_t),srcEp);
+                     (uint8_t)sizeof(ZCL_GetGroupIdentifiers_t),srcEp);
 
   // fill command payload
   getGroupIdentifiersCmd = (ZCL_GetGroupIdentifiers_t *)req->requestPayload;
@@ -210,15 +210,15 @@ void commissioningGetEndpointList(ShortAddr_t addr, Endpoint_t ep,Endpoint_t src
 {
   ZCL_Request_t *req;
   ZCL_GetEndpointList_t *getEndpointListCmd;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
   {
     return;
   }
 
   // fill command request
   fillCommandRequest(req, ZCL_COMMISSIONING_CLUSTER_GET_ENDPOINT_LIST_COMMAND_ID,
-                     sizeof(ZCL_GetEndpointList_t), srcEp);
+                     (uint8_t)sizeof(ZCL_GetEndpointList_t), srcEp);
 
   // fill command payload
   getEndpointListCmd = (ZCL_GetEndpointList_t *)req->requestPayload;

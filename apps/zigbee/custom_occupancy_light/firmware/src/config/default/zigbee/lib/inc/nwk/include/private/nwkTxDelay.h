@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_TX_DELAY_H
-#define _NWK_TX_DELAY_H
+#if !defined NWK_TX_DELAY_H
+#define NWK_TX_DELAY_H
 // DOM-IGNORE-END
 
 
@@ -122,6 +122,6 @@ NWK_PRIVATE uint32_t nwkGetBroadcastDeliveryTime(void);
 NWK_PRIVATE void nwkPassiveAckConf(NwkTxDelayReq_t *const delayReq);
 #endif /* _NWK_PASSIVE_ACK_ */
 
-#endif /* _NWK_TX_DELAY_H */
+#endif /* NWK_TX_DELAY_H */
 /** eof nwkTxDelay.h */
 

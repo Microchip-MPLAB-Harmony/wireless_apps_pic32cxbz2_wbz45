@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_END_DEVICE_BINDING_H
-#define _ZDO_END_DEVICE_BINDING_H
+#if !defined ZDO_END_DEVICE_BINDING_H
+#define ZDO_END_DEVICE_BINDING_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -53,7 +53,7 @@
 
 /******************************************************************************
                                Definition section
- *****************************************************************************
+ *****************************************************************************/
  
 // DOM-IGNORE-BEGIN
 /** Pre-configured timeout duration awaiting a second End_Device_Bind_req.
@@ -77,7 +77,7 @@
 // DOM-IGNORE-END
 /******************************************************************************
                                  Types section
- ******************************************************************************
+ ******************************************************************************/
 /** States of End Device Binding module. */
 typedef enum _ZdoEndDeviceBindingState_t
 {
@@ -168,6 +168,6 @@ ZDO_PRIVATE void zdoResetEndDeviceBinding(void);
 
 #endif /* _COORDINATOR_ */
 #endif /* _END_DEVICE_BINDING_ */
-#endif /* _ZDO_END_DEVICE_BINDING_H */
+#endif /* ZDO_END_DEVICE_BINDING_H */
 /** eof zdoEndDeviceBinding.h */
 

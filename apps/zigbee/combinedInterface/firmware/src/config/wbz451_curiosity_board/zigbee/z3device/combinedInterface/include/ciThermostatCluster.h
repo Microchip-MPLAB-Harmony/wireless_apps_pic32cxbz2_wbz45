@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CITHERMOSTATCLUSTER_H
-#define _CITHERMOSTATCLUSTER_H
+#ifndef CITHERMOSTATCLUSTER_H
+#define CITHERMOSTATCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -87,6 +87,6 @@ void ciThermostatClusterInit(void);
 void ciSendSetpointRaiseLowerCommand(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,Endpoint_t srcEp,
   int8_t setPointMode, int8_t amount);
 
-#endif // _CITHERMOSTATCLUSTER_H
+#endif // CITHERMOSTATCLUSTER_H
 
 // eof ciThermostatCluster.h

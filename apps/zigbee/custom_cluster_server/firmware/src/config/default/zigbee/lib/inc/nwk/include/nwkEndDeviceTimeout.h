@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _NWK_END_DEVICE_TIMEOUT_H
-#define _NWK_END_DEVICE_TIMEOUT_H
+#ifndef NWK_END_DEVICE_TIMEOUT_H
+#define NWK_END_DEVICE_TIMEOUT_H
 
 /******************************************************************************
                                Includes section
@@ -100,7 +100,7 @@ typedef struct
   } service;
   /** The requested timeout enumeration. */
   NwkEndDeviceTimeout_t timeout;
-  /** This bitmask indicates the end device?? requested configuration. */
+  /** This bitmask indicates the end deviceâ??s requested configuration. */
   uint8_t endDeviceConfiguration;
   /** Confirm callback fucntion's pointer. */
   void (*NWK_EndDeviceTimeoutConf)(NWK_EndDeviceTimeoutConf_t *conf);
@@ -171,5 +171,5 @@ void NWK_EndDeviceTimeoutInd(NWK_EndDeviceTimeoutInd_t *ind);
   \return    None. ******************************************************************************/
 uint8_t NWK_SetEndDeviceTimeoutByParent(const ExtAddr_t edExtAddr, uint8_t edTimeoutEnumeration);
 
-#endif /* _NWK_END_DEVICE_TIMEOUT_H */
+#endif /* NWK_END_DEVICE_TIMEOUT_H */
 /** eof nwkEndDeviceTimeout.h */

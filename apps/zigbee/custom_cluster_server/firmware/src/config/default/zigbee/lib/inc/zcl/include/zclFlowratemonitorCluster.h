@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ZCLFLOWRATEMONITOR_H
-#define _ZCLFLOWRATEMONITOR_H
+#ifndef ZCLFLOWRATEMONITOR_H
+#define ZCLFLOWRATEMONITOR_H
 
 /*******************************************************************************
                    Includes section
@@ -51,14 +51,12 @@
 /******************************************************************************
                     Define(s) section
 ******************************************************************************/
-    
+
 //ATTRIBUTE DEFINITION SECTION
-
-
 #define FLOWRATEMONITOR_CLUSTER_ID                                                     0xfc00
 
 #define ZCL_FLOWRATEMONITOR_SERVER_ATTRIBUTES_AMOUNT                      7
-#define ZCL_FLOWRATEMONITOR_SERVER_COMMANDS_AMOUNT                        0 
+#define ZCL_FLOWRATEMONITOR_SERVER_COMMANDS_AMOUNT                        0
 
 #define ZCL_FLOWRATEMONITOR_CLIENT_ATTRIBUTES_AMOUNT                      1
 #define ZCL_FLOWRATEMONITOR_CLIENT_COMMANDS_AMOUNT                        0

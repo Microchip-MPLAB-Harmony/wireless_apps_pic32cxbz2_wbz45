@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _bcPDS_H
-#define _bcPDS_H
+#ifndef bcPDS_H
+#define bcPDS_H
 // DOM-IGNORE-END
 
 #ifdef _ENABLE_PERSISTENT_SERVER_
@@ -64,6 +64,6 @@ void ZB_PDS_Init (void);
  ******************************************************************************/
 void PDS_StoreByEvents(PDS_MemId_t memoryId);
 
-#endif //_bcPDS_H
+#endif //bcPDS_H
 #endif 
 // eof sspReset.h

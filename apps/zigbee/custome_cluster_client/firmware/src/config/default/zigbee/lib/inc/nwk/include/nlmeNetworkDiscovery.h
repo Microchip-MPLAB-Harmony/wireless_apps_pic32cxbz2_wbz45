@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_NETWORK_DISCOVERY_H
-#define _NLME_NETWORK_DISCOVERY_H
+#if !defined NLME_NETWORK_DISCOVERY_H
+#define NLME_NETWORK_DISCOVERY_H
 
 /******************************************************************************
                                Includes section
@@ -175,6 +175,6 @@ END_PACK
  ******************************************************************************/
 void NWK_NetworkDiscoveryReq(NWK_NetworkDiscoveryReq_t *const req);
 
-#endif /* _NLME_NETWORK_DISCOVERY_H */
+#endif /* NLME_NETWORK_DISCOVERY_H */
 /** eof nlmeNetworkDiscovery.h */
 

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_H
-#define _BDB_H
+#ifndef BDB_H
+#define BDB_H
 
 /***************************************************************************************************
 * INCLUDE FILES
@@ -61,11 +61,11 @@
                     Defines section
 ******************************************************************************/
 #ifndef BDB_INITIATOR_MAX_MATCHED_CLIENT_CLUSTER_COUNT
-#define BDB_INITIATOR_MAX_MATCHED_CLIENT_CLUSTER_COUNT    15
+#define BDB_INITIATOR_MAX_MATCHED_CLIENT_CLUSTER_COUNT    (15)
 #endif
 
 #ifndef BDB_INITIATOR_MAX_MATCHED_SERVER_CLUSTER_COUNT
-#define BDB_INITIATOR_MAX_MATCHED_SERVER_CLUSTER_COUNT    15
+#define BDB_INITIATOR_MAX_MATCHED_SERVER_CLUSTER_COUNT    (15)
 #endif
 
 #ifndef BDB_NODE_JOIN_INFO_ENTRIES_AMOUNT
@@ -75,25 +75,27 @@
 extern QueueDescriptor_t bdbEventsubscribersQueue;
 
 #define RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(queue, callback) \
-  for (BdbEventSubscriber_t* subscriber = getQueueElem(&queue); subscriber; subscriber = getNextQueueElem(subscriber)) \
-    if (subscriber->callback) \
-      subscriber->callback();
+  for (BdbEventSubscriber_t* subscriber = getQueueElem(&(queue)); subscriber != NULL; subscriber = getNextQueueElem(subscriber)){ \
+    if ((subscriber->callback) != NULL){ \
+      subscriber->callback();}\
+     }
 
 #define RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(queue, callback) \
-  for (BdbEventSubscriber_t* subscriber = getQueueElem(&queue); subscriber; subscriber = getNextQueueElem(subscriber)) \
-    if (subscriber->callback) \
-      subscriber->callback(argument);
-
+  for (BdbEventSubscriber_t* subscriber = getQueueElem(&(queue)); subscriber != NULL; subscriber = getNextQueueElem(subscriber)) {\
+    if ((subscriber->callback) != NULL) {\
+      subscriber->callback(argument);}\
+     }
 #define RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_TWO_ARGUMENTS(queue, callback) \
-  for (BdbEventSubscriber_t* subscriber = getQueueElem(&queue); subscriber; subscriber = getNextQueueElem(subscriber)) \
-    if (subscriber->callback) \
-      subscriber->callback(groupIdFirst, groupIdLast);
+  for (BdbEventSubscriber_t* subscriber = getQueueElem(&(queue)); subscriber != NULL; subscriber = getNextQueueElem(subscriber)) {\
+    if ((subscriber->callback) != NULL) {\
+      subscriber->callback(groupIdFirst, groupIdLast);}\
+      }
 
 
 /******************************************************************************
                     Types section
 ******************************************************************************/
-typedef struct _BIB_t
+typedef struct BIB_
 {
   /** Touchlink RSSI Correction. */
   uint8_t touchlinkRssiCorrection;
@@ -148,21 +150,21 @@ typedef enum
 /**************************************************************************//**
 \brief  specifies the commissioning capabilities of the node
  *****************************************************************************/
-typedef struct PACK _BDB_NodeCommissioningCapability_t
+typedef struct PACK BDB_NodeCommissioningCapability_
 {
   LITTLE_ENDIAN_OCTET(5,(
-    uint8_t nwkSteeringSupported              : 1,
-    uint8_t nwkFormationSupported             : 1,
-    uint8_t findingAndBindingSupported        : 1,
-    uint8_t touchlinkComissioningSupported    : 1,
-    uint8_t reserved                          : 4
+    BitField_t nwkSteeringSupported              : 1,
+    BitField_t nwkFormationSupported             : 1,
+    BitField_t findingAndBindingSupported        : 1,
+    BitField_t touchlinkComissioningSupported    : 1,
+    BitField_t reserved                          : 4
   ))
 } BDB_NodeCommissioningCapability_t;
 
 /**************************************************************************//**
 \brief  Defines the attributes/information base of the BDB
  *****************************************************************************/
-typedef struct _BDBIB_t
+typedef struct BDBIB_
 {
   bool bdbJoinUsesInstallCodeKey;
   bool bdbTrustCenterRequireKeyExchange;
@@ -190,7 +192,7 @@ typedef struct
 
 typedef void (*BDB_InvokeCommissioningConfCallback_t)(BDB_InvokeCommissioningConf_t *conf);
 
-typedef struct _BDB_CommissioningConfCallBack
+typedef struct BDB_CommissioningConfCallBack_
 {
   BDB_InvokeCommissioningConfCallback_t callbackFn;
   BDB_InvokeCommissioningConf_t *confirm;
@@ -242,7 +244,7 @@ typedef struct
 
 #if defined(_TRUST_CENTRE_) && defined(ZIGBEE_COORDINATOR)
 /* Describes the status of the trust center join */
-typedef enum _BDB_TcNodeJoinState_t
+typedef enum BDB_TcNodeJoinState_
 {
   BDB_TC_JOIN_STATE_IDLE                    = 0x00,
   BDB_TC_JOIN_STATE_WAITING_FOR_REQUEST_KEY = 0x01,
@@ -274,7 +276,7 @@ typedef struct _BDB_TcNodeJoinInfo_t
 /**************************************************************************//**
 \brief Describes the Endpoint type of the node
 ******************************************************************************/
-typedef enum _BDB_EpType_t
+typedef enum BDB_EpType_
 {
   TARGET_EP,
   INITIATOR_EP,
@@ -283,7 +285,7 @@ typedef enum _BDB_EpType_t
 /**************************************************************************//**
 \brief Describes the channel mask used for set
 ******************************************************************************/
-typedef enum _BDB_ChannelMaskType_t
+typedef enum BDB_ChannelMaskType_
 {
   PRIMARY_CHANNEL_MASK,
   SECONDARY_CHANNEL_MASK
@@ -292,7 +294,7 @@ typedef enum _BDB_ChannelMaskType_t
 /**************************************************************************//**
 \brief Describes the node join link key type. Refer table-7 BDB spec.
 ******************************************************************************/
-typedef enum _BDB_NodeJoinLinkKeyType_t
+typedef enum BDB_NodeJoinLinkKeyType_
 {
   DEFAULT_GLOBAL_TRUST_CENTER_LINK_KEY,
   DISTRIBUTED_SECURITY_GLOBAL_LINK_KEY,
@@ -315,7 +317,7 @@ typedef enum ResetTargetStatus_t
 /**************************************************************************//**
 \brief Describes the parameters of the BDB_EventsSubscribe () function
 ******************************************************************************/
-typedef struct _BdbEventSubscriber_t
+typedef struct BdbEventSubscriber_
 {
   struct
   {
@@ -387,7 +389,7 @@ typedef void (*BDB_InitDone_t)(void);
 /**************************************************************************
 \brief determine enabled commissioning modes
 ***************************************************************************/
-BDB_CommissioningMode_t determineCommissionMode();
+BDB_CommissioningMode_t determineCommissionMode(void);
 
 /******************************************************************************
                     Extern variables
@@ -596,4 +598,4 @@ void BDB_ResetFsm(void);
 ******************************************************************************/
 void BDB_InvokeCommissioningConfirm(BDB_InvokeCommissioningConfCallback_t callbackFn, BDB_InvokeCommissioningConf_t *conf);
 
-#endif // _BDB_H
+#endif // BDB_H

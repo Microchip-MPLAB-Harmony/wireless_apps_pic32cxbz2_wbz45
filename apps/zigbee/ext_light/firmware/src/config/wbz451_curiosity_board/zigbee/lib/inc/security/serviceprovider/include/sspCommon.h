@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPCOMMON_H
-#define _SSPCOMMON_H
+#ifndef SSPCOMMON_H
+#define SSPCOMMON_H
 
 /******************************************************************************
                         Includes section.
@@ -110,6 +110,6 @@ typedef struct
 bool SSP_IsKeyValid(const uint8_t *key);
 
 
-#endif //_SSPCOMMON_H
+#endif //SSPCOMMON_H
 
 // eof sspCommon.h

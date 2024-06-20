@@ -82,7 +82,7 @@ extern "C" {
 /**@brief Enumeration type of BLE HOGPS callback events. */
 typedef enum BLE_HOGPS_EventId_T
 {
-    BLE_HOGPS_EVT_BOOT_MODE_ENTER_IND,                          /**< Indicate HID Boot Mode entered. See @ref BLE_HOGPS_EvtBootModeEnter_T for event details.*/
+    BLE_HOGPS_EVT_BOOT_MODE_ENTER_IND = 0x00U,                  /**< Indicate HID Boot Mode entered. See @ref BLE_HOGPS_EvtBootModeEnter_T for event details.*/
     BLE_HOGPS_EVT_REPORT_MODE_ENTER_IND,                        /**< Indicate HID Report Mode entered. See @ref BLE_HOGPS_EvtReportModeEnter_T for event details.*/
     BLE_HOGPS_EVT_HOST_SUSPEND_ENTER_IND,                       /**< Indicate HID Host entering suspend. See @ref BLE_HOGPS_EvtHostSuspendEnter_T for event details.*/
     BLE_HOGPS_EVT_HOST_SUSPEND_EXIT_IND,                        /**< Indicate HID Host exiting suspend. See @ref BLE_HOGPS_EvtHostSuspendExit_T for event details.*/
@@ -213,6 +213,7 @@ void BLE_HOGPS_EventRegister(BLE_HOGPS_EventCb_T routine);
 */
 void BLE_HOGPS_BleEventHandler(STACK_Event_T *p_stackEvent);
 
+#ifdef HIDS_KEYBOARD_SUPPORT
 /**@brief Set HID keyboard input report.
  *
  * @param[in] p_keyCodeArray        8 bytes of key codes array. From byte 0 to byte 7: |Modifier Keys|Reserved|Keycode 1|Keycode 2|Keycode 3|Keycode 4|Keycode 5|Keycode 6|.
@@ -221,6 +222,7 @@ void BLE_HOGPS_BleEventHandler(STACK_Event_T *p_stackEvent);
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SetKeyboardInputReport(uint8_t *p_keyCodeArray);
+#endif
 
 /**@brief Set HID mouse (Mouse Button) input report.
  *
@@ -243,6 +245,7 @@ uint16_t BLE_HOGPS_SetMouseButtonInputReport(uint8_t buttons, int8_t wheel, int8
 */
 uint16_t BLE_HOGPS_SetMouseMotionInputReport(int16_t xAxis, int16_t yAxis);
 
+#ifdef HIDS_KEYBOARD_SUPPORT
 /**@brief Set HID keyboard output report.
  *
  * @param[in] ledValue              Bit fields (bit 0 - bit 4) represent LED values.
@@ -251,7 +254,10 @@ uint16_t BLE_HOGPS_SetMouseMotionInputReport(int16_t xAxis, int16_t yAxis);
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SetKeyboardOutputReport(uint8_t ledValue);
+#endif
 
+
+#if defined(HIDS_KEYBOARD_SUPPORT) && defined (HIDS_BOOT_PROTOCOL_MODE_SUPPORT)
 /**@brief Set HID boot keyboard input report.
  *
  * @param[in] p_keyCodeArray        8 bytes of key codes array. From byte 0 to byte 7: |Modifier Keys|Reserved|Keycode 1|Keycode 2|Keycode 3|Keycode 4|Keycode 5|Keycode 6|.
@@ -260,7 +266,10 @@ uint16_t BLE_HOGPS_SetKeyboardOutputReport(uint8_t ledValue);
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SetBootKeyboardInputReport(uint8_t *p_keyCodeArray);
+#endif
 
+
+#if defined(HIDS_KEYBOARD_SUPPORT) && defined (HIDS_BOOT_PROTOCOL_MODE_SUPPORT)
 /**@brief Set HID boot keyboard output report.
  *
  * @param[in] ledValue              Bit fields (bit 0 - bit 4) represent LED values.
@@ -269,6 +278,7 @@ uint16_t BLE_HOGPS_SetBootKeyboardInputReport(uint8_t *p_keyCodeArray);
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SetBootKeyboardOutputReport(uint8_t ledValue);
+#endif
 
 /**@brief Set HID boot mouse input report.
  *
@@ -281,6 +291,8 @@ uint16_t BLE_HOGPS_SetBootKeyboardOutputReport(uint8_t ledValue);
 */
 uint16_t BLE_HOGPS_SetBootMouseInputReport(uint8_t buttons, int8_t xAxis, int8_t yAxis);
 
+
+#ifdef HIDS_KEYBOARD_SUPPORT
 /**@brief Send HID keyboard input report.
  *
  * @param[in] connHandle            The connection handle associated with the connection.
@@ -291,6 +303,7 @@ uint16_t BLE_HOGPS_SetBootMouseInputReport(uint8_t buttons, int8_t xAxis, int8_t
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SendKeyboardInputReport(uint16_t connHandle, uint8_t *p_keyCodeArray);
+#endif
 
 /**@brief Send HID mouse (Mouse Button) input report.
  *
@@ -317,6 +330,8 @@ uint16_t BLE_HOGPS_SendMouseButtonInputReport(uint16_t connHandle, uint8_t butto
 */
 uint16_t BLE_HOGPS_SendMouseMotionInputReport(uint16_t connHandle, int16_t xAxis, int16_t yAxis);
 
+
+#if defined(HIDS_KEYBOARD_SUPPORT) && defined (HIDS_BOOT_PROTOCOL_MODE_SUPPORT)
 /**@brief Send HID boot keyboard input report.
  *
  * @param[in] connHandle            The connection handle associated with the connection.
@@ -327,6 +342,7 @@ uint16_t BLE_HOGPS_SendMouseMotionInputReport(uint16_t connHandle, int16_t xAxis
  * @retval MBA_RES_INVALID_PARA     Invalid parameters.
 */
 uint16_t BLE_HOGPS_SendBootKeyboardInputReport(uint16_t connHandle, uint8_t *p_keyCodeArray);
+#endif
 
 /**@brief Send HID boot mouse input report.
  *

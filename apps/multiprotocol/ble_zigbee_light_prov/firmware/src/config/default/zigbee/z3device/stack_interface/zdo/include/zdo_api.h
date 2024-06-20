@@ -80,16 +80,16 @@
 void ZB_ZDO_ZdpReq(ZDO_ZdpReq_t *zdpReq);
 const ShortAddr_t* ZB_ZDO_FindShortByExt(const ExtAddr_t *const extAddr);
 const ExtAddr_t* ZDO_FindExtByShort(const ShortAddr_t shortAddr);
-void ZDO_ResolveAddrReq(ZDO_ResolveAddrReq_t *req);
+
 uint8_t ZDO_GetPreconfiguredStatus(void);
 void ZDO_VerifyKeyReq(ZDO_VerifiKeyReq_t *zdoVerifyKeyReq);
 void ZDO_StartNetworkReq(ZDO_StartNetworkReq_t *req);
 void ZDO_WakeUpReq(ZDO_WakeUpReq_t * req);
 ZDO_Status_t ZDO_StartSyncReq(void);
 ZDO_Status_t ZDO_StopSyncReq(void);
-void ZDO_SleepReq(ZDO_SleepReq_t *req);
+
 void ZDO_TaskHandler(void);
-ZDO_PRIVATE void ZDO_UpdateParentInfo();
+
 void ZDO_ResetNetworkReq(ZDO_ResetNetworkReq_t *req);
 ZDO_NwkStatus_t ZDO_GetNwkStatus(void);
 void ZDO_OrphanScanKeepalive(void);
@@ -100,7 +100,7 @@ void ZDO_SetTxPowerReq(ZDO_SetTxPowerReq_t *req);
 void ZDO_GetNeibAmount(ZDO_GetNeibAmount_t *amount);
 void ZDO_GetNeibTable(ZDO_Neib_t *table);
 bool ZDO_IsDeviceReadyToSleep(void);
-void ZDO_ResetNetworkConf(ZDO_ResetNetworkConf_t *conf);
+
 #if defined(_ROUTER_) || defined(_ENDDEVICE_)
 void ZDO_IncreaseJoinAttemptsAmount(uint8_t amount);
 #endif /* defined(_ROUTER_) || defined(_ENDDEVICE_) */

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _EZMODEMANAGER_H
-#define _EZMODEMANAGER_H
+#ifndef EZMODEMANAGER_H
+#define EZMODEMANAGER_H
 
 /******************************************************************************
                     Includes section
@@ -76,6 +76,6 @@ bool isEzModeInProgress(void);
 \brief resets ezmodeInProgress state
 ******************************************************************************/
 void resetEzModeInProgress(void);
-#endif // _EZMODEMANAGER_H
+#endif // EZMODEMANAGER_H
 
 // eof ezModeManager.h

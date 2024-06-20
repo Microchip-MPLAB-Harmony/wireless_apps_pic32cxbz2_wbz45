@@ -145,7 +145,7 @@ bool BLE_DM_ConnInit(void)
         }
     }
 
-    memset(sp_dmConnCtrl, 0x00, sizeof(BLE_DM_ConnCtrl_T));
+    (void)memset(sp_dmConnCtrl, 0x00, sizeof(BLE_DM_ConnCtrl_T));
 
     for (i=0; i<BLE_GAP_MAX_LINK_NBR; i++)
     {
@@ -195,7 +195,7 @@ static void ble_dm_ConnProcGapConnParamUpdate(BLE_GAP_Event_T *p_event)
         {
             BLE_DM_Event_T  dmEvt;
 
-            if (p_event->eventField.evtConnParamUpdate.status == 0)
+            if (p_event->eventField.evtConnParamUpdate.status == 0U)
             {
                 dmEvt.eventId = BLE_DM_EVT_CONN_UPDATE_SUCCESS;
             }
@@ -218,8 +218,8 @@ static bool ble_dm_ConnCheckRemoteUpdateParams(uint16_t minInterval, uint16_t ma
     /* Check if value in Spec. suggested range. */
     if ((minInterval<BLE_GAP_CP_MIN_CONN_INTVAL_MIN) || (minInterval>BLE_GAP_CP_MIN_CONN_INTVAL_MAX) ||
         (maxInterval<BLE_GAP_CP_MAX_CONN_INTVAL_MIN) || (maxInterval>BLE_GAP_CP_MAX_CONN_INTVAL_MAX) ||
-        (latency<BLE_GAP_CP_LATENCY_MIN) || (latency>BLE_GAP_CP_LATENCY_MAX) ||
-        (timeout<BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MIN) || (timeout>BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MAX) ||
+        (latency>BLE_GAP_CP_LATENCY_MAX) ||
+        (timeout<BLE_GAP_CP_CONN_SUPV_TIMEOUT_MIN) || (timeout>BLE_GAP_CP_CONN_SUPV_TIMEOUT_MAX) ||
         (minInterval>maxInterval))
     {
         return false;
@@ -258,11 +258,11 @@ static void ble_dm_ConnProcGapRemoteConnUpdateReq(BLE_GAP_Event_T *p_event)
             connParams.intervalMax = p_event->eventField.evtRemoteConnParamReq.intervalMax;
             connParams.latency = p_event->eventField.evtRemoteConnParamReq.latency;
             connParams.supervisionTimeout = p_event->eventField.evtRemoteConnParamReq.timeout;
-            BLE_GAP_RemoteConnParamsReqReply(p_event->eventField.evtRemoteConnParamReq.connHandle, &connParams);
+            (void)BLE_GAP_RemoteConnParamsReqReply(p_event->eventField.evtRemoteConnParamReq.connHandle, &connParams);
         }
         else
         {
-            BLE_GAP_RemoteConnParamsReqNegativeReply(p_event->eventField.evtRemoteConnParamReq.connHandle, GAP_STATUS_UNACCEPTABLE_CONNECTION_PARAMETERS);
+            (void)BLE_GAP_RemoteConnParamsReqNegativeReply(p_event->eventField.evtRemoteConnParamReq.connHandle, GAP_STATUS_UNACCEPTABLE_CONNECTION_PARAMETERS);
         }
     }
 }
@@ -296,11 +296,14 @@ static void ble_dm_ConnStackEvtBleGapHandler(BLE_GAP_Event_T *p_event)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
 
-static void ble_dm_ConnProcL2capConnParamUpdateReq(BLE_L2CAP_Event_T *p_event)
+static void ble_dm_ConnProcL2capCpUpdateReq(BLE_L2CAP_Event_T *p_event)
 {
     BLE_DM_ConnUpdateDb_T *p_conn;
 
@@ -319,24 +322,24 @@ static void ble_dm_ConnProcL2capConnParamUpdateReq(BLE_L2CAP_Event_T *p_event)
                 /* Accept request. Send L2CAP response and send LL conn. update request. */
                 BLE_GAP_ConnParams_T paras;
 
-                BLE_L2CAP_ConnParamUpdateRsp(p_event->eventField.evtConnParamUpdateReq.connHandle, BLE_L2CAP_CONN_PARAMS_ACCEPT);
+                (void)BLE_L2CAP_ConnParamUpdateRsp(p_event->eventField.evtConnParamUpdateReq.connHandle, BLE_L2CAP_CONN_PARAMS_ACCEPT);
 
                 paras.intervalMin = p_event->eventField.evtConnParamUpdateReq.intervalMin;
                 paras.intervalMax = p_event->eventField.evtConnParamUpdateReq.intervalMax;
                 paras.latency = p_event->eventField.evtConnParamUpdateReq.latency;
                 paras.supervisionTimeout = p_event->eventField.evtConnParamUpdateReq.timeout;
-                BLE_GAP_UpdateConnParam(p_event->eventField.evtConnParamUpdateReq.connHandle, &paras);
+                (void)BLE_GAP_UpdateConnParam(p_event->eventField.evtConnParamUpdateReq.connHandle, &paras);
             }
             else
             {
                 /* Reject request. Send L2CAP response. */
-                BLE_L2CAP_ConnParamUpdateRsp(p_event->eventField.evtConnParamUpdateReq.connHandle, BLE_L2CAP_CONN_PARAMS_REJECT);
+                (void)BLE_L2CAP_ConnParamUpdateRsp(p_event->eventField.evtConnParamUpdateReq.connHandle, BLE_L2CAP_CONN_PARAMS_REJECT);
             }
         }
     }
 }
 
-static void ble_dm_ConnProcL2capConnParamUpdateResp(BLE_L2CAP_Event_T *p_event)
+static void ble_dm_ConnProcL2capCpUpdateResp(BLE_L2CAP_Event_T *p_event)
 {
     BLE_DM_ConnUpdateDb_T *p_conn;
 
@@ -360,19 +363,22 @@ static void ble_dm_ConnStackEvtBleL2capHandler(BLE_L2CAP_Event_T *p_event)
 {
     switch (p_event->eventId)
     {
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_REQ:
         {
-            ble_dm_ConnProcL2capConnParamUpdateReq(p_event);
+            ble_dm_ConnProcL2capCpUpdateReq(p_event);
         }
         break;
 
-        case BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP:
+        case BLE_L2CAP_EVT_CONN_PARA_UPD_RSP:
         {
-            ble_dm_ConnProcL2capConnParamUpdateResp(p_event);
+            ble_dm_ConnProcL2capCpUpdateResp(p_event);
         }
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -394,6 +400,9 @@ void BLE_DM_Conn(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

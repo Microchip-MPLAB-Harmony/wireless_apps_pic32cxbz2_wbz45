@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLGROUPSCLUSTER_H
-#define _ZCLGROUPSCLUSTER_H
+#ifndef ZCLGROUPSCLUSTER_H
+#define ZCLGROUPSCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -434,4 +434,4 @@ typedef struct
   } removeGroupResponseCommand;
 } ZCL_GroupsClusterCommands_t;
 
-#endif /* _ZCLGROUPSCLUSTER_H */
+#endif /* ZCLGROUPSCLUSTER_H */

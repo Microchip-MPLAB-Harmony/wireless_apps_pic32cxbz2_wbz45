@@ -74,9 +74,9 @@
                     Definitions section
 ******************************************************************************/
 #ifndef COMMAND_BUFFERS_AMOUNT
-#define COMMAND_BUFFERS_AMOUNT 6
+#define COMMAND_BUFFERS_AMOUNT 6U
 #endif
-#define ALL_ATTRIBUTES_ARE_WRITTEN 1
+#define ALL_ATTRIBUTES_ARE_WRITTEN 1U
 
 /******************************************************************************
                     Types section
@@ -266,7 +266,9 @@ static ZclCommandDescriptor_t zclCommands[COMMAND_BUFFERS_AMOUNT];
 void ZCL_CommandManagerInit(void)
 {
   for (uint8_t i = 0; i < COMMAND_BUFFERS_AMOUNT; i++)
+  {
     zclCommands[i].busy = false;
+  }
 }
 
 /**************************************************************************//**
@@ -277,21 +279,21 @@ void ZCL_CommandManagerInit(void)
 ZCL_Request_t *ZCL_CommandManagerAllocCommand(void)
 {
   uint8_t i = 0;
-  bool packetBufferAllocateFailures = 0;
+  bool packetBufferAllocateFailures = false;
   for (; i < COMMAND_BUFFERS_AMOUNT; i++)
   {
     if (!zclCommands[i].busy)
     {
       zclCommands[i].isAttributeOperation = false;
       zclCommands[i].busy = true;
-      memset(&zclCommands[i].zclRequest, 0, sizeof(ZCL_Request_t));
-      memset(&zclCommands[i].zclCommand, 0, sizeof(Command_t));
+      (void)memset(&zclCommands[i].zclRequest, 0, sizeof(ZCL_Request_t));
+      (void)memset(&zclCommands[i].zclCommand, 0, sizeof(Command_t));
       zclCommands[i].zclRequest.requestPayload = (uint8_t *)&zclCommands[i].zclCommand;
       return &zclCommands[i].zclRequest;
     }
    }
    packetBufferAllocateFailures = 1;
-   SYS_PostEvent(BC_EVENT_PACKET_BUFFER_ALLOCATE_FAIL, (SYS_EventData_t)&packetBufferAllocateFailures);
+   SYS_PostEvent((uint8_t)BC_EVENT_PACKET_BUFFER_ALLOCATE_FAIL, (SYS_EventData_t)&packetBufferAllocateFailures);
   return NULL;
 }
 
@@ -344,20 +346,20 @@ static void commandZclRequestResp(ZCL_Notify_t *ntfy)
     ZCL_Request_t *req = GET_STRUCT_BY_FIELD_POINTER(ZCL_Request_t, notify, ntfy);
 
     if (((ZCL_STANDARD_REQ_TYPE == command->zclRequest.service.requestType) &&
-        (ZCL_WRITE_ATTRIBUTES_COMMAND_ID == req->id || ZCL_WRITE_ATTRIBUTES_UNDIVIDED_COMMAND_ID == req->id)) &&
+        ((uint8_t)ZCL_WRITE_ATTRIBUTES_COMMAND_ID == req->id || (uint8_t)ZCL_WRITE_ATTRIBUTES_UNDIVIDED_COMMAND_ID == req->id)) &&
         ALL_ATTRIBUTES_ARE_WRITTEN != req->notify.responseLength)
     {
       ZCL_NextElement_t element;
       ZCL_WriteAttributeResp_t *writeAttributeResp;
 
-      element.id            = ZCL_WRITE_ATTRIBUTES_RESPONSE_COMMAND_ID;
+      element.id            = (uint8_t)ZCL_WRITE_ATTRIBUTES_RESPONSE_COMMAND_ID;
       element.payloadLength = ntfy->responseLength;
       element.payload       = ntfy->responsePayload;
       element.content       = NULL;
 
-      while (element.payloadLength)
+      while ((element.payloadLength) != 0U)
       {
-        ZCL_GetNextElement(&element);
+        (void)ZCL_GetNextElement(&element);
         writeAttributeResp = (ZCL_WriteAttributeResp_t *) element.content;
         appSnprintf("Write Attribute Response received: status = 0x%02x\r\n", writeAttributeResp->status);
         element.content = NULL;
@@ -375,13 +377,16 @@ static void commandZclRequestResp(ZCL_Notify_t *ntfy)
   {
     cmdprintf( "ZclDefaultResponse: status = 0x%02x\r\n", ntfy->status);
   }
-
+  else 
+  {
+      //add else for avoid misra rule 15.7
+  }
   /* Notify callbacks if any registered */
-  if (command && command->ZCL_Notify)
+  if ((command->ZCL_Notify) != NULL)
+  {
     command->ZCL_Notify(ntfy);
-
-  if(command != NULL)
-    command->busy = false;
+  }
+  command->busy = false;
 }
 /**************************************************************************//**
 \brief ZCL default response
@@ -393,8 +398,9 @@ void ZCL_CommandZclDefaultResp(ZCL_Request_t *req, ZCL_Addressing_t *addressing,
   cmdprintf("ZclDefaultResponse: status = 0x%02x\r\n", defaultResp->statusCode);
   
   if(command != NULL)
+  {
     command->busy = false;
-  
+  }
   (void) addressing;
   (void) payload;
   (void) payloadLength;

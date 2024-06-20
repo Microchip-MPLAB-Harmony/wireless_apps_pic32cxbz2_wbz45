@@ -742,7 +742,7 @@ void colorControlSendColorLoopSetCommand(APS_AddrMode_t mode, ShortAddr_t addr, 
   cmd->updateFlags = updateFlags;
   cmd->action = (ZCL_ZllColorLoopAction_t) action;
   cmd->direction = direction;
-  cmd->time = time;
+  cmd->colorLoopTime = time;
   cmd->startHue = startHue;
   if (optionsMask)
   {

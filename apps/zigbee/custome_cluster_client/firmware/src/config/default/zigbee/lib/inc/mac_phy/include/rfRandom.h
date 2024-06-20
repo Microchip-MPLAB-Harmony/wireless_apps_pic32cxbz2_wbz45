@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _RFRANDOM_H
-#define _RFRANDOM_H
+#ifndef RFRANDOM_H
+#define RFRANDOM_H
 
 /******************************************************************************
                     Includes section
@@ -115,6 +115,6 @@ void RF_RandomReq(RF_RandomReq_t *reqParams);
 ******************************************************************************/
 void RF_RandomSeqReq(RF_RandomReq_t *reqParams);
 
-#endif /*_RFRANDOM_H*/
+#endif /*RFRANDOM_H*/
 
 // eof rfRandom.h

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MAC_BAN_NODE_H
-#define _MAC_BAN_NODE_H
+#ifndef MAC_BAN_NODE_H
+#define MAC_BAN_NODE_H
 
 /******************************************************************************
                                Includes section
@@ -145,6 +145,6 @@ bool MAC_IsBannedExtAddr(const ExtAddr_t extAddr, uint8_t *const lqi, int8_t *co
  ******************************************************************************/
 void MAC_ResetBanTable(void);
 
-#endif /* _MAC_BAN_NODE_H */
+#endif /* MAC_BAN_NODE_H */
 /** eof macBanNode.h */
 

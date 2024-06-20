@@ -74,9 +74,11 @@
 #include <zcl/include/zclOTAUCluster.h>
 #endif
 
+
 /*******************************************************************************
                     Static functions section
 *******************************************************************************/
+void ciFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t clusterId);
 #ifdef OTAU_SERVER
 static void ciAddOTAUServerCluster(void);
 #endif //OTAU_SERVER
@@ -132,7 +134,7 @@ static AppBindReq_t ciBindReq =
   .remoteClientsCnt  = ARRAY_SIZE(ciServerClusterToBindIds),
   .groupId           = 0xffff,
   .srcEndpoint       = APP_ENDPOINT_COMBINED_INTERFACE,
-  .callback          = NULL,
+  .callback          = ciFindingBindingFinishedForACluster,
   .startIdentifyingFn= ciIdetifyStartIdentifyingCb
 };
 
@@ -181,6 +183,7 @@ void appDeviceInit(void)
   ciAddOTAUServerCluster();
   startOtauServer();
 #endif //OTAU_SERVER
+
 }
 
 /**************************************************************************//**
@@ -236,6 +239,15 @@ void appSecurityInit(void)
 void appDeviceTaskHandler(void)
 {
  /* Do nothing */
+}
+
+/*******************************************************************************
+\brief callback called on the finishing of binding of one cluster
+********************************************************************************/
+void ciFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t clusterId)
+{
+  (void)ResponentEp;
+  (void)clusterId;
 }
 
 #ifdef OTAU_SERVER

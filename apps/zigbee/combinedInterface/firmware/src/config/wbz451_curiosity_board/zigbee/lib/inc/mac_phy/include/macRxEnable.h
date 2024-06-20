@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACRXENABLE_H
-#define _MACRXENABLE_H
+#ifndef MACRXENABLE_H
+#define MACRXENABLE_H
 
 /******************************************************************************
                         Includes section
@@ -97,6 +97,6 @@ typedef struct _MAC_RxEnableReq_t
 ******************************************************************************/
 void MAC_RxEnableReq(MAC_RxEnableReq_t *reqParams);
 
-#endif /* _MACRXENABLE_H */
+#endif /* MACRXENABLE_H */
 
 // eof macRxEnable.h

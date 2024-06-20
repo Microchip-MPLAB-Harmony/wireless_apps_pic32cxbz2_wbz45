@@ -66,7 +66,7 @@ void GPIO_Initialize ( void )
     /* PPS Input Remapping */
 
     /* PPS Output Remapping */
-    
+
 
 }
 

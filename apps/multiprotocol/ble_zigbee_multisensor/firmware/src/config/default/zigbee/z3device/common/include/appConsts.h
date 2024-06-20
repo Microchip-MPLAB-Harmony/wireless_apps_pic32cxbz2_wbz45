@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _APPCONSTS_H
-#define _APPCONSTS_H
+#ifndef APPCONSTS_H
+#define APPCONSTS_H
 
 /******************************************************************************
                     Includes section
@@ -172,7 +172,7 @@
 #define APP_DEVICE_TYPE       DEV_TYPE_ENDDEVICE
 #define APP_SRC_ENDPOINT_ID      APP_ENDPOINT_CUSTOM
 #define APP_Z3DEVICE_ID          ZLO_CUSTOM_DEVICE_ID
-#define APP_ENDPOINTS_AMOUNT         1
+#define APP_ENDPOINTS_AMOUNT         1U
 
 #elif (APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT)
   // ZigBee Device Type
@@ -180,23 +180,23 @@
   // Source Endpoint Identifier
   #define APP_SRC_ENDPOINT_ID   APP_ENDPOINT_LIGHT
   // Endpoint count
-  #define APP_ENDPOINTS_AMOUNT  1u
+  #define APP_ENDPOINTS_AMOUNT  1U
   // LED driving method
   #define APP_USE_PWM
   // Red channel
-  #define ENABLE_DITHERING_A    0u
-  //#define ENABLE_DITHERING_A    1u
+  #define ENABLE_DITHERING_A    0U
+  //#define ENABLE_DITHERING_A    1U
   // Green channel
-  #define ENABLE_DITHERING_B    0u
-  //#define ENABLE_DITHERING_B    1u
+  #define ENABLE_DITHERING_B    0U
+  //#define ENABLE_DITHERING_B    1U
   // Blue channel
-  #define ENABLE_DITHERING_C    0u
-  //#define ENABLE_DITHERING_C    1u
+  #define ENABLE_DITHERING_C    0U
+  //#define ENABLE_DITHERING_C    1U
   // PWM frequency in Hz
 #if (ZB_COMMISSIONING_ON_STARTUP == 0)
-  #define APP_PWM_FREQUENCY     900u
+  #define APP_PWM_FREQUENCY     900U
 #else
-  #define APP_PWM_FREQUENCY     22000u
+  #define APP_PWM_FREQUENCY     22000U
 #endif
 
 #elif (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_MULTI_SENSOR)
@@ -361,7 +361,7 @@
 
 #define HA_APP_MEMORY_MEM_ID                           APP_DIR1_MEM_ID
 
-#endif // _APPCONSTS_H
+#endif // APPCONSTS_H
 
 // eof appConsts.h
 

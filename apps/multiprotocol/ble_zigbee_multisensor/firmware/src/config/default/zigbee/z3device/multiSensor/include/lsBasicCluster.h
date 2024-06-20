@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LSBASICCLUSTER_H
-#define _LSBASICCLUSTER_H
+#ifndef LSBASICCLUSTER_H
+#define LSBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -69,6 +69,6 @@ void lsBasicClusterInit(void);
 ******************************************************************************/
 void lsBasicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _LSBASICCLUSTER_H
+#endif // LSBASICCLUSTER_H
 
 // eof lsBasicCluster.h

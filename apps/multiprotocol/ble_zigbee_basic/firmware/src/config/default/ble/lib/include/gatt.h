@@ -125,26 +125,26 @@ extern "C" {
 /**@defgroup ATT_ERROR_CODES  ATT error code
  * @brief The definition of ATT Error Codes.
  * @{ */
-#define ATT_ERRCODE_INVALID_HANDLE                          (0x01U)                /**< ATT Error Code: Invalid Handle.*/
-#define ATT_ERRCODE_READ_NOT_PERMITTED                      (0x02U)                /**< ATT Error Code: Read Not Permitted.*/
-#define ATT_ERRCODE_WRITE_NOT_PERMITTED                     (0x03U)                /**< ATT Error Code: Write Not Permitted.*/
-#define ATT_ERRCODE_INVALID_PDU                             (0x04U)                /**< ATT Error Code: Invalid PDU.*/
-#define ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION             (0x05U)                /**< ATT Error Code: Insufficient Authentication.*/
-#define ATT_ERRCODE_REQUEST_NOT_SUPPORT                     (0x06U)                /**< ATT Error Code: Request Not Supported.*/
-#define ATT_ERRCODE_INVALID_OFFSET                          (0x07U)                /**< ATT Error Code: Invalid Offset.*/
-#define ATT_ERRCODE_INSUFFICIENT_AUTHORIZATION              (0x08U)                /**< ATT Error Code: Insufficient Authorization.*/
-#define ATT_ERRCODE_PREPARE_QUEUE_FULL                      (0x09U)                /**< ATT Error Code: Prepare Queue Full.*/
-#define ATT_ERRCODE_ATTRIBUTE_NOT_FOUND                     (0x0aU)                /**< ATT Error Code: Attribute Not Found.*/
-#define ATT_ERRCODE_ATTRIBUTE_NOT_LONG                      (0x0bU)                /**< ATT Error Code: Attribute Not Long.*/
-#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION_KEY_SIZE        (0x0cU)                /**< ATT Error Code: Insufficient Encryption Key Size.*/
-#define ATT_ERRCODE_INVALID_ATTRIBUTE_VALUE_LENGTH          (0x0dU)                /**< ATT Error Code: Invalid Attribute Value Length.*/
-#define ATT_ERRCODE_UNLIKELY_ERROR                          (0x0eU)                /**< ATT Error Code: Unlikely Error.*/
-#define ATT_ERRCODE_INSUFFICIENT_ENCRYPTION                 (0x0fU)                /**< ATT Error Code: Insufficient Encryption.*/
-#define ATT_ERRCODE_UNSUPPORTED_GROUP_TYPE                  (0x10U)                /**< ATT Error Code: Unsupported Group Type.*/
-#define ATT_ERRCODE_INSUFFICIENT_RESOURCE                   (0x11U)                /**< ATT Error Code: Insufficient Resource.*/
-#define ATT_ERRCODE_DATABASE_OUT_OF_SYNC                    (0x12U)                /**< ATT Error Code: Database Out Of Sync.*/
-#define ATT_ERRCODE_VALUE_NOT_ALLOW                         (0x13U)                /**< ATT Error Code: Value Not Allowed.*/
-#define ATT_ERRCODE_APPLICATION_ERROR                       (0x80U)                /**< ATT Error Code: Application Error.*/
+#define ATT_ERR_INVALID_HANDLE                              (0x01U)                /**< ATT Error Code: Invalid Handle.*/
+#define ATT_ERR_READ_NOT_PERMITTED                          (0x02U)                /**< ATT Error Code: Read Not Permitted.*/
+#define ATT_ERR_WRITE_NOT_PERMITTED                         (0x03U)                /**< ATT Error Code: Write Not Permitted.*/
+#define ATT_ERR_INVALID_PDU                                 (0x04U)                /**< ATT Error Code: Invalid PDU.*/
+#define ATT_ERR_INSUF_AUTHN                                 (0x05U)                /**< ATT Error Code: Insufficient Authentication.*/
+#define ATT_ERR_REQUEST_NOT_SUPPORT                         (0x06U)                /**< ATT Error Code: Request Not Supported.*/
+#define ATT_ERR_INVALID_OFFSET                              (0x07U)                /**< ATT Error Code: Invalid Offset.*/
+#define ATT_ERR_INSUF_AUTHZ                                 (0x08U)                /**< ATT Error Code: Insufficient Authorization.*/
+#define ATT_ERR_PREPARE_QUEUE_FULL                          (0x09U)                /**< ATT Error Code: Prepare Queue Full.*/
+#define ATT_ERR_ATTRIBUTE_NOT_FOUND                         (0x0aU)                /**< ATT Error Code: Attribute Not Found.*/
+#define ATT_ERR_ATTRIBUTE_NOT_LONG                          (0x0bU)                /**< ATT Error Code: Attribute Not Long.*/
+#define ATT_ERR_INSUF_ENC_KEY_SIZE                          (0x0cU)                /**< ATT Error Code: Insufficient Encryption Key Size.*/
+#define ATT_ERR_INVALID_ATTRIBUTE_VALUE_LENGTH              (0x0dU)                /**< ATT Error Code: Invalid Attribute Value Length.*/
+#define ATT_ERR_UNLIKELY_ERROR                              (0x0eU)                /**< ATT Error Code: Unlikely Error.*/
+#define ATT_ERR_INSUF_ENC                                   (0x0fU)                /**< ATT Error Code: Insufficient Encryption.*/
+#define ATT_ERR_UNSUPPORTED_GROUP_TYPE                      (0x10U)                /**< ATT Error Code: Unsupported Group Type.*/
+#define ATT_ERR_INSUF_RESOURCE                              (0x11U)                /**< ATT Error Code: Insufficient Resource.*/
+#define ATT_ERR_DATABASE_OUT_OF_SYNC                        (0x12U)                /**< ATT Error Code: Database Out Of Sync.*/
+#define ATT_ERR_VALUE_NOT_ALLOW                             (0x13U)                /**< ATT Error Code: Value Not Allowed.*/
+#define ATT_ERR_APPLICATION_ERROR                           (0x80U)                /**< ATT Error Code: Application Error.*/
 /** @} */
 
 /**@defgroup ATT_OPCODES    ATT opcodes
@@ -356,13 +356,13 @@ typedef struct GATTC_WriteParams_T
 }   GATTC_WriteParams_T;
 
 /**@brief GATT Discover Primary Service By UUID parameters. */
-typedef struct GATTC_DiscoverPrimaryServiceByUuidParams_T
+typedef struct GATTC_DiscoverPrimaryServiceParams_T
 {
     uint16_t     startHandle;                                                   /**< Start handle for querying the service by UUID. */
     uint16_t     endHandle;                                                     /**< End handle for querying the service by UUID. */
     uint8_t      valueLength;                                                   /**< length of UUID in bytes. Should be set to 2 for 16-bit UUID and 16 for 128 bit UUID. */
     uint8_t      value[ATT_MAX_UUID_SIZE];                                      /**< UUID of particular primary service to be discovered. The format of UUID is little endian. */
-}   GATTC_DiscoverPrimaryServiceByUuidParams_T;
+}   GATTC_DiscoverPrimaryServiceParams_T;
 
 /**@brief GATT Discover Characteristics By UUID parameters. */
 typedef struct GATTC_DiscoverCharacteristicByUuidParams_T
@@ -847,7 +847,7 @@ uint16_t GATTC_SetPreferredMtu(uint16_t preferredMtuCentral);
  *       - Event @ref GATTC_EVT_DISC_PRIM_SERV_RESP with procedureStatus in @ref GATT_EvtDiscPrimServResp_T set to
  *         Finish. This indicates termination of the procedure (End Handle for last found service is 0xFFFF. See p_attrData
  *         in @ref GATT_EvtDiscPrimServResp_T for End Group Handle of a discovered service)\n
- *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERRCODE_ATTRIBUTE_NOT_FOUND is generated.
+ *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERR_ATTRIBUTE_NOT_FOUND is generated.
  *         This indicates termination of the procedure. (End Group handle of last found service is less that 0xFFFF)\n
  *
  *
@@ -876,9 +876,9 @@ uint16_t GATTC_DiscoverAllPrimaryServices(uint16_t connHandle);
  *         in @ref GATT_EvtDiscPrimServByUuidResp_T for extracting service data received.)\n
  *       - Event @ref GATTC_EVT_DISC_PRIM_SERV_BY_UUID_RESP with procedureStatus in @ref GATT_EvtDiscPrimServByUuidResp_T set to
  *         Finish. This indicates termination of the procedure (End Group Handle of last found service instance is equal to End
- *         handle in input handle range (See @ref GATTC_DiscoverPrimaryServiceByUuidParams_T. p_attrData in @ref
+ *         handle in input handle range (See @ref GATTC_DiscoverPrimaryServiceParams_T. p_attrData in @ref
  *         GATT_EvtDiscPrimServByUuidResp_T contains the End Group Handle of the service found.)
- *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERRCODE_ATTRIBUTE_NOT_FOUND is generated.
+ *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERR_ATTRIBUTE_NOT_FOUND is generated.
  *         This indicates termination of the procedure. (End Group handle of last found service is less that End handle in input handle range)\n
  *
  *
@@ -895,7 +895,7 @@ uint16_t GATTC_DiscoverAllPrimaryServices(uint16_t connHandle);
  *@retval MBA_RES_INVALID_PARA          Invalid parameters. Connection handle is not valid.
  *@retval MBA_RES_BUSY                  GATT Client is busy. Another request is ongoing.
  */
-uint16_t GATTC_DiscoverPrimaryServiceByUUID(uint16_t connHandle, GATTC_DiscoverPrimaryServiceByUuidParams_T *p_discParams);
+uint16_t GATTC_DiscoverPrimaryServiceByUUID(uint16_t connHandle, GATTC_DiscoverPrimaryServiceParams_T *p_discParams);
 
 /**
  *@brief GATT Client starts discovery of all characteristics within the given handle range when this API is called.\n
@@ -906,7 +906,7 @@ uint16_t GATTC_DiscoverPrimaryServiceByUUID(uint16_t connHandle, GATTC_DiscoverP
  *       - Event @ref GATTC_EVT_DISC_CHAR_RESP with procedureStatus in @ref GATT_EvtDiscCharResp_T set to
  *         Finish. This indicates termination of the procedure (Value handle of last found characteristic declaration is equal
  *         to end handle of input handle range)\n
- *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERRCODE_ATTRIBUTE_NOT_FOUND is generated.
+ *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERR_ATTRIBUTE_NOT_FOUND is generated.
  *         This indicates termination of the procedure. (Last found Value handle is not same as end handle of the input
  *         handle range or no characteristic declaration found)\n
  *
@@ -936,7 +936,7 @@ uint16_t GATTC_DiscoverAllCharacteristics(uint16_t connHandle, uint16_t startHan
  *       - Event @ref GATTC_EVT_DISC_CHAR_BY_UUID_RESP with procedureStatus in @ref GATT_EvtDiscCharResp_T set to
  *         Finish. This indicates termination of the procedure (Value handle of last found characteristic declaration is equal
  *         to end handle of input handle range). Please note that the response may be null if no characteristic found in last query. \n
- *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERRCODE_ATTRIBUTE_NOT_FOUND is generated.
+ *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERR_ATTRIBUTE_NOT_FOUND is generated.
  *         This indicates termination of the procedure. (Last found Value handle is not same as end handle of the input
  *         handle range or no characteristic declaration found)\n
  *
@@ -965,7 +965,7 @@ uint16_t GATTC_DiscoverCharacteristicsByUUID(uint16_t connHandle, GATTC_Discover
  *       - Event @ref GATTC_EVT_DISC_DESC_RESP with procedureStatus in @ref GATT_EvtDiscDescResp_T set to
  *         Finish. This indicates termination of the procedure (Handle of last found descriptor is equal
  *         to end handle of input handle range)\n
- *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERRCODE_ATTRIBUTE_NOT_FOUND is generated.
+ *       - Event @ref GATTC_EVT_ERROR_RESP with error code @ref ATT_ERR_ATTRIBUTE_NOT_FOUND is generated.
  *         This indicates termination of the procedure. (Handle of last found descriptor is not same as end handle of the input
  *         handle range or no descriptor was found)\n
  *

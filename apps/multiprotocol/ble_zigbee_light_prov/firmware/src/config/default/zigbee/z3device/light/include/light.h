@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHT_H
-#define _LIGHT_H
+#ifndef LIGHT_H
+#define LIGHT_H
 
 /******************************************************************************
                     Includes section
@@ -67,6 +67,6 @@ void lightDeviceTaskHandler(void);
                     Externals
 ******************************************************************************/
 
-#endif // _LIGHT_H
+#endif // LIGHT_H
 
 // eof light.h

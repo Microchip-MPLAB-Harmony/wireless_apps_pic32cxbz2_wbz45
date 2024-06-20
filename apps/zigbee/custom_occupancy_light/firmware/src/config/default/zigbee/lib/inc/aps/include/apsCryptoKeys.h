@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APS_CRYPTO_KEYS_H
-#define _APS_CRYPTO_KEYS_H
+#if !defined APS_CRYPTO_KEYS_H
+#define APS_CRYPTO_KEYS_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -159,7 +159,7 @@ INLINE APS_KeyHandle_t APS_KeyHandleUninitialized(void)
   return keyHandle;
 }
 
-/**************************************************************************//**
+/****************************************************************************
   \brief Sets a link key for the device with a given extended address
 
   This function inserts a new entry into the APS key-pair set containing provided
@@ -181,18 +181,18 @@ INLINE APS_KeyHandle_t APS_KeyHandleUninitialized(void)
 
   A typical example of the function's usage is given below:
 \code
-APS_KeyHandle_t apsKeyHandle; //A variable to hold a key handle
-//Set a link key variable to a 16-byte value
+APS_KeyHandle_t apsKeyHandle; A variable to hold a key handle
+Set a link key variable to a 16-byte value
 uint8_t linkKey[SECURITY_KEY_SIZE] = {0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa};
-//A variable for the trust center address predefined in ::CS_APS_TRUST_CENTER_ADDRESS.
+A variable for the trust center address predefined in ::CS_APS_TRUST_CENTER_ADDRESS.
 ExtAddr_t trustCenterAddr;
 
-//Read the trust center address
+Read the trust center address
 CS_ReadParameter(CS_APS_TRUST_CENTER_ADDRESS_ID, &trustCenterAddr);
-//Set the trust center link key
+Set the trust center link key
 apsKeyHandle = APS_SetLinkKey(&trustCenterAddr, linkKey);
 
-//Check for errors
+Check for errors
 if (APS_KEY_HANDLE_IS_VALID(apsKeyHandle))
 {
   ...
@@ -208,7 +208,7 @@ if (APS_KEY_HANDLE_IS_VALID(apsKeyHandle))
  ******************************************************************************/
 APS_KeyHandle_t APS_SetLinkKey(const ExtAddr_t *const deviceAddress,const uint8_t *const linkKey);
 
-/**************************************************************************//**
+/****************************************************************************
   \brief Sets a master key for the device with a given extended address
 
   This function inserts a new entry into the APS key-pair set containing provided
@@ -231,15 +231,15 @@ APS_KeyHandle_t APS_SetLinkKey(const ExtAddr_t *const deviceAddress,const uint8_
 
   See the example of usage below:
 \code
-APS_KeyHandle_t apsKeyHandle; //A variable to hold a key handle
-//Set a master key variable to a 16-byte value
+APS_KeyHandle_t apsKeyHandle; A variable to hold a key handle
+Set a master key variable to a 16-byte value
 uint8_t masterKey[16] = {0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa,0xaa};
-//Assume the remote node extended address is held by APP_EXT_ADDR constant
+Assume the remote node extended address is held by APP_EXT_ADDR constant
 ExtAddr_t partnerExtAddr = APP_EXT_ADDR;
 
-apsKeyHandle = APS_SetMasterKey(&partnerExtAddr, masterKey); //Set the master key
+apsKeyHandle = APS_SetMasterKey(&partnerExtAddr, masterKey); Set the master key
 
-//Check for errors
+Check for errors
 if (APS_KEY_HANDLE_IS_VALID(apsKeyHandle))
 {
   ...
@@ -265,7 +265,7 @@ discovered using Service Discovery.
  ******************************************************************************/
 APS_KeyHandle_t APS_SetMasterKey(const ExtAddr_t *const deviceAddress, const uint8_t *const masterKey);
 
-/**************************************************************************//**
+/****************************************************************************
   \brief Find the master key or the link key corresponding to a given extended address
 
   The function is used to check whether the link key or the master key has been set for a given
@@ -275,12 +275,12 @@ APS_KeyHandle_t APS_SetMasterKey(const ExtAddr_t *const deviceAddress, const uin
 
   See the example:
 \code
-//Assume that the extended address of interest is held by APP_EXT_ADDR constant
+Assume that the extended address of interest is held by APP_EXT_ADDR constant
 ExtAddr_t partnerExtAddr = APP_EXT_ADDR;
 
 if (!APS_KEYS_FOUND(APS_FindKeys(&partnerExtAddr)))
 {
-  ... //Perform required action, e.g. request for a link key, using APS_RequestKeyReq()
+  ... Perform required action, e.g. request for a link key, using APS_RequestKeyReq()
 }
 \endcode
 
@@ -292,7 +292,7 @@ if (!APS_KEYS_FOUND(APS_FindKeys(&partnerExtAddr)))
  ******************************************************************************/
 APS_KeyHandle_t APS_FindKeys(const ExtAddr_t *const deviceAddress);
 
-/**************************************************************************//**
+/****************************************************************************
   \brief Get a pointer to the master key value by a given key handle
 
   The function returns a pointer to the section of memory containing the master key value
@@ -305,14 +305,14 @@ APS_KeyHandle_t APS_FindKeys(const ExtAddr_t *const deviceAddress);
 
   Consider the example:
 \code
-//Search for keys associated with the provided extended address
+Search for keys associated with the provided extended address
 const APS_KeyHandle_t keyHandle = APS_FindKeys(&extAddr);
 
 uint8_t *masterKey;
 
 if (APS_KEYS_FOUND(keyHandle) && NULL != (masterKey = APS_GetMasterKey(keyHandle)))
 {
-  ... //A pointer to the master key value has been successfully captured
+  ... A pointer to the master key value has been successfully captured
 }
 \endcode
 
@@ -323,7 +323,7 @@ if (APS_KEYS_FOUND(keyHandle) && NULL != (masterKey = APS_GetMasterKey(keyHandle
  ******************************************************************************/
 uint8_t* APS_GetMasterKey(const APS_KeyHandle_t handle);
 
-/**************************************************************************//**
+/****************************************************************************
   \brief Get a pointer to the link key value by a given key handle
 
   The function returns a pointer to the section of memory containing the link key value
@@ -336,14 +336,14 @@ uint8_t* APS_GetMasterKey(const APS_KeyHandle_t handle);
 
   Consider the example:
 \code
-//Search for keys associated with the provided extended address
+Search for keys associated with the provided extended address
 const APS_KeyHandle_t keyHandle = APS_FindKeys(&extAddr);
 
 uint8_t *linkKey;
 
 if (APS_KEYS_FOUND(keyHandle) && (linkKey = APS_GetLinkKey(keyHandle)))
 {
-  ... //A pointer to the link key value has been successfully captured
+  ... A pointer to the link key value has been successfully captured
 }
 \endcode
 
@@ -353,7 +353,7 @@ if (APS_KEYS_FOUND(keyHandle) && (linkKey = APS_GetLinkKey(keyHandle)))
  ******************************************************************************/
 uint8_t* APS_GetLinkKey(const APS_KeyHandle_t handle);
 
-/**************************************************************************//**
+/******************************************************************************
   \brief Delete key-pair - master and link keys.
 
   \param deviceAddress \ref Endian "[LE]" - pointer to extended
@@ -596,16 +596,6 @@ void APS_SetDefaultKeyPairStatus(APS_KeyPairFlags_t flag);
 void APS_UpdateLinkKey(const ExtAddr_t *const deviceAddress);
 
 /**************************************************************************//**
-  \brief Take a backup of current link key and make the latest link key as operational. 
-           This will be used during TCLK update.
-
-  \param deviceAddress - pointer to extended IEEE device address.
-
-  \return None.
- ******************************************************************************/
-void APS_UpdateLinkKey(const ExtAddr_t *const deviceAddress);
-
-/**************************************************************************//**
   \brief Is the handle assocciated with a global or unique link key?
 
   \param handle - valid key handle.
@@ -660,6 +650,6 @@ void APS_ClearKeyPairFlags(APS_KeyHandle_t handle, uint8_t flags);
 #define APS_SetDefaultDsLinkKey() ((void)0)
 #define APS_ResetKeyPairSet() ((void)0)
 #endif /* _LINK_SECURITY_ */
-#endif /* _APS_CRYPTO_KEYS_H */
+#endif /* APS_CRYPTO_KEYS_H */
 /** eof apsCryptoKeys.h */
 

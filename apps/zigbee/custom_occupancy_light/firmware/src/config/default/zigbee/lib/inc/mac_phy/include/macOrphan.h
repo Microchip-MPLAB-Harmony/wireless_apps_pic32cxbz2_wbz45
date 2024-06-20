@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACORPHAN_H
-#define _MACORPHAN_H
+#ifndef MACORPHAN_H
+#define MACORPHAN_H
 
 /******************************************************************************
                         Includes section.
@@ -101,6 +101,6 @@ extern void MAC_OrphanInd(MAC_OrphanInd_t *indParams);
 ******************************************************************************/
 void MAC_OrphanResp(MAC_OrphanResp_t *respParams);
 
-#endif // _MACORPHAN_H
+#endif // MACORPHAN_H
 
 // eof macOrphan.h

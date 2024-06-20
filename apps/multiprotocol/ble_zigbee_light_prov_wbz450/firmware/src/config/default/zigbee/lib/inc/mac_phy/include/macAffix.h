@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACAFFIX_H
-#define _MACAFFIX_H
+#ifndef MACAFFIX_H
+#define MACAFFIX_H
 
 /******************************************************************************
                         Includes section
@@ -75,6 +75,6 @@
 //! MAC affix.
 #define MAC_AFFIX_LENGTH (MAC_MAX_MPDU_UNSECURED_OVERHEAD + MAC_MAX_DATA_FRAME_FOOTER_LENGTH)
 
-#endif /* _MACAFFIX_H */
+#endif /* MACAFFIX_H */
 
 // eof macAffix.h

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_MGMT_NWK_UPDATE_H
-#define _ZDO_MGMT_NWK_UPDATE_H
+#if !defined ZDO_MGMT_NWK_UPDATE_H
+#define ZDO_MGMT_NWK_UPDATE_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -150,5 +150,5 @@ ZDO_PRIVATE void zdoMgmtNwkUnsolicitedEnhancedUpdateNotifyInd(const APS_DataInd_
  ******************************************************************************/
 ZDO_PRIVATE bool zdoBadLinkReport(void);
 #endif // _FREQUENCY_AGILITY_
-#endif /* _ZDO_MGMT_NWK_UPDATE_H */
+#endif /* ZDO_MGMT_NWK_UPDATE_H */
 /** eof zdoMgmtNwkUpdate.h */

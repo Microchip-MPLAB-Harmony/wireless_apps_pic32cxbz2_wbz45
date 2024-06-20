@@ -73,7 +73,7 @@
 
 // *****************************************************************************
 /* Function:
-    void CLK_Initialize( void )
+    void CLOCK_Initialize( void )
 
   Summary:
     Initializes hardware and internal data structure of the System Clock.
@@ -90,7 +90,7 @@
     function of the 'configuration bits' to configure the system oscillators.
 */
 
-void CLK_Initialize( void )
+void CLOCK_Initialize( void )
 {
     //check CLDO ready
     while ((CFG_REGS->CFG_MISCSTAT & CFG_MISCSTAT_CLDORDY_Msk) == 0U)
@@ -111,7 +111,7 @@ void CLK_Initialize( void )
         while(BTZB_XTAL_NOT_READY)
 		{
 			/* Do Nothing */
-        }
+		}
     }
        
     // set PLL_enable
@@ -130,7 +130,7 @@ void CLK_Initialize( void )
         while(BTZB_PLL_NOT_LOCKED)
 		{
 			/* Do Nothing */
-        }
+		}
     }
 
     /* Unlock system for clock configuration */
@@ -149,7 +149,7 @@ void CLK_Initialize( void )
 
 
     /* OSWEN    = SWITCH_COMPLETE    */
-    /* SOSCEN   = OFF   */
+    /* SOSCEN   = ON   */
     /* CF       = NO_FAILDET       */
     /* SLPEN    = IDLE    */
     /* CLKLOCK  = UNLOCKED  */
@@ -165,7 +165,7 @@ void CLK_Initialize( void )
     {
 		/* Do Nothing */
 	}
-
+  
     /* Peripheral Bus 3 is by default enabled, set its divisor */
     /* PBDIV = 10 */
     CRU_REGS->CRU_PB3DIV = CRU_PB3DIV_PBDIVON_Msk | CRU_PB3DIV_PBDIV(9U);
@@ -194,7 +194,7 @@ void CLK_Initialize( void )
 
 
     CFG_REGS->CFG_PMD1 = 0x200001cdU;
-    CFG_REGS->CFG_PMD3 = 0x7fffU;
+    CFG_REGS->CFG_PMD3 = 0x7f7fU;
 
 
     /* Lock system since done with clock configuration */
@@ -203,6 +203,6 @@ void CLK_Initialize( void )
     // Change src_clk source to PLL CLK
     BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= 0x00000010U;
 
-// set aclb_reset_n[24], bt_en_main_clk[20]
+    // set aclb_reset_n[24], bt_en_main_clk[20]
     BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 = 0x01100000U;
 }

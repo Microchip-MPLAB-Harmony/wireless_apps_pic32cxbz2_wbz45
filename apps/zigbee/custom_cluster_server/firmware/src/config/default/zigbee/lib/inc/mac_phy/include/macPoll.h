@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACPOLL_H
-#define _MACPOLL_H
+#ifndef MACPOLL_H
+#define MACPOLL_H
 
 /******************************************************************************
                         Includes section
@@ -129,6 +129,6 @@ extern void MAC_PollInd(MAC_PollInd_t *indParams);
 ******************************************************************************/
 void MAC_PollReq(MAC_PollReq_t *reqParams);
 
-#endif /* _MACPOLL_H */
+#endif /* MACPOLL_H */
 
 // eof macPoll.h

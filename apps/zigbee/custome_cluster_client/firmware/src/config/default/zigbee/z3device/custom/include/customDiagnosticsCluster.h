@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMDIAGNOSTICSCLUSTER_H
-#define _CUSTOMDIAGNOSTICSCLUSTER_H
+#ifndef CUSTOMDIAGNOSTICSCLUSTER_H
+#define CUSTOMDIAGNOSTICSCLUSTER_H
 /******************************************************************************
                     Includes section
 ******************************************************************************/
@@ -64,4 +64,4 @@ extern ZCL_DiagnosticsClusterServerAttributes_t customDiagnosticsClusterServerAt
 ******************************************************************************/
 void customDiagnosticsClusterInit(void);
 
-#endif // _CUSTOMDIAGNOSTICSCLUSTER_H
+#endif // CUSTOMDIAGNOSTICSCLUSTER_H

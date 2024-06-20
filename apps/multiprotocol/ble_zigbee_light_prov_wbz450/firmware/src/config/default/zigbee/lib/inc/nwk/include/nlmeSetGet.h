@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_SET_GET_H
-#define _NLME_SET_GET_H
+#if !defined NLME_SET_GET_H
+#define NLME_SET_GET_H
 
 /******************************************************************************
                                 Includes section
@@ -307,6 +307,6 @@ void NWK_SetReq(NWK_SetReq_t *const req);
  ******************************************************************************/
 void NWK_GetReq(NWK_GetReq_t *const req);
 
-#endif /* _NLME_SET_GET_H */
+#endif /* NLME_SET_GET_H */
 /** eof nlmeSetGet.h */
 

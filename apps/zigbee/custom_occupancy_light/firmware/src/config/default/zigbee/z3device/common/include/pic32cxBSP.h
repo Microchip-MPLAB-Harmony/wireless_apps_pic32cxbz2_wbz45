@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PIC32CXBSP_H
-#define _PIC32CXBSP_H
+#ifndef PIC32CXBSP_H
+#define PIC32CXBSP_H
 
 /******************************************************************************
                    Includes section
@@ -83,7 +83,7 @@ void BSP_OnLed(void);
 void BSP_OffLed(void);
 
 /**************************************************************************//**
-\brief Changes the?ED state to opposite.
+\brief Changes the LED state to opposite.
 
 \param[in]
       id - number of led
@@ -135,7 +135,7 @@ void BSP_ReadButtonsState(bool buttonRead);
 \param[in]
     None
 ******************************************************************************/
-void BSP_ButtonOpen();
+void BSP_ButtonOpen(void);
 
 /**************************************************************************//**
 \brief Initilise / Open Temp Sensor.
@@ -145,7 +145,7 @@ void BSP_ButtonOpen();
 \param[in]
     None
 ******************************************************************************/
-void BSP_TempSensorOpen();
+void BSP_TempSensorOpen(void);
 
 /**************************************************************************//**
 \brief Read Temperature Sensor.

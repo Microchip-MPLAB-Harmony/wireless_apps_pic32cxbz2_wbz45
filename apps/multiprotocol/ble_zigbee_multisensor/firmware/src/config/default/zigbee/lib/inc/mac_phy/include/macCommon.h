@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACCOMMON_H
-#define _MACCOMMON_H
+#ifndef MACCOMMON_H
+#define MACCOMMON_H
 
 /******************************************************************************
                          Includes section.
@@ -110,6 +110,6 @@ typedef struct
   bool     activated;
 }  MAC_ServiceTransaction_t;
 
-#endif //_MACCOMMON_H
+#endif //MACCOMMON_H
 
 // eof macCommon.h

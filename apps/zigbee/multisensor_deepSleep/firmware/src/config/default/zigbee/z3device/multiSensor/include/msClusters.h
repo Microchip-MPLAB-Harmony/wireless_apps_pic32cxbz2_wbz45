@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MSCLUSTER_H
-#define _MSCLUSTER_H
+#ifndef MSCLUSTER_H
+#define MSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -56,9 +56,6 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
-
-
-
 #ifdef APP_SENSOR_TYPE_OCCUPANCY_SENSOR
 #define OS_SERVER_CLUSTERS_COUNT     3 
 #else
@@ -89,15 +86,15 @@
 #define HS_CLIENT_CLUSTERS_COUNT   2 
 
 
-#define MS_SERVER_CLUSTERS_COUNT     0 
+#define MS_SERVER_CLUSTERS_COUNT     0
 #define MS_SERVER_CLUSTER_INIT_COUNT MS_SERVER_CLUSTERS_COUNT
 
 #ifdef OTAU_CLIENT
-  #define MS_CLIENT_CLUSTERS_COUNT   (1) 
-  #define MS_CLIENT_CLUSTER_INIT_COUNT 1 
+  #define MS_CLIENT_CLUSTERS_COUNT   (1)
+  #define MS_CLIENT_CLUSTER_INIT_COUNT 1
 #else
-  #define MS_CLIENT_CLUSTERS_COUNT   0 
-  #define MS_CLIENT_CLUSTER_INIT_COUNT 0 
+  #define MS_CLIENT_CLUSTERS_COUNT   0
+  #define MS_CLIENT_CLUSTER_INIT_COUNT 0
 #endif
 
 /* Multi sensor device type logical device Id form reserved space */
@@ -168,7 +165,7 @@ extern void (*hsServerClusterInitFunctions[HS_SERVER_CLUSTERS_COUNT])();
 
 #endif
 
-#endif // _MSCLUSTER_H
+#endif // MSCLUSTER_H
 
 // eof msClusters.h
 

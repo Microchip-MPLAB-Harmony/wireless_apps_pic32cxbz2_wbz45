@@ -64,16 +64,16 @@
 /**@defgroup BLE_TRSPC_CCCD BLE_TRSPC_CCCD
  * @brief The definition of Client Characteristic Configuration Descriptor
  * @{ */
-#define BLE_TRSPC_CCCD_DISABLE                  0x0000         /**< Definition of Client Characteristic Configuration Descriptor disable. */
+#define BLE_TRSPC_CCCD_DISABLE                  (0x0000U)      /**< Definition of Client Characteristic Configuration Descriptor disable. */
 #define BLE_TRSPC_CCCD_NOTIFY                   NOTIFICATION   /**< Definition of Client Characteristic Configuration Descriptor enable NOTIFY property. */
 /** @} */
 
 /**@defgroup BLE_TRSPC_CBFC_OPCODE BLE_TRSPC_CBFC_OPCODE
  * @brief The definition of BLE transparent credit based flow control
  * @{ */
-#define BLE_TRSPC_CBFC_OPCODE_SUCCESS           0x00    /**< Definition of response for successful operation. */
-#define BLE_TRSPC_CBFC_OPCODE_DL_ENABLED        0x14    /**< Definition of Op Code for Credit Based Flow Control Protocol, Enable CBFC downlink. */
-#define BLE_TRSPC_CBFC_OPCODE_UL_ENABLED        0x15    /**< Definition of Op Code for Credit Based Flow Control Protocol: Enable CBFC uplink. */
+#define BLE_TRSPC_CBFC_OPCODE_SUCCESS           (0x00U)    /**< Definition of response for successful operation. */
+#define BLE_TRSPC_CBFC_OPCODE_DL_ENABLED        (0x14U)    /**< Definition of Op Code for Credit Based Flow Control Protocol, Enable CBFC downlink. */
+#define BLE_TRSPC_CBFC_OPCODE_UL_ENABLED        (0x15U)    /**< Definition of Op Code for Credit Based Flow Control Protocol: Enable CBFC uplink. */
 /** @} */
 
 /**@defgroup BLE_TRSPC_VENDOR_OPCODE BLE_TRSPC_VENDOR_OPCODE
@@ -104,12 +104,12 @@
 /**@defgroup BLE_TRSPC_CBFC_PROC BLE_TRSPC_CBFC_PROC
  * @brief The definition of CBFC procedure in connect/disconnect process.
  * @{ */
-#define CBFC_PROC_IDLE                          0x00    /**< CBFC procdure: Idle. */
-#define CBFC_PROC_ENABLE_SESSION                0x01    /**< CBFC procdure: Enable Control Point CCCD. */
-#define CBFC_PROC_ENABLE_TCP_CCCD               0x02    /**< CBFC procdure: Enable TCP CCCD. */
-#define CBFC_PROC_ENABLE_TDD_CBFC               0x03    /**< CBFC procdure: Enable TDD CBFC. */
-#define CBFC_PROC_ENABLE_TUD_CCCD               0x04    /**< CBFC procdure: Enable TUD CCCD. */
-#define CBFC_PROC_DISABLE_TUD_CCCD              0x05    /**< CBFC procdure: Disable TUD CCCD. */
+#define CBFC_PROC_IDLE                          (0x00U)    /**< CBFC procdure: Idle. */
+#define CBFC_PROC_ENABLE_SESSION                (0x01U)    /**< CBFC procdure: Enable Control Point CCCD. */
+#define CBFC_PROC_ENABLE_TCP_CCCD               (0x02U)    /**< CBFC procdure: Enable TCP CCCD. */
+#define CBFC_PROC_ENABLE_TDD_CBFC               (0x03U)    /**< CBFC procdure: Enable TDD CBFC. */
+#define CBFC_PROC_ENABLE_TUD_CCCD               (0x04U)    /**< CBFC procdure: Enable TUD CCCD. */
+#define CBFC_PROC_DISABLE_TUD_CCCD              (0x05U)    /**< CBFC procdure: Disable TUD CCCD. */
 /** @} */
 
 /**@defgroup BLE_TRSPC_VENCOM_PROC BLE_TRSPC_VENCOM_PROC
@@ -289,19 +289,19 @@ static BLE_TRSPC_ConnList_T *ble_trspc_GetFreeConnList(void)
 
 static void ble_trspc_InitCharList(BLE_DD_CharList_T *p_charList, uint8_t connIndex)
 {
-    BLE_TRSPC_CharIndex_T i;
+    uint8_t i;
 
     p_charList->connHandle = 0;
     p_charList->p_charInfo = (BLE_DD_CharInfo_T *) &(s_trsCharInfoList[connIndex]);
 
-    for(i=0U; i<TRSPC_CHAR_NUM; i++)
+    for(i=0U; i<(uint8_t)TRSPC_CHAR_NUM; i++)
     {
         s_trsCharInfoList[connIndex][i].charHandle = 0;
         s_trsCharInfoList[connIndex][i].property = 0;
     }
 }
 
-static uint16_t ble_trspc_EnableControlPointCccd(BLE_TRSPC_ConnList_T *p_conn)
+static void ble_trspc_EnableControlPointCccd(BLE_TRSPC_ConnList_T *p_conn)
 {
     GATTC_WriteParams_T *p_writeParams;
     uint16_t result;
@@ -328,12 +328,6 @@ static uint16_t ble_trspc_EnableControlPointCccd(BLE_TRSPC_ConnList_T *p_conn)
         }
         OSAL_Free(p_writeParams);
     }
-    else
-    {
-        result = MBA_RES_OOM;
-    }
-
-    return result;
 }
 
 static void ble_trspc_EnableDownlinkCreditBaseFlowControl(BLE_TRSPC_ConnList_T *p_conn)
@@ -390,7 +384,7 @@ static void ble_trspc_ClientReturnCredit(BLE_TRSPC_ConnList_T *p_conn)
     }
 }
 
-static uint16_t ble_trspc_ConfigureUplinkDataCccd(BLE_TRSPC_ConnList_T *p_conn, uint16_t cccdValue)
+static void ble_trspc_ConfigureUplinkDataCccd(BLE_TRSPC_ConnList_T *p_conn, uint16_t cccdValue)
 {
     GATTC_WriteParams_T *p_writeParams;
     uint16_t result;
@@ -399,7 +393,7 @@ static uint16_t ble_trspc_ConfigureUplinkDataCccd(BLE_TRSPC_ConnList_T *p_conn, 
     if (p_writeParams != NULL)
     {
         p_writeParams->charHandle = s_trsCharInfoList[p_conn->connIndex][TRSPC_INDEX_CHARTUDCCCD].charHandle;
-        p_writeParams->charLength = sizeof(cccdValue);
+        p_writeParams->charLength = (uint16_t)sizeof(cccdValue);
         U16_TO_BUF_LE(p_writeParams->charValue, cccdValue);
         p_writeParams->writeType = ATT_WRITE_REQ;
         p_writeParams->valueOffset = 0x0000;
@@ -424,18 +418,11 @@ static uint16_t ble_trspc_ConfigureUplinkDataCccd(BLE_TRSPC_ConnList_T *p_conn, 
         }
         OSAL_Free(p_writeParams);
     }
-    else
-    {
-        result = MBA_RES_OOM;
-    }
-
-    return result;
 }
 
-static uint16_t ble_trspc_EnableDataSession(uint16_t connHandle, uint8_t cbfcConfig)
+static void ble_trspc_EnableDataSession(uint16_t connHandle, uint8_t cbfcConfig)
 {
     BLE_TRSPC_ConnList_T *p_conn;
-    uint16_t result;
 
     p_conn = ble_trspc_GetConnListByHandle(connHandle);
 
@@ -445,32 +432,22 @@ static uint16_t ble_trspc_EnableDataSession(uint16_t connHandle, uint8_t cbfcCon
 
         if ((p_conn->cbfcConfig&BLE_TRSPC_CBFC_DL_ENABLED)!= 0U)
         {
-            result = ble_trspc_EnableControlPointCccd(p_conn);
+            ble_trspc_EnableControlPointCccd(p_conn);
         }
         else
         {
             p_conn->trsState |= BLE_TRSPC_DL_STATUS_NONCBFCENABLED;
             if ((p_conn->cbfcConfig&BLE_TRSPC_CBFC_UL_ENABLED)!= 0U)
             {
-                result = ble_trspc_ConfigureUplinkDataCccd(p_conn, BLE_TRSPC_CCCD_NOTIFY);
-            }
-            else
-            {
-                result = MBA_RES_INVALID_PARA;
+                ble_trspc_ConfigureUplinkDataCccd(p_conn, BLE_TRSPC_CCCD_NOTIFY);
             }
         }
     }
-    else
-    {
-        result = MBA_RES_FAIL;
-    }
-
-    return result;
 }
 
 static void ble_trspc_RcvData(BLE_TRSPC_ConnList_T *p_conn, uint16_t receivedLen, uint8_t *p_receivedValue)
 {
-    if ((p_conn->inputQueue.usedNum < BLE_TRSPC_INIT_CREDIT) != 0U)
+    if (p_conn->inputQueue.usedNum < (uint8_t)BLE_TRSPC_INIT_CREDIT)
     {
         BLE_TRSPC_Event_T evtPara;
         uint8_t *p_buffer = NULL;
@@ -560,7 +537,7 @@ static void ble_trspc_ProcGattWriteResp(BLE_TRSPC_ConnList_T *p_conn)
         case CBFC_PROC_DISABLE_TUD_CCCD:
         {
             p_conn->cbfcProcedure = CBFC_PROC_IDLE;
-            p_conn->trsState &= (~BLE_TRSPC_UL_STATUS_CBFCENABLED);
+            p_conn->trsState &= (uint8_t)(~BLE_TRSPC_UL_STATUS_CBFCENABLED);
             if (bleTrspcProcess != NULL)
             {
                 evtPara.eventId = BLE_TRSPC_EVT_UL_STATUS;
@@ -623,13 +600,13 @@ static void ble_trspc_ProcGattNotification(BLE_TRSPC_ConnList_T *p_conn, GATT_Ev
                 }
             }
         }
-        else if ((p_event->receivedValue[0]>=BLE_TRSPC_VENDOR_OPCODE_MIN) && (p_event->receivedValue[0]<=BLE_TRSPC_VENDOR_OPCODE_MAX))
+        else if (p_event->receivedValue[0]>=BLE_TRSPC_VENDOR_OPCODE_MIN)
         {
             if (bleTrspcProcess != NULL)
             {
                 evtPara.eventId = BLE_TRSPC_EVT_VENDOR_CMD;
                 evtPara.eventField.onVendorCmd.connHandle = p_conn->connHandle;
-                evtPara.eventField.onVendorCmd.payloadLength = p_event->receivedLength;
+                evtPara.eventField.onVendorCmd.payloadLength = (uint8_t)p_event->receivedLength;
                 evtPara.eventField.onVendorCmd.p_payLoad = p_event->receivedValue;
 
                 bleTrspcProcess(&evtPara);
@@ -673,8 +650,8 @@ static void ble_trspc_GattEventProcess(GATT_Event_T *p_event)
             if (p_conn != NULL)
             {
                 if ((p_event->eventField.onError.reqOpcode == ATT_WRITE_REQ) &&
-                    (p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION || 
-                    p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_ENCRYPTION) &&
+                    (p_event->eventField.onError.errCode == ATT_ERR_INSUF_AUTHN || 
+                    p_event->eventField.onError.errCode == ATT_ERR_INSUF_ENC) &&
                     (p_event->eventField.onError.attrHandle == s_trsCharInfoList[p_conn->connIndex][TRSPC_INDEX_CHARTCPCCCD].charHandle))
                 {
                     p_conn->sessionReqAuth = 1;
@@ -715,7 +692,7 @@ static void ble_trspc_GattEventProcess(GATT_Event_T *p_event)
 
         case GATTC_EVT_PROTOCOL_AVAILABLE:
             p_conn = ble_trspc_GetConnListByHandle(p_event->eventField.onClientProtocolAvailable.connHandle);
-            if (p_conn != NULL && p_conn->cbfcRetryProcedure)
+            if ((p_conn != NULL) && (p_conn->cbfcRetryProcedure!=0U))
             {
                 p_conn->cbfcProcedure = p_conn->cbfcRetryProcedure;
                 p_conn->cbfcRetryProcedure = CBFC_PROC_IDLE;
@@ -732,7 +709,10 @@ static void ble_trspc_GattEventProcess(GATT_Event_T *p_event)
         break;
 
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -821,7 +801,7 @@ static void ble_trspc_GapEventProcess(BLE_GAP_Event_T *p_event)
 
         case BLE_GAP_EVT_ENCRYPT_STATUS:
         {
-            if (p_event->eventField.evtEncryptStatus.status == BLE_GAP_ENCRYPT_SUCCESS)
+            if (p_event->eventField.evtEncryptStatus.status == GAP_STATUS_SUCCESS)
             {
                 ble_trspc_OnLinkEncrypted(p_event->eventField.evtEncryptStatus.connHandle);
             }
@@ -829,6 +809,9 @@ static void ble_trspc_GapEventProcess(BLE_GAP_Event_T *p_event)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -881,7 +864,7 @@ uint16_t BLE_TRSPC_Init(void)
     trsDisc.p_discInfo = NULL;
     trsDisc.p_discChars = trsDiscCharList;
     trsDisc.p_charList = s_trsCharList;
-    trsDisc.discCharsNum = TRSPC_CHAR_NUM;
+    trsDisc.discCharsNum = (uint8_t)TRSPC_CHAR_NUM;
     return BLE_DD_ServiceDiscoveryRegister(&trsDisc);
 }
 
@@ -907,7 +890,7 @@ uint16_t BLE_TRSPC_SendVendorCommand(uint16_t connHandle, uint8_t commandID, uin
         return MBA_RES_INVALID_PARA;
     }
 
-    if (commandLength > (p_conn->attMtu-ATT_WRITE_HEADER_SIZE-1))
+    if (commandLength > (p_conn->attMtu-ATT_WRITE_HEADER_SIZE-1U))
     {
         return MBA_RES_INVALID_PARA;
     }
@@ -916,7 +899,7 @@ uint16_t BLE_TRSPC_SendVendorCommand(uint16_t connHandle, uint8_t commandID, uin
     if (p_writeParams != NULL)
     {
         p_writeParams->charHandle = s_trsCharInfoList[p_conn->connIndex][TRSPC_INDEX_CHARTCP].charHandle;
-        p_writeParams->charLength = (commandLength+1U);
+        p_writeParams->charLength = ((uint16_t)commandLength+1U);
         p_writeParams->charValue[0] = commandID;
         (void)memcpy(&p_writeParams->charValue[1], p_commandPayload, commandLength);
         p_writeParams->writeType = ATT_WRITE_REQ;
@@ -1089,6 +1072,9 @@ void BLE_TRSPC_BleEventHandler(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -1108,7 +1094,7 @@ void BLE_TRSPC_BleDdEventHandler(BLE_DD_Event_T *p_event)
                 if (s_trsCharList[i].connHandle == p_event->eventField.evtDiscResult.connHandle)
                 {
                     /* By checking the discovered handles exist or not. */
-                    if (s_trsCharList[i].p_charInfo[TRSPC_INDEX_CHARTCP].charHandle != 0)
+                    if (s_trsCharList[i].p_charInfo[TRSPC_INDEX_CHARTCP].charHandle != 0U)
                     {
                         if (bleTrspcProcess != NULL)
                         {
@@ -1131,6 +1117,9 @@ void BLE_TRSPC_BleDdEventHandler(BLE_DD_Event_T *p_event)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

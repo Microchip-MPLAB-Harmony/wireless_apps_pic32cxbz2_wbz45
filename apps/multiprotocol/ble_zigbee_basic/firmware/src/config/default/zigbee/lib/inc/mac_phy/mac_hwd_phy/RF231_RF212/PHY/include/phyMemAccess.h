@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYMEMACCESS_H
-#define _PHYMEMACCESS_H
+#ifndef PHYMEMACCESS_H
+#define PHYMEMACCESS_H
 
 /******************************************************************************
                            Includes section
@@ -132,7 +132,7 @@ INLINE PhyMem_t* phyGetMem(void)
   return &macMem.phy;
 }
 
-#endif // _PHYMEMACCESS_H
+#endif // PHYMEMACCESS_H
 
 /* eof phyMemAccess.h*/
 

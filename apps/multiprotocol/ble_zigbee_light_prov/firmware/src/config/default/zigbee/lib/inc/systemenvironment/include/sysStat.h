@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYS_STAT_H
-#define _SYS_STAT_H
+#ifndef SYS_STAT_H
+#define SYS_STAT_H
 
 /******************************************************************************
                    Define section
@@ -100,5 +100,5 @@ uint16_t Stat_GetCurrentStackLeft(void);
 
 #endif // _STATS_ENABLED_
 
-#endif // _SYS_STAT_H
+#endif // SYS_STAT_H
 // eof sysStat.h

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_SWITCH_KEY_H
-#define _APSME_SWITCH_KEY_H
+#if !defined APSME_SWITCH_KEY_H
+#define APSME_SWITCH_KEY_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -183,6 +183,6 @@ void APS_SwitchKeyReq(APS_SwitchKeyReq_t *req);
 void APS_SwitchKeyInd(APS_SwitchKeyInd_t *ind);
 
 #endif /* _SECURITY_ */
-#endif /* _APSME_SWITCH_KEY_H */
+#endif /* APSME_SWITCH_KEY_H */
 /** eof apsmeSwitchKey.h */
 

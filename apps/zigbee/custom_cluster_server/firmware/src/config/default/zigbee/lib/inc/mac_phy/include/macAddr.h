@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACADDR_H
-#define _MACADDR_H
+#ifndef MACADDR_H
+#define MACADDR_H
 
 /******************************************************************************
                         Includes section.
@@ -104,11 +104,16 @@ INLINE bool isCorrectExtAddr(const uint8_t *extAddr)
   uint8_t i = 0U;
 
   do
-    if (extAddr[i]) return true;
+  {
+    if (extAddr[i] != 0U)
+    {
+        return true;
+    }
+  }
   while (++i < sizeof(uint64_t));
   return false;
 }
 
-#endif //_MACADDR_H
+#endif //MACADDR_H
 
 // eof macAddr.h

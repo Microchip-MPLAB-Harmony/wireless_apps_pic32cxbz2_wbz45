@@ -46,7 +46,7 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-/*******************************************************************************//**
+/*********************************************************************************
   \file dbg.h
 
   \brief
@@ -56,7 +56,7 @@
 
     The LOG is turned on by the _SYS_LOG_ON_ define defined in Makefile
   \author
-    Microchip Corporation: http://www.microchip.com \n
+    Microchip Corporation: http:www.microchip.com \n
     Support email: support@microchip.com
 
   Copyright (c) 2008-2015, Microchip Corporation. All rights reserved.
@@ -68,8 +68,8 @@
     17/01/11 M. Gekk - Guards are added
 **********************************************************************************/
 
-#ifndef _DBG_H
-#define _DBG_H
+#ifndef DBG_H
+#define DBG_H
 
 /*********************************************************************************
                           Includes section.
@@ -302,8 +302,8 @@ typedef enum
 #define GUARDED_STRUCT(obj) (obj)
 #endif
 
-#define GUARD_SIZE 1
+#define GUARD_SIZE 1U
 
-#endif // _DBG_H
+#endif // DBG_H
 //end of dbg.h
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTGROUPSCLUSTER_H
-#define _LIGHTGROUPSCLUSTER_H
+#ifndef LIGHTGROUPSCLUSTER_H
+#define LIGHTGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -63,6 +63,6 @@ extern PROGMEM_DECLARE(ZCL_GroupsClusterCommands_t         lightGroupsCommands);
 void lightGroupsClusterInit(void);
 
 
-#endif // _LIGHTGROUPSCLUSTER_H
+#endif // LIGHTGROUPSCLUSTER_H
 
 // eof lightGroupsCluster.h

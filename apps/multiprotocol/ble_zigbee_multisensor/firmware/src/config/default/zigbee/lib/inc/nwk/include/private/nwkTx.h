@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_TX_H
-#define _NWK_TX_H
+#if !defined NWK_TX_H
+#define NWK_TX_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -134,7 +134,7 @@ typedef enum _NwkTxId_t
   NWK_ROUTE_RECORD_TRANSIT_TX_ID = 0x19,
   NWK_MANY_TO_ONE_TRANSIT_STATUS_TX_ID = 0x1A,
 
-  NWK_MIN_DATA_TX_ID = 0x1B,
+  NWK_MIN_DATA_TX_ID = 0x1BU,
   NWK_UNICAST_DATA_TX_ID = NWK_MIN_DATA_TX_ID,
   NWK_MULTICAST_NON_MEMBER_TX_ID = NWK_UNICAST_DATA_TX_ID,
   NWK_BROADCAST_DATA_TX_ID = 0x1C,
@@ -187,9 +187,9 @@ typedef enum _NwkOutPktState_t
 INLINE bool nwkIsDataPacket(const NwkOutputPacket_t *const outPkt)
 {
   /** For FATAL, third param(false) has no effect */
-  SYS_E_ASSERT_FATAL((outPkt->txId < NWK_MAX_TX_ID), NWKTX_NWKISDATAPACKET0);
+  SYS_E_ASSERT_FATAL((outPkt->txId < (uint8_t)NWK_MAX_TX_ID), ((uint16_t)NWKTX_NWKISDATAPACKET0));
 
-  return (NWK_MIN_DATA_TX_ID <= outPkt->txId);
+  return ((uint8_t)NWK_MIN_DATA_TX_ID <= outPkt->txId);
 }
 
 /******************************************************************************
@@ -255,6 +255,6 @@ NWK_PRIVATE void nwkDropPacket(NwkOutputPacket_t *const outPkt);
  ******************************************************************************/
 NWK_PRIVATE bool nwkIsOutPacketValid(NwkOutputPacket_t *const outPkt);
 
-#endif /* _NWK_TX_H */
+#endif /* NWK_TX_H */
 /** eof nwkTx.h */
 

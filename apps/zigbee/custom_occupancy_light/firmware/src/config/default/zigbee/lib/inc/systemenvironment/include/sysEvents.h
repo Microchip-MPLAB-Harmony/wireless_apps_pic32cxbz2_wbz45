@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _SYS_EVENTS_H
-#define _SYS_EVENTS_H
+#if !defined SYS_EVENTS_H
+#define SYS_EVENTS_H
 
 /******************************************************************************
                                Includes section
@@ -91,6 +91,9 @@
 #define BC_VERIFY_KEY_IND_ACTION          (1U << 11)
 /** To check Verify Req attempts are done */
 #define BC_VERIFY_KEY_REQ_ATTTEMPS_ACTION (1U <<12)
+/** To check if we need to send the link status */
+
+#define BC_NWK_LINK_STATUS_TX (1U <<13)
 
 /** The list of ZCL actions to be handled in the respective clusters */
 #define ZCL_ACTION_WRITE_ATTR_REQUEST     (1U << 0) /*Bit 0*/
@@ -426,5 +429,5 @@ typedef struct _BcZCLActionReq_t
   uintptr_t denied;
 } BcZCLActionReq_t;
 
-#endif /* _SYS_EVENTS_H */
+#endif /* SYS_EVENTS_H */
 /** eof sysEvents.h */

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACENVPIB_H
-#define _MACENVPIB_H
+#ifndef MACENVPIB_H
+#define MACENVPIB_H
 
 /******************************************************************************
                     Includes section
@@ -480,6 +480,6 @@ INLINE uint8_t MAC_GetChannel(void)
   return csPIB.phyAttr.channel;
 }
 
-#endif /* _MACENVPIB_H */
+#endif /* MACENVPIB_H */
 
 // eof macenvPib.h

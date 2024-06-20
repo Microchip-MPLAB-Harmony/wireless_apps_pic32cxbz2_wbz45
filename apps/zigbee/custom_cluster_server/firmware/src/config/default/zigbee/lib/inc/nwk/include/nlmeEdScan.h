@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_ED_SCAN_H
-#define _NLME_ED_SCAN_H
+#if !defined NLME_ED_SCAN_H
+#define NLME_ED_SCAN_H
 
 /******************************************************************************
                                Includes section
@@ -107,6 +107,6 @@ typedef struct _NWK_EDScanReq_t
  ******************************************************************************/
 void NWK_EDScanReq(NWK_EDScanReq_t *const req);
 
-#endif /* _NLME_ED_SCAN_H */
+#endif /* NLME_ED_SCAN_H */
 /** eof nlmeEdScan.h */
 

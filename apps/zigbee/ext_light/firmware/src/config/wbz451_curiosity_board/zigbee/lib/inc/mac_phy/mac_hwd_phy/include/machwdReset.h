@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDRESET_H
-#define _MACHWDRESET_H
+#ifndef MACHWDRESET_H
+#define MACHWDRESET_H
 
 /******************************************************************************
                     Prototypes section
@@ -51,6 +51,6 @@
 ******************************************************************************/
 void MACHWD_Reset(void);
 
-#endif /* _MACHWDRESET_H */
+#endif /* MACHWDRESET_H */
 
 // eof machwdReset.h

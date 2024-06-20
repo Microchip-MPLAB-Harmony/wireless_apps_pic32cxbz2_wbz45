@@ -38,8 +38,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _AT86RF233_H_
-#define _AT86RF233_H_
+#ifndef AT86RF233_H_
+#define AT86RF233_H_
 
 /******************************************************************************
                     Includes section
@@ -60,9 +60,9 @@
 /* Minimum RSSI sensitivity */
 #define AT86RF231_RSSI_BASE_VAL (-94)
 
-#define DEVICE_ID_TYPE      0x0000F000
-#define DEVICE_ID_MPA_TYPE  0x0000F000
-#define DEVICE_ID_LPA_TYPE  0x0000B000
+#define DEVICE_ID_TYPE      0x0000F000U
+#define DEVICE_ID_MPA_TYPE  0x0000F000U
+#define DEVICE_ID_LPA_TYPE  0x0000B000U
 
 #define CS_DEVICE_POWER_MPA_LPA 0x0F
 #define CS_DEVICE_POWER_LPA_ONLY 0x0B
@@ -75,16 +75,16 @@
 
 #define WIRELESS_ZBT_BASEADDR   0x41010000UL  
 
-#define ZB_BASEADDR        (WIRELESS_ZBT_BASEADDR + 0x0000)    //0x4101_0000 ~ 0x4101_0FFF; 4KB size
-#define ARB_BASEADDR       (WIRELESS_ZBT_BASEADDR + 0x1000)    //0x4101_1000 ~ 0x4101_1FFF; 4KB size
-#define BT_BASEADDR        (WIRELESS_ZBT_BASEADDR + 0x2000)    //0x4101_2000 ~ 0x4101_2FFF; 4KB size
+#define ZB_BASEADDR        (WIRELESS_ZBT_BASEADDR + 0x0000U)    //0x4101_0000 ~ 0x4101_0FFF; 4KB size
+#define ARB_BASEADDR       (WIRELESS_ZBT_BASEADDR + 0x1000U)    //0x4101_1000 ~ 0x4101_1FFF; 4KB size
+#define BT_BASEADDR        (WIRELESS_ZBT_BASEADDR + 0x2000U)    //0x4101_2000 ~ 0x4101_2FFF; 4KB size
 #define BT1_BASEADDR       (WIRELESS_ZBT_BASEADDR + 0x2000)    //0x4101_2000 ~ 0x4101_2FFF; 4KB size
 #define BT2_BASEADDR       (WIRELESS_ZBT_BASEADDR + 0x3000)    //0x4101_3000 ~ 0x4101_3FFF; 4KB size
 #define SUBSYS_BASEADDR    (WIRELESS_ZBT_BASEADDR + 0x4000)    //0x4101_4000 ~ 0x4101_4FFF; 4KB size
 
 #define ZB_FRAME_BUFFER_SIZE            127     // Bytes
-#define ZB_TX_FRAME_BUFFER_OFFSET       0x100
-#define ZB_RX_FRAME_BUFFER_OFFSET       0x200
+#define ZB_TX_FRAME_BUFFER_OFFSET       0x100U
+#define ZB_RX_FRAME_BUFFER_OFFSET       0x200U
 #define ZB_RX_FRAME_LENGTH_OFFSET       0x280
 
 #define ZB_TX_FRAME_BUFFER_ADDR         ZB_BASEADDR + ZB_TX_FRAME_BUFFER_OFFSET    //0x4202_2100 ~ 0x4202_217F     // 127 Bytes
@@ -94,67 +94,67 @@
 #define SUBSYS_ZB_EN_MAIN_CLK_16MHZ     (1 << 4)        // B2782285.PNG
 
 /*Register Map*/
-#define TRX_STATUS_OFFSET     0x01
-#define	TRX_STATE_OFFSET      0x02
-#define	TRX_CTRL_0_OFFSET     0x03
-#define	TRX_CTRL_1_OFFSET     0x04
-#define	PHY_TX_PWR_OFFSET     0x05
-#define	PHY_RSSI_OFFSET       0x06
-#define	PHY_ED_LEVEL_OFFSET   0x07
-#define	PHY_CC_CCA_OFFSET     0x08
-#define	CCA_THRESH_OFFSET     0x09
-#define	RX_CTRL_OFFSET        0x0A
-#define	SFD_VALUE_OFFSET      0x0B
-#define	TRX_CTRL_2_OFFSET     0x0C
-#define	ANT_DIV_OFFSET        0x0D
-#define	IRQ_MASK_OFFSET       0x0E
-#define	IRQ_STATUS_OFFSET     0x0F
-#define	VREG_CTRL_OFFSET      0x10
-#define	BATMON_OFFSET         0x11
-#define	XOSC_CTRL_OFFSET      0x12
-#define	CC_CTRL_0_OFFSET      0x13
-#define	CC_CTRL_1_OFFSET      0x14
-#define	RX_SYN_OFFSET         0x15
-#define	TRX_RPC_OFFSET        0x16
-#define	XAH_CTRL_OFFSET       0x17
-#define	FTN_CTRL_OFFSET       0x18
-#define	XAH_CTRL_2_OFFSET     0x19
-#define	PLL_CF_OFFSET         0x1A
-#define	PLL_DCU_OFFSET        0x1B
-#define	PART_NUM_OFFSET       0x1C
-#define	VERSION_NUM_OFFSET    0x1D
-#define	MAN_ID_0_OFFSET       0x1E
-#define	MAN_ID_1_OFFSET       0x1F
-#define	SHORT_ADDR_0_OFFSET   0x20
-#define	SHORT_ADDR_1_OFFSET   0x21
-#define	PAN_ID_0_OFFSET       0x22
-#define	PAN_ID_1_OFFSET       0x23
-#define	IEEE_ADDR_0_OFFSET    0x24
-#define	IEEE_ADDR_1_OFFSET    0x25
-#define	IEEE_ADDR_2_OFFSET    0x26
-#define	IEEE_ADDR_3_OFFSET    0x27
-#define	IEEE_ADDR_4_OFFSET    0x28
-#define	IEEE_ADDR_5_OFFSET    0x29
-#define	IEEE_ADDR_6_OFFSET    0x2A
-#define	IEEE_ADDR_7_OFFSET    0x2B
-#define	XAH_CTRL_0_OFFSET     0x2C
-#define	CSMA_SEED_0_OFFSET    0x2D
-#define	CSMA_SEED_1_OFFSET    0x2E
-#define	CSMA_BE_OFFSET        0x2F
-#define	TEST_CTRL_DIGI_OFFSET 0x36
-#define ZB_RADIO_CTRL_IRQ_STATUS_OFFSET 0x40
-#define ZB_RADIO_CTRL_OFFSET  0x42
-#define ZB_RADIO_CTRL_1_OFFSET  0x43
-#define ZB_RADIO_CTRL_2_OFFSET  0x44
-#define ZB_RADIO_CTRL_3_OFFSET  0x45
-#define ZB_RADIO_CTRL_4_OFFSET  0x46
-#define ZB_RADIO_CTRL_5_OFFSET  0x47
-#define ZB_RADIO_CTRL_6_OFFSET  0x48
-#define ZB_RADIO_CTRL_7_OFFSET  0x49
-#define ZB_RADIO_CTRL_8_OFFSET  0x4A
-#define ZB_RADIO_CTRL_9_OFFSET  0x4B
-#define ZB_RADIO_CTRL_10_OFFSET  0x4C
-#define RX_FRAME_LENGTH_OFFSET 0x280
+#define TRX_STATUS_OFFSET     0x01U
+#define	TRX_STATE_OFFSET      0x02U
+#define	TRX_CTRL_0_OFFSET     0x03U
+#define	TRX_CTRL_1_OFFSET     0x04U
+#define	PHY_TX_PWR_OFFSET     0x05U
+#define	PHY_RSSI_OFFSET       0x06U
+#define	PHY_ED_LEVEL_OFFSET   0x07U
+#define	PHY_CC_CCA_OFFSET     0x08U
+#define	CCA_THRESH_OFFSET     0x09U
+#define	RX_CTRL_OFFSET        0x0AU
+#define	SFD_VALUE_OFFSET      0x0BU
+#define	TRX_CTRL_2_OFFSET     0x0CU
+#define	ANT_DIV_OFFSET        0x0DU
+#define	IRQ_MASK_OFFSET       0x0EU
+#define	IRQ_STATUS_OFFSET     0x0FU
+#define	VREG_CTRL_OFFSET      0x10U
+#define	BATMON_OFFSET         0x11U
+#define	XOSC_CTRL_OFFSET      0x12U
+#define	CC_CTRL_0_OFFSET      0x13U
+#define	CC_CTRL_1_OFFSET      0x14U
+#define	RX_SYN_OFFSET         0x15U
+#define	TRX_RPC_OFFSET        0x16U
+#define	XAH_CTRL_OFFSET       0x17U
+#define	FTN_CTRL_OFFSET       0x18U
+#define	XAH_CTRL_2_OFFSET     0x19U
+#define	PLL_CF_OFFSET         0x1AU
+#define	PLL_DCU_OFFSET        0x1BU
+#define	PART_NUM_OFFSET       0x1CU
+#define	VERSION_NUM_OFFSET    0x1DU
+#define	MAN_ID_0_OFFSET       0x1EU
+#define	MAN_ID_1_OFFSET       0x1FU
+#define	SHORT_ADDR_0_OFFSET   0x20U
+#define	SHORT_ADDR_1_OFFSET   0x21U
+#define	PAN_ID_0_OFFSET       0x22U
+#define	PAN_ID_1_OFFSET       0x23U
+#define	IEEE_ADDR_0_OFFSET    0x24U
+#define	IEEE_ADDR_1_OFFSET    0x25U
+#define	IEEE_ADDR_2_OFFSET    0x26U
+#define	IEEE_ADDR_3_OFFSET    0x27U
+#define	IEEE_ADDR_4_OFFSET    0x28U
+#define	IEEE_ADDR_5_OFFSET    0x29U
+#define	IEEE_ADDR_6_OFFSET    0x2AU
+#define	IEEE_ADDR_7_OFFSET    0x2BU
+#define	XAH_CTRL_0_OFFSET     0x2CU
+#define	CSMA_SEED_0_OFFSET    0x2DU
+#define	CSMA_SEED_1_OFFSET    0x2EU
+#define	CSMA_BE_OFFSET        0x2FU
+#define	TEST_CTRL_DIGI_OFFSET 0x36U
+#define ZB_RADIO_CTRL_IRQ_STATUS_OFFSET 0x40U
+#define ZB_RADIO_CTRL_OFFSET  0x42U
+#define ZB_RADIO_CTRL_1_OFFSET  0x43U
+#define ZB_RADIO_CTRL_2_OFFSET  0x44U
+#define ZB_RADIO_CTRL_3_OFFSET  0x45U
+#define ZB_RADIO_CTRL_4_OFFSET  0x46U
+#define ZB_RADIO_CTRL_5_OFFSET  0x47U
+#define ZB_RADIO_CTRL_6_OFFSET  0x48U
+#define ZB_RADIO_CTRL_7_OFFSET  0x49U
+#define ZB_RADIO_CTRL_8_OFFSET  0x4AU
+#define ZB_RADIO_CTRL_9_OFFSET  0x4BU
+#define ZB_RADIO_CTRL_10_OFFSET  0x4CU
+#define RX_FRAME_LENGTH_OFFSET 0x280U
 
 //TODO - To Clean Up and Map
 #define TRX_STATUS_REG    TRX_STATUS_OFFSET     //MMIO_REG(ZB_BASEADDR + TRX_STATUS_OFFSET    , uint8_t)
@@ -238,7 +238,7 @@
 #if 1 //def _ACTUAL_FPGA_
 #define ZBT_ARBITER_ADDR                            0x41011000
 #define BT_BB_BASE_ADDR                             0x41012000
-#define SUBSYS_BASE_ADDR                            0x41014000
+#define SUBSYS_BASE_ADDR                            0x41014000U
 #else
 #define BT_BB_BASE_ADDR                             0x42020000
 #define SUBSYS_BASE_ADDR                            0x42024000
@@ -246,8 +246,8 @@
 #endif
 
 #define ZB_FRAME_BUFFER_SIZE            127     // Bytes
-#define ZB_TX_FRAME_BUFFER_OFFSET       0x100
-#define ZB_RX_FRAME_BUFFER_OFFSET       0x200
+#define ZB_TX_FRAME_BUFFER_OFFSET       0x100U
+#define ZB_RX_FRAME_BUFFER_OFFSET       0x200U
 #define ZB_TX_FRAME_BUFFER_ADDR         ZB_BASEADDR + ZB_TX_FRAME_BUFFER_OFFSET    //0x4202_2100 ~ 0x4202_217F     // 127 Bytes
 #define ZB_RX_FRAME_BUFFER_ADDR         ZB_BASEADDR + ZB_RX_FRAME_BUFFER_OFFSET    //0x4202_2100 ~ 0x4202_217F     // 127 Bytes
 #define SUBSYS_ZB_EN_MAIN_CLK_16MHZ     (1 << 4)        // B2782285.PNG
@@ -288,7 +288,7 @@
 #define Radio_Arbiter_ZB_Control_Addr         ARB_BASEADDR + 0x004
 #define Radio_Arbiter_Event_Control_Addr      ARB_BASEADDR + 0x008
 #define Radio_Arbiter_Core_Control_Addr       ARB_BASEADDR + 0x00C
-#define Radio_Arbiter_Core_Status_Addr        ARB_BASEADDR + 0x010
+#define Radio_Arbiter_Core_Status_Addr        ARB_BASEADDR + 0x010U
 #define Radio_Arbiter_Interrupt_Status_Addr   ARB_BASEADDR + 0x014
 #define Radio_Arbiter_Interrupt_Mask_Addr     ARB_BASEADDR + 0x018
 
@@ -303,7 +303,7 @@
 
 
 // Arbiter Core Status
-#define ARBITER_ZB_GRANT_STATE 0x01
+#define ARBITER_ZB_GRANT_STATE 0x01U
 #define RADIO_OWNER_ZB_LINK    0x04
 
 //BT SubSystem
@@ -735,6 +735,65 @@ typedef struct PACK
 #define TXPWR_MIN_14_DBM_BACKOFF_LPA_VALUE    0x0E //-11 dBm
 #define TXPWR_MIN_15_DBM_BACKOFF_LPA_VALUE    0x0E //-11 dBm
 #define TXPWR_MIN_16_DBM_BACKOFF_LPA_VALUE    0x0F //-16 dBm
+
+
+// TX_PWR HPA Mode Values with bypass mode disabled
+#define TXPWR_20_DBM_BACKOFF_HPA_VALUE         0x00 //20 dBm
+#define TXPWR_19_DBM_BACKOFF_HPA_VALUE         0x01 //19 dBm
+#define TXPWR_18_DBM_BACKOFF_HPA_VALUE         0x02 //18 dBm
+#define TXPWR_17_DBM_BACKOFF_HPA_VALUE         0x03 //17 dBm
+#define TXPWR_16_DBM_BACKOFF_HPA_VALUE         0x04 //16 dBm
+#define TXPWR_15_DBM_BACKOFF_HPA_VALUE         0x05 //15 dBm
+#define TXPWR_14_DBM_BACKOFF_HPA_VALUE         0x06 //14 dBm
+#define TXPWR_13_DBM_BACKOFF_HPA_VALUE         0x07 //13 dBm
+#define TXPWR_12_DBM_BACKOFF_HPA_VALUE         0x08 //12 dBm
+#define TXPWR_11_DBM_BACKOFF_HPA_VALUE         0x08 //11 dBm //12
+#define TXPWR_10_DBM_BACKOFF_HPA_VALUE         0x09 //10 dBm
+#define TXPWR_9_DBM_BACKOFF_HPA_VALUE          0x09 //9 dBm  //10
+#define TXPWR_8_DBM_BACKOFF_HPA_VALUE          0x0A //8 dBm
+#define TXPWR_7_DBM_BACKOFF_HPA_VALUE          0x0A //7 dBm //8
+#define TXPWR_6_DBM_BACKOFF_HPA_VALUE          0x0B //6 dBm
+#define TXPWR_5_DBM_BACKOFF_HPA_VALUE          0x0B //5 dBm //6
+#define TXPWR_4_DBM_BACKOFF_HPA_VALUE          0x0C //4 dBm
+#define TXPWR_3_DBM_BACKOFF_HPA_VALUE          0x0C //3 dBm //4
+#define TXPWR_2_DBM_BACKOFF_HPA_VALUE          0x0D //2 dBm
+#define TXPWR_1_DBM_BACKOFF_HPA_VALUE          0x0D //1 dBm //2
+#define TXPWR_0_DBM_BACKOFF_HPA_VALUE          0x0E //0 dBm
+#define TXPWR_MIN_1_DBM_BACKOFF_HPA_VALUE      0x0E //-1 dBm //0
+#define TXPWR_MIN_2_DBM_BACKOFF_HPA_VALUE      0x0F //-2 dBm
+#define TXPWR_MIN_3_DBM_BACKOFF_HPA_VALUE      0x0F //-3 dBm //-2
+
+
+// TX_PWR HPA Mode Values with bypass mode enabled
+#define TXPWR_MIN_4_DBM_BACKOFF_HPA_VALUE         0x00 //-4 dBm
+#define TXPWR_MIN_5_DBM_BACKOFF_HPA_VALUE         0x01 //-5 dBm
+#define TXPWR_MIN_6_DBM_BACKOFF_HPA_VALUE         0x02 //-6 dBm
+#define TXPWR_MIN_7_DBM_BACKOFF_HPA_VALUE         0x03 //-7 dBm
+#define TXPWR_MIN_8_DBM_BACKOFF_HPA_VALUE         0x04 //-8 dBm
+#define TXPWR_MIN_9_DBM_BACKOFF_HPA_VALUE         0x05 //-9 dBm
+#define TXPWR_MIN_10_DBM_BACKOFF_HPA_VALUE        0x06 //-10 dBm
+#define TXPWR_MIN_11_DBM_BACKOFF_HPA_VALUE        0x07 //-11 dBm
+#define TXPWR_MIN_12_DBM_BACKOFF_HPA_VALUE        0x08 //-12 dBm
+#define TXPWR_MIN_13_DBM_BACKOFF_HPA_VALUE        0x08 //-13 dBm //-12
+#define TXPWR_MIN_14_DBM_BACKOFF_HPA_VALUE        0x09 //-14 dBm
+#define TXPWR_MIN_15_DBM_BACKOFF_HPA_VALUE        0x09 //-15 dBm  //-14
+#define TXPWR_MIN_16_DBM_BACKOFF_HPA_VALUE        0x0A //-16 dBm
+#define TXPWR_MIN_17_DBM_BACKOFF_HPA_VALUE        0x0A //-17 dBm //-16
+#define TXPWR_MIN_18_DBM_BACKOFF_HPA_VALUE        0x0B //-18 dBm
+#define TXPWR_MIN_19_DBM_BACKOFF_HPA_VALUE        0x0B //-19 dBm //-18
+#define TXPWR_MIN_20_DBM_BACKOFF_HPA_VALUE        0x0C //-20 dBm 
+#define TXPWR_MIN_21_DBM_BACKOFF_HPA_VALUE        0x0C //-21 dBm //-20
+#define TXPWR_MIN_22_DBM_BACKOFF_HPA_VALUE        0x0D //-22 dBm
+#define TXPWR_MIN_23_DBM_BACKOFF_HPA_VALUE        0x0D //-23 dBm //-22
+#define TXPWR_MIN_24_DBM_BACKOFF_HPA_VALUE        0x0E //-24 dBm
+#define TXPWR_MIN_25_DBM_BACKOFF_HPA_VALUE        0x0E //-25 dBm //-24
+#define TXPWR_MIN_26_DBM_BACKOFF_HPA_VALUE        0x0F //-26 dBm
+
+
+
+
+
+
 
 /***************************
         PHY_RSSI
@@ -1168,6 +1227,6 @@ typedef struct PACK
 #define AES_DECRYPTION        1
 
 END_PACK
-#endif /* _AT86RF233_H_ */
+#endif /* AT86RF233_H_ */
 
 // eof at86rf233.h

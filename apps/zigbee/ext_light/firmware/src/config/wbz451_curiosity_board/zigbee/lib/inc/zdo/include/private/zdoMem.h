@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOMEM_H
-#define _ZDOMEM_H
+#ifndef ZDOMEM_H
+#define ZDOMEM_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -234,5 +234,5 @@ static inline ZdoMgmtNwkUpdate_t * zdoMemMgmtNwkUpdate(void)
   return &zdoMem.mgmtNwkUpdate;
 }
 
-#endif // _ZDOMEM_H
+#endif // ZDOMEM_H
 

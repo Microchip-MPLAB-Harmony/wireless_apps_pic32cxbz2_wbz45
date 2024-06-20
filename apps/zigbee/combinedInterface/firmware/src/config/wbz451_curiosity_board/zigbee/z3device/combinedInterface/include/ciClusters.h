@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CICLUSTER_H
-#define _CICLUSTER_H
+#ifndef CICLUSTER_H
+#define CICLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -51,16 +51,18 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
+
+
 #ifdef OTAU_SERVER
-  #define CI_SERVER_CLUSTERS_COUNT     7u
+  #define CI_SERVER_CLUSTERS_COUNT     7u 
   #define CI_SERVER_CLUSTER_INIT_COUNT (CI_SERVER_CLUSTERS_COUNT - 1)
 #else
-  #define CI_SERVER_CLUSTERS_COUNT     6u
+  #define CI_SERVER_CLUSTERS_COUNT     6u 
   #define CI_SERVER_CLUSTER_INIT_COUNT CI_SERVER_CLUSTERS_COUNT
 #endif
 
-#define CI_CLIENT_CLUSTER_INIT_COUNT   17u
-#define CI_CLIENT_CLUSTERS_COUNT       17u
+#define CI_CLIENT_CLUSTER_INIT_COUNT   17u 
+#define CI_CLIENT_CLUSTERS_COUNT       17u 
 
 /******************************************************************************
                     Externals
@@ -72,6 +74,6 @@ extern void (*ciClientClusterInitFunctions[CI_CLIENT_CLUSTER_INIT_COUNT])();
 extern ClusterId_t   ciServerClusterIds[CI_SERVER_CLUSTERS_COUNT];
 extern ClusterId_t   ciClientClusterIds[CI_CLIENT_CLUSTERS_COUNT];
 
-#endif // _CICLUSTER_H
+#endif // CICLUSTER_H
 
 // eof ciClusters.h

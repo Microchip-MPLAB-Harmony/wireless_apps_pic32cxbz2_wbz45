@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTCOLORSCHEMESCONVERTION_H
-#define _LIGHTCOLORSCHEMESCONVERTION_H
+#ifndef LIGHTCOLORSCHEMESCONVERTION_H
+#define LIGHTCOLORSCHEMESCONVERTION_H
 
 /******************************************************************************
                     Includes section
@@ -69,7 +69,7 @@ void lightConvertColorToXY(uint16_t temperature, uint16_t *x, uint16_t *y);
 ******************************************************************************/
 uint16_t lightConvertXYToColor(uint16_t x, uint16_t y);
 
-#endif // _LIGHTCOLORSCHEMESCONVERTION_H
+#endif // LIGHTCOLORSCHEMESCONVERTION_H
 
 // eof lightColorSchemesConversion.h
 

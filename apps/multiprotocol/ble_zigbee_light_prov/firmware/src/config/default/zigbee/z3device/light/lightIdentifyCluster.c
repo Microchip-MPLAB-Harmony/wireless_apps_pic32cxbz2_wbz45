@@ -138,7 +138,7 @@ void lightIdentifyClusterInit(void)
   ZCL_Cluster_t *cluster = ZCL_GetCluster(APP_ENDPOINT_LIGHT, IDENTIFY_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
   ZCL_Cluster_t *identifyCluster = ZCL_GetCluster(APP_ENDPOINT_LIGHT, IDENTIFY_CLUSTER_ID, ZCL_CLUSTER_SIDE_CLIENT);
   
-  if (cluster)
+  if (cluster != NULL)
   {
     cluster->ZCL_AttributeEventInd = ZCL_IdentifyAttributeEventInd;
   }
@@ -149,8 +149,10 @@ void lightIdentifyClusterInit(void)
   lightIdentifyClusterServerAttributes.identifyTime.value = 0;
   lightIdentifyClusterServerAttributes.clusterVersion.value = IDENTIFY_CLUSTER_VERSION;
   lightIdentifyClusterClientAttributes.clusterVersion.value = IDENTIFY_CLUSTER_VERSION;
-  if (identifyCluster)
+  if (identifyCluster != NULL)
+  {
     identifyCluster->ZCL_DefaultRespInd = ZCL_CommandZclDefaultResp;
+  }
 }
 
 /**************************************************************************//**
@@ -162,14 +164,14 @@ void lightIdentifyClusterInit(void)
 ******************************************************************************/
 void lightIdentifyStart(uint16_t identifyTime, bool colorEffect, uint16_t enhancedHue)
 {
-  HAL_StopAppTimer(&effectTimer);
+  (void)HAL_StopAppTimer(&effectTimer);
   identificationStatus.finish = false;
   identificationStatus.colorEffect = colorEffect;
 
   if (colorEffect)
   {
     /**CHANGE - identifyTime Shall not be updated for triggerEffcet - need to work on*/
-    lightIdentifyClusterServerAttributes.identifyTime.value = identifyTime * 2;
+    lightIdentifyClusterServerAttributes.identifyTime.value = (uint16_t)(identifyTime * 2U);
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
     colorControlShowIdentifyEffect(enhancedHue);
 #else
@@ -183,14 +185,15 @@ void lightIdentifyStart(uint16_t identifyTime, bool colorEffect, uint16_t enhanc
 
   LCD_FILL(true);
   
-  if (!identificationStatus.colorEffect)
+  if (!(bool)identificationStatus.colorEffect)
+  {
   LEDS_SET_BRIGHTNESS(0);
-
+  }
   effectTimer.mode = TIMER_REPEAT_MODE;
   effectTimer.interval = IDENTIFY_EFFECT_TIMER_PERIOD;
   effectTimer.callback = effectTimerFired;
 
-  HAL_StartAppTimer(&effectTimer);
+  (void)HAL_StartAppTimer(&effectTimer);
 }
 
 /**************************************************************************//**
@@ -208,7 +211,9 @@ void lightIdentifyStop(void)
 {
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
   if (identificationStatus.colorEffect)
+  {
     colorControlStopIdentifyEffect();
+  }
 #elif APP_Z3_DEVICE_TYPE <= APP_DEVICE_TYPE_DIMMABLE_LIGHT
     uint8_t level;
     level=levelControlCurrentLevel();
@@ -216,11 +221,13 @@ void lightIdentifyStop(void)
     (void)level;
 #endif 
   identificationStatus.period = 0;
-  HAL_StopAppTimer(&effectTimer);
+  (void)HAL_StopAppTimer(&effectTimer);
   lightIdentifyClusterServerAttributes.identifyTime.value = 0;
 
-  if (identifycb)
+  if (identifycb != NULL)
+  {
     identifycb();
+  }
   LCD_FILL(false);
   LEDS_SET_BRIGHTNESS(LED_NO_BRIGHTNESS);
 }
@@ -242,7 +249,7 @@ static void effectTimerFired(void)
   }
   else
   {    
-    identificationStatus.period = !identificationStatus.period;
+    identificationStatus.period = (!identificationStatus.period);
     LCD_FILL(identificationStatus.period);
 
     if (identificationStatus.period)
@@ -258,7 +265,7 @@ static void effectTimerFired(void)
   
   (void)level;
   
-  if ((0 == lightIdentifyClusterServerAttributes.identifyTime.value) || (identificationStatus.finish))
+  if ((0U == lightIdentifyClusterServerAttributes.identifyTime.value) || (bool)(identificationStatus.finish))
   {
     lightIdentifyStop();
   }
@@ -271,7 +278,7 @@ static void effectTimerFired(void)
 ******************************************************************************/
 bool lightIdentifyIsIdentifying(void)
 {
-  return lightIdentifyClusterServerAttributes.identifyTime.value > 0;
+  return lightIdentifyClusterServerAttributes.identifyTime.value > 0U;
 }
 
 /**************************************************************************//**
@@ -294,7 +301,7 @@ static ZCL_Status_t identifyQueryResponseInd(ZCL_Addressing_t *addressing, uint8
 
   //appSnprintf("->IdentifyQueryResponse, addr = 0x%04x, timeout = 0x%04x\r\n", addressing->addr.shortAddress, payload->timeout);
 
-  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS(identifySubscribers, identifyQueryResponse);
+  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS((identifySubscribers), identifyQueryResponse);
 
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;
@@ -319,12 +326,15 @@ static ZCL_Status_t identifyInd(ZCL_Addressing_t *addressing, uint8_t payloadLen
 
   lightIdentifyClusterServerAttributes.identifyTime.value = payload->identifyTime;
 
-  if (payload->identifyTime)
+  if ((payload->identifyTime) != 0U)
+  {
     lightIdentifyStart(payload->identifyTime, IDENTIFY_NON_COLOR_EFFECT, 0);
+  }
   else
+  {
     lightIdentifyStop();
-
-  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS(identifySubscribers, identify);
+  }
+  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS((identifySubscribers), identify);
 
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;
@@ -347,11 +357,13 @@ static ZCL_Status_t identifyQueryInd(ZCL_Addressing_t *addressing, uint8_t paylo
   event.eventData.zclEventData.payloadLength = payloadLength;
   event.eventData.zclEventData.payload = (uint8_t*)payload;
 
-  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS(identifySubscribers, identifyQuery);
+  RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS((identifySubscribers), identifyQuery);
   APP_Zigbee_Handler(event);
 
-  if (lightIdentifyClusterServerAttributes.identifyTime.value)
+  if ((lightIdentifyClusterServerAttributes.identifyTime.value) != 0U)
+  {
     return sendIdentifyQueryResponse(addressing, APP_ENDPOINT_LIGHT, lightIdentifyClusterServerAttributes.identifyTime.value);
+  }
 
   return ZCL_SUCCESS_WITH_DEFAULT_RESPONSE_STATUS;
 }
@@ -396,8 +408,9 @@ static ZCL_Status_t triggerEffectInd(ZCL_Addressing_t *addressing, uint8_t paylo
     case ZCL_EFFECT_IDENTIFIER_STOP_EFFECT:
       lightIdentifyStop();
       break;
-
+  
     default:
+      /* TODO: default case. */
       break;
   }
 
@@ -423,7 +436,7 @@ static void ZCL_IdentifyAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_Attr
 
   if ((ZCL_WRITE_ATTRIBUTE_EVENT == event) && (ZCL_IDENTIFY_CLUSTER_IDENTIFY_TIME_ATTRIBUTE_ID == attributeId))
   {
-    if (lightIdentifyClusterServerAttributes.identifyTime.value)
+    if ((lightIdentifyClusterServerAttributes.identifyTime.value) != 0U)
     {
       lightIdentifyStart(lightIdentifyClusterServerAttributes.identifyTime.value, IDENTIFY_NON_COLOR_EFFECT, 0);
     }
@@ -441,16 +454,16 @@ static void ZCL_IdentifyAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_Attr
 /**************************************************************************//**
 \brief Makes device to start identify itself
 
-\param[in] time - identifying time in seconds
+\param[in] identifyTime - identifying time in seconds
 ******************************************************************************/
-void lightIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void))
+void lightIdetifyStartIdentifyingCb(uint16_t identifyTime, void (*cb)(void))
 {
-  lightIdentifyClusterServerAttributes.identifyTime.value = time;
+  lightIdentifyClusterServerAttributes.identifyTime.value = identifyTime;
   identifycb = cb;
   lightIdentifyStart(lightIdentifyClusterServerAttributes.identifyTime.value,
                 IDENTIFY_NON_COLOR_EFFECT, 0);
 
-  (void)cb;
+  (void)*cb;
 }
 
 #endif // APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT

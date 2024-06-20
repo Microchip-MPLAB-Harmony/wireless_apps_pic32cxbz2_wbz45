@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _RFECNRYPT_H
-#define _RFECNRYPT_H
+#ifndef RFECNRYPT_H
+#define RFECNRYPT_H
 
 /******************************************************************************
                     Includes section
@@ -90,7 +90,7 @@ typedef struct
 ******************************************************************************/
 void RF_EncryptReq(RF_EncryptReq_t *reqParams);
 
-#endif /*_RFECNRYPT_H*/
+#endif /*RFECNRYPT_H*/
 
 // eof rfEncrypt.h
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _TSBASICCLUSTER_H
-#define _TSBASICCLUSTER_H
+#ifndef TSBASICCLUSTER_H
+#define TSBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -69,6 +69,6 @@ void tsBasicClusterInit(void);
 ******************************************************************************/
 void tsBasicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _TSBASICCLUSTER_H
+#endif // TSBASICCLUSTER_H
 
 // eof tsBasicCluster.h

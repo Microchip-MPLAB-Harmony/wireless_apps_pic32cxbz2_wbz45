@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACRESET_H
-#define _MACRESET_H
+#ifndef MACRESET_H
+#define MACRESET_H
 
 /******************************************************************************
                         Includes section
@@ -92,6 +92,6 @@ typedef struct
 ******************************************************************************/
 void MAC_ResetReq(MAC_ResetReq_t *reqParams);
 
-#endif /* _MACRESET_H */
+#endif /* MACRESET_H */
 
 // eof macReset.h

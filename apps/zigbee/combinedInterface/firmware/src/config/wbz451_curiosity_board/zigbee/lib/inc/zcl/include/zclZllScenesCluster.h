@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLSCENESCLUSTER_H
-#define _ZCLSCENESCLUSTER_H
+#ifndef ZCLSCENESCLUSTER_H
+#define ZCLSCENESCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -69,7 +69,7 @@ to factory defaults.
 
 #define ZCL_SCENES_CLUSTER_NAME_SUPPORT_FLAG  0x80
 
-#define ZCL_SCENES_CLUSTER_COPY_ALL_SCENES 0x01
+#define ZCL_SCENES_CLUSTER_COPY_ALL_SCENES 0x01U
 
 /**
  * \brief Scenes Cluster server attributes amount
@@ -109,16 +109,16 @@ to factory defaults.
  * \brief Scenes Cluster client's command identifiers
 */
 
-#define ZCL_SCENES_CLUSTER_ADD_SCENE_COMMAND_ID            0x00
-#define ZCL_SCENES_CLUSTER_VIEW_SCENE_COMMAND_ID           0x01
-#define ZCL_SCENES_CLUSTER_REMOVE_SCENE_COMMAND_ID         0x02
-#define ZCL_SCENES_CLUSTER_REMOVE_ALL_SCENES_COMMAND_ID    0x03
-#define ZCL_SCENES_CLUSTER_STORE_SCENE_COMMAND_ID          0x04
-#define ZCL_SCENES_CLUSTER_RECALL_SCENE_COMMAND_ID         0x05
-#define ZCL_SCENES_CLUSTER_GET_SCENE_MEMBERSHIP_COMMAND_ID 0x06
-#define ZCL_SCENES_CLUSTER_ENHANCED_ADD_SCENE_COMMAND_ID   0x40
-#define ZCL_SCENES_CLUSTER_ENHANCED_VIEW_SCENE_COMMAND_ID  0x41
-#define ZCL_SCENES_CLUSTER_COPY_SCENE_COMMAND_ID           0x42
+#define ZCL_SCENES_CLUSTER_ADD_SCENE_COMMAND_ID            (0x00)
+#define ZCL_SCENES_CLUSTER_VIEW_SCENE_COMMAND_ID           (0x01)
+#define ZCL_SCENES_CLUSTER_REMOVE_SCENE_COMMAND_ID         (0x02)
+#define ZCL_SCENES_CLUSTER_REMOVE_ALL_SCENES_COMMAND_ID    (0x03)
+#define ZCL_SCENES_CLUSTER_STORE_SCENE_COMMAND_ID          (0x04)
+#define ZCL_SCENES_CLUSTER_RECALL_SCENE_COMMAND_ID         (0x05)
+#define ZCL_SCENES_CLUSTER_GET_SCENE_MEMBERSHIP_COMMAND_ID (0x06)
+#define ZCL_SCENES_CLUSTER_ENHANCED_ADD_SCENE_COMMAND_ID   (0x40)
+#define ZCL_SCENES_CLUSTER_ENHANCED_VIEW_SCENE_COMMAND_ID  (0x41)
+#define ZCL_SCENES_CLUSTER_COPY_SCENE_COMMAND_ID           (0x42)
 
 /**
  * \brief Scenes Cluster servers's command identifiers
@@ -145,7 +145,7 @@ to factory defaults.
 */
 
 #define ZCL_DEFINE_SCENES_CLUSTER_CLIENT_ATTRIBUTES() \
-    DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_SCENES_CLUSTER_VERSION_ATTRIBUTE_ID, ZCL_U16BIT_DATA_TYPE_ID)
+    DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_SCENES_CLUSTER_VERSION_ATTRIBUTE_ID, (uint8_t)ZCL_U16BIT_DATA_TYPE_ID)
 
 /**
  * \brief On/Off Cluster define commands macros
@@ -327,8 +327,8 @@ typedef struct PACK
  typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(2,(
-    uint8_t copyAllScenes   : 1,
-    uint8_t reserved        : 7
+    BitField_t copyAllScenes   : 1,
+    BitField_t reserved        : 7
   ))
 } SceneMode_t;
 
@@ -548,4 +548,4 @@ typedef struct
 } ZCL_ScenesClusterCommands_t;
 
 
-#endif /* _ZCLSCENESCLUSTER_H */
+#endif /* ZCLSCENESCLUSTER_H */

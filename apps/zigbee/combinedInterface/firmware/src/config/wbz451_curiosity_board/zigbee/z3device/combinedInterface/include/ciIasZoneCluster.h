@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIIASZONECLUSTER_H
-#define _CIIASZONECLUSTER_H
+#ifndef CIIASZONECLUSTER_H
+#define CIIASZONECLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -97,6 +97,6 @@ void zoneInitiateTestModeCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_
 *******************************************************************************/
 void aceZoneEnrollmentProcInitiateCmd(APS_AddrMode_t mode, ShortAddr_t zoneServerAddr, uint8_t srcEp, void *data, uint8_t enrolmentType);
 
-#endif // _CIIASZONECLUSTER_H
+#endif // CIIASZONECLUSTER_H
 
 // eof ciIasZoneCluster.h

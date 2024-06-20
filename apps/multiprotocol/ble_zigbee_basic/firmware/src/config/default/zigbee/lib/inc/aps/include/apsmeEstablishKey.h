@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _APSME_ESTABLISH_KEY_H
-#define _APSME_ESTABLISH_KEY_H
+#if !defined APSME_ESTABLISH_KEY_H
+#define APSME_ESTABLISH_KEY_H
 /**//**
  *
  *  The APS layer provides services that allow two devices to establish
@@ -343,6 +343,6 @@ void APS_EstablishKeyResp(APS_EstablishKeyResp_t *const resp);
 
 #endif /* _SECURITY_ and _LINK_SECURITY_ */
 
-#endif /* _APSME_ESTABLISH_KEY_H */
+#endif /* APSME_ESTABLISH_KEY_H */
 /** eof apsmeEstablishKey.h */
 

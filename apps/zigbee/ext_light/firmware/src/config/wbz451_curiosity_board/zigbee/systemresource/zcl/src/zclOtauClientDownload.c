@@ -279,12 +279,6 @@ static void otauProcessImageBlockResponse (void)
   }
   else if(0 == clientMem->blockResp.fileOffset) // if its the first
   {
-  #if defined _PIC32CX_BZ3_
-    DRV_HANDLE *handle = getSstHandle();
-	*handle = DRV_SST26_Open(sysObj.drvSST26, DRV_IO_INTENT_READWRITE);
-	(void) DRV_SST26_ChipErase(*handle);
-	while(DRV_SST26_TransferStatusGet(*handle) == DRV_SST26_TRANSFER_BUSY);
-  #endif
     memcpy(&otauImageHeader, clientMem->blockResp.imageData, clientMem->blockResp.dataSize);
     clientMem->imageAuxParam.requestFileOffset = clientMem->blockResp.dataSize;
     clientMem->imageAuxParam.requestBlockSize = sizeof(otauImageHeader) - clientMem->blockResp.dataSize;
@@ -557,6 +551,10 @@ static void otauImageBlockReq(void)
   memcpy(&tmpOtauReq->firmwareVersion,&clientMem->newFirmwareVersion,sizeof(ZCL_OtauFirmwareVersion_t));
   tmpOtauReq->fileOffset                            = clientMem->imageAuxParam.requestFileOffset;
   tmpOtauReq->maxDataSize                           = clientMem->imageAuxParam.requestBlockSize;
+  if(otauClientAttributes.minimumBlockPeriod.value == 0U)
+  {
+      PDS_Restore(OTAU_MIN_BLOCK_PERIOD_ATTR_MEM_ID);
+  }
   tmpOtauReq->minimumBlockPeriod                    = otauClientAttributes.minimumBlockPeriod.value;
   ZCL_CommandReq(tmpZclReq);
   otauRestartBlockRxTimer();

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTCLUSTER_H
-#define _LIGHTCLUSTER_H
+#ifndef LIGHTCLUSTER_H
+#define LIGHTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -54,24 +54,24 @@
 
 
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_ON_OFF_LIGHT)
-#define LIGHT_SERVER_CLUSTERS_COUNT     6 
+#define LIGHT_SERVER_CLUSTERS_COUNT     6U 
 #elif APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_DIMMABLE_LIGHT
-#define LIGHT_SERVER_CLUSTERS_COUNT     7 
+#define LIGHT_SERVER_CLUSTERS_COUNT     7U 
 #elif (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_TEMPERATURE_COLOR_LIGHT)
-#define LIGHT_SERVER_CLUSTERS_COUNT     8 
+#define LIGHT_SERVER_CLUSTERS_COUNT     8U 
 #endif
 
 #if ZLO_EXTRA_CLUSTERS_SUPPORT == 1
   #ifdef OTAU_CLIENT
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   4 
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   4U 
   #else
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   3 
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   3U 
   #endif
 #else // no extra clusters
   #ifdef OTAU_CLIENT
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   3 
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   3U 
   #else
-    #define LIGHT_CLIENT_CLUSTERS_COUNT   2 
+    #define LIGHT_CLIENT_CLUSTERS_COUNT   2U 
   #endif
 #endif // ZLO_EXTRA_CLUSTERS_SUPPORT == 1
 
@@ -84,13 +84,13 @@
 ******************************************************************************/
 extern ZCL_Cluster_t lightServerClusters[LIGHT_SERVER_CLUSTERS_COUNT];
 extern ClusterId_t lightServerClusterIds[LIGHT_SERVER_CLUSTERS_COUNT];
-extern void (*lightServerClusterInitFunctions[LIGHT_SERVER_CLUSTER_INIT_COUNT])();
+extern void (*lightServerClusterInitFunctions[LIGHT_SERVER_CLUSTER_INIT_COUNT])(void);
 
 extern ZCL_Cluster_t lightClientClusters[LIGHT_CLIENT_CLUSTERS_COUNT];
 extern ClusterId_t lightClientClusterIds[LIGHT_CLIENT_CLUSTERS_COUNT];
-extern void (*lightClientClusterInitFunctions[LIGHT_CLIENT_CLUSTER_INIT_COUNT])();
+extern void (*lightClientClusterInitFunctions[LIGHT_CLIENT_CLUSTER_INIT_COUNT])(void);
 
 
-#endif // _LIGHTCLUSTER_H
+#endif // LIGHTCLUSTER_H
 
 // eof lightClusters.h

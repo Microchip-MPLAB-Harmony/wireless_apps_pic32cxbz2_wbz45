@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCL_ATTRIBUTES_H
-#define _ZCL_ATTRIBUTES_H
+#ifndef ZCL_ATTRIBUTES_H
+#define ZCL_ATTRIBUTES_H
 
 #include <zcl/include/zcl.h>
 #include <zcl/include/clusters.h>
@@ -207,5 +207,5 @@ ZclCommand_t * zclGetNextCommand(ZclCommand_t *command);
 *****************************************************************************/
 ZCL_Cluster_t * zclGetCcluster(Endpoint_t endpointId, ClusterId_t clusterId, uint8_t directionMspMask);
 
-#endif // _ZCL_ATTRIBUTES_H
+#endif // ZCL_ATTRIBUTES_H
 //eof zclAttributes.h

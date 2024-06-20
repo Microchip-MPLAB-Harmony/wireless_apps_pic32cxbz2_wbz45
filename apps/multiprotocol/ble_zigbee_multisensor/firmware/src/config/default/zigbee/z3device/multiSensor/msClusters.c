@@ -72,16 +72,19 @@
 #ifdef OTAU_CLIENT
 ClusterId_t msClientClusterIds[MS_CLIENT_CLUSTERS_COUNT] =
 {
+
   OTAU_CLUSTER_ID, // Always should be on last position in list of clusters ID.
 };
 
 void (*msClientClusterInitFunctions[MS_CLIENT_CLUSTER_INIT_COUNT])() =
 {
+
   NULL // needs to add otau client init
 };
 
 ZCL_Cluster_t msClientClusters[MS_CLIENT_CLUSTERS_COUNT] = 
 {
+
 };
 
 #endif //OTAU_CLIENT

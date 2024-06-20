@@ -66,8 +66,8 @@ bool SYS_MutexLock(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner)
 {
   const bool isUnlocked = (NULL == getQueueElem(mutex));
 
-  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), SYSMUTEX_MUTEXLOCK0);
-  putQueueElem(mutex, &owner->service.qelem);
+  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), (uint16_t)SYSMUTEX_MUTEXLOCK0);
+  (void)putQueueElem(mutex, &owner->service.qelem);
 
   return isUnlocked;
 }
@@ -87,29 +87,30 @@ bool SYS_MutexUnlock(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner)
   QueueElement_t *qelem;
   SYS_MutexOwner_t *currentOwner;
 
-  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), SYSMUTEX_MUTEXUNLOCK0);
+  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), (uint16_t)SYSMUTEX_MUTEXUNLOCK0);
 
   qelem = getQueueElem(mutex);
   if (NULL == qelem)
   {
-    SYS_E_ASSERT_FATAL(false, SYSMUTEX_MUTEXUNLOCK1);
+    SYS_E_ASSERT_FATAL(false, (uint16_t)SYSMUTEX_MUTEXUNLOCK1);
     return false;
   }
 
   currentOwner = GET_PARENT_BY_FIELD(SYS_MutexOwner_t, service.qelem, qelem);
   if (owner != currentOwner)
   {
-    SYS_E_ASSERT_FATAL(false, SYSMUTEX_MUTEXUNLOCK2);
+    SYS_E_ASSERT_FATAL(false, (uint16_t)SYSMUTEX_MUTEXUNLOCK2);
     return false;
   }
   else
-    deleteHeadQueueElem(mutex);
-
+  {
+    (void)deleteHeadQueueElem(mutex);
+  }
   qelem = getQueueElem(mutex);
   if (NULL != qelem)
   {
     currentOwner = GET_PARENT_BY_FIELD(SYS_MutexOwner_t, service.qelem, qelem);
-    SYS_E_ASSERT_FATAL(currentOwner->SYS_MutexLockConf, SYSMUTEX_MUTEXUNLOCK3);
+    SYS_E_ASSERT_FATAL((currentOwner->SYS_MutexLockConf != NULL), (uint16_t)SYSMUTEX_MUTEXUNLOCK3);
     currentOwner->SYS_MutexLockConf(mutex, currentOwner->context);
   }
 
@@ -130,7 +131,7 @@ bool SYS_MutexUnlock(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner)
  ******************************************************************************/
 bool SYS_IsMutexLocked(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner)
 {
-  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), SYSMUTEX_ISMUTEXLOCKED0);
+  SYS_E_ASSERT_FATAL(((NULL != mutex) && (NULL != owner)), (uint16_t)SYSMUTEX_ISMUTEXLOCKED0);
 
   return isQueueElem(mutex, &owner->service.qelem);
 }

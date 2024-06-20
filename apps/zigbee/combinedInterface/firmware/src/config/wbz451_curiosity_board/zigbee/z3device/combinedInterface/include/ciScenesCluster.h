@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CISCENESCLUSTER_H
-#define _CISCENESCLUSTER_H
+#ifndef CISCENESCLUSTER_H
+#define CISCENESCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -62,7 +62,7 @@ extern ZCL_SceneClusterClientAttributes_t ciScenesClusterClientAttributes;
 void ciScenesClusterInit(void);
 
 
-#endif // _CISCENESCLUSTER_H
+#endif // CISCENESCLUSTER_H
 
 // eof ciScenesCluster.h
 

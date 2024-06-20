@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LSSGROUPSCLUSTER_H
-#define _LSGROUPSCLUSTER_H
+#ifndef LSSGROUPSCLUSTER_H
+#define LSGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -61,7 +61,7 @@ extern ZCL_GroupsClusterCommands_t lsGroupsCommands;
 void lsGroupsClusterInit(void);
 
 
-#endif // _OSGROUPSCLUSTER_H
+#endif // OSGROUPSCLUSTER_H
 
 // eof lsGroupsCluster.h
 

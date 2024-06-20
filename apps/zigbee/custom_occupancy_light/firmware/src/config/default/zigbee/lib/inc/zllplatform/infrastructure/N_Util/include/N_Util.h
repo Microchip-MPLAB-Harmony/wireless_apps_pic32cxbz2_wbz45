@@ -126,7 +126,7 @@ extern "C" {
 #define N_UTIL_BOOL(x) ((x) ? TRUE : FALSE)
 
 /** Wrapper to swallow semicolon */
-#define N_UTIL_SWALLOW_SEMICOLON(x) do { x } while(0)
+#define N_UTIL_SWALLOW_SEMICOLON(x) do { x } while(false)
 
 /** Macro to create a mask of a single bit
     \param bit The bit number (0..15) to set in the mask

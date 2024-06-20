@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLFANCONTROLCLUSTER_H
-#define _ZCLFANCONTROLCLUSTER_H
+#ifndef ZCLFANCONTROLCLUSTER_H
+#define ZCLFANCONTROLCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -252,5 +252,5 @@ typedef struct PACK
 END_PACK
 
 
-#endif /* _ZCLFANCONTROLCLUSTER_H */
+#endif /* ZCLFANCONTROLCLUSTER_H */
 

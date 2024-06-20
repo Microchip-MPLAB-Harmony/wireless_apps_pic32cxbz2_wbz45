@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CSDEFAULTS_H
-#define _CSDEFAULTS_H
+#ifndef CSDEFAULTS_H
+#define CSDEFAULTS_H
 
 /******************************************************************************
                     Includes section
@@ -411,10 +411,10 @@ over the amount of child devices possible for the node.
 <b>Can be set:</b> at compile time only \n
 */
 #ifndef CS_NEIB_TABLE_SIZE
-  #define CS_NEIB_TABLE_SIZE                  7
+  #define CS_NEIB_TABLE_SIZE                  (7)
 #elif CS_NEIB_TABLE_SIZE == 0
   #undef  CS_NEIB_TABLE_SIZE
-  #define CS_NEIB_TABLE_SIZE                  1
+  #define CS_NEIB_TABLE_SIZE                  (1)
   #warning  CS_NEIB_TABLE_SIZE was set to 1
 #endif
 
@@ -648,7 +648,7 @@ the frame is stored. Otherwise, the frame is dropped.
     #define CS_ENCRYPTION_TIME 119    // SW encryption
   #endif
 #else
-  #define CS_ENCRYPTION_TIME 0ul
+  #define CS_ENCRYPTION_TIME 0UL
 #endif
 #endif
 
@@ -1363,7 +1363,7 @@ specify a value in the \c 0x123456789ABCDEFLL format. \n
 <b>Can be set:</b> at any time before network start \n
 */
 #ifndef CS_APS_TRUST_CENTER_ADDRESS
-#define CS_APS_TRUST_CENTER_ADDRESS           0xAAAAAAAAAAAAAAAALL
+#define CS_APS_TRUST_CENTER_ADDRESS           0xAAAAAAAAAAAAAAAAULL
 #endif
 
 //! \brief Default short address of the trust center
@@ -1746,7 +1746,7 @@ The parameter is valid only for OTAU clients.
 <b>Can be set:</b> at any time before an OTAU start \n
 */
 #ifndef CS_ZCL_OTAU_DEFAULT_UPGRADE_SERVER_IEEE_ADDRESS
-  #define CS_ZCL_OTAU_DEFAULT_UPGRADE_SERVER_IEEE_ADDRESS          0xFFFFFFFFFFFFFFFFull
+  #define CS_ZCL_OTAU_DEFAULT_UPGRADE_SERVER_IEEE_ADDRESS          0xFFFFFFFFFFFFFFFFULL
 #endif
 
 /** \brief The default OTAU image type to be upgraded
@@ -1770,7 +1770,7 @@ The parameter is valid only for OTAU clients.
 <b>Can be set:</b> at any time before an OTAU start \n
 */
 #ifndef CS_ZCL_OTAU_SERVER_DISCOVERY_PERIOD
-  #define CS_ZCL_OTAU_SERVER_DISCOVERY_PERIOD                      60000ul
+  #define CS_ZCL_OTAU_SERVER_DISCOVERY_PERIOD                      60000UL
 #endif
 /** \brief The interval in milliseconds between two attempts to send QueryNextImageRequest
 
@@ -1781,7 +1781,7 @@ The parameter is valid only for OTAU clients.
 <b>Can be set:</b> at any time before an OTAU start \n
 */
 #ifndef CS_ZCL_OTAU_QUERY_INTERVAL
-  #define CS_ZCL_OTAU_QUERY_INTERVAL                               5000ul
+  #define CS_ZCL_OTAU_QUERY_INTERVAL                               5000UL
 #endif
 /** \brief The number of maximum retry attempts for commands (OTAU cluster, ZDO and APS) used for OTAU
 
@@ -2185,9 +2185,9 @@ secondary Channel set Configuration
 #endif
 
 //! \brief secondary Channel mask
-/*!
+/*
 Max no. of Nodes to be stored in Trust Center node table
-//Increase it to accommodate more nodes in Centralized network
+Increase it to accommodate more nodes in Centralized network
 
 <b>C-type:</b> uint8_t \n
 <b>Can be set:</b> at compile time only \n
@@ -2277,8 +2277,8 @@ CS_DEVICE_POWER_LPA    (0x0B)
 
 typedef struct PACK
 {
-  uint8_t extMacDevAddrValid  :1;               /**< Set TRUE if extMacDevAddrValid field is valid. */
-  uint16_t antennaGainValid  :1;              /**< Set TRUE if antennaGain field is valid. */  
+  BitField_t extMacDevAddrValid  :1;               /**< Set TRUE if extMacDevAddrValid field is valid. */
+  BitField_t antennaGainValid  :1;              /**< Set TRUE if antennaGain field is valid. */  
 } ZB_CS_SYS_DataValidity_t;
 
 typedef struct PACK _ZB_CS_SYS_IBData_t
@@ -2299,7 +2299,7 @@ typedef struct PACK _ZB_CS_SYS_IBData_t
 ******************************************************************************/
 void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata);
 
-#endif  // _CSDEFAULTS_H
+#endif  // CSDEFAULTS_H
 /* eof cdDefaults.h*/
-_CSDEFAULTS_H
+CSDEFAULTS_H
 /* eof cdDefaults.h*/

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_DBG_H
-#define _NWK_DBG_H
+#if !defined NWK_DBG_H
+#define NWK_DBG_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -527,6 +527,6 @@ typedef enum _NwkLogCodeId_t
   LOG_NWK_LOOPBACK_REQUEST_DONE = 0x13
 } NwkLogCodeId_t;
 
-#endif /* _NWK_DBG_H */
+#endif /* NWK_DBG_H */
 /** eof nwkDbg.h */
 

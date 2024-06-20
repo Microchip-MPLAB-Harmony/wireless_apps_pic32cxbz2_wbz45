@@ -79,27 +79,27 @@ uint16_t SYS_taskMask = 0xFFFF;
                              Static variables section
 ******************************************************************************/
 
-/*
-typedef enum
-{
-  MAC_PHY_HWD_TASK_ID = 1 << 0, //!< Task ID of the MAC-PHY-HWD layer
-  HAL_TASK_ID         = 1 << 1, //!< Task ID of HAL (Hardware Abstraction Layer)
-  MAC_HWI_TASK_ID     = 1 << 2, //!< Task ID of the MAC-HWI layer (a part of MAC independent of radio)
-  NWK_TASK_ID         = 1 << 3, //!< Task ID of the NWK layer
-  ZDO_TASK_ID         = 1 << 4, //!< Task ID of the ZDO layer
-  APS_TASK_ID         = 1 << 5, //!< Task ID of the APS layer
-  ZGP_TASK_ID         = 1 << 6, //!< Task ID of the ZGP layer
-  SSP_TASK_ID         = 1 << 7, //!< Task ID of Security Service Provider
-  TC_TASK_ID          = 1 << 8, //!< Task ID of the Trust Center component
-  ZSI_TASK_ID         = 1 << 9, //!< Task ID of the ZAppSI component
-  ZCL_TASK_ID         = 1 << 10, //!< Task ID of ZigBee Cluster Library
-  ZLL_TASK_ID         = 1 << 11, //!< Service Task ID
-  PDS_TASK_ID         = 1 << 12, //!< Task ID of the Persistent Data Server component
-  ZGP_DSTUB_TASK_ID   = 1 << 13, // !<Task ID of the ZGP Dstub component
-} SYS_TaskId_t;
 
-*/
-static void (*taskHandlers[])() = {
+//typedef enum
+//{
+//  MAC_PHY_HWD_TASK_ID = 1 << 0, //!< Task ID of the MAC-PHY-HWD layer
+//  HAL_TASK_ID         = 1 << 1, //!< Task ID of HAL (Hardware Abstraction Layer)
+//  MAC_HWI_TASK_ID     = 1 << 2, //!< Task ID of the MAC-HWI layer (a part of MAC independent of radio)
+//  NWK_TASK_ID         = 1 << 3, //!< Task ID of the NWK layer
+//  ZDO_TASK_ID         = 1 << 4, //!< Task ID of the ZDO layer
+//  APS_TASK_ID         = 1 << 5, //!< Task ID of the APS layer
+//  ZGP_TASK_ID         = 1 << 6, //!< Task ID of the ZGP layer
+//  SSP_TASK_ID         = 1 << 7, //!< Task ID of Security Service Provider
+//  TC_TASK_ID          = 1 << 8, //!< Task ID of the Trust Center component
+//  ZSI_TASK_ID         = 1 << 9, //!< Task ID of the ZAppSI component
+//  ZCL_TASK_ID         = 1 << 10, //!< Task ID of ZigBee Cluster Library
+//  ZLL_TASK_ID         = 1 << 11, //!< Service Task ID
+//  PDS_TASK_ID         = 1 << 12, //!< Task ID of the Persistent Data Server component
+// ZGP_DSTUB_TASK_ID   = 1 << 13, // !<Task ID of the ZGP Dstub component
+//} SYS_TaskId_t;
+
+
+static void (*taskHandlers[])(void) = {
 #if defined(_SYS_MAC_PHY_HWD_TASK_) && !defined(ZAPPSI_HOST)
   MAC_PHY_HWD_TaskHandler,    // ID 0
 #else
@@ -225,13 +225,13 @@ void SYS_RunTask(void)
     wpan_task();
 #endif // defined(_USE_KF_MAC_)
     SYS_INFINITY_LOOP_MONITORING
-    if ((1 << taskId) & (SYS_taskFlag & SYS_taskMask))
+    if(((1 << taskId) & (SYS_taskFlag & SYS_taskMask)) != 0)
     {
       ATOMIC_SECTION_ENTER
         SYS_taskFlag &= ~(1 << taskId);
       ATOMIC_SECTION_LEAVE
 
-      SYS_E_ASSERT_FATAL(taskHandlers[taskId], SYS_TASKHANDLER_NULLCALLBACK0);
+      SYS_E_ASSERT_FATAL((taskHandlers[taskId] != NULL), SYS_TASKHANDLER_NULLCALLBACK0);
       taskHandlers[taskId]();
 
       break;
@@ -245,12 +245,13 @@ void SYS_RunTask(void)
 *******************************************************************************/
 bool SYS_PostIdleTask(void)
 {
-  SYS_PostEvent(SYS_EVENT_TASK_PROCESSED, 0);
+  SYS_PostEvent((uint8_t)SYS_EVENT_TASK_PROCESSED, 0);
   // enter the mcu's idle mode
-  if (0 == SYS_taskFlag)
+  if (0U == SYS_taskFlag)
+  {
     SYS_IdleHandler();
-
-  return (SYS_taskFlag != 0);
+  }
+  return (SYS_taskFlag != 0U);
 }
 
 /*****************************************************************************************//**
@@ -266,17 +267,26 @@ function.
 *********************************************************************************************/
 bool ZB_ReadyToSleep(void)
 {
+    bool retVal= false;
+  
 #if !defined(_MAC2_)
     if (ZDO_IsStackSleeping())
     {
-        return true;
+        retVal = true;
     }
     else if(true == ZDO_IsDeviceReadyToSleep())
 #endif
     {
-        SYS_PostIdleTask();
+        (void)SYS_PostIdleTask();
+        retVal = false;
     }
-    return false;
+#if !defined(_MAC2_)
+    else
+    {
+        retVal =  false;
+    }
+#endif
+    return retVal;
 }
 
 /*****************************************************************************************//**
@@ -292,9 +302,12 @@ function.
 *********************************************************************************************/
 bool ZB_IsIdle(void)
 {
-    if (PHY_ZBIsIdle() && (0 == SYS_taskFlag))
+    if (PHY_ZBIsIdle())
     {
-        return true;
+        if (0U == SYS_taskFlag)
+        {
+            return true;
+        }
     }
     return false;
 }

@@ -86,7 +86,7 @@ typedef bool (*N_Task_HandleEvent_t)(N_Task_Event_t);
 */
 #define N_TASK_ID_NONE 0x00u
 
-#define INSTANCES_FUNC(num) INSTANCES_##num
+#define INSTANCES_FUNC(num_) INSTANCES_##num
 #define N_TASK_INSTANCES(eventHandler, numOfInstances) INSTANCES_FUNC(numOfInstances) ( eventHandler )
 
 #define INSTANCES_1u(eventHandler) eventHandler

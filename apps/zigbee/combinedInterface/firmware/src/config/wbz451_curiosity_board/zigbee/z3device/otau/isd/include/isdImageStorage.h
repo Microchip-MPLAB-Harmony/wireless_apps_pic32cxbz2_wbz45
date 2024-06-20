@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ISDIMAGESTORAGE_H
-#define _ISDIMAGESTORAGE_H
+#ifndef ISDIMAGESTORAGE_H
+#define ISDIMAGESTORAGE_H
 
 /******************************************************************************
                    Includes section
@@ -197,4 +197,4 @@ uint32_t ISD_GetTotalImageSize (void);
 ******************************************************************************/
 ISD_Status_t isdGetState(void);
 
-#endif /* _ISDIMAGESTORAGE_H */
+#endif /* ISDIMAGESTORAGE_H */

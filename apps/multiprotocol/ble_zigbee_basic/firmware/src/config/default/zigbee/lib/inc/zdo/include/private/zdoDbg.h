@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_DBG_H
-#define _ZDO_DBG_H
+#if !defined ZDO_DBG_H
+#define ZDO_DBG_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -168,5 +168,5 @@ typedef enum _ZdoDbgCode_t
   ZDOSECURITYMANAGER_APSVERIFYKEYREQ_1 = 0x5118,
 } ZdoDbgCode_t;
 
-#endif /* _ZDO_DBG_H */
+#endif /* ZDO_DBG_H */
 /** eof zdoDbg.h */

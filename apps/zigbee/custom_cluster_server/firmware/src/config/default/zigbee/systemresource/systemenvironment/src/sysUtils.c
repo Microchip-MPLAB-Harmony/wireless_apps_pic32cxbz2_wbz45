@@ -55,20 +55,20 @@
                         Definitions section
 ******************************************************************************/
 #define SYS_UPDATE_RAND_SEED_TIMEOUT  1000u
-#define SYS_VERSION_ZERO_ASCII                    48
+#define SYS_VERSION_ZERO_ASCII                    (48U)
 #define SYS_VERSION_P_ASCII                       80
 #define SYS_VERSION_M_ASCII                       77
 #define SYS_VERSION_E_ASCII                       69
 #define SYS_VERSION_QUALIFIER_COMBI_MAX           4
 #define SYS_VERSION_CONV_INT_TO_ASCII(intver, asciiver)         \
-    if (intver > 9)                                             \
+    if ((intver) > 9U)                                             \
     {                                                           \
-      asciiver[i++] = SYS_VERSION_ZERO_ASCII+(intver/10);       \
-      asciiver[i++] = SYS_VERSION_ZERO_ASCII+(intver%10);       \
+      asciiver[i++] = (uint8_t)(SYS_VERSION_ZERO_ASCII+((intver)/10U));       \
+      asciiver[i++] = (uint8_t)(SYS_VERSION_ZERO_ASCII+((intver)%10U));       \
     }                                                           \
     else                                                        \
     {                                                           \
-      asciiver[i++] = SYS_VERSION_ZERO_ASCII+intver;            \
+      asciiver[i++] = (uint8_t)(SYS_VERSION_ZERO_ASCII+(intver));            \
     }
 
 /******************************************************************************
@@ -123,7 +123,7 @@ void SYS_Swap(uint8_t *array, uint8_t length)
   uint8_t tmp;
   length >>= 1;
 
-  while (length--)
+  while ((length--) !=0U)
   {
     tmp = *array;
     *array = *dst;
@@ -138,10 +138,14 @@ void SYS_Swap(uint8_t *array, uint8_t length)
 *****************************************************************************/
 static void sysSeedRandFunction(uint16_t randValue)
 {
-  if(randValue)
+  if(randValue != 0U)
+  {
     srand(randValue);
+  }
   else
+  {
     srand(sysPseudoRandomSeed());
+  }
 }
 /*************************************************************************//**
 \brief Updates rnd with new random values according to time interval
@@ -154,11 +158,11 @@ static void sysUpdateRndSeedTimerFired(void)
     TRNG_RandomNumberGenerate();
 #else
     uint16_t randNum;
-    randNum = TRNG_ReadData();
+    randNum = (uint16_t)TRNG_ReadData();
     sysSeedRandFunction(randNum);
 #endif //TRNG_MODULE_INTERRUPT_METHOD
-    HAL_StopAppTimer(&sysRndSeedTimer);
-    HAL_StartAppTimer(&sysRndSeedTimer);
+    (void)HAL_StopAppTimer(&sysRndSeedTimer);
+    (void)HAL_StartAppTimer(&sysRndSeedTimer);
 #else
   RF_RandomReq(&sysRfRndReq);
 #endif
@@ -193,7 +197,7 @@ static void sysRndConfirm(RF_RandomConf_t *conf)
 ******************************************************************************/
 void sysStartUpdatingRandSeed(void)
 {
-  HAL_StopAppTimer(&sysRndSeedTimer);
+  (void)HAL_StopAppTimer(&sysRndSeedTimer);
 #ifndef TRNG_MODULE_ENABLED //#ifdef _RF_RND_
   if (false == sysRfRndReq.disableRx)
     return; // random request has been started already
@@ -214,9 +218,10 @@ static uint16_t sysPseudoRandomSeed(void)
   const uint16_t *extAddr = (const uint16_t *)MAC_GetExtAddr();
   uint8_t i;
 
-  for (i = 0; i < sizeof(ExtAddr_t)/sizeof(result); ++i)
+  for (i = 0; i < sizeof(ExtAddr_t)/sizeof(uint16_t); ++i)
+  {
     result ^= extAddr[i];
-
+  }
   return result;
 }
 
@@ -234,19 +239,21 @@ int SYS_GetRandomSequence(uint8_t *buffer, unsigned long size)
   uint16_t i;
   u16Packed_t *u16ptr = (u16Packed_t*)buffer;
 
-  for(i = 0; i < size/2; i++, u16ptr++)
+  for(i = 0; i < size/2U; i++,u16ptr++)
+  {
     u16ptr->val = SYS_GetRandomNumber();
-
-  if (size & (1<<0))
-    buffer[size-1] = (uint8_t)SYS_GetRandomNumber();
-
+  }
+  if ((size & (1U<<0)) != 0U)
+  {
+    buffer[size-1U] = (uint8_t)SYS_GetRandomNumber();
+  }
   return 0;
 }
 
 uint16_t SYS_GetNormalizedRandomNumber(uint16_t upperLimit)
 {
-  uint32_t result = (UINT16_MAX & rand());
-  result = (result * upperLimit) / UINT16_MAX;
+  uint16_t result = ((uint16_t)UINT16_MAX & (uint16_t)rand());
+  result = (result * upperLimit) / (uint16_t)UINT16_MAX;
 
   return result;
 }
@@ -257,7 +264,7 @@ uint16_t SYS_GetNormalizedRandomNumber(uint16_t upperLimit)
  ******************************************************************************/
 void sysStopUpdatingRandSeed(void)
 {
-  HAL_StopAppTimer(&sysRndSeedTimer);
+  (void)HAL_StopAppTimer(&sysRndSeedTimer);
 }
 #endif /* _SLEEP_WHEN_IDLE_ */
 
@@ -275,13 +282,13 @@ bool SYS_GetBitCloudRevision(uint8_t *strVersion, uint32_t *intVersion)
   typedef union {
     uint32_t stackVer;
     struct {
-      uint8_t reserved:8;
-      uint8_t qualifier:2;
-      uint8_t branchIter:6;
-      uint8_t branchId:4;
-      uint8_t minorDerv:4;
-      uint8_t minor:4;
-      uint8_t major:4;
+      BitField_t reserved:8;
+      BitField_t qualifier:2;
+      BitField_t branchIter:6;
+      BitField_t branchId:4;
+      BitField_t minorDerv:4;
+      BitField_t minor:4;
+      BitField_t major:4;
     } stackBits;
   } stackVersion_t;
   stackVersion_t stackVersion;
@@ -290,41 +297,46 @@ bool SYS_GetBitCloudRevision(uint8_t *strVersion, uint32_t *intVersion)
 
   CS_ReadParameter(CS_STACK_VERSION_ID, &stackVersion.stackVer);
 
-  if (!stackVersion.stackVer || (NULL == strVersion) || (NULL == intVersion))
+  if (!(bool)(stackVersion.stackVer) || (NULL == strVersion) || (NULL == intVersion))
   {
-    if (intVersion)
+    if (intVersion != NULL)
+    {
       *intVersion = 0;
-    if (strVersion)
-      strVersion[0] = '\0';
-
+    }
+    if (strVersion != NULL)
+    {
+      strVersion[0] = (uint8_t)'\0';
+    }
     return false;
   }
   else
   {
     // convert to ascii
-    strVersion[i++] = 'B';
-    strVersion[i++] = 'C';
-    strVersion[i++] = '_';
-    strVersion[i++] = 'V';
+    strVersion[i++] = (uint8_t)'B';
+    strVersion[i++] = (uint8_t)'C';
+    strVersion[i++] = (uint8_t)'_';
+    strVersion[i++] = (uint8_t)'V';
     SYS_VERSION_CONV_INT_TO_ASCII(stackVersion.stackBits.major, strVersion);
 
-    strVersion[i++] = '.';
+    strVersion[i++] = (uint8_t)'.';
     SYS_VERSION_CONV_INT_TO_ASCII(stackVersion.stackBits.minor, strVersion);
 
-    strVersion[i++] = '.';
+    strVersion[i++] = (uint8_t)'.';
     SYS_VERSION_CONV_INT_TO_ASCII(stackVersion.stackBits.minorDerv, strVersion);
 
-    strVersion[i++] = '_';
+    strVersion[i++] = (uint8_t)'_';
     SYS_VERSION_CONV_INT_TO_ASCII(stackVersion.stackBits.branchId, strVersion);
 
-    strVersion[i++] = '.';
+    strVersion[i++] = (uint8_t)'.';
     SYS_VERSION_CONV_INT_TO_ASCII(stackVersion.stackBits.branchIter, strVersion);
 
     strVersion[i++] = qual[stackVersion.stackBits.qualifier];
-    strVersion[i] = '\0';
+    strVersion[i] = (uint8_t)'\0';
 
-    if (intVersion)
+    if (intVersion != NULL)
+    {
       *intVersion = stackVersion.stackVer;
+    }
   }
 
   return true;

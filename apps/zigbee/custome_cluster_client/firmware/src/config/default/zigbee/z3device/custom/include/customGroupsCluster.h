@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMGROUPSCLUSTER_H
-#define _CUSTOMGROUPSCLUSTER_H
+#ifndef CUSTOMGROUPSCLUSTER_H
+#define CUSTOMGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -63,6 +63,6 @@ extern PROGMEM_DECLARE(ZCL_GroupsClusterCommands_t         customGroupsCommands)
 void customGroupsClusterInit(void);
 
 
-#endif // _CUSTOMGROUPSCLUSTER_H
+#endif // CUSTOMGROUPSCLUSTER_H
 
 // eof customGroupsCluster.h

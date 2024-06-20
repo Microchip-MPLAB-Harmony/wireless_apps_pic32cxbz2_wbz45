@@ -39,16 +39,16 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _HS2XY_H
-#define _HS2XY_H
+#ifndef HS2XY_H
+#define HS2XY_H
 
-/*********************************************************************************************//**
+/***********************************************************************************************
 \file
 
 \brief
 
 \author
-    Microchip Corporation: http://ww.microchip.com \n
+    Microchip Corporation: http:ww.microchip.com \n
     Support email: support@microchip.com
 
   Copyright (c) 2008-2015, Microchip Corporation. All rights reserved.
@@ -56,7 +56,7 @@
 
 \internal
 ***************************************************************************************************/
-/**************************************************************************//**
+/****************************************************************************
 \brief Converts Hue/Saturation values of the color to corresponding X/Y values
 
 \param[in]

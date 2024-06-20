@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_PERMISSIONS_TABLE_H
-#define _ZDO_PERMISSIONS_TABLE_H
+#if !defined ZDO_PERMISSIONS_TABLE_H
+#define ZDO_PERMISSIONS_TABLE_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -95,5 +95,5 @@ typedef struct _ZdoPermissions_t
 ZDO_PRIVATE void zdoResetPermissions(void);
 
 #endif /* _PERMISSIONS_ */
-#endif /* _ZDO_PERMISSIONS_TABLE_H */
+#endif /* ZDO_PERMISSIONS_TABLE_H */
 /** zdoPermissionsTable.h */

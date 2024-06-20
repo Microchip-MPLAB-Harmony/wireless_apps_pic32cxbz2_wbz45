@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIHUMIDITYMEASUREMENTCLUSTER_H
-#define _CIHUMIDITYMEASUREMENTCLUSTER_H
+#ifndef CIHUMIDITYMEASUREMENTCLUSTER_H
+#define CIHUMIDITYMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -60,6 +60,6 @@ extern ZCL_HumidityMeasurementClusterClientAttributes_t ciHumidityMeasurementClu
 ******************************************************************************/
 void ciHumidityMeasurementClusterInit(void);
 
-#endif // _CIHUMIDITYMEASUREMENTCLUSTER_H
+#endif // CIHUMIDITYMEASUREMENTCLUSTER_H
 
 // eof ciHumidityMeasurementCluster.h

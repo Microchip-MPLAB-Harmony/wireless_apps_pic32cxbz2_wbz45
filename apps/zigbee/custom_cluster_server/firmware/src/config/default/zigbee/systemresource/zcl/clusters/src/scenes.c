@@ -50,8 +50,8 @@
 ******************************************************************************/
 #define DEFAULT_TRANSITION_TIME   0u
 
-#define GLOBAL_SCENE_SCENE_ID     0x00
-#define GLOBAL_SCENE_GROUP_ID     0x0000
+#define GLOBAL_SCENE_SCENE_ID     0x00U
+#define GLOBAL_SCENE_GROUP_ID     0x0000U
 
 /******************************************************************************
                     Global variables section
@@ -70,11 +70,11 @@ Scene_t *allocateScene(Scene_t* scenePool, uint8_t* currSceneCount)
   {
     if (scenePool[i].free)
     {
-      memset(&scenePool[i], 0, sizeof(Scene_t));
+      (void)memset(&scenePool[i], 0, sizeof(Scene_t));
       scenePool[i].free = false;
       scenePool[i].transitionTime = DEFAULT_TRANSITION_TIME;
       scenePool[i].transitionTime100ms = 0;
-      *currSceneCount += 1;
+      *currSceneCount += 1U;
       return &scenePool[i];
     }
   }
@@ -88,8 +88,9 @@ bool freeScene(Scene_t *scene)
 {
   if (GLOBAL_SCENE_GROUP_ID == scene->groupId &&
       GLOBAL_SCENE_SCENE_ID == scene->sceneId)
+  {
     return false; // Can't free global scene
-
+  }
   if (!scene->free)
   {
     scene->free = true;
@@ -111,7 +112,9 @@ Scene_t *findSceneBySceneAndGroup(uint16_t group, uint8_t scene, Scene_t* sceneP
   for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
   {
     if ((scenePool[i].groupId == group) && (scenePool[i].sceneId == scene) && !scenePool[i].free)
+    {
       return &scenePool[i];
+    }
   }
 
   return NULL;
@@ -134,12 +137,13 @@ uint8_t removeScenesByGroup(uint16_t group, Scene_t* scenePool)
     {
       if (GLOBAL_SCENE_GROUP_ID == scenePool[i].groupId  &&
           GLOBAL_SCENE_SCENE_ID == scenePool[i].sceneId)
+      {
          continue; // Can't free global scene
-
+      }
       if (!scenePool[i].free)
        {
          scenePool[i].free = true;
-         freeScene(&scenePool[i]);
+         (void)freeScene(&scenePool[i]);
          amount++;
        }
     }
@@ -159,23 +163,28 @@ uint8_t removeScenesByGroup(uint16_t group, Scene_t* scenePool)
 ******************************************************************************/
 Scene_t *getNextSceneByGroup(Scene_t *scene, uint16_t group, Scene_t* scenePool)
 {
-  if (!scene)
+  if (scene == NULL)
   {
     for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
     {
       if (!scenePool[i].free && (scenePool[i].groupId == group))
+      {
         return &scenePool[i];
+      }
     }
     return NULL;
   }
 
-  if ((scene < scenePool) || (scene > &scenePool[MAX_SCENES_AMOUNT - 1]))
+  if ((scene < scenePool) || (scene > &scenePool[MAX_SCENES_AMOUNT - 1U]))
+  {
     return NULL;
-
+  }
   for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
   {
     if ((scene < &scenePool[i]) && (!scenePool[i].free) && (scenePool[i].groupId == group))
+    {
       return &scenePool[i];
+    }
   }
 
   return NULL;

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_DIRECT_JOIN_H
-#define _NLME_DIRECT_JOIN_H
+#if !defined NLME_DIRECT_JOIN_H
+#define NLME_DIRECT_JOIN_H
 
 /******************************************************************************
                                 Includes section
@@ -88,6 +88,6 @@ typedef struct _NWK_DirectJoinReq_t
  ******************************************************************************/
 void NWK_DirectJoinReq(NWK_DirectJoinReq_t *const req);
 
-#endif /* _NLME_DIRECT_JOIN_H */
+#endif /* NLME_DIRECT_JOIN_H */
 /** eof nlmeDirectJoin.h */
 

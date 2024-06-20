@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_CONFIG_SERVER_H
-#define _NWK_CONFIG_SERVER_H
+#if !defined NWK_CONFIG_SERVER_H
+#define NWK_CONFIG_SERVER_H
 
 /******************************************************************************
                                Definitions section
@@ -67,6 +67,6 @@
 #include <nwk/include/nwkSecurity.h>
 #include <nwk/include/private/nwkEndDeviceTimeoutInd.h>
 
-#endif /* _NWK_CONFIG_SERVER_H */
+#endif /* NWK_CONFIG_SERVER_H */
 /** eof nwkConfigServer.h */
 

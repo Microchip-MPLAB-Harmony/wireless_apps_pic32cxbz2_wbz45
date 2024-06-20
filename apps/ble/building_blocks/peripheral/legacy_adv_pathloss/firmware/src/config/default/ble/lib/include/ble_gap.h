@@ -90,7 +90,7 @@ extern "C" {
 /**@defgroup BLE_GAP_MAX_LINK_NBR Maximum connection number
  * @brief The definition of maximum allowed link number of GAP connections.
  * @{ */
-#define BLE_GAP_MAX_LINK_NBR                                    (0x06U)        /**< Maximum allowed BLE GAP connections. */
+#define BLE_GAP_MAX_LINK_NBR                                    (0x08U)        /**< Maximum allowed BLE GAP connections. */
 /** @} */
 
  
@@ -109,7 +109,7 @@ extern "C" {
 #define BLE_GAP_ADV_TYPE_ADV_DIRECT_IND                         (0x01U)        /**< Connectable high duty cycle directed advertising (ADV_DIRECT_IND, high duty cycle). */
 #define BLE_GAP_ADV_TYPE_ADV_SCAN_IND                           (0x02U)        /**< Scannable undirected advertising (ADV_SCAN_IND). */
 #define BLE_GAP_ADV_TYPE_ADV_NONCONN_IND                        (0x03U)        /**< Non connectable undirected advertising (ADV_NONCONN_IND). */
-#define BLE_GAP_ADV_TYPE_ADV_DIRECT_IND_LOW                     (0x04U)        /**< Connectable low duty cycle directed advertising (ADV_DIRECT_IND, low duty cycle). */
+#define BLE_GAP_ADV_TYPE_ADV_DIRECT_LOW_IND                     (0x04U)        /**< Connectable low duty cycle directed advertising (ADV_DIRECT_IND, low duty cycle). */
 /** @} */
 
 
@@ -132,8 +132,8 @@ extern "C" {
 #define BLE_GAP_CP_MAX_CONN_INTVAL_MAX                          (0x0C80U)      /**< Maximum value of the connection interval. (Unit: 1.25 ms) */
 #define BLE_GAP_CP_LATENCY_MIN                                  (0x0000U)      /**< Minimum allowed peripheral latency for the connection specified as the number of connection events. */
 #define BLE_GAP_CP_LATENCY_MAX                                  (0x01F3U)      /**< Maximum allowed peripheral latency for the connection specified as the number of connection events. */
-#define BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MIN                 (0x000AU)      /**< Minimum of supervision timeout for the connection. (Unit: 10 ms) */
-#define BLE_GAP_CP_CONN_SUPERVISION_TIMEOUT_MAX                 (0x0C80U)      /**< Maximum of supervision timeout for the connection. (Unit: 10 ms) */
+#define BLE_GAP_CP_CONN_SUPV_TIMEOUT_MIN                        (0x000AU)      /**< Minimum of supervision timeout for the connection. (Unit: 10 ms) */
+#define BLE_GAP_CP_CONN_SUPV_TIMEOUT_MAX                        (0x0C80U)      /**< Maximum of supervision timeout for the connection. (Unit: 10 ms) */
 /** @} */
 
 
@@ -142,14 +142,6 @@ extern "C" {
  * @{ */
 #define BLE_GAP_ROLE_CENTRAL                                    (0x00U)        /**< Device plays Center role in connection state. */
 #define BLE_GAP_ROLE_PERIPHERAL                                 (0x01U)        /**< Device plays Peripheral role in connection state. */
-/** @} */
-
-
-/**@defgroup BLE_GAP_ENCRYPT_STATUS Encryption status
- * @brief The definition of encryption status.
- * @{ */
-#define BLE_GAP_ENCRYPT_SUCCESS                                 (0x00U)        /**< The link is encrypted successfully. */
-#define BLE_GAP_ENCRYPT_FAIL                                    (0x01U)        /**< The link encryption failed. */
 /** @} */
 
 
@@ -193,7 +185,7 @@ extern "C" {
                                                                                  Directed advertising PDUs where the TargetA is a resolvable private address that cannot be resolved are also accepted.
                                                                                  Valid only for @ref BLE_GAP_SetExtScanningParams. */
 /** @} */
-                                                                                 
+
 /**@defgroup BLE_GAP_SCAN_CHANNEL Scan channel
  * @brief The definition of channel map bit field for scan.
  * @{ */
@@ -206,8 +198,8 @@ extern "C" {
 /**@defgroup BLE_GAP_INIT_FP Initiator filter policy
  * @brief The definition of initiator filter policy.
  * @{ */
-#define BLE_GAP_INIT_FP_FILTER_ACCEPT_LIST_NOT_USED             (0x00U)        /**< Default setting. filter accept list is not used to determine which advertiser to connect to. */
-#define BLE_GAP_INIT_FP_FILTER_ACCEPT_LIST_USED                 (0x01U)        /**< filter accept list is used to determine which advertiser to connect to. Peer address shall be ignored. */
+#define BLE_GAP_INIT_FP_FAL_NOT_USED                            (0x00U)        /**< Default setting. filter accept list is not used to determine which advertiser to connect to. */
+#define BLE_GAP_INIT_FP_FAL_USED                                (0x01U)        /**< filter accept list is used to determine which advertiser to connect to. Peer address shall be ignored. */
 /** @} */
 
 
@@ -255,12 +247,12 @@ extern "C" {
 /**@defgroup BLE_GAP_ADV_REPORT_EVT_TYPE Event type of advertising report
  * @brief The definition of event type of advertising report.
  * @{ */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_ADV_IND                     (0x00U)        /**< Connectable undirected advertising (ADV_IND) Report Event. */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_ADV_DIRECT_IND              (0x01U)        /**< Connectable directed advertising (ADV_DIRECT_IND) Report Event. */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_ADV_SCAN_IND                (0x02U)        /**< Scannable undirected advertising (ADV_SCAN_IND) Report Event. */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_ADV_NONCONN_IND             (0x03U)        /**< Non connectable undirected advertising (ADV_NONCONN_IND) Report Event. */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_SCAN_RSP                    (0x04U)        /**< Scan Response (SCAN_RSP) Report Event. */
-#define BLE_GAP_ADV_REPORT_EVT_TYPE_AUX_ADV_IND                 (0x07U)        /**< Connectable undirected advertising (AUX_ADV_IND) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_ADV_IND                        (0x00U)        /**< Connectable undirected advertising (ADV_IND) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_ADV_DIRECT_IND                 (0x01U)        /**< Connectable directed advertising (ADV_DIRECT_IND) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_ADV_SCAN_IND                   (0x02U)        /**< Scannable undirected advertising (ADV_SCAN_IND) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_ADV_NONCONN_IND                (0x03U)        /**< Non connectable undirected advertising (ADV_NONCONN_IND) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_SCAN_RSP                       (0x04U)        /**< Scan Response (SCAN_RSP) Report Event. */
+#define BLE_GAP_ADV_RPT_EVT_TYPE_AUX_ADV_IND                    (0x07U)        /**< Connectable undirected advertising (AUX_ADV_IND) Report Event. */
 /** @} */
 
 /**@defgroup BLE_GAP_EXT_ADV_EVT_PROP Event properties of advertising report
@@ -292,15 +284,15 @@ extern "C" {
 /**@defgroup BLE_GAP_EXT_ADV_DATA_FRAG_PREF Fragment preference of extended advertising data
  * @brief The definition of extended advertising event fragment preference.
  * @{ */
-#define BLE_GAP_EXT_ADV_DATA_FRAG_PREF_ALL                      (0x00U)        /**< BLE Stack may fragment all advertising data. */
-#define BLE_GAP_EXT_ADV_DATA_FRAG_PREF_MIN                      (0x01U)        /**< BLE Stack should not fragment or should minimize fragmentation of advertising data. */
+#define BLE_GAP_EXT_ADV_DATA_FRAG_ALL                           (0x00U)        /**< BLE Stack may fragment all advertising data. */
+#define BLE_GAP_EXT_ADV_DATA_FRAG_MIN                           (0x01U)        /**< BLE Stack should not fragment or should minimize fragmentation of advertising data. */
 /** @} */
 
 /**@defgroup BLE_GAP_EXT_PRIMARY_ADV_INTERVAL Extended primary advertising interval
  * @brief Range of LE extended primary advertising interval. (Unit: 0.625 ms)
  * @{ */
-#define BLE_GAP_EXT_PRIMARY_ADV_INTERVAL_MIN                    (0x0020U)      /**< Minimum LE extended primary adv interval. 20 ms */
-#define BLE_GAP_EXT_PRIMARY_ADV_INTERVAL_MAX                    (0x1F4000UL)    /**< Maximum LE extended primary adv interval. 1280 sec */
+#define BLE_GAP_EXT_PRIM_ADV_INTVL_MIN                          (0x0020U)      /**< Minimum LE extended primary adv interval. 20 ms */
+#define BLE_GAP_EXT_PRIM_ADV_INTVL_MAX                          (0x1F4000UL)   /**< Maximum LE extended primary adv interval. 1280 sec */
 /** @} */
 
 /**@defgroup BLE_GAP_PERIODIC_ADV_PROP Property of periodic advertising
@@ -350,7 +342,7 @@ extern "C" {
 /**@defgroup BLE_GAP_PERIODIC_ADV_FRAGMENT_DATA_LEN Maximum periodic advertising fragment data length
  * @brief The definition of maximum periodic advertising fragment data length.
  * @{ */
-#define BLE_GAP_PERIODIC_ADV_FRAGMENT_MAX_LENGTH              	(0xF7U)        /**< Maximum length of periodic advertising fragment data in bytes. */
+#define BLE_GAP_PERIODIC_ADV_FRAGMENT_MAX_LENGTH                (0xF7U)        /**< Maximum length of periodic advertising fragment data in bytes. */
 /** @} */
 
 
@@ -386,37 +378,37 @@ extern "C" {
 /**@defgroup BLE_GAP_PRIODIC_ADV_INTERVAL Periodic advertising interval
  * @brief Range of LE periodic advertising interval. (Unit: 1.25 ms)
  * @{ */
-#define BLE_GAP_PERIODIC_ADV_INTERVAL_MIN                       (0x0006U)      /**< Minimum LE periodic adv interval. 7.5 ms */
-#define BLE_GAP_PERIODIC_ADV_INTERVAL_MAX                       (0xFFFFU)      /**< Maximum LE periodic adv interval. 81.91875 sec */
+#define BLE_GAP_PERIODIC_ADV_INTVL_MIN                          (0x0006U)      /**< Minimum LE periodic adv interval. 7.5 ms */
+#define BLE_GAP_PERIODIC_ADV_INTVL_MAX                          (0xFFFFU)      /**< Maximum LE periodic adv interval. 81.91875 sec */
 /** @} */
 
 
 /**@defgroup BLE_GAP_EXT_ADV_REPORT_EVT_TYPE Event type for extended advertising report
  * @brief The definition of rxtended advertising report event type.
  * @{ */
-#define BLE_GAP_EXT_ADV_REPORT_EVT_TYPE_CONNECTABLE             (1U << 0U)    /**< Connectable advertising. */
-#define BLE_GAP_EXT_ADV_REPORT_EVT_TYPE_SCANNABLE               (1U << 1U)    /**< Scannable advertising. */
-#define BLE_GAP_EXT_ADV_REPORT_EVT_TYPE_DIRECTED                (1U << 2U)    /**< Directed advertising. */
-#define BLE_GAP_EXT_ADV_REPORT_EVT_TYPE_SCAN_RSP                (1U << 3U)    /**< Scan Response. */
-#define BLE_GAP_EXT_ADV_REPORT_EVT_TYPE_LEGACY                  (1U << 4U)    /**< Legacy advertising PDUs used. */
+#define BLE_GAP_EXT_ADV_RPT_TYPE_CONNECTABLE                    (1U << 0U)    /**< Connectable advertising. */
+#define BLE_GAP_EXT_ADV_RPT_TYPE_SCANNABLE                      (1U << 1U)    /**< Scannable advertising. */
+#define BLE_GAP_EXT_ADV_RPT_TYPE_DIRECTED                       (1U << 2U)    /**< Directed advertising. */
+#define BLE_GAP_EXT_ADV_RPT_TYPE_SCAN_RSP                       (1U << 3U)    /**< Scan Response. */
+#define BLE_GAP_EXT_ADV_RPT_TYPE_LEGACY                         (1U << 4U)    /**< Legacy advertising PDUs used. */
 /** @} */
 
 
 /**@defgroup BLE_GAP_EXT_ADV_REPORT_DATA_STATUS Data status for extended advertising report
  * @brief The definition of extended advertising report data status.
  * @{ */
-#define BLE_GAP_EXT_ADV_REPORT_DATA_STATUS_COMPLETE             (0x00U)        /**< Complete. */
-#define BLE_GAP_EXT_ADV_REPORT_DATA_STATUS_MORE                 (0x01U)        /**< Incomplete, more data to come. */
-#define BLE_GAP_EXT_ADV_REPORT_DATA_STATUS_TRUNCATED            (0x02U)        /**< Incomplete, data truncated, no more to come. */
+#define BLE_GAP_EXT_ADV_RPT_DATA_COMPLETE                       (0x00U)        /**< Complete. */
+#define BLE_GAP_EXT_ADV_RPT_DATA_MORE                           (0x01U)        /**< Incomplete, more data to come. */
+#define BLE_GAP_EXT_ADV_RPT_DATA_TRUNCATED                      (0x02U)        /**< Incomplete, data truncated, no more to come. */
 /** @} */
 
 /**@defgroup BLE_GAP_EXT_ADV_REPORT_PHY PHY setting for extended advertising report
  * @brief The definition of extended advertising report phy.
  * @{ */
-#define BLE_GAP_EXT_ADV_REPORT_PHY_NO                           (0x00U)        /**< No packets on the secondary advertising channel. */
-#define BLE_GAP_EXT_ADV_REPORT_PHY_1M                           (0x01U)        /**< Advertiser PHY is LE 1M. */
-#define BLE_GAP_EXT_ADV_REPORT_PHY_2M                           (0x02U)        /**< Advertiser PHY is LE 2M. */
-#define BLE_GAP_EXT_ADV_REPORT_PHY_CODED                        (0x03U)        /**< Advertiser PHY is LE Coded. */
+#define BLE_GAP_EXT_ADV_RPT_PHY_NO                              (0x00U)        /**< No packets on the secondary advertising channel. */
+#define BLE_GAP_EXT_ADV_RPT_PHY_1M                              (0x01U)        /**< Advertiser PHY is LE 1M. */
+#define BLE_GAP_EXT_ADV_RPT_PHY_2M                              (0x02U)        /**< Advertiser PHY is LE 2M. */
+#define BLE_GAP_EXT_ADV_RPT_PHY_CODED                           (0x03U)        /**< Advertiser PHY is LE Coded. */
 /** @} */
 
 
@@ -446,7 +438,7 @@ extern "C" {
 /**@defgroup BLE_GAP_EXT_ADV_FRAGMENT_DATA_LEN Maximum extended advertising fragment data length
  * @brief The definition of maximum extended advertising fragment data length.
  * @{ */
-#define BLE_GAP_EXT_ADV_FRAGMENT_MAX_LENGTH                 	(0xE5U)        /**< Maximum length of extended advertising fragment data in bytes. */
+#define BLE_GAP_EXT_ADV_FRAGMENT_MAX_LENGTH                     (0xE5U)        /**< Maximum length of extended advertising fragment data in bytes. */
 /** @} */
 
 
@@ -530,10 +522,10 @@ extern "C" {
 /**@defgroup BLE_GAP_TRANSMITTER_PHY_TYPE Transmitter PHY type
  * @brief The definition of transmitter test packet PHY type.
  * @{ */
-#define BLE_GAP_TRANSMITTER_LE_1M_PHY                           (0x01U)        /**< Transmitter set to use the LE 1M PHY. */
-#define BLE_GAP_TRANSMITTER_LE_2M_PHY                           (0x02U)        /**< Transmitter set to use the LE 2M PHY */
-#define BLE_GAP_TRANSMITTER_LE_CODED_PHY_S_8                    (0x03U)        /**< Transmitter set to use the LE Coded PHY with S=8 data coding. */
-#define BLE_GAP_TRANSMITTER_LE_CODED_PHY_S_2                    (0x04U)        /**< Transmitter set to use the LE Coded PHY with S=2 data coding. */
+#define BLE_GAP_TX_1M_PHY                                       (0x01U)        /**< Transmitter set to use the LE 1M PHY. */
+#define BLE_GAP_TX_2M_PHY                                       (0x02U)        /**< Transmitter set to use the LE 2M PHY */
+#define BLE_GAP_TX_CODED_PHY_S_8                                (0x03U)        /**< Transmitter set to use the LE Coded PHY with S=8 data coding. */
+#define BLE_GAP_TX_CODED_PHY_S_2                                (0x04U)        /**< Transmitter set to use the LE Coded PHY with S=2 data coding. */
 /** @} */
 
 /**@defgroup BLE_SCAN_FILTER_ARRAY_SIZE Scan filter length
@@ -563,6 +555,14 @@ extern "C" {
  * @brief The definition of maximum number of periodic advertising data length.
  * @{ */
 #define BLE_GAP_PERI_ADV_DATA_LEN                               (1650U)         /**< Maximum extended periodic data length. */
+/** @} */
+
+/**@defgroup BLE_GAP_PATH_LOSS_ZONE The zone where Path Loss entered
+ * @brief The definition of the zone where Path Loss entered.
+ * @{ */
+#define BLE_GAP_PATH_LOSS_ZONE_LOW                              (0x00U)        /**< Path Loss entered Zone Low. */
+#define BLE_GAP_PATH_LOSS_ZONE_MID                              (0x01U)        /**< Path Loss entered Zone Middle. */
+#define BLE_GAP_PATH_LOSS_ZONE_HIGH                             (0x02U)        /**< Path Loss entered Zone High. */
 /** @} */
 
 /**@} */ //BLE_GAP_DEFINES
@@ -597,6 +597,7 @@ typedef enum BLE_GAP_EventId_T
     BLE_GAP_EVT_TRANSMIT_POWER_REPORTING,                                   /**< Report tx power level on the ACL connection identified by the Connection_Handle. @ref BLE_GAP_EvtTxPowerReporting_T for the event content. */
     BLE_GAP_EVT_ADV_COMPL,                                                  /**< Enable one time advertising is completed. See @ref BLE_GAP_EvtAdvCompl_T for the event content. */
     BLE_GAP_EVT_PATH_LOSS_THRESHOLD,                                        /**< Report a path loss threshold crossing on the ACL connection. @ref BLE_GAP_EvtPathLossThreshold_T for the event content. */
+    BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL,                                     /**< Completed feature exchange with remote device. */
     BLE_GAP_EVT_END
 }BLE_GAP_EventId_T;
 
@@ -858,7 +859,7 @@ typedef struct BLE_GAP_SyncSetDev_T
 }BLE_GAP_SyncSetDev_T;
 
 /**@brief Manufacturer specific data filter parameters. */
-typedef struct
+typedef struct BLE_GAP_ScanFilterMsd_T
 {
     uint8_t                 companyId[2];                           /**< Two bytes of Manufacture Company Identifier that is unique numbers assigned by the Bluetooth SIG to member companies. */
     uint8_t                 msdLen;                                 /**< Length of compared manufacture specific data. */
@@ -866,7 +867,7 @@ typedef struct
 } BLE_GAP_ScanFilterMsd_T;
 
 /**@brief Service data filter parameters. */
-typedef struct
+typedef struct BLE_GAP_ScanFilterServiceData_T
 {
     uint8_t                 uuidLen;                                /**< Byte length of Service UUID. There are 3 Service UUID format definition. The valid UUID length is 2, 4 or 16 for 16-bit, 32-bit or 128-bit Service UUID. */
     uint8_t                 uuidData[16];                           /**< Contents of Compared Service UUID. */
@@ -875,25 +876,25 @@ typedef struct
 } BLE_GAP_ScanFilterServiceData_T;
 
 /**@brief Name filter parameters. */
-typedef struct
+typedef struct BLE_GAP_ScanFilterName_T
 {
     uint8_t                 nameLen;                                /**< Length of compared target name. */
     uint8_t                 targetName[BLE_GAP_SCAN_NAME_MAX_LEN];  /**< Name contents for Name Filter comparison. */
 } BLE_GAP_ScanFilterName_T;
 
 /**@brief Set path loss reporting parameters. */
-typedef struct
+typedef struct BLE_GAP_PathLossReportingParams_T
 {
-    uint16_t 				connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t  				highThreshold;                          /**< High threshold for the path loss. (Unit: dB)*/
-    uint8_t  				highHysteresis;                         /**< Hysteresis value for the high threshold. (Unit: dB)*/
-    uint8_t  				lowThreshold;                           /**< Low threshold for the path loss. (Unit: dB)*/
-    uint8_t  				lowHysteresis;                          /**< Hystersis value for the low threshold. (Unit: dB)*/
-    uint16_t 				minTimeSpent;                           /**< Minimum time in number of connection events to be observed once the path crosses the threshold before an event is generated. */
-} BLE_GAP_SetPathLossReportingParams_T;
+    uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
+    uint8_t                 highThreshold;                          /**< High threshold for the path loss. (Unit: dBm)*/
+    uint8_t                 highHysteresis;                         /**< Hysteresis value for the high threshold. (Unit: dBm)*/
+    uint8_t                 lowThreshold;                           /**< Low threshold for the path loss. (Unit: dBm)*/
+    uint8_t                 lowHysteresis;                          /**< Hystersis value for the low threshold. (Unit: dBm)*/
+    uint16_t                minTimeSpent;                           /**< Minimum time in number of connection events to be observed once the path crosses the threshold before an event is generated. */
+} BLE_GAP_PathLossReportingParams_T;
 
 /**@brief Scan filter parameters. */
-typedef struct
+typedef struct BLE_GAP_ScanFilterConfig_T
 {
     uint8_t                         nameFilterEnable    : 1;        /**< Name filter option setting. Set true to enable name filter, otherwise set false. */
     uint8_t                         svcDataFilterEnable : 1;        /**< Service data filter option setting. Set true to enable service data filter, otherwise set false. */
@@ -907,13 +908,13 @@ typedef struct
 typedef struct BLE_GAP_EvtDisconnect_T
 {
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t                 reason;                                 /**< The reason for disconnection. See @ref GAP_DISC_REASON. */
+    uint8_t                 reason;                                 /**< The reason for disconnection. See @ref GAP_STATUS. */
 } BLE_GAP_EvtDisconnect_T;
 
 /**@brief Data structure for @ref BLE_GAP_EVT_CONNECTED event. */
 typedef struct BLE_GAP_EvtConnect_T
 {
-    uint8_t                 status;                                 /**< Status of this connection. */
+    uint8_t                 status;                                 /**< Status of this connection. See @ref GAP_STATUS. */
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
     uint8_t                 role;                                   /**< GAP role. See @ref BLE_GAP_ROLE. */
     BLE_GAP_Addr_T          remoteAddr;                             /**< Remote bluetooth address. See @ref BLE_GAP_Addr_T. */
@@ -933,7 +934,7 @@ typedef struct BLE_GAP_EvtConnect_T
 typedef struct BLE_GAP_EvtConnParamUpdateParams_T
 {
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t                 status;                                 /**< Status of connection parameter update. 0: Connection parameters update is successful. Others: Update failed. */
+    uint8_t                 status;                                 /**< Status of connection parameter update. See @ref GAP_STATUS. */
     BLE_GAP_ConnParams_T    connParam;                              /**< Connection parameters. See @ref BLE_GAP_ConnParams_T. */
 } BLE_GAP_EvtConnParamUpdateParams_T;
 
@@ -942,7 +943,7 @@ typedef struct BLE_GAP_EvtConnParamUpdateParams_T
 typedef struct BLE_GAP_EvtEncryptStatus_T
 {
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t                 status;                                 /**< Encryption status. See @ref BLE_GAP_ENCRYPT_STATUS for possible values. */
+    uint8_t                 status;                                 /**< Encryption status. Value GAP_STATUS_SUCCESS represents a successful encryption. Refer @ref GAP_STATUS for fail reason. */
 } BLE_GAP_EvtEncryptStatus_T;
 
 
@@ -1014,7 +1015,7 @@ typedef struct BLE_GAP_EvtAuthPayloadTimeout_T
 typedef struct BLE_GAP_EvtPhyUpdate_T
 {
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t                 status;                                 /**< Status of phy update. */
+    uint8_t                 status;                                 /**< Status of phy update. See @ref GAP_STATUS. */
     uint8_t                 txPhy;                                  /**< TX PHY. See @ref BLE_GAP_PHY_TYPE. */
     uint8_t                 rxPhy;                                  /**< RX PHY. See @ref BLE_GAP_PHY_TYPE. */
 }BLE_GAP_EvtPhyUpdate_T;
@@ -1031,7 +1032,7 @@ typedef struct BLE_GAP_EvtScanReqReceived_T
 typedef struct BLE_GAP_EvtDirectAdvReport_T
 {
     uint8_t                 numReports;                             /**< Number of advertising reports. */
-    uint8_t                 eventType;                              /**< Even type. See @ref BLE_GAP_ADV_REPORT_EVT_TYPE. It should be BLE_GAP_ADV_REPORT_EVT_TYPE_ADV_DIRECT_IND. */
+    uint8_t                 eventType;                              /**< Even type. See @ref BLE_GAP_ADV_RPT_EVT_TYPE. It should be BLE_GAP_ADV_RPT_EVT_TYPE_ADV_DIRECT_IND. */
     BLE_GAP_Addr_T          addr;                                   /**< Identity Address of the advertising device. */
     BLE_GAP_Addr_T          directAddr;                             /**< Random Device Address. */
     int8_t                  rssi;                                   /**< RSSI. */
@@ -1041,7 +1042,7 @@ typedef struct BLE_GAP_EvtDirectAdvReport_T
 /**@brief Data structure for @ref BLE_GAP_EVT_PERI_ADV_SYNC_EST event.*/
 typedef struct BLE_GAP_EvtPeriAdvSyncEst_T
 {
-    uint8_t                 status;                                 /**< Status. */
+    uint8_t                 status;                                 /**< Status of periodic advertising sync establishment. See @ref GAP_STATUS.*/
     uint16_t                syncHandle;                             /**< Sync handle. */
     uint8_t                 advSid;                                 /**< Advertising SID. */
     BLE_GAP_Addr_T          advAddr;                                /**< Advertising address. */
@@ -1094,8 +1095,8 @@ typedef struct BLE_GAP_EvtTxPowerReporting_T
 typedef struct BLE_GAP_EvtPathLossThreshold_T
 {
     uint16_t                connHandle;                             /**< Connection handle associated with this connection. */
-    uint8_t                 currentPathLoss;                        /**< Current path loss (always zero or positive). */
-    uint8_t                 zoneEntered;                            /**< Zone entered. */
+    uint8_t                 currentPathLoss;                        /**< Current path loss (always zero or positive). (Units: dBm) */
+    uint8_t                 zoneEntered;                            /**< Zone entered. See @ref BLE_GAP_PATH_LOSS_ZONE. */
 }BLE_GAP_EvtPathLossThreshold_T;
 
 /**@brief Data structure for @ref BLE_GAP_EVT_ADV_COMPL event.*/
@@ -1399,6 +1400,7 @@ uint16_t BLE_GAP_Disconnect(uint16_t connHandle, uint8_t reason);
 
 
 /**@brief Update connection parameters of an existing connection.
+ * @note  This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
  * @par Events generated
  * @ref BLE_GAP_EVT_CONN_PARAM_UPDATE Generated when connection parameters update complete.
@@ -1684,6 +1686,7 @@ uint16_t BLE_GAP_RemoteConnParamsReqNegativeReply(uint16_t connHandle, uint8_t r
 /**@brief Authenticate the given encryption key associated with the remote device specified by the connection,
  *        and once authenticated will encrypt the connection.
  * @note  This command shall only be used when the local devices role is Central.
+ *        This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
  * @par Events generated
  * @ref BLE_GAP_EVT_ENCRYPT_STATUS Generated when encrypted status update. \n
@@ -1745,6 +1748,7 @@ uint16_t BLE_GAP_ReadTxPowerLevel(uint16_t connHandle, uint8_t phy, int8_t *p_tx
 
 
 /**@brief Read the transmit power level used by remote device on the specific connection.
+ * @note  This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
  * @par Events generated
  * @ref BLE_GAP_EVT_TRANSMIT_POWER_REPORTING Generated for Tx power level information.
@@ -1772,7 +1776,7 @@ uint16_t BLE_GAP_ReadFactoryTxPowerLevel(int8_t *p_minTxPower, int8_t *p_maxTxPo
 
 /**@brief Set the golden receive power range.
  *
- * @param[out] upperLimit                   The golden range upper value. No higher than -30dBm. (Unit: dBm)
+ * @param[out] upperLimit                   The golden range upper value. No higher than -50dBm. (Unit: dBm)
  * @param[out] lowerLimit                   The golden range lower value. No lower than -80dBm.
  * @param[out] stepDecreasePower            The maximum decrease power for each single step. (Unit: dBm)
  *
@@ -1785,6 +1789,7 @@ uint16_t BLE_GAP_SetGoldenRxPowerRange(int8_t upperLimit, int8_t lowerLimit, uin
 
 /**@brief Enable or disable the reporting to the transmit power level
  *        changes in the local and remote device for the specific connection.
+ * @note  This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
  * @param[in] connHandle                    Connection handle associated with this connection.
  * @param[in] localEnable                   Enable or disable local transmit power reports. Set true to enable the local transmit power reports.
@@ -2235,15 +2240,17 @@ uint16_t BLE_GAP_SetPeriAdvRxEnable(uint16_t syncHandle, bool enable);
 uint16_t BLE_GAP_SetScanningFilter(BLE_GAP_ScanFilterConfig_T *p_param);
 
 /**@brief Set the path loss threshold reporting parameters for specific connection.
+ * @note  This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
- * @param[in] p_params                      Pointer to @ref BLE_GAP_SetPathLossReportingParams_T structure buffer.
+ * @param[in] p_params                      Pointer to @ref BLE_GAP_PathLossReportingParams_T structure buffer.
  *
  * @retval MBA_RES_SUCCESS                  Successfully set the path loss threshold reporting parameters for specific connection.
  * @retval MBA_RES_INVALID_PARA             Invalid parameters.
  */
-uint16_t BLE_GAP_SetPathLossReportingParams(BLE_GAP_SetPathLossReportingParams_T *p_params);
+uint16_t BLE_GAP_SetPathLossReportingParams(BLE_GAP_PathLossReportingParams_T *p_params);
 
 /**@brief Enable or disable path loss reporting for specific connection.
+ * @note  This command shall only be used after receiving @ref BLE_GAP_EVT_FEATURE_EXCHANGE_COMPL event.
  *
  * @param[in] connHandle                    Connection handle associated with this connection.
  * @param[in] enable                        Enable or disable path loss reporting. Set true to enable reports.

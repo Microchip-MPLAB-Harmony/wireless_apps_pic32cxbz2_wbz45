@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_CONFIG_H
-#define _NWK_CONFIG_H
+#if !defined NWK_CONFIG_H
+#define NWK_CONFIG_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -172,5 +172,5 @@
 
 #define NWK_NO_LQI 0U
 
-#endif /* _NWK_CONFIG_H */
+#endif /* NWK_CONFIG_H */
 /** eof nwkConfig.h */

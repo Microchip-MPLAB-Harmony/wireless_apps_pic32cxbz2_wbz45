@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_BTT_H
-#define _NWK_BTT_H
+#if !defined NWK_BTT_H
+#define NWK_BTT_H
 
 /******************************************************************************
                                 Includes section
@@ -69,7 +69,7 @@ typedef struct _NWK_BTTTableEntry_t
 {
   /* The 16-bit network address of the broadcast initiator.*/
   uint16_t address;
-  /* The NWK layer sequence number of the initiator? broadcast. */
+  /* The NWK layer sequence number of the initiator?s broadcast. */
   uint8_t seqNumber;
   /* Flag indicates whether the entry is active or not*/
   bool active;
@@ -170,6 +170,6 @@ NWK_PRIVATE NwkBTTTableAnswer_t nwkAddOwnBTR(const uint8_t sequenceNumber);
 #else
 #define nwkAddOwnBTR(sequenceNumber) (void)0
 #endif /* NWK_ALWAYS_REJECT_OWN_BROADCAST */
-#endif /* _NWK_BTT_H */
+#endif /* NWK_BTT_H */
 /** eof nwkBTT.h */
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIGROUPSCLUSTER_H
-#define _CIGROUPSCLUSTER_H
+#ifndef CIGROUPSCLUSTER_H
+#define CIGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -62,6 +62,6 @@ extern ZCL_GroupsClusterServerAttributes_t ciGroupsClusterServerAttributes;
 ******************************************************************************/
 void ciGroupsClusterInit(void);
 
-#endif // _CIGROUPSCLUSTER_H
+#endif // CIGROUPSCLUSTER_H
 
 // eof ciGroupsCluster.h

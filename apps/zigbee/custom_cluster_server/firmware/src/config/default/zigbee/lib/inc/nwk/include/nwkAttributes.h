@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_ATTRIBUTES_H
-#define _NWK_ATTRIBUTES_H
+#if !defined NWK_ATTRIBUTES_H
+#define NWK_ATTRIBUTES_H
 
 /******************************************************************************
                                Includes section
@@ -301,6 +301,6 @@ uint8_t NWK_GetPeriodOfTimeResults(void);
 ******************************************************************************/
 void NWK_RestartMacTxUcastTimer(void);
 
-#endif /* _NWK_ATTRIBUTES_H */
+#endif /* NWK_ATTRIBUTES_H */
 /** eof nwkAttributes.h */
 

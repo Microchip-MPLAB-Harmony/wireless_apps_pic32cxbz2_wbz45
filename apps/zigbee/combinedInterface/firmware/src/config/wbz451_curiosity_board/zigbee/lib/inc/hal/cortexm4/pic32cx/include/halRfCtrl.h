@@ -46,8 +46,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _HALRFCTRL_H
-#define _HALRFCTRL_H
+#ifndef HALRFCTRL_H
+#define HALRFCTRL_H
 
 /******************************************************************************
                         Includes section.
@@ -125,11 +125,6 @@ void HAL_SetRfRst(void);
 void HAL_ClearRfRst(void);
 
 /******************************************************************************
-  Init pins that controls RF chip.
-******************************************************************************/
-void ZB_HAL_InitRfPins(void);
-
-/******************************************************************************
   Initialization rf irq.
 ******************************************************************************/
 void ZB_HAL_InitRfIrq(void);
@@ -153,11 +148,6 @@ void HAL_DisableRxTxSwitcher(void);
   Enables Transceiver clock
 *******************************************************************************/
 void HAL_EnableTransceiver(void);
-
-/**************************************************************************//**
-  \brief Enables Antenna diversity option for radio if that is supported.
-******************************************************************************/
-void ZB_HAL_InitAntennaDiversity(void);
 
 /**************************************************************************//**
   \brief Enables Antenna diversity in RX mode for radio if that is supported.
@@ -184,32 +174,26 @@ void halWaitRadio(void);
 ******************************************************************************/
 bool halRadioInTrxOff(void);
 
-/******************************************************************************
-  \brief Init pins for CLKM
-******************************************************************************/
-void ZB_HAL_InitRfClkmPins(void);
-
-/******************************************************************************
-  Disable pins for CLKM
-******************************************************************************/
-void HAL_DissableRfClkmPins(void);
-
 /**************************************************************************//**
   \brief EIC IRQ handler to handle RF IRQ 
 ******************************************************************************/
+/******************************************************************************
+  Dissable pins for CLKM
+******************************************************************************/
+void HAL_DissableRfClkmPins(void);
+
+/******************************************************************************
+  Init pins that controls RF chip
+******************************************************************************/
+void HAL_InitRfPins(void);
+
+/******************************************************************************
+  Init pins for CLKM
+******************************************************************************/
+void HAL_InitRfClkmPins(void);
 
 void EIC_Handler(void);
 
-/**************************************************************************//**
-  \brief Pin configuration forAntenna diversity feature
-******************************************************************************/
-bool BSP_BoardSpecificAntennaDiversityPinInit(uint8_t* antennaSelected, uint16_t* pRfCntrlFecfg);
-
-/**************************************************************************//**
-\brief Checks whether Ant Div actions reuired based on the board and ant div enabled or not
-******************************************************************************/
-bool BSP_IsAntDiversityActionsRequired(void);
-
-#endif /* _HALRFCTRL_H */
+#endif /* HALRFCTRL_H */
 
 // eof halRfCtrl.h

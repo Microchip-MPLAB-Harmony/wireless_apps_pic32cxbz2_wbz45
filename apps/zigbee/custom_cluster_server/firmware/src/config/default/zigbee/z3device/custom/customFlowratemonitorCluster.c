@@ -58,11 +58,6 @@
 *******************************************************************************/
 
 static void customFlowratemonitorAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_AttributeId_t attributeId, ZCL_AttributeEvent_t event);
-void customFlowratemonitorInit(void);
-
-
-
-
 
 /******************************************************************************
                     Global variables
@@ -75,28 +70,33 @@ ZCL_FlowratemonitorClusterServerAttributes_t flowratemonitorServerClusterAttribu
     ZCL_DEFINE_FLOWRATEMONITOR_CLUSTER_SERVER_ATTRIBUTES(FLOWRATEMONITOR_MIN_REPORT_PERIOD,FLOWRATEMONITOR_MAX_REPORT_PERIOD)
 };
 
+//backup attributes
+ZCL_FlowratemonitorClusterServerAttributes_t __attribute__((persistent)) backupFlowratemonitorServerAttribute;
+
 //Custom Cluster Commands
-PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorServerClusterCommands) =
+PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorClusterCommands) =
 {
-
+ 
 ZCL_DEFINE_FLOWRATEMONITOR_CLUSTER_COMMANDS( )
-};
 
+
+
+};
 
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
-
 /**************************************************************************//**
 \brief Initialization function for the cluster
 ******************************************************************************/
 void customFlowratemonitorInit(void)
-{
-    /* Executes only for Server. */
-    ZCL_Cluster_t *cluster =  ZCL_GetCluster(APP_ENDPOINT_CUSTOM, FLOWRATEMONITOR_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
+{    
+    /* Executes only for Server. */ 
+    ZCL_Cluster_t *serverCluster =  ZCL_GetCluster(APP_ENDPOINT_CUSTOM, FLOWRATEMONITOR_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
 
-    if (cluster)
-        cluster->ZCL_AttributeEventInd = customFlowratemonitorAttributeEventInd;
+    if (serverCluster)
+        serverCluster->ZCL_AttributeEventInd = customFlowratemonitorAttributeEventInd;
+
 
     // Fill definition here
 }
@@ -116,10 +116,21 @@ static void customFlowratemonitorAttributeEventInd(ZCL_Addressing_t *addressing,
     eventItem.eventData.zclAttributeData.addressing = addressing;
     eventItem.eventData.zclAttributeData.attributeId = attributeId;
     eventItem.eventData.zclAttributeData.event = event;
-                        
+
   APP_Zigbee_Handler(eventItem);
 }
 
 
 
 
+
+
+void customccZCC0BackupAttribute(void)
+{
+    memcpy4ByteAligned(&backupFlowratemonitorServerAttribute, &flowratemonitorServerClusterAttributes, sizeof(ZCL_FlowratemonitorClusterServerAttributes_t));
+}
+
+void customccZCC0RestoreAttribute(void)
+{
+    memcpy4ByteAligned(&flowratemonitorServerClusterAttributes, &backupFlowratemonitorServerAttribute, sizeof(ZCL_FlowratemonitorClusterServerAttributes_t));
+}

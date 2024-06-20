@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLMEM_H
-#define _ZCLMEM_H
+#ifndef ZCLMEM_H
+#define ZCLMEM_H
 
 /******************************************************************************
                    Includes section
@@ -80,4 +80,4 @@ static inline ZclMem_t * zclMemReq(void)
   return ((ZclMem_t *)&zclMem);
 }
 
-#endif // _ZCLMEM_H
+#endif // ZCLMEM_H

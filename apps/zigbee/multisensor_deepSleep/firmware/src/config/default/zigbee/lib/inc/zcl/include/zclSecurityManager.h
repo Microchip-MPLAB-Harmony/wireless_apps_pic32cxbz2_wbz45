@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLSECURITYMANAGER_H
-#define _ZCLSECURITYMANAGER_H
+#ifndef ZCLSECURITYMANAGER_H
+#define ZCLSECURITYMANAGER_H
 
 /******************************************************************************
                     Includes section
@@ -325,6 +325,6 @@ void keNotification(ZCL_SecurityStatus_t status);
 #endif
 
 #endif // (defined _LINK_SECURITY_) && (!defined _LIGHT_LINK_PROFILE_)
-#endif //#ifndef _ZCLSECURITYMANAGER_H
+#endif //#ifndef ZCLSECURITYMANAGER_H
 
 /** eof zclSecurityManager.h */

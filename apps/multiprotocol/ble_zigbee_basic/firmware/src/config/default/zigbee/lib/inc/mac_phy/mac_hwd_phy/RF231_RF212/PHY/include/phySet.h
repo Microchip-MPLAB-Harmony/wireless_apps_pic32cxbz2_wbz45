@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYSET_H
-#define _PHYSET_H
+#ifndef PHYSET_H
+#define PHYSET_H
 
 /******************************************************************************
                         Includes section.
@@ -78,6 +78,8 @@ typedef struct
   PHY_SetPibId_t    id;
   MACHWD_PibAttr_t  attr;
 } PHY_SetReq_t;
+
+typedef void (*ZbHpaCpsSetCallback_t)(bool);
 
 /******************************************************************************
                         Prototypes section.
@@ -119,6 +121,14 @@ void PHY_setTxPowerDirectly(uint8_t txPower);
 ******************************************************************************/
 void PHY_setTxPowerinDbm(int8_t txPowerDbm);
 
-#endif /* _PHYSET_H */
+void ZB_HpaInit(ZbHpaCpsSetCallback_t setHpaCpsCallback);
+
+/******************************************************************************
+  \brief CPS Handling based on TX Power
+  
+  \param[in] isTx - Make CPS 0/1 for tx only else 0 for rx
+******************************************************************************/
+void phySetCpsForHpa(bool isTx);
+#endif /* PHYSET_H */
 
 // eof phySet.c

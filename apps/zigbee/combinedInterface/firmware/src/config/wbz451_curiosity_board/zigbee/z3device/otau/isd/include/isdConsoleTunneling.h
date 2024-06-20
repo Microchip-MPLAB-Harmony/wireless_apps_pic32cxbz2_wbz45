@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ISDCONSOLETUNNELING_H
-#define _ISDCONSOLETUNNELING_H
+#ifndef ISDCONSOLETUNNELING_H
+#define ISDCONSOLETUNNELING_H
 
 #include <definitions.h>
 #include <xc.h>
@@ -92,4 +92,4 @@ void ISD_ClearUSART(void);
 ******************************************************************************/
 void raiseTunnelRxCallback(uint8_t);
 
-#endif // _ISDCONSOLETUNNELING_H
+#endif // ISDCONSOLETUNNELING_H

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIDISASSOCIATE_H
-#define _MACHWIDISASSOCIATE_H
+#ifndef MACHWIDISASSOCIATE_H
+#define MACHWIDISASSOCIATE_H
 #ifdef _MAC_DISASSOCIATE_
 
 
@@ -119,6 +119,6 @@ void machwiDisassociateNotifInd(MAC_FrameDescr_t *frameDescr);
 
 #endif /* _MAC_DISASSOCIATE_ */
 
-#endif /* _MACHWIDISASSOCIATE_H */
+#endif /* MACHWIDISASSOCIATE_H */
 
 // eof machwiDisassociate.h

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef  _MACSETGET_H
-#define  _MACSETGET_H
+#ifndef  MACSETGET_H
+#define  MACSETGET_H
 
 /******************************************************************************
                         Includes section
@@ -151,6 +151,6 @@ void MAC_SetReq(MAC_SetReq_t *reqParams);
 ******************************************************************************/
 void MAC_GetReq(MAC_GetReq_t *reqParams);
 
-#endif /* _MACSETGET_H */
+#endif /* MACSETGET_H */
 
 // eof macSetGet.h

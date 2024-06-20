@@ -86,6 +86,7 @@ static ZCL_DeviceEndpoint_t hsEndpoint =
 static ClusterId_t hsServerClusterToBindIds[] =
 {
   HUMIDITY_MEASUREMENT_CLUSTER_ID,
+
 };
 
 static AppBindReq_t hsBindReq =

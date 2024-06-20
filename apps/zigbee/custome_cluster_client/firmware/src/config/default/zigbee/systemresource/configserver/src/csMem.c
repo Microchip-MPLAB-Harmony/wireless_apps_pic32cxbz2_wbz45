@@ -135,6 +135,9 @@ bool certificationFlag = CS_CERTIFICATION_FLAG;
 /* To store the deep sleep wakeup source. */
 uint8_t deviceDeepSleepWakeupSrc = CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC;
 
+/* This flag is TRUE for HPA enabled device i.e.WBZ451H */
+bool hpaEnabledDevice  = false;
+
 /* BitCloud memory buffers allocation */
 CS_StackBuffers_t stackBuffers;
 
@@ -151,7 +154,7 @@ NIB_t PROGMEM_DECLARE(defaultNIB) =
   },
 #endif
   .deviceType = CS_DEVICE_TYPE,
-  .addrAlloc = CS_ADDRESS_ASSIGNMENT_METHOD,
+  .addrAlloc = (NWK_AddrAlloc_t)CS_ADDRESS_ASSIGNMENT_METHOD,
   .symLink = true,
   .uniqueAddr = CS_NWK_UNIQUE_ADDR,
   .leaveReqAllowed = CS_NWK_LEAVE_REQ_ALLOWED,
@@ -172,7 +175,7 @@ NIB_t PROGMEM_DECLARE(defaultNIB) =
 #ifdef _CHILD_MANAGEMENT_
   /** For an RFD, this records the information received in an End Device
    * Timeout Response command indicating the parent information.
-   * For an FFD, this records the device???s local capabilities. */
+   * For an FFD, this records the deviceâ??s local capabilities. */
   .parentInformation =  CS_DEFAULT_PARENT_INFORMATION,
   /** It indicates the default timeout in minutes for any end device
    * that does not negotiate a different timeout value. */
@@ -260,7 +263,7 @@ SIB_t PROGMEM_DECLARE(defaultSIB) =
   /* ZDO parameters */
   .csEndDeviceSleepPeriod = CS_END_DEVICE_SLEEP_PERIOD,
   .csFfdSleepPeriod = CS_FFD_SLEEP_PERIOD,
-  .csRxOnWhenIdle = (CS_DEVICE_TYPE == DEVICE_TYPE_END_DEVICE) ? CS_RX_ON_WHEN_IDLE : true,
+  .csRxOnWhenIdle = (bool)((CS_DEVICE_TYPE == DEVICE_TYPE_END_DEVICE) ? CS_RX_ON_WHEN_IDLE : true),
   .csComplexDescriptorAvailable = CS_COMPLEX_DESCRIPTOR_AVAILABLE,
   .csUserDescriptorAvailable = CS_USER_DESCRIPTOR_AVAILABLE,
   .csUserDescriptor = {.FieldLength = ZDP_USER_DESC_FIELD_SIZE, .FieldName = "Microchip"},
@@ -339,7 +342,7 @@ CS_ReadOnlyItems_t PROGMEM_DECLARE(csReadOnlyItems) =
   .csAddressMapTableSize = CS_ADDRESS_MAP_TABLE_SIZE,
   .csRouteDiscoveryTableSize = CS_ROUTE_DISCOVERY_TABLE_SIZE,
   .csNwkBttSize = CS_NWK_BTT_SIZE,
-  .csNwkMaxPermitJoinPeriodLogic = CS_NWK_MAX_PERMIT_JOIN_PERIOD_LOGIC,
+  .csNwkMaxPermitJoinPeriodLogic = (NWK_MaxPermitJoiningPeriod_t)CS_NWK_MAX_PERMIT_JOIN_PERIOD_LOGIC,
   .csNwkLinkStatusCount = CS_NWK_LINK_STATUS_COUNT,
   .csNwkLinkStatusFragmentationPeriod = CS_NWK_LINK_STATUS_FRAGMENTATION_PERIOD,
 #ifdef _CUSTOM_NWK_ADDRESS_CONFLICT_WAIT_TIME_AFTER_RESET_
@@ -430,24 +433,26 @@ CS_ReadOnlyItems_t PROGMEM_DECLARE(csReadOnlyItems) =
  *        Records are automatically sorted by item location and type
  *        (atomic parameter or memory region).
  */
-#define RAM_PARAMETER(label, id, addr) [id] = {{(const void FLASH_PTR*)&(addr)}, sizeof(addr)},
+#define RAM_PARAMETER(label, id, addr) [id] = {{(const void FLASH_PTR*)&(addr)}, (uint16_t)sizeof(addr)},
 #define DUMMY_RAM_PARAMETER(label, id) [id] = {{NULL}, 0},
-#define FLASH_PARAMETER(label, id, addr) [id] = {{(const void FLASH_PTR*)&(addr)}, sizeof(addr)},
+#define FLASH_PARAMETER(label, id, addr) [id] = {{(const void FLASH_PTR*)&(addr)}, (uint16_t)sizeof(addr)},
 #define DUMMY_FLASH_PARAMETER(label, id) [id] = {{NULL}, 0},
 #define MEMORY_REGION(label, id, addr) [id] = {{(const void FLASH_PTR*)&(addr)}, 0},
 #define DUMMY_MEMORY_REGION(label, id) [id] = {{NULL}, 0},
-
-CS_MemoryItem_t PROGMEM_DECLARE(csVarItems[]) =
+#define Max_csVarTable_csVarItems            148
+#define Max_csConstTable_csConstItems        56
+#define Max_csMemTable_csMemItems            38
+CS_MemoryItem_t PROGMEM_DECLARE(csVarItems[Max_csVarTable_csVarItems]) =
 {
   #include "configserver/include/private/csVarTable.h"
 };
 
-CS_MemoryItem_t PROGMEM_DECLARE(csConstItems[]) =
+CS_MemoryItem_t PROGMEM_DECLARE(csConstItems[Max_csConstTable_csConstItems]) =      //add array size 255 for avoid misra 9.5
 {
   #include "configserver/include/private/csConstTable.h"
 };
 
-CS_MemoryItem_t PROGMEM_DECLARE(csMemItems[]) =
+CS_MemoryItem_t PROGMEM_DECLARE(csMemItems[Max_csMemTable_csMemItems]) =        //add array size 255 for avoid misra 9.5
 {
   #include "configserver/include/private/csMemTable.h"
 };
@@ -481,12 +486,12 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
   tal_pib_IeeeAddress = CCPU_TO_LE64(CS_UID);
   maxFrameTransmissionTime = CS_MAX_FRAME_TRANSMISSION_TIME;
 #else
-  memset(&csPIB, 0x00, sizeof(PIB_t));
+  (void)memset(&csPIB, 0x00, sizeof(PIB_t));
   //Reads the UID from Information block as part of Factory Set  
-  if (zgbIBdata->validityCheck.extMacDevAddrValid)
+  if ((zgbIBdata->validityCheck.extMacDevAddrValid) != 0U)
   {
     uint64_t devIEEEAddress = 0;
-    memcpy(&devIEEEAddress,&zgbIBdata->extMacDevAddr[0], sizeof(uint64_t));
+    (void)memcpy(&devIEEEAddress,(uint64_t *)&zgbIBdata->extMacDevAddr[0], sizeof(uint64_t));
     csPIB.macAttr.extAddr = devIEEEAddress;
   }
   else
@@ -505,10 +510,14 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
   csPIB.macAttr.ccaEdThres = CS_RF_CCA_ED_THRES;
   
   //Reads from the User to set the Region otherwise falls back to the CS default.
-  if (zgbIBdata->validityCheck.antennaGainValid)
+  if ((zgbIBdata->validityCheck.antennaGainValid) != 0U)
+  {
     csSIB.csRfTxAntennaGain = zgbIBdata->antGain;//valid antennai gain from IB found so update
+  }
   else
+  {
     csSIB.csRfTxAntennaGain  = CS_TX_ANTENNA_GAIN;
+  }
 
   csPIB.phyAttr.transmitPower  = CS_RF_TX_POWER;//radiated power
 
@@ -518,9 +527,9 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
 #endif // defined(_USE_KF_MAC_)
 
 #ifndef _MAC2_
-  memcpy_P(&csNIB, &defaultNIB, sizeof(NIB_t));
-  memcpy_P(&csZIB, &defaultZIB, sizeof(ZIB_t));
-  memcpy_P(&csAIB, &defaultAIB, sizeof(AIB_t));
+  (void)memcpy_P(&csNIB, &defaultNIB, sizeof(NIB_t));
+  (void)memcpy_P(&csZIB, &defaultZIB, sizeof(ZIB_t));
+  (void)memcpy_P(&csAIB, &defaultAIB, sizeof(AIB_t));
 #endif /* _MAC2_ */
 #ifdef _ZGPD_SPECIFIC_
   csZGIB.zgpdSpecific = CS_ZGPD_SPECIFIC_ENABLE;
@@ -560,8 +569,8 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
   csZGIB.secParams.secKey.keyType = CS_ZGP_SECURITY_KEY_TYPE;
 #endif //ZGP_SECURITY_ENABLE
 #endif
-  memcpy_P(&csSIB, &defaultSIB, sizeof(SIB_t));
-  memset(&stackBuffers, 0x00, sizeof(CS_StackBuffers_t));
+  (void)memcpy_P(&csSIB, &defaultSIB, sizeof(SIB_t));
+  (void)memset(&stackBuffers, 0x00, sizeof(CS_StackBuffers_t));
 #ifdef BDB_SUPPORT
   csBIB.touchlinkRssiCorrection = CS_BDB_TOUCHLINK_RSSI_CORRECTION;
   csBIB.touchlinkRssiThershold = CS_BDB_TOUCHLINK_RSSI_THERSHOLD;
@@ -579,15 +588,15 @@ void csSetToDefault(ZB_CS_SYS_IBData_t *zgbIBdata)
 void CS_BackupNwkParams(void)
 {
     backupExtendedBcSet();
-    memcpy4ByteAligned((uint8_t*)&backupRamData.backupExtGenMem, &extGenMemParams, sizeof(ExtGetMem_t));
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupExtGenMem, &extGenMemParams, (uint16_t)sizeof(ExtGetMem_t));
     //BDB
-    memcpy4ByteAligned((uint8_t*)&backupRamData.backupBdbIB, (uint8_t*)&bdbIB, sizeof(BDBIB_t));
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupBdbIB, (uint8_t*)&bdbIB, (uint16_t)sizeof(BDBIB_t));
     //nwk Security IB
-    memcpy4ByteAligned((uint8_t*)&backupRamData.securityIB, (uint8_t*)&csNIB.securityIB, sizeof(NWK_SecurityIB_t));
+    memcpy4ByteAligned((uint8_t*)&backupRamData.securityIB, (uint8_t*)&csNIB.securityIB,(uint16_t) sizeof(NWK_SecurityIB_t));
     //security counter
     memcpy4ByteAligned(&backupRamData.backupOutCounterTop, &csNIB.securityCounters.outCounterTop, 2); 
     //zll dev info params
-    memcpy4ByteAligned((uint8_t*)&backupRamData.backupDeviceInfoParams, (uint8_t*)&deviceInfoParams, sizeof(DeviceInfoParameters_t));
+    memcpy4ByteAligned((uint8_t*)&backupRamData.backupDeviceInfoParams, (uint8_t*)&deviceInfoParams, (uint16_t)sizeof(DeviceInfoParameters_t));
     //neighbor table
     memcpy4ByteAligned(backupRamData.backupCsNeibTable,stackBuffers.csNeibTable,NEIGHBOR_TABLE_ITEM_SIZE);
     //nwk keys
@@ -595,9 +604,11 @@ void CS_BackupNwkParams(void)
     memcpy4ByteAligned(backupRamData.backupCsApsKeyPairDescriptors, stackBuffers.csApsKeyPairDescriptors, KEY_PAIR_DESCRIPTOR_ITEM_SIZE);
     //binding table
     for (uint8_t i=0; i< CS_APS_BINDING_TABLE_SIZE; i++)
+    {
         backupRamData.backupCsApsBindingTable[i] = stackBuffers.csApsBindingTable[i];
+    }
     //zcl mem
-    memcpy4ByteAligned(&backupRamData.backupZclMem, &zclMem, sizeof(ZclMem_t)); 
+    memcpy4ByteAligned(&backupRamData.backupZclMem, &zclMem, (uint16_t)sizeof(ZclMem_t)); 
 
 }
 
@@ -606,25 +617,27 @@ void CS_BackupNwkParams(void)
  ******************************************************************************/
 void  CS_RestoreNwkParams(void)
 {
-    memcpy4ByteAligned(&extGenMemParams,(uint8_t*)&backupRamData.backupExtGenMem,sizeof(ExtGetMem_t));
+    memcpy4ByteAligned(&extGenMemParams,(uint8_t*)&backupRamData.backupExtGenMem,(uint16_t)sizeof(ExtGetMem_t));
     restoreExtendedBcSet();
      //BDB
-    memcpy4ByteAligned((uint8_t*)&bdbIB, (uint8_t*)&backupRamData.backupBdbIB, sizeof(BDBIB_t));
+    memcpy4ByteAligned((uint8_t*)&bdbIB, (uint8_t*)&backupRamData.backupBdbIB, (uint16_t)sizeof(BDBIB_t));
     //nwk Security IB
-    memcpy4ByteAligned((uint8_t*)&csNIB.securityIB, (uint8_t*)&backupRamData.securityIB, sizeof(NWK_SecurityIB_t));
+    memcpy4ByteAligned((uint8_t*)&csNIB.securityIB, (uint8_t*)&backupRamData.securityIB, (uint16_t)sizeof(NWK_SecurityIB_t));
     //security counter
     memcpy4ByteAligned(&csNIB.securityCounters.outCounterTop, &backupRamData.backupOutCounterTop, 2);
     //device Params
-    memcpy4ByteAligned((uint8_t*)&deviceInfoParams, (uint8_t*)&backupRamData.backupDeviceInfoParams, sizeof(DeviceInfoParameters_t));
+    memcpy4ByteAligned((uint8_t*)&deviceInfoParams, (uint8_t*)&backupRamData.backupDeviceInfoParams, (uint16_t)sizeof(DeviceInfoParameters_t));
     //neighbor table
     memcpy4ByteAligned(stackBuffers.csNeibTable, backupRamData.backupCsNeibTable, NEIGHBOR_TABLE_ITEM_SIZE);
 
     memcpy4ByteAligned(&stackBuffers.csNwkSecKeys, &backupRamData.backupCsNwkSecKeys, SECURITY_KEYS_ITEM_SIZE);
     memcpy4ByteAligned(stackBuffers.csApsKeyPairDescriptors, backupRamData.backupCsApsKeyPairDescriptors,  KEY_PAIR_DESCRIPTOR_ITEM_SIZE);
     for (uint8_t i=0; i< CS_APS_BINDING_TABLE_SIZE; i++)
+    {
         stackBuffers.csApsBindingTable[i] = backupRamData.backupCsApsBindingTable[i] ;
+    }
     //zcl mem
-    memcpy4ByteAligned(&zclMem, &backupRamData.backupZclMem, sizeof(ZclMem_t));
+    memcpy4ByteAligned(&zclMem, &backupRamData.backupZclMem, (uint16_t)sizeof(ZclMem_t));
 }
 
 /******************************************************************************

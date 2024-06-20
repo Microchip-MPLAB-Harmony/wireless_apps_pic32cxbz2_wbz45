@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYCOMMON_H
-#define _PHYCOMMON_H
+#ifndef PHYCOMMON_H
+#define PHYCOMMON_H
 
 /******************************************************************************
                     Includes section
@@ -98,6 +98,6 @@ typedef enum
   PHY_BUSY_RX_STATE
 } PhyState_t;
 
-#endif /* _PHYCOMMON_H */
+#endif /* PHYCOMMON_H */
 
 // eof phyCommon.h

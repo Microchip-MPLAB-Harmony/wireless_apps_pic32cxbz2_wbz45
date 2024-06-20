@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWITRANSACTIONQUEUE_H
-#define _MACHWITRANSACTIONQUEUE_H
+#ifndef MACHWITRANSACTIONQUEUE_H
+#define MACHWITRANSACTIONQUEUE_H
 #ifdef _FFD_
 
 /******************************************************************************
@@ -152,6 +152,6 @@ void machwiDeleteTransactionFromQueue(MachwiTransaction_t *transaction);
 bool machwiTransactionQueueEmpty(void);
 
 #endif //_FFD_
-#endif /* _MACHWITRANSACTIONQUEUE_H */
+#endif /* MACHWITRANSACTIONQUEUE_H */
 
 // eof machwiTransactionQueue.h

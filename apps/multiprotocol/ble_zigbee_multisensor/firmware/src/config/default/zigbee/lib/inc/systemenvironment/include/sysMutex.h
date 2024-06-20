@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _SYS_MUTEX_H
-#define _SYS_MUTEX_H
+#if !defined SYS_MUTEX_H
+#define SYS_MUTEX_H
 /**//**
  *  The mutex is similar to binary semaphore with one significant difference:
  * the mutex has an owner. It means that a module (a component) locks a mutex only
@@ -90,7 +90,7 @@ typedef struct _SYS_MutexOwner_t
 /******************************************************************************
                                Prototypes section
  ******************************************************************************/
-/**************************************************************************//**
+/******************************************************************************
   \brief Makes the asynchronous request to lock the mutex.
 
   \ingroup sys
@@ -101,8 +101,8 @@ typedef struct _SYS_MutexOwner_t
 
     ...
     if (!SYS_MutexLock(&aesMutex, &sspOwnerOfAesMutex))
-      return; // Wait the callback function.
-    // Work with the resource which is locked by the mutex.
+      return;  Wait the callback function.
+     Work with the resource which is locked by the mutex.
   \endcode
 
   \param mutex - the pointer to created mutex.
@@ -144,5 +144,5 @@ bool SYS_MutexUnlock(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner);
  ******************************************************************************/
 bool SYS_IsMutexLocked(SYS_Mutex_t *const mutex, SYS_MutexOwner_t *const owner);
 
-#endif /* _SYS_MUTEX_H */
+#endif /* SYS_MUTEX_H */
 /** eof sysMutex.h */

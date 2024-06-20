@@ -45,8 +45,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _HALMACISR_H
-#define _HALMACISR_H
+#ifndef HALMACISR_H
+#define HALMACISR_H
 
 /******************************************************************************
                         Includes section.
@@ -84,6 +84,13 @@ typedef struct // Timer description.
 void halMacTimerHandler(void);
 
 /******************************************************************************
+  Redirect interrupt event depending on the TrxState.
+  Parameters: none.
+  Returns: none.
+******************************************************************************/
+void phyDispatcheRTimerEvent(void);
+
+/******************************************************************************
   Initializes Rtimer and RF ext. interrupts.
 ******************************************************************************/
 void ZB_HAL_InitMacIsr(void);
@@ -106,6 +113,6 @@ void HAL_StopRtimer(void);
 ******************************************************************************/
 bool HAL_IsRtimerStopped(void);
 
-#endif /* _HALMACISR_H */
+#endif /* HALMACISR_H */
 
 // eof halMacIsr.h

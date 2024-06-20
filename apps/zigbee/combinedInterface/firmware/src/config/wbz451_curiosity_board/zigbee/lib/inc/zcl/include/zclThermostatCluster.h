@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLTHERMOSTATCLUSTER_H
-#define _ZCLTHERMOSTATCLUSTER_H
+#ifndef ZCLTHERMOSTATCLUSTER_H
+#define ZCLTHERMOSTATCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -124,7 +124,7 @@ to factory defaults.
 *******************************************************************************/
 
 #define ZCL_THERMOSTAT_CLUSTER_SETPOINT_RAISE_LOWER_COMMAND_ID            0x00
-#define ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
+
 /***************************************************************************//**
 \brief Thermostat Cluster attributes default definitions
 *******************************************************************************/
@@ -162,8 +162,7 @@ to factory defaults.
     DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_VERSION_ATTRIBUTE_ID, ZCL_U16BIT_DATA_TYPE_ID) 
       
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-#define ZCL_DEFINE_THERMOSTAT_CLUSTER_SERVER_OPTIONAL_ATTRIBUTES(reportMin, reportMax) \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(thermostatRunningState, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_THERMOSTAT_RUNNING_STATE_SERVER_ATTRIBUTE_ID, ZCL_16BIT_BITMAP_DATA_TYPE_ID, 0x00, 0x7f)
+#define ZCL_DEFINE_THERMOSTAT_CLUSTER_SERVER_OPTIONAL_ATTRIBUTES(reportMin, reportMax) 
 #endif /*ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES*/
 /***************************************************************************//**
 \brief Thermostat Cluster define commands macros
@@ -235,14 +234,14 @@ to factory defaults.
 /******************************************************************************
                     Types section
 ******************************************************************************/
-typedef enum _ZCL_ThSetPointMode_t
+typedef enum ZCL_ThSetPointMode_
 {
   ZCL_ADJUST_HEAT_SETPOINT,
   ZCL_ADJUST_COOL_SETPOINT,
   ZCL_ADJUST_HEAT_AND_COOL_SETPOINT,
 }ZCL_ThSetPointMode_t;
 
-typedef enum _ZCL_ThSystemMode_t
+typedef enum ZCL_ThSystemMode_
 {
   ZCL_SYS_MODE_OFF = 0,
   ZCL_SYS_MODE_AUTO,
@@ -256,65 +255,65 @@ typedef enum _ZCL_ThSystemMode_t
   ZCL_SYS_MODE_SLEEP
 }ZCL_ThSystemMode_t;
 
-typedef enum _ZCL_ThOccupancy_t
+typedef enum ZCL_ThOccupancy_
 {
   ZCL_NOT_OCCUPIED = 0,
   ZCL_OCCUPIED = 1,  
 }ZCL_ThOccupancy_t;
 
-typedef enum _ZCL_ThHvacSystemTypeConfigCoolstage_t
+typedef enum ZCL_ThHvacSystemTypeConfigCoolstage_
 {
   ZCL_HVAC_COOL_STAGE_1 = 0,
   ZCL_HVAC_COOL_STAGE_2,
   ZCL_HVAC_COOL_STAGE_3
 }ZCL_ThHvacSystemTypeConfigCoolstage_t;
 
-typedef enum _ZCL_ThHvacSystemTypeConfigHeatStage_t
+typedef enum ZCL_ThHvacSystemTypeConfigHeatStage_
 {
   ZCL_HVAC_HEAT_STAGE_1 = 0,
   ZCL_HVAC_HEAT_STAGE_2,
   ZCL_HVAC_HEAT_STAGE_3
 }ZCL_ThHvacSystemTypeConfigHeatStage_t;
 
-typedef enum _ZCL_ThHvacSystemTypeConfigHeatType_t
+typedef enum ZCL_ThHvacSystemTypeConfigHeatType_
 {
   ZCL_HVAC_TYPE_CONVENTIONAL = 0,
   ZCL_HVAC_TYPE_PUMP,
 }ZCL_ThHvacSystemTypeConfigHeatType_t;
 
-typedef enum _ZCL_ThHvacSystemTypeConfigHeatSource_t
+typedef enum ZCL_ThHvacSystemTypeConfigHeatSource_
 {
   ZCL_HVAC_SOURCE_ELECTRIC = 0,
   ZCL_HVAC_SOURCE_GAS,
 }ZCL_ThHvacSystemTypeConfigHeatSource_t;
 
-typedef enum _ZCL_ThRemoteSensing_t
+typedef enum ZCL_ThRemoteSensing_
 {
   ZCL_SENSE_INTERNALLY = 0,
   ZCL_SENSE_EXTERNALLY = 1,
 }ZCL_ThRemoteSensing_t;
 
-typedef enum _ZCL_ThAlarmMaskState_t
+typedef enum ZCL_ThAlarmMaskState_
 {
   ZCL_TH_ALARM_DISABLED = 0,
   ZCL_TH_ALARM_ENABLED = 1,
 }ZCL_ThAlarmMaskState_t;
 
-typedef enum _ZCL_ThAlarmMaskBitPos_t
+typedef enum ZCL_ThAlarmMaskBitPos_
 {
   ZCL_INIT_FAILURE_BIT_POS,
   ZCL_HARDWARE_FAILURE_BIT_POS,
   ZCL_SELF_CALIBRATION_FAILURE_BIT_POS,
 }ZCL_ThAlarmMaskBitPos_t;
 
-typedef enum _ZCL_ThRunningMode_t
+typedef enum ZCL_ThRunningMode_
 {
   ZCL_RUNNING_MODE_OFF = 0,
   ZCL_RUNNING_MODE_COOL = 3,
   ZCL_RUNNING_MODE_HEAT = 4,
 }ZCL_ThRunningMode_t;
 
-typedef enum _ZCL_ThControlSeqOfOperation_t
+typedef enum ZCL_ThControlSeqOfOperation_
 {
   ZCL_COOL_ONLY,
   ZCL_COOL_WITH_REHEAT,
@@ -324,13 +323,13 @@ typedef enum _ZCL_ThControlSeqOfOperation_t
   ZCL_COOL_HEAT_4PIPES_REHEAT
 }ZCL_ThControlSeqOfOperation_t;
 
-typedef enum _ZCL_ThRunningState_t
+typedef enum ZCL_ThRunningState_
 {
   ZCL_RUNNING_STATE_OFF = 0,
   ZCL_RUNNING_STATE_ON = 1,
 }ZCL_ThRunningState_t;
 
-typedef enum _ZCL_ThRunningStateBit_t
+typedef enum ZCL_ThRunningStateBit_
 {
   ZCL_HEAT_STATE_BIT_POS,
   ZCL_COOL_STATE_BIT_POS,
@@ -341,7 +340,7 @@ typedef enum _ZCL_ThRunningStateBit_t
   ZCL_FAN_STAGE3_STATE_BIT_POS,
 }ZCL_ThRunningStateBit_t;
 
-typedef enum _ZclThermostatAlarmCode_t
+typedef enum ZclThermostatAlarmCode_
 {
   ZCL_INIT_FAILURE,
   ZCL_HARDWARE_FAILURE,
@@ -374,15 +373,6 @@ typedef struct PACK
 #endif /* ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES*/
 
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint16_t value;
-    uint16_t minVal;
-    uint16_t maxVal;
-  } thermostatRunningState;              //! <Attr ID 0x0029>  
  #endif
 } ZCL_ThermostatClusterServerAttributes_t;
 
@@ -418,5 +408,5 @@ typedef struct
 {
 } ZCL_ThermostatClusterCommands_t;
 
-#endif /* _ZCLTHERMOSTATCLUSTER_H */
+#endif /* ZCLTHERMOSTATCLUSTER_H */
 

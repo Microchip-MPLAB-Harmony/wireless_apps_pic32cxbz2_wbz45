@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CSDBG_H_
-#define _CSDBG_H_
+#ifndef CSDBG_H_
+#define CSDBG_H_
 
 /******************************************************************************
                     Includes section
@@ -65,4 +65,4 @@ typedef enum
   CS_GET_ITEM3    = 0x600A,
 } CS_DbgCodeId_t;
 
-#endif /* _CSDBG_H_ */
+#endif /* CSDBG_H_ */

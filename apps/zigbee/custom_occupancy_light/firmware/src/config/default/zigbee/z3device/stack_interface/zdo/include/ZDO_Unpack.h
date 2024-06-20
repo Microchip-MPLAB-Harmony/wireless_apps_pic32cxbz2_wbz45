@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZDO_UNPACK_H_
-#define _ZDO_UNPACK_H_
+#ifndef ZDO_UNPACK_H
+#define ZDO_UNPACK_H
 /*******************************************************************************
                              Includes section
 *******************************************************************************/

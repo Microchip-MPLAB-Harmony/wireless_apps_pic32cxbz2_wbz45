@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_RESET_H
-#define _NLME_RESET_H
+#if !defined NLME_RESET_H
+#define NLME_RESET_H
 
 /******************************************************************************
                                 Includes section
@@ -81,6 +81,6 @@ typedef struct _NWK_ResetReq_t
  ******************************************************************************/
 void NWK_ResetReq(NWK_ResetReq_t *const req);
 
-#endif  /* _NLME_RESET_H */
+#endif  /* NLME_RESET_H */
 /** eof nlmeReset.h */
 

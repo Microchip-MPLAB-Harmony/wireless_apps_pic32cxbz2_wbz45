@@ -38,8 +38,8 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-#ifndef _CUSTOMOCCUPANCYSENSINGCLUSTER_H
-#define _CUSTOMOCCUPANCYSENSINGCLUSTER_H
+#ifndef CUSTOMOCCUPANCYSENSINGCLUSTER_H
+#define CUSTOMOCCUPANCYSENSINGCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -80,6 +80,6 @@ void customOccupancySensingClusterInit(void);
 ******************************************************************************/
 void occupancySensingToggleOccupancy(void);
 
-#endif // _CUSTOMOCCUPANCYSENSINGCLUSTER_H
+#endif // CUSTOMOCCUPANCYSENSINGCLUSTER_H
 
 // eof customOccupancySensingCluster.h

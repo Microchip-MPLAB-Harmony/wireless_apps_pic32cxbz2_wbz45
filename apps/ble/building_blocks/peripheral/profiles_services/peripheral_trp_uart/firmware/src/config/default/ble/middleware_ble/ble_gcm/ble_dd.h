@@ -120,11 +120,11 @@ typedef enum BLE_DD_EventId_T
 /**@brief Parameters configuration. */
 typedef struct BLE_DD_Config_T
 {
-    uint8_t                 waitForSecurity:1;      /**< Configure if security is required before database discovery. Set true to enable. */
-    uint8_t                 initDiscInCentral:1;    /**< Configure discovery option when the gap role of connection is central. Set true to enable. */
-    uint8_t                 initDiscInPeripheral:1; /**< Configure discovery option when the gap role of connection is peripheral. Set true to enable. */
-    uint8_t                 disableConnectedDisc:1; /**< Configure discovery function when connection established. Discovery might be optional for bonded link. Note: This is one-time option. Disable unnecessary discovery when connected at each time. */
-    uint8_t                 reserved:4;             /**< Reserved for future used. */
+    unsigned int      		waitForSecurity:1;      /**< Configure if security is required before database discovery. Set true to enable. */
+    unsigned int            initDiscInCentral:1;    /**< Configure discovery option when the gap role of connection is central. Set true to enable. */
+    unsigned int            initDiscInPeripheral:1; /**< Configure discovery option when the gap role of connection is peripheral. Set true to enable. */
+    unsigned int            disableConnectedDisc:1; /**< Configure discovery function when connection established. Discovery might be optional for bonded link. Note: This is one-time option. Disable unnecessary discovery when connected at each time. */
+    unsigned int            reserved:4;             /**< Reserved for future used. */
 } BLE_DD_Config_T;
 
 /**@brief Characteristic information. */
@@ -145,8 +145,8 @@ typedef struct BLE_DD_CharList_T
 /**@brief Start and end handles for prime service. */
 typedef struct BLE_DD_DiscInfo_T
 {
-    uint16_t                svcStartHandle;            /**< Start handle of discovered service. */
-    uint16_t                svcEndHandle;              /**< End handle of discovered service. */
+    uint16_t                svcStartHandle;         /**< Start handle of discovered service. */
+    uint16_t                svcEndHandle;           /**< End handle of discovered service. */
 }BLE_DD_DiscInfo_T;
 /**@brief Characteristic for discovery procedure. */
 typedef struct BLE_DD_DiscChar_T

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_NWK_STATUS_H
-#define _NLME_NWK_STATUS_H
+#if !defined NLME_NWK_STATUS_H
+#define NLME_NWK_STATUS_H
 
 /******************************************************************************
                                 Includes section
@@ -141,6 +141,6 @@ typedef struct _NWK_NwkStatusInd_t
  ******************************************************************************/
 extern void NWK_NwkStatusInd(NWK_NwkStatusInd_t *ind);
 
-#endif /* _NLME_NWK_STATUS_H */
+#endif /* NLME_NWK_STATUS_H */
 /** eof nlmeNwkStatus.h */
 

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIHWDREQMEMPOOL_H
-#define _MACHWIHWDREQMEMPOOL_H
+#ifndef MACHWIHWDREQMEMPOOL_H
+#define MACHWIHWDREQMEMPOOL_H
 
 /******************************************************************************
                         Includes section
@@ -67,6 +67,6 @@ typedef union
   MACHWD_EdReq_t          ed;
 } MachwiHwdReqDescr_t;
 
-#endif //_MACHWIHWDREQMEMPOOL_H
+#endif //MACHWIHWDREQMEMPOOL_H
 
 // eof machwiHwdReqMemPool.h

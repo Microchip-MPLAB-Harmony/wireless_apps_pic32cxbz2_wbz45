@@ -85,6 +85,7 @@ static ZCL_DeviceEndpoint_t tsEndpoint =
 static ClusterId_t tsServerClusterToBindIds[] =
 {
   TEMPERATURE_MEASUREMENT_CLUSTER_ID,
+
 };
 
 static AppBindReq_t tsBindReq =

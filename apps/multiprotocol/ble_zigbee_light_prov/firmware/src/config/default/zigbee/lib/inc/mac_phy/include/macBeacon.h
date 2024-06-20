@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACBEACON_H
-#define _MACBEACON_H
+#ifndef MACBEACON_H
+#define MACBEACON_H
 
 /******************************************************************************
                         Includes section.
@@ -65,10 +65,10 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(4, (
-    uint8_t shortAddrNum : 3,
-    uint8_t reserved1    : 1,
-    uint8_t extAddrNum   : 3,
-    uint8_t reserved2    : 1
+    BitField_t shortAddrNum : 3,
+    BitField_t reserved1    : 1,
+    BitField_t extAddrNum   : 3,
+    BitField_t reserved2    : 1
   ))
 }  MAC_PendingAddrSpec_t;
 END_PACK
@@ -127,6 +127,6 @@ typedef struct
 ******************************************************************************/
 extern void MAC_BeaconNotifyInd(MAC_BeaconNotifyInd_t *indParams);
 
-#endif //_MACBEACON_H
+#endif //MACBEACON_H
 
 // eof macBeacon.h

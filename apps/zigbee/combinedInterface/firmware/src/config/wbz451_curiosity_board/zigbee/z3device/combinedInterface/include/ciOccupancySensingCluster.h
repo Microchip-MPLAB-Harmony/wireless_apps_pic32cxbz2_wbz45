@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIOCCUPANCYSENSINGCLUSTER_H
-#define _CIOCCUPANCYSENSINGCLUSTER_H
+#ifndef CIOCCUPANCYSENSINGCLUSTER_H
+#define CIOCCUPANCYSENSINGCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -58,6 +58,6 @@ extern ZCL_OccupancySensingClusterClientAttributes_t ciOccupancySensingClusterCl
 ******************************************************************************/
 void ciOccupancySensingClusterInit(void);
 
-#endif // _CIOCCUPANCYSENSINGCLUSTER_H
+#endif // CIOCCUPANCYSENSINGCLUSTER_H
 
 // eof ciOccupancySensingCluster.h

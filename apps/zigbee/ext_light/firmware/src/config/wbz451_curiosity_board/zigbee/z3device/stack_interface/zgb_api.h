@@ -51,7 +51,7 @@
 #include <bdb/include/bdb.h>
 #include <zdo/include/zdo.h>
 
-#define QUEUE_LENGTH (8)
+#define QUEUE_LENGTH (8U)
 #define QUEUE_ITEM_SIZE (sizeof(void *))
 
 typedef enum
@@ -128,5 +128,6 @@ typedef struct
 void ZIGBEE_API_CALL(Stack_API_Request_t *request);
 void zigbee_task(void *ptr);
 void ZB_EventRegister(ZB_AppGenericCallBack app_ZBStackCb);
+void APP_ZigbeeStackCb(ZB_AppGenericCallbackParam_t *cb);
 
 #endif // ZGB_API_H

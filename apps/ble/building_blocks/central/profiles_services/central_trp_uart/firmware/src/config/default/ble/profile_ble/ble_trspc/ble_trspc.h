@@ -109,7 +109,7 @@ extern "C" {
 /**@brief Enumeration type of BLE transparent profile callback events. */
 typedef enum BLE_TRSPC_EventId_T
 {
-    BLE_TRSPC_EVT_NULL = 0x00,
+    BLE_TRSPC_EVT_NULL = 0x00U,
     BLE_TRSPC_EVT_UL_STATUS,                            /**< Transparent Profile Uplink status update event. See @ref BLE_TRSPC_EvtUplinkStatus_T for event details. */
     BLE_TRSPC_EVT_DL_STATUS,                            /**< Transparent Profile Downlink status update event. See @ref BLE_TRSPC_EvtDownlinkStatus_T for event details. */
     BLE_TRSPC_EVT_RECEIVE_DATA,                         /**< Transparent Profile Data Channel received notification event. See @ref BLE_TRSPC_EvtReceiveData_T for event details. */

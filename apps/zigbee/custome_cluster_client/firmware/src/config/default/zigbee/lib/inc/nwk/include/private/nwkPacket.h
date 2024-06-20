@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_PACKET_H
-#define _NWK_PACKET_H
+#if !defined NWK_PACKET_H
+#define NWK_PACKET_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -180,6 +180,6 @@ NWK_PRIVATE void nwkAllocDataReqTaskHandler(void);
 #else
 #define nwkAllocDataReqTaskHandler NULL
 #endif /* _NWK_ALLOCATOR_ */
-#endif /* _NWK_PACKET_H */
+#endif /* NWK_PACKET_H */
 /** eof nwkPacket.h */
 

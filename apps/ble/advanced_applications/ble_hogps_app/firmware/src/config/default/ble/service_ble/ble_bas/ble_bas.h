@@ -65,14 +65,14 @@ extern "C" {
 /**@defgroup BLE_BAS_UUID_DEF BLE_BAS_UUID_DEF
  * @brief SIG-defined UUIDs of BLE Battery Service.
  * @{ */
-#define UUID_BATTERY_SERVICE                        0x180F                                      /**< Service UUID: Battery Service. */
-#define UUID_BATTERY_LEVEL                          0x2A19                                      /**< Characteristic UUID: Battery Level. */
+#define UUID_BATTERY_SERVICE                        (0x180FU)                                      /**< Service UUID: Battery Service. */
+#define UUID_BATTERY_LEVEL                          (0x2A19U)                                      /**< Characteristic UUID: Battery Level. */
 /** @} */
 
 /**@defgroup BLE_BAS_ASSIGN_HANDLE BLE_BAS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE Battery Service.
  * @{ */
-#define BAS_START_HDL                               0x00E0                                      /**< The start attribute handle of battery service. */
+#define BAS_START_HDL                               (0x00E0U)                                      /**< The start attribute handle of battery service. */
 /** @} */
 
 /**@brief Definition of BLE Battery Service attribute handle */
@@ -91,7 +91,7 @@ typedef enum BLE_BAS_AttributeHandle_T
  * @brief Assigned attribute handles of BLE Battery Service.
  * @{ */
 
-#define BAS_END_HDL                                 (BAS_HDL_END-1)         /**< The end attribute handle of Battery service. */
+#define BAS_END_HDL                                 ((uint16_t)BAS_HDL_END-1U)         /**< The end attribute handle of Battery service. */
 /** @} */
 
 

@@ -45,7 +45,8 @@
 #include <framework_defs.h>
 #include <z3device/stack_interface/zgb_api.h>
 #include <nwk/include/nwk.h>
-
+#include <nwk/include/nwkConfigServer.h>
+#include <nwk/include/private/nwkUpdateCommand.h>
 /******************************************************************************
                     Definitions section
 *******************************************************************************/
@@ -105,7 +106,6 @@ typedef struct
 }NWK_ActiveKey_t;
 
 #if defined _RESOLVE_PANID_CONFLICT_
-typedef void (* NwkUpdatePanIdConf_t)(void);
 typedef struct
 {
   PanId_t newPanId;

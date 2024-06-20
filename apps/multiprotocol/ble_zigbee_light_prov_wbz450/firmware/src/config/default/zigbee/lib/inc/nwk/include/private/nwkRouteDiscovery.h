@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTE_DISCOVERY_H
-#define _NWK_ROUTE_DISCOVERY_H
+#if !defined NWK_ROUTE_DISCOVERY_H
+#define NWK_ROUTE_DISCOVERY_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -110,6 +110,6 @@ NWK_PRIVATE bool nwkRouteDiscoveryIsIdle(void);
 #define nwkFlushRouteDiscovery() (void)0
 
 #endif /* NWK_ROUTING_CAPACITY and (_NWK_MESH_ROUTING_ or _NWK_CONCENTRATOR_) */
-#endif /* _NWK_ROUTE_DISCOVERY_H */
+#endif /* NWK_ROUTE_DISCOVERY_H */
 /** eof nwkRouteDiscovery.h */
 

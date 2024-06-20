@@ -557,7 +557,7 @@ void otauRequestKeyReq(ExtAddr_t *tcExtAddr)
 ******************************************************************************/
 void otauStartDiscoveryTimer(void)
 {
-  uint32_t discoveryPeriod = 5000ul;
+  uint32_t discoveryPeriod = 5000UL;
   CS_ReadParameter(CS_ZCL_OTAU_DEFAULT_SERVER_DISCOVERY_PERIOD_ID, (void *)&discoveryPeriod);
 
   isOtauBusy = false;

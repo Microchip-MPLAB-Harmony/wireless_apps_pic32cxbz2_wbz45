@@ -44,8 +44,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOSECURITYMANAGER_H
-#define _ZDOSECURITYMANAGER_H
+#ifndef ZDOSECURITYMANAGER_H
+#define ZDOSECURITYMANAGER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -184,6 +184,6 @@ void zdoKeyHashMacConf(SSP_KeyedHashMacConf_t *conf);
  ******************************************************************************/
 void ZDO_VerifyKeyReq(ZDO_VerifiKeyReq_t *zdoVerifyKeyReq);
 #endif //#if defined _SECURITY_ && defined _LINK_SECURITY_
-#endif // _ZDOSECURITYMANAGER_H
+#endif // ZDOSECURITYMANAGER_H
 
 // eof zdoSecurityManager.h

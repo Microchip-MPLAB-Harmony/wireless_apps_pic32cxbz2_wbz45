@@ -224,6 +224,7 @@ RAM_PARAMETER(CS_BDB_SECONDARY_CHANNELS_MASK_ID,                    88,   csBIB.
   RAM_PARAMETER(CS_TX_ANTENNA_GAIN_ID,                              91,   csSIB.csRfTxAntennaGain)                //PHY
   RAM_PARAMETER(CS_CERTIFICATION_FLAG_ID,                           92,   certificationFlag)                      //certificationFlag
   RAM_PARAMETER(CS_DEVICE_DEEP_SLEEP_WAKEUP_SRC_ID,                 93,   deviceDeepSleepWakeupSrc)               //device wakeup src 
+  RAM_PARAMETER(CS_HPA_ENABLE_DEVICE_ID,                            94,   hpaEnabledDevice)                       //HPA Enabled device
 /* Note : Add new Item(s) at the appropriate module and re order the IDs below that.
 If the new Item to be added is not used by customer application then we may add at the end.
 */

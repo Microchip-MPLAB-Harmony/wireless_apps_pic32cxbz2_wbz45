@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CITIMECLUSTER_H
-#define _CITIMECLUSTER_H
+#ifndef CITIMECLUSTER_H
+#define CITIMECLUSTER_H
 /******************************************************************************
                     Includes section
 ******************************************************************************/
@@ -134,4 +134,4 @@ uint32_t timeGetStandardTime(void);
 \param none
 ******************************************************************************/
 void timeUpdateLocalTimeForDst(void);
-#endif // _CITIMECLUSTER_H
+#endif // CITIMECLUSTER_H

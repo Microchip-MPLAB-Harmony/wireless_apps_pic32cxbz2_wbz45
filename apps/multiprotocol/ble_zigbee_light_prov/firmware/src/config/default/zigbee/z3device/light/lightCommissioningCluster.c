@@ -88,8 +88,10 @@ void lightCommissioningClusterInit(void)
                                                        ZCL_CLUSTER_SIDE_SERVER);
 
   lightCommissioningClusterServerAttributes.clusterVersion.value = COMMISSIONING_CLUSTER_VERSION;
-  if (commissioningCluster)
+  if (commissioningCluster != NULL)
+  {
     commissioningCluster->ZCL_DefaultRespInd = ZCL_CommandZclDefaultResp;
+  }
 }
 
 /**************************************************************************//**
@@ -101,8 +103,8 @@ static ZCL_Status_t getGroupIdentifiersInd(ZCL_Addressing_t *addressing, uint8_t
   uint8_t size;
 
   appSnprintf("getGroupIdentifiersInd(), startIndex=%02d\r\n", payload->startIndex);
-  
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
   {
    return ZCL_INSUFFICIENT_SPACE_STATUS;
   }
@@ -125,8 +127,8 @@ static ZCL_Status_t getEndpointListInd(ZCL_Addressing_t *addressing, uint8_t pay
   uint8_t size;
 
   appSnprintf("getEndpointListInd(), startIndex=%02d\r\n", payload->startIndex);
-  
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
   {
    return ZCL_INSUFFICIENT_SPACE_STATUS;
   }

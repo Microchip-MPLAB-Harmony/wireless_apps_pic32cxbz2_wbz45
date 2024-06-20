@@ -76,7 +76,7 @@
 
 // *****************************************************************************
 /* Function:
-    void CLK_Initialize( void )
+    void CLOCK_Initialize( void )
 
   Summary:
     Initializes hardware of the System Clock and Peripheral Clock.
@@ -95,8 +95,7 @@
 
   Example:
     <code>
-    //Example 1: Do not alter the configuration bit settings
-    CLK_Initialize ( );
+    CLOCK_Initialize ( );
 
     </code>
 
@@ -104,7 +103,7 @@
     None.
 */
 
-void CLK_Initialize( void );
+void CLOCK_Initialize( void );
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

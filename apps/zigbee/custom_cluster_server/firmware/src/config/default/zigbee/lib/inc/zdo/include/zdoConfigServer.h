@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _ZDO_CONFIG_SERVER_H
-#define _ZDO_CONFIG_SERVER_H
+#if !defined ZDO_CONFIG_SERVER_H
+#define ZDO_CONFIG_SERVER_H
 
 /******************************************************************************
                                Definitions section
@@ -57,6 +57,6 @@
 #include <zdo/include/private/zdoPermissionsTable.h>
 #include <zdo/include/private/zdoCommands.h>
 
-#endif /* _ZDO_CONFIG_SERVER_H */
+#endif /* ZDO_CONFIG_SERVER_H */
 /** eof zdoConfigServer.h */
 

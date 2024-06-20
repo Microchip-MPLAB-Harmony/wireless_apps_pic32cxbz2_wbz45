@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYPIC32CX_H_
-#define _PHYPIC32CX_H_
+#ifndef PHYPIC32CX_H_
+#define PHYPIC32CX_H_
 
 /******************************************************************************
                         Includes section
@@ -95,11 +95,11 @@
 
 //#define x_asm_delay(X)                             do{asm("nop")}while(--X)
 //#define HAL_Delay                                  x_asm_delay
-#define RF_Control_Register_RF_CTRL_ll_addr    (BT_BASEADDR + 0x1000)
-#define RF_control_register_rf_ctrl_2_hl_addr  (BT_BASEADDR + 0x1002)
-#define RF_programming_register_rfprog_hl_addr (BT_BASEADDR + 0x1006)
-#define RF_ana_ip_ctrl_reg2_hl_addr               (BT_BASEADDR + 0x04ba)
-#define RF_SiWData_ll_addr                        (BT_BASEADDR + 0x1028)
+#define RF_Control_Register_RF_CTRL_ll_addr    (BT_BASEADDR + 0x1000U)
+#define RF_control_register_rf_ctrl_2_hl_addr  (BT_BASEADDR + 0x1002U)
+#define RF_programming_register_rfprog_hl_addr (BT_BASEADDR + 0x1006U)
+#define RF_ana_ip_ctrl_reg2_hl_addr               (BT_BASEADDR + 0x04baU)
+#define RF_SiWData_ll_addr                        (BT_BASEADDR + 0x1028U)
 
 /******************************************************************************
                         Prototypes section
@@ -119,10 +119,10 @@ INLINE uint32_t z_readReg8_slice(uint32_t addr, uint32_t msb, uint32_t lsb);
 INLINE uint32_t z_readReg32(uint32_t addr);
 INLINE uint16_t z_readReg16(uint32_t addr);
 INLINE uint8_t z_readReg8(uint32_t addr);
-INLINE void z_do_bitwr8(uint32_t address, unsigned char mask, unsigned char val);
+INLINE void z_do_bitwr8(uint32_t address, uint8_t mask, uint8_t val);
 INLINE uint16_t z_do_bitrd16(uint32_t address, uint16_t mask);
 INLINE uint32_t z_do_bitrd32(uint32_t address, uint32_t mask);
-INLINE unsigned char z_do_bitrd8(uint32_t address, unsigned char mask);
+INLINE uint8_t z_do_bitrd8(uint32_t address, uint8_t mask);
 INLINE void z_do_bitwr32(uint32_t address, uint32_t mask, uint32_t val);
 INLINE uint32_t z_readReg8_slice(uint32_t addr, uint32_t msb, uint32_t lsb);
 INLINE uint32_t z_readReg8_slice(uint32_t addr, uint32_t msb, uint32_t lsb);
@@ -138,7 +138,7 @@ INLINE void SystemReset(void)
 #else
   uint32_t temp;
   CFG_REGS->CFG_SYSKEY = 0x00000000; // Write junk to lock it if it is already unlocked
-  CFG_REGS->CFG_SYSKEY = 0xAA996655;
+  CFG_REGS->CFG_SYSKEY = 0xAA996655U;
   CFG_REGS->CFG_SYSKEY = 0x556699AA;
   
   // Trigger Software Reset
@@ -146,7 +146,7 @@ INLINE void SystemReset(void)
 
   // The read will trigger the reset to occur
   temp = RCON_REGS->RCON_RSWRST;
-
+  (void)temp;
   // 4 NOP's to insure no other instructions get executed
   __NOP();
   __NOP();
@@ -189,16 +189,20 @@ INLINE void phyWriteFrame(uint8_t* buf, uint8_t length)
   static uint8_t k;
 
   // mod_size are the number of bytes initialized to 0 after frame data
-  mod_size = (length % 4);
+  mod_size = (uint8_t)(length % 4U);
 
   // total_length is in multiple of 4
-  if (mod_size !=0)
-    total_len  = length + 4 - mod_size; 
-  else 
+  if (mod_size !=0U)
+  {
+    total_len  = (uint8_t)(length + 4U - mod_size);
+  }
+  else
+  {
     total_len  = length;
-  
+  }
+  address = ZB_TX_FRAME_BUFFER_ADDR;
   // Upload frame to TX BUFFER
-  for (address = ZB_TX_FRAME_BUFFER_ADDR, k = 0; k < total_len; k+=4, address+=4)
+  for (k = 0 ; k < total_len; k+=4U, address+=4U)
   {
     if (k != (length - mod_size))
     {
@@ -208,15 +212,15 @@ INLINE void phyWriteFrame(uint8_t* buf, uint8_t length)
     {
       write_data = 0;
 
-      if(mod_size > 0)
+      if(mod_size > 0U)
       {
         write_data  = *(buf + k);
       }
-      if(mod_size > 1)
+      if(mod_size > 1U)
       {
         write_data = write_data | (((uint32_t)*(buf + k + 1)) << 8);
       }
-      if (mod_size > 2)
+      if (mod_size > 2U)
       {
         write_data = write_data | (((uint32_t)*(buf + k + 2)) << 16) ; 
       }
@@ -245,45 +249,64 @@ INLINE void phyReadFrame(uint8_t* buf, uint8_t length)
 #endif
   
   // mod_size are the number of bytes that must be read to make total read bytes in multiple of 4
-  mod_size = (length % 4);
+  mod_size = (uint8_t)(length % 4U);
 
   // Set mask for the last read based on mod_size (mask uninitialized rx buffer locations with 0)
-  if (mod_size == 0) mask = 0xFFFFFFFF;
-  else if (mod_size == 1) mask = 0x000000FF;
-  else if (mod_size == 2) mask = 0x0000FFFF;
-  else mask = 0x00FFFFFF;
-  
-  if (mod_size !=0)
+  if (mod_size == 0U)
   {
-    total_len = length + 4 - mod_size; 
+      mask = 0xFFFFFFFFU;
+  }
+  else if (mod_size == 1U)
+  {
+      mask = 0x000000FF;
+  }
+  else if (mod_size == 2U)
+  {
+      mask = 0x0000FFFF;
+  }
+  else 
+  {
+      mask = 0x00FFFFFF;
+  }
+  
+  (void)mask;
+  if (mod_size !=0U)
+  {
+    total_len = (uint8_t)(length + 4U) - mod_size; 
   }
   else  
   {
     total_len   = length;
   }
-
+  address = ZB_RX_FRAME_BUFFER_ADDR;
   // Read RX BUFFER for PHR + PSDU data (Last rx buffer read is done with mask)
-  for (address = ZB_RX_FRAME_BUFFER_ADDR, k = 0; k < (total_len); k+=4, address+=4) 
+  for (k = 0; k < (total_len); k+=4U, address+=4U) 
   {
     if (k != (length - mod_size))
     {
       read_data = z_readReg32(address);
 
-      *(buf+k)  = read_data & 0x000000FF;
-      *(buf+k+1) = (read_data & 0x0000FF00)>>8;
-      *(buf+k+2) = (read_data & 0x00FF0000)>>16;
-      *(buf+k+3) = (read_data & 0xFF000000)>>24;
+      *(buf+k)  = (uint8_t)(read_data & 0x000000FFU);
+      *(buf+k+1) = (uint8_t)((read_data & 0x0000FF00U)>>8);
+      *(buf+k+2) = (uint8_t)((read_data & 0x00FF0000U)>>16);
+      *(buf+k+3) = (uint8_t)((read_data & 0xFF000000U)>>24);
 
 	}
     else
     {
       read_data = z_readReg32(address);
-	  if(mod_size > 0)
-  	    *(buf+k)  = read_data & 0x000000FF;
-	  if(mod_size > 1)
-        *(buf+k+1) = (read_data & 0x0000FF00)>>8;
-  	  if(mod_size > 2)
-	  	*(buf+k+2) = (read_data & 0x00FF0000)>>16;
+	  if(mod_size > 0U)
+      {
+  	    *(buf+k)  = (uint8_t)(read_data & 0x000000FFU);
+      }
+	  if(mod_size > 1U)
+      {
+        *(buf+k+1) = (uint8_t)((read_data & 0x0000FF00U)>>8);
+      }
+  	  if(mod_size > 2U)
+      {
+	  	*(buf+k+2) = (uint8_t)((read_data & 0x00FF0000U)>>16);
+      }
     }
   }
 
@@ -309,73 +332,92 @@ INLINE void  phyReadSramInline(uint8_t* buf, uint8_t addressOffset, uint8_t leng
 #endif
   
   // mod_size are the number of bytes that must be read to make total read bytes in multiple of 4
-  mod_size = (length % 4);
+  mod_size = (uint8_t)(length % 4U);
 
   // Set mask for the last read based on mod_size (mask uninitialized rx buffer locations with 0)
-  if (mod_size == 0) mask = 0xFFFFFFFF;
-  else if (mod_size == 1) mask = 0x000000FF;
-  else if (mod_size == 2) mask = 0x0000FFFF;
-  else mask = 0x00FFFFFF;
-  
-  if (mod_size !=0)
+  if (mod_size == 0U)
   {
-    total_len = length + 4 - mod_size;
+      mask = 0xFFFFFFFFU;
+  }
+  else if (mod_size == 1U)
+  {
+      mask = 0x000000FF;
+  }
+  else if (mod_size == 2U)
+  {
+      mask = 0x0000FFFF;
+  }
+  else 
+  {
+      mask = 0x00FFFFFF;
+  }
+  
+  (void)mask;
+  if (mod_size !=0U)
+  {
+    total_len = (uint8_t)(length + 4U) - mod_size;
   }
   else
   {
     total_len   = length;
   }
 
-
+  address = (ZB_RX_FRAME_BUFFER_ADDR+ addressOffset);
   // Read RX BUFFER for PHR + PSDU data (Last rx buffer read is done with mask)
-  for (address = (ZB_RX_FRAME_BUFFER_ADDR+ addressOffset), k = 0; k < (total_len); k+=4, address+=4) 
+  for (k = 0; k < (total_len); k+=4U, address+=4U) 
   {
     if (k != (length - mod_size))
     {
       read_data    = z_readReg32(address);
 
-      *(buf+k)  = read_data & 0x000000FF;
-      *(buf+k+1) = (read_data & 0x0000FF00)>>8;
-      *(buf+k+2) = (read_data & 0x00FF0000)>>16;
-      *(buf+k+3) = (read_data & 0xFF000000)>>24;
+      *(buf+k)  = (uint8_t)(read_data & 0x000000FFU);
+      *(buf+k+1) = (uint8_t)((read_data & 0x0000FF00U)>>8);
+      *(buf+k+2) = (uint8_t)((read_data & 0x00FF0000U)>>16);
+      *(buf+k+3) = (uint8_t)((read_data & 0xFF000000U)>>24);
     }
     else 
     {
       read_data = z_readReg32(address);
-	  if(mod_size > 0)
-	  	*(buf+k)  = read_data & 0x000000FF;
-	  if(mod_size > 1)
-	  	*(buf+k+1) = (read_data & 0x0000FF00)>>8;
-	  if(mod_size > 2)
-	    *(buf+k+2) = (read_data & 0x00FF0000)>>16;
+	  if(mod_size > 0U)
+      {
+	  	*(buf+k)  = (uint8_t)(read_data & 0x000000FFU);
+      }
+	  if(mod_size > 1U)
+      {
+          *(buf+k+1) = (uint8_t)((read_data & 0x0000FF00U)>>8);
+      }
+	  if(mod_size > 2U)
+      {
+	    *(buf+k+2) = (uint8_t)((read_data & 0x00FF0000U)>>16);
+      }
 
     }
   }
 }
 
-INLINE void phyStartReadFrameInline() {
+INLINE void phyStartReadFrameInline(void) {
 
   //volatile uint32_t read_data_hdr = x_readReg32(ZB_RX_FRAME_BUFFER);
   // Not  needed actually
 }
 
-INLINE void phyStopReadFrameInline() {
+INLINE void phyStopReadFrameInline(void) {
 // Not  needed actually
 }
 
-INLINE void phyStartReadSramInline () {
+INLINE void phyStartReadSramInline (void) {
 // Not  needed actually
 }
 
-INLINE void phyStopReadSramInline () {
+INLINE void phyStopReadSramInline (void) {
 // Not  needed actually
 } 
 
-INLINE void phyStartReadFrame() {
+INLINE void phyStartReadFrame(void) {
 // Not  needed actually
 }
 
-INLINE void phyStopReadFrame() {
+INLINE void phyStopReadFrame(void) {
 // Not  needed actually
 }
 
@@ -400,13 +442,15 @@ INLINE void zigbeeArbReq(bool tx, uint8_t priority, bool time_sensitive)
   }
 }
 
-INLINE bool zigbeeRadioOwnership()
+INLINE bool zigbeeRadioOwnership(void)
 {
   bool zigbeeOwner = false;
   uint32_t arbCoreStatus  = z_readReg32(Radio_Arbiter_Core_Status_Addr);
  // printf("Arb_Core_Status %lu \n\r",arbCoreStatus);
-  if((arbCoreStatus & ARBITER_ZB_GRANT_STATE))// &&(arbCoreStatus & RADIO_OWNER_ZB_LINK) ) 
-    zigbeeOwner = true;
+  if((arbCoreStatus & ARBITER_ZB_GRANT_STATE) != 0U)// &&(arbCoreStatus & RADIO_OWNER_ZB_LINK) ) 
+  {
+      zigbeeOwner = true;
+  }
   return zigbeeOwner;
 }
 
@@ -430,11 +474,11 @@ void phyEncryptOverSpi(PHY_EncryptReq_t *req);
 INLINE uint16_t aclb_spi_read (char  addr) 
 {
   uint16_t int_buf;
-  z_reg_write8(RF_control_register_rf_ctrl_2_hl_addr, addr);    // addr 8 bit
+  z_reg_write8(RF_control_register_rf_ctrl_2_hl_addr, (uint8_t)addr);    // addr 8 bit
   z_do_bitwr8(RF_programming_register_rfprog_hl_addr, 0x04, 0x04);// read aclb via SPI
 
   int_buf = z_do_bitrd8(RF_programming_register_rfprog_hl_addr, 0x04);
-  while (int_buf != 0x00)
+  while (int_buf != 0x00U)
     {
       int_buf = z_do_bitrd8(RF_programming_register_rfprog_hl_addr, 0x04);
     }
@@ -447,11 +491,11 @@ INLINE void aclb_spi_write (uint16_t addr, uint16_t wdata)
 {
   uint16_t int_buf;
   z_reg_write16(RF_Control_Register_RF_CTRL_ll_addr, wdata);     // wdata 16 bit
-  z_reg_write8(RF_control_register_rf_ctrl_2_hl_addr, addr);    // addr 8 bit
+  z_reg_write8(RF_control_register_rf_ctrl_2_hl_addr, (uint8_t)addr);    // addr 8 bit
   z_do_bitwr8(RF_programming_register_rfprog_hl_addr, 0x10, 0x10);// write aclb via SPI
   
   int_buf = z_do_bitrd8(RF_programming_register_rfprog_hl_addr, 0x10);
-  while (int_buf != 0x00)
+  while (int_buf != 0x00U)
     {
       int_buf = z_do_bitrd8(RF_programming_register_rfprog_hl_addr, 0x10);
     }
@@ -479,9 +523,9 @@ INLINE void z_reg_write32_slice(uint32_t addr, uint32_t msb, uint32_t lsb, uint3
 {
   uint32_t mask, write_data, read_data, i;
 
-  mask = 0xFFFFFFFF;
+  mask = 0xFFFFFFFFU;
   for (i=lsb; i<=msb; i++){
-        mask = mask & ~(0x1 << i);
+        mask = mask & (uint8_t)(~(0x1U << i));
   }
 
   read_data  = z_readReg32(addr);
@@ -493,9 +537,9 @@ INLINE void z_reg_write32_slice_RF(uint32_t addr, uint32_t msb, uint32_t lsb, ui
 {
   uint32_t mask, write_data, read_data, i;
   addr =  addr + SUBSYS_BASE_ADDR;
-  mask = 0xFFFFFFFF;
+  mask = 0xFFFFFFFFU;
   for (i=lsb; i<=msb; i++){
-        mask = mask & ~(0x1 << i);
+        mask = mask & (uint8_t)(~(0x1U << i));
   }
 
   read_data  = z_readReg32(addr);
@@ -509,7 +553,7 @@ INLINE uint32_t z_readReg32_slice(uint32_t addr, uint32_t msb, uint32_t lsb)
 
   mask = 0x0;
   for (i=lsb; i<=msb; i++){
-        mask = mask | (0x1 << i);
+        mask = mask | (uint8_t)(0x1U << i);
   }
 
   read_data  = z_readReg32(addr);
@@ -523,12 +567,12 @@ INLINE void z_reg_write16_slice(uint32_t addr, uint32_t msb, uint32_t lsb, uint3
 
   mask = 0xFFFF;
   for (i=lsb; i<=msb; i++){
-        mask = mask & ~(0x1 << i);
+        mask = mask & (uint8_t)(~(0x1U << i));
   }
 
   read_data  = z_readReg16(addr);
   write_data = (read_data & mask) | ((value << lsb) & ~mask);
-  z_reg_write16 (addr, write_data);
+  z_reg_write16 (addr, (uint16_t)write_data);
 }
 
 INLINE uint32_t z_readReg16_slice(uint32_t addr, uint32_t msb, uint32_t lsb)
@@ -537,7 +581,7 @@ INLINE uint32_t z_readReg16_slice(uint32_t addr, uint32_t msb, uint32_t lsb)
 
   mask = 0x0;
   for (i=lsb; i<=msb; i++){
-        mask = mask | (0x1 << i);
+        mask = mask | (uint8_t)(0x1U << i);
   }
 
   read_data  = z_readReg16(addr);
@@ -551,12 +595,12 @@ INLINE void z_reg_write8_slice(uint32_t addr, uint32_t msb, uint32_t lsb, uint32
 
   mask = 0xFF;
   for (i=lsb; i<=msb; i++){
-        mask = mask & ~(0x1 << i);
+        mask = mask & (uint8_t)(~(0x1U << i));
   }
 
   read_data  = z_readReg8(addr);
   write_data = (read_data & mask) | ((value << lsb) & ~mask);
-  z_reg_write8 (addr, write_data);
+  z_reg_write8 (addr, (uint8_t)write_data);
 }
 
 static inline uint32_t z_readReg8_slice(uint32_t addr, uint32_t msb, uint32_t lsb)
@@ -565,7 +609,7 @@ static inline uint32_t z_readReg8_slice(uint32_t addr, uint32_t msb, uint32_t ls
 
   mask = 0x0;
   for (i=lsb; i<=msb; i++){
-        mask = mask | (0x1 << i);
+        mask = mask | (uint8_t)(0x1U << i);
   }
 
   read_data  = z_readReg8(addr);
@@ -660,9 +704,9 @@ static inline void spi_write_slice(uint16_t addr, uint16_t msb, uint16_t lsb, ui
   uint16_t mask, write_data, read_data, i;
   mask = 0xFFFF;
   for (i=lsb; i<=msb; i++){
-        mask = mask & ~(0x1 << i);
+        mask =(uint16_t)(mask & (uint8_t)(~(0x1U << i)));
   }
-  read_data = aclb_spi_read(addr);
+  read_data = aclb_spi_read((char)addr);
   write_data = (read_data & mask) | ((wdata << lsb) & ~mask);
   aclb_spi_write(addr, write_data);
 }
@@ -672,7 +716,7 @@ static inline uint16_t spi_read_slice (char addr, uint16_t msb, uint16_t lsb)
   uint16_t mask, read_data, i;
   mask = 0x0;
   for (i=lsb; i<=msb; i++){
-        mask = mask | (0x1 << i);
+        mask = (uint16_t)(mask | (uint8_t)(0x1U << i));
   }
   read_data  = aclb_spi_read(addr);
   read_data  = ((read_data & mask)>>lsb);
@@ -682,8 +726,8 @@ static inline uint16_t spi_read_slice (char addr, uint16_t msb, uint16_t lsb)
 INLINE void x_asm_delay(uint8_t loop)
 {
 
-  for (;loop>0; loop--){ asm("nop");};
+  for (;loop>0U; loop--){ NOP;};
 }
-#endif /* _PHYPIC32CX_H */
+#endif /* PHYPIC32CX_H */
 
 //eof phyRfSpiProto.h

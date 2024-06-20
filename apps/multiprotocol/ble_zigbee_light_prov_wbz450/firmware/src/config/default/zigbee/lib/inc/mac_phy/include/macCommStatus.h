@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACCOMMSTATUS_H
-#define _MACCOMMSTATUS_H
+#ifndef MACCOMMSTATUS_H
+#define MACCOMMSTATUS_H
 
 /******************************************************************************
                         Includes section.
@@ -95,6 +95,6 @@ typedef struct
 ******************************************************************************/
 void MAC_CommStatusInd(MAC_CommStatusInd_t *commStat);
 
-#endif //_MACCOMMSTATUS_H
+#endif //MACCOMMSTATUS_H
 
 // eof macCommStatus.h

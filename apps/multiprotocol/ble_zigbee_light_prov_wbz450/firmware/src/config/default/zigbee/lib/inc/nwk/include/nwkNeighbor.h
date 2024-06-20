@@ -39,15 +39,15 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
-/**//**
+/****
  *  The neighbor table of a device shall contain information on every device
  * within transmission range. ZigBee Spec r17, 3.6.1.5, page 366.
  **/
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_NEIGHBOR_H
-#define _NWK_NEIGHBOR_H
+#ifndef NWK_NEIGHBOR_H
+#define NWK_NEIGHBOR_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -113,7 +113,7 @@ typedef struct _NwkNeighbor_t
 
  
 #ifdef _CHILD_MANAGEMENT_
-  /** The end device‚??s configuration. */
+  /** The end device√¢??s configuration. */
   uint16_t endDeviceConfiguration;
   /** This field indicates the timeout, in seconds, for the end device child. */
   uint32_t deviceTimeout;
@@ -392,6 +392,6 @@ void nwkUpdateEDHashMap(NwkNeighbor_t *neighbor);
 void NWK_RecomputeEDHashMap(void);
 bool nwkNeighborSearch(const ShortAddr_t shortAddr);
 #endif
-#endif /* _NWK_NEIGHBOR_H */
-/** eof nwkNeighbor.h */
+#endif /* NWK_NEIGHBOR_H */
+/* eof nwkNeighbor.h */
 

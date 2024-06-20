@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACBUFFERS_H
-#define _MACBUFFERS_H
+#ifndef MACBUFFERS_H
+#define MACBUFFERS_H
 
 /******************************************************************************
                     Includes section
@@ -82,6 +82,6 @@ typedef struct
   uint8_t *gap2e;
 } FrameRxBufferState_t;
 
-#endif // _MACBUFFERS_H
+#endif // MACBUFFERS_H
 
 // eof macBuffers.h

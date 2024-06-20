@@ -84,63 +84,63 @@ extern "C" {
 /**@defgroup BLE_HIDS_UUID_DEF BLE_HIDS_UUID_DEF
  * @brief SIG-defined UUIDs of BLE Human Interface Device Service.
  * @{ */
-#define UUID_HUMAN_INTERFACE_DEVICE_SERVICE                 0x1812          /**< Service UUID: Human Interface Device Service. */
-#define UUID_HID_BOOT_KB_INPUT_REPORT                       0x2A22          /**< Characteristic UUID: Boot Keyboard Input Report. */
-#define UUID_HID_BOOT_KB_OUTPUT_REPORT                      0x2A32          /**< Characteristic UUID: Boot Keyboard Output Report. */
-#define UUID_HID_BOOT_MOUSE_INPUT_REPORT                    0x2A33          /**< Characteristic UUID: Boot Mouse Input Report. */
-#define UUID_HID_INFORMATION                                0x2A4A          /**< Characteristic UUID: HID Information. */
-#define UUID_HID_REPORT_MAP                                 0x2A4B          /**< Characteristic UUID: HID Report Map. */
-#define UUID_HID_CONTROL_POINT                              0x2A4C          /**< Characteristic UUID: HID Control Point. */
-#define UUID_HID_REPORT                                     0x2A4D          /**< Characteristic UUID: HID Report. */
-#define UUID_HID_PROTOCOL_MODE                              0x2A4E          /**< Characteristic UUID: HID Protocol Mode. */
+#define UUID_HUMAN_INTERFACE_DEVICE_SERVICE                 (0x1812U)          /**< Service UUID: Human Interface Device Service. */
+#define UUID_HID_BOOT_KB_INPUT_REPORT                       (0x2A22U)          /**< Characteristic UUID: Boot Keyboard Input Report. */
+#define UUID_HID_BOOT_KB_OUTPUT_REPORT                      (0x2A32U)          /**< Characteristic UUID: Boot Keyboard Output Report. */
+#define UUID_HID_BOOT_MOUSE_INPUT_REPORT                    (0x2A33U)          /**< Characteristic UUID: Boot Mouse Input Report. */
+#define UUID_HID_INFORMATION                                (0x2A4AU)          /**< Characteristic UUID: HID Information. */
+#define UUID_HID_REPORT_MAP                                 (0x2A4BU)          /**< Characteristic UUID: HID Report Map. */
+#define UUID_HID_CONTROL_POINT                              (0x2A4CU)          /**< Characteristic UUID: HID Control Point. */
+#define UUID_HID_REPORT                                     (0x2A4DU)          /**< Characteristic UUID: HID Report. */
+#define UUID_HID_PROTOCOL_MODE                              (0x2A4EU)          /**< Characteristic UUID: HID Protocol Mode. */
 /** @} */
 
 /**@defgroup BLE_HIDS_REP_TYPE BLE_HIDS_REP_TYPE
  * @brief Report type definitions of BLE Human Interface Device Service.
  * @{ */
-#define HID_REPORT_TYPE_INPUT                               0x01            /**< Input report type. */
-#define HID_REPORT_TYPE_OUTPUT                              0x02            /**< Output report type. */
-#define HID_REPORT_TYPE_FEATURE                             0x03            /**< Feature report type. */
+#define HID_REPORT_TYPE_INPUT                               (0x01U)            /**< Input report type. */
+#define HID_REPORT_TYPE_OUTPUT                              (0x02U)            /**< Output report type. */
+#define HID_REPORT_TYPE_FEATURE                             (0x03U)            /**< Feature report type. */
 /** @} */
 
 /**@defgroup BLE_HIDS_REP_ID BLE_HIDS_REP_ID
  * @brief Report ID definitions of BLE Human Interface Device Service.
  * @{ */
-#define HID_REPORT_ID_KB                                    0x00            /**< HID Report ID: Keyboard. */
-#define HID_REPORT_ID_MB                                    0x02            /**< HID Report ID: Mouse buttons. */
-#define HID_REPORT_ID_MM                                    0x03            /**< HID Report ID: Mouse motion. */
+#define HID_REPORT_ID_KB                                    (0x00U)            /**< HID Report ID: Keyboard. */
+#define HID_REPORT_ID_MB                                    (0x02U)            /**< HID Report ID: Mouse buttons. */
+#define HID_REPORT_ID_MM                                    (0x03U)            /**< HID Report ID: Mouse motion. */
 /** @} */
 
 /**@defgroup BLE_HIDS_REP_LEN BLE_HIDS_REP_LEN
  * @brief Report length definitions of BLE Human Interface Device Service.
  * @{ */
-#define HID_REPORT_LENGTH_KB_INPUT                          0x08            /**< Report length of Keyboard Input report. */
-#define HID_REPORT_LENGTH_KB_OUTPUT                         0x01            /**< Report length of Keyboard Output report (LED). */
-#define HID_REPORT_LENGTH_MB_INPUT                          0x03            /**< Report length of Mouse Button Input report. */
-#define HID_REPORT_LENGTH_MM_INPUT                          0x03            /**< Report length of Mouse Motion Input report. */
-#define HID_REPORT_LENGTH_BOOT_KB_INPUT                     0x08            /**< Report length of Boot Keyboard Input report. */
-#define HID_REPORT_LENGTH_BOOT_KB_OUTPUT                    0x01            /**< Report length of Boot Keyboard Output report. */
-#define HID_REPORT_LENGTH_BOOT_M_INPUT                      0x03            /**< Report length of Boot Mouse Input report. */
+#define HID_REPORT_LENGTH_KB_INPUT                          (0x08U)            /**< Report length of Keyboard Input report. */
+#define HID_REPORT_LENGTH_KB_OUTPUT                         (0x01U)            /**< Report length of Keyboard Output report (LED). */
+#define HID_REPORT_LENGTH_MB_INPUT                          (0x03U)            /**< Report length of Mouse Button Input report. */
+#define HID_REPORT_LENGTH_MM_INPUT                          (0x03U)            /**< Report length of Mouse Motion Input report. */
+#define HID_REPORT_LENGTH_BOOT_KB_INPUT                     (0x08U)            /**< Report length of Boot Keyboard Input report. */
+#define HID_REPORT_LENGTH_BOOT_KB_OUTPUT                    (0x01U)            /**< Report length of Boot Keyboard Output report. */
+#define HID_REPORT_LENGTH_BOOT_M_INPUT                      (0x03U)            /**< Report length of Boot Mouse Input report. */
 /** @} */
 
 /**@defgroup BLE_HIDS_MODE BLE_HIDS_MODE
  * @brief HID mode definitions of BLE Human Interface Device Service.
  * @{ */
-#define HID_MODE_BOOT_PROTOCOL                              0x00            /**< A HID Service shall only enter Boot Protocol Mode after this value has been written. */
-#define HID_MODE_REPORT_PROTOCOL                            0x01            /**< Default Protocol Mode of all HID Devices. */
+#define HID_MODE_BOOT_PROTOCOL                              (0x00U)            /**< A HID Service shall only enter Boot Protocol Mode after this value has been written. */
+#define HID_MODE_REPORT_PROTOCOL                            (0x01U)            /**< Default Protocol Mode of all HID Devices. */
 /** @} */
 
 /**@defgroup BLE_HIDS_SUP_STATUS BLE_HIDS_SUP_STATUS
  * @brief HID host suspend status definitions of BLE Human Interface Device Service.
  * @{ */
-#define HID_HOST_SUSPEND_ENTER                              0x00            /**< HID host is entering the suspend state. */
-#define HID_HOST_SUSPEND_EXIT                               0x01            /**< HID host is exiting the suspend state. */
+#define HID_HOST_SUSPEND_ENTER                              (0x00U)            /**< HID host is entering the suspend state. */
+#define HID_HOST_SUSPEND_EXIT                               (0x01U)            /**< HID host is exiting the suspend state. */
 /** @} */
 
 /**@defgroup BLE_HIDS_ASSIGN_HANDLE BLE_HIDS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE Human Interface Device Service.
  * @{ */
-#define HIDS_START_HDL                                      0x0050          /**< The start attribute handle of Human Interface Device service. */
+#define HIDS_START_HDL                                      (0x0050U)          /**< The start attribute handle of Human Interface Device service. */
 /** @} */
 
 /**@brief Definition of BLE Human Interface Device Service attribute handle */

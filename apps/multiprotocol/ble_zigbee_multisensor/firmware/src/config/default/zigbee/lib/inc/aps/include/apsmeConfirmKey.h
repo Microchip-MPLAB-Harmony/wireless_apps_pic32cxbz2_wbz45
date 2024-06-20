@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_CONFIRM_KEY_H
-#define _APSME_CONFIRM_KEY_H
+#if !defined APSME_CONFIRM_KEY_H
+#define APSME_CONFIRM_KEY_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -175,6 +175,6 @@ void APS_VerifyKeyInd(APS_VerifyKeyInd_t *indParams);
 
 #endif /* _SECURITY_ and _LINK_SECURITY_ */
 
-#endif /* _APSME_CONFIRM_KEY_H */
+#endif /* APSME_CONFIRM_KEY_H */
 /** eof apsmeConfirmKey.h */
 

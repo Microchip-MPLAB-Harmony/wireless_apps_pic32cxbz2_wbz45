@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOADDRRESOLVINGINTERNAL_H
-#define _ZDOADDRRESOLVINGINTERNAL_H
+#ifndef ZDOADDRRESOLVINGINTERNAL_H
+#define ZDOADDRRESOLVINGINTERNAL_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -77,4 +77,4 @@ ZDO_PRIVATE void zdoAddrResolvingTaskHandler(void);
  ******************************************************************************/
 ZDO_PRIVATE void zdoResetAddrResolving(void);
 
-#endif // _ZDOADDRRESOLVINGINTERNAL_H
+#endif // ZDOADDRRESOLVINGINTERNAL_H

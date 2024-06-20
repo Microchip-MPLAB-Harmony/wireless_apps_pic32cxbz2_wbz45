@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _TSTEMPERATUREMEASUREMENTCLUSTER_H
-#define _TSTEMPERATUREMEASUREMENTCLUSTER_H
+#ifndef TSTEMPERATUREMEASUREMENTCLUSTER_H
+#define TSTEMPERATUREMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -97,6 +97,6 @@ void tsBackupTsAttributes(void);
 ******************************************************************************/
 void tsRestoreTsAttributes(void);
     
-#endif // _TSTEMPERATUREMEASUREMENTCLUSTER_H
+#endif // TSTEMPERATUREMEASUREMENTCLUSTER_H
 
 // eof tsTemperatureMeasurementCluster.h

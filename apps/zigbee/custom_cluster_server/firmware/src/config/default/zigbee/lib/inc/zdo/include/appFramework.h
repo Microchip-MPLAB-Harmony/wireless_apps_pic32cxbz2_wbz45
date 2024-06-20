@@ -43,8 +43,8 @@
 
 
 // DOM-IGNORE-BEGIN
-#ifndef _APPFRAMEWORK_H
-#define _APPFRAMEWORK_H
+#ifndef APPFRAMEWORK_H
+#define APPFRAMEWORK_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -98,25 +98,25 @@ typedef struct PACK
     001 - ::DEVICE_TYPE_ROUTER,\n
     010 - ::DEVICE_TYPE_END_DEVICE,\n
     011-111 - reserved.*/
-    uint8_t   logicalType : 3,
+    BitField_t   logicalType : 3,
     /*! Specifies whether a complex descriptor is available on this device. */
-    uint8_t   complexDescriptorAvailable: 1,
+    BitField_t   complexDescriptorAvailable: 1,
     /*! Specifies whether a user descriptor is available on this device. */
-    uint8_t   userDescriptorAvailable: 1,
+    BitField_t   userDescriptorAvailable: 1,
     /*! Reserved. */
-    uint8_t   reserved: 3
+    BitField_t   reserved: 3
   ))
 
   LITTLE_ENDIAN_OCTET(2, (
     /*! APS capability flags. Not supported (always set to 0). */
-    uint8_t   apsFlags : 3,
+    BitField_t   apsFlags : 3,
     /*! Bit mask for supported frequency bands.\n
       Bit 0: 868 - 868.6 MHz\n
       Bit 1: Reserved\n
       Bit 2: 902 - 928 MHz\n
       Bit 3: 2400 - 2483.5 MHz\n
       Bit 4: Reserved. */
-    uint8_t   frequencyBand : 5
+    BitField_t   frequencyBand : 5
   ))
 
   /*! MAC capability flags.\n
@@ -175,26 +175,26 @@ typedef struct PACK
 0001 - Receiver comes on periodically as defined by the node power descriptor.\n
 0010 - Receiver comes on when stimulated, e.g. by a user pressing a button.\n
 0011-1111 - Reserved. */
-  uint8_t currentPowerMode : 4;
+  BitField_t currentPowerMode : 4;
 /*! Specifies the power sources available on this node.\n
 0 - Constant (mains) power\n
 1 - Rechargeable battery\n
 2 - Disposable battery\n
 3 - Reserved. */
-  uint8_t availablePowerSources : 4;
+  BitField_t availablePowerSources : 4;
 /*! Specifies the power source being currently used by the node.\n
 0 - Constant (mains) power\n
 1 - Rechargeable battery\n
 2 - Disposable battery\n
 3 - Reserved. */
-  uint8_t currentPowerSource : 4;
+  BitField_t currentPowerSource : 4;
 /*! Specifies the level of charge of the power source.\n
 0000 - Critical\n
 0100 - 33%\n
 1000 - 66%\n
 1100 - 100%\n
 All other values - Reserved. */
-  uint8_t currentPowerSourceLevel : 4;
+  BitField_t currentPowerSourceLevel : 4;
 } PowerDescriptor_t;
 
 /** Simple Descriptor
@@ -209,9 +209,9 @@ Applications shall only use endpoints 1-240. */
 /*! Device description supported on this endpoint. */
   uint16_t     AppDeviceId;
 /*! Version of the device description supported on this endpoint. */
-  uint8_t      AppDeviceVersion : 4;
+  BitField_t      AppDeviceVersion : 4;
 /*! Reserved. */
-  uint8_t      Reserved         : 4;
+  BitField_t      Reserved         : 4;
 /*! Number of input clusters supported on this endpoint. If 0, the
 application input cluster list field shall not be included. */
   uint8_t      AppInClustersCount;
@@ -280,7 +280,7 @@ typedef enum
   RECEIVER_SYNCRONIZED_WHEN_ON_IDLE = 0,
   RECEIVER_COMES_PERIODICALLY = 1,
   RECEIVER_COMES_WHEN_STIMULATED = 2
-  //RESERVED = 0xF /* all other values */
+  //RESERVED = 0xF  //all other values 
 } PowerMode_t;
 
 /** Intended for specifying PowerDescriptor_t::availablePowerSources
@@ -300,20 +300,20 @@ typedef enum
   PERCENT_33 = 4,
   PERCENT_66 = 8,
   PERCENT_100 = 0xC
-  //RESERVED = 0xFF;  /* all over values */
+  //RESERVED = 0xFF;  // all over values 
 } PowerSourceLevel_t;
 
 
 /** Intended for specifying ComplexDescriptorField_t::CompressedXMLTag field. */
 enum
 {
-  TAG_LANGUAGE_AND_CHARACTER_SET = 0001,
-  TAG_MANUFACTURER_NAME = 0010,
-  TAG_MODEL_NAME = 0011,
-  TAG_SERIAL_NUMBER = 0100,
-  TAG_DEVICE_URL = 0101,
-  TAG_ICON = 0110,
-  TAG_ICON_URL = 0111,
+  TAG_LANGUAGE_AND_CHARACTER_SET = 1,
+  TAG_MANUFACTURER_NAME ,
+  TAG_MODEL_NAME,
+  TAG_SERIAL_NUMBER,
+  TAG_DEVICE_URL ,
+  TAG_ICON,
+  TAG_ICON_URL,
 };
 
 /** Complex Descriptor field. */
@@ -348,5 +348,5 @@ typedef struct
   ComplexDescriptorField_t* pFields;
 } ComplexDescriptor_t;
 
-#endif  /* _APPFRAMEWORK_H */
+#endif  /* APPFRAMEWORK_H */
 

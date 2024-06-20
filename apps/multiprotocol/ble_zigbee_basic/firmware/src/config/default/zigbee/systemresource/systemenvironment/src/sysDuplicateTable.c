@@ -75,14 +75,14 @@ void SYS_DuplicateTableReset(SYS_DuplicateTable_t *table, SYS_DuplicateTableEntr
 
   table->entries = entries;
   /* Only 7 bits are allocated for size. */
-  if (size >= INT8_MAX)
+  if (size >= (uint8_t)INT8_MAX)
   {
-    SYS_E_ASSERT_ERROR(false, SYS_ASSERT_ID_DRT_SIZE_TOO_BIG);
+    SYS_E_ASSERT_ERROR((false), (uint16_t)SYS_ASSERT_ID_DRT_SIZE_TOO_BIG);
     return;
   }
   /* if size >= INT8_MAX, exit from here */
 
-  table->size = MIN(size, INT8_MAX);
+  table->size = (uint8_t)MIN(size, (uint8_t)INT8_MAX);
   table->maxTTL = maxTTL;
   table->removeOldest = removeOldest;
   table->agingPeriod = agingPeriod;
@@ -92,7 +92,9 @@ void SYS_DuplicateTableReset(SYS_DuplicateTable_t *table, SYS_DuplicateTableEntr
   (void)maskSize;
 
   for(it = table->entries; it < table->entries + table->size; it++)
+  {
     it->ttl = 0;
+  }
 }
 
 /**************************************************************************//**
@@ -134,8 +136,10 @@ bool SYS_DuplicateTableEntryExists(SYS_DuplicateTable_t *table,
 
   for (iter = table->entries; iter < table->entries + table->size; ++iter)
   {
-    if (iter->ttl && (iter->address == address) && (iter->seqNumber == seqNumber))
+    if ((bool)(iter->ttl) && (iter->address == address) && (iter->seqNumber == seqNumber))
+    {
       return true;
+    }
   }
 
   return false;
@@ -218,17 +222,22 @@ SysDuplicateTableAnswer_t SYS_DuplicateTableCheck(SYS_DuplicateTable_t *table,
 
   for (iter = table->entries; iter < table->entries + table->size; ++iter)
   {
-    if (iter->ttl && (iter->address == address) && (iter->seqNumber == seqNumber))
+    if ((bool)(iter->ttl) && (iter->address == address) && (iter->seqNumber == seqNumber))
+    {
       return SYS_DUPLICATE_TABLE_ANSWER_FOUND;
+    }
     /* Search for oldest record in table. */
-    if (!updatePosition || iter->ttl < updatePosition->ttl)
+    if ((updatePosition == NULL) || (iter->ttl < updatePosition->ttl))
+    {
       updatePosition = iter;
+    }
   }
 
-  if (!table->removeOldest && (!updatePosition || updatePosition->ttl))
+  if (!table->removeOldest && ((updatePosition == NULL)  || (updatePosition->ttl)))
+  {
     return SYS_DUPLICATE_TABLE_ANSWER_FULL;
-
-  if (updatePosition)
+  }
+  if (updatePosition != NULL)
   {
     updatePosition->address   = address;
     updatePosition->seqNumber = seqNumber;
@@ -273,8 +282,10 @@ void SYS_DuplicateTableClear(SYS_DuplicateTable_t *table, uint16_t address,
 
   for (iter = table->entries; iter < table->entries + table->size; ++iter)
   {
-    if (iter->ttl && (iter->address == address) && (iter->seqNumber == seqNumber))
+    if ((bool)(iter->ttl) && (iter->address == address) && (iter->seqNumber == seqNumber))
+    {
       iter->ttl = 0U;
+    }
   }
 #endif // _DUPLICATE_REJECTION_TABLE_BIT_MASK_ENABLE_
 }
@@ -288,15 +299,17 @@ void SYS_DuplicateTableClear(SYS_DuplicateTable_t *table, uint16_t address,
 static void sysDuplicateTableUpdate(SYS_DuplicateTable_t *table)
 {
   SYS_DuplicateTableEntry_t *it;
-  uint32_t time = HAL_GetSystemTime();
-  uint8_t diff = (uint8_t)MIN(((time - table->lastStamp)/ table->agingPeriod), UINT8_MAX);
+  uint32_t time = (uint32_t)HAL_GetSystemTime();
+  uint8_t diff = (uint8_t)MIN(((time - table->lastStamp)/ table->agingPeriod), (uint8_t)UINT8_MAX);
 
-  if(diff == 0)
+  if(diff == 0U)
+  {
     return;
-
+  }
   for(it = table->entries; it < table->entries + table->size; it++)
+  {
     it->ttl -= MIN(diff, it->ttl);
-
+  }
   table->lastStamp = time;
 }
 

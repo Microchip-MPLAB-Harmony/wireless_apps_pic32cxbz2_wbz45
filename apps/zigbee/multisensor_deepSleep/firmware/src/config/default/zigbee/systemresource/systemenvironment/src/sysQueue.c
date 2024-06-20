@@ -60,18 +60,22 @@ bool putQueueElem(QueueDescriptor_t *queue, void *element)
 
   if (isQueueElem(queue, element))
   {
-    SYS_E_ASSERT_ERROR(false, SYS_ASSERT_ID_DOUBLE_QUEUE_PUT);
+    SYS_E_ASSERT_ERROR(false, (uint16_t)SYS_ASSERT_ID_DOUBLE_QUEUE_PUT);
     return false;
   }
 
   ((QueueElement_t*)element)->next = NULL;
-  if(!queue->head)
+  if((queue->head) == NULL)
+  {
     queue->head = element;
+  }
   else
   {
     QueueElement_t *last = queue->head;
-    while(last->next)
+    while((last->next) != NULL)
+    {
       last = last->next;
+    }
     last->next = element;
   }
 
@@ -88,7 +92,7 @@ bool putQueueElem(QueueDescriptor_t *queue, void *element)
 ****************************************************************************/
 void* deleteHeadQueueElem(QueueDescriptor_t *queue)
 {
-  if(queue->head)
+  if((queue->head) != NULL)
   {
     void *retval = queue->head;
     queue->head = queue->head->next;
@@ -110,7 +114,7 @@ void* deleteHeadQueueElem(QueueDescriptor_t *queue)
 ****************************************************************************/
 bool deleteQueueElem(QueueDescriptor_t *queue, void *element)
 {
-  if (element)
+  if (element != NULL)
   {
     if(queue->head == element)
     {
@@ -120,9 +124,11 @@ bool deleteQueueElem(QueueDescriptor_t *queue, void *element)
     else
     {
       QueueElement_t *prev = queue->head;
-      while (prev && prev->next != element)
+      while ((prev != NULL) && (prev->next != element))
+      {
         prev = prev->next;
-      if (prev)
+      }
+      if (prev != NULL)
       {
         prev->next = prev->next->next;
         return true;
@@ -144,10 +150,13 @@ bool isQueueElem(const QueueDescriptor_t *const queue, const void *const element
 {
   QueueElement_t *it;
 
-  for (it = queue->head; it; it = it->next)
+  for (it = queue->head; (it != NULL); it = it->next)
+  {
     if (it == element)
+    {
       return true;
-
+    }
+  }
   return false;
 }
 

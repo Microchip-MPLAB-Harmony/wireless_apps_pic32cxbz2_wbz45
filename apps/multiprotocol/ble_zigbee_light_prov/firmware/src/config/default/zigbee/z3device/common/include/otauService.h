@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OTAUSERVICE_H
-#define _OTAUSERVICE_H
+#ifndef OTAUSERVICE_H
+#define OTAUSERVICE_H
 
 /******************************************************************************
                     Defines section
@@ -69,5 +69,5 @@ void startOtauServer(void);
 ******************************************************************************/
 void startOtauClient(void);
 
-#endif // _OTAUSERVICE_H
+#endif // OTAUSERVICE_H
 // eof otauService.h

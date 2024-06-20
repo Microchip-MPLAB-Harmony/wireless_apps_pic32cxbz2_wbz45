@@ -38,10 +38,10 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-
-#if !defined _NWK_COMMON_H
-#define _NWK_COMMON_H
-
+// DOM-IGNORE-BEGIN
+#ifndef NWK_COMMON_H
+#define NWK_COMMON_H
+// DOM-IGNORE-END
 /******************************************************************************
                                 Includes section
  ******************************************************************************/
@@ -484,6 +484,5 @@ typedef struct PACK _NWK_LeaveControl_t
 
 #define NWK_LIFE_TICK 2048U
 
-#endif /* _NWK_COMMON_H */
-/** eof nwkCommon.h */
-
+#endif /* NWK_COMMON_H */
+/* eof nwkCommon.h */

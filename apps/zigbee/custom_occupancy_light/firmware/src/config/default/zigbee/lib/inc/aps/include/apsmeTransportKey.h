@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_TRANSPORT_KEY_H
-#define _APSME_TRANSPORT_KEY_H
+#if !defined APSME_TRANSPORT_KEY_H
+#define APSME_TRANSPORT_KEY_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -107,7 +107,7 @@ typedef struct
 typedef struct
 {
   /** Endian "[LE]" If the UseParent is TRUE, then ParentAddress parameter
-   * shall contain the extended 64-bit address of the destination device??
+   * shall contain the extended 64-bit address of the destination deviceâ??s
    * parent device; otherwise, this parameter is not used and need not be set.*/
   ExtAddr_t parentAddress;
   /** A sequence number assigned to a network key by the Trust Center and used
@@ -308,6 +308,6 @@ void APS_TransportKeyReq(APS_TransportKeyReq_t *const req);
 void APS_TransportKeyInd(APS_TransportKeyInd_t *ind);
 
 #endif /* _SECURITY_ */
-#endif /* _APSME_TRANSPORT_KEY_H */
+#endif /* APSME_TRANSPORT_KEY_H */
 /** eof apsmeTransportKey.h */
 

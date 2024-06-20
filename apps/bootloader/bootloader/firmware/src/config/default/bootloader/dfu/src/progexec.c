@@ -1,26 +1,3 @@
-/*******************************************************************************
-* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*******************************************************************************/
-
 /*********************************************************************
  *
  *                  DFU - Device Firmware Upgrade
@@ -129,19 +106,6 @@ void dfu(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
         program_exec_main(tops, count);
 }
 
-/** Variable which holds the status of the Expiration of Timer **/
-extern bool timerExpired;
-
-/******************************************************************************
- activityRecvdRestartTimer
- Activity Observed. Restart/Refresh the timer.
-******************************************************************************/
-void activityRecvdRestartTimer(void)
-{
-    TC0_TimerStop();
-    timerExpired = false;
-    TC0_TimerStart();
-}
 /******************************************************************************
  main
  This is the entry point for the programming executive. It receives commands
@@ -159,7 +123,6 @@ int32_t program_exec_main(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
 	if (GET_PE_COMMAND((uint8_t *)pe_command, PE_CMD_SIZE) <= 0)
 		return -1;
 
-	activityRecvdRestartTimer();
 	sram_cmd_addr =  (uint32_t *)pe_command;
 	incmd = *sram_cmd_addr++;
 
@@ -253,7 +216,6 @@ int32_t program_exec_main(const IMG_MEM_TOPOLOGY ** tops, uint8_t count)
 	}
 
 	SET_PE_RESPONSE((int8_t *)pe_resp, respSize); 
-	activityRecvdRestartTimer();
    return 0;
    
 } /* end of main */

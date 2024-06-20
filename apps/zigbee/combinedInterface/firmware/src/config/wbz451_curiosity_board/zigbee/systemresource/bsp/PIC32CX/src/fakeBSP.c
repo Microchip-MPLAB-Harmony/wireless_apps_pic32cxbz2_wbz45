@@ -46,9 +46,7 @@
 /******************************************************************************
                    Local variables section
 ******************************************************************************/
-static void(* readTemperatureDataCallback)(bool error, int16_t data);
-static void(* readLightDataCallback)(bool error, int16_t data);
-static void(* readBatteryDataCallback)(int16_t data);
+
 
 /******************************************************************************
                    Implementations section

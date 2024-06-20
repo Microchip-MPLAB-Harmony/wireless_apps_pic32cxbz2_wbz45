@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_H
-#define _NWK_H
+#if !defined NWK_H
+#define NWK_H
 
 /******************************************************************************
                                  Includes section
@@ -154,6 +154,6 @@ void NWK_ConfigureRouteRequestRetransmission(bool value);
 
 #endif /* _CUSTOM_SUPPRESS_RETRANSMISSION_ */
 
-#endif  /* _NWK_H */
+#endif  /* NWK_H */
 /** eof nwk.h */
 

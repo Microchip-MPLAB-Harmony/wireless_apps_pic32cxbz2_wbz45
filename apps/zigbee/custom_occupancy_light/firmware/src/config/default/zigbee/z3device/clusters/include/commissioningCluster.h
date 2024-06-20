@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _COMMISSIONINGCLUSTER_H
-#define _COMMISSIONINGCLUSTER_H
+#ifndef COMMISSIONINGCLUSTER_H
+#define COMMISSIONINGCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -97,4 +97,4 @@ void commissioningSendGetGroupIdentifiers(ShortAddr_t addr, Endpoint_t ep, Endpo
 ******************************************************************************/
 void commissioningGetEndpointList(ShortAddr_t addr, Endpoint_t ep,  Endpoint_t srcEp, uint8_t startIndex);
 
-#endif //_COMMISSIONINGCLUSTER_H
+#endif //COMMISSIONINGCLUSTER_H

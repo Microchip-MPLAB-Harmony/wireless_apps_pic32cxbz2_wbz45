@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _NWK_END_DEVICE_TIMEOUT_H
-#define _NWK_END_DEVICE_TIMEOUT_H
+#ifndef NWK_END_DEVICE_TIMEOUT_H
+#define NWK_END_DEVICE_TIMEOUT_H
 
 /******************************************************************************
                                Includes section
@@ -171,5 +171,5 @@ void NWK_EndDeviceTimeoutInd(NWK_EndDeviceTimeoutInd_t *ind);
   \return    None. ******************************************************************************/
 uint8_t NWK_SetEndDeviceTimeoutByParent(const ExtAddr_t edExtAddr, uint8_t edTimeoutEnumeration);
 
-#endif /* _NWK_END_DEVICE_TIMEOUT_H */
+#endif /* NWK_END_DEVICE_TIMEOUT_H */
 /** eof nwkEndDeviceTimeout.h */

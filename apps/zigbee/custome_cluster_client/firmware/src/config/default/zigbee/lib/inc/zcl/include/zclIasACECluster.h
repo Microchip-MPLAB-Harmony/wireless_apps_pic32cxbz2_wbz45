@@ -44,8 +44,8 @@
 
 
 
-#ifndef _ZCLIASACECLUSTER_H_
-#define _ZCLIASACECLUSTER_H_
+#ifndef ZCLIASACECLUSTER_H
+#define ZCLIASACECLUSTER_H
 
 /*******************************************************************************
                    Includes section
@@ -298,9 +298,9 @@ typedef enum
 
 BEGIN_PACK
 
-///**
-// * \brief IAS Zone Cluster Commands/Structures.
-//*/
+/*
+ brief IAS Zone Cluster Commands/Structures.
+*/
 
 //Arm Commands
 typedef struct PACK
@@ -533,4 +533,4 @@ typedef struct PACK
 } ZCL_IasAceClusterClientAttributes_t;
 END_PACK
 
-#endif /* _ZCLIASZONECLUSTER_H_ */
+#endif /* ZCLIASZONECLUSTER_H */

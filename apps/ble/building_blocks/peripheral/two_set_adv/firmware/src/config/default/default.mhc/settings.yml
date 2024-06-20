@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: default
 folderName: two_set_adv
-frameworkPath: C:\chimera_mcc_customer_view
+frameworkPath: C:\BLE Chimera+Buckland
 processor: WBZ451
 projectName: two_set_adv
 settings:

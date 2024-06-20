@@ -88,9 +88,9 @@ void errHInit(void)
 ******************************************************************************/
 void errHSubscribeForFatal(ErrorAbortCb_t handler)
 {
-  N_ERRH_ASSERT_FATAL((ERROR_HANDLERS_MAX_AMOUNT - 1) > numHandlers);
+  N_ERRH_ASSERT_FATAL((ERROR_HANDLERS_MAX_AMOUNT - 1U) > numHandlers);
   errorHandlers[numHandlers] = handler;
-  currentHandler = numHandlers;
+  currentHandler = (int8_t)numHandlers;
   numHandlers++;
 }
 
@@ -104,7 +104,7 @@ static void errHProcessFatalError(const char *compId, uint16_t line)
 {
   while (0 <= currentHandler)
   {
-    uint8_t tmp = currentHandler;
+    int8_t tmp = currentHandler;
     currentHandler--;
     // First decrement, then call: if the call fails (calls ErrH_Fatal recursively), it is not
     // retried next time (possibly an infinite loop)!
@@ -115,7 +115,7 @@ static void errHProcessFatalError(const char *compId, uint16_t line)
   SystemReset();
 #endif
 
-  while (1);
+  while (true){}
 }
 
 /**************************************************************************//**
@@ -125,7 +125,8 @@ static void errHProcessFatalError(const char *compId, uint16_t line)
 ******************************************************************************/
 static void assertHandler(SYS_AssertParam_t *assertParam)
 {
-  if (assertParam)
+  bool fatalError = false;  
+  if (assertParam != NULL)
   {
     switch (assertParam->level)
     {
@@ -146,12 +147,9 @@ static void assertHandler(SYS_AssertParam_t *assertParam)
 #endif
         /* fatal is considered irrecoverable.
            go for reset, after backing up needed stuff */
-        while (1)
-        {
-          (void)assertParam->dbgCode;
-        }
+        fatalError = true;
+        break;
       }
-      break;
 
       /* Add code here to take appropriate action for a level */
       case ERROR_LEVEL:
@@ -168,9 +166,18 @@ static void assertHandler(SYS_AssertParam_t *assertParam)
         //LOG_STRING(assertInfStr, "WARN:Code:0x%x \n");
         //appSnprintf(assertInfStr, assertParam->dbgCode);
       }
+      break;
       default:
+          /* TO DO */
       break;
     }
+	if(fatalError == true)
+	{
+	  while (true)
+      {
+        (void)assertParam->dbgCode;
+      }
+	}
   }
   else
   {

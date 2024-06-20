@@ -84,21 +84,21 @@ extern "C" {
 /**@defgroup HCI_MAX_EXT_ADV_SET Maximum number of extended advertising sets
  * @brief The definition of maximum extended advertising sets.
  * @{ */
-#define HCI_MAX_EXTENDED_ADVERTISING_SETS                   (0x3FU)        /**< Maximum number of extended advertising sets defined in HCI_LE_SET_EXTENDED_ADVERTISING_ENABLE command. */
+#define HCI_MAX_EXTENDED_ADVERTISING_SETS                   (0x3FU)        /**< Maximum number of extended advertising sets defined in HCI_LE_SET_EXT_ADV_ENABLE command. */
 /** @} */
 
 /**@defgroup HCI_MAX_EXT_ADV_DATA_LEN Maximum length of extended advertising data
  * @brief The definition of maximum length of extended advertising data.
  * @{ */
-#define HCI_CMD_MAX_EXTENDED_ADVERTISING_DATA_LENGTH        (0xFBU)        /**< Maximum length of extended advertising data defined in HCI_LE_SET_EXTENDED_ADVERTISING_DATA command. */
+#define HCI_CMD_MAX_EXTENDED_ADVERTISING_DATA_LENGTH        (0xFBU)        /**< Maximum length of extended advertising data defined in HCI_LE_SET_EXT_ADV_DATA command. */
 #define HCI_EVT_MAX_EXTENDED_ADVERTISING_DATA_LENGTH        (0xE5U)        /**< Maximum length of extended advertising data defined in HCI_LE_EXTENDED_ADVERTISING_REPORT command. */
 /** @} */
 
 /**@defgroup HCI_MAX_PADV_DATA_LEN Maximum length of periodic advertising data
  * @brief The definition of maximum length of periodic advertising data.
  * @{ */
-#define HCI_CMD_MAX_PERIODIC_ADVERTISING_DATA_LENGTH        (0xFCU)        /**< Maximum length of periodic advertising data defined in HCI_LE_SET_PERIODIC_ADVERTISING_DATA command. */
-#define HCI_EVT_MAX_PERIODIC_ADVERTISING_DATA_LENGTH        (0xF7U)        /**< Maximum length of periodic advertising data defined in HCI_LE_PERIODIC_ADVERTISING_REPORT event. */
+#define HCI_CMD_MAX_PERIODIC_ADVERTISING_DATA_LENGTH        (0xFCU)        /**< Maximum length of periodic advertising data defined in HCI_LE_SET_PA_DATA command. */
+#define HCI_EVT_MAX_PERIODIC_ADVERTISING_DATA_LENGTH        (0xF7U)        /**< Maximum length of periodic advertising data defined in HCI_LE_PA_REPORT event. */
 /** @} */
 
 /**@defgroup HCI_EXT_SCAN_PHY_NUM Number of supported PHYs in LE extended scan
@@ -221,32 +221,32 @@ extern "C" {
 #define HCI_LE_RECEIVER_TEST_V2                             (0x33U)        /**< LE Receiver Test command (version 2). */
 #define HCI_LE_TRANSMITTER_TEST_V2                          (0x34U)        /**< LE Transmitter Test command (version 2). */
 #define HCI_LE_SET_ADVERTISING_SET_RANDOM_ADDR              (0x35U)        /**< LE Set Advertising Set Random Address command.  */
-#define HCI_LE_SET_EXTENDED_ADVERTISING_PARAM               (0x36U)        /**< LE Set Extended Advertising Parameters command. */
-#define HCI_LE_SET_EXTENDED_ADVERTISING_DATA                (0x37U)        /**< LE Set Extended Advertising Data command. */
+#define HCI_LE_SET_EXT_ADV_PARAM                            (0x36U)        /**< LE Set Extended Advertising Parameters command. */
+#define HCI_LE_SET_EXT_ADV_DATA                             (0x37U)        /**< LE Set Extended Advertising Data command. */
 #define HCI_LE_SET_EXTENDED_SCAN_RSP_DATA                   (0x38U)        /**< LE Set Extended Scan Response Data command. */
-#define HCI_LE_SET_EXTENDED_ADVERTISING_ENABLE              (0x39U)        /**< LE Set Extended Advertising Enable command. */
+#define HCI_LE_SET_EXT_ADV_ENABLE                           (0x39U)        /**< LE Set Extended Advertising Enable command. */
 #define HCI_LE_REMOVE_ADVERTISING_SET                       (0x3CU)        /**< LE Remove Advertising Set command. */
 #define HCI_LE_CLEAR_ADVERTISING_SETS                       (0x3DU)        /**< LE Clear Advertising Sets command. */
-#define HCI_LE_SET_PERIODIC_ADVERTISING_PARAM               (0x3EU)        /**< LE Set Periodic Advertising Parameters command. */
-#define HCI_LE_SET_PERIODIC_ADVERTISING_DATA                (0x3FU)        /**< LE Set Periodic Advertising Data command. */
-#define HCI_LE_SET_PERIODIC_ADVERTISING_ENABLE              (0x40U)        /**< LE Set Periodic Advertising Enable command. */
+#define HCI_LE_SET_PA_PARAM                                 (0x3EU)        /**< LE Set Periodic Advertising Parameters command. */
+#define HCI_LE_SET_PA_DATA                                  (0x3FU)        /**< LE Set Periodic Advertising Data command. */
+#define HCI_LE_SET_PA_ENABLE                                (0x40U)        /**< LE Set Periodic Advertising Enable command. */
 #define HCI_LE_SET_EXTENDED_SCAN_PARAM                      (0x41U)        /**< LE Set Extended Scan Parameters command. */
 #define HCI_LE_SET_EXTENDED_SCAN_ENABLE                     (0x42U)        /**< LE Set Extended Scan Enable command. */
 #define HCI_LE_EXTENDED_CREATE_CONNECTION                   (0x43U)        /**< LE Extended Create Connection command. */
-#define HCI_LE_PERIODIC_ADVERTISING_CREATE_SYNC             (0x44U)        /**< LE Periodic Advertising Create Sync command. */
-#define HCI_LE_PERIODIC_ADVERTISING_CREATE_SYNC_CANCEL      (0x45U)        /**< LE Periodic Advertising Create Sync Cancel command. */
-#define HCI_LE_PERIODIC_ADVERTISING_TERMINATE_SYNC          (0x46U)        /**< LE Periodic Advertising Terminate Sync command. */
+#define HCI_LE_PA_CREATE_SYNC                               (0x44U)        /**< LE Periodic Advertising Create Sync command. */
+#define HCI_LE_PA_CREATE_SYNC_CANCEL                        (0x45U)        /**< LE Periodic Advertising Create Sync Cancel command. */
+#define HCI_LE_PA_TERMINATE_SYNC                            (0x46U)        /**< LE Periodic Advertising Terminate Sync command. */
 #define HCI_LE_ADD_DEV_TO_PERIODIC_ADVERTISER_LIST          (0x47U)        /**< LE Add Device To Periodic Advertiser List command. */
 #define HCI_LE_CLEAR_PERIODIC_ADVERTISER_LIST               (0x49U)        /**< LE Clear Periodic Advertiser List command. */
 #define HCI_LE_READ_TRANSMIT_POWER                          (0x4BU)        /**< LE Read Transmit Power command. */
 #define HCI_LE_SET_PRIVACY_MODE                             (0x4EU)        /**< LE Set Privacy Mode command. */
 #define HCI_LE_RECEIVER_TEST_V3                             (0x4FU)        /**< LE Receiver Test command (version 3). */
 #define HCI_LE_TRANSMITTER_TEST_V3                          (0x50U)        /**< LE Transmitter Test command (version 3). */
-#define HCI_LE_SET_PERIODIC_ADVERTISING_RECEIVE_ENABLE      (0x59U)        /**< LE Set Periodic Advertising Reveive Enable command. */
+#define HCI_LE_SET_PA_RECEIVE_ENABLE                        (0x59U)        /**< LE Set Periodic Advertising Reveive Enable command. */
 #define HCI_LE_ENHANCED_READ_TRANSMIT_POWER_LEVEL           (0x76U)        /**< LE Enhanced Read Transmit Power Level command. */
 #define HCI_LE_READ_REMOTE_TRANSMIT_POWER_LEVEL             (0x77U)        /**< LE Read Remote Transmit Power Level command. */
-#define HCI_LE_SET_PATH_LOSS_REPORTING_PARAMS               (0x78U)        /**< LE Set Path Loss Reporting Parameters command. */
-#define HCI_LE_SET_PATH_LOSS_REPORTING_ENABLE               (0x79U)        /**< LE Set Path Loss Reporting Enable command. */
+#define HCI_LE_SET_PLR_PARAMS                               (0x78U)        /**< LE Set Path Loss Reporting Parameters command. */
+#define HCI_LE_SET_PLR_ENABLE                               (0x79U)        /**< LE Set Path Loss Reporting Enable command. */
 #define HCI_LE_SET_TRANSMIT_POWER_REPORTING_ENABLE          (0x7AU)        /**< LE Set Transmit Power Reporting Enable command. */
 #define HCI_LE_TRANSMITTER_TEST_V4                          (0x7BU)        /**< LE Transmitter Test command (version 4). */
 /** @} */
@@ -279,9 +279,9 @@ extern "C" {
 #define HCI_LE_DIRECT_ADVERTISING_REPORT                    (0x0BU)        /**< LE Directed Advertising Report event. */
 #define HCI_LE_PHY_UPDATE_COMPLETE                          (0x0CU)        /**< LE PHY Update Complete event. */
 #define HCI_LE_EXTENDED_ADVERTISING_REPORT                  (0x0DU)        /**< LE Extended Advertising Report event. */
-#define HCI_LE_PERIODIC_ADVERTISING_SYNC_ESTABLISHED        (0x0EU)        /**< LE Periodic Advertising Sync Established event. */
-#define HCI_LE_PERIODIC_ADVERTISING_REPORT                  (0x0FU)        /**< LE Periodic Advertising Report event. */
-#define HCI_LE_PERIODIC_ADVERTISING_SYNC_LOST               (0x10U)        /**< LE Periodic Advertising Sync Lost event. */
+#define HCI_LE_PA_SYNC_ESTABLISHED                          (0x0EU)        /**< LE Periodic Advertising Sync Established event. */
+#define HCI_LE_PA_REPORT                                    (0x0FU)        /**< LE Periodic Advertising Report event. */
+#define HCI_LE_PA_SYNC_LOST                                 (0x10U)        /**< LE Periodic Advertising Sync Lost event. */
 #define HCI_LE_SCAN_TIMEOUT                                 (0x11U)        /**< LE Scan Timeout event. */
 #define HCI_LE_ADVERTISING_SET_TERMINATED                   (0x12U)        /**< LE Advertising Set Terminated event. */
 #define HCI_LE_SCAN_REQUEST_RECEIVED                        (0x13U)        /**< LE Scan Request Received event. */
@@ -298,66 +298,66 @@ extern "C" {
 #define HCI_CMD_SIZE_WRITE_AUTH_PAYLOAD_TO                  (0x04U)        /**< See @ref HCI_WriteAuthenticatedPayloadTimeout_T. */
 #define HCI_CMD_SIZE_READ_BD_ADDR                           (0x00U)        /**< No parameters. */
 #define HCI_CMD_SIZE_READ_RSSI                              (0x02U)        /**< See @ref HCI_ReadRssi_T. */
-#define HCI_CMD_SIZE_LE_SET_RANDOM_ADDR                     (0x06U)        /**< See @ref HCI_LE_SetRandomAddress_T. */
-#define HCI_CMD_SIZE_LE_SET_ADV_PARAMS                      (0x0FU)        /**< See @ref HCI_LE_SetAdvertisingParameters_T. */
-#define HCI_CMD_SIZE_LE_SET_ADV_DATA                        (0x20U)        /**< See @ref HCI_LE_SetAdvertisingData_T. */
-#define HCI_CMD_SIZE_LE_SET_SCAN_RSP_DATA                   (0x20U)        /**< See @ref HCI_LE_SetScanResponseData_T. */
-#define HCI_CMD_SIZE_LE_SET_ADV_ENABLE                      (0x01U)        /**< See @ref HCI_LE_SetAdvertisingEnable_T. */
-#define HCI_CMD_SIZE_LE_SET_SCAN_PARAMS                     (0x07U)        /**< See @ref HCI_LE_SetScanParameters_T. */
-#define HCI_CMD_SIZE_LE_SET_SCAN_ENABLE                     (0x02U)        /**< See @ref HCI_LE_SetScanEnable_T. */
-#define HCI_CMD_SIZE_LE_CREATE_CONN                         (0x19U)        /**< See @ref HCI_LE_CreateConnection_T. */
-#define HCI_CMD_SIZE_LE_CREATE_CONN_CANCEL                  (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_CLEAR_FILTER_ACCEPT_LIST            (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_ADD_DEV_TO_FILTER_ACCEPT_LIST       (0x07U)        /**< See @ref HCI_LE_AddDeviceToFilterAcceptList_T. */
-#define HCI_CMD_SIZE_LE_CONN_UPDATE                         (0x0EU)        /**< See @ref HCI_LE_ConnectionUpdate_T. */
-#define HCI_CMD_SIZE_LE_SET_HOST_CHANNEL_CLASSIFY           (0x05U)        /**< 37 1-bit fields (5 octets). */
-#define HCI_CMD_SIZE_LE_READ_CHANNEL_MAP                    (0x02U)        /**< See @ref HCI_LE_ReadChannelMap_T. */
-#define HCI_CMD_SIZE_LE_READ_REMOTE_FEATURES                (0x02U)        /**< See @ref HCI_LE_ReadRemoteFeatures_T. */
-#define HCI_CMD_SIZE_LE_ENABLE_ENCRYPTION                   (0x1CU)        /**< See @ref HCI_LE_EnableEncryption_T. */
-#define HCI_CMD_SIZE_LE_LTK_REQ_REPLY                       (0x12U)        /**< See @ref HCI_LE_LongTermKeyRequestReply_T. */
-#define HCI_CMD_SIZE_LE_LTK_REQ_NEG_REPLY                   (0x02U)        /**< See @ref HCI_LE_LongTermKeyRequestNegativeReply_T. */
-#define HCI_CMD_SIZE_LE_RECEIVER_TEST_V1                    (0x01U)        /**< See @ref HCI_LE_ReceiverTestV1_T. */
-#define HCI_CMD_SIZE_LE_TRANSMITTER_TEST_V1                 (0x03U)        /**< See @ref HCI_LE_TransmitterTestV1_T. */
-#define HCI_CMD_SIZE_LE_TEST_END                            (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_REMOTE_CONN_PARAMS_REQ_REPLY        (0x0EU)        /**< See @ref HCI_LE_RemoteConnParamReqReply_T. */
-#define HCI_CMD_SIZE_LE_REMOTE_CONN_PARAMS_REQ_NEG_REPLY    (0x03U)        /**< See @ref HCI_LE_RemoteConnParamReqNegReply_T. */
-#define HCI_CMD_SIZE_LE_SET_DATA_LENGTH                     (0x06U)        /**< See @ref HCI_LE_SetDataLength_T. */
-#define HCI_CMD_SIZE_LE_ADD_DEV_TO_RES_LIST                 (0x27U)        /**< See @ref HCI_LE_AddDeviceToResolvingList_T. */
-#define HCI_CMD_SIZE_LE_CLEAR_RES_LIST                      (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_SET_ADDR_RES_ENABLE                 (0x01U)        /**< See @ref HCI_LE_SetAddressResolutionEnable_T. */
-#define HCI_CMD_SIZE_LE_SET_RPA_TIMEOUT                     (0x02U)        /**< See @ref HCI_LE_SetRpaTimeout_T. */
-#define HCI_CMD_SIZE_LE_READ_PHY                            (0x02U)        /**< See @ref HCI_LE_ReadPhy_T. */
-#define HCI_CMD_SIZE_LE_SET_DEFAULT_PHY                     (0x03U)        /**< See @ref HCI_LE_SetDefaultPhy_T. */
-#define HCI_CMD_SIZE_LE_SET_PHY                             (0x07U)        /**< See @ref HCI_LE_SetPhy_T. */
-#define HCI_CMD_SIZE_LE_RECEIVER_TEST_V2                    (0x03U)        /**< See @ref HCI_LE_ReceiverTestV2_T. */
-#define HCI_CMD_SIZE_LE_TRANSMITTER_TEST_V2                 (0x04U)        /**< See @ref HCI_LE_TransmitterTestV2_T. */
-#define HCI_CMD_SIZE_LE_SET_ADV_SET_RANDOM_ADDR             (0x07U)        /**< See @ref HCI_LE_SetAdvertisingSetRandomAddr_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_ADV_PARAMS                  (0x19U)        /**< See @ref HCI_LE_SetExtAdvertisingParameters_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_ADV_DATA                    (0xFFU)        /**< See @ref HCI_LE_SetExtAdvertisingData_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_SCAN_RSP_DATA               (0xFFU)        /**< See @ref HCI_LE_SetExtScanRespData_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_ADV_ENABLE                  (0xFEU)        /**< See @ref HCI_LE_SetExtAdvertisingEnable_T. */
-#define HCI_CMD_SIZE_LE_REMOVE_ADV_SET                      (0x01U)        /**< See @ref HCI_LE_RemoveAdvertisingSet_T. */
-#define HCI_CMD_SIZE_LE_CLEAR_ADV_SET                       (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_SET_PERIODIC_ADV_PARAMS             (0x07U)        /**< See @ref HCI_LE_SetPeriodicAdvertisingParams_T. */
-#define HCI_CMD_SIZE_LE_SET_PERIODIC_ADV_DATA               (0xFFU)        /**< See @ref HCI_LE_SetPeriodicAdvertisingData_T. */
-#define HCI_CMD_SIZE_LE_SET_PERIODIC_ADV_ENABLE             (0x02U)        /**< See @ref HCI_LE_SetPeriodicAdvertisingEnable_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_SCAN_PARAMS                 (0x0DU)        /**< See @ref HCI_LE_SetExtScanParams_T. */
-#define HCI_CMD_SIZE_LE_SET_EXT_SCAN_ENABLE                 (0x06U)        /**< See @ref HCI_LE_SetExtScanEnable_T. */
-#define HCI_CMD_SIZE_LE_EXT_CREATE_CONN                     (0x3AU)        /**< See @ref HCI_LE_ExtCreateConnParam_T. */
-#define HCI_CMD_SIZE_LE_PERIODIC_ADV_CREATE_SYNC            (0x0EU)        /**< See @ref HCI_LE_PeriodicAdvertisingCreateSync_T. */
-#define HCI_CMD_SIZE_LE_PERIODIC_ADV_CREATE_SYNC_CANCEL     (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_PERIODIC_ADV_TERMINATE_SYNC         (0x02U)        /**< See @ref HCI_LE_PeriodicAdvertisingTerminateSync_T. */
-#define HCI_CMD_SIZE_LE_ADD_DEV_TO_PERIODIC_ADV_LIST        (0x08U)        /**< See @ref HCI_LE_AddDevToPeriodicAdvList_T. */
-#define HCI_CMD_SIZE_LE_CLEAR_PERIODIC_ADV_LIST             (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_READ_TRANSMIT_POWER                 (0x00U)        /**< No parameters. */
-#define HCI_CMD_SIZE_LE_SET_PRIVACY_MODE                    (0x08U)        /**< @ref HCI_LE_SetPrivacyMode_T. */
-#define HCI_CMD_SIZE_LE_SET_PERIODIC_ADV_RX_ENABLE          (0x03U)        /**< See @ref HCI_LE_SetPeriodicAdvReceiveEnable_T. */
-#define HCI_CMD_SIZE_LE_ENHANCED_READ_TRANSMIT_POWER_LEVEL  (0x03U)        /**< See @ref HCI_LE_EnhancedReadTransmitPowerLevel_T. */
-#define HCI_CMD_SIZE_LE_READ_REMOTE_TRANSMIT_POWER_LEVEL    (0x03U)        /**< See @ref HCI_LE_ReadRemoteTransmitPowerLevel_T. */
-#define HCI_CMD_SIZE_LE_SET_TRANSMIT_POWER_REPORTING_ENABLE (0x04U)        /**< See @ref HCI_LE_SetTransmitPowerReportingEnable_T. */
-#define HCI_CMD_SIZE_LE_TRANSMITTER_TEST_V4                 (0x08U)        /**< See @ref HCI_LE_TransmitterTestV4_T. */
-#define HCI_CMD_SIZE_LE_SET_PATH_LOSS_PARAMS                (0x08U)        /**< See @ref HCI_LE_SetPathLossReportingParams_T. */
-#define HCI_CMD_SIZE_LE_SET_PATH_LOSS_ENABLE                (0x03U)        /**< See @ref HCI_LE_SetPathLossReportingEnable_T. */
+#define HCI_CMD_SIZE_SET_RANDOM_ADDR                        (0x06U)        /**< See @ref HCI_LE_SetRandomAddress_T. */
+#define HCI_CMD_SIZE_SET_ADV_PARAMS                         (0x0FU)        /**< See @ref HCI_LE_SetAdvertisingParameters_T. */
+#define HCI_CMD_SIZE_SET_ADV_DATA                           (0x20U)        /**< See @ref HCI_LE_SetAdvertisingData_T. */
+#define HCI_CMD_SIZE_SET_SCAN_RSP_DATA                      (0x20U)        /**< See @ref HCI_LE_SetScanResponseData_T. */
+#define HCI_CMD_SIZE_SET_ADV_ENABLE                         (0x01U)        /**< See @ref HCI_LE_SetAdvertisingEnable_T. */
+#define HCI_CMD_SIZE_SET_SCAN_PARAMS                        (0x07U)        /**< See @ref HCI_LE_SetScanParameters_T. */
+#define HCI_CMD_SIZE_SET_SCAN_ENABLE                        (0x02U)        /**< See @ref HCI_LE_SetScanEnable_T. */
+#define HCI_CMD_SIZE_CREATE_CONN                            (0x19U)        /**< See @ref HCI_LE_CreateConnection_T. */
+#define HCI_CMD_SIZE_CREATE_CONN_CANCEL                     (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_CLEAR_FILTER_ACCEPT_LIST               (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_ADD_DEV_TO_FILTER_ACCEPT_LIST          (0x07U)        /**< See @ref HCI_LE_AddDeviceToFilterAcceptList_T. */
+#define HCI_CMD_SIZE_CONN_UPDATE                            (0x0EU)        /**< See @ref HCI_LE_ConnectionUpdate_T. */
+#define HCI_CMD_SIZE_SET_HOST_CHANNEL_CLASSIFY              (0x05U)        /**< 37 1-bit fields (5 octets). */
+#define HCI_CMD_SIZE_READ_CHANNEL_MAP                       (0x02U)        /**< See @ref HCI_LE_ReadChannelMap_T. */
+#define HCI_CMD_SIZE_READ_REMOTE_FEATURES                   (0x02U)        /**< See @ref HCI_LE_ReadRemoteFeatures_T. */
+#define HCI_CMD_SIZE_ENABLE_ENCRYPTION                      (0x1CU)        /**< See @ref HCI_LE_EnableEncryption_T. */
+#define HCI_CMD_SIZE_LTK_REQ_REPLY                          (0x12U)        /**< See @ref HCI_LE_LongTermKeyRequestReply_T. */
+#define HCI_CMD_SIZE_LTK_REQ_NEG_REPLY                      (0x02U)        /**< See @ref HCI_LE_LongTermKeyRequestNegativeReply_T. */
+#define HCI_CMD_SIZE_RECEIVER_TEST_V1                       (0x01U)        /**< See @ref HCI_LE_ReceiverTestV1_T. */
+#define HCI_CMD_SIZE_TX_TEST_V1                             (0x03U)        /**< See @ref HCI_LE_TransmitterTestV1_T. */
+#define HCI_CMD_SIZE_TEST_END                               (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_REMOTE_CP_REQ_REPLY                    (0x0EU)        /**< See @ref HCI_LE_RemoteConnParamReqReply_T. */
+#define HCI_CMD_SIZE_REMOTE_CP_REQ_NEG_REPLY                (0x03U)        /**< See @ref HCI_LE_RemoteConnParamReqNegReply_T. */
+#define HCI_CMD_SIZE_SET_DATA_LENGTH                        (0x06U)        /**< See @ref HCI_LE_SetDataLength_T. */
+#define HCI_CMD_SIZE_ADD_DEV_TO_RES_LIST                    (0x27U)        /**< See @ref HCI_LE_AddDeviceToResolvingList_T. */
+#define HCI_CMD_SIZE_CLEAR_RES_LIST                         (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_SET_ADDR_RES_ENABLE                    (0x01U)        /**< See @ref HCI_LE_SetAddressResolutionEnable_T. */
+#define HCI_CMD_SIZE_SET_RPA_TIMEOUT                        (0x02U)        /**< See @ref HCI_LE_SetRpaTimeout_T. */
+#define HCI_CMD_SIZE_READ_PHY                               (0x02U)        /**< See @ref HCI_LE_ReadPhy_T. */
+#define HCI_CMD_SIZE_SET_DEFAULT_PHY                        (0x03U)        /**< See @ref HCI_LE_SetDefaultPhy_T. */
+#define HCI_CMD_SIZE_SET_PHY                                (0x07U)        /**< See @ref HCI_LE_SetPhy_T. */
+#define HCI_CMD_SIZE_RECEIVER_TEST_V2                       (0x03U)        /**< See @ref HCI_LE_ReceiverTestV2_T. */
+#define HCI_CMD_SIZE_TX_TEST_V2                             (0x04U)        /**< See @ref HCI_LE_TransmitterTestV2_T. */
+#define HCI_CMD_SIZE_SET_ADV_SET_RANDOM_ADDR                (0x07U)        /**< See @ref HCI_LE_SetAdvertisingSetRandomAddr_T. */
+#define HCI_CMD_SIZE_SET_EXT_ADV_PARAMS                     (0x19U)        /**< See @ref HCI_LE_SetExtAdvertisingParameters_T. */
+#define HCI_CMD_SIZE_SET_EXT_ADV_DATA                       (0xFFU)        /**< See @ref HCI_LE_SetExtAdvertisingData_T. */
+#define HCI_CMD_SIZE_SET_EXT_SCAN_RSP_DATA                  (0xFFU)        /**< See @ref HCI_LE_SetExtScanRespData_T. */
+#define HCI_CMD_SIZE_SET_EXT_ADV_ENABLE                     (0xFEU)        /**< See @ref HCI_LE_SetExtAdvertisingEnable_T. */
+#define HCI_CMD_SIZE_REMOVE_ADV_SET                         (0x01U)        /**< See @ref HCI_LE_RemoveAdvertisingSet_T. */
+#define HCI_CMD_SIZE_CLEAR_ADV_SET                          (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_SET_PERIODIC_ADV_PARAMS                (0x07U)        /**< See @ref HCI_LE_SetPeriodicAdvertisingParams_T. */
+#define HCI_CMD_SIZE_SET_PERIODIC_ADV_DATA                  (0xFFU)        /**< See @ref HCI_LE_SetPeriodicAdvertisingData_T. */
+#define HCI_CMD_SIZE_SET_PERIODIC_ADV_ENABLE                (0x02U)        /**< See @ref HCI_LE_SetPeriodicAdvertisingEnable_T. */
+#define HCI_CMD_SIZE_SET_EXT_SCAN_PARAMS                    (0x0DU)        /**< See @ref HCI_LE_SetExtScanParams_T. */
+#define HCI_CMD_SIZE_SET_EXT_SCAN_ENABLE                    (0x06U)        /**< See @ref HCI_LE_SetExtScanEnable_T. */
+#define HCI_CMD_SIZE_EXT_CREATE_CONN                        (0x3AU)        /**< See @ref HCI_LE_ExtCreateConnParam_T. */
+#define HCI_CMD_SIZE_PA_CREATE_SYNC                         (0x0EU)        /**< See @ref HCI_LE_PeriodicAdvertisingCreateSync_T. */
+#define HCI_CMD_SIZE_PA_CREATE_SYNC_CANCEL                  (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_PA_TERMINATE_SYNC                      (0x02U)        /**< See @ref HCI_LE_PeriodicAdvertisingTerminateSync_T. */
+#define HCI_CMD_SIZE_ADD_DEV_TO_PERIODIC_ADV_LIST           (0x08U)        /**< See @ref HCI_LE_AddDevToPeriodicAdvList_T. */
+#define HCI_CMD_SIZE_CLEAR_PERIODIC_ADV_LIST                (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_READ_TRANSMIT_POWER                    (0x00U)        /**< No parameters. */
+#define HCI_CMD_SIZE_SET_PRIVACY_MODE                       (0x08U)        /**< @ref HCI_LE_SetPrivacyMode_T. */
+#define HCI_CMD_SIZE_SET_PERIODIC_ADV_RX_ENABLE             (0x03U)        /**< See @ref HCI_LE_SetPeriodicAdvReceiveEnable_T. */
+#define HCI_CMD_SIZE_ENHANCED_READ_TRANSMIT_POWER_LEVEL     (0x03U)        /**< See @ref HCI_LE_EnhancedReadTransmitPowerLevel_T. */
+#define HCI_CMD_SIZE_READ_REMOTE_TRANSMIT_POWER_LEVEL       (0x03U)        /**< See @ref HCI_LE_ReadRemoteTransmitPowerLevel_T. */
+#define HCI_CMD_SIZE_SET_TRANSMIT_POWER_REPORTING_ENABLE    (0x04U)        /**< See @ref HCI_LE_SetTransmitPowerReportingEnable_T. */
+#define HCI_CMD_SIZE_TX_TEST_V4                             (0x08U)        /**< See @ref HCI_LE_TransmitterTestV4_T. */
+#define HCI_CMD_SIZE_SET_PATH_LOSS_PARAMS                   (0x08U)        /**< See @ref HCI_LE_SetPathLossReportingParams_T. */
+#define HCI_CMD_SIZE_SET_PATH_LOSS_ENABLE                   (0x03U)        /**< See @ref HCI_LE_SetPathLossReportingEnable_T. */
 /** @} */
 
 /**@defgroup HCI_EVT_SIZE Pre-defined size of HCI event packet
@@ -374,26 +374,26 @@ extern "C" {
 /**@defgroup HCI_LE_META_SUB_EVT_SIZE HCI subevent size definition of LE_META event
  * @brief The size of parameters of each subevent in HCI LE_META event.
  * @{ */
-#define HCI_EVT_SIZE_LE_CONNECT_COMPLETE                    (0x12U)        /**< See @ref HCI_EvtLeConnect_T. */
-#define HCI_EVT_SIZE_LE_ADV_REPORT                          (0x2AU)        /**< See @ref HCI_EvtLeAdvReport_T. */
-#define HCI_EVT_SIZE_LE_CONNECTION_UPDATE_COMPLETE          (0x09U)        /**< See @ref HCI_EvtLeConnParamUpdate_T. */
-#define HCI_EVT_SIZE_LE_READ_REMOTE_FEATURES_COMPLETE       (0x0BU)        /**< See @ref HCI_EvtLeReadRemoteFeature_T. */
-#define HCI_EVT_SIZE_LE_LONG_TERM_KEY_REQUEST               (0x0CU)        /**< See @ref HCI_EvtLeLongTermKeyReq_T. */
-#define HCI_EVT_SIZE_LE_REMOTE_CONNECTION_UPDATE_REQUEST    (0x0AU)        /**< See @ref HCI_EvtLeRemoteConnParamsReq_T. */
-#define HCI_EVT_SIZE_LE_DATA_LENGTH_CHANGE                  (0x0AU)        /**< See @ref HCI_EvtLeDataLengthChange_T. */
-#define HCI_EVT_SIZE_LE_ENHANCED_CONNECTION_COMPLETE        (0x1EU)        /**< See @ref HCI_EvtLeEnhanceConnect_T. */
-#define HCI_EVT_SIZE_LE_DIRECT_ADV_REPORT                   (0x11U)        /**< See @ref HCI_EvtLeDirectAdvReport_T. */
-#define HCI_EVT_SIZE_LE_PHY_UPDATE_COMPLETE                 (0x05U)        /**< See @ref HCI_EvtLePhyUpdate_T. */
-#define HCI_EVT_SIZE_LE_EXTENDED_ADV_REPORT                 (0xFEU)        /**< See @ref HCI_EvtLeExtAdvReport_T. */
-#define HCI_EVT_SIZE_LE_PERIODIC_ADV_SYNC_ESTABLISHED       (0x0FU)        /**< See @ref HCI_EvtLePeriodicAdvSyncEst_T. */
-#define HCI_EVT_SIZE_LE_PERIODIC_ADV_REPORT                 (0xFEU)        /**< See @ref HCI_EvtLePeriodicAdvReport_T. */
-#define HCI_EVT_SIZE_LE_PERIODIC_ADV_SYNC_LOST              (0x02U)        /**< See @ref HCI_EvtLePeriodicAdvSyncLost_T. */
-#define HCI_EVT_SIZE_LE_SCAN_TIMEOUT                        (0x00U)        /**< No parameters. */
-#define HCI_EVT_SIZE_LE_ADV_SET_TERMINATED                  (0x05U)        /**< See @ref HCI_EvtLeAdvSetTerminated_T. */
-#define HCI_EVT_SIZE_LE_SCAN_REQUEST_RECEIVED               (0x08U)        /**< See @ref HCI_EvtLeScanReqReceived_T. */
-#define HCI_EVT_SIZE_LE_CHANNEL_SELECT_ALGORITHM            (0x03U)        /**< See @ref HCI_EvtLeChannelSelectAlgorithm_T. */
-#define HCI_EVT_SIZE_LE_TX_POWER_REPORTING                  (0x08U)        /**< See @ref HCI_EvtLeTxPowerReporting_T. */
-#define HCI_EVT_SIZE_LE_PATH_LOSS_THRESHOLD                 (0x04U)        /**< See @ref HCI_EvtLePathLossThreshold_T. */
+#define HCI_EVT_SIZE_CONNECT_COMPLETE                    (0x12U)        /**< See @ref HCI_EvtLeConnect_T. */
+#define HCI_EVT_SIZE_ADV_REPORT                          (0x2AU)        /**< See @ref HCI_EvtLeAdvReport_T. */
+#define HCI_EVT_SIZE_CONNECTION_UPDATE_COMPLETE          (0x09U)        /**< See @ref HCI_EvtLeConnParamUpdate_T. */
+#define HCI_EVT_SIZE_READ_REMOTE_FEATURES_COMPLETE       (0x0BU)        /**< See @ref HCI_EvtLeReadRemoteFeature_T. */
+#define HCI_EVT_SIZE_LONG_TERM_KEY_REQUEST               (0x0CU)        /**< See @ref HCI_EvtLeLongTermKeyReq_T. */
+#define HCI_EVT_SIZE_REMOTE_CONNECTION_UPDATE_REQUEST    (0x0AU)        /**< See @ref HCI_EvtLeRemoteConnParamsReq_T. */
+#define HCI_EVT_SIZE_DATA_LENGTH_CHANGE                  (0x0AU)        /**< See @ref HCI_EvtLeDataLengthChange_T. */
+#define HCI_EVT_SIZE_ENHANCED_CONNECTION_COMPLETE        (0x1EU)        /**< See @ref HCI_EvtLeEnhanceConnect_T. */
+#define HCI_EVT_SIZE_DIRECT_ADV_REPORT                   (0x11U)        /**< See @ref HCI_EvtLeDirectAdvReport_T. */
+#define HCI_EVT_SIZE_PHY_UPDATE_COMPLETE                 (0x05U)        /**< See @ref HCI_EvtLePhyUpdate_T. */
+#define HCI_EVT_SIZE_EXTENDED_ADV_REPORT                 (0xFEU)        /**< See @ref HCI_EvtLeExtAdvReport_T. */
+#define HCI_EVT_SIZE_PA_SYNC_ESTABLISHED                 (0x0FU)        /**< See @ref HCI_EvtLePeriodicAdvSyncEst_T. */
+#define HCI_EVT_SIZE_PA_REPORT                           (0xFEU)        /**< See @ref HCI_EvtLePeriodicAdvReport_T. */
+#define HCI_EVT_SIZE_PA_SYNC_LOST                        (0x02U)        /**< See @ref HCI_EvtLePeriodicAdvSyncLost_T. */
+#define HCI_EVT_SIZE_SCAN_TIMEOUT                        (0x00U)        /**< No parameters. */
+#define HCI_EVT_SIZE_ADV_SET_TERMINATED                  (0x05U)        /**< See @ref HCI_EvtLeAdvSetTerminated_T. */
+#define HCI_EVT_SIZE_SCAN_REQUEST_RECEIVED               (0x08U)        /**< See @ref HCI_EvtLeScanReqReceived_T. */
+#define HCI_EVT_SIZE_CHANNEL_SELECT_ALGORITHM            (0x03U)        /**< See @ref HCI_EvtLeChannelSelectAlgorithm_T. */
+#define HCI_EVT_SIZE_TX_POWER_REPORTING                  (0x08U)        /**< See @ref HCI_EvtLeTxPowerReporting_T. */
+#define HCI_EVT_SIZE_PATH_LOSS_THRESHOLD                 (0x04U)        /**< See @ref HCI_EvtLePathLossThreshold_T. */
 /** @} */
 
 
@@ -409,15 +409,15 @@ extern "C" {
 #define HCI_CC_EVT_SIZE_LTK_REQUEST_REPLY                   (0x03U)        /**< @ref HCI_CC_LE_LtkReqReply_T. */
 #define HCI_CC_EVT_SIZE_LTK_REQUEST_NEGATIVE_REPLY          (0x03U)        /**< @ref HCI_CC_LE_LtkReqNegativeReply_T. */
 #define HCI_CC_EVT_SIZE_TEST_END                            (0x03U)        /**< @ref HCI_CC_LE_TestEnd_T. */
-#define HCI_CC_EVT_SIZE_REMOTE_CONN_PARAM_REQ_REPLY         (0x03U)        /**< @ref HCI_CC_LE_RemoteConnParamReqReply_T. */
-#define HCI_CC_EVT_SIZE_REMOTE_CONN_PARAM_REQ_NEG_REPLY     (0x03U)        /**< @ref HCI_CC_LE_RemoteConnParamReqNegReply_T. */
+#define HCI_CC_EVT_SIZE_REMOTE_CP_REQ_REPLY         (0x03U)        /**< @ref HCI_CC_LE_RemoteConnParamReqReply_T. */
+#define HCI_CC_EVT_SIZE_REMOTE_CP_REQ_NEG_REPLY     (0x03U)        /**< @ref HCI_CC_LE_RemoteConnParamReqNegReply_T. */
 #define HCI_CC_EVT_SIZE_SET_DATA_LENGTH                     (0x03U)        /**< @ref HCI_CC_LE_SetDataLength_T. */
 #define HCI_CC_EVT_SIZE_READ_PHY                            (0x05U)        /**< @ref HCI_CC_LE_ReadPhy_T. */
 #define HCI_CC_EVT_SIZE_SET_EXT_ADV_PARAMS                  (0x02U)        /**< @ref HCI_CC_LE_SetExtAdvertisingParameters_T. */
 #define HCI_CC_EVT_SIZE_READ_TRANSMIT_POWER                 (0x03U)        /**< @ref HCI_CC_LE_ReadTransmitPower_T. */
 #define HCI_CC_EVT_SIZE_ENHANCED_READ_TRANSMIT_POWER        (0x06U)        /**< @ref HCI_CC_LE_EnhancedReadTransmitPower_T. */
-#define HCI_CC_EVT_SIZE_SET_PASS_LOSS_REPORTING_PARAMS      (0x03U)        /**< @ref HCI_CC_LE_SetPathLossReportingParams_T. */
-#define HCI_CC_EVT_SIZE_SET_PASS_LOSS_REPORTING_ENABLE      (0x03U)        /**< @ref HCI_CC_LE_SetPathLossReportingEnable_T. */
+#define HCI_CC_EVT_SIZE_SET_PLR_PARAMS                      (0x03U)        /**< @ref HCI_CC_LE_SetPathLossReportingParams_T. */
+#define HCI_CC_EVT_SIZE_SET_PLR_ENABLE                      (0x03U)        /**< @ref HCI_CC_LE_SetPathLossReportingEnable_T. */
 #define HCI_CC_EVT_SIZE_SET_TRANSMIT_POWER_REPORTING_ENABLE (0x03U)        /**< @ref HCI_CC_LE_SetTransmitPowerReportingEnable_T. */
 /** @} */
 
@@ -914,10 +914,10 @@ typedef struct HCI_LE_TransmitterTestV4_T
 typedef struct HCI_LE_SetPathLossReportingParams_T
 {
     uint16_t 	connHandle;                                                     /**< Connection handle associated with this connection. */
-    uint8_t  	highThreshold;                                                  /**< High threshold for the path loss. (Units: dB) */
-    uint8_t  	highHysteresis;                                                 /**< Hysteresis value for the high threshold. (Units: dB) */
-    uint8_t  	lowThreshold;                                                   /**< Low threshold for the path loss. (Units: dB) */
-    uint8_t  	lowHysteresis;                                                  /**< Hystersis value for the low threshold. (Units: dB) */
+    uint8_t  	highThreshold;                                                  /**< High threshold for the path loss. (Units: dBm) */
+    uint8_t  	highHysteresis;                                                 /**< Hysteresis value for the high threshold. (Units: dBm) */
+    uint8_t  	lowThreshold;                                                   /**< Low threshold for the path loss. (Units: dBm) */
+    uint8_t  	lowHysteresis;                                                  /**< Hystersis value for the low threshold. (Units: dBm) */
     uint16_t 	minTimeSpent;                                                   /**< Minimum time in number of connection events to be observed once the path crosses the threshold before an event is generated.*/
 } HCI_LE_SetPathLossReportingParams_T;
 
@@ -1335,8 +1335,8 @@ typedef struct HCI_EvtLeTxPowerReporting_T
 typedef struct HCI_EvtLePathLossThreshold_T
 {
     uint16_t                connHandle;                                         /**< Connection handle associated with this connection. */
-    uint8_t                 currentPathLoss;                                    /**< Current path loss(always zero or positive).*/
-    uint8_t                 zoneEntered;                                        /**< Entered zone.*/
+    uint8_t                 currentPathLoss;                                    /**< Current path loss(always zero or positive). (Units: dBm) */
+    uint8_t                 zoneEntered;                                        /**< Zone entered. */
 } HCI_EvtLePathLossThreshold_T;
 
 /**@brief Event content indicating that a packet containing a valid MIC of the connection was not received within the authenticated payload timeout. */

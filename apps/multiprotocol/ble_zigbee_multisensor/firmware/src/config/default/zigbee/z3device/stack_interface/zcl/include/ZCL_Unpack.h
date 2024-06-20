@@ -149,6 +149,49 @@ typedef struct _ZCL_SetReportableChange
    ZCL_Status_t zclStatus;
 } ZCL_SetReportableChange_t;
 
+
+
+typedef struct ZCL_CommandInd_
+{
+  ZCL_CommandIndCallback_t callbackFn;
+  ZCL_Addressing_t addressing;
+  uint8_t payloadLength;
+  uint8_t *payload;  
+  ZCL_Status_t status;
+} ZCL_CommandInd_t;
+
+typedef struct ZCL_AttrReportInd_
+{
+  ZCL_ReportIndCallback_t callbackFn;
+  ZCL_Addressing_t addressing;
+  uint8_t payloadLength;
+  uint8_t *payload;
+} ZCL_AttrReportInd_t;
+
+typedef struct ZCL_DefaultRespInd_
+{
+  ZCL_DefaultRespIndCallback_t callbackFn;
+  ZCL_Request_t *req;
+  ZCL_Addressing_t addressing;
+  uint8_t payloadLength;
+  uint8_t *payload;
+} ZCL_DefaultRespInd_t;
+
+typedef struct ZCL_AttrEventInd_
+{
+  ZCL_AttrEventIndCallback_t callbackFn;
+  ZCL_Addressing_t addressing;
+  ZCL_AttributeId_t attributeId;
+  ZCL_AttributeEvent_t event;
+} ZCL_AttrEventInd_t;
+
+
+typedef struct ZCL_NotifyRespInd_
+{
+  ZCL_NotifyRespIndiCallback_t callbackFn;
+  ZCL_Notify_t *ntfy;
+} ZCL_NotifyRespInd_t;
+
 /*******************************************************************************
                     Global variables section
 *******************************************************************************/

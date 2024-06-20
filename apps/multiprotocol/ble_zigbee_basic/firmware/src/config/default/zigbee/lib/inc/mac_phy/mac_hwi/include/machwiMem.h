@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIMEM_H
-#define _MACHWIMEM_H
+#ifndef MACHWIMEM_H
+#define MACHWIMEM_H
 
 /******************************************************************************
                     Includes section
@@ -108,6 +108,6 @@ typedef struct
 #endif //_FFD_
 } MachwiMem_t;
 
-#endif /* _MACHWIMEM_H */
+#endif /* MACHWIMEM_H */
 
 // eof machwiMem.h

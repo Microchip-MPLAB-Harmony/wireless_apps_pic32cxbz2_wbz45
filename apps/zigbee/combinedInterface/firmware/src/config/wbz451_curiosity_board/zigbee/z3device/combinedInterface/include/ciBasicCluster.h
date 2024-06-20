@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIBASICCLUSTER_H
-#define _CIBASICCLUSTER_H
+#ifndef CIBASICCLUSTER_H
+#define CIBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -72,6 +72,6 @@ void ciBasicClusterInit(void);
 ******************************************************************************/
 void basicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _CIBASICCLUSTER_H
+#endif // CIBASICCLUSTER_H
 
 // eof ciBasicCluster.h

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACPURGE_H
-#define _MACPURGE_H
+#ifndef MACPURGE_H
+#define MACPURGE_H
 
 /******************************************************************************
                         Includes section
@@ -94,6 +94,6 @@ typedef struct
 ******************************************************************************/
 void MAC_PurgeReq(MAC_PurgeReq_t *reqParams);
 
-#endif /* _MACPURGE_H */
+#endif /* MACPURGE_H */
 
 // eof macPurge.h

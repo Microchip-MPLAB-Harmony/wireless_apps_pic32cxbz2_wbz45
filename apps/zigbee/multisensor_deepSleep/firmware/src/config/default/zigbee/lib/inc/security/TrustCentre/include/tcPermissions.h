@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#if !defined _TC_PERMISSIONS_H
-#define _TC_PERMISSIONS_H
+#if !defined TC_PERMISSIONS_H
+#define TC_PERMISSIONS_H
 
 #include <aps/include/apsAIB.h>
 
@@ -122,4 +122,4 @@ bool TC_IsAllowInstallCodes();
 void TC_InitializePolicy(APS_TCSecurityPolicy_t *policy);
 
 #endif //#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
-#endif //#if !defined _TC_PERMISSIONS_H
+#endif //#if !defined TC_PERMISSIONS_H

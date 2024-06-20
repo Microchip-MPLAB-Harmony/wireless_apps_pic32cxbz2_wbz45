@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLGREENPOWERCLUSTER_H
-#define _ZCLGREENPOWERCLUSTER_H
+#ifndef ZCLGREENPOWERCLUSTER_H
+#define ZCLGREENPOWERCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -693,4 +693,4 @@ typedef struct PACK
 
 } ZCL_GreenPowerClusterCommands_t;
 
-#endif /* _ZCLGREENPOWERCLUSTER_H */
+#endif /* ZCLGREENPOWERCLUSTER_H */

@@ -55,8 +55,8 @@
 // DOM-IGNORE-END
  
 // DOM-IGNORE-BEGIN 
-#if !defined _APSDE_ENDPOINT_H
-#define _APSDE_ENDPOINT_H
+#if !defined APSDE_ENDPOINT_H
+#define APSDE_ENDPOINT_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -123,7 +123,7 @@ typedef struct _APS_FrameFilteringByProfileIdContext_t
                               Prototypes section
  ******************************************************************************/
  
-/**************************************************************************//**
+/******************************************************************************
    \brief Registers a new endpoint in the APS layer
 
    The function is used to register an application endpoint. In order to take part in network
@@ -139,32 +139,32 @@ typedef struct _APS_FrameFilteringByProfileIdContext_t
 
    See the example of request parameters configuration and function usage:
 \code
-//Global definitions
-static ClusterId_t clustersTable[] = {0}; //The list of clusters that the endpoint will support
+Global definitions
+static ClusterId_t clustersTable[] = {0}; The list of clusters that the endpoint will support
 
-//Configure the simple descriptor of the endpoint
+Configure the simple descriptor of the endpoint
 static SimpleDescriptor_t simpleDescriptor =
 {
-  .endpoint = APP_ENDPOINT, //Endpoint ID, an arbitrary number between 1 and 240
+  .endpoint = APP_ENDPOINT, Endpoint ID, an arbitrary number between 1 and 240
   .AppDeviceVersion = 1,
-  .AppInClustersCount = 1, //The number of suppoted input clusters
-  .AppInClustersList = clustersTable,  //The list of supported input clusters
+  .AppInClustersCount = 1, The number of suppoted input clusters
+  .AppInClustersList = clustersTable,  The list of supported input clusters
   .AppOutClustersCount = 0,
-  .AppOutClustersList = NULL, //Suppose out clusters are not supported
+  .AppOutClustersList = NULL, Suppose out clusters are not supported
 };
 
-//Configure parameters for endpoint registration request
+Configure parameters for endpoint registration request
 static APS_RegisterEndpointReq_t endpointDesc =
 {
   .simpleDescriptor = &simpleDescriptor,
   .APS_DataInd = APS_DataInd,
 };
 
-//Data indication callback definition
+Data indication callback definition
 static void APS_DataInd(APS_DataInd_t *ind)
 {
-  //Perform appropriate actions, for example, switch on the value of
-  //cluster specified in the received frame
+  Perform appropriate actions, for example, switch on the value of
+  cluster specified in the received frame
   switch (ind->clusterId)
   {
     case CPU_TO_LE16(APP_CLUSTER_ONE):
@@ -251,6 +251,6 @@ void APS_ResumeEndpointIndication(const Endpoint_t endpoint);
  *****************************************************************************/
 bool APS_IsProfileIdMatched(APS_EndpointReg_t *const endpoint,const ProfileId_t inProfileId);
 
-#endif /* _APSDE_ENDPOINT_H */
+#endif /* APSDE_ENDPOINT_H */
 /** eof apsdeEndpoint.h */
 

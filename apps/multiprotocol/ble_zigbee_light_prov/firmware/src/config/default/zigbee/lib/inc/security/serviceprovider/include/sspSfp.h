@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPSFP_H
-#define _SSPSFP_H
+#ifndef SSPSFP_H
+#define SSPSFP_H
 
 /******************************************************************************
                         Includes section.
@@ -407,5 +407,5 @@ void SSP_ZgpEncryptFrameReq(SSP_ZgpEncryptFrameReq_t *reqParam);
 void SSP_ZgpDecryptFrameReq(SSP_ZgpDecryptFrameReq_t *reqParam);
 #endif  // eof ZGP_SECURITY_ENABLE
 
-#endif //_SSPSFP_H
+#endif //SSPSFP_H
 // eof sspSfp.h

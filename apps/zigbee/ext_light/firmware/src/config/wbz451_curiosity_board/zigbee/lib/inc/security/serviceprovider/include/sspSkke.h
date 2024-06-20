@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPSKKE_H
-#define _SSPSKKE_H
+#ifndef SSPSKKE_H
+#define SSPSKKE_H
 
 #ifdef _LINK_SECURITY_
 /******************************************************************************
@@ -112,7 +112,7 @@ void SSP_CalculateSkkeParamsReq(SSP_CalculateSkkeParamsReq_t *param);
 
 #endif // _LINK_SECURITY_
 
-#endif //_SSPSKKE_H
+#endif //SSPSKKE_H
 
 // eof sspSkke.h
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_LEAVE_H
-#define _NLME_LEAVE_H
+#if !defined NLME_LEAVE_H
+#define NLME_LEAVE_H
 
 /******************************************************************************
                                  Includes section
@@ -138,6 +138,6 @@ void NWK_LeaveReq(NWK_LeaveReq_t *const req);
  ******************************************************************************/
 extern void NWK_LeaveInd(NWK_LeaveInd_t *ind);
 
-#endif /* _NLME_LEAVE_H */
+#endif /* NLME_LEAVE_H */
 /** eof nlmeLeave.h */
 

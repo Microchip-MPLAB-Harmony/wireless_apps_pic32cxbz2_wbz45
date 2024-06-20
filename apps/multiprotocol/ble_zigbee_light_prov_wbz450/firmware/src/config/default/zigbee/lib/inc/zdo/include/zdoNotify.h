@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDONOTIFY_H
-#define _ZDONOTIFY_H
+#ifndef ZDONOTIFY_H
+#define ZDONOTIFY_H
 // DOM-IGNORE-END
 
 
@@ -101,5 +101,5 @@ void ZDO_UnsolicitedNotify(ZDO_MgmtNwkUnsolicatedEnhancedUpdateNotf_t *notf);
 void ZDO_NotifyBindLost(ExtAddr_t* extAddr);
 #endif /* _TC_PROMISCUOUS_MODE_ */
 
-#endif // _ZDONOTIFY_H
+#endif // ZDONOTIFY_H
 // eof zdoNotify.h

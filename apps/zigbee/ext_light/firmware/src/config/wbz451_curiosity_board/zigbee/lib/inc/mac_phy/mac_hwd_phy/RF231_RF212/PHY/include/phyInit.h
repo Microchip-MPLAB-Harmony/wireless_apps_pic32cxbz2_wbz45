@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYINIT_H
-#define _PHYINIT_H
+#ifndef PHYINIT_H
+#define PHYINIT_H
 
 /******************************************************************************
                     Define(s) section
@@ -78,6 +78,6 @@ bool PHY_ZBIsIdle(void);
 ******************************************************************************/
 void PHY_ZBSetIdle(void);
 
-#endif /*_PHYINIT_H*/
+#endif /*PHYINIT_H*/
 
 // eof phyInit.h

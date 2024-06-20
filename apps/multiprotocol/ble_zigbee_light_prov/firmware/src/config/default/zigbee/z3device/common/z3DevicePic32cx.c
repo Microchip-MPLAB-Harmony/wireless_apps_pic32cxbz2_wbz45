@@ -93,37 +93,39 @@
   #define APP_COMMISSIONING_FINDING_AND_BINDING 0
 #endif
 
-//Table 4 ? Bits of the bdbCommissioningMode attribute
+//Table 4 â?? Bits of the bdbCommissioningMode attribute
 //5.3.2 bdbCommissioningMode attribute
-#define BDB_COMMISSIONING_TOUCHLINK       0 //(1)
-#define BDB_COMMISSIONING_NWK_STEERING    1 // (2)
-#define BDB_COMMISSIONING_NWK_FORMATION   2 // (4)
-#define BDB_COMMISSIONING_FINDING_BINDING 3 // (8)
+#define BDB_COMMISSIONING_TOUCHLINK       0U //(1)
+#define BDB_COMMISSIONING_NWK_STEERING    1U // (2)
+#define BDB_COMMISSIONING_NWK_FORMATION   2U // (4)
+#define BDB_COMMISSIONING_FINDING_BINDING 3U // (8)
 
-#define TOUCHLINKING_MASK     (1 << BDB_COMMISSIONING_TOUCHLINK)
-#define NWK_STEERING_MASK     (1 << BDB_COMMISSIONING_NWK_STEERING)
-#define NWK_FORMATION_MASK    (1 << BDB_COMMISSIONING_NWK_FORMATION)
-#define FINDING_BINDING_MASK  (1 << BDB_COMMISSIONING_FINDING_BINDING)
+#define TOUCHLINKING_MASK     (1U << BDB_COMMISSIONING_TOUCHLINK)
+#define NWK_STEERING_MASK     (1U << BDB_COMMISSIONING_NWK_STEERING)
+#define NWK_FORMATION_MASK    (1U << BDB_COMMISSIONING_NWK_FORMATION)
+#define FINDING_BINDING_MASK  (1U << BDB_COMMISSIONING_FINDING_BINDING)
 
 #define STEERING_AND_FINDING_BINDING_MASK  (NWK_STEERING_MASK | FINDING_BINDING_MASK)
 #define TOUCHLINK_STEERING_FORMING_MASK    (TOUCHLINKING_MASK | NWK_STEERING_MASK | NWK_FORMATION_MASK)
 
 #define APP_MAX_FIND_AND_BIND_ATTEMPTS      (5)
-#define VISUALIZATION_PERIOD                (100u)
-#define DEFAULT_VISUALIZATION_PERIODS       (1000u / VISUALIZATION_PERIOD)
-#define JOIN_NETWORK_VISUALIZATION_PERIODS  (2000u / VISUALIZATION_PERIOD)
+#define VISUALIZATION_PERIOD                (100U)
+#define DEFAULT_VISUALIZATION_PERIODS       (1000U / VISUALIZATION_PERIOD)
+#define JOIN_NETWORK_VISUALIZATION_PERIODS  (2000U / VISUALIZATION_PERIOD)
 
-#define INTERPAN_PERIOD                     (10000u)
+#define INTERPAN_PERIOD                     (10000U)
 
 #define IDENTIFY_NON_COLOR_EFFECT false
 
-#define ACTIVITY_TIMER_PERIOD     (10000u)
+#define ACTIVITY_TIMER_PERIOD     (10000U)
+
+#define EXT_INT_PIN 0U
 
 // the application task will block on this semaphore until we have new data to process
 
 static AppState_t appState = APP_INITIAL_STATE;
 AppDeviceState_t appDeviceState = DEVICE_INITIAL_STATE;
-BDB_SetTargetType_t appSetTargetType;
+static BDB_SetTargetType_t bdbAppSetTargetType;
 
 static uint8_t epIndex;
 static uint16_t visualizationPeriodsCounter;
@@ -182,11 +184,7 @@ static HAL_AppTimer_t resetTimer =
 };
 #endif
 
-#ifdef ZAPPSI_HOST
 static BdbEventSubscriber_t s_BDB_EventsCallback =
-#else
-BdbEventSubscriber_t s_BDB_EventsCallback =
-#endif
 {
   .connected = Connected,
   .disconnected = Disconnected,
@@ -214,7 +212,6 @@ BDB_CommissioningMode_t autoCommissionsEnableMask = ((APP_COMMISSIONING_TOUCHLIN
   (APP_COMMISSIONING_FORMING << 2 ) | (APP_COMMISSIONING_FINDING_AND_BINDING << 3));
 
 
-extern OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
 extern TaskHandle_t zigbeeTaskHandle;
 
 /**************************************************************************
@@ -231,31 +228,32 @@ void create_app_queue(void)
 /**************************************************************************
 \brief Zigbee API CALL
 ***************************************************************************/
-inline void ZIGBEE_API_CALL(Stack_API_Request_t *request)
+void ZIGBEE_API_CALL(Stack_API_Request_t *request)
 {
-  xTaskAbortDelay(zigbeeTaskHandle);
-  if ( OSAL_RESULT_TRUE != OSAL_QUEUE_Send(&zigbeeRequestQueueHandle, &request,10))
+  (void)xTaskAbortDelay(zigbeeTaskHandle);
+  if ( OSAL_RESULT_TRUE != (bool)(OSAL_QUEUE_Send(&zigbeeRequestQueueHandle, &request,10)))
   {
-    while(1);   // ERROR , Should not hang here, handle with assert
+    while(true)   // ERROR , Should not hang here, handle with assert
+    {
+    }
   }
 }
 
 /**************************************************************************
 \brief Post Zigbee API CALLs into queue
 ***************************************************************************/
-
 void APP_EvtUpload(void)
 {
     APP_Msg_T   appMsg;
     APP_Msg_T   *p_appMsg;
 
-    appMsg.msgId=APP_MSG_ZB_STACK_EVT;
+    appMsg.msgId=(uint8_t)APP_MSG_ZB_STACK_EVT;
 
     p_appMsg = &appMsg;
 #ifdef H3_INDEPENDENT
     OSAL_QUEUE_Send(&g_appQueue, p_appMsg, 0);
 #else
-    OSAL_QUEUE_Send(&appData.appQueue, p_appMsg, 0);
+    (void)OSAL_QUEUE_Send(&appData.appQueue, p_appMsg, 0);
 #endif
 
 }
@@ -267,26 +265,28 @@ void APP_EvtUpload(void)
 ******************************************************************************/
 static void visualizationTimerFired(void)
 {
-  if (visualizationPeriodsCounter)
+  if (visualizationPeriodsCounter != 0U)
   {
     visualizationPeriodsCounter--;
     LED_TOGGLE();
   }
   else
   {
-    HAL_StopAppTimer(&visualizationTimer);
+    (void)HAL_StopAppTimer(&visualizationTimer);
     LED_OFF();
   }
 }
 #if defined(ZIGBEE_END_DEVICE)
-void restartActivity(void)
+static void restartActivity(void)
 {
   if (ZDO_IN_NETWORK_STATUS != ZDO_GetNwkStatus())
   {
-    HAL_StartAppTimer(&activityTimer);
+    (void)HAL_StartAppTimer(&activityTimer);
   }
   else
-    HAL_StopAppTimer(&activityTimer);
+  {
+    (void)HAL_StopAppTimer(&activityTimer);
+  }
 }
 #endif
 /**************************************************************************//**
@@ -297,8 +297,9 @@ void restartActivity(void)
 bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* bindReq)
 {
   if (APP_ENDPOINTS_AMOUNT == epIndex)
+  {
     return false;
-
+  }
   ZCL_RegisterEndpoint(endpoint);
   deviceBindReqs[epIndex++] = bindReq;
   return true;
@@ -306,13 +307,13 @@ bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* bindReq)
 
 /*******************************************************************************
   Function:
-    void bdbInitCompleted(void *p)
+    void bdbInitCompleted(void)
 
   Remarks:
    bdb Initialisationn complete
 
 */
-void bdbInitCompleted(void)
+static void bdbInitCompleted(void)
 {
 }
 
@@ -348,8 +349,9 @@ static DeviceType_t detectNwkAddrAndDevType(void)
 static bool startNetwork(BDB_CommissioningMode_t commMode)
 {
   if ((NWK_FORMATION_MASK == (NWK_FORMATION_MASK & commMode)) || (NWK_STEERING_MASK == (NWK_STEERING_MASK & commMode)) || (TOUCHLINKING_MASK == (TOUCHLINKING_MASK & commMode)) )
+  {
     return true;
-
+  }
   return false;
 }
 
@@ -365,25 +367,25 @@ static void networkEventsHandler(SYS_EventId_t eventId, SYS_EventData_t data)
   
   switch(eventId)
   {
-    case BC_EVENT_LEAVE_COMMAND_RECEIVED:
+    case (uint8_t)BC_EVENT_LEAVE_COMMAND_RECEIVED:
     {
       resetToFactoryNew = true;
-      SYS_SubscribeToEvent(BC_EVENT_NETWORK_LEFT, &networkEventsListener);
+      SYS_SubscribeToEvent((uint8_t)BC_EVENT_NETWORK_LEFT, &networkEventsListener);
     }
     break;
     
-    case BC_EVENT_NETWORK_LEFT:
+    case (uint8_t)BC_EVENT_NETWORK_LEFT:
     {
       APP_Zigbee_Event_t event;
       event.eventGroup = EVENT_ZIGBEE;
       event.eventId = EVENT_LEFT_FROM_NETWORK;
-	  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+	  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
       APP_Zigbee_Handler(event);
-      SYS_UnsubscribeFromEvent(BC_EVENT_NETWORK_LEFT, &networkEventsListener);
+      SYS_UnsubscribeFromEvent((uint8_t)BC_EVENT_NETWORK_LEFT, &networkEventsListener);
       if (resetToFactoryNew)
       {
 #ifdef _ENABLE_PERSISTENT_SERVER_
-        PDS_DeleteAll(false);
+        (void)PDS_DeleteAll(false);
 #endif
         SystemReset();
       }
@@ -398,7 +400,7 @@ static void networkEventsHandler(SYS_EventId_t eventId, SYS_EventData_t data)
     }
     break;
 
-    case BC_EVENT_NETWORK_ENTERED:      /* The device is in the network */
+    case (uint8_t)BC_EVENT_NETWORK_ENTERED:      /* The device is in the network */
     { /* To handle finding and binding only enabled case */
       if (APP_START_WAIT_STATE == appState)
       {
@@ -416,6 +418,9 @@ static void networkEventsHandler(SYS_EventId_t eventId, SYS_EventData_t data)
 
     }
     break;
+    default:
+        /* TO DO */
+    break;
   }
   (void)eventId;
   (void)data;
@@ -431,30 +436,31 @@ static void networkEventsHandler(SYS_EventId_t eventId, SYS_EventData_t data)
 ***************************************************************************/
 BDB_CommissioningMode_t determineCommissionMode(void)
 {
-  BDB_CommissioningMode_t retMode = 0xff;
+  BDB_CommissioningMode_t retMode = 0xffU;
 
-  if (autoCommissionsEnableMask & TOUCHLINKING_MASK)
+  if ((autoCommissionsEnableMask & TOUCHLINKING_MASK) != 0U)
   {
     retMode = BDB_COMMISSIONING_TOUCHLINK;
-    autoCommissionsEnableMask &= ~TOUCHLINKING_MASK;
+    autoCommissionsEnableMask &= (uint8_t)~TOUCHLINKING_MASK;
   }
-   else if (autoCommissionsEnableMask & NWK_STEERING_MASK)
+   else if ((autoCommissionsEnableMask & NWK_STEERING_MASK) != 0U)
   {
     retMode = BDB_COMMISSIONING_NWK_STEERING;
-    autoCommissionsEnableMask &= ~NWK_STEERING_MASK;
+    autoCommissionsEnableMask &= (uint8_t)~NWK_STEERING_MASK;
   }
-  else if (autoCommissionsEnableMask & NWK_FORMATION_MASK)
+  else if ((autoCommissionsEnableMask & NWK_FORMATION_MASK) != 0U)
   {
     retMode = BDB_COMMISSIONING_NWK_FORMATION;
-    autoCommissionsEnableMask &=  ~NWK_FORMATION_MASK;
+    autoCommissionsEnableMask &=  (uint8_t)~NWK_FORMATION_MASK;
   }
-  else if (autoCommissionsEnableMask & FINDING_BINDING_MASK)
+  else if ((autoCommissionsEnableMask & FINDING_BINDING_MASK) != 0U)
   {
     retMode = BDB_COMMISSIONING_FINDING_BINDING;
-    autoCommissionsEnableMask &=  ~FINDING_BINDING_MASK;
+    autoCommissionsEnableMask &=  (uint8_t)~FINDING_BINDING_MASK;
   }
   else
-  { //error
+  {  
+      //add else for avoid misra 15.7
   }
     return retMode;
 }
@@ -480,18 +486,19 @@ void resetReportConfig(void)
                                               ZCL_CLUSTER_SIDE_SERVER);
       ZclAttribute_t *attr = NULL;
 
-      if(!cluster)
+      if(cluster == NULL)
+      {
         continue;
-
+      }
       attr = (ZclAttribute_t *)cluster->attributes;
       // For all the attributes
       for (uint8_t attrIndex = 0; attrIndex < cluster->attributesAmount; attrIndex++)
       {
         // check if the attribute is reportable and the 'reporting configured' is already set
-        if ((attr->properties & ZCL_REPORTABLE_ATTRIBUTE) && (attr->properties & ZCL_REPORTING_CONFIGURED))
+        if ((bool)(attr->properties & ZCL_REPORTABLE_ATTRIBUTE) && (bool)(attr->properties & ZCL_REPORTING_CONFIGURED))
         {
           // Resetting the attribute's reporting configuration property
-          attr->properties &= ~ZCL_REPORTING_CONFIGURED;
+          attr->properties &= (uint8_t)(~ZCL_REPORTING_CONFIGURED);
         }
         attr = jumpToNextAttribute(attr);
       }
@@ -508,20 +515,20 @@ void ZDO_MgmtNwkUpdateNotf_CB(ZDO_MgmtNwkUpdateNotf_t *notify)
   event.eventGroup = EVENT_ZIGBEE;
   switch(notify->status)
   {
-    case ZDO_CHILD_JOINED_STATUS:
+    case (uint8_t)ZDO_CHILD_JOINED_STATUS:
     {
        ExtPanId_t csExtPanId;
        const ExtAddr_t* parentExtAddr =  NWK_GetExtByShortAddress(notify->childAddr.shortAddr);
        CS_ReadParameter(CS_EXT_PANID_ID, &csExtPanId);
        event.eventId = EVENT_CHILD_JOINED;
        event.eventData.ParentChildInfo.shortAddress = notify->childAddr.shortAddr;
-       memcpy(&event.eventData.ParentChildInfo.extendedAddress, parentExtAddr, 8);
+       (void)memcpy(&event.eventData.ParentChildInfo.extendedAddress, parentExtAddr, 8);
        event.eventData.ParentChildInfo.extendedPanId = csExtPanId;
        APP_Zigbee_Handler(event);
     }
     break;
 
-    case ZDO_CHILD_REMOVED_STATUS:
+    case (uint8_t)ZDO_CHILD_REMOVED_STATUS:
     {
       event.eventId = EVENT_CHILD_REMOVED;
       event.eventData.data = notify->childInfo.shortAddr;
@@ -529,15 +536,16 @@ void ZDO_MgmtNwkUpdateNotf_CB(ZDO_MgmtNwkUpdateNotf_t *notify)
     }
     break;
 
-    case ZDO_NWK_UPDATE_STATUS:
+    case (uint8_t)ZDO_NWK_UPDATE_STATUS:
     {
       event.eventId = EVENT_NWK_UPDATE;
-	  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+	  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
       APP_Zigbee_Handler(event);
     }
     break;
 
     default:
+        /* TO DO */
     break;
   }
 }
@@ -554,7 +562,7 @@ void ZDO_WakeUpInd_CB(void)
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_ZIGBEE;
   event.eventId = EVENT_WAKEUP;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -628,7 +636,7 @@ static void initApp(void)
   DeviceType_t deviceType;
   //Reads the UID set in configuration.h
   CS_ReadParameter(CS_UID_ID,&extAddr);
-  if (extAddr == 0 || extAddr > APS_MAX_UNICAST_EXT_ADDRESS)
+  if (extAddr == 0U || extAddr > APS_MAX_UNICAST_EXT_ADDRESS)
   {
     //BSP_ReadUid(&extAddr); //Will read the UID from chip
     CS_WriteParameter(CS_UID_ID, &extAddr); //Writes the read UID to the ram
@@ -647,7 +655,7 @@ static void initApp(void)
   BDB_EventsSubscribe(&s_BDB_EventsCallback);
   BDB_Init(bdbInitCompleted);
   
-  
+
   //BSP_OpenLeds();
   appDeviceInit();
 #ifdef _ZCL_REPORTING_SUPPORT_
@@ -661,7 +669,9 @@ static void initApp(void)
 #endif //_GREENPOWER_SUPPORT_
 
   epIndex = 0;
+  {
     appState = APP_START_WAIT_STATE;
+  }
 #if defined(ZIGBEE_END_DEVICE)
     restartActivity();
 #endif	
@@ -681,7 +691,7 @@ static void Connected(void)
 #if (MICROCHIP_APPLICATION_SUPPORT == 1)
     CS_ReadParameter(CS_EXT_PANID_ID, &csExtPanId);
     // CS_EXT_PANID is 0 on default, after joining any network its ext panId shall be retained
-    if (!csExtPanId)
+    if (!(bool)csExtPanId)
     {
       CS_ReadParameter(CS_NWK_EXT_PANID_ID, &csNwkExtPanId);
       CS_WriteParameter(CS_EXT_PANID_ID, &csNwkExtPanId);
@@ -697,7 +707,7 @@ static void Connected(void)
   {
     // On reconnection, end device will restore its sleep period value
     // because it was set to zero on previous disconnected event
-    if (sleepPeriodConfigured)
+    if (sleepPeriodConfigured != 0U)
     {
       CS_WriteParameter(CS_END_DEVICE_SLEEP_PERIOD_ID, &sleepPeriodConfigured);
       sleepPeriodConfigured = 0;
@@ -713,7 +723,7 @@ static void Connected(void)
 
   event.eventGroup = EVENT_ZIGBEE;
   event.eventId = EVENT_NETWORK_ESTABLISHED;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -737,7 +747,7 @@ static void Disconnected(void)
     // slow polling i.e polling in sleep period interval and taking backup of 
     // sleep period value
     CS_ReadParameter(CS_END_DEVICE_SLEEP_PERIOD_ID, &sleepPeriod);
-    if (sleepPeriod)
+    if (sleepPeriod != 0U)
     {
       sleepPeriodConfigured = sleepPeriod;
       sleepPeriod = 0;
@@ -784,7 +794,7 @@ static void IdentifyStartIndication(uint16_t timeoutInSec)
 static void IdentifyStopIndication(void)
 {
   visualizationPeriodsCounter = 0;
-  HAL_StopAppTimer(&visualizationTimer);
+  (void)HAL_StopAppTimer(&visualizationTimer);
   appIdentifyStop();
   LED_OFF();
 }
@@ -798,10 +808,10 @@ static void IdentifyStopIndication(void)
 ******************************************************************************/
 static void JoinNetworkIndication(uint16_t groupIdFirst, uint16_t groupIdLast)
 {
-  if (!visualizationPeriodsCounter)
+  if (!(bool)visualizationPeriodsCounter)
   {
     visualizationPeriodsCounter = JOIN_NETWORK_VISUALIZATION_PERIODS;
-    HAL_StartAppTimer(&visualizationTimer);
+    (void)HAL_StartAppTimer(&visualizationTimer);
     LED_ON();
   }
   else
@@ -831,6 +841,7 @@ void process_ZB_evt(void)
         break;
 
       default:
+          /* TO DO */
         break;
   }
 }

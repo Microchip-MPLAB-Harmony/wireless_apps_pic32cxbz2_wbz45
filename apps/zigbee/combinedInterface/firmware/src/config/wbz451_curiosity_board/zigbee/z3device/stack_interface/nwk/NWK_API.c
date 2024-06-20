@@ -543,7 +543,7 @@ uint8_t ZB_NWK_GetSecurityLevel(void)
 ******************************************************************************/
 bool ZB_NWK_GetSecureAllFrames(void)
 {
-  bool ret = 0;
+  bool ret = false;
 
   apiRequest.unpack_fn = (unpack_ptr)NWK_GetSecureAllFrames_Unpack;
   apiRequest.parameters = &ret;

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_COMMANDS_H
-#define _ZDO_COMMANDS_H
+#if !defined ZDO_COMMANDS_H
+#define ZDO_COMMANDS_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -206,5 +206,5 @@ ZDO_PRIVATE void zdoPrepareResponseParameters(const APS_DataInd_t *const apsData
  ******************************************************************************/
 ZDO_PRIVATE void zdoZdpResponseConf(APS_DataConf_t *apsDataConf);
 
-#endif /* _ZDO_COMMANDS_H */
+#endif /* ZDO_COMMANDS_H */
 /** eof zdoCommands.h */

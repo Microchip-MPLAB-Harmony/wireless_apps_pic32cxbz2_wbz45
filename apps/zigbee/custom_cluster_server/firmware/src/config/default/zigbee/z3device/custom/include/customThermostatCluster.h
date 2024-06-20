@@ -39,13 +39,12 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMTHERMOSTATCLUSTER_H
-#define _CUSTOMTHERMOSTATCLUSTER_H
+#ifndef CUSTOMTHERMOSTATCLUSTER_H
+#define CUSTOMTHERMOSTATCLUSTER_H
 
 /******************************************************************************
                     Includes section
 ******************************************************************************/
-#define ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
 #include <zcl/include/zclThermostatCluster.h>
 
 /******************************************************************************
@@ -158,6 +157,6 @@ void setPiCoolingDemand(uint8_t temp);
 void setPiHeatingDemand(uint8_t temp);
 
 #endif
-#endif // _CUSTOMTHERMOSTATCLUSTER_H
+#endif // CUSTOMTHERMOSTATCLUSTER_H
 
 // eof customThermostatCluster.h

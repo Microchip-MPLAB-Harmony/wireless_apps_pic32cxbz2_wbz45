@@ -74,7 +74,7 @@ extern "C" {
 /**@defgroup BLE_TRS_ASSIGN_HANDLE BLE_TRS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE Transparent Service.
  * @{ */
-#define TRS_START_HDL                               0x00A0                                      /**< The start attribute handle of transparent service. */
+#define TRS_START_HDL                               (0x00A0U)                                      /**< The start attribute handle of transparent service. */
 /** @} */
 
 /**@brief Definition of BLE transparent attribute handle */

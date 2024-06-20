@@ -58,7 +58,7 @@ static CRYPT_AES_CTX aes;
 
 static DECLARE_QUEUE(halAesRequestQueue);
 
-HAL_AES_EncryptReq_t req;
+static HAL_AES_EncryptReq_t request;
 
 
 /**************************************************************************//**
@@ -67,9 +67,9 @@ HAL_AES_EncryptReq_t req;
 \param[in] reqParams_s - request structure of AES
 \return None
 ******************************************************************************/
-void HAL_AES_EncryptReq(HAL_AES_EncryptReq_t *reqParams_s)
+void HAL_AES_EncryptReq(HAL_AES_EncryptReq_t *reqParams)
 {
-  memcpy(&req,reqParams_s , sizeof(HAL_AES_EncryptReq_t));
+  (void)memcpy(&request,reqParams , sizeof(HAL_AES_EncryptReq_t)); //to kill Misra rule 17.7 "return value of a non-void function is unused"
 
   halPostTask(HAL_SM_REQ);
 }
@@ -101,12 +101,12 @@ void halAesInit(void)
 
 void halAesSetKeyIV(const uint8_t *key, const uint8_t *iv)
 {
-    CRYPT_AES_KeySet(&aes, key, AES_BLOCK_SIZE, iv, AES_DECRYPTION);
+    (void)CRYPT_AES_KeySet(&aes, key, AES_BLOCK_SIZE, iv, AES_DECRYPTION);
 }
 
 void halAesCBC_Decrypt(uint8_t *text, uint32_t length)
 {
-    CRYPT_AES_CBC_Decrypt(&aes, text, text, length);
+    (void)CRYPT_AES_CBC_Decrypt(&aes, text, text, length);
 }
 
 
@@ -121,31 +121,33 @@ void halSmRequestHandler (void)
 {
     HAL_AES_EncryptReq_t *reqParams = NULL;
 
-    reqParams = &req; //getQueueElem(&halAesRequestQueue);
-    if (NULL != reqParams)
+    reqParams = &request; //getQueueElem(&halAesRequestQueue);
     {
         switch (reqParams->aesCmd)
         {
             case SM_SET_KEY_COMMAND :
-            CRYPT_AES_KeySet(&aes, reqParams->text,AES_BLOCK_SIZE, NULL/*IV - For ECB*/, AES_ENCRYPTION);
-            CRYPT_AES_KeySet(&aes, reqParams->text,AES_BLOCK_SIZE, NULL/*IV - For ECB*/, AES_DECRYPTION);          
+            (void)CRYPT_AES_KeySet(&aes, reqParams->text,AES_BLOCK_SIZE, NULL/*IV - For ECB*/, AES_ENCRYPTION);
+            (void)CRYPT_AES_KeySet(&aes, reqParams->text,AES_BLOCK_SIZE, NULL/*IV - For ECB*/, AES_DECRYPTION);          
             break;
         
             case SM_ECB_ENCRYPT_COMMAND :
-            CRYPT_AES_DIRECT_Encrypt(&aes, reqParams->text,reqParams->text);
+            (void)CRYPT_AES_DIRECT_Encrypt(&aes, reqParams->text,reqParams->text);
             break;
 
             case SM_ECB_DECRYPT_COMMAND :
-            CRYPT_AES_DIRECT_Decrypt(&aes, reqParams->text,reqParams->text);
+            (void)CRYPT_AES_DIRECT_Decrypt(&aes, reqParams->text,reqParams->text);
             break;
 
 
             default:
-            SYS_E_ASSERT_FATAL(false, HAL_AES);
+            {
+              bool condition = false;    
+              SYS_E_ASSERT_FATAL(condition, HAL_AES);
+            }
             break;
         }
 
-        SYS_E_ASSERT_FATAL(reqParams->encryptConf, HAL_AES);
+        SYS_E_ASSERT_FATAL((reqParams->encryptConf != NULL), HAL_AES);
         reqParams->encryptConf();
     }
 }

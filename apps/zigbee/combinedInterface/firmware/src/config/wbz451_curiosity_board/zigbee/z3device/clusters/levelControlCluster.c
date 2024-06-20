@@ -100,13 +100,14 @@ void levelControlSendMoveToLevel(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint
   uint8_t level, uint16_t time, bool onOff, uint8_t optionsMask, uint8_t optionsOverride)
 {
   ZCL_Request_t *req;
-  uint8_t cmdSize = sizeof(ZCL_MoveToLevelWithOptions_t);
-  uint8_t command = onOff ? ZCL_LEVEL_CONTROL_CLUSTER_MOVE_TO_LEVEL_W_ONOFF_COMMAND_ID :
-    ZCL_LEVEL_CONTROL_CLUSTER_MOVE_TO_LEVEL_COMMAND_ID;
-
-  if (!(req = getFreeCommand()))
+  uint8_t cmdSize = (uint8_t)sizeof(ZCL_MoveToLevelWithOptions_t);
+  uint8_t command = (uint8_t)(onOff ? ZCL_LEVEL_CONTROL_CLUSTER_MOVE_TO_LEVEL_W_ONOFF_COMMAND_ID :
+    ZCL_LEVEL_CONTROL_CLUSTER_MOVE_TO_LEVEL_COMMAND_ID);
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
+  }
   fillCommandRequest(req, command, cmdSize, srcEp);
 
   
@@ -133,13 +134,14 @@ void levelControlSendMove(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
   uint8_t moveMode, uint8_t rate, bool onOff, uint8_t optionsMask, uint8_t optionsOverride)
 {
   ZCL_Request_t *req;
-  uint8_t cmdSize = sizeof(ZCL_MoveWithOptions_t);
-  uint8_t command = onOff ? ZCL_LEVEL_CONTROL_CLUSTER_MOVE_W_ONOFF_COMMAND_ID :
-    ZCL_LEVEL_CONTROL_CLUSTER_MOVE_COMMAND_ID;
-
-  if (!(req = getFreeCommand()))
+  uint8_t cmdSize = (uint8_t)sizeof(ZCL_MoveWithOptions_t);
+  uint8_t command = (uint8_t)(onOff ? ZCL_LEVEL_CONTROL_CLUSTER_MOVE_W_ONOFF_COMMAND_ID :
+    ZCL_LEVEL_CONTROL_CLUSTER_MOVE_COMMAND_ID);
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
+  }
   fillCommandRequest(req, command, cmdSize, srcEp);
   
   fillMovePayload((ZCL_MoveWithOptions_t *)req->requestPayload, moveMode, rate,
@@ -167,13 +169,14 @@ void levelControlSendStep(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
   uint8_t stepMode, uint8_t size, uint16_t time, bool onOff, uint8_t optionsMask, uint8_t optionsOverride)
 {
   ZCL_Request_t *req;
-  uint8_t cmdSize = sizeof(ZCL_StepWithOptions_t);
-  uint8_t command = onOff ? ZCL_LEVEL_CONTROL_CLUSTER_STEP_W_ONOFF_COMMAND_ID :
-    ZCL_LEVEL_CONTROL_CLUSTER_STEP_COMMAND_ID;
-
-  if (!(req = getFreeCommand()))
+  uint8_t cmdSize = (uint8_t)sizeof(ZCL_StepWithOptions_t);
+  uint8_t command = (uint8_t)(onOff ? ZCL_LEVEL_CONTROL_CLUSTER_STEP_W_ONOFF_COMMAND_ID :
+    ZCL_LEVEL_CONTROL_CLUSTER_STEP_COMMAND_ID);
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
+  }
   fillCommandRequest(req, command, cmdSize, srcEp);
   
   fillStepPayload((ZCL_StepWithOptions_t *)req->requestPayload, stepMode, size, time,
@@ -199,15 +202,16 @@ void levelControlSendStop(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
 {
   ZCL_Request_t *req;
   uint8_t cmdSize = 0;
-  uint8_t command = onOff ? ZCL_LEVEL_CONTROL_CLUSTER_STOP_W_ONOFF_COMMAND_ID :
-    ZCL_LEVEL_CONTROL_CLUSTER_STOP_COMMAND_ID;
+  uint8_t command = (uint8_t)(onOff ? ZCL_LEVEL_CONTROL_CLUSTER_STOP_W_ONOFF_COMMAND_ID :
+    ZCL_LEVEL_CONTROL_CLUSTER_STOP_COMMAND_ID);
     
   ZCL_StopWithOptions_t *cmd;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
-  cmdSize = sizeof(ZCL_StopWithOptions_t);
+  }
+  cmdSize = (uint8_t)sizeof(ZCL_StopWithOptions_t);
 
   fillCommandRequest(req, command, cmdSize, srcEp);
   

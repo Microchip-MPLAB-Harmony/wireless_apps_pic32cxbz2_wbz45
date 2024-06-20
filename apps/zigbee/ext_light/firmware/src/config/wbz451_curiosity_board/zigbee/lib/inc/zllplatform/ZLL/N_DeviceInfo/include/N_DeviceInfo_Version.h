@@ -44,8 +44,8 @@
 
 #define PRODUCT                 "ZB"
 #define MAJOR_NUM               "5"
-#define MINOR_NUM               "1"
-#define MINOR_DERIVATIVE_NUM    "1"
+#define MINOR_NUM               "2"
+#define MINOR_DERIVATIVE_NUM    "0"
 #define BRANCH_ID               "3"
 #define BRANCH_ITERATION_NUM    "1"
 #define RELEASE_M               "P"

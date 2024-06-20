@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMCOLORCONTROLCLUSTER_H
-#define _CUSTOMCOLORCONTROLCLUSTER_H
+#ifndef CUSTOMCOLORCONTROLCLUSTER_H
+#define CUSTOMCOLORCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes
@@ -105,6 +105,6 @@ void colorControlStopIdentifyEffect(void);
 ******************************************************************************/
 void customUpdateCoupledColorTemperature(bool deviceOn, bool updateColorTemp, uint8_t level);
 
-#endif // _CUSTOMCOLORCONTROLCLUSTER_H
+#endif // CUSTOMCOLORCONTROLCLUSTER_H
 
 // eof customColorControlCluster.h

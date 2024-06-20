@@ -57,7 +57,6 @@
 // Section: Data Types
 // *****************************************************************************
 // *****************************************************************************
-
 typedef struct BLE_DM_InfoCtrl_T
 {
     BLE_DM_InfoConn_T *  conn[BLE_GAP_MAX_LINK_NBR];
@@ -188,13 +187,14 @@ void BLE_DM_Info(STACK_Event_T *p_stackEvent)
                         {
                             BLE_DM_PairedDevInfo_T  devInfo;
 
+                            (void)memset(&devInfo, 0, sizeof(BLE_DM_PairedDevInfo_T));
                             if(BLE_DM_DdsGetPairedDevice(p_conn->devId, &devInfo)==MBA_RES_SUCCESS)
                             {
                                 BLE_SMP_PairInfo_T      pairInfo;
 
                                 pairInfo.lesc=devInfo.lesc;
                                 pairInfo.auth=devInfo.auth;
-                                BLE_SMP_UpdateBondingInfo(p_conn->connHandle, devInfo.encryptKeySize, &pairInfo);
+                                (void)BLE_SMP_UpdateBondingInfo(p_conn->connHandle, devInfo.encryptKeySize, &pairInfo);
                             }
                         }
 
@@ -240,6 +240,9 @@ void BLE_DM_Info(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -352,7 +355,9 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
     {
         BLE_DM_PairedDevInfo_T pairedInfo;
 
-        if ((result = BLE_DM_DdsGetPairedDevice(p_devId[i], &pairedInfo)) != MBA_RES_SUCCESS)
+        (void)memset(&pairedInfo, 0, sizeof(BLE_DM_PairedDevInfo_T));
+        result = BLE_DM_DdsGetPairedDevice(p_devId[i], &pairedInfo);
+        if (result != MBA_RES_SUCCESS)
         {
             break;
         }
@@ -365,7 +370,7 @@ uint16_t BLE_DM_InfoSetResolvingList(uint8_t devCnt, uint8_t const *p_devId, uin
             break;
         }
 
-        if (pairedInfo.localIrk[0]==0x00 && memcmp(pairedInfo.localIrk, pairedInfo.localIrk+1, 15) == 0)
+        if ((pairedInfo.localIrk[0]==0x00U) && (memcmp(pairedInfo.localIrk, pairedInfo.localIrk+1, 15) == 0))
         {
             (void)memcpy(p_resolvingList[i].localIrk, privacy.localIrk, 16);
         }

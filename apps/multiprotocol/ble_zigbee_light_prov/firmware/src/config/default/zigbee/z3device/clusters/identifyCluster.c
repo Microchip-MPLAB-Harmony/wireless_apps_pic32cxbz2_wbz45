@@ -64,9 +64,9 @@ DECLARE_QUEUE(identifySubscribers);
 /******************************************************************************
                     Prototypes section
 ******************************************************************************/
-static void fillIdentifyQueryResponsePayload(ZCL_IdentifyQueryResponse_t *payload, uint16_t time);
+static void fillIdentifyQueryResponsePayload(ZCL_IdentifyQueryResponse_t *payload, uint16_t identifyTime);
 static void fillTriggerEffectPayload(ZCL_TriggerEffect_t *payload, uint8_t effectIdentifier, uint8_t effectVariant);
-static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t time);
+static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t identifyTime);
 
 /**************************************************************************//**
 \brief Adds record to a list of subscribers
@@ -76,40 +76,43 @@ static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t time);
 void identifySubscribe(IdentifySubscriber_t *subscriber)
 {
   if (!isQueueElem(&identifySubscribers, subscriber))
+  {
     if(!putQueueElem(&identifySubscribers, subscriber))
     {
       /* failed to queue */
     }
+  }
 }
 
 /**************************************************************************//**
 \brief Identify reset subscribers queue
 ******************************************************************************/
-void idenityResetSubscribers()
+void idenityResetSubscribers(void)
 {
   resetQueue(&identifySubscribers);
 }
 
-/**CHNANGE - Add SrcEp inteh function header in all file wherever it isi required*/
+/**CHNANGE - Add srcEndpoint inteh function header in all file wherever it isi required*/
 /**************************************************************************//**
 \brief Sends Identify request
 
 \param[in] mode - address mode;
 \param[in] addr - short address of destination node;
 \param[in] ep   - destination endpoint;
-\param[in] srcEp- source endpoint;
-\param[in] time - identify time
+\param[in] srcEndpoint- source endpoint;
+\param[in] identifyTime - identify time
 ******************************************************************************/
-void identifySendIdentify(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,  Endpoint_t srcEp,
-  uint16_t time)
+void identifySendIdentify(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,  Endpoint_t srcEndpoint,
+  uint16_t identifyTime)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
-  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_IDENTIFY_COMMAND_ID, sizeof(ZCL_Identify_t), srcEp);
-  fillIdentifyPayload((ZCL_Identify_t *)req->requestPayload, time);
+  }
+  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_IDENTIFY_COMMAND_ID, (uint8_t)sizeof(ZCL_Identify_t), srcEndpoint);
+  fillIdentifyPayload((ZCL_Identify_t *)req->requestPayload, identifyTime);
   fillDstAddressing(&req->dstAddressing, mode, addr, ep, IDENTIFY_CLUSTER_ID);
   ZCL_CommandManagerSendCommand(req);
 }
@@ -118,11 +121,11 @@ void identifySendIdentify(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
 \brief Fills Identify command structure
 
 \param[out] payload - pointer to command structure;
-\param[in]  time    - identify time
+\param[in]  identifyTime    - identify time
 ******************************************************************************/
-static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t time)
+static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t identifyTime)
 {
-  payload->identifyTime = time;
+  payload->identifyTime = identifyTime;
 }
 
 /**************************************************************************//**
@@ -131,19 +134,20 @@ static void fillIdentifyPayload(ZCL_Identify_t *payload, uint16_t time)
 \param[in] mode     - address mode;
 \param[in] addr     - short address of destination node;
 \param[in] ep       - destination endpoint;
-\param[in] srcEp    - source endpoint;
+\param[in] srcEndpoint    - source endpoint;
 \param[in] effectId - Effect Id
 \param[in] effectId - Effect varient
 ******************************************************************************/
-void identifySendTriggerEffect(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
+void identifySendTriggerEffect(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
   uint8_t effectId, uint8_t effectVariant)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
-  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_TRIGGER_EFFECT_COMMAND_ID, sizeof(ZCL_TriggerEffect_t), srcEp);
+  }
+  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_TRIGGER_EFFECT_COMMAND_ID, (uint8_t)sizeof(ZCL_TriggerEffect_t), srcEndpoint);
   fillTriggerEffectPayload((ZCL_TriggerEffect_t *)req->requestPayload, effectId, effectVariant);
   fillDstAddressing(&req->dstAddressing, mode, addr, ep, IDENTIFY_CLUSTER_ID);
   ZCL_CommandManagerSendCommand(req);
@@ -167,16 +171,17 @@ static void fillTriggerEffectPayload(ZCL_TriggerEffect_t *payload, uint8_t effec
 \param[in] mode  - address mode;
 \param[in] addr  - short address of destination node;
 \param[in] ep    - destination endpoint;
-\param[in] srcEp - source endpoint;
+\param[in] srcEndpoint - source endpoint;
 ******************************************************************************/
-void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,  Endpoint_t srcEp)
+void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,  Endpoint_t srcEndpoint)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return;
-
-  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_IDENTIFY_QUERY_COMMAND_ID, 0, srcEp);
+  }
+  fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_IDENTIFY_QUERY_COMMAND_ID, 0, srcEndpoint);
   fillDstAddressing(&req->dstAddressing, mode, addr, ep, IDENTIFY_CLUSTER_ID);
   ZCL_CommandManagerSendCommand(req);
 }
@@ -184,20 +189,21 @@ void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t
 \brief Sends Identidy Query Response command
 
 \param[in] addressing - addressing information about sender device
-\param[in] srcEp          - source endpoint;
+\param[in] srcEndpoint          - source endpoint;
 \param[in] identifyTime   - identifyTime;
 
 \returns status of sending
 ******************************************************************************/
-ZCL_Status_t sendIdentifyQueryResponse(ZCL_Addressing_t *addressing, Endpoint_t srcEp, uint16_t identifyTime)
+ZCL_Status_t sendIdentifyQueryResponse(ZCL_Addressing_t *addressing, Endpoint_t srcEndpoint, uint16_t identifyTime)
 {
   ZCL_Request_t *req;
-
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_IDENTIFY_CLUSTER_IDENTIFY_QUERY_RESPONSE_COMMAND_ID,
-                     sizeof(ZCL_IdentifyQueryResponse_t), srcEp);
+                     (uint8_t)sizeof(ZCL_IdentifyQueryResponse_t), srcEndpoint);
   /* to be done based on the endpoint */
   fillIdentifyQueryResponsePayload((ZCL_IdentifyQueryResponse_t *)req->requestPayload, identifyTime);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
@@ -210,23 +216,25 @@ ZCL_Status_t sendIdentifyQueryResponse(ZCL_Addressing_t *addressing, Endpoint_t 
 \brief Fills Identify Query Response command structure
 
 \param[out] payload - pointer to command structure;
-\param[in]  time    - identify time
+\param[in]  identifyTime    - identify time
 ******************************************************************************/
-static void fillIdentifyQueryResponsePayload(ZCL_IdentifyQueryResponse_t *payload, uint16_t time)
+static void fillIdentifyQueryResponsePayload(ZCL_IdentifyQueryResponse_t *payload, uint16_t identifyTime)
 {
-  payload->timeout = time;
+  payload->timeout = identifyTime;
 }
 
 /**CHANGE - Check LED behaviour and need to be corrected if required */
 /**************************************************************************//**
 \brief Makes device to start identify itself
 
-\param[in] time - identifying time in seconds
+\param[in] identifyTime - identifying time in seconds
 ******************************************************************************/
-void idetifyStartIdentifyingCb(uint16_t time, void (*cb)(void))
+void idetifyStartIdentifyingCb(uint16_t identifyTime, void (*cb)(void))
 {
-  for (int8_t i = 0;i < APP_ENDPOINTS_AMOUNT;i++)
-    deviceBindReqs[i]->startIdentifyingFn(time, cb);
+  for (uint8_t i = 0;i < APP_ENDPOINTS_AMOUNT;i++)
+  {
+    deviceBindReqs[i]->startIdentifyingFn(identifyTime, cb);
+  }
 }
 
 //eof identifyCluster.c

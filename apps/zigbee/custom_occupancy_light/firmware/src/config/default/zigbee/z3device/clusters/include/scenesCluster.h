@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SCENESCLUSTER_H
-#define _SCENESCLUSTER_H
+#ifndef SCENESCLUSTER_H
+#define SCENESCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -100,14 +100,14 @@ ZCL_Status_t removeScene(ZCL_RemoveScene_t *removeScene, Endpoint_t srcEp, Scene
 
 \returns status of scene storing
 ******************************************************************************/
-ZCL_Status_t storeScene(ZCL_StoreScene_t *storeScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
+ZCL_Status_t storeScene(ZCL_StoreScene_t *storeSceneReq, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
 
 /**************************************************************************//**
 \brief Recalls scene from scene table
 
 \param[in] recallScene - the pointer to Recall Scene request
 ******************************************************************************/
-ZCL_Status_t recallScene(ZCL_RecallScene_t *recallScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
+ZCL_Status_t recallScene(ZCL_RecallScene_t *recalSceneReq, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
 
 /**************************************************************************//**
 \brief Removes all scenes from scene table
@@ -128,7 +128,7 @@ ZCL_Status_t removeAllScenes(uint16_t group, Endpoint_t srcEp, Scene_t* scenePoo
 
 \returns status of scene storing
 ******************************************************************************/
-ZCL_Status_t copyScene(ZCL_CopyScene_t *copyScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
+ZCL_Status_t copyScene(ZCL_CopyScene_t *copySceneReq, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
 
 /**************************************************************************//**
 \brief Recall the global scene
@@ -324,19 +324,6 @@ uint8_t scenesClusterRemoveByGroup(uint16_t group, Scene_t *scenePool);
 /**************************************************************************//**
 \brief Copy scene(s) in scene table
 
-\param[in] copyScene - the pointer to Copy Scene request
-\param[in] srcEp     - source endpoint
-\param[in] scenePool - pointer to scene table
-\param[in] sceneAttributes - pointer to scene cluster attributes
-
-\returns status of scene storing
-******************************************************************************/
-ZCL_Status_t copyScene(ZCL_CopyScene_t *copyScene, Endpoint_t srcEp, Scene_t* scenePool,
-                       ZCL_SceneClusterServerAttributes_t* scenesAttributes);
-
-/**************************************************************************//**
-\brief Copy scene(s) in scene table
-
 \param[in] groupIdFrom - group id to copy from
 \param[in] sceneIdFrom - scene id to copy from
 \param[in] groupIdTo   - group id to copy to
@@ -405,4 +392,4 @@ void scenesSendEnhancedViewScene(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint
 void scenesSendCopyScene(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
   SceneMode_t copyMode, uint16_t gidFrom, uint16_t sidFrom, uint16_t gidTo, uint16_t sidTo);
 
-#endif //_SCENESCLUSTER_H
+#endif //SCENESCLUSTER_H

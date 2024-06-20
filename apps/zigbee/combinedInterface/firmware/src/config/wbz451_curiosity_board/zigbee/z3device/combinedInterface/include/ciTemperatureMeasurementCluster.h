@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CITEMERATUREMEASUREMENTCLUSTER_H
-#define _CITEMERATUREMEASUREMENTCLUSTER_H
+#ifndef CITEMERATUREMEASUREMENTCLUSTER_H
+#define CITEMERATUREMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -61,5 +61,5 @@ extern ZCL_TemperatureMeasurementClusterClientAttributes_t ciTemperatureMeasurem
 void ciTemperatureMeasurementClusterInit(void);
 
 
-#endif // _CITEMERATUREMEASUREMENTCLUSTER_H
+#endif // CITEMERATUREMEASUREMENTCLUSTER_H
 // eof ciTemperatureMeasurementCluster.h

@@ -38,8 +38,8 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-#ifndef _CUSTOMIASZONECLUSTER_H
-#define _CUSTOMIASZONECLUSTER_H
+#ifndef CUSTOMIASZONECLUSTER_H
+#define CUSTOMIASZONECLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -140,6 +140,6 @@ void fillDstAddressingServerWithAddrMode(ZCL_Addressing_t *addressing, APS_AddrM
  \param zoneStatusChangeValue - value of the status to trigger some actions
 *******************************************************************************/
 void zoneStatusChangeCommand(uint16_t zoneStatusChangeValue);
-#endif // _CUSTOMIASZONECLUSTER_H
+#endif // CUSTOMIASZONECLUSTER_H
 
 // eof customIasZoneCluster.h

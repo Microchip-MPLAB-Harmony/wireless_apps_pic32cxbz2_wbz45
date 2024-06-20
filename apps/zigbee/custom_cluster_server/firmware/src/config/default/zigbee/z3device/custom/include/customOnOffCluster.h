@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMONOFFCLUSTER_H
-#define _CUSTOMONOFFCLUSTER_H
+#ifndef CUSTOMONOFFCLUSTER_H
+#define CUSTOMONOFFCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -96,7 +96,7 @@ void onOffClusterSetGlobalSceneControl(void);
 ******************************************************************************/
 void customUpdateStartUpOnOffState(void);
 
-#endif // _CUSTOMONOFFCLUSTER_H
+#endif // CUSTOMONOFFCLUSTER_H
 
 // eof customOnOffCluster.h
 

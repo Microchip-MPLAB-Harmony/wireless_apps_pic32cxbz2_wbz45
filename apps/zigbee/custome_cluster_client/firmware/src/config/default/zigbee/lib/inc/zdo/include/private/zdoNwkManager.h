@@ -44,8 +44,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDONWKMANAGER_H
-#define _ZDONWKMANAGER_H
+#ifndef ZDONWKMANAGER_H
+#define ZDONWKMANAGER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -120,6 +120,6 @@ ZDO_PRIVATE bool zdoDiscoverNwkAddress(const ExtAddr_t *const addr);
 #endif
 #endif
 
-#endif // _ZDONWKMANAGER_H
+#endif // ZDONWKMANAGER_H
 
 // eof zdoNwkManager.h

@@ -66,22 +66,29 @@ Returns:
 ******************************************************************************/
 void halAddTimer(BC_Timer_t **head, BC_Timer_t *newTimer, uint32_t sysTime)
 {
-  if (!*head)
+  if (*head == NULL)
   {
     *head = newTimer;
     return;
   }
 
   BC_Timer_t *it, *prev = NULL;
-  for (it = *head; it; it = it->service.next)
+  for (it = *head; (it != NULL); it = it->service.next)
   {
     uint64_t remain;
     if (it->service.sysTimeLabel <= sysTime)
+    {
       remain = (uint64_t)(it->service.sysTimeLabel) + it->interval - sysTime;
+    }
     else
-      remain = (uint64_t)it->interval - ((uint32_t)~it->service.sysTimeLabel + 1) - sysTime;
+    {
+	  uint32_t remainingTimeLabel = ~(it->service.sysTimeLabel);
+      remain = (uint64_t)it->interval - ((uint64_t)remainingTimeLabel + 1ULL) - (uint64_t)sysTime;
+    }
     if ((remain <= UINT32_MAX) && (remain >= newTimer->interval))
+    {
       break;
+    }
     prev = it;
   }
   if (it == *head)
@@ -111,7 +118,7 @@ BC_Timer_t* halRemoveTimer(BC_Timer_t **head, BC_Timer_t *prev, BC_Timer_t *p)
   if (p == *head)
   {// removing first element of list
     t = p->service.next;
-    p->service.next = 0;
+    p->service.next = NULL;
     *head = t;
     return *head;
   }
@@ -120,7 +127,7 @@ BC_Timer_t* halRemoveTimer(BC_Timer_t **head, BC_Timer_t *prev, BC_Timer_t *p)
     if(prev != NULL)
 	{
 		prev->service.next = p->service.next;
-		p->service.next = 0;
+		p->service.next = NULL;
 		return prev->service.next;
 	}
 	else
@@ -141,11 +148,12 @@ BC_Timer_t *halFindPrevTimer(BC_Timer_t **head,  BC_Timer_t *p)
 {
   BC_Timer_t *t = *head;
 
-  for (; t ;)
+  for (; (t != NULL); t = t->service.next)
   {
     if (t->service.next == p)
+    {
       return t;
-    t = t->service.next;
+    }
   }
   return NULL;
 }

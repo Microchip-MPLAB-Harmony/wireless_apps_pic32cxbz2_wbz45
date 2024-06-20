@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MULTISENSOR_H
-#define _MULTISENSOR_H
+#ifndef MULTISENSOR_H
+#define MULTISENSOR_H
 
 /*****************************************************************************
  define section
@@ -68,6 +68,6 @@ void msDeviceTaskHandler(void);
                     Externals
 ******************************************************************************/
 
-#endif // _MULTISENSOR_H
+#endif // MULTISENSOR_H
 
 // eof multisensor.h

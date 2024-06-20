@@ -56,7 +56,7 @@
 
 enum
 {
-    MW_DFU_STATE_IDLE,
+    MW_DFU_STATE_IDLE=0X00U,
     MW_DFU_STATE_CONFIG,
     MW_DFU_STATE_FW_START,
     MW_DFU_STATE_FW_UPDATE
@@ -71,7 +71,7 @@ static uint32_t *sp_dfuIdent = NULL;
 uint16_t MW_DFU_Config(MW_DFU_Info_T * p_dfuInfo)
 {
     if ((p_dfuInfo->fwImageSize > MW_DFU_MAX_SIZE_FW_IMAGE) || (p_dfuInfo->fwImageSize == 0U)
-        || (p_dfuInfo->fwImageSize & (MW_DFU_FW_QUAD_WORD_SIZE-1U)))
+        || ((p_dfuInfo->fwImageSize & (MW_DFU_FW_QUAD_WORD_SIZE-1U)) != 0U))
     {
         return MBA_RES_INVALID_PARA;
     }
@@ -85,7 +85,7 @@ uint16_t MW_DFU_Config(MW_DFU_Info_T * p_dfuInfo)
 
 uint16_t MW_DFU_FwImageStart(void)
 {
-    if (s_dfuState == MW_DFU_STATE_IDLE)
+    if (s_dfuState == (uint8_t)MW_DFU_STATE_IDLE)
     {
         return MBA_RES_BAD_STATE;
     }
@@ -101,14 +101,14 @@ uint16_t MW_DFU_FwImageUpdate(uint16_t length, uint8_t *p_content)
     uint32_t * p_data;
     uint32_t addr;
 
-    if ((s_dfuState != MW_DFU_STATE_FW_START) && (s_dfuState != MW_DFU_STATE_FW_UPDATE))
+    if ((s_dfuState != (uint8_t)MW_DFU_STATE_FW_START) && (s_dfuState != (uint8_t)MW_DFU_STATE_FW_UPDATE))
     {
         return MBA_RES_BAD_STATE;
     }
 
     /* Check if image content length and offset are legal */
     if ((s_dfuAddr + length > MW_DFU_FW_START_ADDR + s_dfuSizeInfo.fwImageSize) || (length > MW_DFU_MAX_BLOCK_LEN)
-        || (length & (MW_DFU_FW_QUAD_WORD_SIZE-1U)) || (length == 0U))
+        || ((length & (MW_DFU_FW_QUAD_WORD_SIZE-1U)) != 0U) || (length == 0U))
     {
         return MBA_RES_INVALID_PARA;
     }

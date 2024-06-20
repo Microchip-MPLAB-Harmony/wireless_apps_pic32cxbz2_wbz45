@@ -64,7 +64,6 @@
 /******************************************************************************
                     Prototypes section
 ******************************************************************************/
-ZCL_Status_t storeScene(ZCL_StoreScene_t *storeScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
 
 static void fillViewRemoveStoreRecallScenePayload(ZCL_ViewScene_t *payload, uint16_t group, uint8_t scene);
 static void fillRecallScenePayload(ZCL_RecallScene_t *payload, uint16_t group, uint8_t scene, uint16_t time);
@@ -103,10 +102,13 @@ static uint8_t lightFillViewSceneResponsePayload(bool enhanced, ZCL_EnhancedView
 ZCL_Status_t removeAllScenes(uint16_t group, Endpoint_t srcEp, Scene_t* scenePool, uint8_t* currSceneCnt)
 {
   if (groupsIsValidGroup(group, srcEp))
+  {
     *currSceneCnt -= removeScenesByGroup(group, scenePool);
+  }
   else
+  {
     return ZCL_INVALID_FIELD_STATUS;
-
+  }
   return ZCL_SUCCESS_STATUS;
 }
 
@@ -146,7 +148,7 @@ static uint8_t lightFillViewSceneResponsePayload(bool enhanced , ZCL_EnhancedVie
   {/* The Transition Time (measured in tenths of a second) SHALL be calculated
     * from the standard transition time field of the scene table entry
     * (measured in seconds) and the new TransitionTime100ms field. */
-    enhancedViewSceneResp->transitionTime = scene->transitionTime * 10 + scene->transitionTime100ms;
+    enhancedViewSceneResp->transitionTime = (uint16_t)(scene->transitionTime * 10U + scene->transitionTime100ms);
   }
   else
   {/* For View Scene Response, transitionTime is given as 1 second per unit */
@@ -185,14 +187,14 @@ static uint8_t lightFillViewSceneResponsePayload(bool enhanced , ZCL_EnhancedVie
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
   enhancedViewSceneResp->colorControlClusterExtFields.clusterId = COLOR_CONTROL_CLUSTER_ID;
   enhancedViewSceneResp->colorControlClusterExtFields.length =
-    sizeof(ZCL_ExtensionFieldSets_t) + 2 * sizeof(uint16_t);
+    sizeof(ZCL_ExtensionFieldSets_t) + 2U * sizeof(uint16_t);
   enhancedViewSceneResp->colorControlClusterExtFields.currentX = scene->currentX;
   enhancedViewSceneResp->colorControlClusterExtFields.currentY = scene->currentY;
   size = sizeof(ZCL_EnhancedViewSceneResponse_t)
          - sizeof(uint8_t) /* status */ - sizeof(uint16_t) /* groupId */ - sizeof(uint8_t) /* sceneId */
          - sizeof(ZCL_ColorControlClusterExtensionFieldSet_t)
          + sizeof(ZCL_ExtensionFieldSets_t)
-         + 2 * sizeof(uint16_t);
+         + 2U * sizeof(uint16_t);
 #endif // APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
 
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT)
@@ -280,10 +282,10 @@ uint8_t fillGetSceneMembershipPayload(ZCL_GetSceneMembershipResponse_t *payload,
 
   if (groupsIsValidGroup(payload->groupId, srcEp ))
   {
-    payload->status = ZCL_SUCCESS_STATUS;
+    payload->status = (uint8_t)ZCL_SUCCESS_STATUS;
 
     payload->sceneCount = 0;
-    size += sizeof(uint8_t) /*sceneCount*/;
+    size += (uint8_t)sizeof(uint8_t) /*sceneCount*/;
 
     for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
     {
@@ -291,13 +293,13 @@ uint8_t fillGetSceneMembershipPayload(ZCL_GetSceneMembershipResponse_t *payload,
       {
         payload->sceneList[payload->sceneCount] = scenePool[i].sceneId;
         payload->sceneCount++;
-        size += sizeof(uint8_t) /*scene*/;
+        size += (uint8_t)sizeof(uint8_t) /*scene*/;
       }
     }
   }
   else
   {
-    payload->status = ZCL_INVALID_FIELD_STATUS;
+    payload->status = (uint8_t)ZCL_INVALID_FIELD_STATUS;
   }
 
   return size;
@@ -325,16 +327,16 @@ static void fillAddSceneToExtendedColorLightPayload(ZCL_AddScene_t *payload, uin
   ZCL_ColorControlClusterExtensionFieldSet_t *colorControlExt = (ZCL_ColorControlClusterExtensionFieldSet_t *)tmp;
 
   payload->groupId        = group;
-  payload->sceneId        = scene;
+  payload->sceneId        = (uint8_t)scene;
   payload->transitionTime = time;
   payload->name[0]        = 0;
 
   onOffExt->clusterId  = ONOFF_CLUSTER_ID;
-  onOffExt->length     = sizeof(onOffExt->onOffValue);
+  onOffExt->length     = (uint8_t)sizeof(onOffExt->onOffValue);
   onOffExt->onOffValue = onOff;
 
   levelControlExt->clusterId    = LEVEL_CONTROL_CLUSTER_ID;
-  levelControlExt->length       = sizeof(levelControlExt->currentLevel);
+  levelControlExt->length       = (uint8_t)sizeof(levelControlExt->currentLevel);
   levelControlExt->currentLevel = level;
 
   colorControlExt->clusterId    = COLOR_CONTROL_CLUSTER_ID;
@@ -358,9 +360,9 @@ static void fillCopyScenePayload(ZCL_CopyScene_t *payload, SceneMode_t mode, uin
 {
   payload->mode = mode;
   payload->groupIdFrom = gidFrom;
-  payload->sceneIdFrom = sidFrom;
+  payload->sceneIdFrom = (uint8_t)sidFrom;
   payload->groupIdTo = gidTo;
-  payload->sceneIdTo = sidTo;
+  payload->sceneIdTo = (uint8_t)sidTo;
 }
 /**************************************************************************//**
 \brief Process Add Scene  and Enhanced Add Scene command
@@ -380,10 +382,11 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
 
     scene = findSceneBySceneAndGroup(payload->groupId, payload->sceneId, scenePool);
 
-    if (!scene)
+    if (scene == NULL)
+    {
       scene = allocateScene(scenePool, currSceneCount); //incremant the device scene cluster SceneCount attribute);
-
-    if (scene)
+    }
+    if (scene != NULL)
     {
       status = ZCL_SUCCESS_STATUS;
 
@@ -391,8 +394,8 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
       scene->groupId = payload->groupId;
       if (enhanced)
       {
-        scene->transitionTime = payload->transitionTime / 10;
-        scene->transitionTime100ms = payload->transitionTime % 10;
+        scene->transitionTime = (uint16_t)(payload->transitionTime / 10U);
+        scene->transitionTime100ms = (uint8_t)(payload->transitionTime % 10U);
       }
       else
       {
@@ -401,7 +404,7 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
       }
 
       {
-        int8_t commandSize = (sizeof(ZCL_AddScene_t) + payload->name[0]);
+        int8_t commandSize = (int8_t)((uint8_t)(sizeof(ZCL_AddScene_t) + payload->name[0]));
         int8_t extFieldsSize = (int8_t)payloadLength - commandSize;
         uint8_t *extFields = (uint8_t *)payload + commandSize;
         ZCL_ExtensionFieldSets_t *ext;
@@ -410,52 +413,52 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
         {
           ext = (ZCL_ExtensionFieldSets_t *)extFields;
 
-          if (ONOFF_CLUSTER_ID == ext->clusterId)
+          if ((uint16_t)ONOFF_CLUSTER_ID == ext->clusterId)
           {
-            ZCL_OnOffClusterExtensionFieldSet_t *ext =
+            ZCL_OnOffClusterExtensionFieldSet_t *extension =
                 (ZCL_OnOffClusterExtensionFieldSet_t *)extFields;
 
-            scene->onOff = ext->onOffValue;
+            scene->onOff = extension->onOffValue;
           }
 
-          else if (LEVEL_CONTROL_CLUSTER_ID == ext->clusterId)
+          else if ((uint16_t)LEVEL_CONTROL_CLUSTER_ID == ext->clusterId)
           {
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT
-            ZCL_LevelControlClusterExtensionFieldSet_t *ext =
+            ZCL_LevelControlClusterExtensionFieldSet_t *extension =
                 (ZCL_LevelControlClusterExtensionFieldSet_t *)extFields;
 
-            scene->currentLevel = ext->currentLevel;
+            scene->currentLevel = extension->currentLevel;
 #else
             status = ZCL_INVALID_FIELD_STATUS;
 #endif
           }
 
-          else if (COLOR_CONTROL_CLUSTER_ID == ext->clusterId)
+          else if ((uint16_t)COLOR_CONTROL_CLUSTER_ID == ext->clusterId)
           {
 #if APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_CUSTOM_DEVICE
-            ZCL_ColorControlClusterExtensionFieldSet_t *ext =
+            ZCL_ColorControlClusterExtensionFieldSet_t *extension =
                 (ZCL_ColorControlClusterExtensionFieldSet_t *)extFields;
-            scene->currentX = ext->currentX;
-            scene->currentY = ext->currentY;
+            scene->currentX = extension->currentX;
+            scene->currentY = extension->currentY;
 #elif APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
-            ZCL_ColorControlClusterExtensionFieldSet_t *ext =
+            ZCL_ColorControlClusterExtensionFieldSet_t *extension =
                 (ZCL_ColorControlClusterExtensionFieldSet_t *)extFields;
 
             scene->colorMode = (ZCL_ZllEnhancedColorMode_t)lightColorControlClusterServerAttributes.colorMode.value;
-            scene->currentX = ext->currentX;
-            scene->currentY = ext->currentY;
+            scene->currentX = extension->currentX;
+            scene->currentY = extension->currentY;
 #else
              status = ZCL_INVALID_FIELD_STATUS;
 #endif // APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COLOR_LIGHT) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT)
-            if(!enhanced  || (enhanced && !ext->currentX && !ext->currentY))
+            if(!enhanced  || (enhanced && !(bool)(extension->currentX) && !(bool)(extension->currentY)))
             {
-              scene->enhancedCurrentHue = ext->enhancedCurrentHue;
-              scene->currentSaturation = ext->currentSaturation;
-              scene->colorLoopActive = ext->colorLoopActive;
-              scene->colorLoopDirection = ext->colorLoopDirection;
-              scene->colorLoopTime = ext->colorLoopTime;
-              scene->colorTemperature = ext->colorTemperature;
+              scene->enhancedCurrentHue = extension->enhancedCurrentHue;
+              scene->currentSaturation = extension->currentSaturation;
+              scene->colorLoopActive = extension->colorLoopActive;
+              scene->colorLoopDirection = extension->colorLoopDirection;
+              scene->colorLoopTime = extension->colorLoopTime;
+              scene->colorTemperature = extension->colorTemperature;
             }
             else
             {
@@ -468,7 +471,7 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
             }
 #endif
           }
-          else if (THERMOSTAT_CLUSTER_ID == ext->clusterId)
+          else if ((uint16_t)THERMOSTAT_CLUSTER_ID == ext->clusterId)
           {
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_THERMOSTAT)
             ZCL_ThermostatClusterExtensionFieldSet_t    *thermostatExt =
@@ -479,8 +482,12 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
             scene->systemMode = thermostatExt->systemMode;
 #endif
           }
+          else
+          {
+              //add else for avoid misra rule 15.7
+          }
           extFields += sizeof(ZCL_ExtensionFieldSets_t) + ext->length;
-          extFieldsSize -= ext->length;
+          extFieldsSize -= (int8_t)(ext->length);
         }
       }
     }
@@ -496,17 +503,21 @@ ZCL_Status_t processAddSceneCommand(bool enhanced, ZCL_Addressing_t *addressing,
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
+  }
   // Send Add scene response
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
+  }
 
-  cmdId =  enhanced ? ZCL_SCENES_CLUSTER_ENHANCED_ADD_SCENE_RESPONSE_COMMAND_ID :ZCL_SCENES_CLUSTER_ADD_SCENE_RESPONSE_COMMAND_ID;
+  cmdId =  (uint8_t)(enhanced ? ZCL_SCENES_CLUSTER_ENHANCED_ADD_SCENE_RESPONSE_COMMAND_ID :ZCL_SCENES_CLUSTER_ADD_SCENE_RESPONSE_COMMAND_ID);
 
-  fillCommandRequest(req, cmdId, sizeof(ZCL_AddSceneResponse_t), srcEp);
+  fillCommandRequest(req, cmdId, (uint8_t)sizeof(ZCL_AddSceneResponse_t), srcEp);
   fillAddRemoveStoreSceneResponsePayload((ZCL_AddSceneResponse_t *)req->requestPayload,
-                                          payload->groupId, payload->sceneId, status);
+                                          payload->groupId, payload->sceneId, (uint8_t)status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
   (void)payloadLength;
@@ -528,12 +539,15 @@ ZCL_Status_t processViewSceneCommand(bool enhanced, ZCL_Addressing_t *addressing
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
+  }
   // Send View Scene or Enhance view scene response
-  if (!(req = getFreeCommand()))
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   enhancedViewSceneResp = (ZCL_EnhancedViewSceneResponse_t*)req->requestPayload;
   enhancedViewSceneResp->groupId = payload->groupId;
   enhancedViewSceneResp->sceneId = payload->sceneId;
@@ -542,19 +556,23 @@ ZCL_Status_t processViewSceneCommand(bool enhanced, ZCL_Addressing_t *addressing
   {
     scene = findSceneBySceneAndGroup(payload->groupId, payload->sceneId, scenePool);
 
-    if (scene)
-      status = ZCL_SUCCESS_STATUS;
+    if (scene != NULL)
+    {
+      status = (uint8_t)ZCL_SUCCESS_STATUS;
+    }
     else
-      status = ZCL_NOT_FOUND_STATUS;
+    {
+      status = (uint8_t)ZCL_NOT_FOUND_STATUS;
+    }
   }
   else
   {
-    status = ZCL_INVALID_FIELD_STATUS;
+    status = (uint8_t)ZCL_INVALID_FIELD_STATUS;
   }
 
   enhancedViewSceneResp->status = status;
 
-  if(ZCL_SUCCESS_STATUS == status)
+  if((uint8_t)ZCL_SUCCESS_STATUS == status)
   {
     #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_THERMOSTAT)
       size = thFillViewSceneResponsePayload((ZCL_ViewSceneResponse_t *)req->requestPayload, scene, status, payload);
@@ -563,9 +581,13 @@ ZCL_Status_t processViewSceneCommand(bool enhanced, ZCL_Addressing_t *addressing
     #endif
   }
   if (enhanced)
+  {
     commandId = ZCL_SCENES_CLUSTER_ENHANCED_VIEW_SCENE_RESPONSE_COMMAND_ID;
+  }
   else
-    commandId = ZCL_SCENES_CLUSTER_VIEW_SCENE_RESPONSE_COMMAND_ID;
+  {
+    commandId = ZCL_SCENES_CLUSTER_VIEW_SCENE_RESPONSE_COMMAND_ID; 
+  }
 
   fillCommandRequest(req, commandId, size, srcEp);
 
@@ -588,30 +610,35 @@ ZCL_Status_t processRemoveSceneCommand(ZCL_Addressing_t *addressing,
 
     scene = findSceneBySceneAndGroup(payload->groupId, payload->sceneId, scenePool);
 
-    if (scene)
+    if (scene != NULL)
     {
-      status = ZCL_SUCCESS_STATUS;
+      status = (uint8_t)ZCL_SUCCESS_STATUS;
       if (freeScene(scene))
-        *currSceneCount -= 1;
+      {
+        *currSceneCount -= 1U;
+      }
     }
     else
     {
-      status = ZCL_NOT_FOUND_STATUS;
+      status = (uint8_t)ZCL_NOT_FOUND_STATUS;
     }
   }
   else
   {
-    status = ZCL_INVALID_FIELD_STATUS;
+    status = (uint8_t)ZCL_INVALID_FIELD_STATUS;
   }
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
-  fillCommandRequest(req, ZCL_SCENES_CLUSTER_REMOVE_SCENE_RESPONSE_COMMAND_ID, sizeof(ZCL_AddSceneResponse_t), srcEp);
+  }
+  fillCommandRequest(req, ZCL_SCENES_CLUSTER_REMOVE_SCENE_RESPONSE_COMMAND_ID, (uint8_t)sizeof(ZCL_AddSceneResponse_t), srcEp);
   fillAddRemoveStoreSceneResponsePayload((ZCL_AddSceneResponse_t *)req->requestPayload,
                                           payload->groupId, payload->sceneId, status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
@@ -633,17 +660,22 @@ ZCL_Status_t processRemoveAllScenesCommand(ZCL_Addressing_t *addressing,
     *currSceneCount -= scenesClusterRemoveByGroup(payload->groupId, scenePool);
   }
   else
+  {
     status = ZCL_INVALID_FIELD_STATUS;
-
+  }
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_SCENES_CLUSTER_REMOVE_ALL_SCENES_RESPONSE_COMMAND_ID,
-                       sizeof(ZCL_RemoveAllScenesResponse_t), srcEp);
-  fillRemoveAllScenesResponsePayload((ZCL_RemoveAllScenesResponse_t *)req->requestPayload, payload->groupId, status);
+                       (uint8_t)sizeof(ZCL_RemoveAllScenesResponse_t), srcEp);
+  fillRemoveAllScenesResponsePayload((ZCL_RemoveAllScenesResponse_t *)req->requestPayload, payload->groupId, (uint8_t)status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
   return ZCL_SUCCESS_STATUS;
@@ -658,16 +690,20 @@ ZCL_Status_t processStoreSceneCommand(ZCL_Addressing_t *addressing,
   ZCL_Request_t *req;
   uint8_t status;
 
-  status = storeScene(payload, srcEp, scenePool, sceneAttributes);
+  status = (uint8_t)(storeScene(payload, srcEp, scenePool, sceneAttributes));
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_SCENES_CLUSTER_STORE_SCENE_RESPONSE_COMMAND_ID,
-                       sizeof(ZCL_StoreSceneResponse_t), srcEp);
+                       (uint8_t)sizeof(ZCL_StoreSceneResponse_t), srcEp);
   fillAddRemoveStoreSceneResponsePayload((ZCL_AddSceneResponse_t *)req->requestPayload, payload->groupId, payload->sceneId, status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
@@ -684,9 +720,9 @@ ZCL_Status_t processStoreSceneCommand(ZCL_Addressing_t *addressing,
 ******************************************************************************/
 static void fillCopySceneResponsePayload(ZCL_CopySceneResponse_t *payload, ZCL_Status_t status, uint16_t groupIdFrom, uint16_t sceneIdFrom)
 {
-  payload->status = status;
+  payload->status = (uint8_t)status;
   payload->groupIdFrom = groupIdFrom;
-  payload->sceneIdFrom = sceneIdFrom;
+  payload->sceneIdFrom = (uint8_t)sceneIdFrom;
 }
 
 /**************************************************************************//**
@@ -698,16 +734,20 @@ ZCL_Status_t processCopySceneCommand(ZCL_Addressing_t *addressing,
   ZCL_Request_t *req;
   uint8_t status;
 
-  status = copyScene(payload, srcEp, scenePool, sceneAttributes);
+  status = (uint8_t)(copyScene(payload, srcEp, scenePool, sceneAttributes));
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_SCENES_CLUSTER_COPY_SCENE_RESPONSE_COMMAND_ID,
-                     sizeof(ZCL_CopySceneResponse_t), srcEp);
+                     (uint8_t)sizeof(ZCL_CopySceneResponse_t), srcEp);
 
   // command payload filler
   fillCopySceneResponsePayload((ZCL_CopySceneResponse_t *)req->requestPayload, (ZCL_Status_t)status, payload->groupIdFrom, payload->sceneIdFrom);
@@ -721,16 +761,19 @@ ZCL_Status_t processCopySceneCommand(ZCL_Addressing_t *addressing,
 
 \param[in] recallScene - the pointer to Recall Scene request
 ******************************************************************************/
-ZCL_Status_t recallScene(ZCL_RecallScene_t *recallScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes)
+ZCL_Status_t recallScene(ZCL_RecallScene_t *recalSceneReq, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes)
 { 
-  if ((recallScene->groupId== 0x0000) || (recallScene->groupId >= 0xfff8))
+  if ((recalSceneReq->groupId== 0x0000U) || (recalSceneReq->groupId >= 0xfff8U))
+  {
     return ZCL_INVALID_VALUE_STATUS;
-  if (!groupsIsValidGroup(recallScene->groupId, srcEp))
+  }
+  if (!groupsIsValidGroup(recalSceneReq->groupId, srcEp))
+  {
     return ZCL_INVALID_FIELD_STATUS;
-  
-  Scene_t *scene = findSceneBySceneAndGroup(recallScene->groupId, recallScene->sceneId, scenePool);
+  }
+  Scene_t *scene = findSceneBySceneAndGroup(recalSceneReq->groupId, recalSceneReq->sceneId, scenePool);
 
-  if (scene)
+  if (scene != NULL)
   {
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT
     setOnOff(scene->onOff);
@@ -760,7 +803,7 @@ void recallGlobalScene(Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterSer
   globalScene.sceneId = 0x00u;
   globalScene.transitionTime = 0x0000u;
 
-  recallScene(&globalScene, srcEp, scenePool, scenesAttributes);
+  (void)recallScene(&globalScene, srcEp, scenePool, scenesAttributes);
 }
 /**************************************************************************//**
 \brief Store to global scene
@@ -771,7 +814,7 @@ void storeGlobalScene(Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServ
 
   globalScene.groupId = 0x0000u;
   globalScene.sceneId = 0x00u;
-  storeScene(&globalScene, srcEp, scenePool, scenesAttributes);
+  (void)storeScene(&globalScene, srcEp, scenePool, scenesAttributes);
 }
 /**************************************************************************//**
 \brief Copy scene(s) in scene table
@@ -789,22 +832,22 @@ ZCL_Status_t copyScenesByGroup(uint16_t groupIdFrom, uint16_t sceneIdFrom,
 {
   Scene_t *sceneFrom, *sceneTo;
 
-  sceneFrom = findSceneBySceneAndGroup(groupIdFrom, sceneIdFrom, scenePool);
-  if (!sceneFrom)
+  sceneFrom = findSceneBySceneAndGroup(groupIdFrom, (uint8_t)sceneIdFrom, scenePool);
+  if (sceneFrom == NULL)
   {
     return ZCL_NOT_FOUND_STATUS;
   }
 
-  sceneTo = findSceneBySceneAndGroup(groupIdTo, sceneIdTo, scenePool);
-  if (!sceneTo)
+  sceneTo = findSceneBySceneAndGroup(groupIdTo, (uint8_t)sceneIdTo, scenePool);
+  if (sceneTo == NULL)
   {
     sceneTo = allocateScene(scenePool, &scenesAttributes->sceneCount.value);
   }
 
-  if (sceneTo)
+  if (sceneTo != NULL)
   {
-    memcpy(sceneTo, sceneFrom, sizeof(Scene_t));
-    sceneTo->sceneId = sceneIdTo;
+    (void)memcpy(sceneTo, sceneFrom, sizeof(Scene_t));
+    sceneTo->sceneId = (uint8_t)sceneIdTo;
     sceneTo->groupId = groupIdTo;
   }
   else
@@ -825,36 +868,38 @@ ZCL_Status_t copyScenesByGroup(uint16_t groupIdFrom, uint16_t sceneIdFrom,
 
 \returns status of scene storing
 ******************************************************************************/
-ZCL_Status_t copyScene(ZCL_CopyScene_t *copyScene, Endpoint_t srcEp, Scene_t* scenePool,
+ZCL_Status_t copyScene(ZCL_CopyScene_t *copySceneReq, Endpoint_t srcEp, Scene_t* scenePool,
                        ZCL_SceneClusterServerAttributes_t* scenesAttributes)
 {
   ZCL_Status_t status;
 
-  if (groupsIsValidGroup(copyScene->groupIdFrom, srcEp))
+  if (groupsIsValidGroup(copySceneReq->groupIdFrom, srcEp))
   {
-    if (copyScene->mode.copyAllScenes & ZCL_SCENES_CLUSTER_COPY_ALL_SCENES)
+    if ((copySceneReq->mode.copyAllScenes & ZCL_SCENES_CLUSTER_COPY_ALL_SCENES) != 0U)
     {
       status = ZCL_SUCCESS_STATUS;
 
       for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
       {
-        if (!scenePool[i].free && (scenePool[i].groupId == copyScene->groupIdFrom))
+        if (!scenePool[i].free && (scenePool[i].groupId == copySceneReq->groupIdFrom))
         {
           ZCL_Status_t result;
 
-          result = copyScenesByGroup(copyScene->groupIdFrom, scenePool[i].sceneId,
-                                     copyScene->groupIdTo, scenePool[i].sceneId,
+          result = copyScenesByGroup(copySceneReq->groupIdFrom, scenePool[i].sceneId,
+                                     copySceneReq->groupIdTo, scenePool[i].sceneId,
                                      scenePool, scenesAttributes);
 
           if (ZCL_SUCCESS_STATUS != result)
+          {
             status = result;
+          }
         }
       }
     }
     else
     {
-      status = copyScenesByGroup(copyScene->groupIdFrom, copyScene->sceneIdFrom,
-                                 copyScene->groupIdTo, copyScene->sceneIdTo,
+      status = copyScenesByGroup(copySceneReq->groupIdFrom, copySceneReq->sceneIdFrom,
+                                 copySceneReq->groupIdTo, copySceneReq->sceneIdTo,
                                  scenePool, scenesAttributes);
     }
   }
@@ -881,11 +926,15 @@ ZCL_Status_t processGetSceneMembershipCommand(ZCL_Addressing_t *addressing,
   /* A response should be sent if the request is unicast or (the request is broadcast
       and scene(s) for given group exist(s)) */
   if (!(!addressing->nonUnicast ||
-    (addressing->nonUnicast && groupsIsValidGroup(payload->groupId, srcEp) && getNextSceneByGroup(NULL, payload->groupId, scenePool))))
+    (addressing->nonUnicast && groupsIsValidGroup(payload->groupId, srcEp) && (getNextSceneByGroup(NULL, payload->groupId, scenePool) != NULL))))
+  {
     return ZCL_SUCCESS_STATUS;
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   size = fillGetSceneMembershipPayload((ZCL_GetSceneMembershipResponse_t *)req->requestPayload, scenePool, payload->groupId, srcEp, currSceneCnt);
   fillCommandRequest(req, ZCL_SCENES_CLUSTER_GET_SCENE_MEMBERSHIP_RESPONSE_COMMAND_ID,
                        size, srcEp);
@@ -942,7 +991,9 @@ uint8_t scenesClusterRemoveByGroup(uint16_t group, Scene_t *scenePool)
   for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
   {
     if ((scenePool[i].groupId == group) && freeScene(&scenePool[i]))
+    {
       sceneAmt++;
+    }
   }
   return sceneAmt;
 }

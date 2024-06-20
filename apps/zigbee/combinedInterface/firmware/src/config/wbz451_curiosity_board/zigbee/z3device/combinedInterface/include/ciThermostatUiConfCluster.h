@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CITHERMOSTATUICONFCLUSTER_H
-#define _CITHERMOSTATUICONFCLUSTER_H
+#ifndef CITHERMOSTATUICONFCLUSTER_H
+#define CITHERMOSTATUICONFCLUSTER_H
 /******************************************************************************
                     Includes section
 ******************************************************************************/
@@ -60,7 +60,7 @@ extern ZCL_ThermostatUiConfClusterClientAttributes_t ciThermostatUiConfClusterCl
 ******************************************************************************/
 void ciThermostatUiConfClusterInit(void);
 
-#endif // _CITHERMOSTATUICONFCLUSTER_H
+#endif // CITHERMOSTATUICONFCLUSTER_H
 
 // eof ciThermostatCluster.h
 

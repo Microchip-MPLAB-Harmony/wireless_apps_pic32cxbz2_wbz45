@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPHASH_H
-#define _SSPHASH_H
+#ifndef SSPHASH_H
+#define SSPHASH_H
 
 #include <systemenvironment/include/sysTypes.h>
 #include <security/serviceprovider/include/private/sspHashHandler.h>
@@ -116,6 +116,6 @@ void sspKeyedHashReqHandler(void);
 ******************************************************************************/
 int SSP_BcbHash(unsigned char *digest, unsigned long sz, unsigned char *data);
 
-#endif //#ifndef _SSPHASH_H
+#endif //#ifndef SSPHASH_H
 
 //eof sspHash.h

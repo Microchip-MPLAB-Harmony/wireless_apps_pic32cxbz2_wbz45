@@ -95,7 +95,6 @@ PROGMEM_DECLARE(ZCL_GroupsClusterCommands_t         lightGroupsCommands) =
 };
 
 extern Scene_t lightSceneTable[];
-extern QueueDescriptor_t groupsSubscribers;
 
 /******************************************************************************
                     Implementation section
@@ -109,8 +108,10 @@ void lightGroupsClusterInit(void)
   lightGroupsClusterServerAttributes.nameSupport.value = 0;
   lightGroupsClusterServerAttributes.clusterVersion.value = GROUPS_CLUSTER_VERSION;
   lightGroupsClusterClientAttributes.clusterVersion.value = GROUPS_CLUSTER_VERSION;
-  if (cluster)
+  if (cluster != NULL)
+  {
     cluster->ZCL_DefaultRespInd = ZCL_CommandZclDefaultResp;
+  }
 }
 
 /**************************************************************************//**
@@ -135,17 +136,20 @@ static ZCL_Status_t addGroupInd(ZCL_Addressing_t *addressing, uint8_t payloadLen
   APP_Zigbee_Handler(event);
   //appSnprintf("addGroupInd(): 0x%04x\r\n", payload->groupId);
 
-  status = addGroup(payload->groupId, APP_ENDPOINT_LIGHT);
+  status = (uint8_t)(addGroup(payload->groupId, APP_ENDPOINT_LIGHT));
 
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_GROUPS_CLUSTER_ADD_GROUP_RESPONSE_COMMAND_ID,
-                       sizeof(ZCL_AddGroupResponse_t), APP_ENDPOINT_LIGHT);
+                       (uint8_t)sizeof(ZCL_AddGroupResponse_t), APP_ENDPOINT_LIGHT);
   fillAddGroupResponsePayload((ZCL_AddGroupResponse_t *)req->requestPayload, payload->groupId, status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
@@ -173,13 +177,16 @@ static ZCL_Status_t viewGroupInd(ZCL_Addressing_t *addressing, uint8_t payloadLe
   APP_Zigbee_Handler(event);
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   fillCommandRequest(req, ZCL_GROUPS_CLUSTER_VIEW_GROUP_RESPONSE_COMMAND_ID,
-                       sizeof(ZCL_ViewGroupResponse_t), APP_ENDPOINT_LIGHT);
+                       (uint8_t)sizeof(ZCL_ViewGroupResponse_t), APP_ENDPOINT_LIGHT);
   fillViewGroupResponsePayload((ZCL_ViewGroupResponse_t *)req->requestPayload, payload->groupId, APP_ENDPOINT_LIGHT);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
@@ -208,11 +215,14 @@ static ZCL_Status_t getGroupMembershipInd(ZCL_Addressing_t *addressing, uint8_t 
   APP_Zigbee_Handler(event);
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
-
+  }
   size = fillGetGroupMembershipRespPayload((ZCL_GetGroupMembershipResponse_t *)req->requestPayload, payload, APP_ENDPOINT_LIGHT);
   fillCommandRequest(req, ZCL_GROUPS_CLUSTER_GET_GROUP_MEMBERSHIP_RESPONSE_COMMAND_ID,
                        size, APP_ENDPOINT_LIGHT);
@@ -241,20 +251,25 @@ static ZCL_Status_t removeGroupInd(ZCL_Addressing_t *addressing, uint8_t payload
   event.eventData.zclEventData.payloadLength = payloadLength;
   event.eventData.zclEventData.payload = (uint8_t*)payload;
   APP_Zigbee_Handler(event);
-  status = removeGroup(payload->groupId, APP_ENDPOINT_LIGHT, lightSceneTable);
+  status = (uint8_t)(removeGroup(payload->groupId, APP_ENDPOINT_LIGHT, lightSceneTable));
 
-  if(ZCL_SUCCESS_STATUS == status)
-    PDS_Store(APP_LIGHT_SCENES_MEM_ID);
-
+  if((uint8_t)ZCL_SUCCESS_STATUS == status)
+  {
+    (void)PDS_Store(APP_LIGHT_SCENES_MEM_ID);
+  }
   // If received via multicast or broadcast service no response shall be given
   if (addressing->nonUnicast)
+  {
     return ZCL_SUCCESS_STATUS;
-
-  if (!(req = getFreeCommand()))
+  }
+  req = getFreeCommand();
+  if (req == NULL)
+  {
     return ZCL_INSUFFICIENT_SPACE_STATUS;
+  }
 
   fillCommandRequest(req, ZCL_GROUPS_CLUSTER_REMOVE_GROUP_RESPONSE_COMMAND_ID,
-                       sizeof(ZCL_RemoveGroupResponse_t), APP_ENDPOINT_LIGHT);
+                       (uint8_t)sizeof(ZCL_RemoveGroupResponse_t), APP_ENDPOINT_LIGHT);
   fillRemoveGroupResponsePayload((ZCL_RemoveGroupResponse_t *)req->requestPayload, payload->groupId, status);
   fillDstAddressingViaSourceAddressing(&req->dstAddressing, addressing, ZCL_CLUSTER_SIDE_CLIENT);
   ZCL_CommandManagerSendCommand(req);
@@ -281,7 +296,7 @@ static ZCL_Status_t removeAllGroupsInd(ZCL_Addressing_t *addressing, uint8_t pay
 
   removeAllGroups(APP_ENDPOINT_LIGHT, lightSceneTable);
 
-  PDS_Store(APP_LIGHT_SCENES_MEM_ID);
+  (void)PDS_Store(APP_LIGHT_SCENES_MEM_ID);
 
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;
@@ -326,7 +341,9 @@ static ZCL_Status_t addGroupIfIdentifying(uint16_t group)
   }
     // If received via multicast or broadcast service no response shall be given
   else
+  {
     return ZCL_SUCCESS_STATUS;
+  }
 }
 /**************************************************************************//**
 \brief Callback on receiving Add Group Response command
@@ -345,7 +362,7 @@ static ZCL_Status_t addGroupResponseInd(ZCL_Addressing_t *addressing, uint8_t pa
   event.eventData.zclEventData.payloadLength = payloadLength;
   event.eventData.zclEventData.payload = (uint8_t*)payload;
 
-  RAISE_CALLBACKS_TO_GROUPS_SUBSCIBERS(groupsSubscribers, addGroupResponse);
+  RAISE_CALLBACKS_TO_GROUPS_SUBSCIBERS((groupsSubscribers), addGroupResponse);
 
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;

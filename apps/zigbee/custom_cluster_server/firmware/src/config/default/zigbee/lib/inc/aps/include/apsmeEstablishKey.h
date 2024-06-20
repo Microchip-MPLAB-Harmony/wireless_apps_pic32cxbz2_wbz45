@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _APSME_ESTABLISH_KEY_H
-#define _APSME_ESTABLISH_KEY_H
+#if !defined APSME_ESTABLISH_KEY_H
+#define APSME_ESTABLISH_KEY_H
 /**//**
  *
  *  The APS layer provides services that allow two devices to establish
@@ -190,7 +190,7 @@ typedef struct
   bool useParent;
   /** \ref Endian "[LE]"
    * If \c useParent is TRUE, then the \c responderParentAddress parameter shall
-   * contain the extended 64-bit address of the responder?? parent device.
+   * contain the extended 64-bit address of the responderâ??s parent device.
    * Otherwise, this parameter is not used and need not to be set. */
   ExtAddr_t responderParentAddress;
   /** Requested key-establishment method. The valid value is SKKE. */
@@ -343,6 +343,6 @@ void APS_EstablishKeyResp(APS_EstablishKeyResp_t *const resp);
 
 #endif /* _SECURITY_ and _LINK_SECURITY_ */
 
-#endif /* _APSME_ESTABLISH_KEY_H */
+#endif /* APSME_ESTABLISH_KEY_H */
 /** eof apsmeEstablishKey.h */
 

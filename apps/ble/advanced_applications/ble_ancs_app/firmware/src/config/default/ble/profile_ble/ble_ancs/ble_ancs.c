@@ -74,22 +74,22 @@
 
 #define BLE_ANCS_MAX_CONN_NBR                   BLE_GAP_MAX_LINK_NBR
 
-#define BLE_ANCS_EVENT_FLAG_SILENT              0           //!< 0b.......1 Silent: First (LSB) bit is set. All flags can be active at the same time.
-#define BLE_ANCS_EVENT_FLAG_IMPORTANT           1           //!< 0b......1. Important: Second (LSB) bit is set. All flags can be active at the same time.
-#define BLE_ANCS_EVENT_FLAG_PREEXISTING         2           //!< 0b.....1.. Pre-existing: Third (LSB) bit is set. All flags can be active at the same time.
-#define BLE_ANCS_EVENT_FLAG_POSITIVE_ACTION     3           //!< 0b....1... Positive action: Fourth (LSB) bit is set. All flags can be active at the same time.
-#define BLE_ANCS_EVENT_FLAG_NEGATIVE_ACTION     4           //!< 0b...1.... Negative action: Fifth (LSB) bit is set. All flags can be active at the same time.
+#define BLE_ANCS_EVENT_FLAG_SILENT              0U           //!< 0b.......1 Silent: First (LSB) bit is set. All flags can be active at the same time.
+#define BLE_ANCS_EVENT_FLAG_IMPORTANT           1U           //!< 0b......1. Important: Second (LSB) bit is set. All flags can be active at the same time.
+#define BLE_ANCS_EVENT_FLAG_PREEXISTING         2U           //!< 0b.....1.. Pre-existing: Third (LSB) bit is set. All flags can be active at the same time.
+#define BLE_ANCS_EVENT_FLAG_POSITIVE_ACTION     3U           //!< 0b....1... Positive action: Fourth (LSB) bit is set. All flags can be active at the same time.
+#define BLE_ANCS_EVENT_FLAG_NEGATIVE_ACTION     4U           //!< 0b...1.... Negative action: Fifth (LSB) bit is set. All flags can be active at the same time.
 
 /**@defgroup BLE_ANCS_RETRY_TYPE Retrying type
  * @brief The definition of BLE apple notification client service retry type
  * @{ */
-#define BLE_ANCS_RETRY_TYPE_ENABLE_NTFY        0x01    /**< Definition of response retry type enable notification. */
+#define BLE_ANCS_RETRY_TYPE_ENABLE_NTFY        0x01U    /**< Definition of response retry type enable notification. */
 /** @} */
 
 /**@brief Enumeration type of BLE ANCS profile characteristics. */
 typedef enum BLE_ANCS_CharIndex_T
 {
-    ANCS_INDEX_CHAR_CONTROL_POINT = 0,
+    ANCS_INDEX_CHAR_CONTROL_POINT = 0U,
     ANCS_INDEX_CHAR_NTFY,
     ANCS_INDEX_CHAR_NTFY_CCCD,
     ANCS_INDEX_CHAR_DATA,
@@ -100,7 +100,7 @@ typedef enum BLE_ANCS_CharIndex_T
 /**@brief Event for iOS Notification. */
 typedef enum BLE_ANCS_NtfyEvt_T
 {
-    BLE_ANCS_NTFY_EVT_ADDED,                                /**< The iOS notification was added. */
+    BLE_ANCS_NTFY_EVT_ADDED = 0x0U,                                /**< The iOS notification was added. */
     BLE_ANCS_NTFY_EVT_MODIFIED,                             /**< The iOS notification was modified. */
     BLE_ANCS_NTFY_EVT_REMOVED,                              /**< The iOS notification was removed. */
     BLE_ANCS_NTFY_EVT_MAX                                   /**< Undefined notification event. */
@@ -110,7 +110,7 @@ typedef enum BLE_ANCS_NtfyEvt_T
 /**@brief AppAttributeID for iOS Get App Attributes. */
 typedef enum BLE_ANCS_AppAttrId_T
 {
-    BLE_ANCS_APP_ATTR_ID_DISPLAY_NAME = 0,                  /**< Command used to get the display name for an app identifier. */
+    BLE_ANCS_APP_ATTR_ID_DISPLAY_NAME = 0x0U,                  /**< Command used to get the display name for an app identifier. */
     BLE_ANCS_APP_ATTR_ID_MAX                                /**< Undefined application attribute id. */
 } BLE_ANCS_AppAttrId_T;
 
@@ -214,7 +214,7 @@ static BLE_DD_CharList_T        s_ancsCharList[BLE_ANCS_MAX_CONN_NBR];
 // *****************************************************************************
 // *****************************************************************************
 
-static void ble_ancs_ConveyEvent(uint8_t eventId, uint8_t *p_eventField, uint8_t eventFieldLen)
+static void ble_ancs_ConveyEvent(BLE_ANCS_EventId_T eventId, uint8_t *p_eventField, uint8_t eventFieldLen)
 {
     if(bleAncsProcess != NULL)
     {
@@ -290,7 +290,7 @@ static void ble_ancs_NotificationRsp(BLE_ANCS_ConnList_T *p_conn, GATT_EvtReceiv
     BLE_ANCS_EvtNtfyInd_T *p_ntfy;
     BLE_ANCS_Event_T evtPara;
     uint8_t *p_data  = p_event->receivedValue, ntfyEvtId;
-    uint8_t eventId[] = {BLE_ANCS_EVT_NTFY_ADDED_IND, BLE_ANCS_EVT_NTFY_MODIFIED_IND, BLE_ANCS_EVT_NTFY_REMOVED_IND};
+    BLE_ANCS_EventId_T eventId[] = {BLE_ANCS_EVT_NTFY_ADDED_IND, BLE_ANCS_EVT_NTFY_MODIFIED_IND, BLE_ANCS_EVT_NTFY_REMOVED_IND};
     uint16_t  hvx_data_len= p_event->receivedLength;
 
     if (hvx_data_len != BLE_ANCS_NTFY_DATA_LENGTH)
@@ -316,7 +316,7 @@ static void ble_ancs_NotificationRsp(BLE_ANCS_ConnList_T *p_conn, GATT_EvtReceiv
             (p_data[BLE_ANCS_NTFY_FLAGS_INDEX] >> BLE_ANCS_EVENT_FLAG_POSITIVE_ACTION) & 0x01U;
 
     p_ntfy->ntfyEvtFlagMask.negativeAction =
-            (p_data[BLE_ANCS_NTFY_FLAGS_INDEX] >> BLE_ANCS_EVENT_FLAG_NEGATIVE_ACTION) & 0x01u;
+            (p_data[BLE_ANCS_NTFY_FLAGS_INDEX] >> BLE_ANCS_EVENT_FLAG_NEGATIVE_ACTION) & 0x01U;
 
     p_ntfy->categoryId               =
         (BLE_ANCS_CategoryId_T) p_data[BLE_ANCS_NTFY_CATEGORY_ID_INDEX];
@@ -324,14 +324,14 @@ static void ble_ancs_NotificationRsp(BLE_ANCS_ConnList_T *p_conn, GATT_EvtReceiv
     p_ntfy->categoryCount            = p_data[BLE_ANCS_NTFY_CATEGORY_CNT_INDEX];
     (void)memcpy((uint8_t*)&p_ntfy->ntfyId, (uint8_t*)&p_data[BLE_ANCS_NTFY_UID_INDEX], 4);
 
-    if (ble_ancs_VerifyNotification(p_ntfy, ntfyEvtId)==true)
+    if (ble_ancs_VerifyNotification(p_ntfy, (BLE_ANCS_NtfyEvt_T)ntfyEvtId)==true)
     {
         ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_UNSPECIFIED_IND, NULL, 0);
         return;
     }
 
     evtPara.eventField.evtNtfyInd.connHandle  = p_conn->connHandle;
-    ble_ancs_ConveyEvent(eventId[ntfyEvtId], (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtNtfyInd_T));
+    ble_ancs_ConveyEvent(eventId[ntfyEvtId], (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtNtfyInd_T));
 }
 
 static BLE_ANCS_ConnList_T *ble_ancs_GetConnListByHandle(uint16_t connHandle)
@@ -366,18 +366,18 @@ static BLE_ANCS_PacketOrder_T  ble_ancs_ChkAncsComplete(BLE_ANCS_ConnList_T *p_c
     }
     else
     {
-        index += strlen((char *)(p_data +1));
+        index += (uint16_t)strlen((char *)(p_data +1U));
         index ++;   //'\0'
     }
 
 
-    while(1)
+    while(true)
     {
         uint16_t attrLen;
 
         index++;    //AttributeID
         attrLen = p_data[index++];
-        attrLen |= (p_data[index++] << 8);
+        attrLen |= (uint16_t)p_data[index++] << 8U;
 
         if (index + attrLen == len)
         {
@@ -429,42 +429,42 @@ static uint16_t ble_ancs_AttrsRsp(BLE_ANCS_ConnList_T *p_conn)
     {
         p_conn->p_attrList    = p_conn->appAttrList;
         (void)strcpy((char *)p_attrAppData->appId , (char *)(p_data +index));
-        index += (strlen((char *)p_attrAppData->appId) +1U);
+        index += (uint16_t)(strlen((char *)p_attrAppData->appId) +1U);
     }
 
     do
     {
         uint16_t len, bufferFail, normalAttrID;
-        BLE_ANCS_NtfyAttrId_T attrId;
+        uint8_t attrId;
 
         attrId  = p_data[index++];
         //the len does not include '\0' by ANCS spec
         len     = p_data[index++];
-        len     |= (p_data[index++] << 8);
+        len     |= (uint16_t)p_data[index++] << 8U;
 
         bufferFail      = 0;
         normalAttrID    = 1;
 
         if (commandId == BLE_ANCS_COMMAND_ID_GET_NTFY_ATTR)
         {
-            if ((attrId == BLE_ANCS_NTFY_ATTR_ID_TITLE)    ||
-                (attrId == BLE_ANCS_NTFY_ATTR_ID_SUBTITLE) ||
-                (attrId == BLE_ANCS_NTFY_ATTR_ID_MESSAGE))
+            if ((attrId == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_TITLE)    ||
+                (attrId == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_SUBTITLE) ||
+                (attrId == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_MESSAGE))
             {
                 uint8_t *p_tmp;
 
-                p_tmp = OSAL_Malloc(maxLen[commandId][attrId] +1U);  //reserved '\0'
+                p_tmp = OSAL_Malloc((uint32_t)maxLen[commandId][attrId] +1U);  //reserved '\0'
                 if (p_tmp == NULL)
                 {
                    bufferFail = 1;
                 }
                 else
                 {
-                    if (attrId == BLE_ANCS_NTFY_ATTR_ID_TITLE)
+                    if (attrId == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_TITLE)
                     {
                         p_attrNtfyData->p_title      = p_tmp;
                     }
-                    else if (attrId == BLE_ANCS_NTFY_ATTR_ID_SUBTITLE)
+                    else if (attrId == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_SUBTITLE)
                     {
                         p_attrNtfyData->p_subtitle   = p_tmp;
                     }
@@ -490,7 +490,7 @@ static uint16_t ble_ancs_AttrsRsp(BLE_ANCS_ConnList_T *p_conn)
          
         if (bufferFail == 0U)
         {
-            if (attrId != BLE_ANCS_NTFY_ATTR_ID_MESSAGE_SIZE)
+            if (attrId != (uint8_t)BLE_ANCS_NTFY_ATTR_ID_MESSAGE_SIZE)
             {
                 (void)memcpy(p_conn->p_attrList[attrId].p_attrData, p_data +index, len);
                 p_conn->p_attrList[attrId].p_attrData[len] = 0;     //'\0'
@@ -502,7 +502,7 @@ static uint16_t ble_ancs_AttrsRsp(BLE_ANCS_ConnList_T *p_conn)
                 (void)memcpy(str, p_data +index, len);
                 str[len] = 0;                                       //'\0'
 
-                p_attrNtfyData->msgSize = atoi((char *)str);
+                p_attrNtfyData->msgSize = (uint16_t)(atoi((char *)str));
             }
 
             if (commandId == BLE_ANCS_COMMAND_ID_GET_NTFY_ATTR)
@@ -517,9 +517,9 @@ static uint16_t ble_ancs_AttrsRsp(BLE_ANCS_ConnList_T *p_conn)
             BLE_ANCS_Event_T evtPara;
 
             evtPara.eventField.evtErrAttrBufInd.connHandle  = p_conn->connHandle;
-            evtPara.eventField.evtErrAttrBufInd.attrId      = attrId;
+            evtPara.eventField.evtErrAttrBufInd.attrId      = (BLE_ANCS_NtfyAttrId_T)attrId;
             evtPara.eventField.evtErrAttrBufInd.len         = len;
-            ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_ATTR_BUF_IND, (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtErrAttrBufInd_T));
+            ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_ATTR_BUF_IND, (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtErrAttrBufInd_T));
         }
 
         index += len;
@@ -537,24 +537,24 @@ static uint16_t ble_ancs_QueryNtfyAttr(BLE_ANCS_ConnList_T *p_conn, uint8_t *p_g
 
     if (bitmask != 0U)
     {
-        BLE_ANCS_NtfyAttrId_T   attr;
+        uint8_t   attr;
         //Encode Command ID.
-        p_gattValue[index++] = BLE_ANCS_COMMAND_ID_GET_NTFY_ATTR;
+        p_gattValue[index++] = (uint8_t)BLE_ANCS_COMMAND_ID_GET_NTFY_ATTR;
 
         //Encode Notification UID.
         (void)memcpy((uint8_t*)&p_gattValue[index], (uint8_t*)&uid, 4);
         index += 4U;
 
         //Encode Attribute ID.
-        for (attr = BLE_ANCS_NTFY_ATTR_ID_APP_IDENTIFIER; attr < BLE_ANCS_NTFY_ATTR_ID_MAX; attr++)
+        for (attr = (uint8_t)BLE_ANCS_NTFY_ATTR_ID_APP_IDENTIFIER; attr < (uint8_t)BLE_ANCS_NTFY_ATTR_ID_MAX; attr++)
         {
-            if (bitmask & (1U <<attr))
+            if ((bitmask & (1U <<attr))!= 0U)
             {
                 p_gattValue[index++] = (uint8_t)attr;
 
-                if ((attr == BLE_ANCS_NTFY_ATTR_ID_TITLE) ||
-                    (attr == BLE_ANCS_NTFY_ATTR_ID_SUBTITLE) ||
-                    (attr == BLE_ANCS_NTFY_ATTR_ID_MESSAGE))
+                if ((attr == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_TITLE) ||
+                    (attr == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_SUBTITLE) ||
+                    (attr == (uint8_t)BLE_ANCS_NTFY_ATTR_ID_MESSAGE))
                 {
                     //Encode Length field. Only applicable for Title, Subtitle, and Message.
                     (void)memcpy((uint8_t*)&p_gattValue[index], (uint8_t*)&maxEncodeLen[attr], 2);
@@ -571,7 +571,7 @@ static uint16_t ble_ancs_EncodeNotifAction(BLE_ANCS_ConnList_T *p_conn, uint8_t 
 {
     uint8_t index = 0;
 
-    p_encodedData[index++] = BLE_ANCS_COMMAND_ID_SET_PERFORM_NTFY_ACTION;
+    p_encodedData[index++] = (uint8_t)BLE_ANCS_COMMAND_ID_SET_PERFORM_NTFY_ACTION;
     (void)memcpy((uint8_t*)&p_encodedData[index], (uint8_t*)&ntfyId, 4);
     index += 4U;
     p_encodedData[index++] = (uint8_t)actId;
@@ -612,17 +612,17 @@ uint16_t BLE_ANCS_GetNtfyAttr(uint16_t connHandle, uint32_t ntfyId, BLE_ANCS_Ntf
  
 static uint16_t ble_ancs_QueryAppAttr(BLE_ANCS_ConnList_T *p_conn, uint8_t *p_appId, uint8_t *p_value)
 {
-    uint32_t  index = 0;
+    uint16_t  index = 0;
 
     // Encode Command ID.
-    p_value[index++] = BLE_ANCS_COMMAND_ID_GET_APP_ATTR;
+    p_value[index++] = (uint8_t)BLE_ANCS_COMMAND_ID_GET_APP_ATTR;
 
     //Encode app identifier.
     (void)strcpy((char *)(p_value +index) , (char *)p_appId);
-    index += (strlen((char *)p_appId) +1U);
+    index += (uint16_t)(strlen((char *)p_appId) +1U);
 
     //Encode Attribute ID.
-    p_value[index++] = BLE_ANCS_APP_ATTR_ID_DISPLAY_NAME;
+    p_value[index++] = (uint8_t)BLE_ANCS_APP_ATTR_ID_DISPLAY_NAME;
 
     return index;
 }
@@ -632,7 +632,7 @@ uint16_t BLE_ANCS_GetAppAttr(uint16_t connHandle, uint8_t *p_appId, BLE_ANCS_App
     uint16_t ret = MBA_RES_INVALID_PARA, index;
     BLE_ANCS_ConnList_T *p_conn;
 
-    if (!bitmask.displayName)
+    if (bitmask.displayName==0U)
     {
         return MBA_RES_INVALID_PARA;
     }
@@ -697,7 +697,7 @@ static void ble_ancs_ProcErr(GATT_Event_T *p_event)
     BLE_ANCS_Event_T evtPara;
     evtPara.eventField.evtErrInd.connHandle  = p_event->eventField.onError.connHandle;
     evtPara.eventField.evtErrInd.errCode     = p_event->eventField.onError.errCode;
-    ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_IND, (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtErrInd_T));
+    ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_IND, (uint8_t *)&evtPara.eventField,(uint8_t)sizeof(BLE_ANCS_EvtErrInd_T));
 }
 static void ble_ancs_ProcGattNotification(BLE_ANCS_ConnList_T *p_conn, GATT_Event_T *p_event)
 {
@@ -732,11 +732,9 @@ static void ble_ancs_ProcGattNotification(BLE_ANCS_ConnList_T *p_conn, GATT_Even
             /*
                 Check if BLE_ANCS_MAX_PACKET_BUFFER_SIZE is suitable
             */
-                BLE_ANCS_Event_T evtPara;
-
                 ble_ancs_InitResource(p_conn);
                 evtPara.eventField.evtErrRecomposeBufInd.connHandle  = p_conn->connHandle;
-                ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_RECOMPOSE_BUF_IND, (uint8_t *)(uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtErrRecomposeBufInd_T));
+                ble_ancs_ConveyEvent(BLE_ANCS_EVT_ERR_RECOMPOSE_BUF_IND, (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtErrRecomposeBufInd_T));
 
                 return;
             }
@@ -760,14 +758,14 @@ static void ble_ancs_ProcGattNotification(BLE_ANCS_ConnList_T *p_conn, GATT_Even
                     evtPara.eventField.evtNtfyAttrInd.connHandle  = p_conn->connHandle;
 
                     evtPara.eventField.evtNtfyAttrInd.p_data = &p_conn->attrData.attrNtfyData;
-                    ble_ancs_ConveyEvent(BLE_ANCS_EVT_NTFY_ATTR_IND, (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtNtfyAttrInd_T));
+                    ble_ancs_ConveyEvent(BLE_ANCS_EVT_NTFY_ATTR_IND, (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtNtfyAttrInd_T));
                 }
                 else
                 {
                     evtPara.eventField.evtAppAttrInd.connHandle     = p_conn->connHandle;
 
                     evtPara.eventField.evtAppAttrInd.p_data = &p_conn->attrData.attrAppData;
-                    ble_ancs_ConveyEvent(BLE_ANCS_EVT_APP_ATTR_IND, (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtAppAttrInd_T));
+                    ble_ancs_ConveyEvent(BLE_ANCS_EVT_APP_ATTR_IND, (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtAppAttrInd_T));
                 }
             }
             ble_ancs_InitResource(p_conn);
@@ -815,9 +813,9 @@ static void ble_ancs_enableCccd(uint16_t connHandle)
                 }
                 else
                 {
-                    p_conn->enableCccd = 0;
+                    p_conn->enableCccd = ANCS_INDEX_CHAR_CONTROL_POINT;
                 }
-                p_conn->retryType = 0;
+                p_conn->retryType = 0U;
             }
             else
             {
@@ -827,7 +825,10 @@ static void ble_ancs_enableCccd(uint16_t connHandle)
         }
         break;
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -848,6 +849,9 @@ static void ble_ancs_ProcessQueuedTask(uint16_t connHandle)
         }
         break;
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -903,7 +907,10 @@ static void ble_ancs_GattEventProcess(GATT_Event_T *p_event)
         } 
         break;
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -983,15 +990,15 @@ static void ble_ancs_GapEventProcess(BLE_GAP_Event_T *p_event)
             uint16_t connHandle = p_event->eventField.evtDisconnect.connHandle;
             p_conn = ble_ancs_GetConnListByHandle(connHandle);
             if (p_conn != NULL)
-			{
+            {
                 ble_ancs_InitConnList(p_conn, 1);
-			}
+            }
         }
         break;
         case BLE_GAP_EVT_ENCRYPT_STATUS:
         {
             uint16_t connHandle = p_event->eventField.evtEncryptStatus.connHandle;
-            if (p_event->eventField.evtEncryptStatus.status == BLE_GAP_ENCRYPT_SUCCESS)
+            if (p_event->eventField.evtEncryptStatus.status == GAP_STATUS_SUCCESS)
             {
                 p_conn = ble_ancs_GetConnListByHandle(connHandle);
                 if (p_conn == NULL)
@@ -1001,7 +1008,6 @@ static void ble_ancs_GapEventProcess(BLE_GAP_Event_T *p_event)
                 p_conn->enableCccd = ANCS_INDEX_CHAR_DATA_CCCD;
                 ble_ancs_enableCccd(connHandle);
             }
-
         }
         break;
         case BLE_GAP_EVT_TX_BUF_AVAILABLE:
@@ -1010,6 +1016,9 @@ static void ble_ancs_GapEventProcess(BLE_GAP_Event_T *p_event)
         }
         break;
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -1021,12 +1030,12 @@ void BLE_ANCS_EventRegister(BLE_ANCS_EventCb_T bleAncsHandler)
 
 static void ble_ancs_InitCharList(BLE_DD_CharList_T *p_charList, uint8_t connIndex)
 {
-    BLE_ANCS_CharIndex_T i;
+    uint8_t i;
 
     p_charList->connHandle = 0;
     p_charList->p_charInfo = (BLE_DD_CharInfo_T *) &(s_ancsCharInfoList[connIndex]);
 
-    for(i=0; i<ANCS_INDEX_CHAR_MAX_NUM; i++)
+    for(i=0; i<(uint8_t)ANCS_INDEX_CHAR_MAX_NUM; i++)
     {
         s_ancsCharInfoList[connIndex][i].charHandle = 0;
         s_ancsCharInfoList[connIndex][i].property = 0;
@@ -1035,7 +1044,7 @@ static void ble_ancs_InitCharList(BLE_DD_CharList_T *p_charList, uint8_t connInd
 
 uint16_t BLE_ANCS_Init(void)
 {
-    uint16_t i;
+    uint8_t i;
     BLE_DD_DiscSvc_T ancsDisc;
 
     for (i = 0; i < BLE_ANCS_MAX_CONN_NBR; i++)
@@ -1049,7 +1058,7 @@ uint16_t BLE_ANCS_Init(void)
     ancsDisc.p_discInfo = NULL;
     ancsDisc.p_discChars = ancsDiscCharList;
     ancsDisc.p_charList = s_ancsCharList;
-    ancsDisc.discCharsNum = ANCS_INDEX_CHAR_MAX_NUM;
+    ancsDisc.discCharsNum = (uint8_t)ANCS_INDEX_CHAR_MAX_NUM;
 
     return BLE_DD_ServiceDiscoveryRegister(&ancsDisc);
 }
@@ -1067,6 +1076,9 @@ void BLE_ANCS_BleEventHandler(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -1088,12 +1100,15 @@ void BLE_ANCS_BleDdEventHandler(BLE_DD_Event_T *p_event)
                 ble_ancs_enableCccd(p_event->eventField.evtDiscResult.connHandle);
 
                 evtPara.eventField.evtDiscComplete.connHandle = p_conn->connHandle;
-                ble_ancs_ConveyEvent(BLE_ANCS_EVT_DISC_COMPLETE_IND, (uint8_t *)&evtPara.eventField, sizeof(BLE_ANCS_EvtDiscComplete_T));
+                ble_ancs_ConveyEvent(BLE_ANCS_EVT_DISC_COMPLETE_IND, (uint8_t *)&evtPara.eventField, (uint8_t)sizeof(BLE_ANCS_EvtDiscComplete_T));
             }
         }
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

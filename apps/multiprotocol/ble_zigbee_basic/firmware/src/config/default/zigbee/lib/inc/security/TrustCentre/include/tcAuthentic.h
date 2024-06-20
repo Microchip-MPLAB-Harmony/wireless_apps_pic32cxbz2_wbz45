@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _TCAUTHENTICH
-#define _TCAUTHENTICH
+#ifndef TCAUTHENTICH
+#define TCAUTHENTICH
 
 /******************************************************************************
                              Include section.
@@ -84,6 +84,6 @@ typedef struct
   TcAuthObjState_t state;
 } TC_AuthenticObj_t;
 
-#endif // _TCAUTHENTICH
+#endif // TCAUTHENTICH
 
 // eof tcAuthentic.h

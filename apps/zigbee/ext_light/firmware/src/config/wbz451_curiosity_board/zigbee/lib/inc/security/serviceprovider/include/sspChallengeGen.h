@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPCHALLENGEGEN_H
-#define _SSPCHALLENGEGEN_H
+#ifndef SSPCHALLENGEGEN_H
+#define SSPCHALLENGEGEN_H
 
 /******************************************************************************
                         Includes section.
@@ -70,7 +70,7 @@
 ********************************************************************************/
 void SSP_GenerateChallenge(uint8_t challenge[/*CHALLENGE_SEQUENCE_SIZE*/]);
 
-#endif //_SSPCHALLENGEGEN_H
+#endif //SSPCHALLENGEGEN_H
 
 // eof sspChellenge.h
 

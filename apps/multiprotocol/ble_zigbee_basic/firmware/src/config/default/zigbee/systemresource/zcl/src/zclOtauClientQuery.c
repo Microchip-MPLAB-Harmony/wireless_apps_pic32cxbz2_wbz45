@@ -224,7 +224,7 @@ static void otauStartImageLoading(void)
 {
   ZCL_OtauClientMem_t *clientMem = zclGetOtauClientMem();
   ZCL_OtauQueryNextImageResp_t *payload = &clientMem->queryNextImageResp;
-
+  bool eraseStatus;
   /*Image size shall be greater than the OTAU header size*/
   if (sizeof(ZCL_OtauUpgradeImageHeader_t) > payload->imageSize)
   {
@@ -323,11 +323,12 @@ static void otauStartImageLoading(void)
   clientMem->ofdParam.offset = OFD_IMAGE_START_ADDRESS;
   OTAU_SET_STATE(otauStateMachine,OTAU_START_DOWNLOAD_STATE);
   PDS_Store(OTAU_RECOVERY_DIR_ID);
-#if !defined _PIC32CX_BZ3_  
   otauStartErase();
-#else
-  otauStartDownload();
+#if defined _PIC32CX_BZ3_
+  eraseStatus = getEraseStatus();
+  if(eraseStatus)
 #endif
+  otauStartDownload();
 }
 
 

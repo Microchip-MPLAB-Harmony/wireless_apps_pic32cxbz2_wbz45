@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLSCENESCLUSTER_H
-#define _ZCLSCENESCLUSTER_H
+#ifndef ZCLSCENESCLUSTER_H
+#define ZCLSCENESCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -580,5 +580,5 @@ typedef struct
   } getSceneMembershipResponse;
 } ZCL_ScenesClusterCommands_t;
 
-#endif /* _ZCLSCENESCLUSTER_H */
+#endif /* ZCLSCENESCLUSTER_H */
 

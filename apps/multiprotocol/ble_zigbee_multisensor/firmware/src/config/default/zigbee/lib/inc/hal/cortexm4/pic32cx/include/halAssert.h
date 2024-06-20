@@ -43,8 +43,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _HALASSERT_H
-#define _HALASSERT_H
+#ifndef HALASSERT_H
+#define HALASSERT_H
 
 /******************************************************************************
                    Includes section
@@ -72,6 +72,6 @@ INLINE void halAssert(uint8_t condition, uint16_t dbgCode)
 #else /* _SYS_ASSERT_ON_ */
   #define halAssert(condition, dbgCode) {do {} while (0);}
 #endif /* _SYS_ASSERT_ON_ */
-#endif /* _HALASSERT_H */
+#endif /* HALASSERT_H */
 
 // eof halAssert.h

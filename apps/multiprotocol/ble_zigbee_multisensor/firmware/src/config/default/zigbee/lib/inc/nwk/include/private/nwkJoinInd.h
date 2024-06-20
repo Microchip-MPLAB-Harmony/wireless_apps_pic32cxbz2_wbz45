@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_JOININD_H
-#define _NWK_JOININD_H
+#if !defined NWK_JOININD_H
+#define NWK_JOININD_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -224,6 +224,6 @@ NWK_PRIVATE void nwkConfirmAddrConflictJoinRespTx(NwkOutputPacket_t *const outPk
 #define nwkJoinIndIsIdle NULL
 
 #endif /* _ROUTER_ or _COORDINATOR_ */
-#endif /* _NWK_JOININD_H */
+#endif /* NWK_JOININD_H */
 /** eof nwkJoinInd.h */
 

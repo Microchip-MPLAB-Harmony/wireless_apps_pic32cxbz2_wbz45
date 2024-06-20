@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CSSIB_H_
-#define _CSSIB_H_
+#ifndef CSSIB_H_
+#define CSSIB_H_
 
 /******************************************************************************
                     Includes section
@@ -270,5 +270,5 @@ uint16_t    csStackLeftThreshold;
   bool installCodeBasedJoinLinkKeyType;
 } SIB_t;
 
-#endif /* _CSSIB_H_ */
+#endif /* CSSIB_H_ */
 /* eof csSIB.h */

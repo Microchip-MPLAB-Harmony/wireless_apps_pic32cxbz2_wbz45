@@ -202,7 +202,7 @@ void ZB_ZDO_GetNeibTable(ZDO_Neib_t *table)
 
 bool ZB_ZDO_IsDeviceReadyToSleep(void)
 {
-  bool ret = 0;
+  bool ret = false;
   apiRequest.unpack_fn = (unpack_ptr)ZDO_IsDeviceReadyToSleep_Unpack;
   apiRequest.parameters = &ret;
   ZIGBEE_API_CALL((Stack_API_Request_t *)&apiRequest);

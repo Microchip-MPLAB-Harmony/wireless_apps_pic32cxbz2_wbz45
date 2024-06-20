@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _COMBINEDINTERFACE_H
-#define _COMBINEDINTERFACE_H
+#ifndef COMBINEDINTERFACE_H
+#define COMBINEDINTERFACE_H
 
 /*****************************************************************************
  define section
@@ -68,6 +68,6 @@ void ciDeviceTaskHandler(void);
                     Externals
 ******************************************************************************/
 
-#endif // _COMBINEDINTERFACE_H
+#endif // COMBINEDINTERFACE_H
 
 // eof combinedInterface.h

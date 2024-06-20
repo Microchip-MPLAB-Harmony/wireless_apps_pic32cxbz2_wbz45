@@ -44,8 +44,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _ATOMIC_H
-#define _ATOMIC_H
+#ifndef ATOMIC_H
+#define ATOMIC_H
 
 /******************************************************************************
                    Includes section
@@ -119,6 +119,6 @@ extern void vPortExitCritical( void );
 #define ATOMIC_SECTION_LEAVE          vPortExitCritical();
 #endif
 
-#endif // _ATOMIC_H
+#endif // ATOMIC_H
 
 // eof atomic.h

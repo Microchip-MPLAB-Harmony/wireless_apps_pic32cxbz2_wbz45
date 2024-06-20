@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPAUTHENTIC_H
-#define _SSPAUTHENTIC_H
+#ifndef SSPAUTHENTIC_H
+#define SSPAUTHENTIC_H
 
 #ifdef _LINK_SECURITY_
 /******************************************************************************
@@ -121,7 +121,7 @@ void SSP_CalculateAuthenticMacTag2Req(SSP_CalculateAuthenticParamsReq_t *param);
 
 #endif // _LINK_SECURITY_
 
-#endif //_SSPAUTHENTIC_H
+#endif //SSPAUTHENTIC_H
 
 // eof sspAuthentic.h
 

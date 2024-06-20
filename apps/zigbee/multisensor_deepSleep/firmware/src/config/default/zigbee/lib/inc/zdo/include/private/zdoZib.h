@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_ZIB_H
-#define _ZDO_ZIB_H
+#if !defined ZDO_ZIB_H
+#define ZDO_ZIB_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -86,5 +86,5 @@ extern ZIB_t csZIB;
  ******************************************************************************/
 ZDO_PRIVATE void zdoReloadZibFromConfigServer(void);
 
-#endif /* _ZDO_ZIB_H */
+#endif /* ZDO_ZIB_H */
 /** eof zdoZib.h */

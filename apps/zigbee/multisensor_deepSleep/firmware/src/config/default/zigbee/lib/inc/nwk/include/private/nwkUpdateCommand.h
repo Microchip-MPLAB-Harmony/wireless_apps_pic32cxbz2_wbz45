@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_UPDATE_COMMAND_H
-#define _NWK_UPDATE_COMMAND_H
+#if !defined NWK_UPDATE_COMMAND_H
+#define NWK_UPDATE_COMMAND_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -179,6 +179,6 @@ void NWK_UpdatePanId(const PanId_t newPanId, const NwkUpdateId_t updateId, const
 #define NWK_UpdatePanId(newPanId,updateId,callback)
 
 #endif /* _RESOLVE_PANID_CONFLICT_ */
-#endif /* _NWK_UPDATE_COMMAND_H */
+#endif /* NWK_UPDATE_COMMAND_H */
 /** eof nwkUpdateCommand.h */
 

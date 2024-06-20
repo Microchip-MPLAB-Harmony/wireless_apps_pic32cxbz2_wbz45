@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_REQUEST_KEY_H
-#define _APSME_REQUEST_KEY_H
+#if !defined APSME_REQUEST_KEY_H
+#define APSME_REQUEST_KEY_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -199,6 +199,6 @@ void APS_RequestKeyInd(APS_RequestKeyInd_t *indParams);
 
 #endif /* _SECURITY_ and _LINK_SECURITY_ */
 
-#endif /* _APSME_REQUEST_KEY_H */
+#endif /* APSME_REQUEST_KEY_H */
 /** eof apsmeRequestKey.h */
 

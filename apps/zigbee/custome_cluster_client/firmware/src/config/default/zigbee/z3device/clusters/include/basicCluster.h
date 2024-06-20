@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BASICCLUSTER_H
-#define _BASICCLUSTER_H
+#ifndef BASICCLUSTER_H
+#define BASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -66,6 +66,6 @@ void basicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, En
 
 #endif
 
-#endif // _BASICCLUSTER_H
+#endif // BASICCLUSTER_H
 
 // eof basicCluster.h

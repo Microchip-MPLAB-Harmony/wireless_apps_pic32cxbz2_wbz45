@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHY_H
-#define _PHY_H
+#ifndef PHY_H
+#define PHY_H
 
 /******************************************************************************
                     Includes section
@@ -51,6 +51,14 @@
 /******************************************************************************
                     Define(s) section
 ******************************************************************************/
+#define DBM_20 20
+#define DBM_19 19
+#define DBM_18 18
+#define DBM_17 17
+#define DBM_16 16
+#define DBM_15 15
+#define DBM_14 14
+#define DBM_13 13
 #define DBM_12 12
 #define DBM_11 11
 #define DBM_10 10
@@ -191,6 +199,6 @@ typedef bool (* PhyNeighborSearchCallback_t)(const ShortAddr_t shortAddr);
 ******************************************************************************/
 void PHY_RegisterNeighborSearchCallback(PhyNeighborSearchCallback_t fp);
 #endif
-#endif /* _PHY_H */
+#endif /* PHY_H */
 
 // eof phy.h

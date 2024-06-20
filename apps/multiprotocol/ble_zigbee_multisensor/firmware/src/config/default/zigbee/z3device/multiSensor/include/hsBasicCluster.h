@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _HSBASICCLUSTER_H
-#define _HSBASICCLUSTER_H
+#ifndef HSBASICCLUSTER_H
+#define HSBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -69,6 +69,6 @@ void hsBasicClusterInit(void);
 ******************************************************************************/
 void hsBasicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _HSBASICCLUSTER_H
+#endif // HSBASICCLUSTER_H
 
 // eof hsBasicCluster.h

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLPARSER_H
-#define _ZCLPARSER_H
+#ifndef ZCLPARSER_H
+#define ZCLPARSER_H
 
 /******************************************************************************
                    Includes section
@@ -55,7 +55,7 @@
                    Define(s) section
 ******************************************************************************/
 /*ZCL Header Frame Type sub-field value*/
-#define ZCL_FRAME_CONTROL_FRAME_TYPE_UNIVERSAL_COMMAND            0x00
+#define ZCL_FRAME_CONTROL_FRAME_TYPE_UNIVERSAL_COMMAND            0x00U
 #define ZCL_FRAME_CONTROL_FRAME_TYPE_SPECIFIC_COMMAND             0x01
 
 /*ZCL Header Manufacturer Specific sub-field value*/
@@ -89,11 +89,11 @@ typedef struct PACK
     struct PACK
     {
       LITTLE_ENDIAN_OCTET(5,(
-        uint8_t frameType             :2, //Frame type sub-field
-        uint8_t manufacturerSpecific  :1, //Manufacturer specific sub-field
-        uint8_t direction             :1, //Direction sub-field
-        uint8_t defaultResponse       :1, //Disable default response sub-field
-        uint8_t reserved              :3  //Reserved bits. Must have a zero value
+        BitField_t frameType             :2, //Frame type sub-field
+        BitField_t manufacturerSpecific  :1, //Manufacturer specific sub-field
+        BitField_t direction             :1, //Direction sub-field
+        BitField_t defaultResponse       :1, //Disable default response sub-field
+        BitField_t reserved              :3  //Reserved bits. Must have a zero value
       ))
     };
     uint8_t uint8;
@@ -319,6 +319,6 @@ ZCL_DeviceEndpoint_t* zclNextEndpoint(ZCL_DeviceEndpoint_t *prev);
   \return endpoint descriptor if found, NULL otherwise.
 *****************************************************************************/
 ZCL_DeviceEndpoint_t *zclGetEndpoint(Endpoint_t endpointId);
-#endif  //#ifndef _ZCLPARSER_H
+#endif  //#ifndef ZCLPARSER_H
 
 //eof zclParser.h

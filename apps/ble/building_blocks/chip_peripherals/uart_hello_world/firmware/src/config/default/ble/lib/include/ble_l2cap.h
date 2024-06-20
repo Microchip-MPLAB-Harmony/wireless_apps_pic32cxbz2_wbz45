@@ -163,8 +163,8 @@ extern "C" {
 /**@brief L2cap events delivered to application from BLE Stack. */
 typedef enum BLE_L2CAP_EventId_T
 {
-    BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ=0x00,                       /**< Notify connection parameter update request received. See @ref BLE_L2CAP_EvtConnParamUpdateReq_T for the event content. */
-    BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP,                            /**< Notify connection parameter update response received. See @ref BLE_L2CAP_EvtConnParamUpdateRsp_T for the event content. */
+    BLE_L2CAP_EVT_CONN_PARA_UPD_REQ=0x00,                       	/**< Notify connection parameter update request received. See @ref BLE_L2CAP_EvtConnParamUpdateReq_T for the event content. */
+    BLE_L2CAP_EVT_CONN_PARA_UPD_RSP,                            	/**< Notify connection parameter update response received. See @ref BLE_L2CAP_EvtConnParamUpdateRsp_T for the event content. */
     BLE_L2CAP_EVT_CB_CONN_IND,                                     /**< Notify a credit based connection is opened. See @ref BLE_L2CAP_EvtCbConnInd_T for the event content. */
     BLE_L2CAP_EVT_CB_CONN_FAIL_IND,                                /**< Notify a credit based connection is failed. See @ref BLE_L2CAP_EvtCbConnFailInd_T for the event content. */
     BLE_L2CAP_EVT_CB_SDU_IND,                                      /**< Notify credit based SDU received. See @ref BLE_L2CAP_EvtCbSduInd_T for the event content. */
@@ -184,7 +184,7 @@ typedef enum BLE_L2CAP_EventId_T
 /**@addtogroup BLE_L2CAP_STRUCTS Structures
  * @{ */
  
-/**@brief Data structure for @ref BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ event.*/
+/**@brief Data structure for @ref BLE_L2CAP_EVT_CONN_PARA_UPD_REQ event.*/
 typedef struct BLE_L2CAP_EvtConnParamUpdateReq_T
 {
     uint16_t      connHandle;                                      /**< Connection handle. */
@@ -194,7 +194,7 @@ typedef struct BLE_L2CAP_EvtConnParamUpdateReq_T
     uint16_t      timeout;                                         /**< Connection timeout. See @ref BLE_GAP_CP_RANGE. */
 } BLE_L2CAP_EvtConnParamUpdateReq_T;
 
-/**@brief Data structure for @ref BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP event.*/
+/**@brief Data structure for @ref BLE_L2CAP_EVT_CONN_PARA_UPD_RSP event.*/
 typedef struct BLE_L2CAP_EvtConnParamUpdateRsp_T
 {
     uint16_t      connHandle;                                      /**< Connection handle. */
@@ -251,8 +251,8 @@ typedef struct BLE_L2CAP_EvtCbDiscInd_T
 /**@brief Union of BLE L2cap callback event data types. */
 typedef union
 {
-    BLE_L2CAP_EvtConnParamUpdateReq_T        evtConnParamUpdateReq;    /**< Handle @ref BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ. */
-    BLE_L2CAP_EvtConnParamUpdateRsp_T        evtConnParamUpdateRsp;    /**< Handle @ref BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP. */
+    BLE_L2CAP_EvtConnParamUpdateReq_T        evtConnParamUpdateReq;    /**< Handle @ref BLE_L2CAP_EVT_CONN_PARA_UPD_REQ. */
+    BLE_L2CAP_EvtConnParamUpdateRsp_T        evtConnParamUpdateRsp;    /**< Handle @ref BLE_L2CAP_EVT_CONN_PARA_UPD_RSP. */
     BLE_L2CAP_EvtCbConnInd_T                 evtCbConnInd;             /**< Handle @ref BLE_L2CAP_EVT_CB_CONN_IND. */
     BLE_L2CAP_EvtCbConnFailInd_T             evtCbConnFailInd;         /**< Handle @ref BLE_L2CAP_EVT_CB_CONN_FAIL_IND. */
     BLE_L2CAP_EvtCbSduInd_T                  evtCbSduInd;              /**< Handle @ref BLE_L2CAP_EVT_CB_SDU_IND. */
@@ -298,7 +298,7 @@ uint16_t BLE_L2CAP_CbInit(void);
  * @note  This API shall only be called if local is LE peripheral role.
  *
  * @par Events generated
- * @ref BLE_L2CAP_EVT_CONN_PARA_UPDATE_RSP Generated when connection parameter update response received.
+ * @ref BLE_L2CAP_EVT_CONN_PARA_UPD_RSP Generated when connection parameter update response received.
  *
  * @param[in] connHandle        Connection handle associated with this connection.
  * @param[in] intervalMin       Minimum value for the connection interval. See @ref BLE_GAP_CP_RANGE.
@@ -315,7 +315,7 @@ uint16_t BLE_L2CAP_ConnParamUpdateReq(uint16_t connHandle, uint16_t intervalMin,
 
 
 /**@brief Reply a connection parameter update request.
- * @note  This function should be called when BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ received.
+ * @note  This function should be called when BLE_L2CAP_EVT_CONN_PARA_UPD_REQ received.
  *
  * @param[in] connHandle        Connection handle associated with this connection.
  * @param[in] result            Accept or reject the request. See @ref BLE_L2CAP_CONN_PARAM_RSP_RESULT.

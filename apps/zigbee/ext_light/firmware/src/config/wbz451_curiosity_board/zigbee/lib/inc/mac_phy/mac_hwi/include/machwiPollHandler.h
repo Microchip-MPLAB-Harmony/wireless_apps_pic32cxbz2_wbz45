@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIPOLLHANDLER_H
-#define _MACHWIPOLLHANDLER_H
+#ifndef MACHWIPOLLHANDLER_H
+#define MACHWIPOLLHANDLER_H
 
 /******************************************************************************
                         Includes section.
@@ -112,5 +112,5 @@ void machwiPollHandlerReplyWithEmptyDataFrame(MAC_FrameDescr_t *frameDescr);
 #endif // _PENDING_EMPTY_DATA_FRAME_
 #endif /*_FFD_*/
 
-#endif //_MACHWIPOLLHANDLER_H
+#endif //MACHWIPOLLHANDLER_H
 // eof machwiPollHandler.h

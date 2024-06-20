@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIALARMSCLUSTER_H
-#define _CIALARMSCLUSTER_H
+#ifndef CIALARMSCLUSTER_H
+#define CIALARMSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -103,6 +103,6 @@ void alarmsSendGetAlarm(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, En
 ******************************************************************************/
 void alarmsSendResetAlarmLog(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _CIALARMSCLUSTER_H
+#endif // CIALARMSCLUSTER_H
 
 // eof ciAlarmsCluster.h

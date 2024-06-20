@@ -78,7 +78,7 @@ int wc_Md5Update(wc_Md5* md5, const byte* data, word32 len)
     ret = wolfSSL_CryptHwMutexLock();
     if (ret == 0) {
         ret = wc_Stm32_Hash_Update(&md5->stmCtx, HASH_AlgoSelection_MD5,
-                                   data, len);
+                                   data, len, WC_MD5_BLOCK_SIZE);
         wolfSSL_CryptHwMutexUnLock();
     }
     return ret;
@@ -186,13 +186,13 @@ static int Transform_Len(wc_Md5* md5, const byte* data, word32 len)
 
 #define XTRANSFORM(S,B)  Transform((S),(B))
 
-#define F1(x, y, z) (z ^ (x & (y ^ z)))
+#define F1(x, y, z) ((z) ^ ((x) & ((y) ^ (z))))
 #define F2(x, y, z) F1(z, x, y)
-#define F3(x, y, z) (x ^ y ^ z)
-#define F4(x, y, z) (y ^ (x | ~z))
+#define F3(x, y, z) ((x) ^ (y) ^ (z))
+#define F4(x, y, z) ((y) ^ ((x) | ~(z)))
 
 #define MD5STEP(f, w, x, y, z, data, s) \
-        w = rotlFixed(w + f(x, y, z) + data, s) + x
+    (w) = (rotlFixed((w) + f(x, y, z) + (data), s) + (x))
 
 static int Transform(wc_Md5* md5, const byte* data)
 {
@@ -303,7 +303,7 @@ static int _InitMd5(wc_Md5* md5)
     md5->buffLen = 0;
     md5->loLen   = 0;
     md5->hiLen   = 0;
-#if defined(WOLFSSL_HASH_FLAGS) || defined(WOLF_CRYPTO_CB)
+#ifdef WOLFSSL_HASH_FLAGS
     md5->flags = 0;
 #endif
 
@@ -539,18 +539,19 @@ int wc_Md5Copy(wc_Md5* src, wc_Md5* dst)
 
     XMEMCPY(dst, src, sizeof(wc_Md5));
 
-#ifdef WOLFSSL_ASYNC_CRYPT
+#if defined(WOLFSSL_ASYNC_CRYPT) && defined(WC_ASYNC_ENABLE_MD5)
     ret = wolfAsync_DevCopy(&src->asyncDev, &dst->asyncDev);
 #endif
 #ifdef WOLFSSL_PIC32MZ_HASH
     ret = wc_Pic32HashCopy(&src->cache, &dst->cache);
 #endif
-#if defined(WOLFSSL_HASH_FLAGS) || defined(WOLF_CRYPTO_CB)
+#ifdef WOLFSSL_HASH_FLAGS
     dst->flags |= WC_HASH_FLAG_ISCOPY;
 #endif
 
     return ret;
 }
+
 #ifdef OPENSSL_EXTRA
 /* Apply MD5 transformation to the data                   */
 /* @param md5  a pointer to wc_MD5 structure              */
@@ -562,10 +563,15 @@ int wc_Md5Transform(wc_Md5* md5, const byte* data)
     if (md5 == NULL || data == NULL) {
         return BAD_FUNC_ARG;
     }
+#ifndef HAVE_MD5_CUST_API
     return Transform(md5, data);
-}
+#else
+    return NOT_COMPILED_IN;
 #endif
-#if defined(WOLFSSL_HASH_FLAGS) || defined(WOLF_CRYPTO_CB)
+}
+#endif /* OPENSSL_EXTRA */
+
+#ifdef WOLFSSL_HASH_FLAGS
 int wc_Md5SetFlags(wc_Md5* md5, word32 flags)
 {
     if (md5) {

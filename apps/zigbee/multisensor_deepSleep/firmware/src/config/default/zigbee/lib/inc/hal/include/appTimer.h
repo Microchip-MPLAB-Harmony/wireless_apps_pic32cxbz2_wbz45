@@ -46,8 +46,8 @@
  
 // DOM-IGNORE-BEGIN
 
-#ifndef _APPTIMER_H
-#define _APPTIMER_H
+#ifndef APPTIMER_H
+#define APPTIMER_H
 
 // DOM-IGNORE-END
 
@@ -139,10 +139,20 @@ void HAL_BackupRunningTimers(uint32_t expectedSleepTime);
  **********************************************************************/
 void HAL_RestoreRunningTimers(void);
 
+/******************************************************************************
+Interrupt handler of appTimer clock.
+******************************************************************************/
+void halAppTimerHandler(void);
+
+/******************************************************************************
+  \brief Returns the time left value for the smallest app timer.
+  \return time left for the smallest application timer.
+******************************************************************************/
+uint32_t halGetTimeToNextAppTimer(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /*_APPTIMER_H*/
+#endif /*APPTIMER_H*/
 //eof appTimer.h

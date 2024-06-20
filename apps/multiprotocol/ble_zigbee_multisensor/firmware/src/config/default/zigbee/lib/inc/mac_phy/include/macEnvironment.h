@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MAC_ENVIRONMENT_H
-#define _MAC_ENVIRONMENT_H
+#ifndef MAC_ENVIRONMENT_H
+#define MAC_ENVIRONMENT_H
 
 /******************************************************************************
                                Includes section
@@ -88,5 +88,5 @@ uint32_t MAC_GetOctetsTransmissionTimeInMs(const uint32_t octets);
  ******************************************************************************/
 bool MAC_IsActiveTransaction(void);
 
-#endif /* _MAC_ENVIRONMENT_H */
+#endif /* MAC_ENVIRONMENT_H */
 /** eof macEnvironment.h */

@@ -51,7 +51,7 @@
                               Definitions section
  ******************************************************************************/
 
-void SYS_AssertSubscribe(SYS_AssertCallback_t pCallback);
+
 
 /******************************************************************************
                               Global variable section
@@ -84,8 +84,10 @@ SYS_AssertCallback_t s_pAssertSubscriber;
 */
 void SYS_AssertSubscribe(SYS_AssertCallback_t pCallback)
 {
-  if (pCallback)
+  if (pCallback != NULL)
+  {
     s_pAssertSubscriber = pCallback;
+  }
 }
 
 
@@ -95,7 +97,7 @@ void SYS_AssertSubscribe(SYS_AssertCallback_t pCallback)
   \param[in] None
   \return None
 ******************************************************************************/
-void SYS_DefAssertCallbackWarn()
+void SYS_DefAssertCallbackWarn(void)
 {
   gAssertParam.level   = WARN_LEVEL;
 
@@ -112,8 +114,10 @@ void SYS_DefAssertCallbackWarn()
   gAssertParam.file = gAssertFile;
 #endif
 
-  if ( NULL != s_pAssertSubscriber ) 
-    s_pAssertSubscriber(&gAssertParam); 
+  if ( NULL != s_pAssertSubscriber )
+  {
+    s_pAssertSubscriber(&gAssertParam);
+  }
 } 
  
 /**************************************************************************//**
@@ -122,7 +126,7 @@ void SYS_DefAssertCallbackWarn()
   \param[in] None
   \return None
 ******************************************************************************/
-void SYS_DefAssertCallbackError()
+void SYS_DefAssertCallbackError(void)
 {
   gAssertParam.level   = ERROR_LEVEL;
    
@@ -139,8 +143,10 @@ void SYS_DefAssertCallbackError()
   gAssertParam.file = gAssertFile;
 #endif
 
-  if ( NULL !=  s_pAssertSubscriber  ) 
-    s_pAssertSubscriber(&gAssertParam); 
+  if ( NULL !=  s_pAssertSubscriber  )
+  {
+    s_pAssertSubscriber(&gAssertParam);
+  }
 } 
 
 /**************************************************************************//**
@@ -149,7 +155,7 @@ void SYS_DefAssertCallbackError()
   \param[in] None
   \return None
 ******************************************************************************/
-void SYS_DefAssertCallbackFatal()
+void SYS_DefAssertCallbackFatal(void)
 {
   gAssertParam.level   = FATAL_LEVEL;
 
@@ -166,7 +172,9 @@ void SYS_DefAssertCallbackFatal()
   gAssertParam.file = gAssertFile;
 #endif
 
-  if ( NULL != s_pAssertSubscriber ) 
-    s_pAssertSubscriber(&gAssertParam); 
+  if ( NULL != s_pAssertSubscriber )
+  {
+    s_pAssertSubscriber(&gAssertParam);
+  }
 } 
 #endif

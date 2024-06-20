@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLMEMORYMANAGER_H
-#define _ZCLMEMORYMANAGER_H
+#ifndef ZCLMEMORYMANAGER_H
+#define ZCLMEMORYMANAGER_H
 
 /******************************************************************************
                    Includes section
@@ -126,6 +126,6 @@ void zclMmFreeMem(ZclMmBuffer_t *mem);
 *****************************************************************************/
 ZclMmBufferDescriptor_t *zclMmGetNextOutputMemDescriptor(ZclMmBufferDescriptor_t *descr);
 
-#endif  //#ifndef _ZCLMEMORYMANAGER_H
+#endif  //#ifndef ZCLMEMORYMANAGER_H
 
 //eof zclMemoryManager.h

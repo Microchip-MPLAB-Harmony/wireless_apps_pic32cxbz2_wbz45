@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_GROUP_H
-#define _NWK_GROUP_H
+#if !defined NWK_GROUP_H
+#define NWK_GROUP_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -163,6 +163,6 @@ void NWK_ResetGroups(void);
 #else
 #define NWK_ResetGroups() (void)0
 #endif /* _GROUP_TABLE_ */
-#endif /* _NWK_GROUP_H */
+#endif /* NWK_GROUP_H */
 /** eof nwkGroup.h */
 

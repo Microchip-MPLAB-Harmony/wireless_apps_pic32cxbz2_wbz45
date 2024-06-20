@@ -76,7 +76,7 @@
 /*******************************************************************************
                     Static functions section
 *******************************************************************************/
-static void lightFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t id);
+static void lightFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t clusterId);
 #if (ZB_COMMISSIONING_ON_STARTUP == 1)
 #ifdef _ZCL_REPORTING_SUPPORT_
 static void lightConfigureReportingResp(ZCL_Notify_t *ntfy);
@@ -96,7 +96,7 @@ static ZCL_DeviceEndpoint_t lightEndpoint =
   {
     .endpoint            = APP_ENDPOINT_LIGHT,
     .AppProfileId        = PROFILE_ID_HOME_AUTOMATION,
-    .AppDeviceId         = APP_Z3DEVICE_ID,
+    .AppDeviceId         = (uint16_t)APP_Z3DEVICE_ID,
     .AppDeviceVersion    = 0x1,
     .AppInClustersCount  = ARRAY_SIZE(lightServerClusterIds),
     .AppInClustersList   = lightServerClusterIds,
@@ -168,8 +168,9 @@ void appDeviceInit(void)
       LCD_PRINT(0, 1, "Temperature Color Light"); 
 #endif
   if (!APP_RegisterEndpoint(&lightEndpoint, &lightBindReq))
+  {
     return;
-
+  }
   ZCL_CommandManagerInit();
   lightBasicClusterInit();
   lightIdentifyClusterInit();
@@ -195,7 +196,9 @@ void appDeviceInit(void)
 
 #ifdef _ENABLE_PERSISTENT_SERVER_
   if (PDS_IsAbleToRestore(APP_LIGHT_SCENES_MEM_ID))
-    PDS_Restore(APP_LIGHT_SCENES_MEM_ID);
+  {
+    (void)PDS_Restore(APP_LIGHT_SCENES_MEM_ID);
+  }
 #endif
   /**CHANGE* - cluster version need to be reinitilized here after PDS Restore same for all devices
     implement a common function to reinitilized */
@@ -232,7 +235,8 @@ static void lightFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clust
   {
     case ONOFF_CLUSTER_ID:
       serverCluster = ZCL_GetCluster(APP_ENDPOINT_LIGHT, ONOFF_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
-      if (serverCluster)
+      if (serverCluster != NULL)
+      {
 #ifdef _ZCL_REPORTING_SUPPORT_
 #if (ZB_COMMISSIONING_ON_STARTUP == 1)
         sendConfigureReportingToNotify(APP_ENDPOINT_LIGHT, 0, ONOFF_CLUSTER_ID,
@@ -242,11 +246,13 @@ static void lightFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clust
         ZCL_StartReporting();
 #endif
 #endif
+      }
       break;
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT
     case LEVEL_CONTROL_CLUSTER_ID:
        serverCluster = ZCL_GetCluster(APP_ENDPOINT_LIGHT, LEVEL_CONTROL_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
-       if (serverCluster)
+       if (serverCluster != NULL)
+       {
 #if (ZB_COMMISSIONING_ON_STARTUP == 1)
 #ifdef _ZCL_REPORTING_SUPPORT_
          sendConfigureReportingToNotify(APP_ENDPOINT_LIGHT, 0,
@@ -256,7 +262,7 @@ static void lightFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clust
 #else
        ZCL_StartReporting();
 #endif
-
+       }
       break;
 #endif
   }

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _BDB_UNPACK_H_
-#define _BDB_UNPACK_H_
+#ifndef BDB_UNPACK_H
+#define BDB_UNPACK_H
 /*******************************************************************************
                              Includes section
 *******************************************************************************/

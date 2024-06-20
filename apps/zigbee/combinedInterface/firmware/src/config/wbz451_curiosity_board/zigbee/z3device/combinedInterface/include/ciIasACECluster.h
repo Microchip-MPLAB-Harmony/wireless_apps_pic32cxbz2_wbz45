@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIIASACECLUSTER_H
-#define _CIIASACECLUSTER_H
+#ifndef CIIASACECLUSTER_H
+#define CIIASACECLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -121,6 +121,6 @@ void acePanelStatusChangedCommand(APS_AddrMode_t mode, ShortAddr_t addr, Endpoin
 void aceZoneStatusChangedCommand(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
                                  uint8_t zoneId, uint8_t zoneStatus, ZCL_AudibleNotification_t audibleSound, char *zoneLabel);
 
-#endif // _CIIASACECLUSTER_H
+#endif // CIIASACECLUSTER_H
 
 // eof ciIasZoneCluster.h

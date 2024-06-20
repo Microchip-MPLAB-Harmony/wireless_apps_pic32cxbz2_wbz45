@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDSETTRX_H
-#define _MACHWDSETTRX_H
+#ifndef MACHWDSETTRX_H
+#define MACHWDSETTRX_H
 
 /******************************************************************************
                     Includes section
@@ -85,6 +85,6 @@ typedef struct
 ******************************************************************************/
 void MACHWD_SetTrxStateReq(MACHWD_SetTrxStateReq_t *reqParams);
 
-#endif /* _MACHWDSETTRX_H */
+#endif /* MACHWDSETTRX_H */
 
 // eof machwdSetTrx.h

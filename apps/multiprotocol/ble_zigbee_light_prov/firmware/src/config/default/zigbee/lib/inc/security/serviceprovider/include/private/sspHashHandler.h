@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SSPHASHHANDLER_H
-#define _SSPHASHHANDLER_H
+#ifndef SSPHASHHANDLER_H
+#define SSPHASHHANDLER_H
 
 #ifdef _LINK_SECURITY_
 
@@ -138,6 +138,6 @@ void sspBcbHashReq(SspBcbHashReq_t *param);
 
 #endif // _LINK_SECURITY_
 
-#endif //_SSPHASHHANDLER_H
+#endif //SSPHASHHANDLER_H
 
 //eof sspHashHandler.h

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _RFBATTERY_H
-#define _RFBATTERY_H
+#ifndef RFBATTERY_H
+#define RFBATTERY_H
 
 /******************************************************************************
                     Includes section
@@ -149,6 +149,6 @@ voltage is already below the provided threshold value).
 *****************************************************************************/
 void RF_BatteryMonReq(RF_BatteryMonReq_t *reqParams);
 
-#endif /*_RFBATTERY_H*/
+#endif /*RFBATTERY_H*/
 
 // eof rfBattery.h

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMALARMSCLUSTER_H
-#define _CUSTOMALARMSCLUSTER_H
+#ifndef CUSTOMALARMSCLUSTER_H
+#define CUSTOMALARMSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -134,6 +134,6 @@ void alarmsSendGetAlarm(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, En
 ******************************************************************************/
 void alarmsSendResetAlarmLog(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
-#endif // _CUSTOMALARMSCLUSTER_H
+#endif // CUSTOMALARMSCLUSTER_H
 
 // eof customAlarmsCluster.h

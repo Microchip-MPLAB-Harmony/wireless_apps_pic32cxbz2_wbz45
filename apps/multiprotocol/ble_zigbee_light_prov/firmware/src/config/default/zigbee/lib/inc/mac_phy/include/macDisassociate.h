@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACDISASSOCIATE_H
-#define _MACDISASSOCIATE_H
+#ifndef MACDISASSOCIATE_H
+#define MACDISASSOCIATE_H
 
 /******************************************************************************
                         Includes section
@@ -149,6 +149,6 @@ void MAC_DisassociateReq(MAC_DisassociateReq_t *reqParams);
 ******************************************************************************/
 extern void MAC_DisassociateInd(MAC_DisassociateInd_t *indParams);
 
-#endif /* _MACDISASSOCIATE_H */
+#endif /* MACDISASSOCIATE_H */
 
 // eof macDisassociate.h

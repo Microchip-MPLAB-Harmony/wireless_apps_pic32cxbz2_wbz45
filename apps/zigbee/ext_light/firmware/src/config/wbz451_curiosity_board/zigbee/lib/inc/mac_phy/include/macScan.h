@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACSCAN_H
-#define _MACSCAN_H
+#ifndef MACSCAN_H
+#define MACSCAN_H
 
 /******************************************************************************
                         Includes section
@@ -134,6 +134,6 @@ typedef struct
 ******************************************************************************/
 void MAC_ScanReq(MAC_ScanReq_t *reqParams);
 
-#endif /* _MACSCAN_H */
+#endif /* MACSCAN_H */
 
 // eof macScan.h

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_SYNC_LOSS_H
-#define _NLME_SYNC_LOSS_H
+#if !defined NLME_SYNC_LOSS_H
+#define NLME_SYNC_LOSS_H
 
 /******************************************************************************
                                Prototypes section
@@ -52,6 +52,6 @@
  ******************************************************************************/
 extern void NWK_SyncLossInd(void);
 
-#endif /* _NLME_SYNC_LOSS_H */
+#endif /* NLME_SYNC_LOSS_H */
 /** eof nlmeSyncLoss.h */
 

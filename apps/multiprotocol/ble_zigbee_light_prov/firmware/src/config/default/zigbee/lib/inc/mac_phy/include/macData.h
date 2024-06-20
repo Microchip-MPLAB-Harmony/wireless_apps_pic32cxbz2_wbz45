@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACDATA_H
-#define _MACDATA_H
+#ifndef MACDATA_H
+#define MACDATA_H
 
 /******************************************************************************
                         Includes section
@@ -174,6 +174,6 @@ void MAC_DataReq(MAC_DataReq_t *reqParams);
 ******************************************************************************/
 extern void MAC_DataInd(MAC_DataInd_t *indParams);
 
-#endif /* _MACDATA_H */
+#endif /* MACDATA_H */
 
 // eof macData.h

@@ -38,8 +38,8 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-#ifndef _CUSTOMSCENESCLUSTER_H
-#define _CUSTOMSCENESCLUSTER_H
+#ifndef CUSTOMSCENESCLUSTER_H
+#define CUSTOMSCENESCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -86,7 +86,7 @@ void customScenesInvalidate(void);
 //\returns status of scene storing
 //******************************************************************************/
 //ZCL_Status_t storeScene(ZCL_StoreScene_t *storeScene);
-#endif // _CUSTOMSCENESCLUSTER_H
+#endif // CUSTOMSCENESCLUSTER_H
 
 // eof customScenesCluster.h
 

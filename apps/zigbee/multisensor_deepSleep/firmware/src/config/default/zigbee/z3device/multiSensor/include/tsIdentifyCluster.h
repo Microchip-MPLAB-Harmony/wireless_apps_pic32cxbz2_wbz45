@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _TSIDENTIFYCLUSTER_H
-#define _TSIDENTIFYCLUSTER_H
+#ifndef TSIDENTIFYCLUSTER_H
+#define TSIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -78,7 +78,7 @@ void tsIdentifyStop(void);
 ******************************************************************************/
 void tsIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
 
-#endif // _TSIDENTIFYCLUSTER_H
+#endif // TSIDENTIFYCLUSTER_H
 
 // eof tsIdentifyCluster.h
 

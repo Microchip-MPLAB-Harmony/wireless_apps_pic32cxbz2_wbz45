@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSINCREMENTMACRO_H
-#define _SYSINCREMENTMACRO_H
+#ifndef SYSINCREMENTMACRO_H
+#define SYSINCREMENTMACRO_H
 
 /******************************************************************************
                     Defines section
@@ -309,7 +309,7 @@
 #define SP_INC_253   254
 #define SP_INC_254   255
 
-#endif // _SYSINCREMENTMACRO_H
+#endif // SYSINCREMENTMACRO_H
 
 // eof sysIncrementMacro.h
 

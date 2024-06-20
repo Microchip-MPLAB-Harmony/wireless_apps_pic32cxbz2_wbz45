@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_FRAME_H
-#define _NWK_FRAME_H
+#if !defined NWK_FRAME_H
+#define NWK_FRAME_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -349,6 +349,6 @@ NWK_PRIVATE void nwkParseHeader(NwkFrameHeader_t *const nwkHeader,
  ******************************************************************************/
 NWK_PRIVATE NwkRadius_t nwkGetDefaultRadius(void);
 
-#endif /* _NWK_FRAME_H */
+#endif /* NWK_FRAME_H */
 /** eof nwkFrame.h */
 

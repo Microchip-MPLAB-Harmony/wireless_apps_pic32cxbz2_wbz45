@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _SYS_DUPLICATE_TABLE_H
-#define _SYS_DUPLICATE_TABLE_H
+#if !defined SYS_DUPLICATE_TABLE_H
+#define SYS_DUPLICATE_TABLE_H
 
 /******************************************************************************
                                 Includes section
@@ -110,7 +110,7 @@ typedef struct _SYS_DuplicateTable_t
   \return None.
  ******************************************************************************/
 void SYS_DuplicateTableReset(SYS_DuplicateTable_t *table,
-    SYS_DuplicateTableEntry_t *entries, uint8_t tableSize,
+    SYS_DuplicateTableEntry_t *entries, uint8_t size,
     uint16_t agingPeriod, uint8_t maxTTL, bool removeOldest,uint8_t maskSize);
 
 /**************************************************************************//**
@@ -151,5 +151,5 @@ void SYS_DuplicateTableClear(SYS_DuplicateTable_t *table,
 bool SYS_DuplicateTableEntryExists(SYS_DuplicateTable_t *table,
     uint16_t address, uint8_t seqNumber);
 
-#endif /* _SYS_DUPLICATE_TABLE_H */
+#endif /* SYS_DUPLICATE_TABLE_H */
 /** eof sysDuplicateTable.h */

@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_GROUP_H
-#define _APSME_GROUP_H
+#if !defined APSME_GROUP_H
+#define APSME_GROUP_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -207,6 +207,6 @@ void APS_RemoveGroupReq(APS_RemoveGroupReq_t *const req);
  ******************************************************************************/
 void APS_RemoveAllGroupsReq(APS_RemoveAllGroupsReq_t *const req);
 
-#endif /* _APSME_GROUP_H */
+#endif /* APSME_GROUP_H */
 /** eof apsmeGroup.h */
 

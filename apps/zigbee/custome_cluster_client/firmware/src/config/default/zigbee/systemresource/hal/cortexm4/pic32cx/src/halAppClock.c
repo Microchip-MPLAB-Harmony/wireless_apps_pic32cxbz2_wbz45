@@ -77,7 +77,7 @@
  #define TC0_WAVE 		TC0_REGS->COUNT16.TC_WAVE					//TC_WAVE
  #define TC0_STATUS		TC0_REGS->COUNT16.TC_STATUS					//TC_STATUS
 
-#define HAL_MIN_SLEEP_TIME_ALLOWED          (1)
+#define HAL_MIN_SLEEP_TIME_ALLOWED          (1U)
 
 /******************************************************************************
                    Prototypes section
@@ -86,13 +86,13 @@
   \brief Returns the time left value for the smallest app timer.
   \return time left for the smallest application timer.
 ******************************************************************************/
-uint32_t halGetTimeToNextAppTimer(void);
+
 static void smallestTimerRequestHandler(SYS_EventId_t eventId, SYS_EventData_t data);
 
 /******************************************************************************
                      Global variables section
 ******************************************************************************/
-static uint32_t halAppTime = 0ul;     // time of application timer
+static uint32_t halAppTime = 0UL;     // time of application timer
 static uint32_t __attribute__((persistent)) backupHalAppTime;     // time of application timer
 uint8_t halAppTimeOvfw = 0;
 static volatile uint32_t halAppIrqCount = 0;
@@ -104,89 +104,6 @@ static SYS_EventReceiver_t appTimerEventListener = {.func = smallestTimerRequest
 /******************************************************************************
                    Implementations section
 ******************************************************************************/
-  /******************************************************************************
-   Polling the Sync. flag for Software Reset 
-   Parameters:
-     none
-   Returns:
-     none
-   *****************************************************************************/
-INLINE void halTimerSWRSTSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_SWRST_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Enable 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halTimerEnableSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_ENABLE_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Clock Domain
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halTimerClockSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_STATUS_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Count register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halTimerCountSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_COUNT_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for CC register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-
-INLINE void halTimerCCSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_CC0_Msk);
-}
-/******************************************************************************
- Polling the Sync. flag for CC1 register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halTimerCC1Sync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk);
-}
-/******************************************************************************
- Polling the Sync. flag for CTRLB register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halTimerCTRLBSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk);
-}
-
 /******************************************************************************
  Interrupt handler signal implementation
  Parameters:
@@ -197,9 +114,7 @@ INLINE void halTimerCTRLBSync(void)
 INLINE void halInterruptAppClock(void)
 {
   halAppIrqCount++;
-  halPostTaskFromISR(HAL_APPTIMER);
-  // infinity loop spy
-  SYS_InfinityLoopMonitoring();
+  halPostTaskFromISR(HAL_APPTIMER);  
 }
 
 /******************************************************************************
@@ -211,11 +126,14 @@ INLINE void halInterruptAppClock(void)
  *****************************************************************************/
 uint32_t halGetElapsedTimeFromAppClock(void)
 {
+  uint16_t tcCount;
   TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-  halTimerCTRLBSync();	
-  uint16_t tcCount = TC0_16COUNT;
-	
-  return (tcCount * AMOUNT_NSEC_FOR_TIMER_CLOCK) /1000;
+  while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+  {
+     /* Wait for Write Synchronization */
+  }
+  tcCount = TC0_16COUNT;
+  return (tcCount * AMOUNT_NSEC_FOR_TIMER_CLOCK) /1000U;
 }
 
 /**************************************************************************//**
@@ -246,7 +164,9 @@ void halAppSystemTimeSynchronize(void)
   tmpValue = tmpCounter * HAL_APPTIMERINTERVAL;
   halAppTime += tmpValue;
   if (halAppTime < tmpValue)
+  {
     halAppTimeOvfw++;
+  }
 }
 
 // Only For testing
@@ -274,29 +194,36 @@ void TC0_Handler(TC_TIMER_STATUS status, uintptr_t context)
 #endif //(_STATS_ENABLED_)
 
  TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
- halTimerCTRLBSync();
- uint16_t tcCount = TC0_16COUNT;
- uint8_t intFlag = TC0_INTFLAG;
+ while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+ {
+    /* Wait for Write Synchronization */
+ }
     
-  if((status & TC_INTFLAG_MC0(1))&&(TC0_INTENSET & TC_INTENSET_MC0(1)))
+  if((bool)(status & TC_INTFLAG_MC0(1))&&(bool)(TC0_INTENSET & TC_INTENSET_MC0(1)))
   {
     // appTimer handling      
-   TC0_INTFLAG = TC_INTFLAG_MC0(1);
-   TC0_16COUNT = 0;
-   halTimerCountSync();
-   halInterruptAppClock();
+    TC0_INTFLAG = TC_INTFLAG_MC0(1);
+    TC0_16COUNT = 0;
+    while ((TC0_SYNCBUSY & TC_SYNCBUSY_COUNT_Msk) == TC_SYNCBUSY_COUNT_Msk)
+    {
+      /* Wait for Write Synchronization */
+    }
+    halInterruptAppClock();
   }
     
-  if((status & TC_INTFLAG_MC1(1)) && (!(TC0_INTENSET & TC_INTENSET_MC1(1))))
+  if((bool)(status & TC_INTFLAG_MC1(1)) && (!(bool)(TC0_INTENSET & TC_INTENSET_MC1(1))))
   {
    TC0_INTFLAG = TC_INTFLAG_MC1(1);
   }
     
-  if((status & TC_INTFLAG_MC1(1))&&(TC0_INTENSET & TC_INTENSET_MC1(1)))
+  if((bool)(status & TC_INTFLAG_MC1(1))&&(bool)(TC0_INTENSET & TC_INTENSET_MC1(1)))
   { 
    TC0_INTFLAG = TC_INTFLAG_MC1(1);//rTimerHandling
    TC0_CC1 = TC_COUNT16_CC_CC(0);
-   halTimerCC1Sync();
+   while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk) == TC_SYNCBUSY_CC1_Msk)
+   {
+     /* Wait for Write Synchronization */
+   }
    halMacTimerHandler();
   }
        
@@ -318,9 +245,15 @@ void halStartAppClock(void)
   //GCLK_PCHCTRL(TCC2_GCLK_ID) = GCLK_PCHCTRL_GEN(GCLK_GEN_3) | GCLK_PCHCTRL_CHEN;
 	
   TC0_CTRLA = 0;
-  halTimerClockSync ();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_STATUS_Msk) == TC_SYNCBUSY_STATUS_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
   TC0_CTRLA = TC_CTRLA_SWRST_Msk;
-  halTimerSWRSTSync();
+  while((TC0_SYNCBUSY & TC_SYNCBUSY_SWRST_Msk) == TC_SYNCBUSY_SWRST_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
 
   /* Prescaler DIV2 8Mhz / 8 = 1 Mhz
      Reload or reset the counter on next prescaler clock
@@ -329,20 +262,32 @@ void halStartAppClock(void)
   uint32_t mode = TC_CTRLA_PRESCALER_DIV16 | TC_CTRLA_PRESCSYNC_PRESC | TC_CTRLA_RUNSTDBY(1);
   TC0_CTRLA = mode;
 	
-  halTimerClockSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_STATUS_Msk) == TC_SYNCBUSY_STATUS_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
 
   //TCC2_WAVE = TCC_WAVE_WAVEGEN_MFRQ;
 
   /*The TC will wrap around and run on the next underflow/overflow condition, counter count up*/
   TC0_CTRLBCLR = TC_CTRLBCLR_ONESHOT(1) | TC_CTRLBCLR_DIR(1);
-  halTimerCTRLBSync();
+  while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
 
   TC0_16COUNT =0;
-  halTimerCountSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_COUNT_Msk) == TC_SYNCBUSY_COUNT_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
 
   // ((F_PERI/1000ul) / TIMER_FREQUENCY_PRESCALER(DIV8)) * HAL_APPTIMERINTERVAL (10 ms)
   TC0_CC0 = TC_COUNT16_CC_CC(TOP_TIMER_COUNTER_VALUE);
-  halTimerCCSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC0_Msk) == TC_SYNCBUSY_CC0_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
 
   NVIC_DisableIRQ(TC0_IRQn);
   NVIC_ClearPendingIRQ(TC0_IRQn);
@@ -351,7 +296,10 @@ void halStartAppClock(void)
   NVIC_EnableIRQ(TC0_IRQn);
 
   TC0_CTRLA |= TC_CTRLA_ENABLE(1);
-  halTimerEnableSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_ENABLE_Msk) == TC_SYNCBUSY_ENABLE_Msk)
+  {
+    /* Wait for Write Synchronization */  
+  }
 
   TC0_INTFLAG = TC_INTFLAG_MC1(1);
 
@@ -375,13 +323,16 @@ void halStopAppClock(void)
 
   /*compensate before stoping as it misses the time counted till this time from last 10 ms intterupt */
   elapsedTimeinUs = halGetElapsedTimeFromAppClock(); 
-  halAppTime += elapsedTimeinUs/1000; //in ms
+  halAppTime += elapsedTimeinUs/1000U; //in ms
 
   /* Disable the clock */
   NVIC_DisableIRQ(TC0_IRQn);
   TC0_INTENCLR = TC_INTENCLR_MC0(1);// disabling interrupt MC0
   TC0_CTRLA &= ~TC_CTRLA_ENABLE(1);// Stop timer
-  halTimerEnableSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_ENABLE_Msk) == TC_SYNCBUSY_ENABLE_Msk)
+  {
+    /* Wait for Write Synchronization */  
+  }
 }
 
 
@@ -418,11 +369,14 @@ void halDelayUs(uint16_t us)
   uint32_t startCounter = 0;
   uint32_t delta = 0;
 
-  us *= AMOUNT_TIMER_CLOCK_IN_ONE_USEC;
+  us *= (uint16_t)AMOUNT_TIMER_CLOCK_IN_ONE_USEC;
   // begin counter meaning
 
   TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-  halTimerCTRLBSync();
+  while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
   startCounter = TC0_16COUNT;
   // different between compare regitser and current counter
 
@@ -431,23 +385,34 @@ void halDelayUs(uint16_t us)
   if(delta > us)
   {
     TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-    halTimerCTRLBSync();
+    while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+    {
+      /* Wait for Write Synchronization */
+    }
     while((TC0_16COUNT - startCounter ) < us)
-   {
+    {
       TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-      halTimerCTRLBSync();
-			
-   }
+      while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+      {
+        /* Wait for Write Synchronization */
+      }	
+    }
   }
   else
   {
-    us -= delta;
+    us -= (uint16_t)delta;
         TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-    halTimerCTRLBSync();
-    while((TC0_16COUNT > startCounter ) || (TC0_16COUNT < us))
+    while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+    {
+      /* Wait for Write Synchronization */
+    }
+   while((TC0_16COUNT > startCounter ) || (TC0_16COUNT < us))
    {
      TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-     halTimerCTRLBSync();
+     while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+     {
+      /* Wait for Write Synchronization */
+     }
    }
   }
 
@@ -472,9 +437,13 @@ static void smallestTimerRequestHandler(SYS_EventId_t eventId, SYS_EventData_t d
   if (*minValue > timeToFire)
   {
     if (timeToFire > HAL_MIN_SLEEP_TIME_ALLOWED)
+    {
       *minValue = timeToFire;
+    }
     else
+    {
       *minValue = 0;
+    }
   }
   (void)eventId;
 }

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMLEVELCONTROLCLUSTER_H
-#define _CUSTOMLEVELCONTROLCLUSTER_H
+#ifndef CUSTOMLEVELCONTROLCLUSTER_H
+#define CUSTOMLEVELCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -110,7 +110,7 @@ void levelControlClusterSetExtensionField(uint16_t currentLevel, uint16_t transi
 ******************************************************************************/
 void customUpdateStartupLevel(void);
 
-#endif // _CUSTOMLEVELCONTROLCLUSTER_H
+#endif // CUSTOMLEVELCONTROLCLUSTER_H
 
 // eof customLevelControlCluster.h
 

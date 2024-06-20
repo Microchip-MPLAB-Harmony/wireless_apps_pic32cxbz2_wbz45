@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMIDENTIFYCLUSTER_H
-#define _CUSTOMIDENTIFYCLUSTER_H
+#ifndef CUSTOMIDENTIFYCLUSTER_H
+#define CUSTOMIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Defines
@@ -95,7 +95,7 @@ void customIdentifyStop(void);
 ******************************************************************************/
 void customIdentifyStart(uint16_t identifyTime, bool colorEffect, uint16_t enhancedHue);
 
-#endif // _CUSTOMIDENTIFYCLUSTER_H
+#endif // CUSTOMIDENTIFYCLUSTER_H
 
 // eof customIdentifyCluster.h
 

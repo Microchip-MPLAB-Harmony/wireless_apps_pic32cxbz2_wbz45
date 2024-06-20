@@ -53,9 +53,10 @@
                    Definition(s) section
 ******************************************************************************/
 #define RAISE_CALLBACKS_TO_GROUPS_SUBSCIBERS(queue, callback) \
-  for (GroupsSubscriber_t *subscriber = getQueueElem(&queue); subscriber; subscriber = getNextQueueElem(subscriber)) \
-    if (subscriber->callback) \
-      subscriber->callback(addressing, payload);
+  for (GroupsSubscriber_t *subscriber = getQueueElem(&queue); (subscriber != NULL); subscriber = getNextQueueElem(subscriber)){ \
+    if ((subscriber->callback) != NULL){ \
+      subscriber->callback(addressing, payload);}\
+      }
 
 /******************************************************************************
                     Types section
@@ -73,6 +74,7 @@ typedef struct
 /******************************************************************************
                     Externals
 ******************************************************************************/
+extern QueueDescriptor_t groupsSubscribers;
 
 /******************************************************************************
                     Prototypes section
@@ -97,7 +99,7 @@ void groupsClusterInit(void);
 \param[in] ep    - endpoint number of destination device;
 \param[in] group - group id
 ******************************************************************************/
-void groupsSendAddGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
+void groupsSendAddGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
   uint16_t group);
 
 /**************************************************************************//**
@@ -108,7 +110,7 @@ void groupsSendAddGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, En
 \param[in] ep    - endpoint number of destination device;
 \param[in] group - group id
 ******************************************************************************/
-void groupsSendViewGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,Endpoint_t srcEp,
+void groupsSendViewGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,Endpoint_t srcEndpoint,
   uint16_t group);
 
 /**************************************************************************//**
@@ -120,7 +122,7 @@ void groupsSendViewGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,En
 \param[in] count - group count;
 \param[in] list  - group list;
 ******************************************************************************/
-void groupsSendGetGroupMembership(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,Endpoint_t srcEp,
+void groupsSendGetGroupMembership(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,Endpoint_t srcEndpoint,
   uint8_t count, uint16_t *list);
 
 /**************************************************************************//**
@@ -131,7 +133,7 @@ void groupsSendGetGroupMembership(APS_AddrMode_t mode, ShortAddr_t addr, Endpoin
 \param[in] ep    - endpoint number of destination device;
 \param[in] group - group id
 ******************************************************************************/
-void groupsSendRemoveGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
+void groupsSendRemoveGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
   uint16_t group);
 
 /**************************************************************************//**
@@ -142,7 +144,7 @@ void groupsSendRemoveGroup(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep,
 \param[in] ep    - endpoint number of destination device;
 \param[in] group - group id
 ******************************************************************************/
-void groupsSendRemoveAllGroups(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
+void groupsSendRemoveAllGroups(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint);
 
 /**************************************************************************//**
 \brief Sends Add Group If Identifying command to bound devices
@@ -152,17 +154,8 @@ void groupsSendRemoveAllGroups(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t
 \param[in] ep    - endpoint number of destination device;
 \param[in] group - group id
 ******************************************************************************/
-void groupsSendAddGroupIfIdentifying(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
+void groupsSendAddGroupIfIdentifying(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
   uint16_t group);
-
-/**************************************************************************//**
-\brief Fills Add Group Response command structure
-
-\param[out] payload - pointer to command structure;
-\param[in]  group   - group id;
-\param[in]  status  - status of group adding
-******************************************************************************/
-void fillAddGroupResponsePayload(ZCL_AddGroupResponse_t *payload, uint16_t group, uint8_t status);
 
 /**************************************************************************//**
 \brief Fills Add Group Response command structure
@@ -181,7 +174,7 @@ void fillAddGroupResponsePayload(ZCL_AddGroupResponse_t *payload, uint16_t group
 
 \returns the amount of group ids in reponse
 ******************************************************************************/
-uint8_t fillGetGroupMembershipRespPayload(ZCL_GetGroupMembershipResponse_t *payload, ZCL_GetGroupMembership_t *req, Endpoint_t srcEp);
+uint8_t fillGetGroupMembershipRespPayload(ZCL_GetGroupMembershipResponse_t *payload, ZCL_GetGroupMembership_t *req, Endpoint_t srcEndpoint);
 
 /**************************************************************************//**
 \brief Fills Remove Group Response command structure
@@ -198,7 +191,7 @@ void fillRemoveGroupResponsePayload(ZCL_RemoveGroupResponse_t *payload, uint16_t
 \param[out] payload - pointer to command structure;
 \param[in]  group   - group id
 ******************************************************************************/
-void fillViewGroupResponsePayload(ZCL_ViewGroupResponse_t *payload, uint16_t group, Endpoint_t srcEp);
+void fillViewGroupResponsePayload(ZCL_ViewGroupResponse_t *payload, uint16_t group, Endpoint_t srcEndpoint);
 
 /**************************************************************************//**
 \brief Adds group to group table
@@ -207,7 +200,7 @@ void fillViewGroupResponsePayload(ZCL_ViewGroupResponse_t *payload, uint16_t gro
 
 \returns status of group adding
 ******************************************************************************/
-ZCL_Status_t addGroup(uint16_t group, uint8_t srcEp);
+ZCL_Status_t addGroup(uint16_t group, uint8_t srcEndpoint);
 
 
 /**************************************************************************//**
@@ -217,13 +210,13 @@ ZCL_Status_t addGroup(uint16_t group, uint8_t srcEp);
 
 \returns status of group removing
 ******************************************************************************/
-ZCL_Status_t removeGroup(uint16_t group, uint8_t srcEp, Scene_t* scenePool);
+ZCL_Status_t removeGroup(uint16_t group, uint8_t srcEndpoint, Scene_t* scenePool);
 
 
 /**************************************************************************//**
 \brief Removes all groups from group table
 ******************************************************************************/
-void removeAllGroups(uint8_t srcEp, Scene_t* scenePool);
+void removeAllGroups(uint8_t srcEndpoint, Scene_t* scenePool);
 
 
 /**************************************************************************//**
@@ -231,11 +224,11 @@ void removeAllGroups(uint8_t srcEp, Scene_t* scenePool);
 
 \param[in] group - group id
 
-\param[in] srcEp - source endpoint
+\param[in] srcEndpoint - source endpoint
 
 \returns true if group id exists on this device, false otherwise
 ******************************************************************************/
-bool groupsIsValidGroup(uint16_t group, Endpoint_t srcEp);
+bool groupsIsValidGroup(uint16_t group, Endpoint_t srcEndpoint);
 
 #endif // _MSGROUPSCLUSTER_H
 

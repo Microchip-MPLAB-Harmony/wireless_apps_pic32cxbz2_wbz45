@@ -44,8 +44,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOPOWERMANAGER_H
-#define _ZDOPOWERMANAGER_H
+#ifndef ZDOPOWERMANAGER_H
+#define ZDOPOWERMANAGER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -114,6 +114,6 @@ ZDO_PRIVATE void ZDO_UpdateParentInfo(void);
  ******************************************************************************/
 ZDO_PRIVATE void ZDO_NWK_JoinConf(NWK_JoinConf_t *conf);
 
-#endif // _ZDOPOWERMANAGER_H_
+#endif // ZDOPOWERMANAGER_H_
 
 // eof zdoPowerManager.h

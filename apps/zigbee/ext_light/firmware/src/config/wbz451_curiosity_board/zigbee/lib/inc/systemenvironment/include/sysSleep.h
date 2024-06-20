@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSSLEEP_H
-#define _SYSSLEEP_H
+#ifndef SYSSLEEP_H
+#define SYSSLEEP_H
 /*********************************************************************************
                           Includes section.
 **********************************************************************************/
@@ -95,7 +95,7 @@ void SYS_WakeUpSleep(void);
 \param[in]
   none
 ******************************************************************************/
-void SYS_StopStackTimerBeforeSleep();
+void SYS_StopStackTimerBeforeSleep(void);
 /**************************************************************************//**
 \brief Restart Stack timer after sleep.
 
@@ -118,4 +118,4 @@ void SYS_BLEClockOnOff(bool status);
 ******************************************************************************/
 void SYS_BackupStackParams(uint32_t expectedSleepTime);
 
-#endif /* _SYSSLEEP_H */
+#endif /* SYSSLEEP_H */

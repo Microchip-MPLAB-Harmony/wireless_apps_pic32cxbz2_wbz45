@@ -279,20 +279,23 @@ ZCL_Status_t ZCL_CommandInd(ZCL_CommandIndCallback_t callbackFn, ZCL_Addressing_
   uint32_t *paramPtr = NULL;
   ZCL_Status_t status;
   zclCommandIndication.callbackFn = callbackFn;
-  zclCommandIndication.addressing = addressing;
+  memcpy(&zclCommandIndication.addressing, addressing, sizeof(ZCL_Addressing_t));
+  
   zclCommandIndication.payloadLength = payloadLength;
   zclCommandIndication.payload = payload;
   
-  zclCbParams.eModuleID = ZIGBEE_ZCL;
+  zclCbParams.eModuleID = (uint8_t)ZIGBEE_ZCL;
   zclCbParams.uCallBackID = ZCL_CLUSTER_COMMAND_IND;
-  zclCbParams.paramSize = sizeof(&paramPtr);
+  zclCbParams.paramSize = (uint8_t)sizeof(&paramPtr);
   paramPtr = OSAL_Malloc(sizeof(ZCL_CommandInd_t));
-  memset(&zclCommandIndication.status,0, sizeof(zclCommandIndication.status));
-  memcpy(paramPtr,&zclCommandIndication, sizeof(ZCL_CommandInd_t));
+  (void)memset(&zclCommandIndication.status,0, sizeof(zclCommandIndication.status));
+  (void)memcpy(paramPtr,(uint32_t *)&zclCommandIndication, sizeof(ZCL_CommandInd_t));
   zclCbParams.parameters = (void *)&paramPtr;
   
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&zclCbParams);
+  }
   vTaskDelay(2);
   bindIndPtr = (ZCL_CommandInd_t*)paramPtr;
   status = bindIndPtr->status;
@@ -311,16 +314,18 @@ void ZCL_AttrReportInd(ZCL_ReportIndCallback_t callbackFn, ZCL_Addressing_t *add
 {
   ZCL_AttrReportInd_t zclCommonInd;
   zclCommonInd.callbackFn = callbackFn;
-  zclCommonInd.addressing = addressing;
+  memcpy(&zclCommonInd.addressing, addressing, sizeof(ZCL_Addressing_t));
   zclCommonInd.payloadLength = payloadLength;
   zclCommonInd.payload = payload;
 
-  zclCbParams.eModuleID = ZIGBEE_ZCL;
+  zclCbParams.eModuleID = (uint8_t)ZIGBEE_ZCL;
   zclCbParams.uCallBackID = ZCL_REPORT_IND;
   zclCbParams.parameters = (void *)&zclCommonInd;
-  zclCbParams.paramSize = sizeof(ZCL_AttrReportInd_t);
+  zclCbParams.paramSize = (uint8_t)sizeof(ZCL_AttrReportInd_t);
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&zclCbParams);
+  }
 }
 /*************************************************************************//**
  \brief Function to send  ZCL default resp Ind to application
@@ -337,17 +342,19 @@ void ZCL_DefaultResponseInd(ZCL_DefaultRespIndCallback_t callbackFn, ZCL_Request
 
   zclDefaultRespInd.callbackFn = callbackFn;
   zclDefaultRespInd.req = req;
-  zclDefaultRespInd.addressing = addressing;
+  memcpy(&zclDefaultRespInd.addressing, addressing, sizeof(ZCL_Addressing_t));
   zclDefaultRespInd.payloadLength = payloadLength;
   zclDefaultRespInd.payload = payload;
 
-  zclCbParams.eModuleID = ZIGBEE_ZCL;
+  zclCbParams.eModuleID = (uint8_t)ZIGBEE_ZCL;
   zclCbParams.uCallBackID = ZCL_DEFAULT_RESP_IND;
   zclCbParams.parameters = (void *)&zclDefaultRespInd;
-  zclCbParams.paramSize = sizeof(ZCL_DefaultRespInd_t);
+  zclCbParams.paramSize = (uint8_t)sizeof(ZCL_DefaultRespInd_t);
   
   if (NULL != fnAppGenericCB)
-    fnAppGenericCB(&zclCbParams);  
+  {
+    fnAppGenericCB(&zclCbParams);
+  }
 }
 
 /*************************************************************************//**
@@ -362,18 +369,20 @@ void ZCL_AttrEventInd(ZCL_AttrEventIndCallback_t callbackFn, ZCL_Addressing_t *a
 {
   ZCL_AttrEventInd_t zclAttrEventInd;
   
-  zclAttrEventInd.callbackFn = callbackFn;
-  zclAttrEventInd.addressing = addressing;
+  zclAttrEventInd.callbackFn = callbackFn;  
+  memcpy(&zclAttrEventInd.addressing, addressing, sizeof(ZCL_Addressing_t));
   zclAttrEventInd.attributeId = attributeId;
   zclAttrEventInd.event = event;
   
-  zclCbParams.eModuleID = ZIGBEE_ZCL;
+  zclCbParams.eModuleID = (uint8_t)ZIGBEE_ZCL;
   zclCbParams.uCallBackID = ZCL_ATTRIBUTE_EVENT_IND;
   zclCbParams.parameters = (void *)&zclAttrEventInd;
-  zclCbParams.paramSize = sizeof(ZCL_AttrEventInd_t);
+  zclCbParams.paramSize = (uint8_t)sizeof(ZCL_AttrEventInd_t);
 
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&zclCbParams);
+  }
 }
 
 /*************************************************************************//**
@@ -388,11 +397,13 @@ void ZCL_NotifyRespInd(ZCL_NotifyRespIndiCallback_t callbackFn, ZCL_Notify_t *nt
   zclNotifyRespInd.callbackFn = callbackFn;
   zclNotifyRespInd.ntfy = ntfy;
   
-  zclCbParams.eModuleID = ZIGBEE_ZCL;
+  zclCbParams.eModuleID = (uint8_t)ZIGBEE_ZCL;
   zclCbParams.uCallBackID = ZCL_NOTIFY_RESP_IND;
   zclCbParams.parameters = (void *)&zclNotifyRespInd;
-  zclCbParams.paramSize = sizeof(ZCL_NotifyRespInd_t);
+  zclCbParams.paramSize = (uint8_t)sizeof(ZCL_NotifyRespInd_t);
 
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&zclCbParams);
+  }
 }

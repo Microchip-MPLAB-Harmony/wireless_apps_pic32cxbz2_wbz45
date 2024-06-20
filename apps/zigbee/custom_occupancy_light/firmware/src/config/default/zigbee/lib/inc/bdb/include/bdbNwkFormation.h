@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_NWK_FORMATION_H
-#define _BDB_NWK_FORMATION_H
+#ifndef BDB_NWK_FORMATION_H
+#define BDB_NWK_FORMATION_H
 
 /***************************************************************************************************
 * INCLUDE FILES
@@ -72,4 +72,4 @@ void bdbTriggerNwkFormation (void (*callback) (BDB_CommissioningStatus_t));
 ******************************************************************************/
 bool bdbNwkFormation_EventHandler(N_Task_Event_t evt);
 
-#endif // _BDB_NWK_FORMATION_H
+#endif // BDB_NWK_FORMATION_H

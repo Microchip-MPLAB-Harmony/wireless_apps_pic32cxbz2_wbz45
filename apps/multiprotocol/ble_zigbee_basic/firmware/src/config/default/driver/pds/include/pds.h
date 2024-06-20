@@ -1,3 +1,27 @@
+/*******************************************************************************
+ Persistence Data Server Header File
+
+ 
+
+  File Name:
+    pds.h
+
+ 
+
+  Summary:
+    The header file describes the Persistence Data Server interface
+
+ 
+
+  Description:
+
+ 
+
+  Remarks:
+ *******************************************************************************/
+
+ 
+
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_PROFILER_H
-#define _NWK_PROFILER_H
+#if !defined NWK_PROFILER_H
+#define NWK_PROFILER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -89,6 +89,6 @@ extern NWK_ProfilingInfo_t nwkProfilingInfo;
 void NWK_CollectProfilingInfo(void);
 
 #endif /* _PROFILER_ */
-#endif /* _NWK_PROFILER_H */
+#endif /* NWK_PROFILER_H */
 /** eof nwkProfiler.h */
 

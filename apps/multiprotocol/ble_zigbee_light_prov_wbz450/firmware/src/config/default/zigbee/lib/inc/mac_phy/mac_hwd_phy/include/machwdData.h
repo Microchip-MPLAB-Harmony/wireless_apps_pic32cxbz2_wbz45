@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDDATA_H
-#define _MACHWDDATA_H
+#ifndef MACHWDDATA_H
+#define MACHWDDATA_H
 
 /******************************************************************************
                     Includes section
@@ -116,6 +116,6 @@ void MACHWD_DataReq(MACHWD_DataReq_t *reqParams);
 ******************************************************************************/
 extern void MACHWD_DataInd(MACHWD_DataInd_t *indParams);
 
-#endif /* _MACHWDDATA_H */
+#endif /* MACHWDDATA_H */
 
 // eof machwdData.h

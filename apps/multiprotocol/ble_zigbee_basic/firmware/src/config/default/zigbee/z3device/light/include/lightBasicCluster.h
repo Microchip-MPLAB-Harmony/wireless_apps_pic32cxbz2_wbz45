@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTBASICCLUSTER_H
-#define _LIGHTBASICCLUSTER_H
+#ifndef LIGHTBASICCLUSTER_H
+#define LIGHTBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -68,6 +68,6 @@ extern ZCL_BasicClusterClientAttributes_t lightBasicClusterClientAttributes;
 void lightBasicClusterInit(void);
 
 
-#endif // _LIGHTBASICCLUSTER_H
+#endif // LIGHTBASICCLUSTER_H
 
 // eof lightBasicCluster.h

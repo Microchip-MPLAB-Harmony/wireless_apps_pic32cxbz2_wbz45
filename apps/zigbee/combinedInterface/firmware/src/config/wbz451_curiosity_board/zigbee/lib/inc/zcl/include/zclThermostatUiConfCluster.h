@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLTHERMOSTATUICONFCLUSTER_H
-#define _ZCLTHERMOSTATUICONFCLUSTER_H
+#ifndef ZCLTHERMOSTATUICONFCLUSTER_H
+#define ZCLTHERMOSTATUICONFCLUSTER_H
 /*******************************************************************************
                    Includes section
 *******************************************************************************/
@@ -201,4 +201,4 @@ typedef struct PACK
 } ZCL_ThermostatUiConfClusterClientAttributes_t;
 
 END_PACK
-#endif /* _ZCLTHERMOSTATUICONFCLUSTER_H */
+#endif /* ZCLTHERMOSTATUICONFCLUSTER_H */

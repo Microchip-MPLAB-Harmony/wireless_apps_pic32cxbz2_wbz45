@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACSTART_H
-#define _MACSTART_H
+#ifndef MACSTART_H
+#define MACSTART_H
 
 /******************************************************************************
                         Includes section
@@ -108,6 +108,6 @@ typedef struct
 ******************************************************************************/
 void MAC_StartReq(MAC_StartReq_t *reqParams);
 
-#endif /* _MACSTART_H */
+#endif /* MACSTART_H */
 
 // eof macStart.h

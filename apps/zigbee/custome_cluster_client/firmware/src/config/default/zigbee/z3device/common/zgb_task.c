@@ -67,27 +67,27 @@ OSAL_API_LIST_TYPE *zos;
    Handles both API request from Applicaion layer and also internal scheduling
 
 */
-void zigbee_task(void *const ptr)
+void zigbee_task(void *ptr)
 {
-  zos->OSAL_SEM_Create(&semStackInternalHandler, OSAL_SEM_TYPE_COUNTING,ZB_STACK_INTERNAL_SEM_LENGTH, 0);
+  (void)zos->OSAL_SEM_Create(&semStackInternalHandler, OSAL_SEM_TYPE_COUNTING,ZB_STACK_INTERNAL_SEM_LENGTH, 0);
   
   /* Create the queue set large enough to hold an event for every space in
     every queue and semaphore that is to be added to the set. */
-  zos->OSAL_QUEUE_CreateSet(&xQueueSet, QUEUE_LENGTH + ZB_STACK_INTERNAL_SEM_LENGTH);
+  (void)zos->OSAL_QUEUE_CreateSet(&xQueueSet, QUEUE_LENGTH + ZB_STACK_INTERNAL_SEM_LENGTH);
 
   /* Add the queues and semaphores to the set.  Reading from these queues and
   semaphore can only be performed after a call to xQueueSelectFromSet() has
   returned the queue or semaphore handle from this point on. */
-  zos->OSAL_QUEUE_AddToSet( &apiRequestQueueHandle, &xQueueSet );
-  zos->OSAL_QUEUE_AddToSet( &semStackInternalHandler, &xQueueSet );
+  (void)zos->OSAL_QUEUE_AddToSet( &apiRequestQueueHandle, &xQueueSet );
+  (void)zos->OSAL_QUEUE_AddToSet( &semStackInternalHandler, &xQueueSet );
   
   ZB_SysTaskInit();
   halStartAppClock();
-  while (1)
+  while (true)
   {
     /* Block to wait for something to be available from the queues or
      semaphore that have been added to the set.*/
-     zos->OSAL_QUEUE_SelectFromSet(&xActivatedMember, &xQueueSet, OSAL_WAIT_FOREVER );
+     (void)zos->OSAL_QUEUE_SelectFromSet(&xActivatedMember, &xQueueSet, OSAL_WAIT_FOREVER );
 
     /* Which set member was selected?  Receives/takes can use a block time
     of zero as they are guaranteed to pass because xQueueSelectFromSet()
@@ -96,12 +96,12 @@ void zigbee_task(void *const ptr)
     if( xActivatedMember == semStackInternalHandler )
     {
       /*Process Internal Stack Events*/
-      zos->OSAL_SEM_Pend(&semStackInternalHandler, 0);
+      (void)zos->OSAL_SEM_Pend(&semStackInternalHandler, 0);
       SYS_RunTask();
     }
     else if( xActivatedMember == apiRequestQueueHandle )
     {
-      zos->OSAL_QUEUE_Receive(&apiRequestQueueHandle, &apiReq, 0);
+      (void)zos->OSAL_QUEUE_Receive(&apiRequestQueueHandle, &apiReq, 0);
       apiReq->unpack_fn(apiReq->parameters);
     }
     else

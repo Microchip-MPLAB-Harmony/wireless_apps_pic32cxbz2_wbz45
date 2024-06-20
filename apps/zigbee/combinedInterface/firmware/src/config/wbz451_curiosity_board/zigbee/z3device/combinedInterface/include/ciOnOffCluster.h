@@ -39,8 +39,8 @@ Combined Interface On/Off cluster Header File
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIONOFFCLUSTER_H
-#define _CIONOFFCLUSTER_H
+#ifndef CIONOFFCLUSTER_H
+#define CIONOFFCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -65,7 +65,7 @@ extern ZCL_OnOffClusterClientAttributes_t ciOnOffClusterClientAttributes;
 ******************************************************************************/
 void ciOnOffClusterInit(void);
 
-#endif // _CIONOFFCLUSTER_H
+#endif // CIONOFFCLUSTER_H
 
 // eof ciOnOffCluster.h
 

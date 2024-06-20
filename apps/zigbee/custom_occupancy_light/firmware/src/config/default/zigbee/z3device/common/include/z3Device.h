@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _Z3DEVICE_H
-#define _Z3DEVICE_H
+#ifndef Z3DEVICE_H
+#define Z3DEVICE_H
 
 /******************************************************************************
                     Includes section
@@ -54,17 +54,17 @@
                     Defines section
 ******************************************************************************/
 
-//Table 4 ?? Bits of the bdbCommissioningMode attribute
+//Table 4 â?? Bits of the bdbCommissioningMode attribute
 //5.3.2 bdbCommissioningMode attribute
-#define BDB_COMMISSIONING_TOUCHLINK       0 //(1)
-#define BDB_COMMISSIONING_NWK_STEERING    1 // (2)
-#define BDB_COMMISSIONING_NWK_FORMATION   2 // (4)
-#define BDB_COMMISSIONING_FINDING_BINDING 3 // (8)
+#define BDB_COMMISSIONING_TOUCHLINK       0U //(1)
+#define BDB_COMMISSIONING_NWK_STEERING    1U // (2)
+#define BDB_COMMISSIONING_NWK_FORMATION   2U // (4)
+#define BDB_COMMISSIONING_FINDING_BINDING 3U // (8)
 
-#define TOUCHLINKING_MASK     (1 << BDB_COMMISSIONING_TOUCHLINK)
-#define NWK_STEERING_MASK     (1 << BDB_COMMISSIONING_NWK_STEERING)
-#define NWK_FORMATION_MASK    (1 << BDB_COMMISSIONING_NWK_FORMATION)
-#define FINDING_BINDING_MASK  (1 << BDB_COMMISSIONING_FINDING_BINDING)
+#define TOUCHLINKING_MASK     (1U << BDB_COMMISSIONING_TOUCHLINK)
+#define NWK_STEERING_MASK     (1U << BDB_COMMISSIONING_NWK_STEERING)
+#define NWK_FORMATION_MASK    (1U << BDB_COMMISSIONING_NWK_FORMATION)
+#define FINDING_BINDING_MASK  (1U << BDB_COMMISSIONING_FINDING_BINDING)
 
 /* Visualization redirect */
 
@@ -133,7 +133,11 @@ typedef enum
 ******************************************************************************/
 extern AppDeviceState_t appDeviceState;
 
+extern OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
+
 extern AppBindReq_t* deviceBindReqs[APP_ENDPOINTS_AMOUNT];
+
+extern BDB_CommissioningMode_t autoCommissionsEnableMask;
 
 /******************************************************************************
                              Prototypes section
@@ -175,7 +179,7 @@ bool isCommssioiningInProgress(void);
 
 \returns true, if Register Endpoint is Successful, false otherwise
 ******************************************************************************/
-bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* dlBindReq);
+bool APP_RegisterEndpoint(ZCL_DeviceEndpoint_t *endpoint, AppBindReq_t* bindReq);
 
 /**************************************************************************//**
 \brief backing of zcl attributes for device to support deep sleep 
@@ -209,5 +213,5 @@ void restartApp(void);
 
 void process_ZB_evt(void);
 
-#endif // _Z3DEVICE_H
+#endif // Z3DEVICE_H
 // eof z3Device.h

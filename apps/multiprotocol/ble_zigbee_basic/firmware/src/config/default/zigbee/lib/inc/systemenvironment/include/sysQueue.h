@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSQUEUE_H
-#define _SYSQUEUE_H
+#ifndef SYSQUEUE_H
+#define SYSQUEUE_H
 
 #include <systemenvironment/include/sysTypes.h>
 
@@ -105,7 +105,7 @@ INLINE void *getQueueElem(const QueueDescriptor_t *queue)
 ****************************************************************************/
 INLINE void* getNextQueueElem(const void *currElem)
 {
-  return currElem? ((const QueueElement_t*) currElem)->next: NULL;
+  return (bool)(currElem != NULL)? ((const QueueElement_t*) currElem)->next: NULL;
 }
 
 bool isQueueElem(const QueueDescriptor_t *const queue, const void *const element);

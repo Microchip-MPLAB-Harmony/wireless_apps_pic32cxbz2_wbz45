@@ -159,7 +159,7 @@ typedef struct
     uint8_t apsSecFooter[APS_MAX_DATA_FRAME_FOOTER_LENGTH];
 #endif /* _LINK_SECURITY_ */
 
-#if (NWK_AFFIX_LENGTH - NWK_NSDU_OFFSET)
+#if ((NWK_AFFIX_LENGTH - NWK_NSDU_OFFSET) > 0U)
     uint8_t lowLevelFooter[NWK_AFFIX_LENGTH - NWK_NSDU_OFFSET];
 #endif
   };
@@ -354,10 +354,10 @@ INLINE void apsResetFragmRxDescr(void)
   apsFragmRxDescr->state = 0;
   apsFragmRxDescr->timeout = 0;
 
-  memset(&apsFragmRxDescr->apsBuffer, 0, sizeof(apsFragmRxDescr->apsBuffer));
-  memset(&apsFragmRxDescr->apsAckBuffer, 0, sizeof(apsFragmRxDescr->apsAckBuffer));
-  memset(apsFragmRxDescr->buffers, 0,
-    apsFragmRxDescr->maxBlocksAmount * apsFragmRxDescr->blockSize + apsFragmRxDescr->maxBlocksAmount);
+  (void)memset(&apsFragmRxDescr->apsBuffer, 0, sizeof(apsFragmRxDescr->apsBuffer));
+  (void)memset(&apsFragmRxDescr->apsAckBuffer, 0, sizeof(apsFragmRxDescr->apsAckBuffer));
+  (void)memset(apsFragmRxDescr->buffers, 0,
+    (uint8_t)(apsFragmRxDescr->maxBlocksAmount * apsFragmRxDescr->blockSize + apsFragmRxDescr->maxBlocksAmount));
 
   apsFragmRxDescr->apsBuffer.dataDescriptor.nwkDataReq.nsdu = (uint8_t *)&apsFragmRxDescr->apsAckBuffer.frame;
 }

@@ -76,7 +76,7 @@ ZCL_Cluster_t lightServerClusters[LIGHT_SERVER_CLUSTERS_COUNT] =
 #endif
 };
 
-void (*lightServerClusterInitFunctions[LIGHT_SERVER_CLUSTER_INIT_COUNT])() =
+void (*lightServerClusterInitFunctions[LIGHT_SERVER_CLUSTER_INIT_COUNT])(void) =
 {
   lightBasicClusterInit,
   lightIdentifyClusterInit,
@@ -135,7 +135,7 @@ ClusterId_t lightClientClusterIds[LIGHT_CLIENT_CLUSTERS_COUNT] =
 #endif
 };
 
-void (*lightClientClusterInitFunctions[LIGHT_CLIENT_CLUSTER_INIT_COUNT])() =
+void (*lightClientClusterInitFunctions[LIGHT_CLIENT_CLUSTER_INIT_COUNT])(void) =
 {
   lightIdentifyClusterInit,
   lightGroupsClusterInit

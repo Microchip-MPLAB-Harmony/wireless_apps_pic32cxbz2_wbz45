@@ -240,9 +240,9 @@
 */
 #ifdef USE_ERROR_ASSERTS
   #define SYS_E_ASSERT_ERROR(condition, MDbgCode)   \
-    if (0 == (condition) ) \
+    if (0 == ((condition)) ) \
     { \
-      POPULATE_DBGCODE(MDbgCode)   \
+      POPULATE_DBGCODE((MDbgCode))   \
       POPULATE_COMPID()            \
       POPULATE_LINE()              \
       POPULATE_FILE()              \
@@ -258,9 +258,9 @@
 */
 #ifdef USE_FATAL_ASSERTS
   #define SYS_E_ASSERT_FATAL(condition, MDbgCode)   \
-    if (0 == (condition) ) \
+    if (false == ((condition)) ) \
     { \
-      POPULATE_DBGCODE(MDbgCode)   \
+      POPULATE_DBGCODE((MDbgCode))   \
       POPULATE_COMPID()            \
       POPULATE_LINE()              \
       POPULATE_FILE()              \
@@ -340,7 +340,7 @@ extern SYS_AssertCallback_t s_pAssertSubscriber;
   \param[in]  None
   \return   None
 ******************************************************************************/
-void SYS_DefAssertCallbackWarn();
+void SYS_DefAssertCallbackWarn(void);
 
 /**************************************************************************//**
   \brief SYS_DefAssertCallbackError callback invoked on ERROR LEVEL ASSERTS

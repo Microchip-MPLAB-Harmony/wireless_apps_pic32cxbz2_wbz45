@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACSUPERFRAME_H
-#define _MACSUPERFRAME_H
+#ifndef MACSUPERFRAME_H
+#define MACSUPERFRAME_H
 
 /******************************************************************************
                         Include section.
@@ -57,10 +57,10 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(4, (
-    uint8_t    length : 4,
-    uint8_t direction : 1,
-    uint8_t      type : 1,
-    uint8_t  reserved : 2
+    BitField_t    length : 4,
+    BitField_t direction : 1,
+    BitField_t      type : 1,
+    BitField_t  reserved : 2
   ))
 }  MAC_GtsCharacteristics_t;
 END_PACK
@@ -70,15 +70,15 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(2, (
-    uint16_t beaconOrder       : 4,
-    uint16_t superframeOrder   : 4
+    BitField_t beaconOrder       : 4,
+    BitField_t superframeOrder   : 4
   ))
   LITTLE_ENDIAN_OCTET(5, (
-    uint16_t finalCapSlot      : 4,
-    uint16_t battLifeExt       : 1,
-    uint16_t reserved          : 1,
-    uint16_t panCoordinator    : 1,
-    uint16_t associationPermit : 1
+    BitField_t finalCapSlot      : 4,
+    BitField_t battLifeExt       : 1,
+    BitField_t reserved          : 1,
+    BitField_t panCoordinator    : 1,
+    BitField_t associationPermit : 1
   ))
 }  MAC_SuperframeSpec_t;
 END_PACK
@@ -88,9 +88,9 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(3, (
-    uint8_t count    : 3,
-    uint8_t reserved : 4,
-    uint8_t permit   : 1
+    BitField_t count    : 3,
+    BitField_t reserved : 4,
+    BitField_t permit   : 1
   ))
 }  MAC_GtsSpec_t;
 END_PACK
@@ -103,8 +103,8 @@ typedef struct PACK
   struct
   {
     LITTLE_ENDIAN_OCTET(2, (
-      uint8_t startSlot : 4,
-      uint8_t length    : 4
+      BitField_t startSlot : 4,
+      BitField_t length    : 4
     ))
   } gts;
 }  MAC_GtsDescr_t;
@@ -123,6 +123,6 @@ typedef enum
   MAC_GTS_DIRECTION_RECEIVE  = 1
 } MAC_GtsDirection_t;
 
-#endif // _MACSUPERFRAME_H
+#endif // MACSUPERFRAME_H
 
 // eof macSuperframe.h

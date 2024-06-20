@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CILEVELCONTROLCLUSTER_H
-#define _CILEVELCONTROLCLUSTER_H
+#ifndef CILEVELCONTROLCLUSTER_H
+#define CILEVELCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -62,7 +62,7 @@ extern ZCL_LevelControlClusterClientAttributes_t ciLevelControlClusterClientAttr
 void ciLevelControlClusterInit(void);
 
 
-#endif // _CILEVELCONTROLCLUSTER_H
+#endif // CILEVELCONTROLCLUSTER_H
 
 // eof ciLevelControlCluster.h
 

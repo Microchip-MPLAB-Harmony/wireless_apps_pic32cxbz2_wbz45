@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LSIDENTIFYCLUSTER_H
-#define _LSIDENTIFYCLUSTER_H
+#ifndef LSIDENTIFYCLUSTER_H
+#define LSIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -77,7 +77,7 @@ void lsIdentifyStop(void);
 ******************************************************************************/
 void lsIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
 
-#endif // _LSIDENTIFYCLUSTER_H
+#endif // LSIDENTIFYCLUSTER_H
 
 // eof lsIdentifyCluster.h
 

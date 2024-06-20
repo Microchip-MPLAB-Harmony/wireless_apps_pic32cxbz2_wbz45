@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDED_H
-#define _MACHWDED_H
+#ifndef MACHWDED_H
+#define MACHWDED_H
 
 /******************************************************************************
                     Includes section
@@ -80,6 +80,6 @@ typedef struct
 ******************************************************************************/
 void MACHWD_EdReq(MACHWD_EdReq_t *reqParams);
 
-#endif /* _MACHWDED_H */
+#endif /* MACHWDED_H */
 
 // eof machwdEd.h

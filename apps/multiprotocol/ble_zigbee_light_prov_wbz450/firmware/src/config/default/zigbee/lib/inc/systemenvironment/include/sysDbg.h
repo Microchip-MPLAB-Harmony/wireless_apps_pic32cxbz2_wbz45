@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSDBG_H_
-#define _SYSDBG_H_
+#ifndef SYSDBG_H_
+#define SYSDBG_H_
 
 #include <systemenvironment/include/dbg.h>
 
@@ -61,4 +61,4 @@ typedef enum
   SYSMUTEX_ISMUTEXLOCKED0                    = 0x800C
 } SysAssertId_t;
 
-#endif /* _SYSDBG_H_ */
+#endif /* SYSDBG_H_ */

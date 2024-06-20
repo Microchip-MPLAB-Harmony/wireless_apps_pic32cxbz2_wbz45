@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_DBG_H
-#define _BDB_DBG_H
+#ifndef BDB_DBG_H
+#define BDB_DBG_H
 
 /***************************************************************************************************
 * INCLUDE FILES
@@ -57,4 +57,4 @@ typedef enum
   BDB_TC_NO_MEMORY_FOR_NODE_JOIN = 0xD002,
 } BDB_DbgCodeId_t;
 
-#endif // _BDB_DBG_H
+#endif // BDB_DBG_H

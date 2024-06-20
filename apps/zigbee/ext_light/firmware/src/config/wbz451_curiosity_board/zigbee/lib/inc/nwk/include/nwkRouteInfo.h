@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTE_INFO_H
-#define _NWK_ROUTE_INFO_H
+#if !defined NWK_ROUTE_INFO_H
+#define NWK_ROUTE_INFO_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -258,5 +258,5 @@ NWK_SourceRouting_Status_t NWK_SetRelayList(const ShortAddr_t dstAddr, const NWK
 void NWK_AddConcentrator(const ShortAddr_t shortAddr, const ShortAddr_t nextHopAddr, const bool noRouteCache);
 #endif /* _CUSTOM_4_SECURITY_MODE_ */
 
-#endif /* _NWK_ROUTE_INFO_H */
+#endif /* NWK_ROUTE_INFO_H */
 /** eof nwkRouteInfo.h */

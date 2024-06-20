@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_IB_H
-#define _NWK_IB_H
+#if !defined NWK_IB_H
+#define NWK_IB_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -175,7 +175,7 @@ typedef struct _NIB_t
 #ifdef _CHILD_MANAGEMENT_
   /** For an RFD, this records the information received in an End Device
    * Timeout Response command indicating the parent information.
-   * For an FFD, this records the device?? local capabilities. */
+   * For an FFD, this records the deviceâ??s local capabilities. */
   uint8_t parentInformation;
   /** It indicates the default timeout in minutes for any end device
    * that does not negotiate a different timeout value. */
@@ -251,6 +251,6 @@ NWK_PRIVATE void nwkSetParentShortAddr(ShortAddr_t addr);
 
 #endif /* _ROUTER_ or _ENDDEVICE_ */
 
-#endif  /* _NWK_IB_H */
+#endif  /* NWK_IB_H */
 /**  eof nwkIB.h */
 

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACPHYPIB_H
-#define _MACPHYPIB_H
+#ifndef MACPHYPIB_H
+#define MACPHYPIB_H
 
 /******************************************************************************
                     Includes section
@@ -202,7 +202,7 @@
 #define MAC_PIB_BEACON_ORDER_DEFAULT                 15
 #define MAC_PIB_BEACON_TX_TIME_DEFAULT               0
 #define MAC_PIB_COORD_SHORT_ADDR_DEFAULT             0xFFFF
-#define MAC_PIB_COORD_EXT_ADDR_DEFAULT               0xFFFFFFFFFFFFFFFFLL ///< Not defined in standard.
+#define MAC_PIB_COORD_EXT_ADDR_DEFAULT               0xFFFFFFFFFFFFFFFFLLU ///< Not defined in standard.
 #define MAC_PIB_GTS_PERMIT_DEFAULT                   true
 #define MAC_PIB_MAX_CSMA_BACKOFFS_DEFAULT            4
 #define MAC_PIB_MAX_BE_DEFAULT                       5
@@ -364,6 +364,6 @@ typedef union
                    Constants section
 ******************************************************************************/
 
-#endif /* _MACPHYPIB_H */
+#endif /* MACPHYPIB_H */
 
 // eof macphyPib.h

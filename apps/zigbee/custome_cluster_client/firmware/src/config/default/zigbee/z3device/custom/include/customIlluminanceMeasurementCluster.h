@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
-#define _CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
+#ifndef CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
+#define CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -92,6 +92,6 @@ void customIlluminanceMeasurementClusterInit(void);
 ******************************************************************************/
  void illuminanceMeasurementUpdateTolerance(void);
 
-#endif // _CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
+#endif // CUSTOMILLUMINANCEMEASUREMENTCLUSTER_H
 
 // eof customilluminanceMeasureCluster.h

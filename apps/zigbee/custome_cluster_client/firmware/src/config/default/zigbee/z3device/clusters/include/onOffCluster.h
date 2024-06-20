@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ONOFFCLUSTER_H
-#define _ONOFFCLUSTER_H
+#ifndef ONOFFCLUSTER_H
+#define ONOFFCLUSTER_H
 /******************************************************************************
                     Includes section
 ******************************************************************************/
@@ -131,7 +131,7 @@ void onOffConfigureReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t e
 ******************************************************************************/
 bool deviceIsOn(void);
 
-#endif // _DSONOFFCLUSTER_H
+#endif // DSONOFFCLUSTER_H
 
 // eof dsOnOffCluster.h
 

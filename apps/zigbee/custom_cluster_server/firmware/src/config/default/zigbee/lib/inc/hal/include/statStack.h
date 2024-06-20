@@ -46,8 +46,8 @@
 /******************************************************************************
                    Define section
 ******************************************************************************/
-#ifndef _STAT_STACK_H_
-#define _STAT_STACK_H_
+#ifndef STAT_STACK_H_
+#define STAT_STACK_H_
 
 #define STACK_CHECK_DISABLED (0xFFFFu)
 

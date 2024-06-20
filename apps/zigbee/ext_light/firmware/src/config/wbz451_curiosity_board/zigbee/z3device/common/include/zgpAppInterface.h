@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ZGPAPPINTERFACE_H
-#define _ZGPAPPINTERFACE_H
+#ifndef ZGPAPPINTERFACE_H
+#define ZGPAPPINTERFACE_H
 
 #ifdef _GREENPOWER_SUPPORT_
 #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
@@ -73,4 +73,4 @@ void ZGP_AppInit(void);
 
 #endif //// #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_COMBO_BASIC
 #endif // _GREENPOWER_SUPPORT_
-#endif //_ZGPAPPINTERFACE_H
+#endif //ZGPAPPINTERFACE_H

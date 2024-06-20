@@ -77,31 +77,31 @@ extern "C" {
 /**@defgroup BLE_OTAPS_IMG_TYPE_DEF OTAPS image type
  * @brief The definition of image type.
  * @{ */
-#define BLE_OTAPS_IMG_TYPE_FW                    (1 << 0)                               /**< Firmaware image type. */
+#define BLE_OTAPS_IMG_TYPE_FW                    (1U << 0U)                              /**< Firmaware image type. */
 /** @} */
 
 /**@defgroup BLE_OTAPS_FW_FEATURE_DEF OTAPS firmware extended feature
  * @brief The definition of firmware extended feature.
  * @{ */
-#define BLE_OTAPS_FW_FEATURE_MASK1               (1 << 0)                               /**< Supported feature mask 1. */
+#define BLE_OTAPS_FW_FEATURE_MASK1               (1U << 0U)                              /**< Supported feature mask 1. */
 /** @} */
 
 
 /**@defgroup BLE_OTAPS_FEATURE_DEF OTAPS supported feature
  * @brief The definition of supported features.
  * @{ */
-#define BLE_OTAPS_FEATURE_SUPP_IMG_TYPE          (BLE_OTAPS_IMG_TYPE_FW)                /**< The supported image type of BLE OTA profile. */
-#define BLE_OTAPS_FEATURE_FW_EXT_FEATURE         (BLE_OTAPS_FW_FEATURE_MASK1)           /**< The supported firmware extended feature of BLE OTA profile. */
+#define BLE_OTAPS_FEATURE_SUPP_IMG_TYPE          (BLE_OTAPS_IMG_TYPE_FW)                 /**< The supported image type of BLE OTA profile. */
+#define BLE_OTAPS_FEATURE_FW_EXT_FEATURE         (BLE_OTAPS_FW_FEATURE_MASK1)            /**< The supported firmware extended feature of BLE OTA profile. */
 /** @} */
 
 
 /**@defgroup BLE_OTAPS_IMG_FILE_TYPE_DEF OTAPS image file type
  * @brief The definition of image file types.
  * @{ */
-#define BLE_OTAPS_IMG_FILE_TYPE_INT              0x01                                   /**< The image is for internal flash. */
-#define BLE_OTAPS_IMG_FILE_TYPE_APP              0x02                                   /**< Pass the image to application. */
-#define BLE_OTAPS_IMG_FILE_TYPE_EXT              0x03                                   /**< The image is for external flash. */
-#define BLE_OTAPS_IMG_FILE_TYPE_UNKNOWN          0xFF                                   /**< The image file type is unknown. */
+#define BLE_OTAPS_IMG_FILE_TYPE_INT              (0x01U)                                 /**< The image is for internal flash. */
+#define BLE_OTAPS_IMG_FILE_TYPE_APP              (0x02U)                                 /**< Pass the image to application. */
+#define BLE_OTAPS_IMG_FILE_TYPE_EXT              (0x03U)                                 /**< The image is for external flash. */
+#define BLE_OTAPS_IMG_FILE_TYPE_UNKNOWN          (0xFFU)                                 /**< The image file type is unknown. */
 /** @} */
 
 
@@ -115,7 +115,7 @@ extern "C" {
 
 typedef enum BLE_OTAPS_EventId_T
 {
-    BLE_OTAPS_EVT_UPDATE_REQ,                               /**< Request to start update procedure. See @ref BLE_OTAPS_EvtUpdateReq_T for event details. */
+    BLE_OTAPS_EVT_UPDATE_REQ=0x0U,                          /**< Request to start update procedure. See @ref BLE_OTAPS_EvtUpdateReq_T for event details. */
     BLE_OTAPS_EVT_START_IND,                                /**< Indication of starting one firmware image update. See @ref BLE_OTAPS_EvtStartInd_T for event details. */
     BLE_OTAPS_EVT_UPDATING_IND,                             /**< Indication of fragmented firmware image update. See @ref BLE_OTAPS_EvtUpdatingInd_T for event details. */
     BLE_OTAPS_EVT_UPDATING_REQ,                             /**< Request to update fragmented firmware image. Application must call @ref BLE_OTAPS_UpdatingResponse to update procedure. See @ref BLE_OTAPS_EvtUpdatingInd_T for event details. */
@@ -213,7 +213,7 @@ typedef void(*BLE_OTAPS_EventCb_T)(BLE_OTAPS_Event_T *p_event);
  * @retval MBA_RES_SUCCESS          Success to initialize BLE OTA profile and service. 
  *
  */
-uint16_t BLE_OTAPS_Init();
+uint16_t BLE_OTAPS_Init(void);
 
 /**
  *@brief Register BLE OTA profile callback.\n
@@ -232,7 +232,7 @@ void BLE_OTAPS_EventRegister(BLE_OTAPS_EventCb_T bleOtapsRoutine);
  *
  * @retval MBA_RES_SUCCESS          Successfully stop BLE OTA procedure.
  */
-uint16_t BLE_OTAPS_UpdateStop();
+uint16_t BLE_OTAPS_UpdateStop(void);
 
 /**
  *@brief Set IV value and encryption key of AES-CBC for OTA DFU new image decryption.\n

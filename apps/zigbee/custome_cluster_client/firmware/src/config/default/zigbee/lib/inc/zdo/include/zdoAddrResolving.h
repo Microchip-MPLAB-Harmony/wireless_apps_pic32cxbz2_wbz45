@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOADDRRESOLVING_H
-#define _ZDOADDRRESOLVING_H
+#ifndef ZDOADDRRESOLVING_H
+#define ZDOADDRRESOLVING_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -140,4 +140,4 @@ const ShortAddr_t* ZDO_FindShortByExt(const ExtAddr_t *const extAddr);
  *****************************************************************************/
 const ExtAddr_t* ZDO_FindExtByShort(const ShortAddr_t shortAddr);
 
-#endif // _ZDOADDRRESOLVING_H
+#endif // ZDOADDRRESOLVING_H

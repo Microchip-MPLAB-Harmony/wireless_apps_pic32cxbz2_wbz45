@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYDATASTATUS_H
-#define _PHYDATASTATUS_H
+#ifndef PHYDATASTATUS_H
+#define PHYDATASTATUS_H
 
 /******************************************************************************
                         Includes section.
@@ -61,6 +61,6 @@ typedef enum
   PHY_INVALID_DATA_STATUS             = TRAC_STATUS_INVALID,
 } PHY_DataStatus_t;
 
-#endif /* _PHYDATASTATUS_H */
+#endif /* PHYDATASTATUS_H */
 
 // eof phyDataStatus.h

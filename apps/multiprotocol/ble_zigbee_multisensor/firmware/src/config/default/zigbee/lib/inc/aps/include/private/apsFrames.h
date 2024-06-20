@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _APSFRAMES_H_
-#define _APSFRAMES_H_
+#ifndef APSFRAMES_H_
+#define APSFRAMES_H_
 
 #include <systemenvironment/include/sysEndian.h>
 #include <systemenvironment/include/dbg.h>
@@ -108,12 +108,12 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(6, (
-    uint8_t frameType               :2,
-    uint8_t deliveryMode            :2,
-    uint8_t ackFormat               :1,
-    uint8_t security                :1,
-    uint8_t ackRequest              :1,
-    uint8_t extendedHeaderPresent   :1
+    BitField_t frameType               :2,
+    BitField_t deliveryMode            :2,
+    BitField_t ackFormat               :1,
+    BitField_t security                :1,
+    BitField_t ackRequest              :1,
+    BitField_t extendedHeaderPresent   :1
   ))
 } ApduFrameControlField_t;
 
@@ -121,8 +121,8 @@ typedef struct PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(2, (
-    uint8_t fragmentation   :2,
-    uint8_t reserved        :6
+    BitField_t fragmentation   :2,
+    BitField_t reserved        :6
   ))
 } ApduExtendedFrameControlField_t;
 
@@ -210,4 +210,4 @@ END_PACK
 APS_PRIVATE uint8_t apsGetHeaderSize(uint8_t *apdu);
 #endif /* _LINK_SECURITY_ */
 
-#endif /* _APSFRAMES_H_ */
+#endif /* APSFRAMES_H_ */

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _TCKEYESTABLISH
-#define _TCKEYESTABLISH
+#ifndef TCKEYESTABLISH
+#define TCKEYESTABLISH
 
 #include <security/serviceprovider/include/sspHash.h>
 /**************************************************************************//**

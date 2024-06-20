@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _HACLUSTERS_H
-#define _HACLUSTERS_H
+#ifndef HACLUSTERS_H
+#define HACLUSTERS_H
 
 /******************************************************************************
                     Includes section
@@ -90,7 +90,7 @@ typedef struct
 \param[in]  command - command id;
 \param[in] size     - the size of request payload
 ******************************************************************************/
-void fillCommandRequest(ZCL_Request_t *req, uint8_t command, uint8_t size, Endpoint_t srcEp);
+void fillCommandRequest(ZCL_Request_t *req, uint8_t command, uint8_t size, Endpoint_t srcEndpoint);
 
 /**************************************************************************//**
 \brief Fills zcl addressing structure
@@ -204,10 +204,10 @@ void nwkLeaveCommand(ExtAddr_t extAddr, bool rejoin, bool removeChildren);
 \param[in]  addr       - short address of destination mode;
 \param[in]  extAddr    - Extended address of destination mode;
 \param[in]  ep         - endpoint number of destination node;
-\param[in]  srcEp      - endpoint number of source node;
+\param[in]  srcEndpoint      - endpoint number of source node;
 \param[in]  clusterid  - cluster id
 ******************************************************************************/
-void zdpBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endpoint_t ep, Endpoint_t srcEp, ClusterId_t clusterId);
+void zdpBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endpoint_t ep, Endpoint_t srcEndpoint, ClusterId_t clusterId);
 
 /**************************************************************************//**
 \brief Sends ZDP Unbind request with source address and destination endpoint.
@@ -216,10 +216,10 @@ void zdpBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endpoi
 \param[in]  addr       - short address of destination mode;
 \param[in]  extAddr    - Extended address of destination mode;
 \param[in]  ep         - endpoint number of destination node;
-\param[in]  srcEp      - endpoint number of source node;
+\param[in]  srcEndpoint      - endpoint number of source node;
 \param[in]  clusterid  - cluster id
 ******************************************************************************/
-void zdpUnBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endpoint_t ep, Endpoint_t srcEp, ClusterId_t clusterId);
+void zdpUnBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endpoint_t ep, Endpoint_t srcEndpoint, ClusterId_t clusterId);
 
 /**************************************************************************//**
 \brief Sends ZDP Bind request with source address and destination endpoint.
@@ -230,10 +230,10 @@ void zdpUnBindReq(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, Endp
 \param[in]  extAddrSrc - Extended address of source mode;
 \param[in]  epSrc      - endpoint number of source node;
 \param[in]  epDst      - endpoint number of destination node;
-\param[in]  srcEp      - endpoint number of source node;
+\param[in]  srcEndpoint      - endpoint number of source node;
 \param[in]  clusterid  - cluster id
 ******************************************************************************/
-void zdpBindReqWithSrcAddrDestEndpoint(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, ExtAddr_t extAddrSrc, Endpoint_t epSrc, Endpoint_t epDst, Endpoint_t srcEp, ClusterId_t clusterId);
+void zdpBindReqWithSrcAddrDestEndpoint(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, ExtAddr_t extAddrSrc, Endpoint_t epSrc, Endpoint_t epDst, Endpoint_t srcEndpoint, ClusterId_t clusterId);
 
 /**************************************************************************//**
 \brief Sends ZDP Unbind request with source address and destination endpoint.
@@ -244,10 +244,10 @@ void zdpBindReqWithSrcAddrDestEndpoint(APS_AddrMode_t mode, ShortAddr_t addr, Ex
 \param[in]  extAddrSrc - Extended address of source mode;
 \param[in]  epSrc      - endpoint number of source node;
 \param[in]  epDst      - endpoint number of destination node;
-\param[in]  srcEp      - endpoint number of source node;
+\param[in]  srcEndpoint      - endpoint number of source node;
 \param[in]  clusterid  - cluster id
 ******************************************************************************/
-void zdpUnBindReqWithSrcAddrDestEndpoint(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, ExtAddr_t extAddrSrc, Endpoint_t epSrc, Endpoint_t epDst, Endpoint_t srcEp, ClusterId_t clusterId);
+void zdpUnBindReqWithSrcAddrDestEndpoint(APS_AddrMode_t mode, ShortAddr_t addr, ExtAddr_t extAddr, ExtAddr_t extAddrSrc, Endpoint_t epSrc, Endpoint_t epDst, Endpoint_t srcEndpoint, ClusterId_t clusterId);
 
 /**************************************************************************//**
 \brief Sends Management Bind request
@@ -293,7 +293,7 @@ void ZCL_ReadAttributeResp(ZCL_Notify_t *ntfy);
 
 \return none
 ******************************************************************************/
-void readAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster, uint16_t attr, ZclNtfyCallback_t cb);
+void readAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster, uint16_t attr, ZclNtfyCallback_t cb);
 
 /**************************************************************************//**
 \brief Sends a multiple read attribute request to another device
@@ -301,7 +301,7 @@ void readAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoin
 \param[in] mode    - addressing mode;
 \param[in] addr    - short destination address;
 \param[in] ep      - destination endpoint identifier;
-\param[in] srcEp   - source endpoint;
+\param[in] srcEndpoint   - source endpoint;
 \param[in] cluster - cluster identifier;
 \param[in] startAttrId    - starting attribute identifier;
 \param[in] count    - number of attributes to read;
@@ -309,7 +309,7 @@ void readAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoin
 
 \return none
 ******************************************************************************/
-void readAttributeMultiple(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, 
+void readAttributeMultiple(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, 
                    uint16_t cluster, uint16_t startAttrId, uint8_t count, ZclNtfyCallback_t cb);
 
 /**************************************************************************//**
@@ -334,7 +334,7 @@ void ZCL_WriteAttributeResp(ZCL_Notify_t *ntfy);
 
 \return none
 ******************************************************************************/
-void writeAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster, uint8_t type, uint16_t attr, void *data, uint8_t size, ZclNtfyCallback_t cb);
+void writeAttribute(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster, uint8_t type, uint16_t attr, void *data, uint8_t size, ZclNtfyCallback_t cb);
 
 /**************************************************************************//**
 \brief Indication of write attribute response
@@ -358,21 +358,21 @@ void ZCL_WriteAttributeNoResp(ZCL_Notify_t *ntfy);
 
 \return none
 ******************************************************************************/
-void writeAttributeNoResp(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster, uint8_t type, uint16_t attr, void *data, uint8_t size, ZclNtfyCallback_t cb);
+void writeAttributeNoResp(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster, uint8_t type, uint16_t attr, void *data, uint8_t size, ZclNtfyCallback_t cb);
 /**************************************************************************//**
 \brief Sends the Configure Reporting for cluster
 
 \param[in] mode - address mode;
 \param[in] addr - short address of destination node;
 \param[in] ep   - destination endpoint;
-\param[in] srcEp- source endpoint;
+\param[in] srcEndpoint- source endpoint;
 \param[in] cluster - cluster identifier;
 \param[in] attrId - attribute id;
 \param[in] attrType - attribute type
 \param[in] min  - the minimum reporting interval;
 \param[in] max  - the maximum reporting interval
 ******************************************************************************/
-void configureReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster,
+void configureReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster,
   ZCL_AttributeId_t attrId, uint8_t attrType, ZCL_ReportTime_t min, ZCL_ReportTime_t max);
 
 /**************************************************************************//**
@@ -396,7 +396,7 @@ void sendConfigureReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep
 \param[in] mode - address mode;
 \param[in] addr - short address of destination node;
 \param[in] ep   - destination endpoint;
-\param[in] srcEp- source endpoint;
+\param[in] srcEndpoint- source endpoint;
 \param[in] cluster - cluster identifier;
 \param[in] attrId - attribute id;
 \param[in] attrType - attribute type
@@ -404,7 +404,7 @@ void sendConfigureReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep
 \param[in] max  - the maximum reporting interval
 \param[in] *repChange - pointer to the reportableChange value
 ******************************************************************************/
-void configureReportingWithRC(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster,
+void configureReportingWithRC(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster,
   ZCL_AttributeId_t attrId, uint8_t attrType, ZCL_ReportTime_t min, ZCL_ReportTime_t max,
   void *repChange);
 
@@ -418,7 +418,7 @@ void configureReportingWithRC(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t 
 \param[in] attrId - attribute id;
 \param[in] attrType - attribute type
 ******************************************************************************/
-void readReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint16_t cluster,
+void readReporting(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint, uint16_t cluster,
   ZCL_AttributeId_t attrId);
 
 /**************************************************************************//**
@@ -441,6 +441,6 @@ uint8_t getZclDefaultResponseBit(void);
 \param[in] option - option for key type
 ******************************************************************************/
 void tempfuctionsetkey(uint8_t option);
-#endif // _CLUSTER_H
+#endif // CLUSTER_H
 
 // eof clusters.h

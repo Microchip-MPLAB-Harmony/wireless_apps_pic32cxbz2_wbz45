@@ -43,8 +43,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_TASK_MANAGER_H
-#define  _ZDO_TASK_MANAGER_H
+#if !defined ZDO_TASK_MANAGER_H
+#define  ZDO_TASK_MANAGER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -92,5 +92,5 @@ ZDO_PRIVATE void zdoPostTask(const ZdoTaskID_t taskID);
  ******************************************************************************/
 ZDO_PRIVATE void zdoUnpostTask(ZdoTaskID_t taskID);
 
-#endif /* _ZDO_TASK_MANAGER_H */
+#endif /* ZDO_TASK_MANAGER_H */
 /** eof zdoTaskManager.h */

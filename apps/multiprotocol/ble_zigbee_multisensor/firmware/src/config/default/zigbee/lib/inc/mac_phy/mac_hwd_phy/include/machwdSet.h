@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDSET_H
-#define _MACHWDSET_H
+#ifndef MACHWDSET_H
+#define MACHWDSET_H
 
 /******************************************************************************
                     Includes section
@@ -114,6 +114,6 @@ typedef struct
 ******************************************************************************/
 void MACHWD_SetReq(MACHWD_SetReq_t *reqParams);
 
-#endif /* _MACHWDSET_H */
+#endif /* MACHWDSET_H */
 
 // eof machwdSet.h

@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWKSYSTEM_H
-#define _NWKSYSTEM_H
+#if !defined NWKSYSTEM_H
+#define NWKSYSTEM_H
 
 /******************************************************************************
                                Includes section
@@ -57,10 +57,10 @@
 INLINE bool isCorrectExtPanId(const uint64_t panId)
 {
   const uint8_t *p = (const uint8_t *)&panId;
-  uint8_t panIdLength = sizeof(panId);
+  uint8_t panIdLength = (uint8_t)sizeof(panId);
   uint16_t sum = 0U;
   
-  while(panIdLength > 0)
+  while(panIdLength > 0U)
   {
     sum += *(p++);
     panIdLength--;
@@ -121,6 +121,6 @@ typedef  ShortAddr_t  NwkAddrRange_t;
 #define NWK_NEXT_QELEM(parent, type) \
   GET_PARENT_BY_FIELD(type, service.qelem, getNextQueueElem(&(parent)->service.qelem))
 
-#endif /* _NWKSYSTEM_H */
+#endif /* NWKSYSTEM_H */
 /** eof nwkSystem.h */
 

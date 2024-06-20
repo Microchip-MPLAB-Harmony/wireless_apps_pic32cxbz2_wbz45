@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _KEYBOARDPOLL_H
-#define _KEYBOARDPOLL_H
+#ifndef KEYBOARDPOLL_H
+#define KEYBOARDPOLL_H
 
 /*****************************************************************************
                     Includes section
@@ -55,6 +55,6 @@
 ******************************************************************************/
 void pollKeyboard(void);
 
-#endif // _KEYBOARDPOLL_H
+#endif // KEYBOARDPOLL_H
 
 // eof keyboardPoll.h

@@ -38,8 +38,8 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
-#ifndef _CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
-#define _CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
+#ifndef CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
+#define CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -56,9 +56,9 @@
 
 /* Some default values for attributes */
 #define APP_TEMPERATURE_MEASUREMENT_MEASURED_VALUE_ATTRIBUTE_VALUE       0x5000
-#define APP_TEMPERATURE_MEASUREMENT_MIN_MEASURED_VALUE_ATTRIBUTE_VALUE   0x954d //range 0x954d ?? 0x7ffe
-#define APP_TEMPERATURE_MEASUREMENT_MAX_MEASURED_VALUE_ATTRIBUTE_VALUE   0x7fff //range 0x954e ?? 0x7fff
-#define APP_TEMPERATURE_MEASUREMENT_TOLERANCE_ATTRIBUTE_VALUE            0x0100 //0x0000 ?? 0x0800
+#define APP_TEMPERATURE_MEASUREMENT_MIN_MEASURED_VALUE_ATTRIBUTE_VALUE   0x954d //range 0x954d � 0x7ffe
+#define APP_TEMPERATURE_MEASUREMENT_MAX_MEASURED_VALUE_ATTRIBUTE_VALUE   0x7fff //range 0x954e � 0x7fff
+#define APP_TEMPERATURE_MEASUREMENT_TOLERANCE_ATTRIBUTE_VALUE            0x0100 //0x0000 � 0x0800
 
 #define APP_TEMPERATURE_MEASUREMENT_MEASURED_VALUE_PERIODIC_CHANGE       1000 //corresponding to 10 degree celsius
 /******************************************************************************
@@ -87,6 +87,6 @@ void customTemperatureMeasurementClusterInit(void);
 ******************************************************************************/
 void customTempeartureMeasurementUpdateMeasuredValue(void);
 
-#endif // _CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
+#endif // CUSTOMTEMPERATUREMEASUREMENTCLUSTER_H
 
 // eof tsTemperatureMeasurementCluster.h

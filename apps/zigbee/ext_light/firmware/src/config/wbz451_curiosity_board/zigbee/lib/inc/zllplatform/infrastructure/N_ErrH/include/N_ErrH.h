@@ -87,7 +87,7 @@ typedef void (*N_ErrH_Callback_t)(const char* compId, uint16_t line);
 */
 #define N_ERRH_ASSERT_FATAL(cond) \
     N_UTIL_SWALLOW_SEMICOLON( \
-        if (!(cond)) \
+        if (!(bool)(cond)) \
         { \
             N_ERRH_FATAL(); \
             /*lint -unreachable */ \

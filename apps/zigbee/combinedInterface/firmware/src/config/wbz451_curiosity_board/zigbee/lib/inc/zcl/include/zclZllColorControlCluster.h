@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLZLLCOLORCONTROLCLUSTER_H
-#define _ZCLZLLCOLORCONTROLCLUSTER_H
+#ifndef ZCLZLLCOLORCONTROLCLUSTER_H
+#define ZCLZLLCOLORCONTROLCLUSTER_H
 
 /******************************************************************************
                         Includes section
@@ -80,12 +80,12 @@
  * \brief ZLL Cluster server's attributes identifiers
 */
 
-#define ZCL_ZLL_CLUSTER_CURRENT_HUE_SERVER_ATTRIBUTE_ID                    CCPU_TO_LE16(0x0000)
-#define ZCL_ZLL_CLUSTER_CURRENT_SATURATION_SERVER_ATTRIBUTE_ID             CCPU_TO_LE16(0x0001)
+#define ZCL_ZLL_CLUSTER_CURRENT_HUE_SERVER_ATTRIBUTE_ID                    CCPU_TO_LE16(0x0000U)
+#define ZCL_ZLL_CLUSTER_CURRENT_SATURATION_SERVER_ATTRIBUTE_ID             CCPU_TO_LE16(0x0001U)
 #define ZCL_ZLL_CLUSTER_REMAINING_TIME_SERVER_ATTRIBUTE_ID                 CCPU_TO_LE16(0x0002)
-#define ZCL_ZLL_CLUSTER_CURRENT_X_SERVER_ATTRIBUTE_ID                      CCPU_TO_LE16(0x0003)
-#define ZCL_ZLL_CLUSTER_CURRENT_Y_SERVER_ATTRIBUTE_ID                      CCPU_TO_LE16(0x0004)
-#define ZCL_ZLL_CLUSTER_COLOR_TEMPERATURE_SERVER_ATTRIBUTE_ID              CCPU_TO_LE16(0x0007)
+#define ZCL_ZLL_CLUSTER_CURRENT_X_SERVER_ATTRIBUTE_ID                      CCPU_TO_LE16(0x0003U)
+#define ZCL_ZLL_CLUSTER_CURRENT_Y_SERVER_ATTRIBUTE_ID                      CCPU_TO_LE16(0x0004U)
+#define ZCL_ZLL_CLUSTER_COLOR_TEMPERATURE_SERVER_ATTRIBUTE_ID              CCPU_TO_LE16(0x0007U)
 #define ZCL_ZLL_CLUSTER_COLOR_MODE_SERVER_ATTRIBUTE_ID                     CCPU_TO_LE16(0x0008)
 #define ZCL_ZLL_CLUSTER_NUMBER_OF_PRIMARIES_SERVER_ATTRIBUTE_ID            CCPU_TO_LE16(0x0010)
 #define ZCL_ZLL_CLUSTER_PRIMARY_1_X_SERVER_ATTRIBUTE_ID                    CCPU_TO_LE16(0x0011)
@@ -120,7 +120,7 @@
 /* ZLO enhancements additional attributes */
 #if ZLO_CLUSTER_ENHANCEMENTS == 1
 #define ZCL_ZLL_CLUSTER_COUPLE_COLOR_TEMP_TO_MIN_MIREDS_SERVER_ATTRIBUTE_ID CCPU_TO_LE16(0x400D)
-#define ZCL_ZLL_CLUSTER_STARTUP_COLOR_TEMPERATURE_SERVER_ATTRIBUTE_ID       CCPU_TO_LE16(0x4010)
+#define ZCL_ZLL_CLUSTER_STARTUP_COLOR_TEMPERATURE_SERVER_ATTRIBUTE_ID       CCPU_TO_LE16(0x4010U)
 #define ZCL_ZLL_CLUSTER_OPTIONS_SERVER_ATTRIBUTE_ID                         CCPU_TO_LE16(0x000F)
 #endif /* #if ZLO_CLUSTER_ENHANCEMENTS == 1 */
 
@@ -168,26 +168,26 @@
 /**
  * \brief ZLL Client Cluster commands identifiers.
 */
-#define MOVE_TO_HUE_COMMAND_ID                         0x00
-#define MOVE_HUE_COMMAND_ID                            0x01
-#define STEP_HUE_COMMAND_ID                            0x02
-#define MOVE_TO_SATURATION_COMMAND_ID                  0x03
-#define MOVE_SATURATION_COMMAND_ID                     0x04
-#define STEP_SATURATION_COMMAND_ID                     0x05
-#define MOVE_TO_HUE_AND_SATURATION_COMMAND_ID          0x06
-#define MOVE_TO_COLOR_COMMAND_ID                       0x07
-#define MOVE_COLOR_COMMAND_ID                          0x08
-#define STEP_COLOR_COMMAND_ID                          0x09
-#define MOVE_TO_COLOR_TEMPERATURE_COMMAND_ID           0x0A
+#define MOVE_TO_HUE_COMMAND_ID                         (0x00)
+#define MOVE_HUE_COMMAND_ID                            (0x01)
+#define STEP_HUE_COMMAND_ID                            (0x02)
+#define MOVE_TO_SATURATION_COMMAND_ID                  (0x03)
+#define MOVE_SATURATION_COMMAND_ID                     (0x04)
+#define STEP_SATURATION_COMMAND_ID                     (0x05)
+#define MOVE_TO_HUE_AND_SATURATION_COMMAND_ID          (0x06)
+#define MOVE_TO_COLOR_COMMAND_ID                       (0x07)
+#define MOVE_COLOR_COMMAND_ID                          (0x08)
+#define STEP_COLOR_COMMAND_ID                          (0x09)
+#define MOVE_TO_COLOR_TEMPERATURE_COMMAND_ID           (0x0A)
 /* Additional commands */
-#define ENHANCED_MOVE_TO_HUE_COMMAND_ID                0x40
-#define ENHANCED_MOVE_HUE_COMMAND_ID                   0x41
-#define ENHANCED_STEP_HUE_COMMAND_ID                   0x42
-#define ENHANCED_MOVE_TO_HUE_AND_SATURATION_COMMAND_ID 0x43
-#define COLOR_LOOP_SET_COMMAND_ID                      0x44
-#define STOP_MOVE_STEP_COMMAND_ID                      0x47
-#define MOVE_COLOR_TEMPERATURE_COMMAND_ID              0x4B
-#define STEP_COLOR_TEMPERATURE_COMMAND_ID              0x4C
+#define ENHANCED_MOVE_TO_HUE_COMMAND_ID                (0x40)
+#define ENHANCED_MOVE_HUE_COMMAND_ID                   (0x41)
+#define ENHANCED_STEP_HUE_COMMAND_ID                   (0x42)
+#define ENHANCED_MOVE_TO_HUE_AND_SATURATION_COMMAND_ID (0x43)
+#define COLOR_LOOP_SET_COMMAND_ID                      (0x44)
+#define STOP_MOVE_STEP_COMMAND_ID                      (0x47)
+#define MOVE_COLOR_TEMPERATURE_COMMAND_ID              (0x4B)
+#define STEP_COLOR_TEMPERATURE_COMMAND_ID              (0x4C)
 
 #define ZCL_COLOR_CONTROL_CLUSTER_COMMANDS_FOR_EXTENDED_COLOR_LIGHT(moveToHueInd, \
                                                                     moveHueInd,   \
@@ -262,15 +262,15 @@ BEGIN_PACK
 /**
  * \brief Color Capabilities bitfield type.
 */
-typedef struct PACK _ZCL_ZllColorCapabilities_t
+typedef struct PACK ZCL_ZllColorCapabilities_
 {
   LITTLE_ENDIAN_OCTET(6,(
-    uint16_t hueSaturationSupported    : 1,
-    uint16_t enhancedHueSupported      : 1,
-    uint16_t colorLoopSupported        : 1,
-    uint16_t XYAttributesSupported     : 1,
-    uint16_t colorTemperatureSupported : 1,
-    uint16_t reserved                  : 11
+    BitField_t hueSaturationSupported    : 1,
+    BitField_t enhancedHueSupported      : 1,
+    BitField_t colorLoopSupported        : 1,
+    BitField_t XYAttributesSupported     : 1,
+    BitField_t colorTemperatureSupported : 1,
+    BitField_t reserved                  : 11
   ))
 } ZCL_ZllColorCapabilities_t;
 
@@ -306,7 +306,7 @@ END_PACK
 /**
  * \brief MoveToHue command direction values
 */
-typedef enum _ZCL_ZllMoveToHueDirection_t
+typedef enum ZCL_ZllMoveToHueDirection_
 {
   ZCL_ZLL_MOVE_TO_HUE_DIRECTION_SHORTEST_DISTANCE = 0x00,
   ZCL_ZLL_MOVE_TO_HUE_DIRECTION_LONGEST_DISTANCE  = 0x01,
@@ -317,7 +317,7 @@ typedef enum _ZCL_ZllMoveToHueDirection_t
 /**
  * \brief MoveHue command moveMode values
 */
-typedef enum _ZCL_ZllMoveHueMoveMode_t
+typedef enum ZCL_ZllMoveHueMoveMode_
 {
   ZCL_ZLL_MOVE_HUE_MOVE_MODE_STOP = 0x00,
   ZCL_ZLL_MOVE_HUE_MOVE_MODE_UP   = 0x01,
@@ -327,7 +327,7 @@ typedef enum _ZCL_ZllMoveHueMoveMode_t
 /**
  * \brief StepHue command stepMode values
 */
-typedef enum _ZCL_ZllStepHueStepMode_t
+typedef enum ZCL_ZllStepHueStepMode_
 {
   ZCL_ZLL_STEP_HUE_STEP_MODE_UP   = 0x01,
   ZCL_ZLL_STEP_HUE_STEP_MODE_DOWN = 0x03,
@@ -336,7 +336,7 @@ typedef enum _ZCL_ZllStepHueStepMode_t
 /**
  * \brief MoveSaturation command moveMode values
 */
-typedef enum _ZCL_ZllMoveSaturationMoveMode_t
+typedef enum ZCL_ZllMoveSaturationMoveMode_
 {
   ZCL_ZLL_MOVE_SATURATION_MOVE_MODE_STOP = 0x00,
   ZCL_ZLL_MOVE_SATURATION_MOVE_MODE_UP   = 0x01,
@@ -346,7 +346,7 @@ typedef enum _ZCL_ZllMoveSaturationMoveMode_t
 /**
  * \brief StepSaturation command stepMode values
 */
-typedef enum _ZCL_ZllStepSaturationStepMode_t
+typedef enum ZCL_ZllStepSaturationStepMode_
 {
   ZCL_ZLL_STEP_SATURATION_STEP_MODE_UP   = 0x01,
   ZCL_ZLL_STEP_SATURATION_STEP_MODE_DOWN = 0x03,
@@ -355,7 +355,7 @@ typedef enum _ZCL_ZllStepSaturationStepMode_t
 /**
  * \brief ColorLoopSet command action values
 */
-typedef enum _ZCL_ZllColorLoopSetAction_t
+typedef enum ZCL_ZllColorLoopSetAction_
 {
   ZCL_ZLL_COLOR_LOOP_SET_ACTION_DEACTIVATE        = 0x00,
   ZCL_ZLL_COLOR_LOOP_SET_ACTION_ACTIVATE          = 0x01,
@@ -365,7 +365,7 @@ typedef enum _ZCL_ZllColorLoopSetAction_t
 /**
  * \brief ColorLoopSet command direction values
 */
-typedef enum _ZCL_ZllColorLoopSetDirection_t
+typedef enum ZCL_ZllColorLoopSetDirection_
 {
   ZCL_ZLL_COLOR_LOOP_SET_DIRECTION_DECREMENT_HUE = 0x00,
   ZCL_ZLL_COLOR_LOOP_SET_DIRECTION_INCREMENT_HUE = 0x01,
@@ -374,7 +374,7 @@ typedef enum _ZCL_ZllColorLoopSetDirection_t
 /**
  * \brief EnhancedColorMode values
 */
-typedef enum _ZCL_ZllEnhancedColorMode_t
+typedef enum ZCL_ZllEnhancedColorMode_
 {
   ZCL_ZLL_CURRENT_HUE_AND_CURRENT_SATURATION          = 0x00,
   ZCL_ZLL_CURRENT_X_AND_CURRENT_Y                     = 0x01,
@@ -385,7 +385,7 @@ typedef enum _ZCL_ZllEnhancedColorMode_t
 /**
  * \brief Color Loop action type.
 */
-typedef enum _ZCL_ZllColorLoopAction_t
+typedef enum ZCL_ZllColorLoopAction_
 {
   COLOR_LOOP_DEACTIVATE          = 0x00,
   COLOR_LOOP_ACTIVATE_FROM_CLSEH = 0x01,
@@ -395,7 +395,7 @@ typedef enum _ZCL_ZllColorLoopAction_t
 /**
  * \brief MoveColorTemperature command moveMode values
 */
-typedef enum _ZCL_ZllMoveColorTemperatureMoveMode_t
+typedef enum ZCL_ZllMoveColorTemperatureMoveMode_
 {
   ZCL_ZLL_MOVE_COLOR_TEMPERATURE_MOVE_MODE_STOP = 0x00,
   ZCL_ZLL_MOVE_COLOR_TEMPERATURE_MOVE_MODE_UP   = 0x01,
@@ -405,7 +405,7 @@ typedef enum _ZCL_ZllMoveColorTemperatureMoveMode_t
 /**
  * \brief StepColorTemperature command stepMode values
 */
-typedef enum _ZCL_ZllStepColorTemperatureStepMode_t
+typedef enum ZCL_ZllStepColorTemperatureStepMode_
 {
   ZCL_ZLL_STEP_COLOR_TEMPERATURE_STEP_MODE_UP   = 0x01,
   ZCL_ZLL_STEP_COLOR_TEMPERATURE_STEP_MODE_DOWN = 0x03,
@@ -415,7 +415,7 @@ BEGIN_PACK
 /**
  * \brief MoveToHue command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToHueCommand_t
+typedef struct PACK ZCL_ZllMoveToHueCommand_
 {
   uint8_t hue;
   uint8_t direction;
@@ -425,7 +425,7 @@ typedef struct PACK _ZCL_ZllMoveToHueCommand_t
 /**
  * \brief MoveToHue command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveToHueWithOptionsCommand_
 {
   uint8_t hue;
   uint8_t direction;
@@ -437,7 +437,7 @@ typedef struct PACK _ZCL_ZllMoveToHueWithOptionsCommand_t
 /**
  * \brief MoveHue command payload format
 */
-typedef struct PACK _ZCL_ZllMoveHueCommand_t
+typedef struct PACK ZCL_ZllMoveHueCommand_
 {
   uint8_t moveMode;
   uint8_t rate;
@@ -446,7 +446,7 @@ typedef struct PACK _ZCL_ZllMoveHueCommand_t
 /**
  * \brief MoveHue command payload format
 */
-typedef struct PACK _ZCL_ZllMoveHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveHueWithOptionsCommand_
 {
   uint8_t moveMode;
   uint8_t rate;
@@ -457,7 +457,7 @@ typedef struct PACK _ZCL_ZllMoveHueWithOptionsCommand_t
 /**
  * \brief StepHue command payload format
 */
-typedef struct PACK _ZCL_ZllStepHueCommand_t
+typedef struct PACK ZCL_ZllStepHueCommand_
 {
   uint8_t stepMode;
   uint8_t stepSize;
@@ -467,7 +467,7 @@ typedef struct PACK _ZCL_ZllStepHueCommand_t
 /**
  * \brief StepHue command payload format
 */
-typedef struct PACK _ZCL_ZllStepHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllStepHueWithOptionsCommand_
 {
   uint8_t stepMode;
   uint8_t stepSize;
@@ -479,7 +479,7 @@ typedef struct PACK _ZCL_ZllStepHueWithOptionsCommand_t
 /**
  * \brief MoveToSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToSaturationCommand_t
+typedef struct PACK ZCL_ZllMoveToSaturationCommand_
 {
   uint8_t saturation;
   uint16_t transitionTime;
@@ -488,7 +488,7 @@ typedef struct PACK _ZCL_ZllMoveToSaturationCommand_t
 /**
  * \brief MoveToSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToSaturationWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveToSaturationWithOptionsCommand_
 {
   uint8_t saturation;
   uint16_t transitionTime;
@@ -499,7 +499,7 @@ typedef struct PACK _ZCL_ZllMoveToSaturationWithOptionsCommand_t
 /**
  * \brief MoveSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveSaturationCommand_t
+typedef struct PACK ZCL_ZllMoveSaturationCommand_
 {
   uint8_t moveMode;
   uint8_t rate;
@@ -508,7 +508,7 @@ typedef struct PACK _ZCL_ZllMoveSaturationCommand_t
 /**
  * \brief MoveSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveSaturationWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveSaturationWithOptionsCommand_
 {
   uint8_t moveMode;
   uint8_t rate;
@@ -519,7 +519,7 @@ typedef struct PACK _ZCL_ZllMoveSaturationWithOptionsCommand_t
 /**
  * \brief StepSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllStepSaturationCommand_t
+typedef struct PACK ZCL_ZllStepSaturationCommand_
 {
   uint8_t  stepMode;
   uint8_t  stepSize;
@@ -529,7 +529,7 @@ typedef struct PACK _ZCL_ZllStepSaturationCommand_t
 /**
  * \brief StepSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllStepSaturationWithOptionsCommand_t
+typedef struct PACK ZCL_ZllStepSaturationWithOptionsCommand_
 {
   uint8_t  stepMode;
   uint8_t  stepSize;
@@ -541,7 +541,7 @@ typedef struct PACK _ZCL_ZllStepSaturationWithOptionsCommand_t
 /**
  * \brief MoveToHueAndSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToHueAndSaturationCommand_t
+typedef struct PACK ZCL_ZllMoveToHueAndSaturationCommand_
 {
   uint8_t hue;
   uint8_t saturation;
@@ -551,7 +551,7 @@ typedef struct PACK _ZCL_ZllMoveToHueAndSaturationCommand_t
 /**
  * \brief MoveToHueAndSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToHueAndSaturationWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveToHueAndSaturationWithOptionsCommand_
 {
   uint8_t hue;
   uint8_t saturation;
@@ -563,7 +563,7 @@ typedef struct PACK _ZCL_ZllMoveToHueAndSaturationWithOptionsCommand_t
 /**
  * \brief MoveToColor command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToColorCommand_t
+typedef struct PACK ZCL_ZllMoveToColorCommand_
 {
   uint16_t colorX;
   uint16_t colorY;
@@ -573,7 +573,7 @@ typedef struct PACK _ZCL_ZllMoveToColorCommand_t
 /**
  * \brief MoveToColor command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToColorWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveToColorWithOptionsCommand_
 {
   uint16_t colorX;
   uint16_t colorY;
@@ -585,7 +585,7 @@ typedef struct PACK _ZCL_ZllMoveToColorWithOptionsCommand_t
 /**
  * \brief MoveColor command payload format
 */
-typedef struct PACK _ZCL_ZllMoveColorCommand_t
+typedef struct PACK ZCL_ZllMoveColorCommand_
 {
   int16_t rateX;
   int16_t rateY;
@@ -594,7 +594,7 @@ typedef struct PACK _ZCL_ZllMoveColorCommand_t
 /**
  * \brief MoveColor command payload format
 */
-typedef struct PACK _ZCL_ZllMoveColorWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveColorWithOptionsCommand_
 {
   int16_t rateX;
   int16_t rateY;
@@ -605,7 +605,7 @@ typedef struct PACK _ZCL_ZllMoveColorWithOptionsCommand_t
 /**
  * \brief MoveToColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToColorTemperatureCommand_t
+typedef struct PACK ZCL_ZllMoveToColorTemperatureCommand_
 {
   uint16_t colorTemperature;
   uint16_t transitionTime;
@@ -614,7 +614,7 @@ typedef struct PACK _ZCL_ZllMoveToColorTemperatureCommand_t
 /**
  * \brief MoveToColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllMoveToColorTemperatureWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveToColorTemperatureWithOptionsCommand_
 {
   uint16_t colorTemperature;
   uint16_t transitionTime;
@@ -625,7 +625,7 @@ typedef struct PACK _ZCL_ZllMoveToColorTemperatureWithOptionsCommand_t
 /**
  * \brief StepColor command payload format
 */
-typedef struct PACK _ZCL_ZllStepColorCommand_t
+typedef struct PACK ZCL_ZllStepColorCommand_
 {
   int16_t stepX;
   int16_t stepY;
@@ -635,7 +635,7 @@ typedef struct PACK _ZCL_ZllStepColorCommand_t
 /**
  * \brief StepColor command payload format
 */
-typedef struct PACK _ZCL_ZllStepColorWithOptionsCommand_t
+typedef struct PACK ZCL_ZllStepColorWithOptionsCommand_
 {
   int16_t stepX;
   int16_t stepY;
@@ -647,7 +647,7 @@ typedef struct PACK _ZCL_ZllStepColorWithOptionsCommand_t
 /**
  * \brief EnhancedMoveToHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveToHueCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveToHueCommand_
 {
   uint16_t enhancedHue;
   uint8_t direction;
@@ -657,7 +657,7 @@ typedef struct PACK _ZCL_ZllEnhancedMoveToHueCommand_t
 /**
  * \brief EnhancedMoveToHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveToHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveToHueWithOptionsCommand_
 {
   uint16_t enhancedHue;
   uint8_t direction;
@@ -669,7 +669,7 @@ typedef struct PACK _ZCL_ZllEnhancedMoveToHueWithOptionsCommand_t
 /**
  * \brief EnhancedMoveHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveHueCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveHueCommand_
 {
   uint8_t moveMode;
   uint16_t rate;
@@ -678,7 +678,7 @@ typedef struct PACK _ZCL_ZllEnhancedMoveHueCommand_t
 /**
  * \brief EnhancedMoveHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveHueWithOptionsCommand_
 {
   uint8_t moveMode;
   uint16_t rate;
@@ -689,7 +689,7 @@ typedef struct PACK _ZCL_ZllEnhancedMoveHueWithOptionsCommand_t
 /**
  * \brief EnhancedStepHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedStepHueCommand_t
+typedef struct PACK ZCL_ZllEnhancedStepHueCommand_
 {
   uint8_t stepMode;
   uint16_t stepSize;
@@ -699,7 +699,7 @@ typedef struct PACK _ZCL_ZllEnhancedStepHueCommand_t
 /**
  * \brief EnhancedStepHue command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedStepHueWithOptionsCommand_t
+typedef struct PACK ZCL_ZllEnhancedStepHueWithOptionsCommand_
 {
   uint8_t stepMode;
   uint16_t stepSize;
@@ -711,7 +711,7 @@ typedef struct PACK _ZCL_ZllEnhancedStepHueWithOptionsCommand_t
 /**
  * \brief EnhancedMoveToHueAndSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveToHueAndSaturationCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveToHueAndSaturationCommand_
 {
   uint16_t enhancedHue;
   uint8_t saturation;
@@ -721,7 +721,7 @@ typedef struct PACK _ZCL_ZllEnhancedMoveToHueAndSaturationCommand_t
 /**
  * \brief EnhancedMoveToHueAndSaturation command payload format
 */
-typedef struct PACK _ZCL_ZllEnhancedMoveToHueAndSaturationWithOptionsCommand_t
+typedef struct PACK ZCL_ZllEnhancedMoveToHueAndSaturationWithOptionsCommand_
 {
   uint16_t enhancedHue;
   uint8_t saturation;
@@ -733,24 +733,24 @@ typedef struct PACK _ZCL_ZllEnhancedMoveToHueAndSaturationWithOptionsCommand_t
 /**
  * \brief ColorLoopSet command payload format
 */
-typedef struct PACK _ZCL_ZllColorLoopSetCommand_t
+typedef struct PACK ZCL_ZllColorLoopSetCommand_
 {
   uint8_t                  updateFlags;
   ZCL_ZllColorLoopAction_t action;
   uint8_t                  direction;
-  uint16_t                 time;
+  uint16_t                 colorLoopTime;
   uint16_t                 startHue;
 } ZCL_ZllColorLoopSetCommand_t;
 
 /**
  * \brief ColorLoopSet command payload format
 */
-typedef struct PACK _ZCL_ZllColorLoopSetWithOptionsCommand_t
+typedef struct PACK ZCL_ZllColorLoopSetWithOptionsCommand_
 {
   uint8_t                  updateFlags;
   ZCL_ZllColorLoopAction_t action;
   uint8_t                  direction;
-  uint16_t                 time;
+  uint16_t                 colorLoopTime;
   uint16_t                 startHue;
   uint8_t optionsMask;
   uint8_t optionsOverride;
@@ -759,7 +759,7 @@ typedef struct PACK _ZCL_ZllColorLoopSetWithOptionsCommand_t
 /**
  * \brief MoveColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllMoveColorTemperatureCommand_t
+typedef struct PACK ZCL_ZllMoveColorTemperatureCommand_
 {
   uint8_t  moveMode;
   uint16_t rate;
@@ -770,7 +770,7 @@ typedef struct PACK _ZCL_ZllMoveColorTemperatureCommand_t
 /**
  * \brief MoveColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllMoveColorTemperatureWithOptionsCommand_t
+typedef struct PACK ZCL_ZllMoveColorTemperatureWithOptionsCommand_
 {
   uint8_t  moveMode;
   uint16_t rate;
@@ -783,7 +783,7 @@ typedef struct PACK _ZCL_ZllMoveColorTemperatureWithOptionsCommand_t
 /**
  * \brief StepColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllStepColorTemperatureCommand_t
+typedef struct PACK ZCL_ZllStepColorTemperatureCommand_
 {
   uint8_t  stepMode;
   uint16_t stepSize;
@@ -795,7 +795,7 @@ typedef struct PACK _ZCL_ZllStepColorTemperatureCommand_t
 /**
  * \brief StepColorTemperature command payload format
 */
-typedef struct PACK _ZCL_ZllStepColorTemperatureWithOptionsCommand_t
+typedef struct PACK ZCL_ZllStepColorTemperatureWithOptionsCommand_
 {
   uint8_t  stepMode;
   uint16_t stepSize;
@@ -809,7 +809,7 @@ typedef struct PACK _ZCL_ZllStepColorTemperatureWithOptionsCommand_t
 /**
  * \brief StopMoveStep with options command payload format
 */
-typedef struct PACK _ZCL_ZllStopMoveStepWithOptionsCommand_t
+typedef struct PACK ZCL_ZllStopMoveStepWithOptionsCommand_
 {
   uint8_t optionsMask;
   uint8_t optionsOverride;
@@ -837,10 +837,10 @@ END_PACK
 /**
  * \brief Color Control cluster commands
  */
-typedef struct _ZCL_ZllColorControlClusterCommands_t
+typedef struct ZCL_ZllColorControlClusterCommands_
 {
    /* To Avoid linker error*/
    void *tempPtrE;
 } ZCL_ColorControlClusterCommands_t;
 
-#endif // _ZCLZLLCOLORCONTROLCLUSTER_H
+#endif // ZCLZLLCOLORCONTROLCLUSTER_H

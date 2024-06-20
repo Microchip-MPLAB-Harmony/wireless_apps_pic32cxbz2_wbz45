@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ADDRESS_MAP_H
-#define _NWK_ADDRESS_MAP_H
+#if !defined NWK_ADDRESS_MAP_H
+#define NWK_ADDRESS_MAP_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -132,6 +132,6 @@ NWK_PRIVATE NwkSizeOfAddressMap_t nwkAddrMapSize(void);
  ******************************************************************************/
 NWK_PRIVATE void nwkResetAddressMap(void);
 
-#endif /* _NWK_ADDRESS_MAP_H */
+#endif /* NWK_ADDRESS_MAP_H */
 /** eof nwkAddressMap.h */
 

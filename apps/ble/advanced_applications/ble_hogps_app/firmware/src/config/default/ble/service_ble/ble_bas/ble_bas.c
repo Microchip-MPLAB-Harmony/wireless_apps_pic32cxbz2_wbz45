@@ -69,7 +69,7 @@ static const uint8_t s_svcUuidBas[ATT_UUID_LENGTH_2] =                 {UINT16_T
 static const uint8_t s_chUuidBatLevel[ATT_UUID_LENGTH_2] =             {UINT16_TO_BYTES(UUID_BATTERY_LEVEL)};
 
 /* Battery Service Declaration */
-static uint16_t s_svcUuidBasLen = sizeof(s_svcUuidBas);
+static uint16_t s_svcUuidBasLen = (uint16_t)sizeof(s_svcUuidBas);
 
 /* Battery Level Characteristic Declaration */
 #ifdef BAS_BAT_LEVEL_NOTIFY_ENABLE
@@ -78,7 +78,7 @@ static const uint8_t s_charBatLevel[] = {(ATT_PROP_READ | ATT_PROP_NOTIFY), UINT
 static const uint8_t s_charBatLevel[] = {(ATT_PROP_READ ), UINT16_TO_BYTES(BAS_HDL_CHARVAL_BAT_LEVEL), UINT16_TO_BYTES(UUID_BATTERY_LEVEL)};
 #endif
 
-static const uint16_t s_charBatLevelLen = sizeof (s_charBatLevel);
+static const uint16_t s_charBatLevelLen = (uint16_t)sizeof (s_charBatLevel);
 
 /* Battery Level Characteristic Value */
 static uint8_t s_batLevelVal[1] = {0};
@@ -87,7 +87,7 @@ static uint16_t s_batLevelValLen = 1;
 #ifdef BAS_BAT_LEVEL_NOTIFY_ENABLE
 /* Battery Level Client Characteristic Configuration Descriptor */
 static uint8_t s_descCccBatLevel[] = {UINT16_TO_BYTES(0x0000)};
-static const uint16_t s_descCccBatLevelLen = sizeof (s_descCccBatLevel);
+static const uint16_t s_descCccBatLevelLen = (uint16_t)sizeof (s_descCccBatLevel);
 #endif
 
 /* Attribute list for Battery service */
@@ -97,7 +97,7 @@ static GATTS_Attribute_T s_basList[] = {
         (uint8_t *) g_gattUuidPrimSvc,
         (uint8_t *) s_svcUuidBas,
         (uint16_t *) &s_svcUuidBasLen,
-        sizeof (s_svcUuidBas),
+        (uint16_t)sizeof (s_svcUuidBas),
         0,
         PERMISSION_READ
     },
@@ -106,7 +106,7 @@ static GATTS_Attribute_T s_basList[] = {
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charBatLevel,
         (uint16_t *) &s_charBatLevelLen,
-        sizeof (s_charBatLevel),
+        (uint16_t)sizeof (s_charBatLevel),
         0,
         PERMISSION_READ
     },
@@ -115,7 +115,7 @@ static GATTS_Attribute_T s_basList[] = {
         (uint8_t *) s_chUuidBatLevel,
         (uint8_t *) s_batLevelVal,
         (uint16_t *) &s_batLevelValLen,
-        sizeof(s_batLevelVal),
+        (uint16_t)sizeof(s_batLevelVal),
         0,
         PERMISSION_READ
     },
@@ -125,7 +125,7 @@ static GATTS_Attribute_T s_basList[] = {
         (uint8_t *) g_descUuidCcc,
         (uint8_t *) s_descCccBatLevel,
         (uint16_t *) &s_descCccBatLevelLen,
-        sizeof (s_descCccBatLevel),
+        (uint16_t)sizeof (s_descCccBatLevel),
         (SETTING_CCCD),
         (PERMISSION_READ | PERMISSION_WRITE)
     },
@@ -166,7 +166,7 @@ static GATTS_Service_T s_svcBas =
 
 uint16_t BLE_BAS_Add(void)
 {
-    return GATTS_AddService(&s_svcBas, (BAS_END_HDL - BAS_START_HDL + 1));
+    return GATTS_AddService(&s_svcBas, (uint8_t)((uint16_t)BAS_END_HDL - (uint16_t)BAS_START_HDL + 1U));
 }
 
 uint16_t BLE_BAS_SetBatteryLevel(uint8_t batteryLevel)

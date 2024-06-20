@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MSOCCUPANCYSENSINGCLUSTER_H
-#define _MSOCCUPANCYSENSINGCLUSTER_H
+#ifndef MSOCCUPANCYSENSINGCLUSTER_H
+#define MSOCCUPANCYSENSINGCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -90,6 +90,6 @@ void osBackupOsAttributes(void);
 ******************************************************************************/
 void osRestoreOsAttributes(void);
 
-#endif // _MSOCCUPANCYSENSINGCLUSTER_H
+#endif // MSOCCUPANCYSENSINGCLUSTER_H
 
 // eof msOccupancySensingCluster.h

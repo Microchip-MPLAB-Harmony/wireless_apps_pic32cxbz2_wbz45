@@ -39,8 +39,8 @@ Combined Interface Identify cluster Header File
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIIDENTIFYCLUSTER_H
-#define _CIIDENTIFYCLUSTER_H
+#ifndef CIIDENTIFYCLUSTER_H
+#define CIIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -94,6 +94,6 @@ void ciIdentifyFinish(void);
 void ciIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
 
 
-#endif // _CIIDENTIFYCLUSTER_H
+#endif // CIIDENTIFYCLUSTER_H
 
 // eof ciIdentifyCluster.h

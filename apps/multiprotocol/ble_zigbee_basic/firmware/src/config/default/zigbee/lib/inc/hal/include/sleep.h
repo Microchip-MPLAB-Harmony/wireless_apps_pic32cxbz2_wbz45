@@ -43,8 +43,8 @@
  *   WARNING: CHANGING THIS FILE MAY AFFECT CORE FUNCTIONALITY OF THE STACK.  *
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
-#ifndef _SLEEP_H
-#define _SLEEP_H
+#ifndef SLEEP_H
+#define SLEEP_H
 
 /******************************************************************************
                    Includes section
@@ -54,7 +54,7 @@
 /******************************************************************************
                    Types section
 ******************************************************************************/
-typedef void (* HAL_WakeUpCallback_t)(bool);
+typedef void (* HAL_WakeUpCallback_t)(bool startPoll);
 
 /** \brief System sleep parameters */
 typedef struct
@@ -65,7 +65,7 @@ typedef struct
 } HAL_Sleep_t;
 
 /** \brief Sleep modes enumeration. Avaible only for AVR. */
-typedef enum _HAL_SleepMode_t
+typedef enum HAL_SleepMode_
 {
   HAL_SLEEP_MODE_NONE = 0x00,
   HAL_SLEEP_MODE_POWER_SAVE = 0x01,
@@ -74,7 +74,7 @@ typedef enum _HAL_SleepMode_t
 } HAL_SleepMode_t;
 
 /** \brief Wake up source. Avaible only for AVR. */
-typedef enum _HAL_WakeUpSource_t
+typedef enum HAL_WakeUpSource_
 {
   HAL_WAKEUP_SOURCE_SLEEP_TIMER = 0x00,
   HAL_WAKEUP_SOURCE_EXT_IRQ = 0x01
@@ -108,4 +108,4 @@ int HAL_Sleep(void);
 *******************************************************************************/
 void HAL_IdleMode(void);
 
-#endif /* _SLEEP_H */
+#endif /* SLEEP_H */

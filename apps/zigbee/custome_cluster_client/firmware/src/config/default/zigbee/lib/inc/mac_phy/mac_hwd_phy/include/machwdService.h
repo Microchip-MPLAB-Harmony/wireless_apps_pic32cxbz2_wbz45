@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDSERVISE_H
-#define _MACHWDSERVISE_H
+#ifndef MACHWDSERVISE_H
+#define MACHWDSERVISE_H
 
 /******************************************************************************
                         Includes section.
@@ -80,6 +80,6 @@ enum
 //! Inherited service structure.
 typedef MAC_Service_t MACHWD_Service_t;
 
-#endif /* _MACHWDSERVISE_H */
+#endif /* MACHWDSERVISE_H */
 
 // eof machwdService.h

@@ -87,7 +87,9 @@ static ZCL_DeviceEndpoint_t lsEndpoint =
 static ClusterId_t lsServerClusterToBindIds[] =
 {
   ILLUMINANCE_MEASUREMENT_CLUSTER_ID,
+
 };
+
 
 static AppBindReq_t lsBindReq =
 {

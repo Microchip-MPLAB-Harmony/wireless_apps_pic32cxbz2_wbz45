@@ -47,9 +47,7 @@
 /******************************************************************************
                    Local variables section
 ******************************************************************************/
-static void(* readTemperatureDataCallback)(bool error, int16_t data);
-static void(* readLightDataCallback)(bool error, int16_t data);
-static void(* readBatteryDataCallback)(int16_t data);
+
 
 
 /******************************************************************************
@@ -86,7 +84,7 @@ void BSP_OnLed(void)
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_LED_ON;
   //event.eventData = NULL;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -102,7 +100,7 @@ void BSP_OffLed(void)
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_LED_OFF;
   //event.eventData = 0;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -118,7 +116,7 @@ void BSP_ToggleLed(void)
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_LED_TOGGLE;
   //event.eventData = 0;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -130,7 +128,7 @@ void BSP_LedsOpen(void)
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_LED_OPEN;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
 }
 
@@ -191,9 +189,10 @@ void BSP_ReadButtonsState(bool buttonRead)
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_BUTTON_READ;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);
   buttonRead = event.eventData.state;
+  (void)buttonRead;
 }
 
 /**************************************************************************//**
@@ -204,12 +203,12 @@ void BSP_ReadButtonsState(bool buttonRead)
 \param[in]
     None
 ******************************************************************************/
-void BSP_ButtonOpen()
+void BSP_ButtonOpen(void)
 {
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_BUTTON_OPEN;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);    
 }
 /**************************************************************************//**
@@ -220,12 +219,12 @@ void BSP_ButtonOpen()
 \param[in]
     None
 ******************************************************************************/
-void BSP_TempSensorOpen()
+void BSP_TempSensorOpen(void)
 {
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_SENSOR_OPEN;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);    
 }
 
@@ -242,7 +241,7 @@ void BSP_ReadTempSensor(uint16_t *measuredValue)
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_BSP;
   event.eventId = CMD_SENSOR_READ;
-  memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
+  (void)memset(&event.eventData, 0, sizeof(APP_Zigbee_EventData));
   APP_Zigbee_Handler(event);    
   *measuredValue = event.eventData.data;
 }

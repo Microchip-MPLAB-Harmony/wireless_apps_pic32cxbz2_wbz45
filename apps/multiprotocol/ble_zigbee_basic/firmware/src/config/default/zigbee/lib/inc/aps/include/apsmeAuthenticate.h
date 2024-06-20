@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_AUTHENTICATE_H
-#define _APSME_AUTHENTICATE_H
+#if !defined APSME_AUTHENTICATE_H
+#define APSME_AUTHENTICATE_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -220,6 +220,6 @@ void APS_AuthenticateInd(APS_AuthenticateInd_t *ind);
 
 #endif /* _SECURITY_ and _LINK_SECURITY_ */
 
-#endif /* _APSME_AUTHENTICATE_H */
+#endif /* APSME_AUTHENTICATE_H */
 /** eof apsmeAuthenticate.h */
 

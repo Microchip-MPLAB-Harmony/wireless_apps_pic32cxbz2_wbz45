@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_FINDING_AND_BINDING_H
-#define _BDB_FINDING_AND_BINDING_H
+#ifndef BDB_FINDING_AND_BINDING_H
+#define BDB_FINDING_AND_BINDING_H
 
 /***************************************************************************************************
 * INCLUDE FILES
@@ -73,4 +73,4 @@ void bdbTriggerFindingAndBinding (BDB_InitiatorReq_t* initiatorReq, void (*callb
 ******************************************************************************/
 bool bdbFindingAndBinding_EventHandler(N_Task_Event_t evt);
 
-#endif // _BDB_FINDING_AND_BINDING_H
+#endif // BDB_FINDING_AND_BINDING_H

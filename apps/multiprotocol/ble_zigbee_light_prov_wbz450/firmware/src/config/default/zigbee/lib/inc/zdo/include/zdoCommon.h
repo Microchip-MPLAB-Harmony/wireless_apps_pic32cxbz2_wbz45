@@ -43,8 +43,8 @@
 
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_COMMON_H
-#define _ZDO_COMMON_H
+#if !defined ZDO_COMMON_H
+#define ZDO_COMMON_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -324,4 +324,4 @@ typedef struct PACK
 } ChildInfo_t;
 END_PACK
 
-#endif // _ZDO_COMMON_H
+#endif // ZDO_COMMON_H

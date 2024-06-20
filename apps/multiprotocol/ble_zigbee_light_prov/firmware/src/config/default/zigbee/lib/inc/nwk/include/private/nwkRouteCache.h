@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTE_CACHE_H
-#define _NWK_ROUTE_CACHE_H
+#if !defined NWK_ROUTE_CACHE_H
+#define NWK_ROUTE_CACHE_H
 // DOM-IGNORE-END
 
 /** See format of the route cache record in ZigBee spec r18, Table 3.45. */
@@ -143,6 +143,6 @@ NWK_PRIVATE void nwkResetRouteCache(void);
 #define nwkDeleteFromRouteCache(shortAddr) (void)0
 
 #endif /* _NWK_ROUTE_CACHE_ */
-#endif /* _NWK_ROUTE_CACHE_H */
+#endif /* NWK_ROUTE_CACHE_H */
 /** eof nwkRouteCache.h */
 

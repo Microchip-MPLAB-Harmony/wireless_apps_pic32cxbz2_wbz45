@@ -50,8 +50,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_SECURITY_H && defined _SECURITY_
-#define _NWK_SECURITY_H
+#if !defined NWK_SECURITY_H && defined _SECURITY_
+#define NWK_SECURITY_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -123,7 +123,7 @@ typedef union PACK _NwkUnalignedInFrameCounter_t
 END_PACK
 
 /** The Incoming Frame Counter Descriptor. */
-typedef struct _NWK_InFrameCounterSetEntry_t
+typedef struct NWK_InFrameCounterSetEntry_
 {
   /** Extended device address. */
   ExtAddr_t senderAddress;
@@ -132,7 +132,7 @@ typedef struct _NWK_InFrameCounterSetEntry_t
 } NWK_InFrameCounterEntry_t;
 
 /** Type of the incoming frame counter table */
-typedef struct _NWK_InFrameCounterSet_t
+typedef struct NWK_InFrameCounterSet_
 {
   /** Pointer to first entry of the incoming frame counter table */
   NWK_InFrameCounterEntry_t *table;
@@ -142,7 +142,7 @@ typedef struct _NWK_InFrameCounterSet_t
 } NwkInFrameCounterSet_t;
 
 /** The Network Security Material Descriptor - key and key sequence number. */
-typedef struct _NWK_SecurityKey_t
+typedef struct NWK_SecurityKey_
 {
   bool isSet; /** Flag indicates busy status of entry. */
   /** A sequence number assigned to a network key by the Trust Center and used
@@ -159,7 +159,7 @@ typedef struct _NWK_SecurityKey_t
 } NWK_SecurityKey_t;
 
 /** The Network Security Material Descriptor - incoming and outgoing frame counters. */
-typedef struct _NWK_SecurityFrameCounters_t
+typedef struct NWK_SecurityFrameCounters_
 {
   /** Outgoing frame counter lower bytes. */
   NwkOutFrameCounterLow_t outCounterLow;
@@ -168,7 +168,7 @@ typedef struct _NWK_SecurityFrameCounters_t
 } NWK_SecurityFrameCounters_t;
 
 /** Security-Related NIB Attributes. */
-typedef struct _NWK_SecurityIB_t
+typedef struct NWK_SecurityIB_
 {
   /** Private field for internal use - the index of active key. */
   NwkKeyIndex_t activeIndex;
@@ -327,7 +327,7 @@ NWK_Status_t NWK_SetSecOutCounter(NwkOutFrameCounterHandle_t *outCounterHandle);
 
 
 
-#endif /* _NWK_SECURITY_H and _SECURITY_ */
+#endif /* NWK_SECURITY_H and _SECURITY_ */
 /** eof nwkSecurity.h */
 
 

@@ -1,9 +1,9 @@
 format_version: v1.0
 configName: default
-folderName: central_trp_uart
-frameworkPath: C:\chimera_mcc_customer_view
+folderName: central_trp_uart_codedPhy
+frameworkPath: C:\BLE Chimera+Buckland
 processor: WBZ451
-projectName: central_trp_uart
+projectName: central_trp_uart_codedPhy
 settings:
   PackageFilter: ''
   FORCE_OPTIMIZATION: 'false'
@@ -11,4 +11,4 @@ settings:
   TRUSTZONE: 'false'
   CMSISPath: dev_packs\arm\CMSIS\5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.1.230\WBZ451\atdf\WBZ451.atdf
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.2.230\WBZ451\atdf\WBZ451.atdf

@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _BDB_INSTALLCODE_H
-#define _BDB_INSTALLCODE_H
+#ifndef BDB_INSTALLCODE_H
+#define BDB_INSTALLCODE_H
 // DOM-IGNORE-END
 
 /********************************************************************************                          INCLUDE FILES
@@ -86,4 +86,4 @@ typedef void (*IcStatusCallback_t)(InstallCode_Configuration_Status_t status);
  ******************************************************************************/
 void BDB_ConfigureInstallCode(ExtAddr_t deviceAddress, uint8_t *installCode, IcStatusCallback_t pfCallback);
 
-#endif // _BDB_INSTALLCODE_H
+#endif // BDB_INSTALLCODE_H

@@ -76,12 +76,16 @@ uint32_t halGetTimeToNextAppTimer(void)
   uint32_t timeToFire = ~0UL;
   uint32_t currentTime = halGetTimeOfAppTimer();
 
-  if (halAppTimerHead)
+  if (halAppTimerHead != NULL)
   {
-    if ((uint64_t)(halAppTimerHead->service.sysTimeLabel) + halAppTimerHead->interval > currentTime)
-      timeToFire = (uint64_t)(halAppTimerHead->service.sysTimeLabel) + halAppTimerHead->interval - currentTime;
+    if ((halAppTimerHead->service.sysTimeLabel) + halAppTimerHead->interval > currentTime)
+    {
+      timeToFire = (halAppTimerHead->service.sysTimeLabel) + halAppTimerHead->interval - currentTime;
+    }
     else
+    {
       timeToFire = 0;
+    }
   }
 
   return timeToFire;
@@ -95,20 +99,30 @@ void halAppTimerHandler(void)
   uint32_t sysTime;
 
   // search for expired timers and call their callbacks
-  while (halAppTimerHead
-      && ((sysTime = halGetTimeOfAppTimer()) - halAppTimerHead->service.sysTimeLabel) >= halAppTimerHead->interval)
+  while (halAppTimerHead != NULL)
   {
-    HAL_AppTimer_t *p = halAppTimerHead;
-    (void) halRemoveTimer(&halAppTimerHead, NULL, p);
-    if (TIMER_REPEAT_MODE == p->mode)
-    {
-      p->service.sysTimeLabel = sysTime;
-      halAddTimer(&halAppTimerHead, p, sysTime);
-    }
+    sysTime = halGetTimeOfAppTimer();
 
-    //SYS_E_ASSERT_FATAL(p->callback, APPTIMER_HANDLER_0);
-    if (NULL != p->callback)
-       p->callback();
+    if((sysTime - halAppTimerHead->service.sysTimeLabel) >= halAppTimerHead->interval)
+    {
+      HAL_AppTimer_t *p = halAppTimerHead;
+      (void) halRemoveTimer(&halAppTimerHead, NULL, p);
+      if (TIMER_REPEAT_MODE == p->mode)
+      {
+        p->service.sysTimeLabel = sysTime;
+        halAddTimer(&halAppTimerHead, p, sysTime);
+      }
+
+      //SYS_E_ASSERT_FATAL(p->callback, APPTIMER_HANDLER_0);
+      if (NULL != p->callback)
+      {
+        p->callback();
+      }
+    }
+    else
+    {
+      break;
+    }
   }
 }
 
@@ -129,8 +143,9 @@ static bool isTimerAlreadyStarted(HAL_AppTimer_t *appTimer)
   while (NULL != p)
   {
     if (p == appTimer)
+    {
       return true;
-    
+    }
     p = (BC_Timer_t *)p->service.next;
   }
   return result;
@@ -148,9 +163,10 @@ int HAL_StartAppTimer(HAL_AppTimer_t *appTimer)
 {
   uint32_t sysTime;
 
-  if (!appTimer)
+  if (appTimer == NULL)
+  {
     return -1;
-
+  }
   if (true == isTimerAlreadyStarted(appTimer))
   {
     SYS_E_ASSERT_ERROR(false, APPTIMER_MISTAKE);
@@ -173,17 +189,21 @@ Returns:
 ******************************************************************************/
 int HAL_StopAppTimer(HAL_AppTimer_t *appTimer)
 {
-  BC_Timer_t *prev = 0;
+  BC_Timer_t *prev = NULL;
   BC_Timer_t **t = &appTimer;
 
-  if (!appTimer)
+  if (appTimer == NULL)
+  {
     return -1;
+  }
   if (halAppTimerHead != *t)
   {
-    if (!(prev = halFindPrevTimer((BC_Timer_t**)(&halAppTimerHead), appTimer)))
+    if ((prev = halFindPrevTimer((BC_Timer_t**)(&halAppTimerHead), appTimer)) == NULL)
+    {
       return -1;  // This timer is not in the list
+    }
   }
-  (void) halRemoveTimer((BC_Timer_t**)(&halAppTimerHead), prev, appTimer);
+  (void)halRemoveTimer((BC_Timer_t**)(&halAppTimerHead), prev, appTimer);
   return 0;
 }
 
@@ -195,7 +215,7 @@ int HAL_StopAppTimer(HAL_AppTimer_t *appTimer)
 ******************************************************************************/
 BcTime_t HAL_GetSystemTime(void)
 {
-  BcTime_t sysTime = 0ull;
+  BcTime_t sysTime = 0ULL;
 
   sysTime = halGetTimeOfAppTimer();
   sysTime |= ((BcTime_t)halAppTimeOvfw << 32);
@@ -226,17 +246,24 @@ int HAL_RemainingAppTimer(HAL_AppTimer_t *appTimer, uint32_t *remainingTime)
   uint32_t currentTime = halGetTimeOfAppTimer();
   *remainingTime = ~0UL;
 
-  if (!appTimer)
+  if (appTimer == NULL)
+  {
     return -1;
+  }
   if (true != isTimerAlreadyStarted(appTimer))
+  {
     return -1;
-  
-  if (halAppTimerHead)
+  }
+  if (halAppTimerHead != NULL)
   {
     if ((uint64_t)(appTimer->service.sysTimeLabel) + appTimer->interval > currentTime)
-      *remainingTime = (uint64_t)(appTimer->service.sysTimeLabel) + appTimer->interval - currentTime;
+    {
+      *remainingTime = (uint32_t)((uint64_t)(appTimer->service.sysTimeLabel) + appTimer->interval - currentTime);
+    }
     else
+    {
       *remainingTime = 0;
+    }
   }
   return 0;
 }
@@ -251,9 +278,9 @@ void HAL_BackupRunningTimers(uint32_t expectedSleepTime)
 {
   uint8_t i =0;
   HAL_AppTimer_t *p = NULL; 
-  memcpy(&backupHalAppTimerHead,&halAppTimerHead, 4);
+  (void)memcpy(&backupHalAppTimerHead,&halAppTimerHead, 4);
   p = halAppTimerHead;  
-  while(p)    
+  while(p != NULL)    
   {
     backupTimers[i].mode = p->mode;
     backupTimers[i].interval = p->interval;
@@ -278,9 +305,9 @@ void HAL_RestoreRunningTimers(void)
 {
   uint8_t i =0;
   halRestoreSystemTime();
-  memcpy(&halAppTimerHead, &backupHalAppTimerHead, 4);
+  (void)memcpy(&halAppTimerHead, &backupHalAppTimerHead, 4);
   HAL_AppTimer_t *p = halAppTimerHead; //= &backupTimers[0];
-  for(i=0; p;i++)
+  while(p != NULL)
   {
     p->mode = backupTimers[i].mode;
      p->interval = backupTimers[i].interval;      
@@ -288,9 +315,10 @@ void HAL_RestoreRunningTimers(void)
      p->service.sysTimeLabel = backupTimers[i].service.sysTimeLabel;
      p->service.next = backupTimers[i].service.next;
      p = p->service.next;
+     i++;
   }
   {
-      halAdjustSleepInterval(backupxExpectedIdleTime-1);
+      halAdjustSleepInterval(backupxExpectedIdleTime-1U);
   }
 }
 

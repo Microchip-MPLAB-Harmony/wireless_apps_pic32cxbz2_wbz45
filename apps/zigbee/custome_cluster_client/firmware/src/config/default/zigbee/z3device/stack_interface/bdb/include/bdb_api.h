@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_API_H
-#define _BDB_API_H
+#ifndef BDB_API_H
+#define BDB_API_H
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
@@ -219,4 +219,4 @@ void ZB_BDB_SetAllowTLResetToFN(bool allow);
 \param[in] Callback Pointer
 ******************************************************************************/
 void ZB_BDB_CallBack(ZB_AppGenericCallbackParam_t* cb);
-#endif // _BDB_API_H
+#endif // BDB_API_H

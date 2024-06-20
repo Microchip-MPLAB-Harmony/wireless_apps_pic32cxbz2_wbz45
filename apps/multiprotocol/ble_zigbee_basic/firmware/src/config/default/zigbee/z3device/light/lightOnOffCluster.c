@@ -64,7 +64,7 @@
 /******************************************************************************
                     Definitions section
 ******************************************************************************/
-#define UPDATE_TIMER_INTERVAL               100 // 1/10th of a second as per specification
+#define UPDATE_TIMER_INTERVAL               100U // 1/10th of a second as per specification
 #define FADE_TIMER_INTERVAL                 UPDATE_TIMER_INTERVAL
 #define MAX_BRIGHTNESS_LEVEL                255
 #define MIN_BRIGHTNESS_LEVEL                (0)
@@ -136,9 +136,10 @@ void lightOnOffClusterInit(void)
 {
   ZCL_Cluster_t *cluster = ZCL_GetCluster(APP_ENDPOINT_LIGHT, ONOFF_CLUSTER_ID, ZCL_CLUSTER_SIDE_SERVER);
 
-  if (cluster)
+  if (cluster != NULL)
+  {
     cluster->ZCL_AttributeEventInd = ZCL_OnOffAttributeEventInd;
-
+  }
   if (!PDS_IsAbleToRestore(APP_LIGHT_ONOFF_MEM_ID))
   {
     lightOnOffClusterServerAttributes.onOff.value = false;
@@ -152,7 +153,7 @@ void lightOnOffClusterInit(void)
   }
   else
   {
-    PDS_Restore(APP_LIGHT_ONOFF_MEM_ID);
+    (void)PDS_Restore(APP_LIGHT_ONOFF_MEM_ID);
   }
 
   updateTimer.mode = TIMER_REPEAT_MODE;
@@ -189,9 +190,9 @@ void onOffClusterSetExtensionField(bool onOff)
     lightOnOffClusterServerAttributes.onOff.value = onOff;
     displayStatus();
 #ifdef _ZCL_REPORTING_SUPPORT_
-    ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
+    (void)ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
 #endif
-    PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
+    (void)PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
   }
 }
 
@@ -218,8 +219,8 @@ bool deviceIsOn(void)
 ******************************************************************************/
 static void startDeviceUpdate(void)
 {
-  HAL_StopAppTimer(&updateTimer);
-  HAL_StartAppTimer(&updateTimer);
+  (void)HAL_StopAppTimer(&updateTimer);
+  (void)HAL_StartAppTimer(&updateTimer);
 }
 
 /**************************************************************************//**
@@ -227,7 +228,7 @@ static void startDeviceUpdate(void)
 ******************************************************************************/
 static void stopDeviceUpdate(void)
 {
-  HAL_StopAppTimer(&updateTimer);
+  (void)HAL_StopAppTimer(&updateTimer);
 }
 
 /**************************************************************************//**
@@ -255,9 +256,9 @@ void setOnOff(bool onOff)
     LEDS_SET_BRIGHTNESS(MIN_BRIGHTNESS_LEVEL);
   }
 #ifdef _ZCL_REPORTING_SUPPORT_
-  ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
+  (void)ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
 #endif
-  PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
+  (void)PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
 }
 
 /**************************************************************************//**
@@ -275,7 +276,7 @@ static void updateOnOffState(void)
 {
   if (lightOnOffClusterServerAttributes.onOff.value)
   {
-    if (lightOnOffClusterServerAttributes.onTime.value)
+    if ((lightOnOffClusterServerAttributes.onTime.value) != 0U)
     {
       lightOnOffClusterServerAttributes.onTime.value--;
     }
@@ -287,7 +288,7 @@ static void updateOnOffState(void)
   }
   else
   {
-    if (lightOnOffClusterServerAttributes.offWaitTime.value)
+    if ((lightOnOffClusterServerAttributes.offWaitTime.value) != 0U)
     {
       lightOnOffClusterServerAttributes.offWaitTime.value--;
     }
@@ -304,7 +305,18 @@ static void updateOnOffState(void)
 ******************************************************************************/
 static void fadeTimerFired(void)
 {
-  if (fadeMem.firstInterval)
+  if ((fadeMem.firstInterval) == 0U) //Refactoring this logic for misra rule 17.2 avoid nested recursion
+  {
+    if((fadeMem.secondInterval) != 0U)
+      {
+        fadeMem.firstInterval  = fadeMem.secondInterval;
+        fadeMem.transitionTime = fadeMem.secondInterval;
+        fadeMem.secondInterval = 0;
+        fadeMem.currentLevel   = MIN((uint16_t)fadeMem.currentLevel + fadeMem.delta, UINT8_MAX);
+        fadeMem.delta          = -fadeMem.currentLevel;
+      }
+  }
+  if ((fadeMem.firstInterval) != 0U) 
   {
     fadeMem.firstInterval--;
 
@@ -312,20 +324,13 @@ static void fadeTimerFired(void)
     int16_t targetLevel = MIN((uint16_t)fadeMem.currentLevel + fadeMem.delta, UINT8_MAX);
     int16_t newLevel    = targetLevel - (fadeMem.delta * remainingTime) / (int32_t)fadeMem.transitionTime;
 
-    LEDS_SET_BRIGHTNESS(newLevel);
+    LEDS_SET_BRIGHTNESS((uint8_t)newLevel);
     (void)newLevel;
   }
-  else if(fadeMem.secondInterval)
-  {
-    fadeMem.firstInterval  = fadeMem.secondInterval;
-    fadeMem.transitionTime = fadeMem.secondInterval;
-    fadeMem.secondInterval = 0;
-    fadeMem.currentLevel   = MIN((uint16_t)fadeMem.currentLevel + fadeMem.delta, UINT8_MAX);
-    fadeMem.delta          = -fadeMem.currentLevel;
-    fadeTimerFired();
-  }
   else
-    HAL_StopAppTimer(&fadeMem.timer);
+  {
+    (void)HAL_StopAppTimer(&fadeMem.timer);
+  }
 }
 
 /**************************************************************************//**
@@ -338,39 +343,42 @@ static void processOffEffect(uint8_t effectId, uint8_t effectVariant)
 {
   fadeMem.currentLevel = lightLevelControlClusterServerAttributes.currentLevel.value;
 
-  if (0 == effectId)
+  if (0U == effectId)
   {
-    if (0 == effectVariant)
+    if (0U == effectVariant)
     {
       fadeMem.firstInterval  = 8;
       fadeMem.secondInterval = 0;
-      fadeMem.delta          = -fadeMem.currentLevel;
+      fadeMem.delta          = (-(int16_t)(fadeMem.currentLevel));
     }
-    if (1 == effectVariant)
+    if (1U == effectVariant)
     {
       LEDS_SET_BRIGHTNESS(0);
       return;
     }
-    if (2 == effectVariant)
+    if (2U == effectVariant)
     {
       fadeMem.firstInterval  = 8;
       fadeMem.secondInterval = 120;
-      fadeMem.delta          = -fadeMem.currentLevel / 2;
+      fadeMem.delta          = ((-(int16_t)(fadeMem.currentLevel)) / 2);
     }
   }
-  if (1 == effectId)
-    if (0 == effectVariant)
+  if (1U == effectId)
+  {
+    if (0U == effectVariant)
     {
       fadeMem.firstInterval  = 5;
       fadeMem.secondInterval = 10;
-      fadeMem.delta          = ((uint16_t)fadeMem.currentLevel * 2) / 10;
+      fadeMem.delta          = (int16_t)((uint8_t)((fadeMem.currentLevel * 2U) / 10U));
     }
-
-  if ((signed)UINT8_MAX < fadeMem.delta + fadeMem.currentLevel)
-    fadeMem.delta = UINT8_MAX - fadeMem.currentLevel;
+  }
+  if ((uint8_t)UINT8_MAX < (uint8_t)fadeMem.delta + fadeMem.currentLevel)
+  {
+    fadeMem.delta = ((int16_t)UINT8_MAX - (int16_t)fadeMem.currentLevel);
+  }
   fadeMem.transitionTime = fadeMem.firstInterval;
-  HAL_StopAppTimer(&fadeMem.timer);
-  HAL_StartAppTimer(&fadeMem.timer);
+  (void)HAL_StopAppTimer(&fadeMem.timer);
+  (void)HAL_StartAppTimer(&fadeMem.timer);
 }
 #endif
 
@@ -386,7 +394,7 @@ static ZCL_Status_t onInd(ZCL_Addressing_t *addressing, uint8_t payloadLength, u
   event.eventData.zclEventData.payloadLength = payloadLength;
   event.eventData.zclEventData.payload = (uint8_t *)payload;
 
-  if (0 == lightOnOffClusterServerAttributes.onTime.value)
+  if (0U == lightOnOffClusterServerAttributes.onTime.value)
   {
     lightOnOffClusterServerAttributes.offWaitTime.value = 0;
     stopDeviceUpdate();
@@ -429,8 +437,10 @@ static ZCL_Status_t toggleInd(ZCL_Addressing_t *addressing, uint8_t payloadLengt
 
   if (false == lightOnOffClusterServerAttributes.onOff.value)
   {
-    if (0 == lightOnOffClusterServerAttributes.onTime.value)
+    if (0U == lightOnOffClusterServerAttributes.onTime.value)
+    {
       lightOnOffClusterServerAttributes.offWaitTime.value = 0;
+    }
 
     setOnOff(true);
     onOffClusterSetGlobalSceneControl();
@@ -449,7 +459,7 @@ static ZCL_Status_t toggleInd(ZCL_Addressing_t *addressing, uint8_t payloadLengt
 ******************************************************************************/
 static ZCL_Status_t offWithEffectInd(ZCL_Addressing_t *addressing, uint8_t payloadLength, ZCL_OffWithEffect_t *payload)
 {
-  uint8_t previousOnOffState = lightOnOffClusterServerAttributes.onOff.value;
+  uint8_t previousOnOffState = (uint8_t)(lightOnOffClusterServerAttributes.onOff.value);
   APP_Zigbee_Event_t event;
   event.eventGroup = EVENT_CLUSTER;
   event.eventId = CMD_ZCL_OFF_WITH_EFFECT;
@@ -466,14 +476,14 @@ static ZCL_Status_t offWithEffectInd(ZCL_Addressing_t *addressing, uint8_t paylo
   lightOnOffClusterServerAttributes.onTime.value = 0;
   lightOnOffClusterServerAttributes.onOff.value = false;
   lightScenesInvalidate();
-  PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
-  if (previousOnOffState)
+  (void)PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
+  if (previousOnOffState != 0U)
   {/* Device was ON when receiving this command */
     displayStatus();
     processOffEffect(payload->effectIdentifier, payload->effectVariant);
   }
 #ifdef _ZCL_REPORTING_SUPPORT_
-  ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
+  (void)ZCL_ReportOnChangeIfNeeded(&lightOnOffClusterServerAttributes.onOff);
 #endif
 #else
   setOnOff(false);
@@ -503,8 +513,10 @@ static ZCL_Status_t onWithRecallGlobalSceneInd(ZCL_Addressing_t *addressing, uin
   {
     recallGlobalScene(APP_ENDPOINT_LIGHT, lightSceneTable, &lightScenesClusterServerAttributes);
     lightOnOffClusterServerAttributes.globalSceneControl.value = true;
-    if (0 == lightOnOffClusterServerAttributes.onTime.value)
+    if (0U == lightOnOffClusterServerAttributes.onTime.value)
+    {
       lightOnOffClusterServerAttributes.offWaitTime.value = 0;
+    }
   }
   APP_Zigbee_Handler(event);
   return ZCL_SUCCESS_STATUS;
@@ -522,13 +534,15 @@ static ZCL_Status_t onWithTimedOffInd(ZCL_Addressing_t *addressing, uint8_t payl
   event.eventData.zclEventData.payload = (uint8_t *)payload;
   APP_Zigbee_Handler(event);
 
-  if (payload->onOffControl & ZCL_ON_OFF_CLUSTER_ACCEPT_ONLY_WHEN_ON)
+  if ((payload->onOffControl & ZCL_ON_OFF_CLUSTER_ACCEPT_ONLY_WHEN_ON) != 0U)
   {
     if (false == lightOnOffClusterServerAttributes.onOff.value)
+    {
       return ZCL_SUCCESS_STATUS;
+    }
   }
 
-  if (lightOnOffClusterServerAttributes.offWaitTime.value > 0 &&
+  if (lightOnOffClusterServerAttributes.offWaitTime.value > 0U &&
       false == lightOnOffClusterServerAttributes.onOff.value)
   {
     lightOnOffClusterServerAttributes.offWaitTime.value = MIN(payload->offWaitTime,
@@ -544,8 +558,8 @@ static ZCL_Status_t onWithTimedOffInd(ZCL_Addressing_t *addressing, uint8_t payl
     setOnOff(true);
   }
 
-  if (lightOnOffClusterServerAttributes.onTime.value < 0xffff &&
-      lightOnOffClusterServerAttributes.offWaitTime.value < 0xffff)
+  if (lightOnOffClusterServerAttributes.onTime.value < 0xffffU &&
+      lightOnOffClusterServerAttributes.offWaitTime.value < 0xffffU)
   {
     startDeviceUpdate();
   }
@@ -590,7 +604,7 @@ void lightUpdateStartUpOnOffState(void)
       break;
   }
 
-  PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
+  (void)PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
 }
 #endif
 
@@ -628,7 +642,7 @@ static void ZCL_OnOffAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_Attribu
       )	  
 #endif	  
   {
-    PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
+    (void)PDS_Store(APP_LIGHT_ONOFF_MEM_ID);
   }
 }
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSREPEATMACRO_H
-#define _SYSREPEATMACRO_H
+#ifndef SYSREPEATMACRO_H
+#define SYSREPEATMACRO_H
 
 /*****************************************************************************
                               Includes section
@@ -326,7 +326,7 @@
 #define REPEAT254(macro, arg, n)  macro(arg, n) REPEAT253(macro, arg, INC_VALUE(n))
 #define REPEAT255(macro, arg, n)  macro(arg, n) REPEAT254(macro, arg, INC_VALUE(n))
 
-#endif // _SYSREPEATMACRO_H
+#endif // SYSREPEATMACRO_H
 
 // eof sysRepeatMacro.h
 

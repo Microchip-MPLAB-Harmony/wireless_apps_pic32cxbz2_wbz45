@@ -68,6 +68,7 @@ ZCL_OccupancySensingClusterClientAttributes_t customOccupancySensingClusterClien
 {
   ZCL_DEFINE_OCCUPANCY_SENSING_CLUSTER_CLIENT_ATTRIBUTES()
 };
+//###########################################################################
 /*******************************************************************************
                    Types section
 *******************************************************************************/
@@ -129,7 +130,6 @@ void customOccupancySensingClusterInit(void)
     customOccupancySensingClusterServerAttributes.occupancySensorType.value = OCCUPANYC_SENSOR_TYPE_ATTRIBUTE_VALUE_PIR;
     customOccupancySensingClusterServerAttributes.occupancySensorTypeBitmap.value = OCCUPANYC_SENSOR_TYPE_BITMAP_ATTRIBUTE_VALUE_PIR;
     customOccupancySensingClusterServerAttributes.occupancy.value = OCCUPANCY_ATTRIBUTE_VALUE_UNOCCUPIED;
-    customOccupancySensingClusterServerAttributes.occupancy.minReportInterval = 1;
 
     ZCL_ReportOnChangeIfNeeded(&customOccupancySensingClusterServerAttributes.occupancy);
     customOccupancySensingClusterServerAttributes.PIROccupiedToUnoccupiedDelay.value = ZCL_OCCUPANCY_SENSING_CL_PIR_OCCUPIED_TO_UNOCCUPIED_DELAY_SER_ATTR_DEFAULT_VAL;
@@ -428,6 +428,10 @@ static void customOccupancySensorReportInd(ZCL_Addressing_t *addressing, uint8_t
   eventItem.eventData.zclEventData.payload = reportPayload;
   APP_Zigbee_Handler(eventItem);
 }
+
+/*********************************************************************************
+*********************************************************************************/
+
 
 #endif // APP_DEVICE_TYPE_CUSTOM_DEVICE
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWISCANHANDLER_H
-#define _MACHWISCANHANDLER_H
+#ifndef MACHWISCANHANDLER_H
+#define MACHWISCANHANDLER_H
 
 /******************************************************************************
                         Includes section
@@ -126,6 +126,6 @@ void machwiResetScanHandler(void);
 ******************************************************************************/
 uint32_t machwiCalculateScanDuration(uint8_t scanDuration, MAC_ScanType_t scanType);
 
-#endif /* _MACHWISCANHANDLER_H */
+#endif /* MACHWISCANHANDLER_H */
 
 // eof machwiScanHandler.h

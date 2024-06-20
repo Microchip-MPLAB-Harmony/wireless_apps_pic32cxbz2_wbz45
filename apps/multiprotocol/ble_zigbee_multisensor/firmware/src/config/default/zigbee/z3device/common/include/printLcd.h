@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PRINTLCD_H_
-#define _PRINTLCD_H_
+#ifndef PRINTLCD_H_
+#define PRINTLCD_H_
 
 /******************************************************************************
                     Includes section
@@ -72,7 +72,7 @@ void dbgLcdMsg(const char *format, ...);
 
 #else
 
-#define dbgLcdMsg(...) while (0) {;}
+#define dbgLcdMsg(...) while (false) {;}
 
 #endif // APP_DEVICE_EVENTS_LOGGING
 

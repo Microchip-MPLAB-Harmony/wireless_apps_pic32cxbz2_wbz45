@@ -210,26 +210,37 @@ int wc_export_int(mp_int* mp, byte* buf, word32* len, word32 keySz,
 {
     int err;
 
-    if (mp == NULL)
+    if (mp == NULL || buf == NULL || len == NULL)
         return BAD_FUNC_ARG;
 
-    /* check buffer size */
-    if (*len < keySz) {
-        *len = keySz;
-        return BUFFER_E;
-    }
-
-    *len = keySz;
-    XMEMSET(buf, 0, *len);
-
     if (encType == WC_TYPE_HEX_STR) {
+        /* for WC_TYPE_HEX_STR the keySz is not used.
+         * The size is computed via mp_radix_size and checked with len input */
     #ifdef WC_MP_TO_RADIX
-        err = mp_tohex(mp, (char*)buf);
+        int size = 0;
+        err = mp_radix_size(mp, MP_RADIX_HEX, &size);
+        if (err == MP_OKAY) {
+            /* make sure we can fit result */
+            if (*len < (word32)size) {
+                *len = (word32)size;
+                return BUFFER_E;
+            }
+            *len = (word32)size;
+            err = mp_tohex(mp, (char*)buf);
+        }
     #else
         err = NOT_COMPILED_IN;
     #endif
     }
     else {
+        /* for WC_TYPE_UNSIGNED_BIN keySz is used to zero pad.
+         * The key size is always returned as the size */
+        if (*len < keySz) {
+            *len = keySz;
+            return BUFFER_E;
+        }
+        *len = keySz;
+        XMEMSET(buf, 0, *len);
         err = mp_to_unsigned_bin(mp, buf + (keySz - mp_unsigned_bin_size(mp)));
     }
 
@@ -333,7 +344,7 @@ void wc_bigint_free(WC_BIGINT* a)
 
 /* sz: make sure the buffer is at least that size and zero padded.
  *     A `sz == 0` will use the size of `src`.
- *     The calulcates sz is stored into dst->len in `wc_bigint_alloc`.
+ *     The calculated sz is stored into dst->len in `wc_bigint_alloc`.
  */
 int wc_mp_to_bigint_sz(mp_int* src, WC_BIGINT* dst, word32 sz)
 {
@@ -350,8 +361,7 @@ int wc_mp_to_bigint_sz(mp_int* src, WC_BIGINT* dst, word32 sz)
 
     /* make sure destination is allocated and large enough */
     err = wc_bigint_alloc(dst, sz);
-    if (err == MP_OKAY) {
-
+    if (err == MP_OKAY && sz > 0) {
         /* leading zero pad */
         y = sz - x;
         XMEMSET(dst->buf, 0, y);

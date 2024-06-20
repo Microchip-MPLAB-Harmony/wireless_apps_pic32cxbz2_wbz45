@@ -9152,8 +9152,8 @@ int wc_ecc_import_raw_ex(ecc_key* key, const char* qx, const char* qy,
 }
 
 /* Import x, y and optional private (d) as unsigned binary */
-int wc_ecc_import_unsigned(ecc_key* key, byte* qx, byte* qy,
-                   byte* d, int curve_id)
+int wc_ecc_import_unsigned(ecc_key* key, const byte* qx, const byte* qy,
+                   const byte* d, int curve_id)
 {
     return wc_ecc_import_raw_private(key, (const char*)qx, (const char*)qy,
         (const char*)d, curve_id, WC_TYPE_UNSIGNED_BIN);

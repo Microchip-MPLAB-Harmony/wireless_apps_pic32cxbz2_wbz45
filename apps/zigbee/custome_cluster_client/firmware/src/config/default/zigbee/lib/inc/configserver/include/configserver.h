@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _CONFIG_SERVER_H
-#define _CONFIG_SERVER_H
+#ifndef CONFIG_SERVER_H
+#define CONFIG_SERVER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -56,22 +56,22 @@
                               Define(s) section
  ******************************************************************************/
  
-#define CS_ID_MASK 0xFF
-#define CS_TYPE_MASK 0xFF00
-#define CS_RAM_PARAM_TYPE   0x0000
-#define CS_FLASH_PARAM_TYPE 0x0100
-#define CS_MEM_PARAM_TYPE   0x0200
+#define CS_ID_MASK (0xFFU)
+#define CS_TYPE_MASK (0xFF00U)
+#define CS_RAM_PARAM_TYPE   (0x0000U)
+#define CS_FLASH_PARAM_TYPE (0x0100)
+#define CS_MEM_PARAM_TYPE   (0x0200U)
 
 #define RAM_PARAM_ID(n)    (CS_RAM_PARAM_TYPE + n)
 #define FLASH_PARAM_ID(n)  (CS_FLASH_PARAM_TYPE + n)
 #define MEM_PARAM_ID(n)    (CS_MEM_PARAM_TYPE + n)
 
-#define RAM_PARAMETER(label, id, addr) label = RAM_PARAM_ID(id),
+#define RAM_PARAMETER(label, id, addr) label = RAM_PARAM_ID((id)),
 #define DUMMY_RAM_PARAMETER(label, id) label = RAM_PARAM_ID(id),
-#define FLASH_PARAMETER(label, id, addr) label = FLASH_PARAM_ID(id),
+#define FLASH_PARAMETER(label, id, addr) label = FLASH_PARAM_ID((id)),
 #define DUMMY_FLASH_PARAMETER(label, id) label = FLASH_PARAM_ID(id),
-#define MEMORY_REGION(label, id, addr) label = MEM_PARAM_ID(id),
-#define DUMMY_MEMORY_REGION(label, id) label = MEM_PARAM_ID(id),
+#define MEMORY_REGION(label, id, addr) label = MEM_PARAM_ID((id)),
+#define DUMMY_MEMORY_REGION(label, id) label = MEM_PARAM_ID((id)),
 
 /******************************************************************************
                                 Types section
@@ -142,7 +142,7 @@ void CS_Init(ZB_CS_SYS_IBData_t *zgbIBdata);
         [out] memoryPtr - a pointer to which the parameter's value is written
   \return None
  ******************************************************************************/
-void CS_ReadParameter(CS_MemoryItemId_t parameterId, void *memoryPtr);
+void CS_ReadParameter(CS_MemoryItemId_t parameterId, void *parameterValue);
 
 /******************************************************************************//**
   \brief Sets a value of a certain Configuration Server parameter specified by its ID
@@ -215,5 +215,5 @@ void  CS_RestoreNwkParams(void);
 } /* extern "C" */
 #endif
 
-#endif /* _CONFIG_SERVER_H */
+#endif /* CONFIG_SERVER_H */
 /* eof configServer.h */

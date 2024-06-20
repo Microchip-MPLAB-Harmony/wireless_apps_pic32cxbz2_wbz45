@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTONOFFCLUSTER_H
-#define _LIGHTONOFFCLUSTER_H
+#ifndef LIGHTONOFFCLUSTER_H
+#define LIGHTONOFFCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -51,8 +51,8 @@
 /******************************************************************************
                     Definition(s) section
 ******************************************************************************/
-#define ONOFF_VAL_MIN_REPORT_PERIOD 30
-#define ONOFF_VAL_MAX_REPORT_PERIOD 120
+#define ONOFF_VAL_MIN_REPORT_PERIOD (30)
+#define ONOFF_VAL_MAX_REPORT_PERIOD (120)
 
 /******************************************************************************
                     Externals
@@ -95,7 +95,7 @@ void onOffClusterSetGlobalSceneControl(void);
 ******************************************************************************/
 void lightUpdateStartUpOnOffState(void);
 
-#endif // _LIGHTONOFFCLUSTER_H
+#endif // LIGHTONOFFCLUSTER_H
 
 // eof lightOnOffCluster.h
 

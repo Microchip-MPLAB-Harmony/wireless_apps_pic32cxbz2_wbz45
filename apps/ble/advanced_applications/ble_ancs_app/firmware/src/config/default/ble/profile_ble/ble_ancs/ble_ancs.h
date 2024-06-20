@@ -93,10 +93,10 @@ extern "C" {
 /**@defgroup ANCS_ERROR_CODES  ANCS error code
  * @brief The definition of ANCS Error Codes
  * @{ */
-#define ANCS_ERRCODE_UNKNOWN_COMMAND        0xA0       /**< The commandID was not recognized by the NP.*/
-#define ANCS_ERRCODE_INVALID_COMMAND        0xA1       /**< The command was improperly formatted.*/
-#define ANCS_ERRCODE_INVALID_PARAMETER      0xA2       /**< One of the parameters does not refer to an existing object on the NP.*/
-#define ANCS_ERRCODE_ACTION_FAILED          0xA3       /**< The action was not performed.*/
+#define ANCS_ERRCODE_UNKNOWN_COMMAND        (0xA0U)       /**< The commandID was not recognized by the NP.*/
+#define ANCS_ERRCODE_INVALID_COMMAND        (0xA1U)       /**< The command was improperly formatted.*/
+#define ANCS_ERRCODE_INVALID_PARAMETER      (0xA2U)       /**< One of the parameters does not refer to an existing object on the NP.*/
+#define ANCS_ERRCODE_ACTION_FAILED          (0xA3U)       /**< The action was not performed.*/
 /** @} */
        
 /**@} */ //BLE_ANCS_DEFINES     
@@ -108,15 +108,15 @@ extern "C" {
 /**@brief ActionID for iOS Perform Notification Action. */
 typedef enum BLE_ANCS_ActionId_T
 {
-    BLE_ANCS_ACTION_ID_POSITIVE = 0,                    /**< Positive action. */
-    BLE_ANCS_ACTION_ID_NEGATIVE,                        /**< Negative action. */
-    BLE_ANCS_ACTION_ID_MAX                              /**< Undefined action. */
+    BLE_ANCS_ACTION_ID_POSITIVE = 0U,                     /**< Positive action. */
+    BLE_ANCS_ACTION_ID_NEGATIVE,                          /**< Negative action. */
+    BLE_ANCS_ACTION_ID_MAX                                /**< Undefined action. */
 } BLE_ANCS_ActionId_T;
 
 /**@brief  A numerical value providing a category in which the iOS notification can be classified. */
 typedef enum BLE_ANCS_CategoryId_T
 {
-    BLE_ANCS_CATEGORY_ID_OTHER,                         /**< The iOS notification belongs to the "Other" category.  */
+    BLE_ANCS_CATEGORY_ID_OTHER = 0x00U,                         /**< The iOS notification belongs to the "Other" category.  */
     BLE_ANCS_CATEGORY_ID_INCOMING_CALL,                 /**< The iOS notification belongs to the "Incoming Call" category. */
     BLE_ANCS_CATEGORY_ID_MISSED_CALL,                   /**< The iOS notification belongs to the "Missed Call" category. */
     BLE_ANCS_CATEGORY_ID_VOICE_MAIL,                    /**< The iOS notification belongs to the "Voice Mail" category. */
@@ -134,7 +134,7 @@ typedef enum BLE_ANCS_CategoryId_T
 /**@brief BLE ANCS event received by the application. */
 typedef enum BLE_ANCS_EventId_T
 {
-    BLE_ANCS_EVT_DISC_COMPLETE_IND,                     /**< Event for discovery completion. See @ref BLE_ANCS_EvtDiscComplete_T for event details.*/
+    BLE_ANCS_EVT_DISC_COMPLETE_IND = 0x00U,                     /**< Event for discovery completion. See @ref BLE_ANCS_EvtDiscComplete_T for event details.*/
     BLE_ANCS_EVT_ERR_ATTR_BUF_IND,                      /**< The size of received data is larger than the attribute buffer. See @ref BLE_ANCS_EvtErrAttrBufInd_T for event details.*/
     BLE_ANCS_EVT_ERR_RECOMPOSE_BUF_IND,                 /**< The size of received data is larger than the recomposed buffer. See @ref BLE_ANCS_EvtErrRecomposeBufInd_T for event details.*/
     BLE_ANCS_EVT_NTFY_ADDED_IND,                        /**< The arrival of a new iOS notification on the NP. See @ref BLE_ANCS_EvtNtfyInd_T for event details.*/
@@ -173,31 +173,31 @@ typedef enum BLE_ANCS_NtfyAttrId_T
 
 /**@brief The structure contains iOS notification attributes id. */
 typedef struct {
-    uint8_t                     appId           : 1;    /**< Set true if App Identifier is enabled. */
-    uint8_t                     title           : 1;    /**< Set true if Title is enabled. */
-    uint8_t                     subtitle        : 1;    /**< Set true if Sub Title is enabled. */
-    uint8_t                     msg             : 1;    /**< Set true if Message is enabled. */
-    uint8_t                     msgSize         : 1;    /**< Set true if Message Size is enabled. */
-    uint8_t                     date            : 1;    /**< Set true if Date is enabled. */
-    uint8_t                     positiveAction  : 1;    /**< Set true if Positive Action is enabled. */
-    uint8_t                     negativeAction  : 1;    /**< Set true if Negative Action is enabled. */
+    unsigned int                appId           : 1;    /**< Set true if App Identifier is enabled. */
+    unsigned int                title           : 1;    /**< Set true if Title is enabled. */
+    unsigned int                subtitle        : 1;    /**< Set true if Sub Title is enabled. */
+    unsigned int                msg             : 1;    /**< Set true if Message is enabled. */
+    unsigned int                msgSize         : 1;    /**< Set true if Message Size is enabled. */
+    unsigned int                date            : 1;    /**< Set true if Date is enabled. */
+    unsigned int                positiveAction  : 1;    /**< Set true if Positive Action is enabled. */
+    unsigned int                negativeAction  : 1;    /**< Set true if Negative Action is enabled. */
 } BLE_ANCS_NtfyAttrsMask_T;
 
 /**@brief The structure contains iOS app attributes id. */
 typedef struct {
-    uint8_t                     displayName     : 1;    /**< Set true if Display name is enable. */
-    uint8_t                     reserved        : 7;    /**< Reserved. */
+    unsigned int                displayName     : 1;    /**< Set true if Display name is enable. */
+    unsigned int                reserved        : 7;    /**< Reserved. */
 } BLE_ANCS_AppAttrsMask_T;
 
 
 /**@brief A bitmask of Event Flag whose set bits inform an NC of specificities with the iOS notification. */
 typedef struct
 {
-    uint8_t                     silent          : 1;    /**< Set true if the notification is low priority. */
-    uint8_t                     important       : 1;    /**< Set true if the notification is high priority. */
-    uint8_t                     preExisting     : 1;    /**< Set true if the notification is pre-existing. */
-    uint8_t                     positiveAction  : 1;    /**< Set true if the notification has a positive action that can be taken. */
-    uint8_t                     negativeAction  : 1;    /**< Set true if the notification has a negative action that can be taken. */
+    unsigned int                silent          : 1;    /**< Set true if the notification is low priority. */
+    unsigned int                important       : 1;    /**< Set true if the notification is high priority. */
+    unsigned int                preExisting     : 1;    /**< Set true if the notification is pre-existing. */
+    unsigned int                positiveAction  : 1;    /**< Set true if the notification has a positive action that can be taken. */
+    unsigned int                negativeAction  : 1;    /**< Set true if the notification has a negative action that can be taken. */
 } BLE_ANCS_NtfyEvtFlagMask_T; 
 
 /**@brief The structure contains iOS notification attributes decoded information. */
@@ -257,7 +257,7 @@ typedef struct BLE_ANCS_EvtDiscComplete_T
 typedef struct
 {
     uint16_t                    connHandle;             /**< Connection handle associated with this connection. */
-    uint8_t                     attrId;                 /**< Attribute ID. See @ref BLE_ANCS_NtfyAttrId_T. */
+    BLE_ANCS_NtfyAttrId_T       attrId;                 /**< Attribute ID. See @ref BLE_ANCS_NtfyAttrId_T. */
     uint16_t                    len;                    /**< length of the attribute. */
 } BLE_ANCS_EvtErrAttrBufInd_T;
 

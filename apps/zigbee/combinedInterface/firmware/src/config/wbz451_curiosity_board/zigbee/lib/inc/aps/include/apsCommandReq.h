@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APS_COMMAND_REQ_H
-#define _APS_COMMAND_REQ_H
+#if !defined APS_COMMAND_REQ_H
+#define APS_COMMAND_REQ_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -151,6 +151,6 @@ typedef struct _ApsSecurityStatusDescriptor_t
 } ApsSecurityStatusDescriptor_t;
 #endif /* _SECURITY_ */
 
-#endif /* _APS_COMMAND_REQ_H */
+#endif /* APS_COMMAND_REQ_H */
 /** eof apsCommandReq.h */
 

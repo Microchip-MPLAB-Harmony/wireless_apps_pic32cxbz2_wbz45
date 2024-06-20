@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMBASICCLUSTER_H
-#define _CUSTOMBASICCLUSTER_H
+#ifndef CUSTOMBASICCLUSTER_H
+#define CUSTOMBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -65,6 +65,6 @@ extern ZCL_BasicClusterClientAttributes_t customBasicClusterClientAttributes;
 void customBasicClusterInit(void);
 
 
-#endif // _CUSTOMBASICCLUSTER_H
+#endif // CUSTOMBASICCLUSTER_H
 
 // eof customBasicCluster.h

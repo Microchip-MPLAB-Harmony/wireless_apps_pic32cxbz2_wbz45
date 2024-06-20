@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_PERMISSIONS_H
-#define _ZDO_PERMISSIONS_H
+#if !defined ZDO_PERMISSIONS_H
+#define ZDO_PERMISSIONS_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -161,5 +161,5 @@ ZDO_Status_t ZDO_DeletePermissions(const ExtAddr_t *deviceAddress);
  ******************************************************************************/
 ZDO_Status_t ZDO_CheckPermissions(ExtAddr_t deviceAddress, BcAction_t action);
 
-#endif /** _ZDO_PERMISSIONS_H */
+#endif /** ZDO_PERMISSIONS_H */
 /** eof zdoPermissions.h */

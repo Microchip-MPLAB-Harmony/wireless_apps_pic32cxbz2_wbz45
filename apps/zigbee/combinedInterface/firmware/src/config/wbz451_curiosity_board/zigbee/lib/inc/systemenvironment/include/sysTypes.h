@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSTYPES_H
-#define _SYSTYPES_H
+#ifndef SYSTYPES_H
+#define SYSTYPES_H
 
 #include <stdint.h>
 #include <string.h>
@@ -291,7 +291,7 @@ END_PACK
   #define IS_EQ_64BIT_VALUES(A, B) ((A) == (B))
   #define COPY_64BIT_VALUE(DST, SRC) (DST) = (SRC)
   #define IS_EQ_64BIT_VALUES_A(A, B) (0 == memcmp((A), (B), sizeof(uint64_t)))
-  #define COPY_64BIT_VALUE_A(DST, SRC) memcpy((DST), (SRC), sizeof(uint64_t))
+  #define COPY_64BIT_VALUE_A(DST, SRC) (void)memcpy((DST), (uint8_t *)(SRC), sizeof(uint64_t))
 #endif
 
 #define BC_SUCCESS false

@@ -48,7 +48,6 @@
 #include "device.h"
 
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -233,7 +232,6 @@ OSAL_QUEUE_HANDLE_TYPE bleRequestQueueHandle;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-#define REGULATORY_REGION "ETSI"
 
 
 
@@ -245,23 +243,19 @@ OSAL_API_LIST_TYPE     osalAPIList;
 // <editor-fold defaultstate="collapsed" desc="SYS_CONSOLE Instance 0 Initialization Data">
 
 
-/* Declared in console device implementation (sys_console_uart.c) */
-extern const SYS_CONSOLE_DEV_DESC sysConsoleUARTDevDesc;
-
-
 static const SYS_CONSOLE_UART_PLIB_INTERFACE sysConsole0UARTPlibAPI =
 {
     .read_t = (SYS_CONSOLE_UART_PLIB_READ)SERCOM0_USART_Read,
-	.readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
-	.readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
+    .readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
+    .readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
     .write_t = (SYS_CONSOLE_UART_PLIB_WRITE)SERCOM0_USART_Write,
-	.writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
-	.writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
+    .writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
+    .writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
 };
 
 static const SYS_CONSOLE_UART_INIT_DATA sysConsole0UARTInitData =
 {
-    .uartPLIB = &sysConsole0UARTPlibAPI,    
+    .uartPLIB = &sysConsole0UARTPlibAPI,
 };
 
 static const SYS_CONSOLE_INIT sysConsole0Init =
@@ -329,6 +323,25 @@ __attribute__((ramfunc, long_call, section(".ramfunc"),unique_section)) void PCH
     }
 
 }
+void _on_reset(void)
+{
+    //Need to clear register before configure any GPIO
+    DEVICE_ClearDeepSleepReg();
+
+    // Initialize the RF Clock Generator
+    SYS_ClkGen_Config();
+
+    /* Can't call a RAM function before __pic32c_data_initialization
+       Must call a flash function, but in A0 HW version, RAM function is required to avoid HW issue.
+       Thus, will not config PCHE before __pic32c_data_initialization in A0 version.
+    */
+    // Configure Prefetch, Wait States
+    if (DSU_REGS->DSU_DID & DSU_DID_REVISION_Msk)   //A1 and later version
+    {
+        PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
+                                        | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+    }
+}
 
 
 
@@ -381,17 +394,12 @@ void SYS_Initialize ( void* data )
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-    
-    // Initialize the RF Clock Generator
-    SYS_ClkGen_Config();
 
-    // Configure Cache and Wait States
-    PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
-    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
+    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
 
 
@@ -472,13 +480,14 @@ void SYS_Initialize ( void* data )
 
     /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
      H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
+        sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
    /* MISRAC 2012 deviation block end */
 
     // Create BLE Stack Message QUEUE
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 
     // Retrieve BLE calibration data
+    (void)memset(&btSysCfg, 0, sizeof(BT_SYS_Cfg_T));
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
 
@@ -489,9 +498,11 @@ void SYS_Initialize ( void* data )
 
 
     //Configure BLE option
+    (void)memset(&btOption, 0, sizeof(BT_SYS_Option_T));
     btOption.hciMode = false;
     btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
     btOption.p_cmnMemAddr = s_btMem;
+    btOption.deFeatMask = 0;
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);

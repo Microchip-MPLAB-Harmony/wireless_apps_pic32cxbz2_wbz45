@@ -49,7 +49,6 @@ Combined Interface device Commissioning cluster Source File
 #include <zcl/include/zclCommandManager.h>
 #include <z3device/clusters/include/commissioningCluster.h>
 #include <app_zigbee/zigbee_console/console.h>
-#include <z3device/combinedInterface/include/ciColorControlCluster.h>
 #include <z3device/combinedInterface/include/ciClusters.h>
 
 /******************************************************************************

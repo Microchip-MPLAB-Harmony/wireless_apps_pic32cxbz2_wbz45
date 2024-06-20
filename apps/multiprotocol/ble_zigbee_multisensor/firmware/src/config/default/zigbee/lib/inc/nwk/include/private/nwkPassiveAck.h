@@ -50,8 +50,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_PASSIVE_ACK_H
-#define _NWK_PASSIVE_ACK_H
+#if !defined NWK_PASSIVE_ACK_H
+#define NWK_PASSIVE_ACK_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -192,6 +192,6 @@ NWK_PRIVATE void nwkResetPassiveAck(void);
 #define nwkPassiveAckReceived(prevHopAddr, srcAddr, seqNum) (void)0
 #define nwkResetPassiveAck() (void)0
 #endif /* _NWK_PASSIVE_ACK_ */
-#endif /* _NWK_PASSIVE_ACK_H */
+#endif /* NWK_PASSIVE_ACK_H */
 /** eof nwkPassiveAck.h */
 

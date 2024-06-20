@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACFRAME_H
-#define _MACFRAME_H
+#ifndef MACFRAME_H
+#define MACFRAME_H
 
 /******************************************************************************
                         Includes section.
@@ -110,18 +110,18 @@ BEGIN_PACK
 typedef struct  PACK // Frame control.
 {
   LITTLE_ENDIAN_OCTET(6, (
-    uint16_t type         : 3,
-    uint16_t security     : 1,
-    uint16_t framePending : 1,
-    uint16_t ack          : 1,
-    uint16_t intraPAN     : 1,
-    uint16_t reserved1    : 1
+    BitField_t type         : 3,
+    BitField_t security     : 1,
+    BitField_t framePending : 1,
+    BitField_t ack          : 1,
+    BitField_t intraPAN     : 1,
+    BitField_t reserved1    : 1
   ))
   LITTLE_ENDIAN_OCTET(4, (
-    uint16_t reserved2    : 2,
-    uint16_t dstAddrMode  : 2,
-    uint16_t frameVersion : 2,
-    uint16_t srcAddrMode  : 2
+    BitField_t reserved2    : 2,
+    BitField_t dstAddrMode  : 2,
+    BitField_t frameVersion : 2,
+    BitField_t srcAddrMode  : 2
   ))
 }  MAC_FrameCtrl_t;
 END_PACK
@@ -236,6 +236,6 @@ typedef struct
 #endif // defined _SYS_ASSERT_ON_ && defined _IEEE_ZIGBEE_COMPLIANCE_
 }  MAC_FrameDescr_t;
 
-#endif // _MACFRAME_H
+#endif // MACFRAME_H
 
 // eof macFrame.h

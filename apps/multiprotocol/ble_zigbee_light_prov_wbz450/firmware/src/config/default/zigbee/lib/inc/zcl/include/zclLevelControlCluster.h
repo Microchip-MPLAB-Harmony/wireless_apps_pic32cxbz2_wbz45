@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLLEVELCONTROLCLUSTER_H
-#define _ZCLLEVELCONTROLCLUSTER_H
+#ifndef ZCLLEVELCONTROLCLUSTER_H
+#define ZCLLEVELCONTROLCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -378,4 +378,4 @@ typedef struct
   } stopWOnOffCommand;
 } ZCL_LevelControlClusterCommands_t;
 
-#endif /* _ZCLLEVELCONTROLCLUSTER_H */
+#endif /* ZCLLEVELCONTROLCLUSTER_H */

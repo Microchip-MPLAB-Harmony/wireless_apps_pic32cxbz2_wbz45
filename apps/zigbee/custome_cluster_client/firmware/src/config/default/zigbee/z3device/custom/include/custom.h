@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 /******************************************************************************/
-#ifndef _CUSTOM_H
-#define _CUSTOM_H
+#ifndef CUSTOM_H
+#define CUSTOM_H
 
 /******************************************************************************
                     Includes section
@@ -68,6 +68,6 @@ void customDeviceTaskHandler(void);
                     Externals
 ******************************************************************************/
 
-#endif // _CUSTOM_H
+#endif // CUSTOM_H
 
 // eof custom.h

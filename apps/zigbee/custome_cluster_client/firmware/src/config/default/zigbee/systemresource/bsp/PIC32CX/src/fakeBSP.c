@@ -46,9 +46,7 @@
 /******************************************************************************
                    Local variables section
 ******************************************************************************/
-static void(* readTemperatureDataCallback)(bool error, int16_t data);
-static void(* readLightDataCallback)(bool error, int16_t data);
-static void(* readBatteryDataCallback)(int16_t data);
+
 
 /******************************************************************************
                    Implementations section
@@ -135,7 +133,7 @@ void BSP_OffLed(uint8_t id)
 }
 
 /**************************************************************************//**
-\brief Changes the?ED state to opposite.
+\brief Changes the LED state to opposite.
 
 \param[in]
       id - number of led

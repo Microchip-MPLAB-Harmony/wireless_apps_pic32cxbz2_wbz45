@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NWK_ADDRESS_RESOLV_H
-#define _NWK_ADDRESS_RESOLV_H
+#if !defined NWK_ADDRESS_RESOLV_H
+#define NWK_ADDRESS_RESOLV_H
 
 /******************************************************************************
                                Includes section
@@ -87,6 +87,6 @@ const ExtAddr_t* NWK_GetExtByShortAddress(const ShortAddr_t shortAddr);
  ******************************************************************************/
 const ShortAddr_t* NWK_GetShortByExtAddress(const ExtAddr_t *const extAddr);
 
-#endif /* _NWK_ADDRESS_RESOLV_H */
+#endif /* NWK_ADDRESS_RESOLV_H */
 /** eof nwkAddressResolv.h */
 

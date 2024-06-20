@@ -58,12 +58,12 @@
 /* Dimmable Light application data file descriptors.
    Shall be placed in the PDS_FF code segment. */
 PDS_DECLARE_FILE(APP_LIGHT_SCENES_MEM_ID,        MAX_SCENES_AMOUNT * sizeof(Scene_t),                        lightSceneTable,                                           NO_FILE_MARKS);
-PDS_DECLARE_FILE(APP_LIGHT_ONOFF_MEM_ID,         sizeof(lightOnOffClusterServerAttributes),               &lightOnOffClusterServerAttributes,               NO_FILE_MARKS);
+PDS_DECLARE_FILE(APP_LIGHT_ONOFF_MEM_ID,         (uint16_t)sizeof(lightOnOffClusterServerAttributes),               &lightOnOffClusterServerAttributes,               NO_FILE_MARKS);
 #if (APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_DIMMABLE_LIGHT)
-PDS_DECLARE_FILE(APP_LIGHT_LEVEL_CONTROL_MEM_ID, sizeof(lightLevelControlClusterServerAttributes), &lightLevelControlClusterServerAttributes, NO_FILE_MARKS);
+PDS_DECLARE_FILE(APP_LIGHT_LEVEL_CONTROL_MEM_ID, (uint16_t)sizeof(lightLevelControlClusterServerAttributes), &lightLevelControlClusterServerAttributes, NO_FILE_MARKS);
 #endif
 #if (APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_COLOR_LIGHT)
-PDS_DECLARE_FILE(APP_LIGHT_COLOR_CONTROL_MEM_ID, sizeof(lightColorControlClusterServerAttributes), &lightColorControlClusterServerAttributes, NO_FILE_MARKS);
+PDS_DECLARE_FILE(APP_LIGHT_COLOR_CONTROL_MEM_ID, (uint16_t)sizeof(lightColorControlClusterServerAttributes), &lightColorControlClusterServerAttributes, NO_FILE_MARKS);
 #endif
 
 

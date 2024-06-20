@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OSIDENTIFYCLUSTER_H
-#define _OSIDENTIFYCLUSTER_H
+#ifndef OSIDENTIFYCLUSTER_H
+#define OSIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -77,7 +77,7 @@ void osIdentifyStop(void);
 ******************************************************************************/
 void osIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
 
-#endif // _MSIDENTIFYCLUSTER_H
+#endif // OSIDENTIFYCLUSTER_H
 
 // eof osIdentifyCluster.h
 

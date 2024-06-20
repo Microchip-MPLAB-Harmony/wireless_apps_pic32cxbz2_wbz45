@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: default
 folderName: scan_ext_adv
-frameworkPath: D:\svn\H3_RTP
+frameworkPath: C:\BLE Chimera+Buckland
 processor: WBZ451
 projectName: scan_ext_adv
 settings:

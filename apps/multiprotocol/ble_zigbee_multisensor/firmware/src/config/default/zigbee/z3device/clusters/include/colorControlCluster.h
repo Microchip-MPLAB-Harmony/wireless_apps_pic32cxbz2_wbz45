@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _COLORCONTROLCLUSTER_H
-#define _COLORCONTROLCLUSTER_H
+#ifndef COLORCONTROLCLUSTER_H
+#define COLORCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -352,4 +352,4 @@ void colorControlSendStepColorTemperatureCommand(APS_AddrMode_t mode, ShortAddr_
 ******************************************************************************/
 void colorControlSendStopMoveStepCommand(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp, uint8_t optionsMask, uint8_t optionsOverride);
 
-#endif // _COLORCONTROLCLUSTER_H
+#endif // COLORCONTROLCLUSTER_H

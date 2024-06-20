@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _WLPDSMEMIDS_H_
-#define _WLPDSMEMIDS_H_
+#ifndef WLPDSMEMIDS_H_
+#define WLPDSMEMIDS_H_
 
 /******************************************************************************
                                Includes section
@@ -219,5 +219,5 @@ enum
 /* Total files and directories amount supported by PDS */
 
 
-#endif // _WLPDSMEMIDS_H_
+#endif // WLPDSMEMIDS_H_
 /* eof wlPdsMemIds.h */

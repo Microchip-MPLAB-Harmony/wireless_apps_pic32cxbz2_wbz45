@@ -64,7 +64,6 @@
 /******************************************************************************
                     Prototypes section
 ******************************************************************************/
-ZCL_Status_t storeScene(ZCL_StoreScene_t *storeScene, Endpoint_t srcEp, Scene_t* scenePool, ZCL_SceneClusterServerAttributes_t* scenesAttributes);
 
 static void fillViewRemoveStoreRecallScenePayload(ZCL_ViewScene_t *payload, uint16_t group, uint8_t scene);
 static void fillRecallScenePayload(ZCL_RecallScene_t *payload, uint16_t group, uint8_t scene, uint16_t time);
@@ -103,10 +102,13 @@ static uint8_t lightFillViewSceneResponsePayload(bool enhanced, ZCL_EnhancedView
 ZCL_Status_t removeAllScenes(uint16_t group, Endpoint_t srcEp, Scene_t* scenePool, uint8_t* currSceneCnt)
 {
   if (groupsIsValidGroup(group, srcEp))
+  {
     *currSceneCnt -= removeScenesByGroup(group, scenePool);
+  }
   else
+  {
     return ZCL_INVALID_FIELD_STATUS;
-
+  }
   return ZCL_SUCCESS_STATUS;
 }
 
@@ -147,16 +149,16 @@ static void fillAddSceneToExtendedColorLightPayload(ZCL_AddScene_t *payload, uin
   ZCL_ColorControlClusterExtensionFieldSet_t *colorControlExt = (ZCL_ColorControlClusterExtensionFieldSet_t *)tmp;
 
   payload->groupId        = group;
-  payload->sceneId        = scene;
+  payload->sceneId        = (uint8_t)scene;
   payload->transitionTime = time;
   payload->name[0]        = 0;
 
   onOffExt->clusterId  = ONOFF_CLUSTER_ID;
-  onOffExt->length     = sizeof(onOffExt->onOffValue);
+  onOffExt->length     = (uint8_t)sizeof(onOffExt->onOffValue);
   onOffExt->onOffValue = onOff;
 
   levelControlExt->clusterId    = LEVEL_CONTROL_CLUSTER_ID;
-  levelControlExt->length       = sizeof(levelControlExt->currentLevel);
+  levelControlExt->length       = (uint8_t)sizeof(levelControlExt->currentLevel);
   levelControlExt->currentLevel = level;
 
   colorControlExt->clusterId    = COLOR_CONTROL_CLUSTER_ID;
@@ -180,9 +182,9 @@ static void fillCopyScenePayload(ZCL_CopyScene_t *payload, SceneMode_t mode, uin
 {
   payload->mode = mode;
   payload->groupIdFrom = gidFrom;
-  payload->sceneIdFrom = sidFrom;
+  payload->sceneIdFrom = (uint8_t)sidFrom;
   payload->groupIdTo = gidTo;
-  payload->sceneIdTo = sidTo;
+  payload->sceneIdTo = (uint8_t)sidTo;
 }
 /**************************************************************************//**
 \brief Store to global scene
@@ -486,7 +488,9 @@ uint8_t scenesClusterRemoveByGroup(uint16_t group, Scene_t *scenePool)
   for (uint8_t i = 0; i < MAX_SCENES_AMOUNT; i++)
   {
     if ((scenePool[i].groupId == group) && freeScene(&scenePool[i]))
+    {
       sceneAmt++;
+    }
   }
   return sceneAmt;
 }

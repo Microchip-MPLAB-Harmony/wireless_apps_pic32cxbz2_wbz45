@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACASSOCIATE_H
-#define _MACASSOCIATE_H
+#ifndef MACASSOCIATE_H
+#define MACASSOCIATE_H
 
 /******************************************************************************
                         Includes section.
@@ -67,13 +67,13 @@ BEGIN_PACK
 typedef struct PACK
 {
   LITTLE_ENDIAN_OCTET(7, (
-    uint8_t alternatePANCoordinator : 1,
-    uint8_t deviceType              : 1,
-    uint8_t powerSource             : 1,
-    uint8_t rxOnWhenIdle            : 1,
-    uint8_t reserved                : 2,
-    uint8_t securityCapability      : 1,
-    uint8_t allocateAddress         : 1
+    BitField_t alternatePANCoordinator : 1,
+    BitField_t deviceType              : 1,
+    BitField_t powerSource             : 1,
+    BitField_t rxOnWhenIdle            : 1,
+    BitField_t reserved                : 2,
+    BitField_t securityCapability      : 1,
+    BitField_t allocateAddress         : 1
   ))
 }  MAC_CapabilityInf_t;
 END_PACK
@@ -183,5 +183,5 @@ extern void MAC_AssociateInd(MAC_AssociateInd_t *indParams);
 ******************************************************************************/
 void MAC_AssociateResp(MAC_AssociateResp_t *respParams);
 
-#endif //_MACASSOCIATE_H
+#endif //MACASSOCIATE_H
 // eof macAssociate.h

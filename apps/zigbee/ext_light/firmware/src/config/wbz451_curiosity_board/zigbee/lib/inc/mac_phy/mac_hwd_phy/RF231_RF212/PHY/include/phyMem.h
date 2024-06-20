@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYMEM_H
-#define _PHYMEM_H
+#ifndef PHYMEM_H
+#define PHYMEM_H
 
 /******************************************************************************
                     Includes section
@@ -83,6 +83,6 @@ typedef struct
   void (* phyBatMonInd)(void);
 } PhyMem_t;
 
-#endif /*_PHYMEM_H*/
+#endif /*PHYMEM_H*/
 
 // eof macphyMem.h

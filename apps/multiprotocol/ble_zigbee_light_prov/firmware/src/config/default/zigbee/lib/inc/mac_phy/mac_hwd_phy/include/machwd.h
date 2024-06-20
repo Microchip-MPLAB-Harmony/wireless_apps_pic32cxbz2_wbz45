@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWD_H
-#define _MACHWD_H
+#ifndef MACHWD_H
+#define MACHWD_H
 
 /******************************************************************************
                     Includes section
@@ -54,6 +54,6 @@
 #include <mac_phy/mac_hwd_phy/include/machwdEd.h>
 #include <mac_phy/mac_hwd_phy/include/machwdReset.h>
 
-#endif /* _MACHWD_H */
+#endif /* MACHWD_H */
 
 // eof machwd.h

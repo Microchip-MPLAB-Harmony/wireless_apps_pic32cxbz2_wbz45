@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTSCENESCLUSTER_H
-#define _LIGHTSCENESCLUSTER_H
+#ifndef LIGHTSCENESCLUSTER_H
+#define LIGHTSCENESCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -70,22 +70,22 @@ void lightScenesClusterInit(void);
 ******************************************************************************/
 void lightScenesInvalidate(void);
 
-///**************************************************************************//**
-//\brief Recalls scene from scene table
-//
-//\param[in] recallScene - the pointer to Recall Scene request
-//******************************************************************************/
+/****************************************************************************
+\brief Recalls scene from scene table
+
+\param[in] recallScene - the pointer to Recall Scene request
+******************************************************************************/
 //void recallScene(ZCL_RecallScene_t *recallScene);
 //
-///**************************************************************************//**
-//\brief Stores scene to scene table
-//
-//\param[in] storeScene - the pointer to Store Scene request
-//
-//\returns status of scene storing
-//******************************************************************************/
+/****************************************************************************
+\brief Stores scene to scene table
+
+\param[in] storeScene - the pointer to Store Scene request
+
+\returns status of scene storing
+******************************************************************************/
 //ZCL_Status_t storeScene(ZCL_StoreScene_t *storeScene);
-#endif // _LIGHTSCENESCLUSTER_H
+#endif // LIGHTSCENESCLUSTER_H
 
 // eof lightScenesCluster.h
 

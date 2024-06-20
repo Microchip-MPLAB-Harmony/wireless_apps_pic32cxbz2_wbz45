@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWISTARTHANDLER_H
-#define _MACHWISTARTHANDLER_H
+#ifndef MACHWISTARTHANDLER_H
+#define MACHWISTARTHANDLER_H
 #ifdef _FFD_
 
 /******************************************************************************
@@ -88,6 +88,6 @@ MachwiHandlerResult_t machwiStartReqHandler(void);
 void machwiResetStartHandler(void);
 
 #endif // _FFD_
-#endif /* _MACHWISTARTHANDLER_H */
+#endif /* MACHWISTARTHANDLER_H */
 
 // eof machwiStartHandler.h

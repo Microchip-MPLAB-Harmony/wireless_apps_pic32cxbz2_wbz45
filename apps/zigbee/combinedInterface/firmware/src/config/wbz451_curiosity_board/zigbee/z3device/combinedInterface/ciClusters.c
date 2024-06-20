@@ -67,6 +67,7 @@
 #include <z3device/combinedInterface/include/ciIasZoneCluster.h>
 #include <z3device/combinedInterface/include/ciIasACECluster.h>
 
+
 /******************************************************************************
                     Global variables
 ******************************************************************************/
@@ -78,7 +79,7 @@ ZCL_Cluster_t ciServerClusters[CI_SERVER_CLUSTERS_COUNT] =
   DEFINE_IAS_ACE_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &ciIasACEAceClusterServerAttributes, &ciIASACEClusterCommands),
      // Optional
   DEFINE_COMMISSIONING_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &ciCommissioningClusterServerAttributes, &ciCommissioningClusterCommands),
-  DEFINE_TIME_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &ciTimeClusterServerAttributes, NULL)
+  DEFINE_TIME_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &ciTimeClusterServerAttributes, NULL),
 };
 
 void (*ciServerClusterInitFunctions[CI_SERVER_CLUSTER_INIT_COUNT])() =
@@ -109,7 +110,7 @@ ZCL_Cluster_t ciClientClusters[CI_CLIENT_CLUSTERS_COUNT] =
   DEFINE_THERMOSTAT_UI_CONF_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &ciThermostatUiConfClusterClientAttributes, NULL),
   DEFINE_ALARMS_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &ciAlarmsClusterClientAttributes, &ciAlarmsCommands),
   DEFINE_FAN_CONTROL_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &ciFanControlClusterClientAttributes, NULL),
-  DEFINE_IAS_ZONE_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &ciZoneClusterClientAttributes, &ciIASZoneClusterClientCommands)
+  DEFINE_IAS_ZONE_CLUSTER(ZCL_CLIENT_CLUSTER_TYPE, &ciZoneClusterClientAttributes, &ciIASZoneClusterClientCommands),
 };
 
 ClusterId_t   ciServerClusterIds[CI_SERVER_CLUSTERS_COUNT] =
@@ -144,7 +145,7 @@ ClusterId_t   ciClientClusterIds[CI_CLIENT_CLUSTERS_COUNT] =
   THERMOSTAT_UI_CONF_CLUSTER_ID,
   ALARMS_CLUSTER_ID,
   FAN_CONTROL_CLUSTER_ID,
-  IAS_ZONE_CLUSTER_ID
+  IAS_ZONE_CLUSTER_ID,
 };
 
 void (*ciClientClusterInitFunctions[CI_CLIENT_CLUSTER_INIT_COUNT])() =
@@ -165,7 +166,7 @@ void (*ciClientClusterInitFunctions[CI_CLIENT_CLUSTER_INIT_COUNT])() =
   ciThermostatUiConfClusterInit,
   ciAlarmsClusterInit,
   ciFanControlClusterInit,
-  ciIasZoneClusterInit
+  ciIasZoneClusterInit,
 };
 #endif // APP_DEVICE_TYPE_COMBINED_INTERFACE
 

@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: default
 folderName: Legacy_ADV_Pathloss
-frameworkPath: D:\All_H3_Repos\A2_RTP
+frameworkPath: C:\BLE Chimera+Buckland
 processor: WBZ451
 projectName: Legacy_ADV_Pathloss
 settings:

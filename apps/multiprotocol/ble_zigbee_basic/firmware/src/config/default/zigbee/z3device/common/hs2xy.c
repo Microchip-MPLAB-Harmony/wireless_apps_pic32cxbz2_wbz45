@@ -143,15 +143,15 @@ void HS2XY(int hue, int sat, unsigned int *calcX, unsigned int *calcY)
 
   localSat = 255 - sat;
 
-  localX = hueToX[hue];
-  localY = hueToY[hue];
+  localX = (float)hueToX[hue];
+  localY = (float)hueToY[hue];
 
   xDelta = localX - (float)WHITE_POINT_X;
   yDelta = localY - (float)WHITE_POINT_Y;
 
-  xDelta = xDelta * (float) localSat/0xFF;
-  yDelta = yDelta * (float) localSat/0xFF;
+  xDelta = xDelta * (float) localSat/(float)0xFF;
+  yDelta = yDelta * (float) localSat/(float)0xFF;
 
-  *calcX = (unsigned int) (localX - xDelta);
-  *calcY = (unsigned int) (localY - yDelta);
+  *calcX = (unsigned int)((float)(localX - xDelta));
+  *calcY = (unsigned int)((float)(localY - yDelta));
 }

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_SECURITY_H
-#define _BDB_SECURITY_H
+#ifndef BDB_SECURITY_H
+#define BDB_SECURITY_H
 
 /******************************************************************************
                     Prototypes section
@@ -53,4 +53,4 @@ void bdbSecurityInit(bool centralized);
 
 void bdbNetworkSecurityInit(void);
 
-#endif // _BDB_SECURITY_H
+#endif // BDB_SECURITY_H

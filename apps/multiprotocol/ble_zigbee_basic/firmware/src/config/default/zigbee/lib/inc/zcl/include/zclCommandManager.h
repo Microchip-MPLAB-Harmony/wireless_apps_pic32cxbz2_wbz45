@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLCOMMANDMANAGER_H
-#define _ZCLCOMMANDMANAGER_H
+#ifndef ZCLCOMMANDMANAGER_H
+#define ZCLCOMMANDMANAGER_H
 
 /******************************************************************************
                     Includes section
@@ -88,6 +88,6 @@ void ZCL_CommandManagerSendAttribute(ZCL_Request_t *req);
 ******************************************************************************/
 void ZCL_CommandZclDefaultResp(ZCL_Request_t *req, ZCL_Addressing_t *addressing, uint8_t payloadLength, uint8_t *payload);
 
-#endif // _ZCLCOMMANDMANAGER_H
+#endif // ZCLCOMMANDMANAGER_H
 
 // eof zclcommandManager.h

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _BDB_INTERNAL_H
-#define _BDB_INTERNAL_H
+#ifndef BDB_INTERNAL_H
+#define BDB_INTERNAL_H
 // DOM-IGNORE-END
 
 /**********************************************************************************
@@ -94,4 +94,4 @@ extern BdbMem_t bdbMem;
  ************************************************************************/
 void BDB_SetBdbNodeIsOnANetwork(bool onNetwork);
 
-#endif // _BDB_INTERNAL_H
+#endif // BDB_INTERNAL_H

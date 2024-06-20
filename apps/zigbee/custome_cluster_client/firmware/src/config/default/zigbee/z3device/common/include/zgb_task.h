@@ -54,11 +54,13 @@ void zigbee_init(uint32_t               *sram_vector_table,
                  OSAL_QUEUE_HANDLE_TYPE *zigbeeRequestQueueHandle,
                  ZB_AppGenericCallBack    app_callback);
 
-void zigbee_task(void *ptr);
 
-void Zigbee_Init(OSAL_API_LIST_TYPE *osalAPIList,
-                 OSAL_QUEUE_HANDLE_TYPE *zigbeeRequestQueueHandle,
-                 uint32_t *sram_vector_table,
+
+void Zigbee_Init(OSAL_API_LIST_TYPE *osalApiList,
+                 OSAL_QUEUE_HANDLE_TYPE *zigbeeReqQueueHandle,
+                 uint32_t *sramVectorTable,
                  ZB_CS_SYS_IBData_t *zgbIBdata);
+
+void ZB_Sys_HpaInit(void(*)(bool));
 
 #endif // ZGB_TASK_H

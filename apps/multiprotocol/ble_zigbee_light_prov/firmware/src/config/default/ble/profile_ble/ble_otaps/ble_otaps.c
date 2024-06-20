@@ -62,53 +62,53 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define BLE_OTAPS_OP_CODE_RESPONSE            0x01
-#define BLE_OTAPS_OP_CODE_UPDATE_REQUEST      0x02
-#define BLE_OTAPS_OP_CODE_UPDATE_START        0x03
-#define BLE_OTAPS_OP_CODE_UPDATE_COMPLETE     0x04
-#define BLE_OTAPS_OP_CODE_RESET_REQUEST       0x05
+#define BLE_OTAPS_OP_CODE_RESPONSE            (0x01U)
+#define BLE_OTAPS_OP_CODE_UPDATE_REQUEST      (0x02U)
+#define BLE_OTAPS_OP_CODE_UPDATE_START        (0x03U)
+#define BLE_OTAPS_OP_CODE_UPDATE_COMPLETE     (0x04U)
+#define BLE_OTAPS_OP_CODE_RESET_REQUEST       (0x05U)
 
-#define BLE_OTAPS_UPDATE_REQ_BASIC_SIZE       0x0D
-#define BLE_OTAPS_UPDATE_REQ_FW_MASK1_SIZE    0x05
-#define BLE_OTAPS_UPDATE_RSP_SIZE             0x0A
-#define BLE_OTAPS_UPDATE_START_SIZE           0x01
-
-
-#define BLE_OTAPS_STATE_CCCD_DISABLED         0x00
-#define BLE_OTAPS_STATE_CCCD_ENABLED          0x01
-#define BLE_OTAPS_STATE_WAIT_REQ_RSP          0x02
-#define BLE_OTAPS_STATE_UPDATE_REQ            0x03
-#define BLE_OTAPS_STATE_UPDATE_START          0x04
-#define BLE_OTAPS_STATE_UPDATE_ERROR          0x05
-#define BLE_OTAPS_STATE_WAIT_UPDATE_RSP       0x06
-#define BLE_OTAPS_STATE_WAIT_COMP_RSP         0x07
-#define BLE_OTAPS_STATE_COMPLETE              0x08
+#define BLE_OTAPS_UPDATE_REQ_BASIC_SIZE       (0x0DU)
+#define BLE_OTAPS_UPDATE_REQ_FW_MASK1_SIZE    (0x05U)
+#define BLE_OTAPS_UPDATE_RSP_SIZE             (0x0AU)
+#define BLE_OTAPS_UPDATE_START_SIZE           (0x01U)
 
 
-#define BLE_OTAPS_RESULT_SUCCESS              0x00
-#define BLE_OTAPS_RESULT_INVALID_STATE        0x01
-#define BLE_OTAPS_RESULT_NOT_SUPPORTED        0x02
-#define BLE_OTAPS_RESULT_OPERATION_FAILED     0x03
-#define BLE_OTAPS_RESULT_INVALID_PARA         0x04
+#define BLE_OTAPS_STATE_CCCD_DISABLED         (0x00U)
+#define BLE_OTAPS_STATE_CCCD_ENABLED          (0x01U)
+#define BLE_OTAPS_STATE_WAIT_REQ_RSP          (0x02U)
+#define BLE_OTAPS_STATE_UPDATE_REQ            (0x03U)
+#define BLE_OTAPS_STATE_UPDATE_START          (0x04U)
+#define BLE_OTAPS_STATE_UPDATE_ERROR          (0x05U)
+#define BLE_OTAPS_STATE_WAIT_UPDATE_RSP       (0x06U)
+#define BLE_OTAPS_STATE_WAIT_COMP_RSP         (0x07U)
+#define BLE_OTAPS_STATE_COMPLETE              (0x08U)
 
-#define BLE_OTAPS_ENC_NONE                    0x00
-#define BLE_OTAPS_ENC_AES_CBC                 0x01
 
-#define BLE_OTAPS_START_IDX_LEN               0x04
+#define BLE_OTAPS_RESULT_SUCCESS              (0x00U)
+#define BLE_OTAPS_RESULT_INVALID_STATE        (0x01U)
+#define BLE_OTAPS_RESULT_NOT_SUPPORTED        (0x02U)
+#define BLE_OTAPS_RESULT_OPERATION_FAILED     (0x03U)
+#define BLE_OTAPS_RESULT_INVALID_PARA         (0x04U)
 
-#define BLE_OTAPS_IMG_BUF_SIZE                0x200
-#define BLE_OTAPS_MTU_SIZE                    0x400
+#define BLE_OTAPS_ENC_NONE                    (0x00U)
+#define BLE_OTAPS_ENC_AES_CBC                 (0x01U)
 
-#define BLE_OTAPS_CCCD_CTRL_ON                (1 << 0)
-#define BLE_OTAPS_CCCD_DATA_ON                (1 << 1)
+#define BLE_OTAPS_START_IDX_LEN               (0x04U)
 
-#define BLE_OTAPS_RETRY_TYPE_NONE             0x00
-#define BLE_OTAPS_RETRY_TYPE_ERROR            0x01
-#define BLE_OTAPS_RETRY_TYPE_READ             0x02
-#define BLE_OTAPS_RETRY_TYPE_WRITE            0x03
-#define BLE_OTAPS_RETRY_TYPE_NTF              0x04
+#define BLE_OTAPS_IMG_BUF_SIZE                (0x200U)
+#define BLE_OTAPS_MTU_SIZE                    (0x400U)
 
-#define BLE_OTAPS_INVALID_CONN_HANDLE         0xFFFF
+#define BLE_OTAPS_CCCD_CTRL_ON                (1U << 0U)
+#define BLE_OTAPS_CCCD_DATA_ON                (1U << 1U)
+
+#define BLE_OTAPS_RETRY_TYPE_NONE             (0x00U)
+#define BLE_OTAPS_RETRY_TYPE_ERROR            (0x01U)
+#define BLE_OTAPS_RETRY_TYPE_READ             (0x02U)
+#define BLE_OTAPS_RETRY_TYPE_WRITE            (0x03U)
+#define BLE_OTAPS_RETRY_TYPE_NTF              (0x04U)
+
+#define BLE_OTAPS_INVALID_CONN_HANDLE         (0xFFFFU)
 
 // *****************************************************************************
 // *****************************************************************************
@@ -162,15 +162,20 @@ static BLE_OTAPS_RetryList_T s_otapsRetry[BLE_GAP_MAX_LINK_NBR];
 // *****************************************************************************
 // *****************************************************************************
 
-static uint16_t ble_otaps_GetUpdateReqSize()
+static uint16_t ble_otaps_GetUpdateReqSize(void)
 {
     uint16_t sz = 0;
+    uint8_t suppType = BLE_OTAPS_FEATURE_SUPP_IMG_TYPE;
 
-    if(BLE_OTAPS_FEATURE_SUPP_IMG_TYPE & BLE_OTAPS_IMG_TYPE_FW)
+    if((suppType & BLE_OTAPS_IMG_TYPE_FW) != 0U)
     {
+        uint8_t suppFeat = BLE_OTAPS_FEATURE_FW_EXT_FEATURE;
+
         sz = BLE_OTAPS_UPDATE_REQ_BASIC_SIZE;
-        if (BLE_OTAPS_FEATURE_FW_EXT_FEATURE & BLE_OTAPS_FW_FEATURE_MASK1)
+        if ( (suppFeat & BLE_OTAPS_FW_FEATURE_MASK1) != 0U)
+        {
             sz += BLE_OTAPS_UPDATE_REQ_FW_MASK1_SIZE;
+        }
     }
 
     return sz;
@@ -199,20 +204,27 @@ static bool ble_otaps_IsProcInProgress(void)
 
 static uint8_t ble_otaps_MbaErrToResult(uint16_t mbaErr)
 {
+    uint8_t result;
     switch (mbaErr)
     {
         case MBA_RES_SUCCESS:
-            return BLE_OTAPS_RESULT_SUCCESS;
+            result = BLE_OTAPS_RESULT_SUCCESS;
+        break;
         case MBA_RES_FAIL:
         case MBA_RES_OOM:
-            return BLE_OTAPS_RESULT_OPERATION_FAILED;
+            result =  BLE_OTAPS_RESULT_OPERATION_FAILED;
+        break;
         case MBA_RES_INVALID_PARA:
-            return BLE_OTAPS_RESULT_INVALID_PARA;
+            result = BLE_OTAPS_RESULT_INVALID_PARA;
+        break;
         case MBA_RES_BAD_STATE:
-            return BLE_OTAPS_RESULT_INVALID_STATE;
+            result = BLE_OTAPS_RESULT_INVALID_STATE;
+        break;
         default:
-            return BLE_OTAPS_RESULT_OPERATION_FAILED;
+            result = BLE_OTAPS_RESULT_OPERATION_FAILED;
+        break;
     }
+    return result;
 }
 
 static void ble_otaps_FreeBuf(void)
@@ -262,14 +274,14 @@ static void ble_otaps_FreeRetry(BLE_OTAPS_RetryList_T *p_retry)
     p_retry->type = BLE_OTAPS_RETRY_TYPE_NONE;
 }
 
-static void ble_otaps_ConveyEvent(uint8_t eventId, uint8_t *p_eventField, uint8_t eventFieldLen)
+static void ble_otaps_ConveyEvent(BLE_OTAPS_EventId_T eventId, uint8_t *p_eventField, uint8_t eventFieldLen)
 {
     if (sp_otapsCbRoutine != NULL)
     {
         BLE_OTAPS_Event_T evtPara;
 
         evtPara.eventId = eventId;
-        memcpy((uint8_t *)&evtPara.eventField, p_eventField, eventFieldLen);
+        (void)memcpy((uint8_t *)&evtPara.eventField, p_eventField, eventFieldLen);
         sp_otapsCbRoutine(&evtPara);
     }
 }
@@ -281,7 +293,7 @@ static uint16_t ble_otaps_SendResponse(BLE_OTAPS_RetryList_T *p_retry, uint8_t r
     p_retry->p_pkt = OSAL_Malloc(sizeof(GATTS_HandleValueParams_T));
     if (p_retry->p_pkt != NULL)
     {
-        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = BLE_OTAS_HDL_CTRL_VAL;
+        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = (uint16_t)BLE_OTAS_HDL_CTRL_VAL;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charLength = 0x03;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[0] = BLE_OTAPS_OP_CODE_RESPONSE;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[1] = reqOpcode;
@@ -316,7 +328,7 @@ static uint16_t ble_otaps_SendDataResponse(BLE_OTAPS_RetryList_T *p_retry, uint8
     if (p_retry->p_pkt != NULL)
     {
 
-        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = BLE_OTAS_HDL_DATA_VAL;
+        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = (uint16_t)BLE_OTAS_HDL_DATA_VAL;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charLength = 0x01;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[0] = result;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->sendType = ATT_HANDLE_VALUE_NTF;
@@ -349,9 +361,9 @@ static uint16_t ble_otaps_SendUpdateReqResponse(BLE_OTAPS_RetryList_T *p_retry, 
     p_retry->p_pkt = OSAL_Malloc(sizeof(GATTS_HandleValueParams_T));
     if (p_retry->p_pkt != NULL)
     {
-        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = BLE_OTAS_HDL_CTRL_VAL;
+        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charHandle = (uint16_t)BLE_OTAS_HDL_CTRL_VAL;
 
-        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charLength = 0x03 + BLE_OTAPS_UPDATE_RSP_SIZE;
+        ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charLength = 0x03U + BLE_OTAPS_UPDATE_RSP_SIZE;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[0] = BLE_OTAPS_OP_CODE_RESPONSE;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[1] = BLE_OTAPS_OP_CODE_UPDATE_REQUEST;
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[2] = result;
@@ -359,12 +371,12 @@ static uint16_t ble_otaps_SendUpdateReqResponse(BLE_OTAPS_RetryList_T *p_retry, 
         if (result == BLE_OTAPS_RESULT_SUCCESS)
         {
             U16_TO_BUF_LE(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[3], BLE_OTAPS_MTU_SIZE);
-            memset(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[5], 0x00, BLE_OTAPS_START_IDX_LEN);
-            U32_TO_BUF_LE(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[5 + BLE_OTAPS_START_IDX_LEN], p_devInfo->fwImageVer);
+            (void)memset(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[5], 0x00, BLE_OTAPS_START_IDX_LEN);
+            U32_TO_BUF_LE(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[5U + BLE_OTAPS_START_IDX_LEN], p_devInfo->fwImageVer);
         }
         else
         {
-            memset(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[3], 0x00, BLE_OTAPS_UPDATE_RSP_SIZE);
+            (void)memset(&((GATTS_HandleValueParams_T *)p_retry->p_pkt)->charValue[3], 0x00, BLE_OTAPS_UPDATE_RSP_SIZE);
         }
         
         ((GATTS_HandleValueParams_T *)p_retry->p_pkt)->sendType = ATT_HANDLE_VALUE_NTF;
@@ -404,7 +416,7 @@ static uint16_t ble_otaps_UpdateImage(uint16_t len)
 
         if (s_otapsEnc == BLE_OTAPS_ENC_NONE)
         {
-            memcpy(sp_otapsPlainBuf, sp_otapsPktBuf + pktOffset, updateLen);
+            (void)memcpy(sp_otapsPlainBuf, sp_otapsPktBuf + pktOffset, updateLen);
         }
         else
         {
@@ -419,9 +431,12 @@ static uint16_t ble_otaps_UpdateImage(uint16_t len)
             {
                 case BLE_OTAPS_IMG_TYPE_FW:
                     err = MW_DFU_FwImageUpdate(updateLen, p_buf);
-                    break;
+                break;
                 default:
-                    break;
+                {
+                    //Do nothing
+                }
+                break;
             }
 
         } 
@@ -446,21 +461,21 @@ static void ble_otaps_ProcUpdateRequest(BLE_OTAPS_RetryList_T *p_retry, GATT_Eve
 
     if (ble_otaps_IsProcInProgress())
     {
-        ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_INVALID_STATE, NULL);
+        (void)ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_INVALID_STATE, NULL);
         return;
     }
 
-    if (p_event->eventField.onWrite.writeDataLength - 1 == ble_otaps_GetUpdateReqSize())
+    if (p_event->eventField.onWrite.writeDataLength - 1U == ble_otaps_GetUpdateReqSize())
     {
         isReqFileType = true;
     }
-    else if (p_event->eventField.onWrite.writeDataLength - 1 == BLE_OTAPS_UPDATE_REQ_BASIC_SIZE)
+    else if (p_event->eventField.onWrite.writeDataLength - 1U == BLE_OTAPS_UPDATE_REQ_BASIC_SIZE)
     {
         isReqFileType = false;
     }
     else
     {
-        ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_NOT_SUPPORTED, NULL);
+        (void)ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_NOT_SUPPORTED, NULL);
         return;
     }
         
@@ -491,7 +506,7 @@ static void ble_otaps_ProcUpdateRequest(BLE_OTAPS_RetryList_T *p_retry, GATT_Eve
 
         if (s_otapsEnc > BLE_OTAPS_ENC_AES_CBC || s_otapsFileType > BLE_OTAPS_IMG_FILE_TYPE_EXT)
         {
-            ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_NOT_SUPPORTED, NULL);
+            (void)ble_otaps_SendUpdateReqResponse(p_retry, BLE_OTAPS_RESULT_NOT_SUPPORTED, NULL);
             return;
         }
 
@@ -502,7 +517,9 @@ static void ble_otaps_ProcUpdateRequest(BLE_OTAPS_RetryList_T *p_retry, GATT_Eve
             result = ble_otaps_MbaErrToResult(err);
         }
         else
+        {
            result = BLE_OTAPS_RESULT_SUCCESS;
+        }
 
         if (result == BLE_OTAPS_RESULT_SUCCESS)
         {
@@ -510,9 +527,13 @@ static void ble_otaps_ProcUpdateRequest(BLE_OTAPS_RetryList_T *p_retry, GATT_Eve
 
             evtUpReq.fwImageSize = dfu.fwImageSize;
             if (isReqFileType)
+            {
                 evtUpReq.fwImageFileType = s_otapsFileType;
+            }
             else
+            {
                 evtUpReq.fwImageFileType = BLE_OTAPS_IMG_FILE_TYPE_UNKNOWN;
+            }
             
             s_otapsImgSize.fwSize = dfu.fwImageSize;
 
@@ -523,7 +544,7 @@ static void ble_otaps_ProcUpdateRequest(BLE_OTAPS_RetryList_T *p_retry, GATT_Eve
 
             s_otapsState = BLE_OTAPS_STATE_WAIT_REQ_RSP;
             
-            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATE_REQ, (uint8_t *)&evtUpReq, sizeof(evtUpReq));
+            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATE_REQ, (uint8_t *)&evtUpReq, (uint8_t)sizeof(evtUpReq));
         }
         else
         {
@@ -539,13 +560,13 @@ static void ble_otaps_ProcUpdateStart(BLE_OTAPS_RetryList_T *p_retry, GATT_Event
 
     if (s_otapsState !=  BLE_OTAPS_STATE_UPDATE_REQ)
     {
-        ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_START, BLE_OTAPS_RESULT_INVALID_STATE);
+        (void)ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_START, BLE_OTAPS_RESULT_INVALID_STATE);
         return;
     }
         
-    if (p_event->eventField.onWrite.writeDataLength - 1 != BLE_OTAPS_UPDATE_START_SIZE)
+    if (p_event->eventField.onWrite.writeDataLength - 1U != BLE_OTAPS_UPDATE_START_SIZE)
     {
-        ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_START, BLE_OTAPS_RESULT_NOT_SUPPORTED);
+        (void)ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_START, BLE_OTAPS_RESULT_NOT_SUPPORTED);
         return;
     }
 
@@ -570,7 +591,10 @@ static void ble_otaps_ProcUpdateStart(BLE_OTAPS_RetryList_T *p_retry, GATT_Event
         break;
 
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 
     if (result == BLE_OTAPS_RESULT_SUCCESS)
@@ -609,7 +633,7 @@ static void ble_otaps_ProcUpdateStart(BLE_OTAPS_RetryList_T *p_retry, GATT_Event
 
             if (result == BLE_OTAPS_RESULT_SUCCESS)
 			{
-                ble_otaps_ConveyEvent(BLE_OTAPS_EVT_START_IND, (uint8_t *)&evtInit , sizeof(evtInit));
+                ble_otaps_ConveyEvent(BLE_OTAPS_EVT_START_IND, (uint8_t *)&evtInit , (uint8_t)sizeof(evtInit));
 			}
         }
     }
@@ -634,7 +658,7 @@ static void ble_otaps_OnCtrlPtWrite(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
 
             if (s_otapsState == BLE_OTAPS_STATE_COMPLETE)
             {
-                ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_COMPLETE, BLE_OTAPS_RESULT_INVALID_STATE);
+                (void)ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_COMPLETE, BLE_OTAPS_RESULT_INVALID_STATE);
                 return;
             }
 
@@ -651,19 +675,22 @@ static void ble_otaps_OnCtrlPtWrite(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
             
                 evtComplete.errStatus = true;
                 
-                ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_COMPLETE, BLE_OTAPS_RESULT_SUCCESS);
+                (void)ble_otaps_SendResponse(p_retry, BLE_OTAPS_OP_CODE_UPDATE_COMPLETE, BLE_OTAPS_RESULT_SUCCESS);
 
                 s_otapsState = BLE_OTAPS_STATE_COMPLETE;
             }
 
-            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_COMPLETE_IND, (uint8_t *)&evtComplete , sizeof(evtComplete));
+            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_COMPLETE_IND, (uint8_t *)&evtComplete , (uint8_t)sizeof(evtComplete));
         }
         break;
         case BLE_OTAPS_OP_CODE_RESET_REQUEST:
             ble_otaps_ConveyEvent(BLE_OTAPS_EVT_RESET_IND, NULL, 0);
             break;
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -671,51 +698,27 @@ static void ble_otaps_PacketHandler(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
 {
     uint16_t err;
     uint8_t result;
-    uint16_t copyLen, remainLen;
-    uint8_t *p_copyData;
     BLE_OTAPS_EvtUpdatingInd_T evtUpdate;
 
     if (s_otapsState != BLE_OTAPS_STATE_UPDATE_START)
     {
-        ble_otaps_SendDataResponse(p_retry, BLE_OTAPS_RESULT_INVALID_STATE);
+        (void)ble_otaps_SendDataResponse(p_retry, BLE_OTAPS_RESULT_INVALID_STATE);
         return;
     }
 
-    p_copyData = p_event->eventField.onWrite.writeValue;
-    remainLen = p_event->eventField.onWrite.writeDataLength;
+    if (p_event->eventField.onWrite.writeDataLength + s_otapsPktBufIdx > BLE_OTAPS_MTU_SIZE)
+    {
+        (void)ble_otaps_SendDataResponse(p_retry, BLE_OTAPS_RESULT_OPERATION_FAILED);
+        return;
+    }
+
+
     evtUpdate.length = 0;
+    (void)memcpy(sp_otapsPktBuf + s_otapsPktBufIdx, p_event->eventField.onWrite.writeValue, p_event->eventField.onWrite.writeDataLength);
+    s_otapsPktBufIdx += p_event->eventField.onWrite.writeDataLength;
 
-    while (remainLen + s_otapsPktBufIdx >= BLE_OTAPS_MTU_SIZE)
-    {
-        copyLen = BLE_OTAPS_MTU_SIZE - s_otapsPktBufIdx;
-
-        memcpy(sp_otapsPktBuf + s_otapsPktBufIdx, p_copyData, copyLen);
-        s_otapsPktBufIdx = 0;
-        p_copyData += copyLen;
-
-        err = ble_otaps_UpdateImage(BLE_OTAPS_MTU_SIZE);
-
-        result = ble_otaps_MbaErrToResult(err);
-
-        if (result != BLE_OTAPS_RESULT_SUCCESS)
-        {
-            s_otapsState = BLE_OTAPS_STATE_UPDATE_ERROR;
-            err = ble_otaps_SendDataResponse(p_retry, result);
-            return;
-        }
-        evtUpdate.length += BLE_OTAPS_MTU_SIZE;
-
-        remainLen -= copyLen;
-        
-    }
-
-    if (remainLen != 0)
-    {
-        memcpy(sp_otapsPktBuf + s_otapsPktBufIdx, p_copyData, remainLen);
-        s_otapsPktBufIdx += remainLen;
-    }
-
-    if (p_event->eventField.onWrite.writeDataLength + s_otapsImgReceieved >= s_otapsPktTotal && s_otapsPktBufIdx)
+    if (p_event->eventField.onWrite.writeDataLength + s_otapsImgReceieved >= s_otapsPktTotal 
+        || s_otapsPktBufIdx == BLE_OTAPS_MTU_SIZE)
     {
         err = ble_otaps_UpdateImage(s_otapsPktBufIdx);
 
@@ -729,9 +732,10 @@ static void ble_otaps_PacketHandler(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
         }
 
         evtUpdate.length += s_otapsPktBufIdx;
+        s_otapsPktBufIdx = 0;
     }
 
-    if (evtUpdate.length != 0)
+    if (evtUpdate.length != 0U)
     {
         if (s_otapsFileType == BLE_OTAPS_IMG_FILE_TYPE_APP)
         {
@@ -739,13 +743,13 @@ static void ble_otaps_PacketHandler(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
 
             s_otapsState = BLE_OTAPS_STATE_WAIT_UPDATE_RSP;
             
-            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATING_REQ, (uint8_t *)&evtUpdate , sizeof(evtUpdate));
+            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATING_REQ, (uint8_t *)&evtUpdate , (uint8_t)sizeof(evtUpdate));
         }
         else
         {
             evtUpdate.p_fragment = NULL;
 
-            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATING_IND, (uint8_t *)&evtUpdate , sizeof(evtUpdate));
+            ble_otaps_ConveyEvent(BLE_OTAPS_EVT_UPDATING_IND, (uint8_t *)&evtUpdate , (uint8_t)sizeof(evtUpdate));
 
             err = ble_otaps_SendDataResponse(p_retry, result);
         }
@@ -756,12 +760,9 @@ static void ble_otaps_PacketHandler(BLE_OTAPS_RetryList_T *p_retry, GATT_Event_T
 
 static void ble_otaps_Disconnect(void)
 {
-    if (s_otapsState > BLE_OTAPS_STATE_CCCD_DISABLED)
-    {
-        ble_otaps_StopProc();
+    ble_otaps_StopProc();
         
-        ble_otaps_FreeBuf();
-    }
+    ble_otaps_FreeBuf();
 }
 
 
@@ -805,7 +806,7 @@ static void ble_otaps_GapEventProcess(BLE_GAP_Event_T *p_event)
         {
             p_retry=ble_otaps_GetRetryListByHandle(p_event->eventField.evtTxBufAvailable.connHandle);
         
-            if (p_retry && p_retry->p_pkt)
+            if ((p_retry!= NULL) && (p_retry->p_pkt != NULL ))
             {
                 switch (p_retry->type)
                 {
@@ -853,6 +854,9 @@ static void ble_otaps_GapEventProcess(BLE_GAP_Event_T *p_event)
                     break;
 
                     default:
+                    {
+                        //Do nothing
+                    }
                     break;
 
                 }
@@ -860,7 +864,10 @@ static void ble_otaps_GapEventProcess(BLE_GAP_Event_T *p_event)
         }
         break;
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -881,7 +888,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                 break;
             }
 
-            if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_DATA_VAL)
+            if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_DATA_VAL)
             {
                 /* No need to send response. */
                 if (p_event->eventField.onWrite.connHandle == s_otapsConnHandle)
@@ -891,9 +898,9 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                 return;
             }
 
-            if ((p_event->eventField.onWrite.attrHandle != BLE_OTAS_HDL_CTRL_CCCD) &&
-                (p_event->eventField.onWrite.attrHandle != BLE_OTAS_HDL_CTRL_VAL) &&
-                (p_event->eventField.onWrite.attrHandle != BLE_OTAS_HDL_DATA_CCCD))
+            if ((p_event->eventField.onWrite.attrHandle != (uint16_t)BLE_OTAS_HDL_CTRL_CCCD) &&
+                (p_event->eventField.onWrite.attrHandle != (uint16_t)BLE_OTAS_HDL_CTRL_VAL) &&
+                (p_event->eventField.onWrite.attrHandle != (uint16_t)BLE_OTAS_HDL_DATA_CCCD))
             {
                 /* Only process write operations on SETTING_MANUAL_WRITE_RSP in OTA. */
                 return;
@@ -902,21 +909,21 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 
             if (sp_otapsCbRoutine == NULL)
             {
-                errCode = ATT_ERRCODE_APPLICATION_ERROR;
+                errCode = ATT_ERR_APPLICATION_ERROR;
             }
             else if (p_event->eventField.onWrite.writeType != ATT_WRITE_REQ)
             {
-                errCode = ATT_ERRCODE_REQUEST_NOT_SUPPORT;
+                errCode = ATT_ERR_REQUEST_NOT_SUPPORT;
             }
             else
             {
 				//Shall not enter here
             }
 
-            if (!errCode)
+            if (errCode==0U)
             {
-                if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_CCCD ||
-                    p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_DATA_CCCD)
+                if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_CCCD ||
+                    p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_DATA_CCCD)
                 {
                     uint16_t cccd;
 
@@ -924,7 +931,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 
                     if (cccd == NOTIFICATION)
                     {
-                        if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_CCCD)
+                        if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_CCCD)
                         {
                             s_otapsCccdStatus |= (BLE_OTAPS_CCCD_CTRL_ON);
                         }
@@ -941,17 +948,17 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 
                         errCode = 0x00;
                     }
-                    else if (cccd == 0x0000)
+                    else if (cccd == 0x0000U)
                     {
                         if (s_otapsConnHandle == BLE_OTAPS_INVALID_CONN_HANDLE || p_event->eventField.onWrite.connHandle == s_otapsConnHandle)
                         {
-                            if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_CCCD)
+                            if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_CCCD)
                             {
-                                s_otapsCccdStatus &= ~(BLE_OTAPS_CCCD_CTRL_ON);
+                                s_otapsCccdStatus &= ~((uint8_t)BLE_OTAPS_CCCD_CTRL_ON);
                             }
                             else
                             {
-                                s_otapsCccdStatus &= ~(BLE_OTAPS_CCCD_DATA_ON);
+                                s_otapsCccdStatus &= ~((uint8_t)BLE_OTAPS_CCCD_DATA_ON);
                             }
                         
                             s_otapsState = BLE_OTAPS_STATE_CCCD_DISABLED;
@@ -959,21 +966,21 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                         }
                         else
                         {
-                            errCode = ATT_ERRCODE_WRITE_NOT_PERMITTED;
+                            errCode = ATT_ERR_WRITE_NOT_PERMITTED;
                         }
                     }
                     else
                     {
-                        errCode = ATT_ERRCODE_APPLICATION_ERROR;
+                        errCode = ATT_ERR_APPLICATION_ERROR;
                     }
                 }
-                else if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_VAL)
+                else if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_VAL)
                 {
                     if (s_otapsState == BLE_OTAPS_STATE_CCCD_DISABLED
                         || (s_otapsConnHandle != BLE_OTAPS_INVALID_CONN_HANDLE && p_event->eventField.onWrite.connHandle != s_otapsConnHandle)
                         || (s_otapsConnHandle == BLE_OTAPS_INVALID_CONN_HANDLE && p_event->eventField.onWrite.writeValue[0] != BLE_OTAPS_OP_CODE_UPDATE_REQUEST))
 					{
-                        errCode = ATT_ERRCODE_WRITE_NOT_PERMITTED;
+                        errCode = ATT_ERR_WRITE_NOT_PERMITTED;
 					}
                 }
 				else
@@ -982,7 +989,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 				}
             }
 
-            if (!errCode)
+            if (errCode==0U)
             {
                 p_retry->p_pkt = OSAL_Malloc(sizeof(GATTS_SendWriteRespParams_T));
                 if (p_retry->p_pkt != NULL)
@@ -993,12 +1000,12 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                         ble_otaps_FreeRetry(p_retry);
 
                         /* It will take long time to validate so we must send write response before calling BLE_OTAPS_OnCtrlPtWrite */
-                        if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_VAL)
+                        if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_VAL)
                         {
                             ble_otaps_OnCtrlPtWrite(p_retry, p_event);
                         }
                     }
-                    else if (p_event->eventField.onWrite.attrHandle == BLE_OTAS_HDL_CTRL_VAL)
+                    else if (p_event->eventField.onWrite.attrHandle == (uint16_t)BLE_OTAS_HDL_CTRL_VAL)
                     {
                         uint16_t validEvtLen;
 
@@ -1007,7 +1014,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                         p_retry->p_gattEvt = OSAL_Malloc(validEvtLen);
                         if (p_retry->p_gattEvt != NULL)
                         {
-                            memcpy(p_retry->p_gattEvt, p_event, validEvtLen);
+                            (void)memcpy(p_retry->p_gattEvt, p_event, validEvtLen);
                         }
 
                         p_retry->type = BLE_OTAPS_RETRY_TYPE_WRITE;
@@ -1043,7 +1050,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 
         case GATTS_EVT_READ:
         {
-            if (p_event->eventField.onRead.attrHandle == BLE_OTAS_HDL_FEATURE_VAL)
+            if (p_event->eventField.onRead.attrHandle == (uint16_t)BLE_OTAS_HDL_FEATURE_VAL)
             {
                 uint8_t errCode = 0;
 
@@ -1056,15 +1063,15 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
 
                 if (sp_otapsCbRoutine == NULL)
                 {
-                    errCode = ATT_ERRCODE_APPLICATION_ERROR;
+                    errCode = ATT_ERR_APPLICATION_ERROR;
                 }
                 else if (s_otapsState == BLE_OTAPS_STATE_CCCD_DISABLED)
                 {
-                    errCode = ATT_ERRCODE_READ_NOT_PERMITTED;
+                    errCode = ATT_ERR_READ_NOT_PERMITTED;
                 }
                 else if (p_event->eventField.onRead.readType != ATT_READ_REQ)
                 {
-                    errCode = ATT_ERRCODE_REQUEST_NOT_SUPPORT;
+                    errCode = ATT_ERR_REQUEST_NOT_SUPPORT;
                 }
                 else
                 {
@@ -1072,7 +1079,7 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                 }
 
 
-                if (!errCode)
+                if (errCode==0U)
                 {
                     p_retry->p_pkt = OSAL_Malloc(sizeof(GATTS_SendReadRespParams_T));
                     if (p_retry->p_pkt != NULL)
@@ -1082,9 +1089,13 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
                         ((GATTS_SendReadRespParams_T *)p_retry->p_pkt)->attrValue[0] = BLE_OTAPS_FEATURE_SUPP_IMG_TYPE;
                         ((GATTS_SendReadRespParams_T *)p_retry->p_pkt)->attrValue[1] = BLE_OTAPS_FEATURE_FW_EXT_FEATURE;
                         if (GATTS_SendReadResponse(p_event->eventField.onRead.connHandle, (GATTS_SendReadRespParams_T *)p_retry->p_pkt) == MBA_RES_SUCCESS)
+                        {
                             ble_otaps_FreeRetry(p_retry);
+                        }
                         else
+                        {
                             p_retry->type = BLE_OTAPS_RETRY_TYPE_READ;
+                        }
                     }
                 }
                 else
@@ -1110,7 +1121,10 @@ static void ble_otaps_GattEventHandler(GATT_Event_T *p_event)
         break;
 
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
@@ -1127,7 +1141,7 @@ uint16_t BLE_OTAPS_Init(void)
 
     s_otapsCccdStatus = 0x00;
 
-    memset(s_otapsRetry, 0x00, sizeof(s_otapsRetry));
+    (void)memset(s_otapsRetry, 0x00, sizeof(s_otapsRetry));
 
     return BLE_OTAS_Add();
 }
@@ -1157,8 +1171,8 @@ uint16_t BLE_OTAPS_SetEncrytionInfo(uint8_t * p_iv, uint8_t * p_key)
         return MBA_RES_BAD_STATE;
     }
 
-    memcpy(s_otapsAesIv, p_iv, 16);
-    memcpy(s_otapsAesKey, p_key, 16);
+    (void)memcpy(s_otapsAesIv, p_iv, 16);
+    (void)memcpy(s_otapsAesKey, p_key, 16);
 
     return MBA_RES_SUCCESS;
 }
@@ -1175,8 +1189,7 @@ uint16_t BLE_OTAPS_UpdateResponse(uint16_t connHandle, bool isAllow, BLE_OTAPS_D
         return MBA_RES_INVALID_PARA;
     }
     
-    if (s_otapsState != BLE_OTAPS_STATE_WAIT_REQ_RSP
-        || p_retry->p_pkt)
+    if ((s_otapsState != BLE_OTAPS_STATE_WAIT_REQ_RSP) || (p_retry->p_pkt!= NULL))
     {
         return MBA_RES_BAD_STATE;
     }
@@ -1202,8 +1215,8 @@ uint16_t BLE_OTAPS_UpdatingResponse(bool success)
 
     p_retry = ble_otaps_GetRetryListByHandle(s_otapsConnHandle);
 
-    if (s_otapsState != BLE_OTAPS_STATE_WAIT_UPDATE_RSP
-        || p_retry == NULL || p_retry->p_pkt)
+    if ((s_otapsState != BLE_OTAPS_STATE_WAIT_UPDATE_RSP)
+        || (p_retry == NULL) || (p_retry->p_pkt != NULL))
     {
         return MBA_RES_BAD_STATE;
     }
@@ -1225,8 +1238,8 @@ uint16_t BLE_OTAPS_CompleteResponse(bool success)
 
     p_retry = ble_otaps_GetRetryListByHandle(s_otapsConnHandle);
 
-    if (s_otapsState != BLE_OTAPS_STATE_WAIT_COMP_RSP
-        || p_retry == NULL || p_retry->p_pkt)
+    if ((s_otapsState != BLE_OTAPS_STATE_WAIT_COMP_RSP)
+        || (p_retry == NULL) || (p_retry->p_pkt != NULL) )
     {
         return MBA_RES_BAD_STATE;
     }
@@ -1258,6 +1271,9 @@ void BLE_OTAPS_BleEventHandler(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

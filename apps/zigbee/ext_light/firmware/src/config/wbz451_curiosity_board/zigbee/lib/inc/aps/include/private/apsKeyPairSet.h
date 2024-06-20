@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _APS_KEY_PAIR_SET_H
-#define _APS_KEY_PAIR_SET_H
+#if !defined APS_KEY_PAIR_SET_H
+#define APS_KEY_PAIR_SET_H
 
 #if defined _LINK_SECURITY_
 /******************************************************************************
@@ -140,6 +140,6 @@ APS_PRIVATE bool apsIsGlobalLinkKey(const APS_KeyHandle_t handle);
 
 #endif /* _LINK_SECURITY_ */
 
-#endif /* _APS_KEY_PAIR_SET_H */
+#endif /* APS_KEY_PAIR_SET_H */
 /** eof apsKeyPairSet.h */
 

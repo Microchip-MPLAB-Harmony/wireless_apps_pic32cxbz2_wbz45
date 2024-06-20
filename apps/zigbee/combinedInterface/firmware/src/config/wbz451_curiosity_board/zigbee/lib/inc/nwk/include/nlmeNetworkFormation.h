@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_NETWORK_FORMATION_H
-#define _NLME_NETWORK_FORMATION_H
+#if !defined NLME_NETWORK_FORMATION_H
+#define NLME_NETWORK_FORMATION_H
 
 /******************************************************************************
                                Includes section
@@ -117,6 +117,6 @@ typedef struct _NWK_NetworkFormationReq_t
  ******************************************************************************/
 void NWK_NetworkFormationReq(NWK_NetworkFormationReq_t *const req);
 
-#endif /* _NLME_NETWORK_FORMATION_H */
+#endif /* NLME_NETWORK_FORMATION_H */
 /** eof nlmeNetworkFormation.h */
 

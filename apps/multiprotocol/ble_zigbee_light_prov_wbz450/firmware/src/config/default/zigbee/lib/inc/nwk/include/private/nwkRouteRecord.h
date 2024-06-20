@@ -48,8 +48,8 @@
 // DOM-IGNORE-END
  
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTE_RECORD_H
-#define _NWK_ROUTE_RECORD_H
+#if !defined NWK_ROUTE_RECORD_H
+#define NWK_ROUTE_RECORD_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -190,6 +190,6 @@ NWK_PRIVATE bool nwkRouteRecordFrameInd(const uint8_t *const payload, const NwkF
 #define nwkRouteRecordFrameInd NULL
 #endif /* NWK_ROUTING_CAPACITY and _NWK_ROUTE_CACHE_ */
 
-#endif /* _NWK_ROUTE_RECORD_H */
+#endif /* NWK_ROUTE_RECORD_H */
 /** eof nwkRouteRecord.h */
 

@@ -167,11 +167,6 @@ typedef struct
 * EXPORTED CONSTANTS
 ***************************************************************************************************/
 
-extern const N_Address_t c_Addr64;
-extern const N_Address_t c_Addr16;
-extern const N_Address_t c_AddrAll;
-extern const N_Address_t c_AddrRXON;
-extern const N_Address_t c_AddrG;
 extern DeviceInfoParameters_t deviceInfoParams;
 /***************************************************************************************************
 * EXPORTED FUNCTIONS

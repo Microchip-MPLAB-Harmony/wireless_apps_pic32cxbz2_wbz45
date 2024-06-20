@@ -60,6 +60,7 @@
 #include <z3device/clusters/include/onOffCluster.h>
 #include <app_zigbee/zigbee_console/console.h>
 #include <app_zigbee/app_zigbee_handler.h>
+#include <z3device/clusters/include/levelControlCluster.h>
 
 /******************************************************************************
                     Prototypes section
@@ -136,12 +137,13 @@ void lightLevelControlClusterInit(void)
   uint8_t level = 0;
   (void)level;
 #endif
-  if (cluster)
+  if (cluster != NULL)
+  {
     cluster->ZCL_AttributeEventInd = ZCL_LevelControlAttributeEventInd;
-
+  }
   if (!PDS_IsAbleToRestore(APP_LIGHT_LEVEL_CONTROL_MEM_ID))
   {
-    lightLevelControlClusterServerAttributes.currentLevel.value = MAX_LIGHT_LEVEL / 2;
+    lightLevelControlClusterServerAttributes.currentLevel.value = MAX_LIGHT_LEVEL / 2U;
     lightLevelControlClusterServerAttributes.remainingTime.value = 0;
     lightLevelControlClusterServerAttributes.clusterVersion.value = LEVEL_CONTROL_CLUSTER_VERSION;
     lightLevelControlClusterServerAttributes.currentLevel.minReportInterval = LEVEL_CONTROL_VAL_MIN_REPORT_PERIOD;
@@ -154,14 +156,16 @@ void lightLevelControlClusterInit(void)
 #if (APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_DIMMABLE_LIGHT)
   else
   {
-      PDS_Restore(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
+      (void)PDS_Restore(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
   }
 #if ZLO_CLUSTER_ENHANCEMENTS == 1
   lightUpdateStartupLevel();
 #endif
   /* To display the LED with the restore current level value afetr reset */
   if (deviceIsOn())
+  {
     level = lightLevelControlClusterServerAttributes.currentLevel.value;
+  }
   LEDS_SET_BRIGHTNESS(level);
 #endif //(APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_DIMMABLE_LIGHT)
 
@@ -173,10 +177,14 @@ void lightLevelControlClusterInit(void)
 void levelControlClusterSetExtensionField(uint16_t currentLevel, uint16_t transitionTime)
 {
   stopMoving();
-  if (0xffff != transitionTime && 0 != transitionTime) 
-    moveToLevel(1, 0, currentLevel, transitionTime);
+  if (0xffffU != transitionTime && 0U != transitionTime)
+  {
+    moveToLevel(1, 0, (uint8_t)currentLevel, transitionTime);
+  }
   else
-    setLevel(false, false, currentLevel);    
+  {
+    setLevel(false, false, (uint8_t)currentLevel);
+  }
 }
 
 /**************************************************************************//**
@@ -185,14 +193,17 @@ void levelControlClusterSetExtensionField(uint16_t currentLevel, uint16_t transi
 void setLevel(bool wOnOff, bool execIfOff, uint8_t level)
 {
   if (wOnOff)
+  {
     adjustOnOffState(level);
-
+  }
   lightLevelControlClusterServerAttributes.currentLevel.value = level;
   lightScenesInvalidate();
 
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_DIMMABLE_LIGHT
   if (!execIfOff)
+  {
     levelControlDisplayLevel(lightLevelControlClusterServerAttributes.currentLevel.value);
+  }
 #endif
 
 #if ZLO_CLUSTER_ENHANCEMENTS == 1
@@ -203,7 +214,7 @@ void setLevel(bool wOnOff, bool execIfOff, uint8_t level)
 #endif
 
 #ifdef _ZCL_REPORTING_SUPPORT_
-  ZCL_ReportOnChangeIfNeeded(&lightLevelControlClusterServerAttributes.currentLevel);
+  (void)ZCL_ReportOnChangeIfNeeded(&lightLevelControlClusterServerAttributes.currentLevel);
 #endif
 }
 
@@ -235,20 +246,20 @@ static void adjustOnOffState(uint8_t level)
 ******************************************************************************/
 static void moveToLevel(bool wOnOff, bool execIfOff, uint8_t newLevel, uint16_t transitionTime)
 {
-  int16_t level = newLevel;
+  int16_t level = (int16_t)newLevel;
   stopMoving();
 
   gTransitionTime = transitionTime;
   gTargetLevel = newLevel;
-  gDelta = level - lightLevelControlClusterServerAttributes.currentLevel.value;
+  gDelta = (int16_t)(level - (int16_t)lightLevelControlClusterServerAttributes.currentLevel.value);
   gWithOnOff = wOnOff;
   gExecuteIfOff = execIfOff;
 
   updateTimer.mode = TIMER_REPEAT_MODE;
   updateTimer.interval = UPDATE_TIMER_INTERVAL;
   updateTimer.callback = updateTransitionState;
-  HAL_StopAppTimer(&updateTimer);
-  HAL_StartAppTimer(&updateTimer);
+  (void)HAL_StopAppTimer(&updateTimer);
+  (void)HAL_StartAppTimer(&updateTimer);
   lightLevelControlClusterServerAttributes.remainingTime.value = transitionTime;
 }
 
@@ -261,27 +272,27 @@ static void updateTransitionState(void)
   {/* If the LC command is WITH on/off, then stop transition when the light is
     * turned off while the transition in progress. */
     lightLevelControlClusterServerAttributes.remainingTime.value = 0;
-    HAL_StopAppTimer(&updateTimer);
+    (void)HAL_StopAppTimer(&updateTimer);
     return;
   }
 
-  if (lightLevelControlClusterServerAttributes.remainingTime.value > 0)
+  if (lightLevelControlClusterServerAttributes.remainingTime.value > 0U)
   {
-    int32_t remainingTime = lightLevelControlClusterServerAttributes.remainingTime.value;
-    int16_t newLevel = (int16_t)gTargetLevel - ((remainingTime * gDelta) / (int32_t)gTransitionTime);
+    int32_t remainingTime = (int32_t)(lightLevelControlClusterServerAttributes.remainingTime.value);
+    int16_t newLevel = (int16_t)((int16_t)gTargetLevel - ((remainingTime * gDelta) / (int32_t)gTransitionTime));
 	lightLevelControlClusterServerAttributes.remainingTime.value--;
     setLevel(gWithOnOff, gExecuteIfOff, (uint8_t)newLevel);
   }
   else
   {
-    HAL_StopAppTimer(&updateTimer);
+    (void)HAL_StopAppTimer(&updateTimer);
     setLevel(gWithOnOff, gExecuteIfOff, gTargetLevel);
     gWithOnOff = false;
     gExecuteIfOff = false;
 
     appSnprintf(" + Level transition is finished. Current level is %u\r\n", gTargetLevel);
 
-    PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
+    (void)PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
   }
 }
 
@@ -290,7 +301,7 @@ static void updateTransitionState(void)
 ******************************************************************************/
 static void stopMoving(void)
 {
-  HAL_StopAppTimer(&updateTimer);
+  (void)HAL_StopAppTimer(&updateTimer);
   gWithOnOff = false;
   lightLevelControlClusterServerAttributes.remainingTime.value = 0;
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_DIMMABLE_LIGHT
@@ -318,20 +329,20 @@ static ZCL_Status_t processMoveToLevel(bool wOnOff, ZCL_Addressing_t *addressing
                                    lightLevelControlClusterServerAttributes.options.value);
 #endif // #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
 
-  if (!wOnOff && !status && !on)
+  if (!wOnOff && !(bool)status && !(bool)on)
   {
     if (payloadLength > sizeof(ZCL_MoveToLevel_t))
     {
       /* Check for options override */
       ZCL_MoveToLevelWithOptions_t *tmp = (ZCL_MoveToLevelWithOptions_t *)payload;
       executeIfOff = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsMask);
-      executeIfOff &= (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride);
+      executeIfOff = (bool)((uint8_t)executeIfOff & (uint8_t)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride));
       if (!executeIfOff)
       {
         return ZCL_SUCCESS_STATUS;
       }
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask) != 0U)
       {
         gUpdateCoupledColorTemp = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK &
                                          tmp->optionsOverride);
@@ -341,8 +352,8 @@ static ZCL_Status_t processMoveToLevel(bool wOnOff, ZCL_Addressing_t *addressing
     else
     {
       /* Check for ExecuteIfOff bit */
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
-          lightLevelControlClusterServerAttributes.options.value)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
+          lightLevelControlClusterServerAttributes.options.value) != 0U)
       {
         executeIfOff = true;
       }
@@ -355,19 +366,21 @@ static ZCL_Status_t processMoveToLevel(bool wOnOff, ZCL_Addressing_t *addressing
  #endif 
 
   if (req->level > MAX_LIGHT_LEVEL)
+  {
     req->level = MAX_LIGHT_LEVEL;
-
+  }
   if (req->level < MIN_LIGHT_LEVEL)
+  {
     req->level = MIN_LIGHT_LEVEL;
-
-  if (0xffff != req->transitionTime && 0 != req->transitionTime)
+  }
+  if (0xffffU != req->transitionTime && 0U != req->transitionTime)
   {
     moveToLevel(wOnOff, executeIfOff, req->level, req->transitionTime);
   }
   else
   {
     setLevel(wOnOff, executeIfOff, req->level);
-    PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
+    (void)PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
   }
 
   (void)addressing;
@@ -394,20 +407,20 @@ static ZCL_Status_t processMove(bool wOnOff, ZCL_Addressing_t *addressing, uint8
                                    lightLevelControlClusterServerAttributes.options.value);
 #endif // #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
 
-  if (!wOnOff && !status && !on)
+  if (!wOnOff && !(bool)status && !(bool)on)
   {
     if (payloadLength > sizeof(ZCL_Move_t))
     {
       /* Check for options override */
       ZCL_MoveWithOptions_t *tmp = (ZCL_MoveWithOptions_t *)payload;
       executeIfOff = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsMask);
-      executeIfOff &= (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride);
+      executeIfOff = (bool)((uint8_t)executeIfOff & (uint8_t)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride));
       if (!executeIfOff)
       {
         return ZCL_SUCCESS_STATUS;
       }
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask) != 0U)
       {
         gUpdateCoupledColorTemp = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK &
                                          tmp->optionsOverride);
@@ -417,8 +430,8 @@ static ZCL_Status_t processMove(bool wOnOff, ZCL_Addressing_t *addressing, uint8
     else
     {
       /* Check for ExecuteIfOff bit */
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
-          lightLevelControlClusterServerAttributes.options.value)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
+          lightLevelControlClusterServerAttributes.options.value) != 0U)
       {
         executeIfOff = true;
       }
@@ -435,14 +448,22 @@ static ZCL_Status_t processMove(bool wOnOff, ZCL_Addressing_t *addressing, uint8
   if (ZLL_LEVEL_CONTROL_UP_DIRECTION == req->moveMode)
   {
     level = MAX_LIGHT_LEVEL;
-	if(req->rate)
-      transitionTime = ((MAX_LIGHT_LEVEL - currentLevel) * 10 /* 1/10 sec */) / req->rate;
+	if((req->rate) != 0U)
+    {
+      transitionTime =(uint8_t)(((MAX_LIGHT_LEVEL - currentLevel) * 10U /* 1/10 sec */) / req->rate);
+    }
   }
   else if (ZLL_LEVEL_CONTROL_DOWN_DIRECTION == req->moveMode)
   {
     level = MIN_LIGHT_LEVEL;
-	if(req->rate)
-      transitionTime = ((currentLevel - MIN_LIGHT_LEVEL) * 10 /* 1/10 sec */) / req->rate;
+	if((req->rate) != 0U)
+    {
+      transitionTime = (uint8_t)(((currentLevel - MIN_LIGHT_LEVEL) * 10U /* 1/10 sec */) / req->rate);
+    }
+  }
+  else
+  {
+       //add else for avoid misra rule 15.7
   }
 
   moveToLevel(wOnOff, executeIfOff, level, transitionTime);
@@ -469,20 +490,20 @@ static ZCL_Status_t processStep(bool wOnOff, ZCL_Addressing_t *addressing, uint8
                                    lightLevelControlClusterServerAttributes.options.value);
 #endif // #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
 
-  if (!wOnOff && !status && !on)
+  if (!wOnOff && !(bool)status && !(bool)on)
   {
     if (payloadLength > sizeof(ZCL_Step_t))
     {
       /* Check for options override */
       ZCL_StepWithOptions_t *tmp = (ZCL_StepWithOptions_t *)payload;
       executeIfOff = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsMask);
-      executeIfOff &= (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride);
+      executeIfOff = (bool)((uint8_t)executeIfOff & (uint8_t)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride));
       if (!executeIfOff)
       {
         return ZCL_SUCCESS_STATUS;
       }
 #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK & tmp->optionsMask) != 0U)
       {
         gUpdateCoupledColorTemp = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_COUPLE_COLOR_TEMP_TO_LEVEL_MASK &
                                          tmp->optionsOverride);
@@ -492,8 +513,8 @@ static ZCL_Status_t processStep(bool wOnOff, ZCL_Addressing_t *addressing, uint8
     else
     {
       /* Check for ExecuteIfOff bit */
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
-          lightLevelControlClusterServerAttributes.options.value)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
+          lightLevelControlClusterServerAttributes.options.value) != 0U)
       {
         executeIfOff = true;
       }
@@ -504,35 +525,44 @@ static ZCL_Status_t processStep(bool wOnOff, ZCL_Addressing_t *addressing, uint8
     }
   }
 #endif
-  level = lightLevelControlClusterServerAttributes.currentLevel.value;
+  level = (int16_t)lightLevelControlClusterServerAttributes.currentLevel.value;
 
   if (ZLL_LEVEL_CONTROL_UP_DIRECTION == req->stepMode)
   {
-    level += req->stepSize;
+    level += (int16_t)(req->stepSize);
 
-    if (level > MAX_LIGHT_LEVEL)
-      level = MAX_LIGHT_LEVEL;
+    if (level > (int16_t)MAX_LIGHT_LEVEL)
+    {
+      level = (int16_t)MAX_LIGHT_LEVEL;
+    }
   }
 
   else if (ZLL_LEVEL_CONTROL_DOWN_DIRECTION == req->stepMode)
   {
-    level -= req->stepSize;
+    level -= (int16_t)req->stepSize;
 
-    if (level < MIN_LIGHT_LEVEL)
-      level = MIN_LIGHT_LEVEL;
+    if (level < (int16_t)MIN_LIGHT_LEVEL)
+    {
+      level = (int16_t)MIN_LIGHT_LEVEL;
+    }
+  }
+  else
+  {
+       //add else for avoid misra rule 15.7
   }
 
-  if (0xffff != req->transitionTime && 0 != req->transitionTime)
+  if (0xffffU != req->transitionTime && 0U != req->transitionTime)
   {
-    moveToLevel(wOnOff, executeIfOff, level, req->transitionTime);
+    moveToLevel(wOnOff, executeIfOff, (uint8_t)level, req->transitionTime);
   }
 
   if (!wOnOff && !deviceIsOn())
+  {
     return ZCL_SUCCESS_STATUS;
-
+  }
   stopMoving();
-  setLevel(wOnOff, executeIfOff, level);
-  PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
+  setLevel(wOnOff, executeIfOff, (uint8_t)level);
+  (void)PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
 
   (void)addressing;
   (void)payloadLength;
@@ -550,14 +580,14 @@ static ZCL_Status_t processStop(bool wOnOff, ZCL_Addressing_t *addressing, uint8
   bool executeIfOff = false;
 
 #if ZLO_CLUSTER_ENHANCEMENTS == 1
-  if (!wOnOff && !status && !on)
+  if (!wOnOff && !(bool)status && !(bool)on)
   {
-    if (payloadLength > 0)
+    if (payloadLength > 0U)
     {
       /* Check for options override */
       ZCL_StopWithOptions_t *tmp = (ZCL_StopWithOptions_t *)payload;
-      executeIfOff = (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsMask);
-      executeIfOff &= (bool)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride);
+      executeIfOff = (bool)((uint8_t)ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &(uint8_t)(tmp->optionsMask));
+      executeIfOff = (bool)((uint8_t)executeIfOff & (uint8_t)(ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK & tmp->optionsOverride));
       if (!executeIfOff)
       {
         return ZCL_SUCCESS_STATUS;
@@ -566,8 +596,8 @@ static ZCL_Status_t processStop(bool wOnOff, ZCL_Addressing_t *addressing, uint8
     else
     {
       /* Check for ExecuteIfOff bit */
-      if (ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
-          lightLevelControlClusterServerAttributes.options.value)
+      if ((ZCL_LEVEL_CONTROL_OPTIONS_ATTR_EXECUTE_IF_OFF_MASK &
+          lightLevelControlClusterServerAttributes.options.value) != 0U)
       {
         executeIfOff = true;
       }
@@ -580,7 +610,7 @@ static ZCL_Status_t processStop(bool wOnOff, ZCL_Addressing_t *addressing, uint8
 #endif
   gExecuteIfOff = executeIfOff;
   stopMoving();
-  PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
+  (void)PDS_Store(Z3DEVICE_APP_MEMORY_MEM_ID);
 
   (void)wOnOff;
   (void)addressing;
@@ -604,10 +634,14 @@ static ZCL_Status_t moveToLevelInd(ZCL_Addressing_t *addressing, uint8_t payload
 
   APP_Zigbee_Handler(event);
 #endif
-  if((req->optionsMask == 0) && (req->optionsOverride ==0))
-    return processMoveToLevel(false, addressing, payloadLength-sizeof(uint16_t), payload);
+  if((req->optionsMask == 0U) && (req->optionsOverride ==0U))
+  {
+    return processMoveToLevel(false, addressing, (uint8_t)(payloadLength-sizeof(uint16_t)), payload);
+  }
   else
+  {
     return processMoveToLevel(false, addressing, payloadLength, payload);
+  }
 }
 /**************************************************************************//**
 \brief Callback on receive of Move command
@@ -764,7 +798,7 @@ void lightUpdateStartupLevel(void)
       lightLevelControlClusterServerAttributes.startUpCurrentLevel.value;
   }
 
-  PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
+  (void)PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
 }
 #endif
 /**************************************************************************//**
@@ -803,7 +837,7 @@ static void ZCL_LevelControlAttributeEventInd(ZCL_Addressing_t *addressing, ZCL_
      )
 #endif
   {
-    PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
+    (void)PDS_Store(APP_LIGHT_LEVEL_CONTROL_MEM_ID);
   }
 }
 #endif // APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_ON_OFF_LIGHT

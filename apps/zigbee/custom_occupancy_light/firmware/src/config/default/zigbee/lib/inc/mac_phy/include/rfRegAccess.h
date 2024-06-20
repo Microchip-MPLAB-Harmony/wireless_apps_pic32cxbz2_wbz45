@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _RFREGACCESS_H
-#define _RFREGACCESS_H
+#if !defined RFREGACCESS_H
+#define RFREGACCESS_H
 
 /******************************************************************************
                                 Includes section
@@ -129,5 +129,5 @@ void RF_RegWriteReq(RF_RegAccessReq_t *const req);
  ******************************************************************************/
 void RF_RegReadReq(RF_RegAccessReq_t *const req);
 
-#endif /* _RFREGACCESS_H */
+#endif /* RFREGACCESS_H */
 /** eof rfRegAccess.h */

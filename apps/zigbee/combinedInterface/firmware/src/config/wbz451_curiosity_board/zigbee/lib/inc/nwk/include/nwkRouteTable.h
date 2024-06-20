@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTE_TABLE_H
-#define _NWK_ROUTE_TABLE_H
+#if !defined NWK_ROUTE_TABLE_H
+#define NWK_ROUTE_TABLE_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -77,23 +77,23 @@ typedef struct PACK _NwkRoutingTableEntry_t
    **/
   ShortAddr_t nextHopAddr;
   /** A flag indicating that the entry is active. */
-  bool active              : 1;
+  BitField_t active              : 1;
   /** A flag indicating that the destination indicated by this address does
    * not store source routes. */
-  bool noRouteCache        : 1;
+  BitField_t noRouteCache        : 1;
   /** A flag indicating that the destination is a concentrator
    * that issued a many-to-one route request. */
-  bool manyToOne           : 1;
+  BitField_t manyToOne           : 1;
   /** A flag indicating that a route record command frame should be sent to
    * the destination prior to the next data packet. */
-  bool routeRecordRequired : 1;
+  BitField_t routeRecordRequired : 1;
   /** A flag indicating that the destination address is a Group ID. */
-  bool groupId             : 1;
+  BitField_t groupId             : 1;
   /** Indicate to upper layer about new concentrator. */
-  bool newConcentrator     : 1;
+  BitField_t newConcentrator     : 1;
   /** Reserved for future use*/
-  bool reserved1           : 1;
-  bool reserved2           : 1;
+  BitField_t reserved1           : 1;
+  BitField_t reserved2           : 1;
   NwkRoutingRate_t rate;
   /** Cost of route path to destination node. */
   NwkPathCost_t cost;
@@ -128,6 +128,6 @@ typedef NwkRoutingTable_t RouteTable_t;
  ******************************************************************************/
 NwkRoutingTableEntry_t* NWK_NextRoutingEntry(NwkRoutingTableEntry_t *entry);
 
-#endif /* _NWK_ROUTE_TABLE_H */
+#endif /* NWK_ROUTE_TABLE_H */
 /** eof nwkRouteTable.h */
 

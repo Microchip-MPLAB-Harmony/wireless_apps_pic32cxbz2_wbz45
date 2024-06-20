@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOSTARTNETWORK_H
-#define _ZDOSTARTNETWORK_H
+#ifndef ZDOSTARTNETWORK_H
+#define ZDOSTARTNETWORK_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -174,6 +174,6 @@ ZDO_PRIVATE void zdoPerformIntraPanPortability(void);
 #define zdoPerformIntraPanPortability() (void)0
 #endif
 
-#endif // _ZDOSTARTNETWORK_H
+#endif // ZDOSTARTNETWORK_H
 
 // eof zdoStartNetwork.h

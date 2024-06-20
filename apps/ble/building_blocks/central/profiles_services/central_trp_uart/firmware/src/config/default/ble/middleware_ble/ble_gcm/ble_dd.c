@@ -188,7 +188,7 @@ static void ble_dd_SendDiscCompleteEvent(BLE_DD_Conn_T *p_conn)
 
 static void ble_dd_ServiceDiscovery(BLE_DD_Conn_T *p_conn)
 {
-    GATTC_DiscoverPrimaryServiceByUuidParams_T discParams;
+    GATTC_DiscoverPrimaryServiceParams_T discParams;
 
     p_conn->p_charInfoList = sp_ddCtrl->services[p_conn->discSvcIndex].p_charList[p_conn->connIndex].p_charInfo;
     (void)memset((uint8_t *)p_conn->p_charInfoList, 0, sizeof(BLE_DD_CharInfo_T)*sp_ddCtrl->services[p_conn->discSvcIndex].discCharsNum);
@@ -251,7 +251,7 @@ static void ble_dd_ProcCharDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
     uint8_t             *p_uuid;
 
     /* ATT has error checking. There should be only these 2 cases. */
-    if (p_event->eventField.onDiscCharResp.attrPairLength == DISC_CHAR_UUID16_RSP_LENGTH)
+    if (p_event->eventField.onDiscCharResp.attrPairLength == (uint8_t)DISC_CHAR_UUID16_RSP_LENGTH)
     {
         uuidLength = ATT_UUID_LENGTH_16;
     }
@@ -287,7 +287,7 @@ static void ble_dd_ProcDescDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
 {
     BLE_DD_DiscChar_T   **p_discChar;
     uint16_t            procIdx = 0;
-    uint8_t             uuidLength, idx;
+    uint16_t            uuidLength, idx;
     uint8_t             *p_uuid;
 
     /* GATT has filtering. The format of information data should only be 0x01 (16-bit UUID). */
@@ -311,7 +311,7 @@ static void ble_dd_ProcDescDiscResp(BLE_DD_Conn_T *p_conn, GATT_Event_T *p_event
                 }
             }
         }
-        procIdx += (2+uuidLength);
+        procIdx += (2U+ uuidLength);
     }
 }
 
@@ -349,10 +349,10 @@ static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Even
 
                         if (p_config->disableConnectedDisc == 0U)
                         {
-                            if (((p_config->initDiscInCentral) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
-                                ((p_config->initDiscInPeripheral) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
+                            if (((p_config->initDiscInCentral==1U) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
+                                ((p_config->initDiscInPeripheral==1U) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
                             {
-                                if (p_config->waitForSecurity == false)
+                                if (p_config->waitForSecurity == 0U)
                                 {
                                     p_conn->isDiscovering = true;
                                     ble_dd_ServiceDiscovery(p_conn);
@@ -394,7 +394,7 @@ static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Even
 
         case BLE_GAP_EVT_ENCRYPT_STATUS:
         {
-            if (p_event->eventField.evtEncryptStatus.status == BLE_GAP_ENCRYPT_SUCCESS)
+            if (p_event->eventField.evtEncryptStatus.status == GAP_STATUS_SUCCESS)
             {
                 BLE_DD_Conn_T *p_conn;
 
@@ -403,7 +403,7 @@ static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Even
 
                 if (p_conn != NULL)
                 {
-                    if ((p_conn->p_discInstance != NULL) && (p_conn->p_discInstance->queuedReqBySecurity))
+                    if ((p_conn->p_discInstance != NULL) && (p_conn->p_discInstance->queuedReqBySecurity!=0U))
                     {
                         if (p_conn->p_discInstance->queuedReqBySecurity == ATT_FIND_BY_TYPE_VALUE_REQ)
                         {
@@ -425,16 +425,16 @@ static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Even
                         }
                         else
                         {
-							//Shall not enter here
+                            //Shall not enter here
                         }
                         p_conn->p_discInstance->queuedReqBySecurity = 0;
                     }
                     else
                     {
-                        if ((p_config->waitForSecurity == true) && (sp_ddCtrl->numOfService > 0U) && (p_conn->p_discInstance != NULL) && (p_conn->disableDiscovery == false))
+                        if ((p_config->waitForSecurity == 1U) && (sp_ddCtrl->numOfService > 0U) && (p_conn->p_discInstance != NULL) && (p_conn->disableDiscovery == false))
                         {
-                            if (((p_config->initDiscInCentral) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
-                                ((p_config->initDiscInPeripheral) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
+                            if (((p_config->initDiscInCentral==1U) && (p_conn->gapRole == BLE_GAP_ROLE_CENTRAL)) ||
+                                ((p_config->initDiscInPeripheral==1U) && (p_conn->gapRole == BLE_GAP_ROLE_PERIPHERAL)))
                             {
                                 p_conn->isDiscovering = true;
                                 ble_dd_ServiceDiscovery(p_conn);
@@ -447,6 +447,9 @@ static void ble_dd_StackEvtBleGapHandler(BLE_DD_Config_T *p_config, BLE_GAP_Even
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -470,7 +473,7 @@ static void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
                 }
 
                 /* Require security permission to access characteristics. Inform application and pause the discovery. */
-                if ((p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_ENCRYPTION) || (p_event->eventField.onError.errCode == ATT_ERRCODE_INSUFFICIENT_AUTHENTICATION))
+                if ((p_event->eventField.onError.errCode == ATT_ERR_INSUF_ENC) || (p_event->eventField.onError.errCode == ATT_ERR_INSUF_AUTHN))
                 {
                     p_conn->p_discInstance->queuedReqBySecurity = p_event->eventField.onError.reqOpcode;
                     if (s_ddEventCb != NULL)
@@ -669,6 +672,9 @@ static void ble_dd_StackEvtBleGattcHandler(GATT_Event_T *p_event)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -742,6 +748,9 @@ void BLE_DD_BleEventHandler(BLE_DD_Config_T *p_config, STACK_Event_T *p_stackEve
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

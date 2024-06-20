@@ -80,12 +80,12 @@ extern "C" {
 #define DIS_IEEE_11073_20601                           "NULL"    /* IEEE 11073-20601 Data */
 #define DIS_PNP_ID                                     "NULL"    /* PnP Id */
 
-#define UUID_DEVICE_INFO_SERVICE                        0x180A      /**< Device Information Service. */
+#define UUID_DEVICE_INFO_SERVICE                       (0x180AU)      /**< Device Information Service. */
 
 /**@defgroup BLE_DIS_ASSIGN_HANDLE BLE_DIS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE Device Information Service.
  * @{ */
-#define DIS_START_HDL                                   0x0080      /**< The start attribute handle of device information service. */
+#define DIS_START_HDL                                  (0x0080U)      /**< The start attribute handle of device information service. */
 /** @} */
 
 /**@brief Definition of BLE Device Information Service attribute handle */

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTIDENTIFYCLUSTER_H
-#define _LIGHTIDENTIFYCLUSTER_H
+#ifndef LIGHTIDENTIFYCLUSTER_H
+#define LIGHTIDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Defines
@@ -77,9 +77,9 @@ bool lightIdentifyIsIdentifying(void);
 /**************************************************************************//**
 \brief Makes device to start identify itself
 
-\param[in] time - identifying time in seconds
+\param[in] identifyTime - identifying time in seconds
 ******************************************************************************/
-void lightIdetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
+void lightIdetifyStartIdentifyingCb(uint16_t identifyTime, void (*cb)(void));
 
 /**************************************************************************//**
 \brief Stops identifying on endpoints
@@ -95,7 +95,7 @@ void lightIdentifyStop(void);
 ******************************************************************************/
 void lightIdentifyStart(uint16_t identifyTime, bool colorEffect, uint16_t enhancedHue);
 
-#endif // _LIGHTIDENTIFYCLUSTER_H
+#endif // LIGHTIDENTIFYCLUSTER_H
 
 // eof lightIdentifyCluster.h
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_ROUTE_DISCOVERY_H
-#define _NLME_ROUTE_DISCOVERY_H
+#if !defined NLME_ROUTE_DISCOVERY_H
+#define NLME_ROUTE_DISCOVERY_H
 
 /******************************************************************************
                                Includes section
@@ -127,6 +127,6 @@ void NWK_FreeRoutingEntry(const ShortAddr_t dstAddr, const bool isGroupId);
 
 #endif /* NWK_ROUTING_CAPACITY and (_NWK_MESH_ROUTING_ or _NWK_MANY_TO_ONE_ROUTING_) */
 
-#endif /* _NLME_ROUTE_DISCOVERY_H */
+#endif /* NLME_ROUTE_DISCOVERY_H */
 /** eof nlmeRouteDiscovery.h */
 

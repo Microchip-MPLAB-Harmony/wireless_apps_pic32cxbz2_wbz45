@@ -43,8 +43,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _ZDO_ZDP_REQ_H
-#define _ZDO_ZDP_REQ_H
+#if !defined ZDO_ZDP_REQ_H
+#define ZDO_ZDP_REQ_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -145,5 +145,5 @@ ZDO_PRIVATE uint8_t ZDO_GetNextSequenceNumber(void);
 bool validateZdpResponse(const APS_DataInd_t *const apsDataInd);
 
 
-#endif /* _ZDO_ZDP_REQ_H */
+#endif /* ZDO_ZDP_REQ_H */
 /** eof zdoZdpReq.h */

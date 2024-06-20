@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _THFANCONTROLCLUSTER_H
-#define _THFANCONTROLCLUSTER_H
+#ifndef THFANCONTROLCLUSTER_H
+#define THFANCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -73,6 +73,6 @@ void customFanControlClusterInit(void);
 ******************************************************************************/
 void customFanControlOccupancyNotify(bool occupied);
 
-#endif // _THFANCONTROLCLUSTER_H
+#endif // THFANCONTROLCLUSTER_H
 
 // eof thFanControlCluster.h

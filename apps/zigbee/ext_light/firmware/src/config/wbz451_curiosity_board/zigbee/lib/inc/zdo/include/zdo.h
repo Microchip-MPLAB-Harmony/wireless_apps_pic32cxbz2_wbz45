@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDO_H
-#define _ZDO_H
+#ifndef ZDO_H
+#define ZDO_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -228,26 +228,26 @@ END_PACK
 
 /** Describes the parameters of the LQI response */
 BEGIN_PACK
-typedef struct PACK _NeighborTableList_t
+typedef struct PACK NeighborTableList_
 {
   ExtPanId_t       extPanId;
   ExtAddr_t        extAddr;
   ShortAddr_t      networkAddr;
   LITTLE_ENDIAN_OCTET(4, (
-    uint8_t          deviceType : 2,
-    uint8_t          rxOnWhenIdle : 2,
-    uint8_t          relationship : 3,
-    uint8_t          reserved1 : 1
+    BitField_t          deviceType : 2,
+    BitField_t          rxOnWhenIdle : 2,
+    BitField_t          relationship : 3,
+    BitField_t          reserved1 : 1
   ))
   LITTLE_ENDIAN_OCTET(2, (
-    uint8_t          permitJoining : 2,
-    uint8_t          reserved2 : 6
+    BitField_t          permitJoining : 2,
+    BitField_t          reserved2 : 6
   ))
   uint8_t          depth;
   uint8_t          lqi;
 } NeighborTableList_t;
 
-typedef struct PACK _ZDO_MgmtLqiResp_t
+typedef struct PACK ZDO_MgmtLqiResp_
 {
   uint8_t   neighborTableEntries; //!< The number of entries in the neighbor table on the target device
   uint8_t   startIndex; //!< The position of the first retrieved entry in the neighbor table
@@ -264,20 +264,20 @@ typedef struct
 
 /** Describes the parameters of the Rtg response */
 BEGIN_PACK
-typedef struct PACK _RoutingTableList_t
+typedef struct PACK RoutingTableList_
 {
   ShortAddr_t      dstAddr;
   LITTLE_ENDIAN_OCTET(5, (
-    uint8_t          status : 3,
-    uint8_t          memoryConstrained : 1,
-    uint8_t          manyToOne : 1,
-    uint8_t          routeRecordrequired : 1,
-    uint8_t          reserved : 2
+    BitField_t          status : 3,
+    BitField_t          memoryConstrained : 1,
+    BitField_t          manyToOne : 1,
+    BitField_t          routeRecordrequired : 1,
+    BitField_t          reserved : 2
   ))
   ShortAddr_t      nextHopAddr;
 } RoutingTableList_t;
 
-typedef struct PACK _ZDO_MgmtRtgResp_t
+typedef struct PACK ZDO_MgmtRtgResp_
 {
   uint8_t   routingTableEntries; //!< The number of entries in the routing table on the target device
   uint8_t   startIndex; //!< The position of the first retrieved entry in the routing table
@@ -464,7 +464,7 @@ typedef struct PACK
 
 #ifdef _CHILD_MANAGEMENT_
 #ifdef _PARENT_ANNCE_
-typedef struct PACK _ChildrenInfo_t
+typedef struct PACK ChildrenInfo_
 {
   ExtAddr_t ieeeAddrChild; //!< IEEE address for the Child Device
 // uint32_t  age;          //!< Age of the Child device
@@ -630,15 +630,15 @@ typedef struct PACK
   */
   uint8_t deviceAddr[8];
   LITTLE_ENDIAN_OCTET(3, (
-    uint8_t   reserved : 6, //!< Reserved; can not be changed by user.
+    BitField_t   reserved : 6, //!< Reserved; can not be changed by user.
     /*! This field shall be set to 1 if the device being asked to leave the
     network is also asked to remove all its child devices, if any.
     Otherwise, it is 0.*/
-    uint8_t   removeChildren : 1,
+    BitField_t   removeChildren : 1,
     /*! This field shall have be set 1 if the device being asked to leave from the
     current parent is requested to rejoin the network after if leaves it.
     If this field os set to 0 the device will not rejoin the network.*/
-    uint8_t   rejoin : 1
+    BitField_t   rejoin : 1
   ))
 } ZDO_MgmtLeaveReq_t;
 
@@ -848,8 +848,8 @@ typedef struct PACK
   LITTLE_ENDIAN_OCTET(2, (
     /*! The application device version field of the simple descriptor is four bits in length
     and specifies the version of the device description supported on this endpoint.*/
-    uint8_t      AppDeviceVersion : 4,
-    uint8_t      Reserved         : 4
+    BitField_t      AppDeviceVersion : 4,
+    BitField_t      Reserved         : 4
   ))
   /*! The application input cluster count field of the simple descriptor is eight bits in
   length and specifies the number of input clusters, supported on this endpoint, that
@@ -1042,7 +1042,7 @@ typedef struct PACK
     /*! Request payload - parameters specific to the request's type */
     ZDO_ZdpReqFrame_t  reqPayload;
   };
-#if (APS_AFFIX_LENGTH - APS_ASDU_OFFSET)
+#if ((APS_AFFIX_LENGTH - APS_ASDU_OFFSET) > 0U)
   uint8_t footer[APS_AFFIX_LENGTH - APS_ASDU_OFFSET];
 #endif
   BOTTOM_GUARD
@@ -1183,7 +1183,7 @@ typedef struct
 #endif // _SECURITY_
 
 #ifdef _STACK_INTERNAL_TEST_FRAMEWORK_
-typedef struct _ZdoZdpReqTestData_t
+typedef struct ZdoZdpReqTestData_
 {
   APS_DataInd_t *apsInd;
   bool internalHandlingDenied;
@@ -1459,7 +1459,7 @@ ZDO_NwkStatus_t ZDO_GetNwkStatus(void);
  ******************************************************************************/
 void ZDO_GetNeibAmount(ZDO_GetNeibAmount_t *amount);
 
-/**************************************************************************//**
+/******************************************************************************
   \brief Retrieves the neighbor table
 
   
@@ -1473,7 +1473,7 @@ time, i.e. a variable for the buffer shall be static. The following code example
 demonstrates a typical way to call the function:
 
 \code
-static ZDO_Neib_t neighborTable[CS_NEIB_TABLE_SIZE]; // Buffer for the neighbor table
+static ZDO_Neib_t neighborTable[CS_NEIB_TABLE_SIZE];  Buffer for the neighbor table
 ...
 ZDO_GetNeibTable(neighborTable);
 \endcode
@@ -1699,6 +1699,6 @@ const NodeDescriptor_t* ZDO_GetNodeDescriptor(void);
  ******************************************************************************/
 bool ZDO_ZdpReqDeleteQueueElem(ZDO_ZdpReq_t *zdpReq);
 
-#endif // _ZDO_H
+#endif // ZDO_H
 
 // eof zdo.h

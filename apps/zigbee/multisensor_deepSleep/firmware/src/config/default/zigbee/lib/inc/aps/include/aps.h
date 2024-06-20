@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APS_H
-#define _APS_H
+#if !defined APS_H
+#define APS_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -252,6 +252,6 @@ INLINE void apsUpdateNullIEEEaddr(NWK_DataReq_t *const req)
 }
 #endif
 
-#endif  /* _APS_H */
+#endif  /* APS_H */
 /** eof aps.h */
 

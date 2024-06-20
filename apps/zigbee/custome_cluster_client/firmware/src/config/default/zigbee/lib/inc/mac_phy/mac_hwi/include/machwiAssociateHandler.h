@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIASSOCIATEHANDLER_H
-#define _MACHWIASSOCIATEHANDLER_H
+#ifndef MACHWIASSOCIATEHANDLER_H
+#define MACHWIASSOCIATEHANDLER_H
 
 /******************************************************************************
                         Includes section.
@@ -120,6 +120,6 @@ void machwiAssociateReqInd(MAC_FrameDescr_t *associateReqDescr);
 void machwiResetAssociateHandler(void);
 
 
-#endif /* _MACHWIASSOCIATEHANDLER_H */
+#endif /* MACHWIASSOCIATEHANDLER_H */
 
 // eof machwiAssociateHandler.h

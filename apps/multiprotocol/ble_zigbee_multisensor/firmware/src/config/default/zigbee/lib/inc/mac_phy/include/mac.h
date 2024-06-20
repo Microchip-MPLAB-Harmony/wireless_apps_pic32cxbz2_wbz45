@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MAC_H
-#define _MAC_H
+#ifndef MAC_H
+#define MAC_H
 
 /******************************************************************************
                         Includes section.
@@ -74,6 +74,6 @@
 #include <mac_phy/mac_env/include/macenvPib.h>
 #include <mac_phy/include/macEnvironment.h>
 
-#endif //_MAC_H
+#endif //MAC_H
 
 // eof mac.h

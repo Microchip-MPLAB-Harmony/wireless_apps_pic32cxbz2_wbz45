@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIILLUMINANCEMEASUREMENTCLUSTER_H
-#define _CIILLUMINANCEMEASUREMENTCLUSTER_H
+#ifndef CIILLUMINANCEMEASUREMENTCLUSTER_H
+#define CIILLUMINANCEMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -58,6 +58,6 @@ extern ZCL_IlluminanceMeasurementClusterClientAttributes_t ciIlluminanceMeasurem
 ******************************************************************************/
 void ciIlluminanceMeasurementClusterInit(void);
 
-#endif // _CIBOCCUPANCYSENSINGCLUSTER_H
+#endif // CIBOCCUPANCYSENSINGCLUSTER_H
 
 // eof ciIlluminanceMeasurementCluster.h

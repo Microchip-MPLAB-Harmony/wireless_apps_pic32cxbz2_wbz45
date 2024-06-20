@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWDMEM_H
-#define _MACHWDMEM_H
+#ifndef MACHWDMEM_H
+#define MACHWDMEM_H
 
 /******************************************************************************
                     Includes section
@@ -71,6 +71,6 @@ typedef struct
   };
 } MachwdMem_t;
 
-#endif /*_MACHWDMEM_H*/
+#endif /*MACHWDMEM_H*/
 
 // eof machwdMem.h

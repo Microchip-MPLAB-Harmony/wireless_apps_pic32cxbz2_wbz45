@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _IDENTIFYCLUSTER_H
-#define _IDENTIFYCLUSTER_H
+#ifndef IDENTIFYCLUSTER_H
+#define IDENTIFYCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -53,9 +53,10 @@
                    Definition(s) section
 ******************************************************************************/
 #define RAISE_CALLBACKS_TO_IDENTIFY_SUBSCIBERS(queue, callback) \
-  for (IdentifySubscriber_t *subscriber = getQueueElem(&queue); subscriber; subscriber = getNextQueueElem(subscriber)) \
-    if (subscriber->callback) \
-      subscriber->callback(addressing, payload);
+  for (IdentifySubscriber_t *subscriber = getQueueElem(&queue); subscriber != NULL; subscriber = getNextQueueElem(subscriber)) {\
+    if ((subscriber->callback) != NULL) {\
+      subscriber->callback(addressing, payload);}\
+      }
 
 /******************************************************************************
                     External variables section
@@ -108,7 +109,7 @@ void identifySubscribe(IdentifySubscriber_t *subscriber);
 \param[in] addr - short address of destination node;
 \param[in] ep   - destination endpoint
 ******************************************************************************/
-void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
+void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint);
 
 /**************************************************************************//**
 \brief Sends Identify request
@@ -118,15 +119,15 @@ void identifySendIdentifyQuery(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t
 \param[in] ep   - destination endpoint;
 \param[in] time - identify time
 ******************************************************************************/
-void identifySendTriggerEffect(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
+void identifySendTriggerEffect(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
   uint8_t effectId, uint8_t effectVariant);
 
 /**************************************************************************//**
 \brief Makes device to start identify itself
 
-\param[in] time - identifying time in seconds
+\param[in] identifyTime - identifying time in seconds
 ******************************************************************************/
-void idetifyStartIdentifyingCb(uint16_t time, void (*cb)(void));
+void idetifyStartIdentifyingCb(uint16_t identifyTime, void (*cb)(void));
 
 /**************************************************************************//**
 \brief Resets subscribers queue
@@ -136,16 +137,16 @@ void idenityResetSubscribers(void);
 /**************************************************************************//**
 \brief send Identify QueryResponse cmd
 ******************************************************************************/
-ZCL_Status_t sendIdentifyQueryResponse(ZCL_Addressing_t *addressing, Endpoint_t srcEp, uint16_t identifyTime);
+ZCL_Status_t sendIdentifyQueryResponse(ZCL_Addressing_t *addressing, Endpoint_t srcEndpoint, uint16_t identifyTime);
 
 /**************************************************************************//**
 \brief send Identify cmd
 ******************************************************************************/
-void identifySendIdentify(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
-  uint16_t time);
+void identifySendIdentify(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEndpoint,
+  uint16_t identifyTime);
 
 
-#endif // _IDENTIFYCLUSTER_H
+#endif // IDENTIFYCLUSTER_H
 
 // eof identifyCluster.h
 

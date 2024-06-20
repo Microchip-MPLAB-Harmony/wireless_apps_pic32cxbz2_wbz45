@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWITRANSACTIONHANDLER_H
-#define _MACHWITRANSACTIONHANDLER_H
+#ifndef MACHWITRANSACTIONHANDLER_H
+#define MACHWITRANSACTIONHANDLER_H
 #ifdef _FFD_
 
 /******************************************************************************
@@ -90,6 +90,6 @@ bool machwiSendTransactionEvent(MachwiTransaction_t *transaction, MachwiTransact
 void machwiResetTransactionHandler(void);
 
 #endif //_FFD_
-#endif //_MACHWITRANSACTIONHANDLER_H
+#endif //MACHWITRANSACTIONHANDLER_H
 
 // eof machwiTransactionHandler.h

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYSENDIAN_H
-#define _SYSENDIAN_H
+#ifndef SYSENDIAN_H
+#define SYSENDIAN_H
 #ifdef _BIG_ENDIAN_
   #ifdef _DO_NOT_USE_BE
     #undef _BIG_ENDIAN_
@@ -164,5 +164,5 @@
  ******************************************************************************/
 #define  LITTLE_ENDIAN_OCTET(amount, fields) BIT_FIELDS_ ## amount fields
 
-#endif /* _SYSENDIAN_H */
+#endif /* SYSENDIAN_H */
 /* eof sysEndian.h */

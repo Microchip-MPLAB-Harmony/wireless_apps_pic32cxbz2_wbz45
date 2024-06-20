@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMCOMMISSIONINGCLUSTER_H
-#define _CUSTOMCOMMISSIONINGCLUSTER_H
+#ifndef CUSTOMCOMMISSIONINGCLUSTER_H
+#define CUSTOMCOMMISSIONINGCLUSTER_H
 
 /******************************************************************************
                     Includes
@@ -60,6 +60,6 @@ extern ZCL_CommissioningClusterClientAttributes_t customCommissioningClusterClie
 ******************************************************************************/
 void customCommissioningClusterInit(void);
 
-#endif // _CUSTOMCOMMISSIONINGCLUSTER_H
+#endif // CUSTOMCOMMISSIONINGCLUSTER_H
 
 // eof customCommissioningCluster.h

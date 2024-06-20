@@ -78,23 +78,14 @@ extern "C" {
 #define DIS_SW_REVISION                                "01002"    /* Software Revision */
 #define DIS_SYSTEM_ID                                  "System Id"    /* System Id */
 #define DIS_IEEE_11073_20601                           "NULL"    /* IEEE 11073-20601 Data */
-//PnP ID:
-//Vendor ID Source
-//  0x02: USB Implementers Forum
-//USB Vendor ID:
-//  0x04D8: Microchip Technology, Inc,
-//Product ID:
-//  0x0002
-//Product Version:
-//  0x0001
-#define DIS_PNP_ID                                     0x02, 0xD8, 0x04, 0x02, 0x00, 0x01, 0x00    /* PnP Id */
+#define DIS_PNP_ID                                     "02 D8 04 02 00 01 00"    /* PnP Id */
 
-#define UUID_DEVICE_INFO_SERVICE                        0x180A      /**< Device Information Service. */
+#define UUID_DEVICE_INFO_SERVICE                       (0x180AU)      /**< Device Information Service. */
 
 /**@defgroup BLE_DIS_ASSIGN_HANDLE BLE_DIS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE Device Information Service.
  * @{ */
-#define DIS_START_HDL                                   0x0080      /**< The start attribute handle of device information service. */
+#define DIS_START_HDL                                  (0x0080U)      /**< The start attribute handle of device information service. */
 /** @} */
 
 /**@brief Definition of BLE Device Information Service attribute handle */

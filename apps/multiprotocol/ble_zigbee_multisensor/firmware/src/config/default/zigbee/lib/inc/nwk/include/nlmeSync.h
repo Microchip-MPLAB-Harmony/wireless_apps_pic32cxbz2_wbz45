@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_SYNC_H
-#define _NLME_SYNC_H
+#if !defined NLME_SYNC_H
+#define NLME_SYNC_H
 
 /******************************************************************************
                                 Includes section
@@ -91,6 +91,6 @@ typedef struct _NWK_SyncReq_t
  ******************************************************************************/
 void NWK_SyncReq(NWK_SyncReq_t *const req);
 
-#endif /* _NLME_SYNC_H */
+#endif /* NLME_SYNC_H */
 /** eof nlmeSync.h */
 

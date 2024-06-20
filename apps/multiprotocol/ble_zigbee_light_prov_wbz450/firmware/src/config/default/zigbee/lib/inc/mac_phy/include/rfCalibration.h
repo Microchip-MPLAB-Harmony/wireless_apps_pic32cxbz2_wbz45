@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _RFCALIBRATION_H
-#define _RFCALIBRATION_H
+#if !defined RFCALIBRATION_H
+#define RFCALIBRATION_H
 
 /******************************************************************************
                                 Includes section
@@ -97,5 +97,5 @@ typedef struct _RF_CalibrationReq_t
  ******************************************************************************/
 void RF_CalibrationReq(RF_CalibrationReq_t *const req);
 
-#endif /* _RFCALIBRATION_H */
+#endif /* RFCALIBRATION_H */
 /** eof rfCalibration.h */

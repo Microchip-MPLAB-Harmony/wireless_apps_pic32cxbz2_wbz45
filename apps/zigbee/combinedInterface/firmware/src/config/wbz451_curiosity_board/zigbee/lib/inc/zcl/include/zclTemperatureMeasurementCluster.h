@@ -43,8 +43,8 @@
 
 
 
-#ifndef _ZCLTEMPERATUREMEASUREMENT_H_
-#define _ZCLTEMPERATUREMEASUREMENT_H_
+#ifndef ZCLTEMPERATUREMEASUREMENT_H
+#define ZCLTEMPERATUREMEASUREMENT_H
 
 /*******************************************************************************
                    Includes section
@@ -145,4 +145,4 @@ typedef struct PACK
 
 END_PACK
 
-#endif /* _ZCLTEMPERATUREMEASUREMENT_H_ */
+#endif /* ZCLTEMPERATUREMEASUREMENT_H */

@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APS_COMMON_H
-#define _APS_COMMON_H
+#if !defined APS_COMMON_H
+#define APS_COMMON_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -450,6 +450,6 @@ typedef enum
   APS_MAC_SUPERFRAME_OVERLAP_STATUS      = 0xFD
 } APS_Status_t;
 
-#endif /* _APS_COMMON_H */
+#endif /* APS_COMMON_H */
 /** eof apsCommon.h */
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYDEEPSLEEP_H
-#define _PHYDEEPSLEEP_H
+#ifndef PHYDEEPSLEEP_H
+#define PHYDEEPSLEEP_H
 
 /******************************************************************************
                                Prototypes section
@@ -81,5 +81,5 @@ void PHY_BleRfPwrMgmt(uint8_t value , bool orAnd);
  ******************************************************************************/
 void PHY_BLEClockOnOff(bool status);
 
-#endif /* _PHYDEEPSLEEP_H */
+#endif /* PHYDEEPSLEEP_H */
 /** eof phyDeepSleep.h */

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _GENERICECC_H
-#define _GENERICECC_H
+#ifndef GENERICECC_H
+#define GENERICECC_H
 
 /*******************************************************************************
                               Defines section
@@ -110,5 +110,5 @@ int ZSE_ECQVReconstructPublicKey(unsigned char* certificate,
                                  HashFunc *Hash,
                                  YieldFunc *yield,
                                  unsigned long yieldLevel);
-#endif //_GENERICECC_H
+#endif //GENERICECC_H
 // eof genericEcc.h

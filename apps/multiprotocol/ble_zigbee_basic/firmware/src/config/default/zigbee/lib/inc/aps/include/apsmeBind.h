@@ -51,8 +51,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_BIND_H
-#define _APSME_BIND_H
+#if !defined APSME_BIND_H
+#define APSME_BIND_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -248,6 +248,6 @@ bool APS_IsBoundToAnyGroup(const ClusterId_t clusterId, const Endpoint_t srcEndp
 void APS_FreeBindingEntry(ApsBindingEntry_t *const entry);
 
 #endif /* _BINDING_ */
-#endif /* _APSME_BIND_H */
+#endif /* APSME_BIND_H */
 /** eof apsmeBind.h */
 

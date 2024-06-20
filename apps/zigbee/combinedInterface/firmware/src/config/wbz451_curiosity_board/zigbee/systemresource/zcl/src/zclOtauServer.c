@@ -99,8 +99,16 @@ static ZCL_Status_t zclImagePageReqInd(ZCL_Addressing_t *addressing, uint8_t pay
                         static variables section
 *******************************************************************************/
 static bool checkStatus = 1;
+static uint8_t isdRetryCount = ISD_COMMUNICATION_RETRY_COUNT;
 bool abortUpgradeEndRequest = 0;
 bool isOtauBusy = false;
+void timeOutBlockReqExpired(void);
+HAL_AppTimer_t blockReqTimeoutTimer = 
+{
+    .interval  = 3500U,
+    .mode      = TIMER_ONE_SHOT_MODE,
+    .callback  = timeOutBlockReqExpired,
+};
 
 /*******************************************************************************
                         Global variables section
@@ -438,6 +446,8 @@ static void zclImageBlockCb(ZCL_OtauImageBlockResp_t *resp)
 
   ZCL_CommandReq(&tmpTransac->zclCommandReq);
   
+  if(ZCL_WAIT_FOR_DATA_STATUS == resp->status)
+    tmpTransac->busy             = false;
   isOtauBusy = false;
 }
 
@@ -463,7 +473,9 @@ static void zclQueryNextImageCb(ZCL_OtauQueryNextImageResp_t *resp)
   zclOtauFillOutgoingZclRequest(QUERY_NEXT_IMAGE_RESPONSE_ID, len, (uint8_t *)&tmpTransac->queryNextImageResp);
 
   ZCL_CommandReq(&tmpTransac->zclCommandReq);
-  
+
+  if(ZCL_WAIT_FOR_DATA_STATUS == resp->status)
+    tmpTransac->busy             = false;
   isOtauBusy = false;
 }
 
@@ -497,10 +509,13 @@ static ZCL_Status_t zclUpgradeEndReqInd(ZCL_Addressing_t *addressing, uint8_t pa
 {
   ZclOtauServerTransac_t *tmpTransac = zclFindEmptyCell();
   (void)payloadLength;
-
   if(abortUpgradeEndRequest)
     return ZCL_ABORT_STATUS;
 
+  if(ZCL_SUCCESS_STATUS == payload->status)
+  {
+    HAL_StopAppTimer(&blockReqTimeoutTimer);
+  }
   /* OTAU r23 spec section : 6.10.9.4 : 
    For other status value received such as INVALID_IMAGE, REQUIRE_MORE_IMAGE, or 
    ABORT, the upgrade server shall not send Upgrade End Response command but it 
@@ -530,6 +545,27 @@ static ZCL_Status_t zclUpgradeEndReqInd(ZCL_Addressing_t *addressing, uint8_t pa
 }
 
 /***************************************************************************//**
+\brief To check for blockReq Timeout occurence
+
+\param - None
+
+\return None
+******************************************************************************/
+void timeOutBlockReqExpired(void)
+{
+  HAL_StopAppTimer(&blockReqTimeoutTimer);;
+  uint32_t linkStatusTx = 2000U;
+  BcAccessReq_t accessReq =
+  {
+    .action = BC_NWK_LINK_STATUS_TX,
+    .context = &linkStatusTx,
+    .denied = 0U
+  };
+
+  /* Notify user about NWK address allocation request from a child */
+  SYS_PostEvent(BC_EVENT_ACCESS_REQUEST, (SYS_EventData_t)&accessReq); 
+}
+/***************************************************************************//**
 \brief Next image block request indication
 
 \param[in] addressing - pointer to addressing information;
@@ -540,30 +576,34 @@ static ZCL_Status_t zclUpgradeEndReqInd(ZCL_Addressing_t *addressing, uint8_t pa
 ******************************************************************************/
 static ZCL_Status_t zclImageBlockReqInd(ZCL_Addressing_t *addressing, uint8_t payloadLength, ZCL_OtauImageBlockReq_t *payload)
 {
-
   ZclOtauServerTransac_t *tmpTransac = zclFindEmptyCell();
-  static uint8_t isdRetryCount = ISD_COMMUNICATION_RETRY_COUNT;
-  (void)payloadLength;
- 
-  if(ISD_NO_COMMUNICATION == isdGetState() )
-  {
-        if(isdRetryCount--)
-        {
-            return ZCL_WAIT_FOR_DATA_STATUS;
-        }
-        else
-            /*Send Abort request if UART Communication broke*/
-            return ZCL_ABORT_STATUS;
-  }
+  (void)payloadLength; 
+  HAL_StopAppTimer(&blockReqTimeoutTimer);;
 
   if (tmpTransac && (false == isOtauBusy))
   {
+    ISD_Status_t isdState = isdGetState();
+    if(ISD_NO_COMMUNICATION == isdState || (ISD_HARDWARE_FAULT == isdState))
+    {
+      tmpTransac->busy = false;
+      if(isdRetryCount--)
+      {
+        return ZCL_WAIT_FOR_DATA_STATUS;
+      }
+      else
+      {
+        /*Send Abort request if UART Communication broke*/
+        return ZCL_ABORT_STATUS;
+      }
+    }
+    isdRetryCount = ISD_COMMUNICATION_RETRY_COUNT;
     tmpTransac->busy = true;
     tmpTransac->id = IMAGE_BLOCK_REQUEST_ID;
     tmpTransac->addressing = *addressing;
     tmpTransac->imageBlockReq = *payload;
     putQueueElem(&zclOtauServerTransacQueue, tmpTransac);
     zclOtauServerHandler();
+    HAL_StartAppTimer(&blockReqTimeoutTimer);
     return ZCL_SUCCESS_STATUS;
   }
   else
@@ -692,8 +732,24 @@ static ZCL_Status_t zclImagePageReqInd(ZCL_Addressing_t *addressing, uint8_t pay
 {
   ZclOtauServerTransac_t *tmpTransac = zclFindEmptyCell();
   (void)payloadLength;
+  HAL_StopAppTimer(&blockReqTimeoutTimer);/*To do */
   if (tmpTransac && (false == isOtauBusy))
   {
+    ISD_Status_t isdState = isdGetState();
+	  if((ISD_NO_COMMUNICATION == isdState) || (ISD_HARDWARE_FAULT == isdState))
+	  {
+		    tmpTransac->busy = false;
+        if(isdRetryCount--)
+        {
+            return ZCL_WAIT_FOR_DATA_STATUS;
+        }
+        else
+        {
+            /*Send Abort request if UART Communication broke*/
+            return ZCL_ABORT_STATUS;
+        }
+	  }
+    isdRetryCount = ISD_COMMUNICATION_RETRY_COUNT;
     tmpTransac->busy = true;
     tmpTransac->id = IMAGE_PAGE_REQUEST_ID;
     tmpTransac->addressing = *addressing;
@@ -760,6 +816,8 @@ static void zclImagePageCb(ZCL_OtauImageBlockResp_t *resp)
 
     otauServerCommands.imageBlockResp.options.ackRequest = 0;
     ZCL_CommandReq(&tmpTransac->zclCommandReq);
+    if(ZCL_WAIT_FOR_DATA_STATUS == resp->status)
+      tmpTransac->busy             = false;
   }
   else
   {

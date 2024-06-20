@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _SCENES_H
-#define _SCENES_H
+#ifndef SCENES_H
+#define SCENES_H
 
 /******************************************************************************
                     Includes section
@@ -143,6 +143,6 @@ uint8_t removeScenesByGroup(uint16_t group, Scene_t* scenePool);
 ******************************************************************************/
 Scene_t *getNextSceneByGroup(Scene_t *scene, uint16_t group, Scene_t* scenePool);
 
-#endif // _SCENES_H
+#endif // SCENES_H
 
 // eof scenes.h

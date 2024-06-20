@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLIDENTIFYCLUSTER_H
-#define _ZCLIDENTIFYCLUSTER_H
+#ifndef ZCLIDENTIFYCLUSTER_H
+#define ZCLIDENTIFYCLUSTER_H
 
 /*******************************************************************************
                    Includes section
@@ -321,5 +321,5 @@ typedef struct
 #endif /* HA_PROFILE_EXTENSIONS */
 } ZCL_IdentifyClusterCommands_t;
 
-#endif /* _ZCLIDENTIFYCLUSTER_H */
+#endif /* ZCLIDENTIFYCLUSTER_H */
 

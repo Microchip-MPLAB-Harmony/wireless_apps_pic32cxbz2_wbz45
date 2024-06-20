@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
-#define _CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
+#ifndef CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
+#define CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -87,6 +87,6 @@ void customHumidityMeasurementClusterInit(void);
 ******************************************************************************/
 void humidityMeasurementUpdateMeasuredValue(void);
 
-#endif // _CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
+#endif // CUSTOMHUMIDITYMEASUREMENTCLUSTER_H
 
 // eof customHumidityMeasurementCluster.h

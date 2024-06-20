@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_UPDATE_DEVICE_H
-#define _APSME_UPDATE_DEVICE_H
+#if !defined APSME_UPDATE_DEVICE_H
+#define APSME_UPDATE_DEVICE_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -213,6 +213,6 @@ void APS_UpdateDeviceReq(APS_UpdateDeviceReq_t *req);
 void APS_UpdateDeviceInd(APS_UpdateDeviceInd_t *ind, const ShortAddr_t *parentShortAddr);
 
 #endif /* _SECURITY_ */
-#endif /* _APSME_UPDATE_DEVICE_H */
+#endif /* APSME_UPDATE_DEVICE_H */
 /** eof apsmeUpdateDevice.h */
 

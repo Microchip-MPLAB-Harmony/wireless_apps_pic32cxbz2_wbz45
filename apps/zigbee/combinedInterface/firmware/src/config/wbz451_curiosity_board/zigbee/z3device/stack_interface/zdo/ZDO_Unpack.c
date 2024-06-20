@@ -87,8 +87,8 @@ void ZDO_FindExtByShort_Unpack(void *req)
 
 void ZDO_GetPreconfiguredStatus_Unpack(void *req)
 {
-  bool ret = 0;
-  ret = ZDO_GetPreconfiguredStatus();
+  bool ret = false;
+  ret = (bool)ZDO_GetPreconfiguredStatus();
   *((bool*) req) = ret;
 }
 
@@ -212,12 +212,14 @@ void ZDO_ResetNetworkConf(ZDO_ResetNetworkConf_t *conf)
 {
   sysAssert(ZDO_SUCCESS_STATUS == conf->status, ZDOINIT_ZDOINITRESETNETWORKCONF_0);
 
-  cbParams.eModuleID = ZIGBEE_ZDO;
-  cbParams.uCallBackID = ZDO_ResetNwkConf_ID;
+  cbParams.eModuleID = (uint8_t)ZIGBEE_ZDO;
+  cbParams.uCallBackID = (uint32_t)ZDO_ResetNwkConf_ID;
   cbParams.parameters = (void *)conf;
-  cbParams.paramSize = sizeof(ZDO_ResetNetworkConf_t);
+  cbParams.paramSize = (uint8_t)sizeof(ZDO_ResetNetworkConf_t);
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&cbParams);
+  }
 }
 
 /***********************************************************************************
@@ -232,12 +234,14 @@ void ZDO_ResetNetworkConf(ZDO_ResetNetworkConf_t *conf)
  ***********************************************************************************/
 void ZDO_BindIndication(ZDO_BindInd_t *bindInd)
 { 
-  cbParams.eModuleID = ZIGBEE_ZDO;
-  cbParams.uCallBackID = ZDO_BindIndication_ID;
+  cbParams.eModuleID = (uint8_t)ZIGBEE_ZDO;
+  cbParams.uCallBackID = (uint32_t)ZDO_BindIndication_ID;
   cbParams.parameters = (void *)bindInd;
-  cbParams.paramSize = sizeof(ZDO_BindInd_t);
+  cbParams.paramSize = (uint8_t)sizeof(ZDO_BindInd_t);
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&cbParams);
+  }
 }
 
 /***********************************************************************************
@@ -252,12 +256,14 @@ void ZDO_BindIndication(ZDO_BindInd_t *bindInd)
  ***********************************************************************************/
 void ZDO_UnbindIndication(ZDO_UnbindInd_t *unbindInd)
 {
-  cbParams.eModuleID = ZIGBEE_ZDO;
-  cbParams.uCallBackID = ZDO_UnbindIndication_ID;
+  cbParams.eModuleID = (uint8_t)ZIGBEE_ZDO;
+  cbParams.uCallBackID = (uint32_t)ZDO_UnbindIndication_ID;
   cbParams.parameters = (void *)unbindInd;
-  cbParams.paramSize = sizeof(ZDO_UnbindInd_t);
+  cbParams.paramSize = (uint8_t)sizeof(ZDO_UnbindInd_t);
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&cbParams);
+  }
 }
 
 /*******************************************************************************
@@ -269,12 +275,14 @@ void ZDO_UnbindIndication(ZDO_UnbindInd_t *unbindInd)
 *******************************************************************************/
 void ZDO_MgmtNwkUpdateNotf(ZDO_MgmtNwkUpdateNotf_t *nwkParams)
 { 
-  cbParams.eModuleID = ZIGBEE_ZDO;
-  cbParams.uCallBackID = ZDO_MgmtNwkUpdateNotf_ID;
+  cbParams.eModuleID = (uint8_t)ZIGBEE_ZDO;
+  cbParams.uCallBackID = (uint32_t)ZDO_MgmtNwkUpdateNotf_ID;
   cbParams.parameters = (void *)nwkParams;
-  cbParams.paramSize = sizeof(ZDO_MgmtNwkUpdateNotf_t);
+  cbParams.paramSize = (uint8_t)sizeof(ZDO_MgmtNwkUpdateNotf_t);
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&cbParams);
+  }
 }
 
 
@@ -287,10 +295,12 @@ void ZDO_MgmtNwkUpdateNotf(ZDO_MgmtNwkUpdateNotf_t *nwkParams)
 *******************************************************************************/
 void ZDO_WakeUpInd(void)
 {
-  cbParams.eModuleID = ZIGBEE_ZDO;
-  cbParams.uCallBackID = ZDO_WakeUpInd_ID;
+  cbParams.eModuleID = (uint8_t)ZIGBEE_ZDO;
+  cbParams.uCallBackID = (uint32_t)ZDO_WakeUpInd_ID;
   cbParams.parameters = (void *)NULL;
   cbParams.paramSize = 0;
   if (NULL != fnAppGenericCB)
+  {
     fnAppGenericCB(&cbParams);
+  }
 }

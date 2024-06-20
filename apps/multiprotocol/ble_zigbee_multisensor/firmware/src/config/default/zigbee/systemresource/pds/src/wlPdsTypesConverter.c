@@ -116,12 +116,14 @@ returns true if memory was updated successfully, false - otherwise
 ******************************************************************************/
 bool pdsUpdateMemoryCallback(PDS_UpdateMemory_t *item)
 {
+  bool isUpdateDone = true;  
   verifyItemSizes(item->id, item->size, item->oldSize);
 
   switch (item->id)
   {
     case BC_EXT_GEN_MEMORY_ITEM_ID:
-      return updateExtendedBcSet(item->data);
+      isUpdateDone = updateExtendedBcSet(item->data);
+      break;
 #ifdef _SECURITY_
     case NWK_SECURITY_COUNTERS_ITEM_ID:
       updateSecurityCounters(item->data);
@@ -156,10 +158,11 @@ bool pdsUpdateMemoryCallback(PDS_UpdateMemory_t *item)
     case NWK_RREQ_IDENTIFIER_ITEM_ID:
       break;
     default:
+        /* TO DO */
       break;
   }
 
-  return true;
+  return isUpdateDone;
 }
 
 /******************************************************************************
@@ -212,8 +215,9 @@ static void verifyItemSizes(PDS_MemId_t id, uint16_t size, uint16_t oldSize)
   ItemIdToMemoryMapping_t mapItem;
 
   if (size == oldSize)
+  {
     return;
-
+  }
   if (PDS_GetItemDescr(id, &mapItem))
   {
     N_ERRH_ASSERT_FATAL(mapItem.flags & SIZE_MODIFICATION_ALLOWED);
@@ -230,52 +234,54 @@ static void verifyItemSizes(PDS_MemId_t id, uint16_t size, uint16_t oldSize)
 ******************************************************************************/
 static bool updateExtendedBcSet(void *data)
 {
-  ExtGetMem_t *extGenMem = (ExtGetMem_t *)data;
+  ExtGetMem_t *extGenMemory = (ExtGetMem_t *)data;
   uint8_t *ptr = (uint8_t *)data;
   bool inconsistentFlag = true;
 
   // check network parameters for inconsistence
   for (uint8_t i = 0U; i < sizeof(ExtGetMem_t); i++)
+  {
     if (0xFFU != ptr[i])
     {
       inconsistentFlag = false;
       break;
     }
-
+  }
   if (inconsistentFlag)
+  {
     return false;
-
+  }
   // update appropriate BC structures
-  csPIB.macAttr.extAddr = extGenMem->csUid;
+  csPIB.macAttr.extAddr = extGenMemory->csUid;
 #ifndef _MAC2_
-  csSIB.csRfTxPower = extGenMem->txPower;
-  csSIB.csExtPANID = extGenMem->extPanId;
-  csSIB.csChannelMask = extGenMem->channelMask;
-  csNIB.channelPage = extGenMem->channelPage;
-  csNIB.deviceType = extGenMem->deviceType;
-  csSIB.csRxOnWhenIdle = extGenMem->rxOnWhenIdle;
-  csSIB.csComplexDescriptorAvailable = extGenMem->complexDescrAvailable;
-  csSIB.csUserDescriptorAvailable = extGenMem->userDescrAvailable;
-  csSIB.csUserDescriptor = extGenMem->userDescr;
-  csSIB.csNwkPanid = extGenMem->panId;
-  csSIB.csNwkPredefinedPanid = extGenMem->predefinedPanId;
-  csNIB.networkAddress = extGenMem->shortAddress;
-  csNIB.uniqueAddr = extGenMem->uniqueNwkAddress;
-  csNIB.leaveReqAllowed = extGenMem->leaveReqAllowed;
-  csSIB.csDtrWakeup = extGenMem->dtrWakeUp;
-  csNIB.updateId = extGenMem->updateId;
+  csSIB.csRfTxPower = extGenMemory->txPower;
+  csSIB.csExtPANID = extGenMemory->extPanId;
+  csSIB.csChannelMask = extGenMemory->channelMask;
+  csNIB.channelPage = extGenMemory->channelPage;
+  csNIB.deviceType = extGenMemory->deviceType;
+  csSIB.csRxOnWhenIdle = extGenMemory->rxOnWhenIdle;
+  csSIB.csComplexDescriptorAvailable = extGenMemory->complexDescrAvailable;
+  csSIB.csUserDescriptorAvailable = extGenMemory->userDescrAvailable;
+  csSIB.csUserDescriptor = extGenMemory->userDescr;
+  csSIB.csNwkPanid = extGenMemory->panId;
+  csSIB.csNwkPredefinedPanid = extGenMemory->predefinedPanId;
+  csNIB.networkAddress = extGenMemory->shortAddress;
+  csNIB.uniqueAddr = extGenMemory->uniqueNwkAddress;
+  csNIB.leaveReqAllowed = extGenMemory->leaveReqAllowed;
+  csSIB.csDtrWakeup = extGenMemory->dtrWakeUp;
+  csNIB.updateId = extGenMemory->updateId;
 #ifdef _SECURITY_  
-  csAIB.trustCenterAddress = extGenMem->extTcAddress;
-  csAIB.tcNwkAddr = extGenMem->nwkTcAddress;
-  csSIB.csZdoSecurityStatus = extGenMem->securityStatus;
+  csAIB.trustCenterAddress = extGenMemory->extTcAddress;
+  csAIB.tcNwkAddr = extGenMemory->nwkTcAddress;
+  csSIB.csZdoSecurityStatus = extGenMemory->securityStatus;
 #if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
-  csAIB.tcSecurityPolicy = extGenMem->tcPermissions;
+  csAIB.tcSecurityPolicy = extGenMemory->tcPermissions;
 #endif //#if defined (_LINK_SECURITY_) && defined (_TRUST_CENTRE_)
 #endif  
-  csNIB.parentNetworkAddress = extGenMem->parentNwkAddress;
-  csNIB.depth = extGenMem->nwkDepth;
-  csNIB.extendedPanId = extGenMem->nwkExtPanId;
-  csSIB.csNwkLogicalChannel = extGenMem->logicalChannel;
+  csNIB.parentNetworkAddress = extGenMemory->parentNwkAddress;
+  csNIB.depth = extGenMemory->nwkDepth;
+  csNIB.extendedPanId = extGenMemory->nwkExtPanId;
+  csSIB.csNwkLogicalChannel = extGenMemory->logicalChannel;
 #endif /* _MAC2_ */
   return true;
 }
@@ -290,8 +296,10 @@ static void updateSecurityCounters(void *data)
   NwkOutFrameCounterTop_t *counterTop = (NwkOutFrameCounterTop_t *)data;
 
   // we restored default after-init value
-  if (0xFFFF == *counterTop)
+  if (0xFFFFU == *counterTop)
+  {
     *counterTop = 0;
+  }
 }
 
 #ifndef PDS_SECURITY_CONTROL_ENABLE
@@ -305,10 +313,11 @@ static void updateSecurityCounters(void *data)
 static void updateKeyPairDescriptor(void *data, uint16_t size, uint16_t oldSize)
 {
   if (size == oldSize)
+  {
     return;
-
+  }
   updateTable(data, size, oldSize);
-  PDS_Store(CS_APS_KEY_PAIR_DESCRIPTORS_ITEM_ID);
+  (void)PDS_Store(CS_APS_KEY_PAIR_DESCRIPTORS_ITEM_ID);
 }
 #endif // PDS_SECURITY_CONTROL_ENABLE
 
@@ -335,7 +344,7 @@ static void updateSecurityKeys(void *data)
     if (keys[keyIndex].isSet)
     {
       keys[keyIndex].inFrameCounterSet.table = inFrameCounterSet + neighborsAmount * keyIndex;
-      keys[keyIndex].inFrameCounterSet.end   = inFrameCounterSet + neighborsAmount * (keyIndex + 1);
+      keys[keyIndex].inFrameCounterSet.end   = inFrameCounterSet + neighborsAmount * (keyIndex + 1U);
     }
   }
 }
@@ -353,7 +362,9 @@ static void updateTable(void *data, uint16_t size, uint16_t oldSize)
   uint8_t *ptr = (uint8_t *)data;
 
   if (size > oldSize)
-    memset(ptr + oldSize, 0U, size - oldSize);
+  {
+    (void)memset(ptr + oldSize, 0, (uint16_t)(size - oldSize));
+  }
 }
 #ifdef _BINDING_
 /******************************************************************************
@@ -366,8 +377,9 @@ static void updateTable(void *data, uint16_t size, uint16_t oldSize)
 static void updateBindTable(void *data, uint16_t size, uint16_t oldSize)
 {
   if (size == oldSize)
+  {
     return;
-
+  }
   updateTable(data, size, oldSize);
 
   if (size > oldSize)
@@ -380,9 +392,9 @@ static void updateBindTable(void *data, uint16_t size, uint16_t oldSize)
     {
       entry->confirm.status = APS_NO_BOUND_DEVICE_STATUS;
       entry++;
-      oldSize += sizeof(ApsBindingEntry_t);
+      oldSize += (uint16_t)sizeof(ApsBindingEntry_t);
     }
-    PDS_Store(CS_APS_BINDING_TABLE_ITEM_ID);
+    (void)PDS_Store(CS_APS_BINDING_TABLE_ITEM_ID);
   }
 }
 #endif // _BINDING_
@@ -397,11 +409,12 @@ static void updateBindTable(void *data, uint16_t size, uint16_t oldSize)
 static void updateGroupTable(void *data, uint16_t size, uint16_t oldSize)
 {
   if (size == oldSize)
+  {
     return;
-
+  }
   updateTable(data, size, oldSize);
 
-  PDS_Store(CS_GROUP_TABLE_ITEM_ID);
+  (void)PDS_Store(CS_GROUP_TABLE_ITEM_ID);
 }
 #endif //_GROUP_TABLE_
 /******************************************************************************
@@ -414,8 +427,9 @@ static void updateGroupTable(void *data, uint16_t size, uint16_t oldSize)
 static void updateNeighborTable(void *data, uint16_t size, uint16_t oldSize)
 {
   if (size == oldSize)
+  {
     return;
-
+  }
   updateTable(data, size, oldSize);
 
   if (size > oldSize)
@@ -428,9 +442,9 @@ static void updateNeighborTable(void *data, uint16_t size, uint16_t oldSize)
     {
       entry->relationship = RELATIONSHIP_EMPTY;
       entry++;
-      oldSize += sizeof(Neib_t);
+      oldSize += (uint16_t)sizeof(Neib_t);
     }
-    PDS_Store(CS_NEIB_TABLE_ITEM_ID);
+    (void)PDS_Store(CS_NEIB_TABLE_ITEM_ID);
   }
 }
 

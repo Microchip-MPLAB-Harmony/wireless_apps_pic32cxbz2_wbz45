@@ -39,8 +39,8 @@ Combined Interface Fan Control Cluster Header File
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CIFANCONTROLCLUSTER_H
-#define _CIFANCONTROLCLUSTER_H
+#ifndef CIFANCONTROLCLUSTER_H
+#define CIFANCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -61,6 +61,6 @@ extern ZCL_FanControlClusterClientAttributes_t ciFanControlClusterClientAttribut
 ******************************************************************************/
 void ciFanControlClusterInit(void);
 
-#endif // _CIFANCONTROLCLUSTER_H
+#endif // CIFANCONTROLCLUSTER_H
 
 // eof ciFanControlCluster.h

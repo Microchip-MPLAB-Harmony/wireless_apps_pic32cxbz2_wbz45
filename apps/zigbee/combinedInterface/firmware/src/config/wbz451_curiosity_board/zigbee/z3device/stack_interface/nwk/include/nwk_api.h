@@ -48,7 +48,8 @@
 // *****************************************************************************
 // *****************************************************************************
 #include <z3device/stack_interface/zgb_api.h>
-
+#include <nwk/include/nwkConfigServer.h>
+#include <nwk/include/private/nwkUpdateCommand.h>
 /******************************************************************************
                     Definitions section
 *******************************************************************************/
@@ -371,7 +372,7 @@ NwkOutFrameCounter_t ZB_NWK_GetUpdatedSecOutCounter(void);
 NwkOutFrameCounter_t ZB_NWK_GetSecOutCounter(void);
 
 #if defined _RESOLVE_PANID_CONFLICT_
-typedef void (* NwkUpdatePanIdConf_t)(void);
+
 
 /**************************************************************************//**
 \brief ZB_NWK_UpdatePanId pack function

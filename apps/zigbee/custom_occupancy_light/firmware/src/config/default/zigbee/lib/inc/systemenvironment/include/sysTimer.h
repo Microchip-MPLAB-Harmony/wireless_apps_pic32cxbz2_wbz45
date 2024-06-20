@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _SYS_TIMER_H
-#define _SYS_TIMER_H
+#if !defined SYS_TIMER_H
+#define SYS_TIMER_H
 
 /******************************************************************************
                                Includes section
@@ -104,5 +104,5 @@ void SYS_StartTimer(SYS_Timer_t *const sysTimer);
  *****************************************************************************/
 void SYS_StopTimer(SYS_Timer_t *const sysTimer);
 
-#endif /* _SYS_TIMER_H */
+#endif /* SYS_TIMER_H */
 /** eof sysTimer.h */

@@ -52,10 +52,12 @@
 #define FLOWRATEMONITOR_MAX_REPORT_PERIOD 10
 
 /*******************************************************************************
+
                     Prototypes section
 *******************************************************************************/
 
 void customFlowratemonitorInit(void);
+
 
 /******************************************************************************
                     Global variables
@@ -63,8 +65,14 @@ void customFlowratemonitorInit(void);
 
 //Custom Cluster Attributes
 extern ZCL_FlowratemonitorClusterServerAttributes_t flowratemonitorServerClusterAttributes;
+
+
 //Custom Cluster Commands
-extern PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorServerClusterCommands);
+extern PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorClusterCommands);
 
 
 
+// Custom Cluster`s backup & Restore Function Declaration
+    void customccZCC0BackupAttribute(void);
+
+void customccZCC0RestoreAttribute(void);

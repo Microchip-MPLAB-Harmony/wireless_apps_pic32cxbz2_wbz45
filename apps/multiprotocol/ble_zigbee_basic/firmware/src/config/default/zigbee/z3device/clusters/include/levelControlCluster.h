@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LEVELCONTROLCLUSTER_H
-#define _LEVELCONTROLCLUSTER_H
+#ifndef LEVELCONTROLCLUSTER_H
+#define LEVELCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -121,5 +121,5 @@ void levelControlSendStep(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, 
 void levelControlSendStop(APS_AddrMode_t mode, ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp,
   bool onOff, uint8_t optionsMask, uint8_t optionsOverride);
 
-#endif //_LEVELCONTROLCLUSTER_H
+#endif //LEVELCONTROLCLUSTER_H
 

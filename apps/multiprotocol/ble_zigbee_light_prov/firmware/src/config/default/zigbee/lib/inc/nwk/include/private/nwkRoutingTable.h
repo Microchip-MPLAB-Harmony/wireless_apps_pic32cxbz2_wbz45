@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_ROUTING_TABLE_H
-#define _NWK_ROUTING_TABLE_H
+#if !defined NWK_ROUTING_TABLE_H
+#define NWK_ROUTING_TABLE_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -149,6 +149,6 @@ NWK_PRIVATE void nwkUpdateNextHop(const ShortAddr_t dstAddr,const bool isGroupId
 #define nwkDeleteFromRoutingTable(shortAddr) (void)0
 
 #endif /* NWK_ROUTING_CAPACITY and (_NWK_MESH_ROUTING_ or _NWK_MANY_TO_ONE_ROUTING_) */
-#endif /* _NWK_ROUTING_TABLE_H */
+#endif /* NWK_ROUTING_TABLE_H */
 /** eof nwkRoutingTable.h */
 

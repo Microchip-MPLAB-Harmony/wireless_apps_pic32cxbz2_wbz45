@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APS_CONFIG_SERVER_H
-#define _APS_CONFIG_SERVER_H
+#if !defined APS_CONFIG_SERVER_H
+#define APS_CONFIG_SERVER_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -59,6 +59,6 @@
  ******************************************************************************/
 #include <aps/include/private/apsKeyPairSet.h>
 
-#endif /* _APS_CONFIG_SERVER_H */
+#endif /* APS_CONFIG_SERVER_H */
 /** eof apsConfigSerer.h */
 

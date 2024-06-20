@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "ble/lib/include/bt_sys.h"
+#include <string.h>
 #include "peripheral/evsys/plib_evsys.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.

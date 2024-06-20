@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _LIGHTCOLORCONTROLCLUSTER_H
-#define _LIGHTCOLORCONTROLCLUSTER_H
+#ifndef LIGHTCOLORCONTROLCLUSTER_H
+#define LIGHTCOLORCONTROLCLUSTER_H
 
 /******************************************************************************
                     Includes
@@ -107,6 +107,6 @@ void colorControlStopIdentifyEffect(void);
 void lightUpdateCoupledColorTemperature(bool deviceOn, bool updateColorTemp, uint8_t level);
 
 #endif /* #if APP_Z3_DEVICE_TYPE >= APP_DEVICE_TYPE_EXTENDED_COLOR_LIGHT */
-#endif // _LIGHTCOLORCONTROLCLUSTER_H
+#endif // LIGHTCOLORCONTROLCLUSTER_H
 
 // eof lightColorControlCluster.h

@@ -409,7 +409,7 @@ void ZB_ZCL_CallBack(ZB_AppGenericCallbackParam_t* cb)
       
       ZCL_CommandInd_t *zclCmdIndCallback = (ZCL_CommandInd_t *)(*paramPtr);
   
-      zclCmdIndCallback->status = zclCmdIndCallback->callbackFn(zclCmdIndCallback->addressing,
+      zclCmdIndCallback->status = zclCmdIndCallback->callbackFn(&zclCmdIndCallback->addressing,
                                                                 zclCmdIndCallback->payloadLength,
                                                                 zclCmdIndCallback->payload);
     }
@@ -417,7 +417,7 @@ void ZB_ZCL_CallBack(ZB_AppGenericCallbackParam_t* cb)
     case ZCL_REPORT_IND:
     {
       ZCL_AttrReportInd_t *zclAttrReportInd = (ZCL_AttrReportInd_t *)(cbParam->parameters);
-      zclAttrReportInd->callbackFn(zclAttrReportInd->addressing,
+      zclAttrReportInd->callbackFn(&zclAttrReportInd->addressing,
                                    zclAttrReportInd->payloadLength,
                                    zclAttrReportInd->payload);
     }
@@ -426,7 +426,7 @@ void ZB_ZCL_CallBack(ZB_AppGenericCallbackParam_t* cb)
     {
       ZCL_DefaultRespInd_t *zclDefaultRespInd = (ZCL_DefaultRespInd_t *)(cbParam->parameters);
       zclDefaultRespInd->callbackFn(zclDefaultRespInd->req,
-                                    zclDefaultRespInd->addressing,
+                                    &zclDefaultRespInd->addressing,
                                     zclDefaultRespInd->payloadLength,
                                     zclDefaultRespInd->payload);
     }
@@ -434,7 +434,7 @@ void ZB_ZCL_CallBack(ZB_AppGenericCallbackParam_t* cb)
     case ZCL_ATTRIBUTE_EVENT_IND:
     {
       ZCL_AttrEventInd_t *zclAttrEventInd = (ZCL_AttrEventInd_t *)(cbParam->parameters);
-      zclAttrEventInd->callbackFn(zclAttrEventInd->addressing,
+      zclAttrEventInd->callbackFn(&zclAttrEventInd->addressing,
                                   zclAttrEventInd->attributeId,
                                   zclAttrEventInd->event);
     }
@@ -445,6 +445,8 @@ void ZB_ZCL_CallBack(ZB_AppGenericCallbackParam_t* cb)
       zclNotifyRespInd->callbackFn(zclNotifyRespInd->ntfy);
     }
     break;
+    default:
+    break;    
   }
   
 }

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLZLLCOMISSIONINGCLUSTER_H
-#define _ZCLZLLCOMISSIONINGCLUSTER_H
+#ifndef ZCLZLLCOMISSIONINGCLUSTER_H
+#define ZCLZLLCOMISSIONINGCLUSTER_H
 
 /*!
 Attributes and commands for determining basic information about a device,
@@ -82,7 +82,7 @@ to factory defaults.
  * \brief Commissioning ClusterVersion attribute identifier
 */
 
-#define ZCL_COMMISSIONING_CLUSTER_GLOBAL_CLUSTER_VERSION_ATTRIBUTE_ID         CCPU_TO_LE16(0xfffd)
+#define ZCL_COMMISSIONING_CLUSTER_GLOBAL_CLUSTER_VERSION_ATTRIBUTE_ID         (CCPU_TO_LE16(0xfffd))
 
 /**
  * \brief Commissioning Server Cluster commands identifiers.
@@ -104,7 +104,7 @@ to factory defaults.
 */
 
 #define ZCL_DEFINE_COMMISSIONING_CLUSTER_SERVER_ATTRIBUTES() \
-    DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_COMMISSIONING_CLUSTER_GLOBAL_CLUSTER_VERSION_ATTRIBUTE_ID, ZCL_U16BIT_DATA_TYPE_ID)
+    DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_COMMISSIONING_CLUSTER_GLOBAL_CLUSTER_VERSION_ATTRIBUTE_ID, ((uint8_t)ZCL_U16BIT_DATA_TYPE_ID))
 
 /**
  * \brief Commissioning Cluster client define attributes macros
@@ -119,11 +119,11 @@ to factory defaults.
 
 #define ZCL_DEFINE_COMMISSIONING_CLUSTER_COMMANDS(getGroupIdentifiersInd, getEndpointListInd, \
         endpointInformationResponseInd, getGroupIdentifiersResponseInd, getEndpointListResponseInd) \
-    DEFINE_COMMAND(getGroupIdentifiersCommand, 0x41, COMMAND_OPTIONS(CLIENT_TO_SERVER, ZCL_THERE_IS_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getGroupIdentifiersInd), \
-    DEFINE_COMMAND(getEndpointListCommand, 0x42, COMMAND_OPTIONS(CLIENT_TO_SERVER, ZCL_THERE_IS_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getEndpointListInd), \
-    DEFINE_COMMAND(endpointInformationCommand, 0x40, COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), endpointInformationResponseInd), \
-    DEFINE_COMMAND(getGroupIdentifiersResponseCommand, 0x41, COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getGroupIdentifiersResponseInd), \
-    DEFINE_COMMAND(getEndpointListResponseCommand, 0x42, COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getEndpointListResponseInd)
+    DEFINE_COMMAND(getGroupIdentifiersCommand, (0x41), COMMAND_OPTIONS(CLIENT_TO_SERVER, ZCL_THERE_IS_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getGroupIdentifiersInd), \
+    DEFINE_COMMAND(getEndpointListCommand, (0x42), COMMAND_OPTIONS(CLIENT_TO_SERVER, ZCL_THERE_IS_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getEndpointListInd), \
+    DEFINE_COMMAND(endpointInformationCommand, (0x40), COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), endpointInformationResponseInd), \
+    DEFINE_COMMAND(getGroupIdentifiersResponseCommand, (0x41), COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getGroupIdentifiersResponseInd), \
+    DEFINE_COMMAND(getEndpointListResponseCommand, (0x42), COMMAND_OPTIONS(SERVER_TO_CLIENT, ZCL_THERE_IS_NO_RELEVANT_RESPONSE, ZCL_COMMAND_ACK), getEndpointListResponseInd)
 
 
 #define COMMISSIONING_CLUSTER_ZCL_CLIENT_CLUSTER_TYPE(clattributes, clcommands) \
@@ -306,6 +306,6 @@ typedef struct
 } ZCL_CommissioningClusterCommands_t;
 
 
-#endif // _ZCLZLLCOMISSIONINGCLUSTER_H
+#endif // ZCLZLLCOMISSIONINGCLUSTER_H
 
 // eof zclZllCommissioningCluster.h

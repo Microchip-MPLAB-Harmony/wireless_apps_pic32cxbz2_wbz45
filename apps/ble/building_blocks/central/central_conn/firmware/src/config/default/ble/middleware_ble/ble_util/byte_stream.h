@@ -88,7 +88,7 @@ extern "C" {
 /** @brief Copy a variable length data from a buffer. Endian of the data remains.
  * @{ */
 #define BUF_COPY_TO_VARIABLE(p_value, p_src, length)\
-        memcpy((uint8_t *)p_value, (uint8_t *)(p_src), length);
+        (void)memcpy((uint8_t *)p_value, (uint8_t *)(p_src), length);
 /** @} */
 
 
@@ -139,7 +139,7 @@ extern "C" {
 /** @brief Copy a variable-length data to an address. Endian of data remains.
  * @{ */
 #define VARIABLE_COPY_TO_BUF(p_dest, p_src, length)\
-    memcpy(p_dest, p_src, length);
+    (void)memcpy(p_dest, p_src, length);
 /** @} */
 
 
@@ -194,7 +194,7 @@ extern "C" {
 /** @brief Copy a variable length data from a byte stream. Endian of the data remains.
  * @{ */
 #define STREAM_COPY_TO_VARIABLE(p_value, p_src, length)\
-        memcpy((uint8_t *)p_value, (uint8_t *)(*p_src), length);\
+        (void)memcpy((uint8_t *)p_value, (uint8_t *)(*p_src), length);\
         (*p_src)+=length;
 /** @} */
 
@@ -210,7 +210,7 @@ extern "C" {
 /** @brief Insert an uint16_t value in little endian format to a byte stream
  * @{ */
 #define U16_TO_STREAM_LE(p_dest, value)\
-    memcpy(*p_dest, (uint8_t *)&value, 2);\
+    (void)memcpy(*p_dest, (uint8_t *)&value, 2);\
     (*p_dest)+=2;
 /** @} */
 
@@ -226,7 +226,7 @@ extern "C" {
  * @{ */
 
 #define U32_TO_STREAM_LE(p_dest, value)\
-    memcpy(*p_dest, (uint8_t *)&value, 4);\
+    (void)memcpy(*p_dest, (uint8_t *)&value, 4);\
     (*p_dest)+=4;
 /** @} */
 
@@ -256,7 +256,7 @@ extern "C" {
 /** @brief Copy a variable-length data to an address. Endian of data remains.
  * @{ */
 #define VARIABLE_COPY_TO_STREAM(p_dest, p_src, length)\
-    memcpy((uint8_t *)*p_dest, (uint8_t *)p_src, length);\
+    (void)memcpy((uint8_t *)*p_dest, (uint8_t *)p_src, length);\
     (*p_dest)+=length;
 /** @} */
 

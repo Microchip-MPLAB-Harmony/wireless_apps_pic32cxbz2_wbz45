@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_RX_H
-#define _NWK_RX_H
+#if !defined NWK_RX_H
+#define NWK_RX_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -121,6 +121,6 @@ void NWK_DataResp(NWK_DataResp_t *resp);
 void nwkFillNeighborEntryRxFrame(NwkNeighbor_t *neighbor, const ExtAddr_t extAddr, const ShortAddr_t shortAddr, const Lqi_t lqi, const Rssi_t rssi);
 #endif
 
-#endif /* _NWK_RX_H */
+#endif /* NWK_RX_H */
 /** eof nwkRx.h */
 

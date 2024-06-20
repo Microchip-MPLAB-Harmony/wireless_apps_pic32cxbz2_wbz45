@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BDB_TOUCHLINK_H
-#define _BDB_TOUCHLINK_H
+#ifndef BDB_TOUCHLINK_H
+#define BDB_TOUCHLINK_H
 
 /***************************************************************************************************
 * INCLUDE FILES
@@ -108,4 +108,4 @@ void bdbTriggerTouchlink (bool resetTargetToFN, BDB_InitiatorReq_t* initiatorReq
 ******************************************************************************/
 bool bdbTouchlink_EventHandler(N_Task_Event_t evt);
 
-#endif // _BDB_TOUCHLINK_H
+#endif // BDB_TOUCHLINK_H

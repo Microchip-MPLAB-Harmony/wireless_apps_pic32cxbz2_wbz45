@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACSYNC_H
-#define _MACSYNC_H
+#ifndef MACSYNC_H
+#define MACSYNC_H
 
 /******************************************************************************
                         Includes section
@@ -89,6 +89,6 @@ typedef struct
 ******************************************************************************/
 extern void MAC_SyncLossInd(MAC_SyncLossInd_t *indParams);
 
-#endif /* _MACSYNC_H */
+#endif /* MACSYNC_H */
 
 // eof macSync.h

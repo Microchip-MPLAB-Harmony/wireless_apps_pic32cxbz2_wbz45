@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CUSTOMCOLORSCHEMESCONVERTION_H
-#define _CUSTOMCOLORSCHEMESCONVERTION_H
+#ifndef CUSTOMCOLORSCHEMESCONVERTION_H
+#define CUSTOMCOLORSCHEMESCONVERTION_H
 
 /******************************************************************************
                     Includes section
@@ -69,7 +69,7 @@ void customConvertColorToXY(uint16_t temperature, uint16_t *x, uint16_t *y);
 ******************************************************************************/
 uint16_t customConvertXYToColor(uint16_t x, uint16_t y);
 
-#endif // _CUSTOMCOLORSCHEMESCONVERTION_H
+#endif // CUSTOMCOLORSCHEMESCONVERTION_H
 
 // eof customColorSchemesConversion.h
 

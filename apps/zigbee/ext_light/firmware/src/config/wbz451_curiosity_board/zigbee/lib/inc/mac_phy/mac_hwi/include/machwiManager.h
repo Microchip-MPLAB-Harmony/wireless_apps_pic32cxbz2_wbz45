@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACHWIMANAGER_H
-#define _MACHWIMANAGER_H
+#ifndef MACHWIMANAGER_H
+#define MACHWIMANAGER_H
 
 /******************************************************************************
                         Includes  section.
@@ -272,6 +272,6 @@ void machwiTxEmptyDataFrameReq(MAC_FrameDescr_t *frameDescr);
 
 #endif //_FFD_
 
-#endif //_MACHWIMANAGER_H
+#endif //MACHWIMANAGER_H
 
 // eof machwiManager.h

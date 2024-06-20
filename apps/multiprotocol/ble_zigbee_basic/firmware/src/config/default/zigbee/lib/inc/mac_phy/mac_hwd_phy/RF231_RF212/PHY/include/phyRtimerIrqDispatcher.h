@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _PHYRTIMERIRQDISPATCHER_H
-#define _PHYRTIMERIRQDISPATCHER_H
+#ifndef PHYRTIMERIRQDISPATCHER_H
+#define PHYRTIMERIRQDISPATCHER_H
 
 /******************************************************************************
                         Includes section.
@@ -61,6 +61,6 @@
 ******************************************************************************/
 void phySetRTimerSource(HAL_RTimerSource_t source);
 
-#endif /* _PHYRTIMERIRQDISPATCHER_H */
+#endif /* PHYRTIMERIRQDISPATCHER_H */
 
 // eof phyRtimerIrqDispatcher.h

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ZGPAPPCONFIG_H
-#define _ZGPAPPCONFIG_H
+#ifndef ZGPAPPCONFIG_H
+#define ZGPAPPCONFIG_H
 
 #ifdef _GREENPOWER_SUPPORT_
 #if APP_ZGP_DEVICE_TYPE == APP_ZGP_DEVICE_TYPE_COMBO_BASIC
@@ -423,4 +423,4 @@ Application device configuration
 #endif // ZGP_DISABLE_TRANSLATION_TABLE
 #endif //// #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_COMBO_BASIC
 #endif // _GREENPOWER_SUPPORT_
-#endif //_ZGPAPPCONFIG_H
+#endif //ZGPAPPCONFIG_H

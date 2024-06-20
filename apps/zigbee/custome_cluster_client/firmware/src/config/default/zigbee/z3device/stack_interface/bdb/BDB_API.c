@@ -91,7 +91,7 @@ void ZB_BDB_InvokeCommissioning(BDB_InvokeCommissioningReq_t *req)
 ******************************************************************************/
 bool ZB_BDB_GetBdbNodeIsOnANetwork(void)
 {
-  bool ret = 0;
+  bool ret = false;
   apiRequest.unpack_fn = (unpack_ptr)BDB_GetBdbNodeIsOnANetwork_Unpack;
   apiRequest.parameters = &ret;
   ZIGBEE_API_CALL((Stack_API_Request_t *)&apiRequest);
@@ -195,7 +195,7 @@ void ZB_BDB_ResetToFactoryNew(bool leaveNetwork)
 void ZB_BDB_ConfigureInstallCode(ExtAddr_t deviceAddress, uint8_t *installCode, IcStatusCallback_t pfCallback)
 {
   BDB_ConfigureInstallCode_t bdbConfigureInstallCode;
-  memcpy((uint8_t*)&bdbConfigureInstallCode.deviceAddress,  (uint8_t*)&deviceAddress, sizeof(ExtAddr_t));
+  (void)memcpy((uint8_t*)&bdbConfigureInstallCode.deviceAddress,  (uint8_t*)&deviceAddress, sizeof(ExtAddr_t));
   bdbConfigureInstallCode.installCode = installCode;
   bdbConfigureInstallCode.pfCallback = pfCallback;
 
@@ -225,11 +225,12 @@ void ZB_BDB_SetInstallCodeUsage(bool useInstallCode)
 void ZB_BDB_EventsSubscribe(const BdbEventSubscriber_t* bdbEventsubscriber)
 {
   if (!isQueueElem(&appBdbEventsubscribersQueue, bdbEventsubscriber))
+  {
     if(!putQueueElem(&appBdbEventsubscribersQueue, (void*)bdbEventsubscriber))
     {
       //SYS_E_ASSERT_ERROR(false, BDB_EVENTS_QUEUE_NOT_ALLOCATED);
     }
-
+  }
   apiRequest.unpack_fn = (unpack_ptr)BDB_EventsSubscribe_Unpack;
   apiRequest.parameters = (void *)bdbEventsubscriber;
   ZIGBEE_API_CALL((Stack_API_Request_t *)&apiRequest);
@@ -331,28 +332,28 @@ void ZB_BDB_CallBack(ZB_AppGenericCallbackParam_t* cb)
 {
   switch (cb->uCallBackID)
   {
-    case BDB_Connected_ID:
+    case (uint32_t)BDB_Connected_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, connected);
       break;
-    case BDB_Event_Disconnected_ID:
+    case (uint32_t)BDB_Event_Disconnected_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, disconnected);
       break;
-    case BDB_Event_IdentifyStartIndication_ID:
+    case (uint32_t)BDB_Event_IdentifyStartIndication_ID:
     {
        uint16_t argument = *((uint16_t*)cb->parameters);
        RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(appBdbEventsubscribersQueue, identifyStartIndication);
     }
     break;
-    case BDB_Event_IdentifyStopIndication_ID:
+    case (uint32_t)BDB_Event_IdentifyStopIndication_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, identifyStopIndication);
       break;
-    case BDB_Event_UpdateNetworkIndication_ID:
+    case (uint32_t)BDB_Event_UpdateNetworkIndication_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, updateNetworkIndication);
       break;
-    case BDB_Event_QeryingCompleted_ID:
+    case (uint32_t)BDB_Event_QeryingCompleted_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, queryingCompleted);
       break;
-    case BDB_Event_JoinNetworkIndication_ID:
+    case (uint32_t)BDB_Event_JoinNetworkIndication_ID:
     {
       BDB_JoinNwkCbParam_t* bdbTwoArguments = (BDB_JoinNwkCbParam_t*)(cb->parameters);
       uint16_t groupIdFirst =  bdbTwoArguments->groupIdFirst;
@@ -360,71 +361,73 @@ void ZB_BDB_CallBack(ZB_AppGenericCallbackParam_t* cb)
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_TWO_ARGUMENTS(appBdbEventsubscribersQueue, joinNetworkIndication);
     }
     break;
-    case BDB_Event_TouchlinkCompleted_ID:
+    case (uint32_t)BDB_Event_TouchlinkCompleted_ID:
     {
       BDB_CommissioningStatus_t argument = *((BDB_CommissioningStatus_t*)cb->parameters);
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(appBdbEventsubscribersQueue, touchlinkCompleted);
     }
     break;
 
-    case BDB_Event_NetworkFormationCompleted_ID:
+    case (uint32_t)BDB_Event_NetworkFormationCompleted_ID:
     {
       BDB_CommissioningStatus_t argument = *((BDB_CommissioningStatus_t*)cb->parameters);
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(appBdbEventsubscribersQueue, networkFormationCompleted);
     }
     break;
-    case BDB_Event_NetworkSteeringCompleted_ID:
+    case (uint32_t)BDB_Event_NetworkSteeringCompleted_ID:
     {
       BDB_CommissioningStatus_t argument = *((BDB_CommissioningStatus_t*)cb->parameters);
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(appBdbEventsubscribersQueue, SteeringCompleted);
     }
     break;
-    case BDB_Event_FindingBindingCompleted_ID:
+    case (uint32_t)BDB_Event_FindingBindingCompleted_ID:
     {
       BDB_CommissioningStatus_t argument = *((BDB_CommissioningStatus_t*)cb->parameters);
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS_WITH_SINGLE_ARGUMENT(appBdbEventsubscribersQueue, findingBindingCompleted);
     }
     break;
-    case BDB_Event_ResetToFactoryDefaults_ID:
+    case (uint32_t)BDB_Event_ResetToFactoryDefaults_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, ResetToFactoryDefaults);
       break;
-    case BDB_Event_TclkProcedureOngoing_ID:
+    case (uint32_t)BDB_Event_TclkProcedureOngoing_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, tclkProcedureOngoing);
       break;
-    case BDB_Event_TclkProcedureCompleted_ID:
+    case (uint32_t)BDB_Event_TclkProcedureCompleted_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, tclkProcedureCompleted);
       break;
-    case BDB_Event_AddingBindingLinks_ID:
+    case (uint32_t)BDB_Event_AddingBindingLinks_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, addingBindingLinks);
       break;
-    case BDB_Event_Querying_ID:
+    case (uint32_t)BDB_Event_Querying_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, querying);
       break;
-    case BDB_Event_Scanning_ID:
+    case (uint32_t)BDB_Event_Scanning_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, scanning);
       break;
-    case BDB_Event_Identifying_ID:
+    case (uint32_t)BDB_Event_Identifying_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, identifying);
       break;
-    case BDB_Event_Joining_ID:
+    case (uint32_t)BDB_Event_Joining_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, joining);
       break;
-    case BDB_Event_ScanIndication_ID:
+    case (uint32_t)BDB_Event_ScanIndication_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, scanIndication);
       break;
-    case BDB_Event_SteeringNetwork_ID:
+    case (uint32_t)BDB_Event_SteeringNetwork_ID:
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, SteeringNetwork);
       break;
-    case BDB_Event_FindingBindingInitiatorModeCompleted_ID:
+    case (uint32_t)BDB_Event_FindingBindingInitiatorModeCompleted_ID:
 #if ZB_COMMISSIONING_ON_STARTUP == 1
       RAISE_CALLBACKS_TO_BDBEVENTS_SUBSCRIBERS(appBdbEventsubscribersQueue, findingBindingInitiatorModeCompleted);
 #endif
       break;
-      case BDB_CommissioningConfCallback_ID:
+      case (uint32_t)BDB_CommissioningConfCallback_ID:
       {
         BDB_CommissioningConfCB_t *bdbConfCb = (BDB_CommissioningConfCB_t*)(cb->parameters);
-        if (bdbConfCb->callbackFn)
+        if ((bdbConfCb->callbackFn) != NULL)
+        {
           bdbConfCb->callbackFn(bdbConfCb->confirm);
+        }
       }
       break;
     default:

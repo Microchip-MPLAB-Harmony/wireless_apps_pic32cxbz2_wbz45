@@ -39,8 +39,8 @@ Combined Interface device Commissioning cluster Header File
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CICOMMISSIONINGCLUSTER_H
-#define _CICOMMISSIONINGCLUSTER_H
+#ifndef CICOMMISSIONINGCLUSTER_H
+#define CICOMMISSIONINGCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -64,6 +64,6 @@ extern ZCL_CommissioningClusterClientAttributes_t ciCommissioningClusterClientAt
 ******************************************************************************/
 void ciCommissioningClusterInit(void);
 
-#endif // _BRIDGECOMMISSIONINGCLUSTER_H
+#endif // BRIDGECOMMISSIONINGCLUSTER_H
 
 // eof ciCommissioningCluster.h

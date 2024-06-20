@@ -66,7 +66,7 @@ extern "C" {
 /**@defgroup BLE_OTAS_ASSIGN_HANDLE BLE_OTAS_ASSIGN_HANDLE
  * @brief Assigned attribute handles of BLE OTA Service.
  * @{ */
-#define BLE_OTAS_START_HDL                                        0x0100                /**< The start attribute handle of BLE OTA service. */
+#define BLE_OTAS_START_HDL                                        (0x0100U)                /**< The start attribute handle of BLE OTA service. */
 /** @} */
 
 
