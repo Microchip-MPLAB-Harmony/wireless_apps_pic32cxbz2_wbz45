@@ -30,7 +30,7 @@ package:
       version: "WSGREL-49"      
     - name: "wireless_system_pic32cxbz_wbz"
       type: "package"
-      version: "v1.6.0"      
+      version: "BLE_MAC_Provisioning_Service"      
     - name: "wolfssl"
       type: "package"
       version: "v5.4.0"
