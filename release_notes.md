@@ -15,18 +15,21 @@ Following table provides number of Wireless examples available for different dev
 
 ### New Features
 - WBZ451 BLE and Thread Combo applications based on BLE Provision Service Harmony component.
+- WBZ451 BLE and MAC Combo applications based on BLE Provision Service Harmony component.
 
 ### Bug fixes and Improvements
 - Regenerated all thread application with new thread SDK v1.1.0
+- Regenerated all the MAC Applications with latest tags
 
 ### Known Issues
-- None
+- In certain A2 chip variants of the circuit boards, there is a possibility that the MAC addresses are identical, resulting in identical BLE advertisement strings.
 
 ### Limitations
 - None
 
 ### Additional Notes
 - UDP and CoAP demo applications are tested for a duration of 1 hour.
+- BLE and MAC Combo applications has been tested for a duration for 5 hours.
 
 ### Development Tools
 
