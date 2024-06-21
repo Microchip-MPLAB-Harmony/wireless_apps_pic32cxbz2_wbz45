@@ -25,25 +25,25 @@
                            projectFiles="true">
               <logicalFolder name="mac" displayName="mac" projectFiles="true">
                 <logicalFolder name="inc" displayName="inc" projectFiles="true">
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_config.h</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_data_structures.h</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac.h</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/ieee_mac_const.h</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_api.h</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_security.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/ieee_mac_const.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_api.h</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_tasks.h</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_msg_type_data_ind.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_data_structures.h</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_internal.h</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_msg_types.h</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_msg_const.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_config.h</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/inc/mac_msg_type_data_ind.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
               <logicalFolder name="services" displayName="services" projectFiles="true">
                 <logicalFolder name="sal" displayName="sal" projectFiles="true">
                   <logicalFolder name="inc" displayName="inc" projectFiles="true">
-                    <itemPath>../src/config/default/driver/IEEE_802154_MAC/services/sal/inc/sal_generic.h</itemPath>
-                    <itemPath>../src/config/default/driver/IEEE_802154_MAC/services/sal/inc/sal.h</itemPath>
                     <itemPath>../src/config/default/driver/IEEE_802154_MAC/services/sal/inc/sal_types.h</itemPath>
+                    <itemPath>../src/config/default/driver/IEEE_802154_MAC/services/sal/inc/sal.h</itemPath>
+                    <itemPath>../src/config/default/driver/IEEE_802154_MAC/services/sal/inc/sal_generic.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
@@ -470,6 +470,12 @@
       <itemPath>../src/stack_config.h</itemPath>
       <itemPath>../src/app.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+      <itemPath>demoapp_ffd.mc3</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -489,48 +495,48 @@
                            projectFiles="true">
               <logicalFolder name="mac" displayName="mac" projectFiles="true">
                 <logicalFolder name="src" displayName="src" projectFiles="true">
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_scan_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_scan.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_mcps_data.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_beacon.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_reset_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_pib.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_poll_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_orphan.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_process_phy_tx_frame_status.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_purge_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_disassociate_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_task.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_misc.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_tx_coord_realignment_command.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_associate_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_comm_status_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_callback_wrapper.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_extract_mhr.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_get_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_rx_enable_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_process_beacon_frame.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_sync.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_disassociate_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_associate_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_sync_loss_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_data_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_start.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_start_conf.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_set_conf.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_security.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_beacon_notify_ind.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_data_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_start.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_task.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_orphan.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_sync_loss_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_rx_enable_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_sync.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_purge_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_scan.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_reset_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_extract_mhr.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_poll.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_dispatcher.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_disassociate.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_api.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_req.c</itemPath>
-                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_associate.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_orphan_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_beacon_notify_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_dispatcher.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_disassociate_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_api.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_data_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_misc.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_comm_status_ind.c</itemPath>
                   <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_rx_enable.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_start_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_beacon.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_disassociate.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_security.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_scan_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_tx_coord_realignment_command.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_process_beacon_frame.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_associate_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_associate.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_disassociate_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_pib.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_associate_ind.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_mcps_data.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mlme_poll_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_callback_wrapper.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/usr_mcps_data_conf.c</itemPath>
+                  <itemPath>../src/config/default/driver/IEEE_802154_MAC/mac/src/mac_data_req.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
               <logicalFolder name="services" displayName="services" projectFiles="true">
@@ -777,12 +783,6 @@
       <itemPath>../src/app_idle_task.c</itemPath>
       <itemPath>../src/app.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <itemPath>Makefile</itemPath>
-      <itemPath>demoapp_ffd.mc3</itemPath>
-    </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../src/demo_app_ffd</Elem>
@@ -797,12 +797,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.2.230"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -811,7 +811,7 @@
           <linkerLibItems>
             <linkerLibFileItem>../src/config/default/driver/pds/pds.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/default/driver/device_support/pic32cx_bz2_device_support.a</linkerLibFileItem>
-            <linkerLibFileItem>../src/config/default/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.1.0.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.2.0.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -837,7 +837,6 @@
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -854,7 +853,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;ENABLE_TSTAMP;FFD;HAVE_CONFIG_H;MAC_SECURITY_2006;MAC_SECURITY_ZIP;STB_ON_SAL;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;ENABLE_TSTAMP;FFD;HAVE_CONFIG_H;MAC_SECURITY_2006;MAC_SECURITY_ZIP;STB_ON_SAL;WOLFSSL_IGNORE_FILE_WARN;configCHECK_HANDLER_INSTALLATION=0"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>
@@ -895,7 +894,6 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -935,7 +933,6 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -964,7 +961,6 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
-        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>
@@ -979,6 +975,7 @@
       </C32Global>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UpdateOptions"
@@ -992,6 +989,7 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
@@ -1024,6 +1022,7 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
@@ -1032,6 +1031,7 @@
       </Tool>
       <pkob4hybrid>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UpdateOptions"
@@ -1045,6 +1045,7 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
@@ -1077,6 +1078,7 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>

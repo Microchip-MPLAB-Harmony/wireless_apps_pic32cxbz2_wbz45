@@ -95,7 +95,7 @@
 /*
  * TAL PIB default values
  */
-#define NUMBER_OF_LARGE_PHY_BUFS          (3U)
+#define NUMBER_OF_LARGE_PHY_BUFS          (5U)
 #define NUMBER_OF_SMALL_PHY_BUFS          (3U)
 
 #if (MAC_INDIRECT_DATA_FFD == 1)

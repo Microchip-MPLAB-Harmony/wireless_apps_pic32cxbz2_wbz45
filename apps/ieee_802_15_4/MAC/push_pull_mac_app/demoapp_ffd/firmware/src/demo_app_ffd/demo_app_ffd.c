@@ -69,7 +69,7 @@
 
 /* === MACROS ============================================================== */
 
-#define CHANNEL_OFFSET                  (4U)
+#define CHANNEL_OFFSET                  (14U)
 
 /** Defines Beacon Order for Nobeacon Network. */
 #define DEFAULT_BO                     (15)
