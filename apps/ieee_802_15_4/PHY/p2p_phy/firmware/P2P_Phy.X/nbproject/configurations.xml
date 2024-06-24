@@ -491,7 +491,7 @@
           <linkerLibItems>
             <linkerLibFileItem>../src/config/default/driver/pds/pds.a</linkerLibFileItem>
             <linkerLibFileItem>../src/config/default/driver/device_support/pic32cx_bz2_device_support.a</linkerLibFileItem>
-            <linkerLibFileItem>../src/config/default/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.1.0.a</linkerLibFileItem>
+            <linkerLibFileItem>../src/config/default/driver/lib/lib-ieee802154_phy_pic32cxbz-v1.2.0.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>

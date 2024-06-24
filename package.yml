@@ -36,7 +36,7 @@ package:
       version: "v5.4.0"
     - name: "wireless_15_4_phy"
       type: "package"
-      version: "v1.3.0-rc.1"
+      version: "v1.3.0"
     - name: "wireless_15_4_mac"
       type: "package"
       version: "v1.1.0-rc.1"
