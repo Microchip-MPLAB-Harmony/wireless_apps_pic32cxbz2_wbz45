@@ -101,6 +101,44 @@
          <value>__ROOTVIEW</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FreeRTOS" name="FREERTOS_HEAP_1_C"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;FreeRTOS&gt;
+  &lt;FreeRTOS dnOrder=&quot;0&quot; id=&quot;FREERTOS_HEAP_1_C&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;false&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/FreeRTOS&gt;
+&lt;/FreeRTOS&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FreeRTOS" name="FREERTOS_HEAP_4_C"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;FreeRTOS&gt;
+  &lt;FreeRTOS dnOrder=&quot;0&quot; id=&quot;FREERTOS_HEAP_4_C&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/FreeRTOS&gt;
+&lt;/FreeRTOS&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FreeRTOS" name="FREERTOS_MEMORY_MANAGEMENT_CHOICE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;FreeRTOS&gt;
+  &lt;FreeRTOS dnOrder=&quot;0&quot; id=&quot;FREERTOS_MEMORY_MANAGEMENT_CHOICE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;Heap_4&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;Heap_4&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/FreeRTOS&gt;
+&lt;/FreeRTOS&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FreeRTOS" name="FREERTOS_TICKLESS_IDLE_CHOICE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;FreeRTOS&gt;
   &lt;FreeRTOS dnOrder=&quot;0&quot; id=&quot;FREERTOS_TICKLESS_IDLE_CHOICE&quot;&gt;
@@ -637,7 +675,7 @@
     &lt;GraphSettings canvasHeight=&quot;470&quot; canvasWidth=&quot;836&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APP_P2P_PHY&quot; x=&quot;351&quot; y=&quot;205&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APP_P2P_PHY&quot; x=&quot;350&quot; y=&quot;205&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;FreeRTOS&quot; x=&quot;526&quot; y=&quot;217&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;HarmonyCore&quot; x=&quot;659&quot; y=&quot;224&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;112&quot; y=&quot;291&quot;/&gt;
@@ -932,7 +970,7 @@
       </entry>
       <entry>
          <file>..\src\app_idle_task.c</file>
-         <hash>f394bafc955ca651e6af302b06a74b986e711e1d79fe96ed66864483d2807e47</hash>
+         <hash>f50e07d6e5231d7dd5b6d74c2f9dfeedb32619726e890e296eb7f13f032befc0</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_gcc.h</file>
@@ -940,19 +978,19 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\task.h</file>
-         <hash>2bdfb8e3c1a76a5ccacb1b7815ca9acb63d1ba1f1bd29e5a75757d5e186c5056</hash>
+         <hash>0d71440d1d81d990fa79677c0836712a3e2655ff3ad75478f5a221e2f0583cf8</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\timers.c</file>
-         <hash>0d16405e621a2c4b003b5f0324b9713cd4865364133df6f742f482a6b2dbc773</hash>
+         <hash>3b936fac70fa25b959b53990cd15c20fb85956cdbe22af4249fde0a94590ff01</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\stream_buffer.h</file>
-         <hash>0607fcca1927ba782a29a3814481d69db3569e6e53a68ebf2c01f5598a3af2b8</hash>
+         <hash>51da6d9a7cc2cf1504b4f1564e814f422efb9b688fc6e58946f41d0fe23d2d22</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\pmu.h</file>
-         <hash>1124b6fda68711f850433e00b3f4c931bb15e436c734678b216d38e0ef71aa3a</hash>
+         <hash>fd16f2de4ba48240dad320a2e8a8013c23fe10ecfa413388e145066e9560b9be</hash>
       </entry>
       <entry>
          <file>..\src\app_idle_task.h</file>
@@ -960,7 +998,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tcc0.h</file>
-         <hash>4332aa2e03a236e2feb267234e2b65f3e36f60d07e96aa8992a262866e82b6d6</hash>
+         <hash>9bed6ffbb2dc9bcb0e11369d1a9767562158412af6ca053ee0192cd24533c63b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\toolchain_specifics.h</file>
@@ -968,19 +1006,19 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\list.h</file>
-         <hash>f9b239f168976f7b167e054fa72616826f55ae4d74d76b87c9e70b2df079363f</hash>
+         <hash>0848dc9696a2d4d11bb6957fedb6ec5dfb1c2326dfb66af5ca848b1b32a86b66</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\icm.h</file>
-         <hash>7e06fb316d6a9739f5abcc9652fd26f08098bbbcb17a27f5bd47d7acc5eb883e</hash>
+         <hash>a6e081878d96fb07761cf82649298406e4eed914c527c1449e9e0056506d7c15</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\croutine.h</file>
-         <hash>8df4c5eec7eb30262f09b7c47fc2eb0534a27721293b0d260a3398846494f9ac</hash>
+         <hash>b7060be39f6c8d0ffd169806382eed5a411776f0d69b0fb3ade6b07e678303f9</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\arb.h</file>
-         <hash>7ac06f4fdb06c6e49c744e5d3de9838bcf3b15bb3029a9b2c4accf316eda3184</hash>
+         <hash>57742e792dcd30a1468f5d168e0dfe371dbd34c187302e615b91107ebc834d7c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\sys_tasks.h</file>
@@ -988,7 +1026,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\cfg.h</file>
-         <hash>3c0d5a18aea56d2d76abe27d5d21253e4bc2582683957fb86aa04e8645daa01f</hash>
+         <hash>b37ca225202e72b3a8f9c3f48d622d8d006995e4dc1f0d1f12466d80bec8b2e3</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\console\src\sys_console_uart.h</file>
@@ -1008,15 +1046,15 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\gpio.h</file>
-         <hash>723c4ecdfd3f5da8e01e54941c2c8bb97ec193123fe475d59dc34bb2d608fa57</hash>
+         <hash>06d213c5140f6afc123d25828c3403412aa260e73ac97a02bf1d7e2f07f98274</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\fuses.h</file>
-         <hash>5276552918715f93ec6bd2f65bfaff15a84bade50d53d7571960243d417a90e7</hash>
+         <hash>2d078be5396de973d0050b3999c637b584dbeec4f3fe1b77da4347e647cf5925</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ramecc.h</file>
-         <hash>c7de5a38e6430b373d7a5f58d5234c33627372dbe14071a1fba96a949db51a41</hash>
+         <hash>32ee645c9408e1b596e1ceac4c8aa2a3ee8759e04c56f26af0882fd124f62912</hash>
       </entry>
       <entry>
          <file>..\src\config\default\framework_defs.h</file>
@@ -1032,23 +1070,23 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\pio\wbz451.h</file>
-         <hash>8d68ffa11efd658c57ddc325b46b7f538094fdc57a09ad2ae7e447ffccc0e787</hash>
+         <hash>e6df112b6703e439e580030754443fb06aaf1d814c0f9b81df94e91d65f1a901</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\pac.h</file>
-         <hash>3cf821287bd776ce6b229bcabea0ff74b9303c43da4b4d822c83d0aaf75fe9d0</hash>
+         <hash>34fdcc6d12d414fecf8b676183e1e012784ffee44fee119b347edbff6fc45ac4</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\mpu_prototypes.h</file>
-         <hash>3fafd21399ef619a55b2f8112750d750685c8ae1cb458363d21ee37a105ac6e7</hash>
+         <hash>8cb02fee372e1cc1958022e054122d248c1c184cfc00eb3db6d0fbc0bfef87d1</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\ac.h</file>
-         <hash>e6cc98430a44cb0873203c233627a48b09b7f5e68081ccf11043f49b9c686c81</hash>
+         <hash>17f40f7fdc38905f13244d3558f81da8ba7d117755fadd82df0fae463088bbae</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\trng.h</file>
-         <hash>b8e879a69fccff84b0de7375648c35f878210a4b39eb65ba9f20104303d7f8a3</hash>
+         <hash>0a030bd91a692a12385d91e2165ae0699a158b850e54854285f72ab060a9ec64</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\src\phy_task.c</file>
@@ -1056,7 +1094,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ac.h</file>
-         <hash>007474f4399147f8c00b3d53e6a60fcd0c3fa5198ff9fd4ac7ad9cd8a9d706af</hash>
+         <hash>38bbaef22958fce00a8daff1e33c8bae370e80ce6ad6ee60a81d9ed92f4a208c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\src\phy_tx_frame_done_cb.c</file>
@@ -1072,11 +1110,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\cru.h</file>
-         <hash>260ace78815291d134ad4be998f53a9af00fe9106e337a8c328f4dbc7c59f97f</hash>
+         <hash>d960aa1ee9746356d1daa9c5b5a57c54cc5fa90b66e09425b6492273d320784d</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\aes.h</file>
-         <hash>fa369dd47e0f47601b272f87860cb85bd085ac6ea36dbaac54beaef0ceda05ea</hash>
+         <hash>1dfe3afcf4cf9df306438a796f4fb895b59368a0731025bc89f448675d1cd6af</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armcc.h</file>
@@ -1084,7 +1122,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\FreeRTOS.h</file>
-         <hash>b7a81501c3f4ff9537df5c9a5e0231f37638cdc8324965ae10064128fded840f</hash>
+         <hash>7e29c7d9c773561ec4d0125409036f102f1f15162e213d32568ddf3d8ceddfeb</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\inc\ieee_phy_const.h</file>
@@ -1100,7 +1138,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\FreeRTOSConfig.h</file>
-         <hash>cac17c20bebf9145ab1fd34b8a54c4d4b1943802c5d2d00d54358ce0a60c85e9</hash>
+         <hash>b13943cd17d70927e909b29f76e9c663e50b4909db6f56738d14a54e0144f722</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tc\plib_tc0.h</file>
@@ -1108,11 +1146,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\gpioa.h</file>
-         <hash>4a3efa562eb78425621d9cc629138ae74d0d3c3513da457c234abe04cc53d77a</hash>
+         <hash>abda6615c2418ae70f52b4e795b847a7b0bb632295b3f98e3e66c144658bbbcd</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\rtc.h</file>
-         <hash>70028a0bcea2085b12e7689b3c394d3112d27599004c2cc090cb96536479962c</hash>
+         <hash>f4d69c9429b33993a871fdc1a1f27d0e09b78baad36fbc53b5c95c857f30c8ae</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\reset\sys_reset.h</file>
@@ -1120,7 +1158,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dmt.h</file>
-         <hash>f7946a1dd2d7a086877f937f5edd373ed9c6a2c90f9026086e13a98b76f89fe1</hash>
+         <hash>330cf16a960588831596472152f3a9337912854a68a4fbf47dacde74ed8ff315</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tc\plib_tc0.c</file>
@@ -1128,7 +1166,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ccl.h</file>
-         <hash>8180e4be4bd31cceb72bcb8671d28545fa971540376db4343ad6d02dd25ad3f7</hash>
+         <hash>08c53e7d88b87df179811e0e1ca86d390dcf1fd43dc3505b0f2c582bf0febe2f</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\reset\sys_reset.c</file>
@@ -1140,7 +1178,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\dscon.h</file>
-         <hash>ece94860752ac5a75efd840d1cb0c30c31b58031e11590b6d6d370dcb19caced</hash>
+         <hash>79c970386219db68b35c24a2ed86100577715e36af81a09bb4a7e7673e5e288e</hash>
+      </entry>
+      <entry>
+         <file>..\src\third_party\rtos\FreeRTOS\Source\portable\MemMang\heap_4.c</file>
+         <hash>3a16d742be46814ed11142c370519f74d004e21afdcb2b3e0584a30011f52186</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\pic32cx_bz2_device_support.a</file>
@@ -1148,7 +1190,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\system\debug\sys_debug.h</file>
-         <hash>bc6fa321b0be542d074e4564065b7fd69f52556486ac3d892d315b51c434f9ec</hash>
+         <hash>4162d9e1fab93b8b33f6c8a24726f5dc287ea05c31e3ab984c3c920c725d0882</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -1156,7 +1198,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\evsys.h</file>
-         <hash>7f8915fef88322624c05c2a0cb842286a75f7e44085a26fac3557505a4655420</hash>
+         <hash>9300672c8e02f32f393ec547804e9b79760194f495708d726966ff08a293a242</hash>
       </entry>
       <entry>
          <file>..\src\config\default\app_p2p_phy\inc\app_p2p_phy_config.h</file>
@@ -1164,7 +1206,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\nvm.h</file>
-         <hash>c632f3332189f437929ff35f644277e594c8a4aeee9634b1fac6f160b5ad0061</hash>
+         <hash>034f51b36aef7b4a25fcffbe0f42052ae8855d8dbc6428df7fc840442b480f4f</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\cache\sys_cache.c</file>
@@ -1172,27 +1214,27 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\inc\phy.h</file>
-         <hash>f5d4781f4faed81150040ad4c4ccff78cc8f583fa28a5e6f07f8664ec4c3decd</hash>
+         <hash>5cc47a27314abed2b20659dca174e94741496c90af243fde71b6a691336d5f61</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dsu.h</file>
-         <hash>78747df21b8a500dfd491df898a83a0c8dcb82d32e742d4efaf3660f6474749b</hash>
+         <hash>eb3c8de8f1865e210c8a1824b314862c0654a499de722bf97f2ea948088c75c3</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\deprecated_definitions.h</file>
-         <hash>382f8a7a0e00240fb69911dff8d8515248beb9dadfe77c22c4e5544f49cc76eb</hash>
+         <hash>81d325362fc67518de04d5070609e537d0757e4cc6d6332e8118b4f81a4fdce7</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\fuses.h</file>
-         <hash>d2733e9ff7651deec6be9562024b3ad5b7fbff08825d34688e4ec7effca3a363</hash>
+         <hash>0fd981bc236289893a092e33b4cc3d843262cf4c46154796489026523c6421b6</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\hmatrix.h</file>
-         <hash>cb4b58654f009d7506c1593180572ce82cf20510e1f3614bb62ebc49669078bb</hash>
+         <hash>2d72890a73a831268fa044c1ea47d4b8b9e856d50ee1f589806f7c23f8e8cf6c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tcc2.h</file>
-         <hash>fc6aff58363a06c01ef9bd5475c20e18b77c9a2fb453ba1a6d68d612bcf89342</hash>
+         <hash>5d2f86e882a83390998db87cbf30de106992e1e50f28bbe5ba24cfd1df5b3549</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\include\pds.h</file>
@@ -1212,15 +1254,15 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\rcon.h</file>
-         <hash>dd4540723d5c4afe5c0404ccd32cb56df35bad956b4a098d9cc9bb0480834173</hash>
+         <hash>344f6266a4fc30448ac0d2e7cafc416e57c5a4a711887bef29be24bf66b2309e</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\timers.h</file>
-         <hash>cfd11f78d92b398e8347f2b55dc1e79dffce83f63f7e570c6fc821334681ad12</hash>
+         <hash>19e373d04e2f01f9f69a9d3017a75a46b4f7b6e8016742702b10e112786d6181</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\evsys.h</file>
-         <hash>17d5cc25b9c23d525891f1c7e51c0fd2c5c989a6920bf856b8ce30a2aa4af891</hash>
+         <hash>fa615eba233578ca8f04c1c60aec1ab60ae5c6d12a7290bb29844a92808c5f68</hash>
       </entry>
       <entry>
          <file>..\src\app_user_edits.c</file>
@@ -1232,7 +1274,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\qspi.h</file>
-         <hash>8804e08823707189801c68e43b413bba5881dc0d8b3d4d6bafa3ac6173bc8f4c</hash>
+         <hash>88c1b997ec9bde10486fd04c1dea20562c387ac2779fbb0f7d3e4f4b78db0636</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_version.h</file>
@@ -1244,11 +1286,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\cmcc.h</file>
-         <hash>6ad227698c9149ac9b1c0fd7b4c06865ff0cd1547d8d1a5d8a6f2f2cba5b842c</hash>
+         <hash>534b28597c49d05a283cce93e399341a3adf5aee765f0a9b04d4ead7ba1bfade</hash>
       </entry>
       <entry>
          <file>..\src\stack_config.h</file>
-         <hash>adc648351d8a4f261e42e0349f407b3a2c281084eb3b67a33a860802496b97bb</hash>
+         <hash>4b3825dd8d8146be0942e744559661bd69106ee5f7491e13ee5adbcea0b3b80d</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device_cache.h</file>
@@ -1256,35 +1298,31 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\nvm.h</file>
-         <hash>4ba26748a365a45c4e63bd259d53fd8d9f60e40ef1132fb6912321fa0318aee3</hash>
+         <hash>2978e43ee068e0604ae6e1d79e6c60e4de4afc93395b1ba61a0b45f9953ebaec</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc2.h</file>
-         <hash>45bc4f585dbbf729ee02918b786d2fda684a58eb10c44af4d095c2505839a13a</hash>
+         <hash>986e50fd32e0721fa420833c1db4cd75658fed813782e828333de7d60bf89ad8</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\sercom\usart\plib_sercom_usart_common.h</file>
          <hash>f19dafabe0928d60dd83d7e19f35889f200e3fbadff09e2f42523d320acf780a</hash>
       </entry>
       <entry>
-         <file>..\src\third_party\rtos\FreeRTOS\Source\portable\MemMang\heap_1.c</file>
-         <hash>6d8eb84e5171bce4d5cde80abc575ebd7d81ac007b7733f34d5032bac93f1748</hash>
-      </entry>
-      <entry>
          <file>..\src\packs\WBZ451_DFP\component\ble.h</file>
-         <hash>362aeace211a3e2ed4b37036e377dde1eddd78d1d75f26ae91a84ef98d628e17</hash>
+         <hash>133550c8fc4501098d8732a22da2a1c9b1f3b315f2783524e7cd9c08bec81e64</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\wdt.h</file>
-         <hash>7508e2b22e87fea9ccbf0b7e1a0d503332b9befc6a40617c25dff6ee362be06a</hash>
+         <hash>164c7151fe0315b5d37a970a0b549ca5bcb48a06124427583a634b874428424b</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\ramecc.h</file>
-         <hash>a42c7c55d9ee357fab45e0c31a51adc44ff17d749cd9dff6e9489e20d87598cc</hash>
+         <hash>8ac3b7b49559af3217b529d0985d5f38b002004f8ea1c67ec122747e3aff7b1f</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\eic.h</file>
-         <hash>f028ed8122c0b6532becf7517704bde388e49743468d7ea91c0114ad4c7999f6</hash>
+         <hash>340c39aafa873f4fb74c37906120473c255280b2c13c2f6e1f693943c8e0e11d</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang_ltm.h</file>
@@ -1292,27 +1330,23 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\stack_macros.h</file>
-         <hash>7d1d30b6c9ae34bebb26b14402f78a59a35ae826f460a1ad28534c9590b32151</hash>
+         <hash>d167d886d199615eeeca0acb935bf5c99b42c30a322273363ddc8dec03a58174</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tcc1.h</file>
-         <hash>06af7e4d9783638b9c35e63e9925d726088f9d1d07d4d3f4c45a1ce66a6d1f12</hash>
+         <hash>786875b854a831e29d09a649608d9eafc9b92c8633f26d8c4308aec3acb1ec07</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pac.h</file>
-         <hash>9896854816f2bc8003a042ae60c00679a59691ac2b1f3ea013c6c61c9697937d</hash>
+         <hash>c381c534022bdac654f3de4c701192b3165f5e18da56ae3c6cc138b6736ac5e6</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pmu.h</file>
-         <hash>94f2c35b612aff192fc74bb25bde8685ef8c2071e30b0501d7d9f2bb63fe0117</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\driver\lib\lib-ieee802154_phy_pic32cxbz-v1.1.0.a</file>
-         <hash>6deae94b6f128e1ea25b86853af1ee275a11ed8856e0162d5a86b276e649019e</hash>
+         <hash>ddcd75121a1cfbf3219e4fc748b715962476adb8e100047b7659b43e004f3e82</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\sercom.h</file>
-         <hash>abcc05ea9aca3f731c1f5d9452da3cffa54902ca62cbd2dcd8b94fce1e2a4422</hash>
+         <hash>b461d58a3ef5b0b757835757394e4e8914f9b13aa2ed8a33f015868a729517a4</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\time\sys_time_definitions.h</file>
@@ -1320,15 +1354,15 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dscon.h</file>
-         <hash>a2e6d3d216125d0664cba626a7f14c48884e66db6f7b26af7b2250a00198592b</hash>
+         <hash>837f56e4b3ad964031f47c507b7e35ae2c2480ca566a4f4e017d2dfe20190687</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.c</file>
-         <hash>bf6a45867ea11166f5d483882a0173fab4193771a704d13d654e7d79ad068609</hash>
+         <hash>db88f766ccc85aa7ad0208040484be725b089f0227fd49d5404d22ad1037b048</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\dmac.h</file>
-         <hash>bea6909855100dc536bfc7b03c021c74d161a702181597dd6ffee18cccb1e7de</hash>
+         <hash>740fb676e1610e695fe0edd4bb9859ecbc4b0b4b04c6fe91ddcd8c501aef23d1</hash>
       </entry>
       <entry>
          <file>..\src\config\default\configuration.h</file>
@@ -1336,15 +1370,15 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\clk\plib_clk.h</file>
-         <hash>39b2476052565e9b20debaa1266d19d5072cff729d06d053e629dc57699ec485</hash>
+         <hash>2d1939a0da512a64fea40fffe4c2f30f2d3d16344591a807c5814fc1e67fcc01</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\queue.c</file>
-         <hash>06a153c1ce111213af32dfc8797bd2e5c7819e264dfa338b4049f058dc1edb11</hash>
+         <hash>a4c20318c20a5f49a34fc757092818eb1065b19f142394a04889aa40d67a5023</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\rtc.h</file>
-         <hash>d0263bdf925d3792acb2112f9466e809d63b40483a2d1bacbe53673cb3fcfa1e</hash>
+         <hash>a678fb759c2d37787b493a22a11d1b733ab083f3f6a92b62975bc703a12648b4</hash>
       </entry>
       <entry>
          <file>..\src\config\default\exceptions.c</file>
@@ -1352,7 +1386,7 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\portable\GCC\SAM\ARM_CM4F\port.c</file>
-         <hash>89f24a509ec85bf502724334c2607eeb7a432e1f26afbc9b7291254b8f7971dc</hash>
+         <hash>b0bbd34c94672aecf577f6d721a6b267f56008425047a479a9c7071cc1c2a97a</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\trng\plib_trng.c</file>
@@ -1360,11 +1394,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>4f9e58dac8684361f668d4404dde41e118da5b93499d85c6931b97aa4d9a8871</hash>
+         <hash>c3f9b6ed8a3824901a10415eb7b11f401034e95ef86d96c003d967e703b8ee80</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>
-         <hash>41b219511b1ff1a6d7cca337f9ec5c449d386c8a79a19d27aa6e60285dbfc6b8</hash>
+         <hash>75da8f27b1e12dfd7e625e0a1da2d49d81ce9d3e7ea8a8ee77b757b7ae6ca3f1</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\cmcc\plib_cmcc.c</file>
@@ -1380,7 +1414,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\freqm.h</file>
-         <hash>8f1ab5b3505b4a148096f05fa905728c752efdda46da61fbabbe5f602533493b</hash>
+         <hash>39406c534fff93ce3d59132233b36bf09d0d5777881e1ab5b19908908d823f97</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\cmcc\plib_cmcc.h</file>
@@ -1392,7 +1426,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\sercom0.h</file>
-         <hash>038a57fd55d246f6eaea38a0315657785944fd65dd0dfe4f6bbc3c553de37300</hash>
+         <hash>83866fcfc6520a4b30574ed0ae971e72fd8d2447ccc87a7d947819241583419e</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tc\plib_tc_common.h</file>
@@ -1408,11 +1442,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\btzbsys.h</file>
-         <hash>1f8a8507c716b037133622dd16082629ca58338877da57969db66eb4e15c6881</hash>
+         <hash>0b90db842daa0e33e150c1725d88087c6640fbdbd340e9a0a433e36cce9f6ead</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\eic.h</file>
-         <hash>00c7f09599324ac5f2c996287eeb60ec067f55920e8cd4fddb13ad5bf842cc5d</hash>
+         <hash>3afa2bd88916fe4c2e70c4efdb9b227687b9fa6bcbcb6a86da250dda39e21d84</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\time\sys_time.h</file>
@@ -1420,7 +1454,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\aes.h</file>
-         <hash>c279b240692b432451ebbe31029cbd15dfdf820c8ed35d6e86af3495cb58ad32</hash>
+         <hash>54b2e70c6f1811f3fa81c0eedb56984599ec5ccf4c8fab97302a9f2282e02b5d</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\resources\queue\src\qmm.c</file>
@@ -1428,11 +1462,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\adchs.h</file>
-         <hash>03e54cafa3973f13edd1da5a72134dc8ffbf9c3015cfef112c332c9e1c629c3d</hash>
+         <hash>6d0d7ac40b69fce1a127feb86f5fe75d12195fa05a19c6c6671dc5ed2a451a9c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\cru.h</file>
-         <hash>308972dc99b2fc066a3aff56a6146a29d7a42870b25b7b9d1b6bcccc1f67659d</hash>
+         <hash>72d0099a8f21d5a29f9adc6b4952c5c7e478aec94094122de462ce29d7db5d54</hash>
       </entry>
       <entry>
          <file>..\src\config\default\user.h</file>
@@ -1440,11 +1474,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\hmatrixb.h</file>
-         <hash>5d901f0445f59a9431624c6a66415d0e56d425df9058e5eebb6f4a746ea8c529</hash>
+         <hash>d111098c6ebd5335d37209019e9526d70e9373c4a58f64272767da5a61c742bd</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\wdt.h</file>
-         <hash>fdf3d6e7371cd73e6dfb295e0f4803775d072359bb645087e624023d9c823b80</hash>
+         <hash>ae25fcecc363746555e58f5183dc61ffde3dc8e2516d05130d5661ac8fb78d43</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\pds.a</file>
@@ -1452,35 +1486,35 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\croutine.c</file>
-         <hash>e31cd1c9c280c919a92edc28885e9bebce589d4cfab71cefab832a73683200fb</hash>
+         <hash>0ca8c178b698a6ad5ce3f6f1246ab287bfb5510f3c04e1d00e5cfb49c57fc66b</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\pche.h</file>
-         <hash>c96599fff46e137bccb6d37af02f3e87ce2d587b09958c9be705e15d72ff7677</hash>
+         <hash>3c5810e1c0077c52b30349371babbffc1b66b9c177a8a6710c9a318e52f8d6a6</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\pfw.h</file>
-         <hash>2327120093b7dacf94543b977e0f4cc62bbb1a1e4fa6f9a0b90761454186023d</hash>
+         <hash>27316a70cf83a3cd5c099d819258a799176a3b361e568f555fc37d362591c897</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\portable.h</file>
-         <hash>39795c8dded505f24f53646ecd8192251851c74f366d2a5b0aae3fbfa68c191b</hash>
+         <hash>d26267188226020346bd048c9dd0e767b91c7023e5ee0d5f9aa7c7c1864de180</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\command\src\sys_command.c</file>
-         <hash>e2e011b221d372dbb81cd7af594d7da29d7ae18966a99a3fd72b3c5772c237bf</hash>
+         <hash>84360285206bc304af70cc0b29fea061345ba6e27674613b5bb947da9fda0768</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\btzbsys.h</file>
-         <hash>b15170c5ab48aaf89c7c43291794e10aa2d0e12028c3a876a25db81621b7e1d9</hash>
+         <hash>9e36d191ac10d24adcafc1063d95548b71a7e7a1578c7616b5fdb28cc2902799</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\ccl.h</file>
-         <hash>2b7fa1dc9453479d8d5ff617a6466b8f6f6ff1543e1f0d6400e4a7e019b8d212</hash>
+         <hash>c624b9b3700dc833d7b7c2fad68757ae61930b3069e9170435f7806bc52ab297</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\list.c</file>
-         <hash>e735517f308fad5dd77d03b6858c16bdbc937bb9d0754735849fc7799ebe2b59</hash>
+         <hash>55a947c8bd1eec01ebafcb46ccc96cd33090cbdcd3f0114b9ea6a61ebdd6ee7a</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\int\sys_int.h</file>
@@ -1500,11 +1534,11 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\pal\inc\pal.h</file>
-         <hash>d8c0da049a693ae22381db2d8234c63e1a949119687d38efcf65e418d5744963</hash>
+         <hash>4da508ddc3ba665962966e9780b20d57817dd776623d2f6257e7b63c23034d15</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc0.h</file>
-         <hash>04df0bf40acde5f88986c083128922d6a2c402127d5bbed37da08d42f94a7825</hash>
+         <hash>fe1a52b0138256c72aeef5208eb8a965280fc7bc98f9587698bc85e2ecab4c03</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\sercom\usart\plib_sercom0_usart.c</file>
@@ -1532,11 +1566,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\arb.h</file>
-         <hash>04857eebce29f74c94f6ff59f43950c13b2e6e6960a9bacfaba5bf10218dfaa6</hash>
+         <hash>8cf236fa1783c4db265a9dcaaebd83c705ee70c7316f5a629ba2dd52d756183c</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\sercom1.h</file>
-         <hash>7bf9b8e8bc2c8bd4c76c73aae3ef102461db7bd36dc39126bd3a97b339122187</hash>
+         <hash>ea21e20a1b1a385c2e9a37a72b54de44103b7442f5ddbb7568770b88bdc66a16</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\pmu_system.h</file>
@@ -1544,19 +1578,23 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\tc.h</file>
-         <hash>d66be17926206d9658a7e71afb93a513b6637fa44e360d532580070b4fcaeb85</hash>
+         <hash>bcfe616df2db48dcffb1ca582b2c6619f0edbd094c16b856e54c0df6e9ccfd7b</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\zigbee.h</file>
-         <hash>0fc876d441295ca11e459e916464a64a436cd2393538d663a2098c41388663e8</hash>
+         <hash>beda3023b0ac60b4a87fde37784200a9905a1f7899c5d219941ef2e4671ce9ba</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\cfg.h</file>
-         <hash>6ac96d9a1e5a7ec3011d4362819b52541f96e1780e39205309ec8e6ad2468e0d</hash>
+         <hash>2344bb911034e0e590382338214e81763c1f4a4b692e49a45b0c031c6ddf3c1a</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\adchs.h</file>
-         <hash>a7cb478c50efb1cd4acb5026cc632c927b995ff0a1a5275bc631bf658a3ac116</hash>
+         <hash>4b6342f69329ab3ee8d38e53dff5bad4a3dfcfa518be5774838095c123376418</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\default\driver\lib\lib-ieee802154_phy_pic32cxbz-v1.2.0.a</file>
+         <hash>2573ea9d0d9595a16eb3d0bcc45a3ee258db8afc0dd7874ea815f353e271772a</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\time\src\sys_time.c</file>
@@ -1572,7 +1610,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\tasks.c</file>
-         <hash>0eb2393f91c03dd8670050f966a05c54457bc4e3d62bccab383e6afa3c183bf0</hash>
+         <hash>23e9a01a78f314f4d3978551b00e2adbb9b4e5ea319884fcb8ee9922af264fd0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\time\src\sys_time_local.h</file>
@@ -1580,7 +1618,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\freqm.h</file>
-         <hash>0531ca250fef3ac41cc9ca44e3a866880e8edf8f36671b14e9d6acbfc80c70e8</hash>
+         <hash>8d1bc6ce302063dca861d699b608723719c7508eaa580ba740fc5c65b9170771</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos_extend.c</file>
@@ -1592,15 +1630,15 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\cmcc.h</file>
-         <hash>ba049c0eae431ebe5b652c610ed5544a2e90b06baaad7b09d86ee84be8adc10e</hash>
+         <hash>154c9d4ad99356ea9e5080e8a618439b28810982e9ba81cdc6759237f922186b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>9870c17c0646b63271bc0c9f046e34324033181cdd31c6371e5a034ba544ef1e</hash>
+         <hash>bdf015476651acf0f13078c6155db99ddff4ae74f54ef98c3480d9daf543b793</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pche.h</file>
-         <hash>40b356d5e6348e242f77eb7db3c1bec815f47141ea00687ce6db5d71d25024c4</hash>
+         <hash>929bc1ddbba0f0fe8f7cabd9dd89bc7cdadc0892534b47bddb715008689c47cd</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_compiler.h</file>
@@ -1608,11 +1646,11 @@
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\queue.h</file>
-         <hash>39d58a203f1b67fdb1099293914a2af9722d223586cfc5ff06e230e047919dea</hash>
+         <hash>27b85dc3c610f83fee9208e0dd4d8dfa3168ea2259cbe1662e2f6a0ac55431f5</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pps.h</file>
-         <hash>c39c9ec60ec5889618261d7d8adfac1d7e1a61c7ea98cffb060f4527c203654f</hash>
+         <hash>21b42c5f9b85b37530fbfbb060dcc04d429abf13f83ef61b628038dd6fe54ac1</hash>
       </entry>
       <entry>
          <file>..\src\config\default\app_p2p_phy\src\app_p2p_phy.c</file>
@@ -1624,7 +1662,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc1.h</file>
-         <hash>c29c9b3225bdc80f542916e00527237aa6e489127e5e5e6f24f097673d4040bf</hash>
+         <hash>a9c9dc629666bd86eeff74ac314c22d5709300be33410a7f1a77ecfb510d160f</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\gpio\plib_gpio.c</file>
@@ -1640,7 +1678,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\trng.h</file>
-         <hash>c27e9bd5f61737527829d98826983e8c6725d92d4b8cb576efbf78be7f1452af</hash>
+         <hash>a19ea3c437ee23c30287442f18a3789d3a3cd315ef48f89d12ed65ce92df70da</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\core_cm4.h</file>
@@ -1652,7 +1690,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\sercom2.h</file>
-         <hash>4f86e1b7ffb5128981ba81b16b8b163e62932b5e1bd38ef5d6fc32f26c0bdf21</hash>
+         <hash>3f169d0056fea9500350562c4e0ac5bd379fbd0b18f4b536be55f8e23f644a6c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\pds\include\pds_config.h</file>
@@ -1664,7 +1702,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\wbz451.h</file>
-         <hash>67503a2d0e3bd603aa38338f46b58465e67fdad259331a38a0b5a2bc8a3bcab3</hash>
+         <hash>ed0267de27247f7f9da854743484955778b7dc0de751f45c6bab6bc2ae428786</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_definitions.h</file>
@@ -1676,23 +1714,23 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\dmac.h</file>
-         <hash>fd1fd0d66f851256b2314aa7a9f7160a5e9864640ac699f79e8dfbb377a09b1f</hash>
+         <hash>d836c7cb6db4ca6052ad5f2816a1e4a21b618f13553f6f0bd8101b9c75188917</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\pps.h</file>
-         <hash>638f15d3eb6da2f653051d0b06b9356d48f33ed809081387f9238f85f19d94d4</hash>
+         <hash>6c2475ca67310bb8b8451575bb54973cbbd3d7c8ecb2fd2b9e2023753a9d702d</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\semphr.h</file>
-         <hash>b9b2ff28a0c80fa21443690bb28de64c8b9451cccd57e484de0bcf02fc367575</hash>
+         <hash>89a46fcd718990d24f9fea16c681527eec502712ca2d1b0a4e8d6c205f7452e1</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\FreeRTOS_tasks.c</file>
-         <hash>8cb1eabe18f130b2b8980e880847f773fb12a4071c763d26c51624223b32a3a4</hash>
+         <hash>b0e2349f8d150fcb569570d73cf8a80da4eee689039a9f291e8b3c36af6f97f4</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\event_groups.c</file>
-         <hash>a72063c3977fad098a87a5430e04e9fc5b892d703e01fbe09ea907f67aacf20e</hash>
+         <hash>42ca0bc7afdfb48e9089dff2b4b047e1515a93e7fce031756af6c49b2212c215</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\nvm\plib_nvm.c</file>
@@ -1708,7 +1746,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\gpiob.h</file>
-         <hash>900b1355391345c92ff2825906e82883f193feaa27a053ca7f12977a9e2cc7d7</hash>
+         <hash>f671274e6053d04bfdcf1525783e438437fc8c6ba03cae0e8935c514c4a7d8a5</hash>
       </entry>
       <entry>
          <file>..\src\config\default\osal\osal_freertos.c</file>
@@ -1716,7 +1754,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\icm.h</file>
-         <hash>f88edb43c9f1f4b2dd5ab5925ea84bd79369f0f907d6b6974937f3ba9e96d055</hash>
+         <hash>b7c90334b14fc7dfafe15d96ab7bdc8d6c3b1db1c1482f0def48fc6fcf589b2a</hash>
       </entry>
       <entry>
          <file>..\src\config\default\system\int\sys_int_mapping.h</file>
@@ -1748,11 +1786,11 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pukcc.h</file>
-         <hash>2e080eccc1245d93c6e138a2ce75a487267e54c40556747ee22f847e0df63684</hash>
+         <hash>15a298aa44b214d644ab9bf7f62e5776ec210dfa727387f96861985d084fc9cf</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\ble.h</file>
-         <hash>a03de9c2a3ddbf359d4710c4387ef60f1d79865b3a5c1ac6761245b511529368</hash>
+         <hash>8f0ea66c454a2637bf57d0b17a3711b0784a6cf88e67bf131f70f978fc999752</hash>
       </entry>
       <entry>
          <file>..\src\config\default\app_p2p_phy\app_phy_cmd_processor\inc\app_phy_cmd_processor.h</file>
@@ -1760,7 +1798,7 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\sercom3.h</file>
-         <hash>e7cfdec3eb17c3544201da217bc2a59dd7ea575cf8f14cd33f0622db90b72949</hash>
+         <hash>50bef0e3615583868468f193a554bb705bb5a70255df2f49d3c5487a54b90c2c</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\info_block.h</file>
@@ -1768,47 +1806,47 @@
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\dsu.h</file>
-         <hash>7a8e758cf1c9f9653ccc3fdb4d7303aa9a4a6bce0f82d082e3991c2a23ce905a</hash>
+         <hash>25f27ce9f4e4492e1e67aa1d6f865bb78c6af6e4b5c4a517fb34b9b5bb67e152</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\projdefs.h</file>
-         <hash>399814721d9735e91d74ca07be3974edb20639acb46a6792230ff9f61f67b353</hash>
+         <hash>3d37a1403a69a58a07e214f6a9759601cc0fbe53319c5b14e17f4de5fb8ec0b7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\message_buffer.h</file>
-         <hash>504a77558f13b66fd1eec5adf4d81e274f0b54c12880424833c24f577be0800a</hash>
+         <hash>4883fce829d415b7d14d0567965cd97e41634339cd3a72a07b76baebedbc0a57</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\qspi.h</file>
-         <hash>d2e60ce3a630b98dc30c569b437ab5a9058cd3a0c69fc3444049066234e5d5f5</hash>
+         <hash>405135b989f2e0884bcdcf19be482ac1bec5bde470de04a1d60f5135dfe9bfbf</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\tcc.h</file>
-         <hash>e9c53e6151a6ffef762f0a284726aca2acce9365deffe647da7c7c9d22a93576</hash>
+         <hash>40e5facc8fc1181a5e39f09568640499430bfb4cf9005e955cfbe6f0e54b3b65</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\dmt.h</file>
-         <hash>9273f8e1079c12684f55b76149e8d618a7bb3bdced92353b472f48911a0c1f4c</hash>
+         <hash>6def1e2ee82542e34be2b36ac69b8eee20de0eb1cd60f6fbf531cc5644ec3db8</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\event_groups.h</file>
-         <hash>3b9cbd64db721c4317544700fff4e42ac68d989f71b7d610b31087bb19175839</hash>
+         <hash>2399a780de0eefe95067f5b7744d5e213ad9c793fc6468a8535a8e604f85cbba</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\zigbee.h</file>
-         <hash>f2073e706931e7b4d95d9b8f14c7226706ce6f4b7985e663cc17636f4e271a60</hash>
+         <hash>94cf411153633a87171c0838aee718be668c9dfce30abe403e3c690fd388ec49</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\rcon.h</file>
-         <hash>925100cd130fea9c0c8ba0dabdf6aa9444b2fb6818058fad07c1bdadfa85a442</hash>
+         <hash>77d7c020a8d7da45223c750dc5ec8c383b19bf21aa521aaa4dec3debb4c8ee46</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\component\pfw.h</file>
-         <hash>3693c20264e24d40e00117e4fb06be4f8d8fefd8479e5c975f9c04187628b23f</hash>
+         <hash>6ab5346cce8d3406c23823645c179e5834e679a8f6a37550d8b158d939fd97cc</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\include\mpu_wrappers.h</file>
-         <hash>c1fc47acdb79efb0fb8a0fb8a169ae4423fdc3a6d820b2f81d49e8e077c1ed48</hash>
+         <hash>d99486024fd44173ff23c14ee8561b6e0ce6ee41ad6d6a7e7b17ea97a5023e8b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\freertos_hooks.c</file>
@@ -1816,23 +1854,23 @@
       </entry>
       <entry>
          <file>..\src\app_config.h</file>
-         <hash>c2d35f600a250b635824db249422321b881c09c08860bff8b3ade2e72c3ce4e6</hash>
+         <hash>2fb4a0be3990eb2c1de8df67a4d6b7b0e0263b60c66fdbe6a18a3210a158ae68</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\pal\src\pal.c</file>
-         <hash>b88b668e110d392d65fa6f16b094bb29a2d8ebc10d1a818b5a86887b4cd941a9</hash>
+         <hash>90deee4776157aa2e5314aa01aebb67887a48d906b3a4eefc8586fd1b849f703</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\evsys\plib_evsys.c</file>
-         <hash>b2e1a8004049e687fc5544133f3346f743ced50cdaf860c8e3c7f58df3cc163f</hash>
+         <hash>171913270aa095f1e8ff9192995129ff7bab22e5c793c4223f9046802e69d1e6</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\stream_buffer.c</file>
-         <hash>4376714fecad0f72dc4c8b45236591a7e0ffe24dd018382f56e8b0dfc2230b28</hash>
+         <hash>b825d6bccefea8a8c06b4a2022dede20af67f5bc2a2e4976947b376bc41613a7</hash>
       </entry>
       <entry>
          <file>..\src\third_party\rtos\FreeRTOS\Source\portable\GCC\SAM\ARM_CM4F\portmacro.h</file>
-         <hash>356ce2ec084883d8fc41d380910f828aee559f140e877629974752ea26a89792</hash>
+         <hash>284552cdf69a53d3c8afaf3f270f4bd11d8dd9ab462bb06d62b9ef99f3819619</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\IEEE_802154_PHY\phy\src\phy_ed_end_cb.c</file>
