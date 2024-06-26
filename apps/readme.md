@@ -76,5 +76,5 @@ The following applications are provided to demonstrate the typical use case of B
 
 # Multiprotocol(BLE+MAC) Applications
 
-| [ble_mac_prov_ffd](apps/multiprotocol/ble_mac_prov_ffd/readme.md) | PIC32CX-BZ |
-| [ble_mac_prov_rfd](apps/multiprotocol/ble_mac_prov_rfd/readme.md) | PIC32CX-BZ |
+- [ble_mac_prov_ffd](apps/multiprotocol/ble_mac_prov_ffd/readme.md)
+- [ble_mac_prov_rfd](apps/multiprotocol/ble_mac_prov_rfd/readme.md)

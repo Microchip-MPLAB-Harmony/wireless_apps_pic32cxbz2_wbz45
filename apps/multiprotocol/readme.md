@@ -13,3 +13,8 @@ The following the precompiled Multiprotocol(BLE+Zigbee) application examples
 - [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 - [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 - [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+
+# Multiprotocol (BLE+MAC) Applications
+
+- [ble_mac_prov_ffd](https://onlinedocs.microchip.com/g/GUID-8AB5EA84-1FD5-4C42-A9D2-EED8598EF122-en-US-1/index.html)
+- [ble_mac_prov_rfd](https://onlinedocs.microchip.com/g/GUID-8AB5EA84-1FD5-4C42-A9D2-EED8598EF122-en-US-1/index.html)
