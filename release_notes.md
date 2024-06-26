@@ -22,7 +22,8 @@ Following table provides number of Wireless examples available for different dev
 - Regenerated all the MAC Applications with latest tags
 
 ### Known Issues
-- In certain A2 chip variants of the circuit boards, there is a possibility that the MAC addresses are identical, resulting in identical BLE advertisement strings.
+- In certain A2 chip variants of the circuit boards, there is a possibility that the MAC addresses are identical, resulting in identical BLE advertisement strings which causes scanning using MBD mobile app to recognize more than 2 device as 1.
+- Certain iPhone models are experiencing crashes with the MBD App following the completion of the commissioning process when running on iOS.
 
 ### Limitations
 - None
