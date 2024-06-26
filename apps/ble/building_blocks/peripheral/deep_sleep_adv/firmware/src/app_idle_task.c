@@ -80,6 +80,7 @@
 #define APP_IDLE_NVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL << 25UL )
 
 
+
 /*
  * The number of SysTick increments that make up one tick period.
  */
@@ -132,10 +133,7 @@ void app_idle_task( void )
             }
             else if ((RF_Cal_Needed) && (BT_RF_Suspended == BT_SYS_RF_SUSPENDED_NO_SLEEP))
             {
-            
                    RF_Timer_Cal(WSS_ENABLE_BLE);
-            
-
             }
             BT_SYS_RfSuspendReq(0);
         }
@@ -370,6 +368,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             /* Disable current sensor to improve current consumption. */
             PMU_ConfigCurrentSensor(false);
         }
+
 
         /* Enter system sleep mode */
         DEVICE_EnterSleepMode();

@@ -54,7 +54,7 @@
 // Section: macro
 // *****************************************************************************
 // *****************************************************************************
-#define CLK_READY_RETRIES  8000
+#define CLK_READY_RETRIES  8000U
 #define BTZB_XTAL_NOT_READY ((BTZBSYS_REGS->BTZBSYS_SUBSYS_STATUS_REG1 \
                             & BTZBSYS_SUBSYS_STATUS_REG1_xtal_ready_out_Msk) \
                             != BTZBSYS_SUBSYS_STATUS_REG1_xtal_ready_out_Msk)
@@ -87,18 +87,18 @@ typedef enum DEVICE_ClkSrcId_T
 /* Peripheral enable/disable settings of PMD3. */
 typedef struct DEVICE_Pmd3Reg_T
 {
-    uint8_t sercom1: 1;                                  /**< SERCOM 1. */
-    uint8_t sercom2: 1;                                  /**< SERCOM 2. */
-    uint8_t sercom3: 1;                                  /**< SERCOM 3. */
-    uint8_t sercom4: 1;                                  /**< SERCOM 4. */
-    uint8_t tc0: 1;                                      /**< TC 0. */
-    uint8_t tc1: 1;                                      /**< TC 1. */
-    uint8_t tc2: 1;                                      /**< TC 2. */
-    uint8_t tc3: 1;                                      /**< TC 3. */
-    uint8_t tcc0: 1;                                     /**< TCC 0. */
-    uint8_t tcc1: 1;                                     /**< TCC 1. */
-    uint8_t tcc2: 1;                                     /**< TCC 2. */
-    uint8_t reserved: 5;                                 /**< Reserved. */
+    unsigned int sercom1: 1;                                  /**< SERCOM 1. */
+    unsigned int sercom2: 1;                                  /**< SERCOM 2. */
+    unsigned int sercom3: 1;                                  /**< SERCOM 3. */
+    unsigned int sercom4: 1;                                  /**< SERCOM 4. */
+    unsigned int tc0: 1;                                      /**< TC 0. */
+    unsigned int tc1: 1;                                      /**< TC 1. */
+    unsigned int tc2: 1;                                      /**< TC 2. */
+    unsigned int tc3: 1;                                      /**< TC 3. */
+    unsigned int tcc0: 1;                                     /**< TCC 0. */
+    unsigned int tcc1: 1;                                     /**< TCC 1. */
+    unsigned int tcc2: 1;                                     /**< TCC 2. */
+    unsigned int reserved: 21;                                /**< Reserved. */
 } DEVICE_Pmd3Reg_T;
 
 
@@ -159,14 +159,14 @@ static void device_Delay(uint32_t value)
 /* Unlock system for clock configuration */
 static void devie_SysUnlock(void)
 {
-    CFG_REGS->CFG_SYSKEY = 0x00000000;
-    CFG_REGS->CFG_SYSKEY = 0xAA996655;
-    CFG_REGS->CFG_SYSKEY = 0x556699AA;
+    CFG_REGS->CFG_SYSKEY = 0x00000000U;
+    CFG_REGS->CFG_SYSKEY = 0xAA996655U;
+    CFG_REGS->CFG_SYSKEY = 0x556699AAU;
 }
 
 static void devie_SysLock(void)
 {
-    CFG_REGS->CFG_SYSKEY = 0x33333333;
+    CFG_REGS->CFG_SYSKEY = 0x33333333U;
 }
 
 /* Configure Reference Oscillator Control Register */
@@ -182,7 +182,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         s_refo6Backup = 0;
 
         //REFO1CON
-        if ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ON_Msk) && (!(CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -190,15 +190,21 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo1Backup = CRU_REGS->CRU_REFO1CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO1CONCLR = CRU_REFO1CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO1CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO1CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
 
         //REFO2CON
-        if ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ON_Msk) && (!(CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -206,15 +212,21 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo2Backup = CRU_REGS->CRU_REFO2CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO2CONCLR = CRU_REFO2CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO2CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO2CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
 
         //REFO3CON
-        if ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ON_Msk) && (!(CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -222,15 +234,21 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo3Backup = CRU_REGS->CRU_REFO3CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO3CONCLR = CRU_REFO3CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO3CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO3CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
 
         //REFO4CON
-        if ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ON_Msk) && (!(CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -238,15 +256,21 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo4Backup = CRU_REGS->CRU_REFO4CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO4CONCLR = CRU_REFO4CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO4CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO4CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
 
         //REFO5CON
-        if ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ON_Msk) && (!(CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -254,15 +278,21 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo5Backup = CRU_REGS->CRU_REFO5CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO5CONCLR = CRU_REFO5CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO5CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO5CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
 
         //REFO6CON
-        if ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ON_Msk) && (!(CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_RSLP_Msk)))
+        if (((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_RSLP_Msk) == 0U))
         {
             //Disable REFOxCON in sleep mode
 
@@ -270,18 +300,24 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
             s_refo6Backup = CRU_REGS->CRU_REFO6CON;
 
             //Can't update REFOxCON register if REFOxCON.ACTIVE != REFOxCON.ON
-            while (!(CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ACTIVE_Msk));
+            while ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ACTIVE_Msk) == 0U)
+            {
+                /* Do Nothing */
+            }
             CRU_REGS->CRU_REFO6CONCLR = CRU_REFO6CON_ON_Msk;    //Disable REFOxCON
 
-            while (CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ACTIVE_Msk);
-            CRU_REGS->CRU_REFO6CONCLR = 0xFFFFFEFF;   //Clear REFOxCON (Bit 8 is read only)
+            while ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ACTIVE_Msk) != 0U)
+            {
+                /* Do Nothing */
+            }
+            CRU_REGS->CRU_REFO6CONCLR = 0xFFFFFEFFU;   //Clear REFOxCON (Bit 8 is read only)
         }
     }
     else
     {
         //Check if it needs to restore REFOx
         //REFO1CON
-        if ((s_refo1Backup & CRU_REFO1CON_ON_Msk) && (!(s_refo1Backup & CRU_REFO1CON_RSLP_Msk)))
+        if (((s_refo1Backup & CRU_REFO1CON_ON_Msk) != 0U) && ((s_refo1Backup & CRU_REFO1CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo1Backup &= ~(CRU_REFO1CON_ON_Msk | CRU_REFO1CON_ACTIVE_Msk);
@@ -294,7 +330,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         }
 
         //REFO2CON
-        if ((s_refo2Backup & CRU_REFO2CON_ON_Msk) && (!(s_refo2Backup & CRU_REFO2CON_RSLP_Msk)))
+        if (((s_refo2Backup & CRU_REFO2CON_ON_Msk) != 0U) && ((s_refo2Backup & CRU_REFO2CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo2Backup &= ~(CRU_REFO2CON_ON_Msk | CRU_REFO2CON_ACTIVE_Msk);
@@ -307,7 +343,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         }
 
         //REFO3CON
-        if ((s_refo3Backup & CRU_REFO3CON_ON_Msk) && (!(s_refo3Backup & CRU_REFO3CON_RSLP_Msk)))
+        if (((s_refo3Backup & CRU_REFO3CON_ON_Msk) != 0U) && ((s_refo3Backup & CRU_REFO3CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo3Backup &= ~(CRU_REFO3CON_ON_Msk | CRU_REFO3CON_ACTIVE_Msk);
@@ -320,7 +356,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         }
 
         //REFO4CON
-        if ((s_refo4Backup & CRU_REFO4CON_ON_Msk) && (!(s_refo4Backup & CRU_REFO4CON_RSLP_Msk)))
+        if (((s_refo4Backup & CRU_REFO4CON_ON_Msk) != 0U) && ((s_refo4Backup & CRU_REFO4CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo4Backup &= ~(CRU_REFO4CON_ON_Msk | CRU_REFO4CON_ACTIVE_Msk);
@@ -333,7 +369,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         }
 
         //REFO5CON
-        if ((s_refo5Backup & CRU_REFO5CON_ON_Msk) && (!(s_refo5Backup & CRU_REFO5CON_RSLP_Msk)))
+        if (((s_refo5Backup & CRU_REFO5CON_ON_Msk) != 0U) && ((s_refo5Backup & CRU_REFO5CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo5Backup &= ~(CRU_REFO5CON_ON_Msk | CRU_REFO5CON_ACTIVE_Msk);
@@ -346,7 +382,7 @@ static void device_configRefOscReg(DEVICE_SLEEP_ActionId_T action)
         }
 
         //REFO6CON
-        if ((s_refo6Backup & CRU_REFO6CON_ON_Msk) && (!(s_refo6Backup & CRU_REFO6CON_RSLP_Msk)))
+        if (((s_refo6Backup & CRU_REFO6CON_ON_Msk) != 0U) && ((s_refo6Backup & CRU_REFO6CON_RSLP_Msk) == 0U))
         {
             //Exclude output enable and active(read only) bit 
             s_refo6Backup &= ~(CRU_REFO6CON_ON_Msk | CRU_REFO6CON_ACTIVE_Msk);
@@ -367,29 +403,38 @@ static bool device_chkPeripheral(DEVICE_ClkSrcId_T select)
 
     pmd2Val = CFG_REGS->CFG_PMD2;
 
-    if ((select == DEVICE_CLK_REFO1) && (!(pmd2Val & CFG_PMD2_REFO1MD_Msk)))    //REFO1 is not disabled in sleep mode
+    if ((select == DEVICE_CLK_REFO1) && ((pmd2Val & CFG_PMD2_REFO1MD_Msk) == 0U))    //REFO1 is not disabled in sleep mode
+    {
         return true;
-
-    else if ((select == DEVICE_CLK_REFO2) && (!(pmd2Val & CFG_PMD2_REFO2MD_Msk)))   //REFO2 is not disabled in sleep mode
+    }
+    else if ((select == DEVICE_CLK_REFO2) && ((pmd2Val & CFG_PMD2_REFO2MD_Msk) == 0U))   //REFO2 is not disabled in sleep mode
+    {
         return true;
-
-    else if ((select == DEVICE_CLK_REFO3) && (!(pmd2Val & CFG_PMD2_REFO3MD_Msk)))   //REFO3 is not disabled in sleep mode
+    }
+    else if ((select == DEVICE_CLK_REFO3) && ((pmd2Val & CFG_PMD2_REFO3MD_Msk) == 0U))   //REFO3 is not disabled in sleep mode
+    {
         return true;
-
-    else if ((select == DEVICE_CLK_REFO4) && (!(pmd2Val & CFG_PMD2_REFO4MD_Msk)))   //REFO4 is not disabled in sleep mode
+    }
+    else if ((select == DEVICE_CLK_REFO4) && ((pmd2Val & CFG_PMD2_REFO4MD_Msk) == 0U))   //REFO4 is not disabled in sleep mode
+    {
         return true;
-
-    else if ((select == DEVICE_CLK_REFO5) && (!(pmd2Val & CFG_PMD2_REFO5MD_Msk)))   //REFO5 is not disabled in sleep mode
+    }
+    else if ((select == DEVICE_CLK_REFO5) && ((pmd2Val & CFG_PMD2_REFO5MD_Msk) == 0U))   //REFO5 is not disabled in sleep mode
+    {
         return true;
-
-    else if ((select == DEVICE_CLK_REFO6) && (!(pmd2Val & CFG_PMD2_REFO6MD_Msk)))   //REFO6 is not disabled in sleep mode
+    }
+    else if ((select == DEVICE_CLK_REFO6) && ((pmd2Val & CFG_PMD2_REFO6MD_Msk) == 0U))   //REFO6 is not disabled in sleep mode
+    {
         return true;
-
+    }
     else if (select == DEVICE_CLK_LPCLK)   //LPCLK is used
+    {
         return true;
-
+    }
     else
+    {
         return false;
+    }
 }
 
 /* Configure PMD Register */
@@ -400,33 +445,46 @@ static void device_configPmdReg(DEVICE_SLEEP_ActionId_T action)
         DEVICE_Pmd3Reg_T pmdReg;
         DEVICE_ClkSrcId_T select;
         uint32_t pmd2Val, pmd3Val;
+        uint8_t tempVal;
 
-        memset((uint8_t *)&pmdReg, 0, sizeof(DEVICE_Pmd3Reg_T));
+        (void)memset((uint8_t *)&pmdReg, 0, sizeof(DEVICE_Pmd3Reg_T));
 
         //For PMD1, disable all PMD except RTC
-        CFG_REGS->CFG_PMD1 = 0xFFFEFFFF;   // bit 16: RTC
+        CFG_REGS->CFG_PMD1 = 0xFFFEFFFFU;   // bit 16: RTC
 
         //For PMD2
         //Check if RSLP bit is set, do not disable this REFOx
-        pmd2Val = 0xFFFFFFFF;
+        pmd2Val = 0xFFFFFFFFU;
 
-        if ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ON_Msk) && (CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO1CON & CRU_REFO1CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO1MD_Msk;
+        }
 
-        if ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ON_Msk) && (CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO2CON & CRU_REFO2CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO2MD_Msk;
+        }
 
-        if ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ON_Msk) && (CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO3CON & CRU_REFO3CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO3MD_Msk;
+        }
 
-        if ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ON_Msk) && (CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO4CON & CRU_REFO4CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO4MD_Msk;
+        }
 
-        if ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ON_Msk) && (CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO5CON & CRU_REFO5CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO5MD_Msk;
+        }
 
-        if ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ON_Msk) && (CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_RSLP_Msk))
+        if (((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_ON_Msk) != 0U) && ((CRU_REGS->CRU_REFO6CON & CRU_REFO6CON_RSLP_Msk) != 0U))
+        {
             pmd2Val &= ~CFG_PMD2_REFO6MD_Msk;
+        }
 
         CFG_REGS->CFG_PMD2 = pmd2Val;
 
@@ -438,86 +496,117 @@ static void device_configPmdReg(DEVICE_SLEEP_ActionId_T action)
 
         pmd3Val = 0xFFFF;
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_SER1MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_SER1MD_Msk) == 0U)
+        {
             pmdReg.sercom1 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_SER2MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_SER2MD_Msk) == 0U)
+        {
             pmdReg.sercom2 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_SER3MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_SER3MD_Msk) == 0U)
+        {
             pmdReg.sercom3 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_SER4MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_SER4MD_Msk) == 0U)
+        {
             pmdReg.sercom4 = 1;
+        }
 
-
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TC0MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TC0MD_Msk) == 0U)
+        {
             pmdReg.tc0 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TC1MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TC1MD_Msk) == 0U)
+        {
             pmdReg.tc1 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TC2MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TC2MD_Msk) == 0U)
+        {
             pmdReg.tc2 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TC3MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TC3MD_Msk) == 0U)
+        {
             pmdReg.tc3 = 1;
+        }
 
-
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC0MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC0MD_Msk) == 0U)
+        {
             pmdReg.tcc0 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC1MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC1MD_Msk) == 0U)
+        {
             pmdReg.tcc1 = 1;
+        }
 
-        if (!(CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC2MD_Msk))
+        if ((CFG_REGS->CFG_PMD3 & CFG_PMD3_TCC2MD_Msk) == 0U)
+        {
             pmdReg.tcc2 = 1;
+        }
 
 
         //Check CFGPCLKGEN1~3 to check if the peripheral clock is enabled and check its clock source
         //Do not turn the peripheral off if RSLP is set (s_refoxBackup = 0) or CLK SRC is set as LP CLK
-        if (pmdReg.sercom1 || pmdReg.sercom2)
+        if ((pmdReg.sercom1 != 0U) || (pmdReg.sercom2 != 0U))
         {
             //Check CFGCLKGEN1 bit 15, if enabled, check the clock source by bit 12~14
-            if (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_S01CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_S01CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_SERCOM01CSEL_Msk) >> CFG_CFGPCLKGEN1_SERCOM01CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_SERCOM01CSEL_Msk) >> CFG_CFGPCLKGEN1_SERCOM01CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
-                    if (pmdReg.sercom1)
+                    if (pmdReg.sercom1 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_SER1MD_Msk;
+                    }
 
-                    if (pmdReg.sercom2)
+                    if (pmdReg.sercom2 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_SER2MD_Msk;
+                    }
                 }
             }
         }
 
-        if (pmdReg.sercom3 || pmdReg.sercom4)
+        if ((pmdReg.sercom3 != 0U) || (pmdReg.sercom4 != 0U))
         {
             //Check CFGCLKGEN1 bit 19, if enabled, check the clock source by bit 16~18
-            if (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_S23CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_S23CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_SERCOM23CSEL_Msk) >> CFG_CFGPCLKGEN1_SERCOM23CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_SERCOM23CSEL_Msk) >> CFG_CFGPCLKGEN1_SERCOM23CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
-                    if (pmdReg.sercom3)
+                    if (pmdReg.sercom3 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_SER3MD_Msk;
+                    }
 
-                    if (pmdReg.sercom4)
+                    if (pmdReg.sercom4 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_SER4MD_Msk;
+                    }
                 }
             }
         }
 
-        if (pmdReg.tc0)
+        if (pmdReg.tc0 != 0U)
         {
             //Check CFGCLKGEN3 bit 27, if enabled, check the clock source by bit 24~26
-            if (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC0CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC0CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC0CSEL_Msk) >> CFG_CFGPCLKGEN3_TC0CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC0CSEL_Msk) >> CFG_CFGPCLKGEN3_TC0CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
@@ -526,12 +615,13 @@ static void device_configPmdReg(DEVICE_SLEEP_ActionId_T action)
             }
         }
 
-        if (pmdReg.tc1)
+        if (pmdReg.tc1 != 0U)
         {
             //Check CFGCLKGEN3 bit 31, if enabled, check the clock source by bit 28~30
-            if (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC1CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC1CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC1CSEL_Msk) >> CFG_CFGPCLKGEN3_TC1CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TC1CSEL_Msk) >> CFG_CFGPCLKGEN3_TC1CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
@@ -540,30 +630,36 @@ static void device_configPmdReg(DEVICE_SLEEP_ActionId_T action)
             }
         }
 
-        if (pmdReg.tc2 || pmdReg.tc3)
+        if ((pmdReg.tc2 != 0U) || (pmdReg.tc3 != 0U))
         {
             //Check CFGCLKGEN1 bit 27, if enabled, check the clock source by bit 24~26
-            if (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TC23CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TC23CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TC23CSEL_Msk) >> CFG_CFGPCLKGEN1_TC23CSEL_Pos;
+                tempVal= (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TC23CSEL_Msk) >> CFG_CFGPCLKGEN1_TC23CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
-                    if (pmdReg.tc2)
+                    if (pmdReg.tc2 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_TC2MD_Msk;
+                    }
 
-                    if (pmdReg.tc3)
+                    if (pmdReg.tc3 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_TC3MD_Msk;
+                    }
                 }
             }
         }
 
-        if (pmdReg.tcc0)
+        if (pmdReg.tcc0 != 0U)
         {
             //Check CFGCLKGEN3 bit 23, if enabled, check the clock source by bit 20~22
-            if (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TCC0CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TCC0CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TCC0CSEL_Msk) >> CFG_CFGPCLKGEN3_TCC0CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN3 & CFG_CFGPCLKGEN3_TCC0CSEL_Msk) >> CFG_CFGPCLKGEN3_TCC0CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
@@ -572,20 +668,25 @@ static void device_configPmdReg(DEVICE_SLEEP_ActionId_T action)
             }
         }
 
-        if (pmdReg.tcc1 || pmdReg.tcc2)
+        if ((pmdReg.tcc1 != 0U) || (pmdReg.tcc2 != 0U))
         {
             //Check CFGCLKGEN1 bit 23, if enabled, check the clock source by bit 20~22
-            if (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TCC12CD_Msk)
+            if ((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TCC12CD_Msk) != 0U)
             {
-                select = (CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TCC12CSEL_Msk) >> CFG_CFGPCLKGEN1_TCC12CSEL_Pos;
+                tempVal = (uint8_t)((CFG_REGS->CFG_CFGPCLKGEN1 & CFG_CFGPCLKGEN1_TCC12CSEL_Msk) >> CFG_CFGPCLKGEN1_TCC12CSEL_Pos);
+                select = (DEVICE_ClkSrcId_T)tempVal;
 
                 if (device_chkPeripheral(select))
                 {
-                    if (pmdReg.tcc1)
+                    if (pmdReg.tcc1 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_TCC1MD_Msk;
+                    }
 
-                    if (pmdReg.tcc2)
+                    if (pmdReg.tcc2 != 0U)
+                    {
                         pmd3Val &= ~CFG_PMD3_TCC2MD_Msk;
+                    }
                 }
             }
         }
@@ -624,17 +725,17 @@ void DEVICE_EnterSleepMode(void)
     // Ensure the Reference Clock Out Module is enabled, REFO1 Clock is selected by CFG_CFGPCLKGEN1
 
     // Check PMD lock bit
-    if (CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_PMDLOCK_Msk)
+    if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_PMDLOCK_Msk) != 0U)
     {
         // PMD lock is enabled, check CFGCLOCK
-        if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_CFGCLOCK_Msk) == 0)
+        if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_CFGCLOCK_Msk) == 0U)
         {
             // Disable PMD lock
             CFG_REGS->CFG_CFGCON0 &= ~CFG_CFGCON0_PMDLOCK_Msk;
         }
     }
 
-    if (CFG_REGS->CFG_PMD2 & CFG_PMD2_REFO1MD_Msk)
+    if ((CFG_REGS->CFG_PMD2 & CFG_PMD2_REFO1MD_Msk) != 0U)
     {
         // Enable PMD2_REFO1
         CFG_REGS->CFG_PMD2 &= ~CFG_PMD2_REFO1MD_Msk;
@@ -653,35 +754,38 @@ void DEVICE_EnterSleepMode(void)
 
 
     // Step 17 : Change SYS CLK source in CRU from SPLL1 CLK to POSC CLK 
-    CRU_REGS->CRU_OSCCON &= (~0xf01); 
-    CRU_REGS->CRU_OSCCON |= 0x200;
+    CRU_REGS->CRU_OSCCON &= ~((uint32_t)0xf01U);
+    CRU_REGS->CRU_OSCCON |= (uint32_t)0x200U;
 
     // Request oscillator switch to occur
     CRU_REGS->CRU_OSCCONSET = CRU_OSCCON_OSWEN_Msk;
 
     // Wait for indication of successful clock change before proceeding
-    while(CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk);
+    while((CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk) != 0U)
+    {
+        /* Do nothing */
+    }
 
     // Step 18 : Set subsys_clk_src_sel to 0 to change subsys clock source from PLL CLK to XTAL CLK
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= (~0x30);
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= ~((uint32_t)0x30U);
     
     // Step 19 :Disable CLKGEN Clock enable in RF
     DEVICE_SLEEP_ConfigRfClk(false);
 
     //Step 19.1 : If XTAL clock is OFF, set subsys_bypass_pll_lock to 0 via subsys config register
-    if ((CFG_REGS->CFG_CFGCON4 & 0x3000) == 0x2000) // SOSC : XTAL_OFF
+    if ((CFG_REGS->CFG_CFGCON4 & CFG_CFGCON4_VBKP_32KCSEL_Msk) == 0x2000U) // SOSC : XTAL_OFF
     {
         DEVICE_SLEEP_ConfigSubSysPllLock(false);
     }
 
     // Step 20 : Set die_BENXOANA_ovrd_en to 1 to switch LDO_PLL to CLDO
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= 0x800;
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= (uint32_t)0x800U;
 
     // Step 21 : Set EN_RFLDO_ovrd_en to 1
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= 0x8000;
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= (uint32_t)0x8000U;
     
     // Step 22 : Combining step 21, de-assert external PLL power request to disable CLKGEN LDO enable in RF
-    CRU_REGS->CRU_SPLLCON |= 0x08; 
+    CRU_REGS->CRU_SPLLCON |= (uint32_t)0x08U;
     
     // Step 23 : set KEEP_ACLB_CLOCKS_ON to 1 to enable ACLB clocks for SPI access
     DEVICE_SLEEP_ConfigAclbClk(true);
@@ -693,23 +797,26 @@ void DEVICE_EnterSleepMode(void)
     DEVICE_SLEEP_ConfigAclbClk(false);
     
     // Step 26 : set bt_en_main_clk to 0 to disable BT main clock
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= (~0x00100000);  
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= ~((uint32_t)0x00100000U);
 
     // Step 27 : change CLK source in CRU from POSC CLK to FRC CLK
-    CRU_REGS->CRU_OSCCON &= (~0xf01);
+    CRU_REGS->CRU_OSCCON &= ~((uint32_t)0xf01U);
 
     // Request oscillator switch to occur
     CRU_REGS->CRU_OSCCONSET = CRU_OSCCON_OSWEN_Msk;
 
     // Wait for indication of successful clock change before proceeding
-    while(CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk);
+    while((CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk) != 0U)
+    {
+        /* Do nothing */
+    }
 
     // If XTAL clock is OFF
-    if ((CFG_REGS->CFG_CFGCON4 & 0x3000) == 0x2000)  // SOSC : XTAL_OFF
+    if ((CFG_REGS->CFG_CFGCON4 & CFG_CFGCON4_VBKP_32KCSEL_Msk) == 0x2000U)  // SOSC : XTAL_OFF
     {
         // Step 27.1 : If XTAL clock is OFF when bt_zb_subsys enters into sleep mode, 
         // set subsys_clk_src_sel to 1 via subsys config register (SUBSYS_CNTRL_REG1_ADDR[4]) to select PLL CLK as SRC clock
-        BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= 0x10;
+        BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= (uint32_t)0x10U;
     
         // Step 28 : If XTAL clock is OFF when bt_zb_subsys enters into sleep mode, set BXTLEN to 0 via BT config register to disable XTAL
         device_Delay(4); // add 2us delay
@@ -720,10 +827,10 @@ void DEVICE_EnterSleepMode(void)
 
     }
     // Step 29 : set deep sleep enable to 0
-    DSCON_REGS->DSCON_DSCON &= ~(0x8000);
+    DSCON_REGS->DSCON_DSCON &= ~((uint32_t)0x8000U);
 
     // Step 30 : set sleep enable to 1, make CPU into sleep
-    CRU_REGS->CRU_OSCCON |= 0x10;
+    CRU_REGS->CRU_OSCCON |= (uint32_t)0x10U;
 
     // Lock system since done with clock configuration
     devie_SysLock();
@@ -738,9 +845,11 @@ void DEVICE_ExitSleepMode(void)
     RCON_REGS->RCON_RCON &= (~RCON_RCON_SLEEP_Msk);
 
     // If XTAL clock is off
-    if ((CFG_REGS->CFG_CFGCON4 & 0x3000) == 0x2000) //SOSC : XTAL_OFF
+    if ((CFG_REGS->CFG_CFGCON4 & CFG_CFGCON4_VBKP_32KCSEL_Msk) == 0x2000U) //SOSC : XTAL_OFF
     {
-        
+        //Select PCLK(FRC) instead of XTAL(POSC) as the XTAL lock counter clock source
+        BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= (0x1<<24);
+
         // Step 2 : If XTAL clock is off when bt_zb_subsys enters into low power mode, wait for xtal_ready_out_sync
         // Enable bit 7 to creates one clk_lp_cycle wide pulse on ZBT Subsystem.external_NMI0 pin
         CFG_REGS->CFG_CFGCON1 |= CFG_CFGCON1_ZBTWKSYS_Msk;
@@ -756,26 +865,32 @@ void DEVICE_ExitSleepMode(void)
         {
            DEVICE_SLEEP_ConfigSubSysXtalReady(true);
 
-           while(BTZB_XTAL_NOT_READY);
+           while(BTZB_XTAL_NOT_READY)
+           {
+                /* Do nothing */
+           }
         }
         // Step 2.1 :
         // If XTAL clock is OFF when bt_zb_subsys enters into sleep mode, 
         // set subsys_clk_src_sel to 0 via subsys config register (SUBSYS_CNTRL_REG1_ADDR[4]) to select XTAL CLK as SRC clock
-        BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= (~0x10);
+        BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= ~((uint32_t)0x10U);
     }
 
     // Step 3 : Change CLK source in CRU from FRC CLK to POSC CLK
-    CRU_REGS->CRU_OSCCON &= (~0xf01);
-    CRU_REGS->CRU_OSCCON |= 0x200;
+    CRU_REGS->CRU_OSCCON &= ~((uint32_t)0xf01U);
+    CRU_REGS->CRU_OSCCON |= (uint32_t)0x200U;
 
     // Request oscillator switch to occur
     CRU_REGS->CRU_OSCCONSET = CRU_OSCCON_OSWEN_Msk;
 
     // Wait for indication of successful clock change before proceeding
-    while(CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk);
+    while((CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk) != 0U)
+    {
+        /* Do nothing */
+    }
 
     // Step 4 : set bt_en_main_clk to 1 to enable BT main clock
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= 0x00100000;
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 |= (uint32_t)0x00100000U;
     
     // Step 5 : set KEEP_ACLB_CLOCKS_ON to 1 via BT config register 
     DEVICE_SLEEP_ConfigAclbClk(true);
@@ -790,16 +905,16 @@ void DEVICE_ExitSleepMode(void)
     DEVICE_SLEEP_ConfigAclbClk(false);
 
     // Step 9 : Assert external PLL power request
-    CRU_REGS->CRU_SPLLCON &= ~(0x08);
+    CRU_REGS->CRU_SPLLCON &= ~((uint32_t)0x08U);
        
     // Step 10 : Combining step 9, set EN_RFLDO_ovrd_en to 0 to enable CLKGEN LDO enable in RF 
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= (~0x8000);
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= ~((uint32_t)0x8000U);
 
     // Step 11 : Wait for LDO settling time. Settling time value is 10us
     device_Delay(1);
    
     // Step 12 : Set die_BENXOANA_ovrd_en to 0 to switch CLDO to LDO_PLL 
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= (~0x800);
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG0 &= ~((uint32_t)0x800U);
     
     // Step 13 : Enable CLKGEN CLK enable in RF 
     DEVICE_SLEEP_ConfigRfClk(true);
@@ -816,16 +931,19 @@ void DEVICE_ExitSleepMode(void)
     {
         DEVICE_SLEEP_ConfigSubSysPllLock(true);
 
-        while(BTZB_PLL_NOT_LOCKED);
+        while(BTZB_PLL_NOT_LOCKED)
+        {
+            /* Do nothing */
+        }
     }
 
     // Step 15 : Restore REFOx registers programming for run mode
 
     // Check PMD lock bit
-    if (CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_PMDLOCK_Msk)
+    if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_PMDLOCK_Msk) != 0U)
     {
         // PMD lock is enabled, check CFGCLOCK
-        if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_CFGCLOCK_Msk) == 0)
+        if ((CFG_REGS->CFG_CFGCON0 & CFG_CFGCON0_CFGCLOCK_Msk) == 0U)
         {
             // Disable PMD lock
             CFG_REGS->CFG_CFGCON0 &= ~CFG_CFGCON0_PMDLOCK_Msk;    
@@ -845,22 +963,25 @@ void DEVICE_ExitSleepMode(void)
     PCHE_REGS->PCHE_CHECON = 0x07000011;
 
     // Step 18 : Change CLK source in CRU from POSC CLK to SPLL1 CLK
-    CRU_REGS->CRU_OSCCON &= (~0xf01);
-    CRU_REGS->CRU_OSCCON |= 0x100;
+    CRU_REGS->CRU_OSCCON &= ~((uint32_t)0xf01U);
+    CRU_REGS->CRU_OSCCON |= (uint32_t)0x100U;
 
     // Request oscillator switch to occur
     CRU_REGS->CRU_OSCCONSET = CRU_OSCCON_OSWEN_Msk;
 
     // Wait for indication of successful clock change before proceeding
-    while(CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk);
+    while((CRU_REGS->CRU_OSCCON & CRU_OSCCON_OSWEN_Msk) != 0U)
+    {
+        /* Do nothing */
+    }
 
     // Step 19 : Set subsys_clk_src_sel to 1 to change subsys clock source from XTAL CLK to PLL CLK
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= (~0x30);
-    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= 0x10;
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 &= ~((uint32_t)0x30U);
+    BTZBSYS_REGS->BTZBSYS_SUBSYS_CNTRL_REG1 |= (uint32_t)0x10U;
 
     // Remove sleep enable
     // not match to word! word should have CRU_OSCCON
-    CRU_REGS->CRU_OSCCON &= (~0x10); 
+    CRU_REGS->CRU_OSCCON &= ~((uint32_t)0x10U);
 
     // Lock system since done with clock configuration
     devie_SysLock();

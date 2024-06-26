@@ -55,6 +55,7 @@
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
+//#define BLE_PXPR_IAS_AUTH_ENABLE
 
 
 // *****************************************************************************
@@ -105,7 +106,11 @@ static GATTS_Attribute_T s_iasList[] = {
         (uint16_t *) & s_iasAlertLevelValLen,
         (uint16_t)sizeof(s_iasAlertLevelVal),
         0,
+#ifdef BLE_PXPR_IAS_AUTH_ENABLE
         PERMISSION_WRITE | PERMISSION_WRITE_ENC
+#else
+        PERMISSION_WRITE
+#endif
     },
 };
 

@@ -82,7 +82,7 @@ extern "C" {
 /**@defgroup BLE_DTM_TRANSMITTER_PAYLOAD_TYPE Transmitter payload type
  * @brief The definition of transmitter test packet payload type.
  * @{ */
-#define BLE_DTM_TX_TEST_PAYLOAD_0                      			(0x00U)        /**< PRBS9 sequence "11111111100000111101â?¦" (in transmission order). */
+#define BLE_DTM_TX_TEST_PAYLOAD_0                      			(0x00U)        /**< PRBS9 sequence "11111111100000111101??" (in transmission order). */
 #define BLE_DTM_TX_TEST_PAYLOAD_1                      			(0x01U)        /**< Repeated "11110000" (in transmission order) sequence. */
 #define BLE_DTM_TX_TEST_PAYLOAD_2                      			(0x02U)        /**< Repeated "10101010" (in transmission order) sequence. */
 #define BLE_DTM_TX_TEST_PAYLOAD_3                      			(0x03U)        /**< PRBS15 sequence */
@@ -129,7 +129,7 @@ extern "C" {
 /**@brief Transmitter test parameters. */
 typedef struct BLE_DTM_TransmitterTestParams_T
 {
-    uint8_t                 txChannel;                              /**< The RF channel which is used by the transmitter. Channel= (F â?? 2402) / 2 (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CHANNEL_RANGE. */
+    uint8_t                 txChannel;                              /**< The RF channel which is used by the transmitter. Channel= (F ?? 2402) / 2 (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CHANNEL_RANGE. */
     uint8_t                 testDataLen;                            /**< The length of the payload of the test reference packets. */
     uint8_t                 packetPayload;                          /**< The contents of the payload of the test reference packets. See @ref BLE_DTM_TRANSMITTER_PAYLOAD_TYPE.*/
     uint8_t                 phy;                                    /**< The PHY which is used by the transmitter. See @ref BLE_DTM_TRANSMITTER_PHY_TYPE. */
@@ -183,7 +183,7 @@ uint16_t BLE_DTM_EnhancedTransmitterTest(BLE_DTM_TransmitterTestParams_T *p_tran
 /**@brief Start a test where the device receives test reference packets at a fixed interval.
  * @note  @ref BLE_DTM_Init is required for this API.
  *
- * @param[in] rxChannel                     Channel= (F â?? 2402) / 2 (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CHANNEL_RANGE.
+ * @param[in] rxChannel                     Channel= (F ?? 2402) / 2 (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CHANNEL_RANGE.
  * @param[in] phy                           PHY type setting. See @ref BLE_DTM_RECEIVER_PHY_TYPE.
  *
  * @retval MBA_RES_SUCCESS                  Successfully start the receiver test.
@@ -195,7 +195,7 @@ uint16_t BLE_DTM_EnhancedReceiverTest(uint8_t rxChannel, uint8_t phy);
 /**@brief Start a Continuous Wave (CW) test with specific channel and power.
  * @note  @ref BLE_DTM_Init is required for this API.
  *
- * @param[in] txChannel                     Channel = (F â?? 2402) (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CW_CHANNEL_RANGE. 
+ * @param[in] txChannel                     Channel = (F ?? 2402) (Frequency Range : 2402 MHz to 2480 MHz) See @ref BLE_DTM_CW_CHANNEL_RANGE. 
  * @param[in] txPower                       The transmit power level to be used by the transmitter. Range: -127 to +20. Units: dBm.
  *
  * @retval MBA_RES_SUCCESS                  Successfully start the CW test.

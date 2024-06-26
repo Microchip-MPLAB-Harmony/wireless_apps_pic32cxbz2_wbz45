@@ -220,8 +220,8 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event) {
 
                 // found so disable ext scanning
                 BLE_GAP_ExtScanningEnable_T extScan;
-                extScan.duration = 0x0;
-                extScan.enable = false; //disable scanning
+                extScan.duration = 0x2710; //100 Seconds scan
+                extScan.enable = true; 
                 extScan.filterDuplicates = BLE_GAP_SCAN_FD_DISABLE;
                 extScan.period = 0x0000;
                 BLE_GAP_SetExtScanningEnable(BLE_GAP_SCAN_MODE_OBSERVER, &extScan);

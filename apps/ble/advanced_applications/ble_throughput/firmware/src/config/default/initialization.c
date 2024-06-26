@@ -395,6 +395,11 @@ void SYS_Initialize ( void* data )
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+    // Initialize the RF Clock Generator
+    SYS_ClkGen_Config();
+
+    // Configure Cache and Wait States
+    PCHE_Setup();
 
   
     CLOCK_Initialize();

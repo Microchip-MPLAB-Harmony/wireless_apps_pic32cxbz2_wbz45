@@ -47,7 +47,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include "sensors/inc/rgb_led.h"
+#include "Sensors/inc/rgb_led.h"
 #include "peripheral/tc/plib_tc2.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "peripheral/tcc/plib_tcc0.h"

@@ -2,12 +2,12 @@
 
 manifest_file_version: 1.0.0
 project: custom_service
-creation_date: 2024-06-05T20:54:17.499+05:30[Asia/Calcutta]
+creation_date: 2024-06-26T19:05:38.953+05:30[Asia/Calcutta]
 operating_system: Windows 10
 mcc_mode: IDE
 mcc_mode_version: v6.20
 device_name: WBZ451
-compiler: XC32 4.40
+compiler: XC32 4.35
 mcc_version: 5.5.0
 mcc_core_version: 5.7.0
 content_manager_version: 5.0.0

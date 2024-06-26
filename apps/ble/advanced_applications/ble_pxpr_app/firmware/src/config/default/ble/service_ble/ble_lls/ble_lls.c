@@ -55,6 +55,7 @@
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
+//#define BLE_PXPR_LLS_AUTH_ENABLE
 
 
 // *****************************************************************************
@@ -105,7 +106,12 @@ static GATTS_Attribute_T s_llsList[] = {
         (uint16_t *) & s_llsAlertLevelValLen,
         (uint16_t)sizeof(s_llsAlertLevelVal),
         SETTING_MANUAL_READ_RSP,
+#ifdef BLE_PXPR_LLS_AUTH_ENABLE
         (PERMISSION_READ | PERMISSION_WRITE | PERMISSION_WRITE_ENC)
+#else
+        PERMISSION_READ | PERMISSION_WRITE
+#endif
+        
     },
 };
 

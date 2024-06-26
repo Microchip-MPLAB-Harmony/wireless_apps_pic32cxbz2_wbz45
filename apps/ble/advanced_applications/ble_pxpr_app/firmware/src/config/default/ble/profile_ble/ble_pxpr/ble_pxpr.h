@@ -58,9 +58,8 @@
 /**@defgroup BLE_PXPR_SUPP_SVC Supported service
  * @brief The definition of supported service.
  * @{ */
-//#define BLE_PXPR_IAS_ENABLE        /* Enable Immediate Alert Service */    /**< Feature of PXP Reporter supporting optional Immediate Alert Service. */
+#define BLE_PXPR_IAS_ENABLE        /* Enable Immediate Alert Service */    /**< Feature of PXP Reporter supporting optional Immediate Alert Service. */
 #define BLE_PXPR_TPS_ENABLE        /* Enable TX Power Service */           /**< Feature of PXP Reporter supporting optional Tx Power Service. */
-/** @} */
 
 /**@} */ //BLE_PXPR_SUPP_SVC_DEFINES
 

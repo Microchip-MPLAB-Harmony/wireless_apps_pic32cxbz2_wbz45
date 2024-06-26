@@ -170,8 +170,6 @@
 // Section: System Data
 // *****************************************************************************
 // *****************************************************************************
-/* Structure to hold the object handles for the modules in the system. */
-SYSTEM_OBJECTS sysObj;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -312,6 +310,8 @@ void _on_reset(void)
         PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
                                         | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
     }
+    
+    CLOCK_Initialize();
 }
 
 
@@ -368,16 +368,21 @@ void SYS_Initialize ( void* data )
 
 
   
-    CLOCK_Initialize();
+    //CLK_Initialize();
     /* Configure Prefetch, Wait States */
-    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
-                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+    /*PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
+                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));*/
 
-
+    DEVICE_DeepSleepWakeSrc_T wakeSrc;
+    DEVICE_GetDeepSleepWakeUpSrc(&wakeSrc);
+    
 
 	GPIO_Initialize();
 
-    RTC_Initialize();
+    if (wakeSrc == DEVICE_DEEP_SLEEP_WAKE_NONE)
+    {
+        RTC_Initialize();
+    }
 
     NVM_Initialize();
 
@@ -441,7 +446,6 @@ void SYS_Initialize ( void* data )
 
     // Set Power mode of the system
     PMU_Set_Mode(PMU_MODE_BUCK_PWM);
-
 
 
 

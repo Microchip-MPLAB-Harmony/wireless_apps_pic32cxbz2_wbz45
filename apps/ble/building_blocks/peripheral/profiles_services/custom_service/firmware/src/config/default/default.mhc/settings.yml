@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: default
 folderName: custom_service
-frameworkPath: C:\BLE Chimera+Buckland
+frameworkPath: D:\svn\H3_RTP
 processor: WBZ451
 projectName: custom_service
 settings:
