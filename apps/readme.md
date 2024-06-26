@@ -72,3 +72,9 @@ The following applications are provided to demonstrate the typical use case of B
 - [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](multiprotocol/ble_thread_prov_ftd_light/readme.md)
 - [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](multiprotocol/ble_thread_prov_mtd_light/readme.md)
 - [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](multiprotocol/ble_thread_prov_sed_sensor/readme.md)
+
+
+# Multiprotocol(BLE+MAC) Applications
+
+| [ble_mac_prov_ffd](apps/multiprotocol/ble_mac_prov_ffd/readme.md) | PIC32CX-BZ |
+| [ble_mac_prov_rfd](apps/multiprotocol/ble_mac_prov_rfd/readme.md) | PIC32CX-BZ |

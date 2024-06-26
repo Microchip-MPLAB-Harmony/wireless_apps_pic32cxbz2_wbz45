@@ -99,6 +99,10 @@ The following applications are provided to demonstrate the typical use case of o
 | [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](apps/multiprotocol/ble_thread_prov_mtd_light/readme.md) | PIC32CX-BZ |
 | [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](apps/multiprotocol/ble_thread_prov_sed_sensor/readme.md) | PIC32CX-BZ |
 
+| Multiprotocol(BLE+MAC) Examples | Families |
+| --- | :---: |
+| [ble_mac_prov_ffd](apps/multiprotocol/ble_mac_prov_ffd/readme.md) | PIC32CX-BZ |
+| [ble_mac_prov_rfd](apps/multiprotocol/ble_mac_prov_rfd/readme.md) | PIC32CX-BZ |
 ____
 
 [![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/blob/master/mplab_harmony_license.md)
