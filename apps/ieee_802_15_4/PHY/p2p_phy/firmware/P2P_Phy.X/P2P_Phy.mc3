@@ -109,7 +109,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="APP_P2P_PHY" name="CSMA_Mode"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;APP_P2P_PHY&gt;
   &lt;APP_P2P_PHY dnOrder=&quot;0&quot; id=&quot;CSMA_Mode&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/APP_P2P_PHY&gt;
 &lt;/APP_P2P_PHY&gt;
 </value>
@@ -7723,7 +7725,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>981bcab25c9a0d2accc92cfcae836f1942e061dfc92f6a345b77ba6dfe929542</hash>
+         <hash>e8ba29f8cceb24f168afe20a4534ea5f6a1cbb61184cb4afb93703821a2f14bf</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
