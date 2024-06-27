@@ -143,6 +143,7 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event)
             /* Turn on the LED */
             //Access - > event.eventData.value;
             //appSnprintf("On\r\n");
+            appSnprintf("11111111111111111111111111\r\n");
         }
         break;
 
@@ -167,7 +168,8 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event)
             //Access - > event.eventData.value;
             //appSnprintf("Led Brightness \r\n");
             RGB_LED_SetBrightnessLevel(event.eventData.value);
-			APP_TRPS_Sensor_BLE_light_Brightness_Sync(lightLevelControlClusterServerAttributes.currentLevel.value);            
+			APP_TRPS_Sensor_BLE_light_Brightness_Sync(lightLevelControlClusterServerAttributes.currentLevel.value);     
+            
         }
         break;
 
@@ -187,7 +189,7 @@ void BSP_Event_Handler(APP_Zigbee_Event_t event)
             /* Set the LED Color X Y */
             //Access - > event.eventData.colorXY.x;
             //Access - > event.eventData.colorXY.y;
-            //appSnprintf("LED X,Y Color \r\n");
+            
             RGB_LED_SetLedColorXY(event.eventData.colorXY.x, event.eventData.colorXY.y);
             APP_TRPS_Sensor_BLE_light_Color_Sync((int)lightColorControlClusterServerAttributes.enhancedCurrentHue.value >> 8,lightColorControlClusterServerAttributes.currentSaturation.value);            
         }

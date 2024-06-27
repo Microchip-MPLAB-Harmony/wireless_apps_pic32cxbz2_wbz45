@@ -88,7 +88,7 @@ void TCC0_CompareInitialize( void )
     }
 
     /* Configure counter mode & prescaler */
-    TCC0_REGS->TCC_CTRLA = TCC_CTRLA_PRESCALER_DIV1 | TCC_CTRLA_PRESCSYNC_PRESC ;
+    TCC0_REGS->TCC_CTRLA = TCC_CTRLA_PRESCALER_DIV1 | TCC_CTRLA_PRESCSYNC_PRESC | TCC_CTRLA_RUNSTDBY_Msk;
     /* Configure waveform generation mode */
     TCC0_REGS->TCC_WAVE = TCC_WAVE_WAVEGEN_NPWM;
 

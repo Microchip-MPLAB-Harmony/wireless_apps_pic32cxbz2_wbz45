@@ -62,21 +62,23 @@ void GPIO_Initialize ( void )
     /* Disable JTAG since at least one of its pins is configured for Non-JTAG function */
     CFG_REGS->CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;
 
-    /* PORTA Initialization */
+          /* PORTA Initialization */
     /* PORTB Initialization */
     GPIOB_REGS->GPIO_LAT = 0x80U; /* Initial Latch Value */
-    GPIOB_REGS->GPIO_TRISCLR = 0x80U; /* Direction Control */
+    GPIOB_REGS->GPIO_TRISCLR = 0x80U; /* Direction Control */  //USER_LED_Clear
     GPIOB_REGS->GPIO_ANSELCLR = 0xb9U; /* Digital Mode Enable */
+    GPIOB_REGS->GPIO_TRISCLR = 0xA0U; /* Direction Control */  //This is for clearing the PB5 Blue LED . Why only PB5 LED Is one pull up resistor is present in PB5 - wbz450
 
 
     /* PPS Input Remapping */
     PPS_REGS->PPS_EXTINT0R = 5U;
+   
 
     /* PPS Output Remapping */
-//    PPS_REGS->PPS_RPB0G1R = 21U;
-//    PPS_REGS->PPS_RPB3G1R = 6U;
+    //PPS_REGS->PPS_RPB0G1R = 21U; //JK!$$
+    //PPS_REGS->PPS_RPB3G1R = 6U; //JK!$$
     PPS_REGS->PPS_RPB5G2R = 2U;
-//    PPS_REGS->PPS_RPB3G4R = 21U;
+    //PPS_REGS->PPS_RPB3G4R = 21U; //JK!$$
     PPS_REGS->PPS_RPB5G3R = 22U;
     PPS_REGS->PPS_RPA10G1R = 21U;
     PPS_REGS->PPS_RPA9G4R = 21U;

@@ -105,7 +105,8 @@ APP_TRPS_NotifyData_T appTrpsSensorNotify[] =
 void APP_TRPS_Sensor_HSV2XYL(uint8_t hue,uint8_t saturation,uint8_t level)
 {
     uint32_t tmpColorX, tmpColorY;
- 
+    
+  
     // Get the X and Y values for the required hue and saturation
     HS2XY((int)hue,(int)saturation,(unsigned int *)&tmpColorX,(unsigned int *)&tmpColorY);
     RGB_LED_SetLedColorXY(tmpColorX,tmpColorY);
@@ -128,13 +129,18 @@ void APP_TRPS_Sensor_HSV2XYL(uint8_t hue,uint8_t saturation,uint8_t level)
     {
         if(bleSensorData.rgbOnOffStatus == LED_OFF)
         {
-            if(BDB_GetBdbNodeIsOnANetwork())
+            if(BDB_GetBdbNodeIsOnANetwork()){
+                appSnprintf("BDB Network status False\n\r");
                 APP_TRPS_Sensor_Zigbee_Light_onOff_Sync(true);
+            }
             else
-                APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
+//                APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
+                RGB_LED_SetLedColorHSV(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
 
-        }    
+        }   
+
         bleSensorData.rgbOnOffStatus = LED_ON;
+        
 
         appSnprintf("[BLE] LED ON\n\r");                
     }
@@ -148,7 +154,8 @@ void APP_TRPS_Sensor_HSV2XYL(uint8_t hue,uint8_t saturation,uint8_t level)
     if(on)
     {
         onOffClusterSetGlobalSceneControl();
-        APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);        
+//        APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);   
+        RGB_LED_SetLedColorHSV(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
         APP_TRPS_Sensor_Zigbee_Light_Color_Sync(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
         setOnOff(true);
     }
@@ -198,7 +205,8 @@ void APP_TRPS_Sensor_HSV2XYL(uint8_t hue,uint8_t saturation,uint8_t level)
     
     if(bleSensorData.rgbOnOffStatus == LED_ON)
     {
-        APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
+//        APP_TRPS_Sensor_HSV2XYL(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
+        RGB_LED_SetLedColorHSV(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value);
         if(BDB_GetBdbNodeIsOnANetwork())
             APP_TRPS_Sensor_Zigbee_Light_Color_Sync(bleSensorData.RGB_color.Hue,bleSensorData.RGB_color.Saturation,bleSensorData.RGB_color.Value); 
         appSnprintf("[BLE] COLOR SET\n\r");        

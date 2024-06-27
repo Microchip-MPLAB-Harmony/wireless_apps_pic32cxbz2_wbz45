@@ -91,9 +91,9 @@ float MCP9700_Temp_Celsius(void)
     {
         ADCHS_GlobalEdgeConversionStart();
     
-        while(!ADCHS_ChannelResultIsReady(ADCHS_CH2));
+        while(!ADCHS_ChannelResultIsReady(ADCHS_CH5));
         
-        adc_read1 = ADCHS_ChannelResultGet(ADCHS_CH2);
+        adc_read1 = ADCHS_ChannelResultGet(ADCHS_CH5);
         
         if(i!=0)
             adc_read = adc_read + adc_read1;

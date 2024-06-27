@@ -52,6 +52,7 @@
 #include "peripheral/tc/plib_tc3.h"
 #include "math.h"
 #include "peripheral/tcc/plib_tcc0.h"
+#include <app_zigbee/zigbee_console/console.h>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -126,7 +127,7 @@ bool lastXYColourMode = false;
 bool pwmStopped = true;
 #endif
 
-extern uint32_t wbz450_silicon_revision;
+
 
 #ifdef COLOR_HSV
 /**************************************************************************//**
@@ -254,10 +255,12 @@ static void HSV2RGB(unsigned int hue, unsigned int saturation,unsigned int level
 /****************************************************************
 Turn off RGB LED.
 ****************************************************************/
+extern uint32_t wbz450_silicon_revision;
 void RGB_LED_Off(void)
 {
     if(wbz450_silicon_revision & (1 << 29)) // A2 Silicon // if((wbz450_silicon_revision >> 28) == (0x02))
     {
+      
         TCC0_CompareStop();
         pwmStopped = true;
     }
@@ -292,6 +295,7 @@ void RGB_LED_SetBrightnessLevel(uint8_t level)
     }   
 }
 
+extern uint32_t wbz450_silicon_revision;
 /**************************************************************************//**
 \brief Set compare value for PWM channels
 ******************************************************************************/
@@ -304,11 +308,13 @@ static void RGB_LED_SetPwmChannelCompareValue(uint16_t r, uint16_t g, uint16_t b
   if(wbz450_silicon_revision & (1 << 29)) // A2 Silicon // if((wbz451_silicon_revision >> 28) == (0x02))
   {
 	  if(pwmStopped)
-	  {
-	       TCC0_CompareStop();
+          
+	  { 
+	       TCC0_CompareStart();
 	       pwmStopped = false;
 	  }
-	  
+  
+	   
 	  TCC0_Compare24bitMatchSet(TCC0_CHANNEL0,g);
 	  
 	  TCC0_Compare24bitMatchSet(TCC0_CHANNEL1,r);
@@ -364,6 +370,7 @@ void RGB_LED_SetLedColorXY(uint16_t x, uint16_t y)
 static inline void RGB_LED_SetColorXY(void)
 {
   unsigned int r, g, b;
+  
   
   XYL2RGB(currentX, currentY, currentL, &r, &g, &b);
 
@@ -462,6 +469,7 @@ static void XYL2RGB(unsigned int valX, unsigned int valY, int valL, unsigned int
   s_setY = (float)valY/65535.0f;
   s_setL = valL;
 
+  
 
   for (unsigned int cnt = 0u; cnt < NR_OF_PRIMES; cnt++)
   {

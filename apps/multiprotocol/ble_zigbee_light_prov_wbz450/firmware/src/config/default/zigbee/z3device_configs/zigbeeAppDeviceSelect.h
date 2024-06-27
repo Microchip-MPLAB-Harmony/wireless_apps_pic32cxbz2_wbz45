@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef Z3_DEVICETYPE_CONFIG_H
-#define Z3_DEVICETYPE_CONFIG_H
+#ifndef _Z3_DEVICETYPE_CONFIG_H_
+#define _Z3_DEVICETYPE_CONFIG_H_
 
 /* Application Device Types Definitions - Do Not Change */
 #define APP_DEVICE_TYPE_COLOR_SCENE_CONTROLLER  1
@@ -77,13 +77,14 @@
 #define APP_Z3_DEVICE_TYPE             ZIGBEE_EXTENDED_COLOR_LIGHT
 
 
-#define CS_UID 0 //Unique Identifier (UID) determining the device extended address
+#define CS_UID 0xee //Unique Identifier (UID) determining the device extended address
 
 //Primary and secondary channel set configuration 
 #define CS_BDB_PRIMARY_CHANNELS_MASK       0x2108800 //standard (11, 15, 20, 25)
 #define CS_BDB_SECONDARY_CHANNELS_MASK     0x5ef7000 //standard
 
 #ifndef CPU_CLK_HZ
-#define CPU_CLK_HZ              64000000U  // Core CPU Clock
+#define CPU_CLK_HZ              64000000  // Core Clock
+//#define CPU_CLK_HZ              48000000  // Core Clock
 #endif
 #endif

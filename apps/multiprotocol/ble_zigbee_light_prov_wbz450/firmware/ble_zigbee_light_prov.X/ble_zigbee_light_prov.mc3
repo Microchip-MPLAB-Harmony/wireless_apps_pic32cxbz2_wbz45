@@ -1839,6 +1839,9 @@
         &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;CHANNEL_7&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/adchs&gt;
 &lt;/adchs&gt;
 </value>
@@ -1903,7 +1906,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;adchs&gt;
   &lt;adchs dnOrder=&quot;0&quot; id=&quot;ADCHS_ADCTRG1&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;adchs&quot; value=&quot;65536&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;adchs&quot; value=&quot;0&quot;/&gt;
     &lt;/Values&gt;
   &lt;/adchs&gt;
 &lt;/adchs&gt;
@@ -1914,7 +1917,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;adchs&gt;
   &lt;adchs dnOrder=&quot;0&quot; id=&quot;ADCHS_ADCTRG2&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;adchs&quot; value=&quot;0&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;adchs&quot; value=&quot;256&quot;/&gt;
     &lt;/Values&gt;
   &lt;/adchs&gt;
 &lt;/adchs&gt;
@@ -2138,7 +2141,7 @@
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
     &lt;/Values&gt;
   &lt;/adchs&gt;
 &lt;/adchs&gt;
@@ -2179,6 +2182,9 @@
         &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/adchs&gt;
 &lt;/adchs&gt;
 </value>
@@ -2275,6 +2281,17 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="adchs" name="AN2"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;adchs&gt;
   &lt;adchs dnOrder=&quot;0&quot; id=&quot;AN2&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/adchs&gt;
+&lt;/adchs&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="adchs" name="AN5"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;adchs&gt;
+  &lt;adchs dnOrder=&quot;0&quot; id=&quot;AN5&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
@@ -2413,7 +2430,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;760&quot; canvasWidth=&quot;1100&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BLE_STACK_LIB&quot; x=&quot;163&quot; y=&quot;51&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;BootloaderServices&quot; x=&quot;577&quot; y=&quot;255&quot;/&gt;
@@ -2425,9 +2443,9 @@
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;SERVICE_OTAS&quot; x=&quot;322&quot; y=&quot;155&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;SERVICE_TRS&quot; x=&quot;528&quot; y=&quot;110&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;ZIGBEE_EXTENDED_COLOR_LIGHT&quot; x=&quot;166&quot; y=&quot;350&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;adchs&quot; x=&quot;22&quot; y=&quot;202&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;adchs&quot; x=&quot;22&quot; y=&quot;203&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;app_timer&quot; x=&quot;312&quot; y=&quot;58&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;ble_ota&quot; x=&quot;392&quot; y=&quot;584&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;ble_ota&quot; x=&quot;931&quot; y=&quot;268&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;bz_prov&quot; x=&quot;394&quot; y=&quot;414&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;cmsis&quot; x=&quot;460&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;core&quot; x=&quot;364&quot; y=&quot;18&quot;/&gt;
@@ -2443,14 +2461,13 @@
         &lt;ElementPosition dnOrder=&quot;25&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;618&quot; y=&quot;321&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;26&quot; id=&quot;rcon&quot; x=&quot;401&quot; y=&quot;362&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;27&quot; id=&quot;sercom0&quot; x=&quot;0&quot; y=&quot;571&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;28&quot; id=&quot;tc0&quot; x=&quot;963&quot; y=&quot;133&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;28&quot; id=&quot;tc0&quot; x=&quot;964&quot; y=&quot;133&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;29&quot; id=&quot;tc2&quot; x=&quot;28&quot; y=&quot;271&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;30&quot; id=&quot;tc3&quot; x=&quot;19&quot; y=&quot;344&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;31&quot; id=&quot;tcc0&quot; x=&quot;940&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;32&quot; id=&quot;trng&quot; x=&quot;6&quot; y=&quot;93&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;760&quot; canvasWidth=&quot;1100&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -2559,6 +2576,17 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="BSP_PIN_10_FUNCTION_TYPE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;BSP_PIN_10_FUNCTION_TYPE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;AN5&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="BSP_PIN_10_MODE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;BSP_PIN_10_MODE&quot;&gt;
@@ -2584,9 +2612,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="BSP_PIN_12_FUNCTION_TYPE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;BSP_PIN_12_FUNCTION_TYPE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;AN2&quot;/&gt;
-    &lt;/Values&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/core&gt;
 &lt;/core&gt;
 </value>
@@ -6248,7 +6274,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;USE_PPS_OUTPUT_0&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -6259,7 +6285,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;USE_PPS_OUTPUT_1&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -6281,7 +6307,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;USE_PPS_OUTPUT_3&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -10735,7 +10761,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcc0" name="TCC_CTRLA_RUNSTDBY"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcc0&gt;
   &lt;tcc0 dnOrder=&quot;0&quot; id=&quot;TCC_CTRLA_RUNSTDBY&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/tcc0&gt;
 &lt;/tcc0&gt;
 </value>
@@ -11551,7 +11579,7 @@
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.c</file>
-         <hash>df4cfef0bda8ecc35d860092229d64d74ab91067213d44ae80434157b37cd049</hash>
+         <hash>05da76de8b462a022bdbef35c151d351f6709b6d9bce2bc79ed5721e9c804ae9</hash>
       </entry>
       <entry>
          <file>..\src\app_ble\app_ble.h</file>
@@ -11607,7 +11635,7 @@
       </entry>
       <entry>
          <file>..\src\app_idle_task.c</file>
-         <hash>84fad5ea63a65664dbd197bb993e81cb71aae5eb971b1e1adb4234ee3954ab27</hash>
+         <hash>3ec446ba6650b2ebf8f60778feca541b67f08e10b9befe97ce18cc4258eefebf</hash>
       </entry>
       <entry>
          <file>..\src\app_idle_task.h</file>
@@ -11883,7 +11911,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>3a381f620a690aeb3e8ad121db7751deb0b2536ccdc35700e035402939a306e6</hash>
+         <hash>4e7824c72615a8702450511656411dfba76cb6657756d930780e2a57c3d27d1b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -11899,7 +11927,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\info_block.h</file>
-         <hash>924f684864c978a21758065108adf277c0ce18a078167eca31c4348c200a7b76</hash>
+         <hash>67aeafab90ef5da7feeccb67d8ddf7de32359c1626a2f54cb481498da09d4bf8</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\pmu_system.h</file>
@@ -11907,7 +11935,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\rf_system.h</file>
-         <hash>8b04c8fa30c462cde302683f211c3655f2cbfab4470d9476a49bf830ea135b87</hash>
+         <hash>b8fb84a3bb5617aed495902a7905c1af5b1d368065a8c915fa48deaecfed1891</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\include\sleep_system.h</file>
@@ -11915,7 +11943,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\driver\device_support\pic32cx_bz2_device_support.a</file>
-         <hash>cb582400ebea2782c2b50ee9ad56b16e852606edbd7573e0ce96b61cf45dea96</hash>
+         <hash>c67200e02b5265ab7c52cdc5b2cde7fa965789cd30969b5520e2e7eb26b445f0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\driver\driver.h</file>
@@ -11967,7 +11995,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>17f00688e44afc03dc59b5ffc417e9a89c426c83f18e3b0d4a64a6c5f91aa9c1</hash>
+         <hash>7b447a82099028c6eb585e559b0800030eff3b4c2e65caefd51dd4230deb53d0</hash>
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.c</file>
@@ -12007,7 +12035,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\adchs\plib_adchs.c</file>
-         <hash>9e61078d8d7685c3cba3809d82012e8df5b138ead4f68b79df50419f24e0c8a4</hash>
+         <hash>0993df1945684deddd38a9cc3c376cd0b325aaa802756a2ad904c299e737cd24</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\adchs\plib_adchs.h</file>
@@ -12059,7 +12087,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\gpio\plib_gpio.c</file>
-         <hash>0d46c5008fa4de226f4ce14c4027ab3a0975ff5c5afc94e18961c4202c3041b8</hash>
+         <hash>11a521bb0d0771be0322f2178198dc327f17c6cdd853c22c79e76f00a9d3d684</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\gpio\plib_gpio.h</file>
@@ -12131,7 +12159,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tcc\plib_tcc0.c</file>
-         <hash>acabe8385fd2c272f565f6ef77c1bc3b1d3dbaf0413dd5ba0044d6d06bf8b193</hash>
+         <hash>92f20c91bf3e36e4798250d7482ec1bfcbb0c5482eec51ab452cb0b39ac933ac</hash>
       </entry>
       <entry>
          <file>..\src\config\default\peripheral\tcc\plib_tcc0.h</file>

@@ -1556,9 +1556,9 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/eccsi.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sakke.h</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/falcon.h</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/kdf.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/siphash.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/kdf.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/falcon.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app_idle_task.h</itemPath>
       <itemPath>../src/app_adv.h</itemPath>
@@ -1572,33 +1572,6 @@
                    displayName="Important Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="default.mhc" projectFiles="true">
-        <itemPath>../src/config/default/default.mhc/adchs.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/cmsis.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/drv_usart.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/eic.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/evsys.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/FreeRTOS.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/HarmonyCore.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/libBLEStack.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/lib_crypto.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/lib_wolfcrypt.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/nvm.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/pdsSystem.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/pic32cx_bz2_devsupport.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/profileBLE_TRP.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/sercom0.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/svcBLE_DIS.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/svcBLE_TRS.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc2.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc3.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tcc2.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/trng.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/ZIGBEE_EXTENDED_COLOR_LIGHT.yml</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="wolfcrypt" projectFiles="true">
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
@@ -2048,9 +2021,9 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rc2.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/eccsi.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sakke.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/kdf.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/falcon.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/siphash.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/kdf.c</itemPath>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/app.c</itemPath>
@@ -2074,14 +2047,14 @@
         <targetDevice>WBZ450</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
       </packs>
       <ScriptingSettings>
         <ScriptingSetting key="configuration.header.zota_manufacture_code"
@@ -2104,7 +2077,7 @@
         <ScriptingSetting key="configuration.header.outputfiletypes"
                           value="BLE OTA File"/>
         <ScriptingSetting key="configuration.header.outputfilename"
-                          value="ble_zigbee_light_prov_1.0.0.1_ota.bin"/>
+                          value="ble_zigbee_light_prov_1.0.0.2_ota.bin"/>
         <ScriptingSetting key="configuration.header.zota_upgrade_file_destination_check"
                           value="False"/>
         <ScriptingSetting key="configuration.header.ss_key_name" value="test1ecdsap256"/>
@@ -2387,6 +2360,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1000000-10fffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/i68148/Downloads/ble_zigbee_light_prov 5/ble_zigbee_light_prov/firmware/ble_zigbee_light_prov.X/debug/default/ble_zigbee_light_prov_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
