@@ -18,7 +18,7 @@ Following table provides number of Wireless examples available for different dev
 - WBZ451 BLE and MAC Combo applications based on BLE Provision Service Harmony component.
 
 ### Bug fixes and Improvements
-- Regenerated all thread application with new thread SDK v1.1.0
+- Regenerated all thread application with latest package versions
 - Regenerated all the MAC Applications with latest tags
 
 ### Known Issues

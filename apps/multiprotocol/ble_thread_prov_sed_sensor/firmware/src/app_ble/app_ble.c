@@ -46,6 +46,7 @@
 
 
 
+
 #include "app_trsps_handler.h"
 
 
@@ -302,6 +303,7 @@ void APP_BleStackInitAdvance(void)
     /* Transparent Profile */
     BLE_TRSPS_Init();                                   /* Enable Server Role */
     BLE_TRSPS_EventRegister(APP_TrspsEvtHandler);   /* Enable Server Role */
+
 
 
 

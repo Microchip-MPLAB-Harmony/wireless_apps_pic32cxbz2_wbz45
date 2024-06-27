@@ -65,7 +65,7 @@
 /**@defgroup BLE_TRSPS_INIT_CREDIT BLE_TRSPS_INIT_CREDIT
  * @brief The definition of initial credit value.
  * @{ */
-#define BLE_TRSPS_INIT_CREDIT                   0x10    /**< Definition of initial credit */
+#define BLE_TRSPS_INIT_CREDIT                   (0x10U)    /**< Definition of initial credit */
 /** @} */
 
 /**@defgroup BLE_TRSPS_MAX_BUF BLE_TRSPS_MAX_BUF
@@ -77,44 +77,44 @@
 /**@defgroup BLE_TRSPS_MAX_RETURN_CREDIT BLE_TRSPS_MAX_RETURN_CREDIT
  * @brief The definition of maximum return credit number.
  * @{ */
-#define BLE_TRSPS_MAX_RETURN_CREDIT              (13)   /**< Maximum return credit number */
+#define BLE_TRSPS_MAX_RETURN_CREDIT             (13U)   		/**< Maximum return credit number */
 /** @} */
 
 /**@defgroup BLE_TRSPS_CBFC BLE_TRSPS_CBFC
  * @brief The definition of credit base flow control.
  * @{ */
-#define BLE_TRSPS_CBFC_TX_ENABLED               1              /**< Definition of ble transparent service credit based transmit enable. */
-#define BLE_TRSPS_CBFC_RX_ENABLED               (1<<1)         /**< Definition of ble transparent service credit based receive enable. */
+#define BLE_TRSPS_CBFC_TX_ENABLED               (1U)             /**< Definition of ble transparent service credit based transmit enable. */
+#define BLE_TRSPS_CBFC_RX_ENABLED               (1U << 1U)       /**< Definition of ble transparent service credit based receive enable. */
 /** @} */
 
 /**@defgroup BLE_TRSPS_CCCD BLE_TRSPS_CCCD
  * @brief The definition of Client Characteristic Configuration Descriptor
  * @{ */
-#define BLE_TRSPS_CCCD_DISABLE                  0x0000         /**< Definition of Client Characteristic Configuration Descriptor disable. */
-#define BLE_TRSPS_CCCD_NOTIFY                   NOTIFICATION   /**< Definition of Client Characteristic Configuration Descriptor enable NOTIFY property. */
+#define BLE_TRSPS_CCCD_DISABLE                  (0x0000U)        /**< Definition of Client Characteristic Configuration Descriptor disable. */
+#define BLE_TRSPS_CCCD_NOTIFY                   NOTIFICATION   	 /**< Definition of Client Characteristic Configuration Descriptor enable NOTIFY property. */
 /** @} */
 
 
 /**@defgroup BLE_TRSPS_CBFC_OPCODE BLE_TRSPS_CBFC_OPCODE
  * @brief The definition of BLE transparent credit based flow control
  * @{ */
-#define BLE_TRSPS_CBFC_OPCODE_SERVER_ENABLED    0x14    /**< Definition of Op Code for Credit Based Flow Control Protocol, sending by Server. */
-#define BLE_TRSPS_CBFC_OPCODE_GIVE_CREDIT       0x15    /**< Definition of Op Code for Credit Based Flow Control Protocol, giving credit. */
-#define BLE_TRSPS_CBFC_OPCODE_SUCCESS           0       /**< Definition of response for successful operation. */
+#define BLE_TRSPS_CBFC_OPCODE_SERVER_ENABLED    (0x14U)         /**< Definition of Op Code for Credit Based Flow Control Protocol, sending by Server. */
+#define BLE_TRSPS_CBFC_OPCODE_GIVE_CREDIT       (0x15U)         /**< Definition of Op Code for Credit Based Flow Control Protocol, giving credit. */
+#define BLE_TRSPS_CBFC_OPCODE_SUCCESS           (0U)            /**< Definition of response for successful operation. */
 /** @} */
 
 /**@defgroup BLE_TRSPS_VENDOR_OPCODE BLE_TRSPS_VENDOR_OPCODE
  * @brief The definition of BLE transparent vendor opcodes
  * @{ */
-#define BLE_TRSPS_VENDOR_OPCODE_MIN             0x20    /**< Definition of Op Code range in TRS vendor commands. */
-#define BLE_TRSPS_VENDOR_OPCODE_MAX             0xFF    /**< Definition of Op Code range in TRS vendor commands. */
+#define BLE_TRSPS_VENDOR_OPCODE_MIN             (0x20U)         /**< Definition of Op Code range in TRS vendor commands. */
+#define BLE_TRSPS_VENDOR_OPCODE_MAX             (0xFFU)         /**< Definition of Op Code range in TRS vendor commands. */
 /** @} */
 
 /**@defgroup BLE_TRSPS_RETRY_TYPE BLE_TRSPS_RETRY_TYPE
  * @brief The definition of BLE transparent retry type
  * @{ */
-#define BLE_TRSPS_RETRY_TYPE_RESP               0x01    /**< Definition of response retry type. */
-#define BLE_TRSPS_RETRY_TYPE_ERR                0x02    /**< Definition of error retry type. */
+#define BLE_TRSPS_RETRY_TYPE_RESP               (0x01U)         /**< Definition of response retry type. */
+#define BLE_TRSPS_RETRY_TYPE_ERR                (0x02U)         /**< Definition of error retry type. */
 /** @} */
 
 /**@defgroup BLE_TRSPS_STATE TRSPS state
@@ -122,8 +122,8 @@
  * @{ */
 typedef enum BLE_TRSPS_State_T
 {
-    BLE_TRSPS_STATE_IDLE = 0x00,        /**< Default state (Disconnected). */
-    BLE_TRSPS_STATE_CONNECTED           /**< Connected. */
+    BLE_TRSPS_STATE_IDLE = 0x00U,        /**< Default state (Disconnected). */
+    BLE_TRSPS_STATE_CONNECTED            /**< Connected. */
 } BLE_TRSPS_State_T;
 /** @} */
 
@@ -154,7 +154,7 @@ typedef struct BLE_TRSPS_QueueIn_T
 typedef struct BLE_TRSPS_ConnList_T
 {
     uint8_t                    trsState;                /**< BLE transparent service current state. @ref BLE_TRSPS_STATUS.*/
-    uint8_t                    state;                   /**< Connection state. */
+    BLE_TRSPS_State_T          state;                   /**< Connection state. */
     uint16_t                   connHandle;              /**< Connection handle associated with this connection. */
     uint16_t                   attMtu;                  /**< Record the current connection MTU size. */
     uint8_t                    cbfcEnable;              /**< Credit based flow enable. @ref BLE_TRSPS_CREDIT_BASED_FLOW_CONTROL. */
@@ -192,7 +192,7 @@ MW_ASSERT((BLE_TRSPS_MAX_CONN_NBR*BLE_TRSPS_INIT_CREDIT)==BLE_TRSPS_MAX_BUF_IN);
 
 static void ble_trsps_InitConnList(BLE_TRSPS_ConnList_T *p_conn)
 {
-    memset((uint8_t *)p_conn, 0, sizeof(BLE_TRSPS_ConnList_T));
+    (void)memset((uint8_t *)p_conn, 0, sizeof(BLE_TRSPS_ConnList_T));
     p_conn->attMtu= BLE_ATT_DEFAULT_MTU_LEN;
 }
 
@@ -211,7 +211,7 @@ static BLE_TRSPS_ConnList_T * ble_trsps_GetConnListByHandle(uint16_t connHandle)
     return NULL;
 }
 
-static BLE_TRSPS_ConnList_T *ble_trsps_GetFreeConnList()
+static BLE_TRSPS_ConnList_T *ble_trsps_GetFreeConnList(void)
 {
     uint8_t i;
 
@@ -227,17 +227,19 @@ static BLE_TRSPS_ConnList_T *ble_trsps_GetFreeConnList()
     return NULL;
 }
 
-static uint16_t ble_trsps_ServerReturnCredit(BLE_TRSPS_ConnList_T *p_conn)
+static void ble_trsps_ServerReturnCredit(BLE_TRSPS_ConnList_T *p_conn)
 {
     GATTS_HandleValueParams_T hvParams;
     uint8_t *p_buf;
 
-    if (p_conn->peerCredit == 0)
-        return MBA_RES_SUCCESS;
+    if (p_conn->peerCredit == 0U)
+    {
+        return;
+    }
 
     hvParams.sendType = ATT_HANDLE_VALUE_NTF;
-    hvParams.charHandle = TRS_HDL_CHARVAL_CTRL;
-    hvParams.charLength = 0x05;
+    hvParams.charHandle = (uint16_t)TRS_HDL_CHARVAL_CTRL;
+    hvParams.charLength = 0x05U;
 
     p_buf=hvParams.charValue;
     U8_TO_STREAM(&p_buf, BLE_TRSPS_CBFC_OPCODE_SUCCESS);
@@ -248,11 +250,6 @@ static uint16_t ble_trsps_ServerReturnCredit(BLE_TRSPS_ConnList_T *p_conn)
     if (GATTS_SendHandleValue(p_conn->connHandle, &hvParams) == MBA_RES_SUCCESS)
     {
         p_conn ->peerCredit = 0;
-        return MBA_RES_SUCCESS;
-    }
-    else
-    {
-        return MBA_RES_FAIL;
     }
 }
 
@@ -264,33 +261,34 @@ static void ble_trsps_RcvData(BLE_TRSPS_ConnList_T *p_conn, uint8_t writeType, u
         uint8_t *p_buffer = NULL;
 
 
-        memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
+        (void)memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
         p_buffer = OSAL_Malloc(receivedLen);
         
         if (p_buffer == NULL)
         {
-            BLE_TRSPS_Event_T evtPara;
             evtPara.eventId = BLE_TRSPS_EVT_ERR_NO_MEM;
-            if (bleTrspsProcess)
+            if (bleTrspsProcess != NULL)
             {
                 bleTrspsProcess(&evtPara);
             }
             return;
         }
 
-        memcpy(p_buffer, p_receivedValue, receivedLen);
+        (void)memcpy(p_buffer, p_receivedValue, receivedLen);
         p_conn->inputQueue.packetList[p_conn->inputQueue.writeIndex].writeType = writeType;
         p_conn->inputQueue.packetList[p_conn->inputQueue.writeIndex].length = receivedLen;
         p_conn->inputQueue.packetList[p_conn->inputQueue.writeIndex].p_packet = p_buffer;
         p_conn->inputQueue.writeIndex++;
         if (p_conn->inputQueue.writeIndex >= BLE_TRSPS_INIT_CREDIT)
+        {
             p_conn->inputQueue.writeIndex = 0;
+        }
 
         p_conn->inputQueue.usedNum++;
 
         evtPara.eventId=BLE_TRSPS_EVT_RECEIVE_DATA;
         evtPara.eventField.onReceiveData.connHandle = p_conn->connHandle;
-        if (bleTrspsProcess)
+        if (bleTrspsProcess != NULL)
         {
             bleTrspsProcess(&evtPara);
         }
@@ -300,7 +298,7 @@ static void ble_trsps_RcvData(BLE_TRSPS_ConnList_T *p_conn, uint8_t writeType, u
 
 static void ble_trsps_FreeRetryData(BLE_TRSPS_ConnList_T *p_conn)
 {
-    if (p_conn->p_retryData)
+    if (p_conn->p_retryData != NULL)
     {
         OSAL_Free(p_conn->p_retryData);
         p_conn->p_retryData = NULL;
@@ -337,7 +335,7 @@ static void ble_trsps_ProcessQueuedTask(uint16_t connHandle)
     {
         BLE_TRSPS_Event_T evtPara;
         evtPara.eventId = BLE_TRSPS_EVT_ERR_UNSPECIFIED;
-        if (bleTrspsProcess)
+        if (bleTrspsProcess != NULL)
         {
             bleTrspsProcess(&evtPara);
         }
@@ -372,7 +370,9 @@ static void ble_trsps_ProcessQueuedTask(uint16_t connHandle)
     if (p_connList->state == BLE_TRSPS_STATE_CONNECTED)
     {
         if (p_connList->peerCredit >= BLE_TRSPS_MAX_RETURN_CREDIT)
+        {
             ble_trsps_ServerReturnCredit(p_connList);
+        }
     }
 }
 
@@ -381,11 +381,11 @@ void BLE_TRSPS_EventRegister(BLE_TRSPS_EventCb_T bleTranServHandler)
     bleTrspsProcess = bleTranServHandler;
 }
 
-uint16_t BLE_TRSPS_Init()
+uint16_t BLE_TRSPS_Init(void)
 {
     uint8_t i;
 
-    memset((uint8_t *)&s_trsParams, 0, sizeof(BLE_TRSPS_Params_T));
+    (void)memset((uint8_t *)&s_trsParams, 0, sizeof(BLE_TRSPS_Params_T));
     for (i = 0; i < BLE_TRSPS_MAX_CONN_NBR; i++)
     {
         ble_trsps_InitConnList(&s_trsConnList[i]);
@@ -402,14 +402,16 @@ uint16_t BLE_TRSPS_SendVendorCommand(uint16_t connHandle, uint8_t commandID, uin
 
     p_conn = ble_trsps_GetConnListByHandle(connHandle);
     if (p_conn == NULL)
+    {
         return MBA_RES_FAIL;
+    }
 
     if (commandID < BLE_TRSPS_VENDOR_OPCODE_MIN)
     {
         return MBA_RES_INVALID_PARA;
     }
 
-    if (commandLength > (p_conn->attMtu-ATT_NOTI_INDI_HEADER_SIZE-1))
+    if (commandLength > (p_conn->attMtu-ATT_NOTI_INDI_HEADER_SIZE-1U))
     {
         return MBA_RES_INVALID_PARA;
     }
@@ -417,10 +419,10 @@ uint16_t BLE_TRSPS_SendVendorCommand(uint16_t connHandle, uint8_t commandID, uin
     p_hvParams = OSAL_Malloc(sizeof(GATTS_HandleValueParams_T));
     if (p_hvParams != NULL)
     {
-        p_hvParams->charHandle = TRS_HDL_CHARVAL_CTRL;
-        p_hvParams->charLength = (commandLength+1);
+        p_hvParams->charHandle = (uint16_t)TRS_HDL_CHARVAL_CTRL;
+        p_hvParams->charLength = ((uint16_t)commandLength+1U);
         p_hvParams->charValue[0] = commandID;
-        memcpy(&p_hvParams->charValue[1], p_commandPayload, commandLength);
+        (void)memcpy(&p_hvParams->charValue[1], p_commandPayload, commandLength);
         p_hvParams->sendType = ATT_HANDLE_VALUE_NTF;
         result = GATTS_SendHandleValue(p_conn->connHandle, p_hvParams);
         OSAL_Free(p_hvParams);
@@ -450,7 +452,7 @@ uint16_t BLE_TRSPS_SendData(uint16_t connHandle, uint16_t len, uint8_t *p_data)
         return MBA_RES_BAD_STATE;
     }
 
-    if ((p_conn->cbfcEnable&BLE_TRSPS_CBFC_TX_ENABLED) && (p_conn->localCredit == 0))
+    if (((p_conn->cbfcEnable&BLE_TRSPS_CBFC_TX_ENABLED)!=0U) && (p_conn->localCredit == 0U))
     {
         return MBA_RES_NO_RESOURCE;
     }
@@ -465,16 +467,18 @@ uint16_t BLE_TRSPS_SendData(uint16_t connHandle, uint16_t len, uint8_t *p_data)
         return MBA_RES_FAIL;
     }
 
-    hvParams.charHandle = TRS_HDL_CHARVAL_TX;
+    hvParams.charHandle = (uint16_t)TRS_HDL_CHARVAL_TX;
     hvParams.charLength = len;
-    memcpy(hvParams.charValue, p_data, hvParams.charLength);
+    (void)memcpy(hvParams.charValue, p_data, hvParams.charLength);
     hvParams.sendType = ATT_HANDLE_VALUE_NTF;
 
     result = GATTS_SendHandleValue(p_conn->connHandle, &hvParams);
     if (result == MBA_RES_SUCCESS)
     {
-        if (p_conn->cbfcEnable&BLE_TRSPS_CBFC_TX_ENABLED)
+        if ((p_conn->cbfcEnable&BLE_TRSPS_CBFC_TX_ENABLED) != 0U)
+        {
             p_conn->localCredit--;
+        }
     }
 
     return result;
@@ -485,17 +489,21 @@ void BLE_TRSPS_GetDataLength(uint16_t connHandle, uint16_t *p_dataLength)
     BLE_TRSPS_ConnList_T *p_conn = NULL;
 
     p_conn = ble_trsps_GetConnListByHandle(connHandle);
-    if (p_conn)
+    if (p_conn != NULL)
     {
-        if ((p_conn->inputQueue.usedNum) > 0)
+        if ((p_conn->inputQueue.usedNum) > 0U)
         {
             *p_dataLength = p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].length;
         }
         else
+        {
             *p_dataLength = 0;
+        }
     }
     else
+    {
         *p_dataLength = 0;
+    }
 }
 
 uint16_t BLE_TRSPS_GetData(uint16_t connHandle, uint8_t *p_data)
@@ -504,13 +512,13 @@ uint16_t BLE_TRSPS_GetData(uint16_t connHandle, uint8_t *p_data)
     uint8_t writeType = 0;
 
     p_conn = ble_trsps_GetConnListByHandle(connHandle);
-    if (p_conn)
+    if (p_conn!= NULL)
     {
-        if ((p_conn->inputQueue.usedNum) > 0)
+        if ((p_conn->inputQueue.usedNum) > 0U)
         {
-            if (p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet)
+            if (p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet != NULL)
             {
-                memcpy(p_data, p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet, 
+                (void)memcpy(p_data, p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet, 
                     p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].length);
                 OSAL_Free(p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet);
                 p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet = NULL;
@@ -520,25 +528,33 @@ uint16_t BLE_TRSPS_GetData(uint16_t connHandle, uint8_t *p_data)
 
             p_conn->inputQueue.readIndex++;
             if (p_conn->inputQueue.readIndex >= BLE_TRSPS_INIT_CREDIT)
+            {
                 p_conn->inputQueue.readIndex = 0;
+            }
 
             p_conn->inputQueue.usedNum --;
             
-            if ((p_conn->cbfcEnable&BLE_TRSPS_CBFC_RX_ENABLED)
+            if (((p_conn->cbfcEnable&BLE_TRSPS_CBFC_RX_ENABLED)!=0U)
             && (writeType == ATT_WRITE_CMD))
             {
                 p_conn->peerCredit++;
                 if (p_conn->peerCredit >= BLE_TRSPS_MAX_RETURN_CREDIT)
+                {
                     ble_trsps_ServerReturnCredit(p_conn);
+                }
             }
 
             return MBA_RES_SUCCESS;
         }
         else
+        {
             return MBA_RES_FAIL;
+        }
     }
     else
+    {
         return MBA_RES_FAIL;
+    }
 
 }
 
@@ -547,7 +563,7 @@ static uint8_t ble_trsps_TxCccd(BLE_TRSPS_ConnList_T *p_conn, uint8_t *p_value)
     uint16_t cccd;
     BLE_TRSPS_Event_T evtPara;
 
-    memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
+    (void)memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
     BUF_LE_TO_U16(&cccd, p_value);
 
     if (cccd == BLE_TRSPS_CCCD_NOTIFY)
@@ -560,13 +576,13 @@ static uint8_t ble_trsps_TxCccd(BLE_TRSPS_ConnList_T *p_conn, uint8_t *p_value)
     }
     else
     {
-        return ATT_ERRCODE_APPLICATION_ERROR;
+        return ATT_ERR_APPLICATION_ERROR;
     }
 
     evtPara.eventId=BLE_TRSPS_EVT_TX_STATUS;
     evtPara.eventField.onTxStatus.connHandle = p_conn->connHandle;
     evtPara.eventField.onTxStatus.status = p_conn->trsState;
-    if (bleTrspsProcess)
+    if (bleTrspsProcess != NULL)
     {
         bleTrspsProcess(&evtPara);
     }
@@ -583,7 +599,7 @@ static void ble_trsps_CtrlValue(BLE_TRSPS_ConnList_T *p_conn, uint16_t length, u
 {
     BLE_TRSPS_Event_T evtPara;
 
-    memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
+    (void)memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
     
     switch (p_value[0])
     {
@@ -593,7 +609,7 @@ static void ble_trsps_CtrlValue(BLE_TRSPS_ConnList_T *p_conn, uint16_t length, u
             p_conn->peerCredit = BLE_TRSPS_INIT_CREDIT;
             ble_trsps_ServerReturnCredit(p_conn);
             
-            if (bleTrspsProcess)
+            if (bleTrspsProcess != NULL)
             {
                 evtPara.eventId=BLE_TRSPS_EVT_CBFC_ENABLED;
                 evtPara.eventField.onCbfcEnabled.connHandle = p_conn->connHandle;
@@ -607,7 +623,7 @@ static void ble_trsps_CtrlValue(BLE_TRSPS_ConnList_T *p_conn, uint16_t length, u
             p_conn->cbfcEnable |= BLE_TRSPS_CBFC_TX_ENABLED;
             p_conn->localCredit += p_value[1];
             
-            if (bleTrspsProcess)
+            if (bleTrspsProcess != NULL)
             {
                 evtPara.eventId = BLE_TRSPS_EVT_CBFC_CREDIT;
                 evtPara.eventField.onCbfcEnabled.connHandle = p_conn->connHandle;
@@ -618,8 +634,7 @@ static void ble_trsps_CtrlValue(BLE_TRSPS_ConnList_T *p_conn, uint16_t length, u
         
         default:
         {
-            if ((p_value[0] >= BLE_TRSPS_VENDOR_OPCODE_MIN) && (p_value[0] <= BLE_TRSPS_VENDOR_OPCODE_MAX)
-                && bleTrspsProcess)
+            if ((p_value[0] >= BLE_TRSPS_VENDOR_OPCODE_MIN) && (bleTrspsProcess!= NULL))
             {
                 evtPara.eventId = BLE_TRSPS_EVT_VENDOR_CMD;
                 evtPara.eventField.onVendorCmd.connHandle = p_conn->connHandle;
@@ -639,22 +654,26 @@ static uint8_t ble_trsps_CtrlCccd(BLE_TRSPS_ConnList_T *p_conn, uint8_t *p_value
     BLE_TRSPS_Event_T evtPara;
 
 
-    memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
+    (void)memset((uint8_t *) &evtPara, 0, sizeof(evtPara));
     BUF_LE_TO_U16(&cccd, p_value);
     
-    if ((cccd != 0) && (cccd != BLE_TRSPS_CCCD_NOTIFY))
+    if ((cccd != 0U) && (cccd != BLE_TRSPS_CCCD_NOTIFY))
     {
-        return ATT_ERRCODE_APPLICATION_ERROR;
+        return ATT_ERR_APPLICATION_ERROR;
     }
 
-    if (bleTrspsProcess)
+    if (bleTrspsProcess!= NULL)
     {
         evtPara.eventId = BLE_TRSPS_EVT_CTRL_STATUS;
         evtPara.eventField.onCtrlStatus.connHandle = p_conn->connHandle;
         if (cccd == BLE_TRSPS_CCCD_NOTIFY)
+        {
             evtPara.eventField.onCtrlStatus.status = BLE_TRSPS_STATUS_CTRL_OPENED;
+        }
         else
+        {
             evtPara.eventField.onCtrlStatus.status = BLE_TRSPS_STATUS_CTRL_DISABLED;
+        }
     
         bleTrspsProcess(&evtPara);
     }
@@ -670,8 +689,8 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
     GATTS_SendWriteRespParams_T *p_trsRespParams = NULL;
     GATTS_SendErrRespParams_T *p_trsErrParams = NULL;
 
-    if ((p_event->eventField.onWrite.attrHandle <= TRS_START_HDL) ||
-        (p_event->eventField.onWrite.attrHandle > TRS_END_HDL))
+    if ((p_event->eventField.onWrite.attrHandle <= (uint16_t)TRS_START_HDL) ||
+        (p_event->eventField.onWrite.attrHandle > (uint16_t)TRS_END_HDL))
     {
         /* Not BLE Trs characteristic. */
         return;
@@ -681,25 +700,25 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
         
     if (p_conn == NULL)
     {
-        error = ATT_ERRCODE_APPLICATION_ERROR;
+        error = ATT_ERR_APPLICATION_ERROR;
     }
 
     if (p_event->eventField.onWrite.writeType == ATT_PREPARE_WRITE_REQ)
     {
-        error = ATT_ERRCODE_REQUEST_NOT_SUPPORT;
+        error = ATT_ERR_REQUEST_NOT_SUPPORT;
     }
 
-    if (!error)
+    if (error==0U)
     {
         switch(p_event->eventField.onWrite.attrHandle)
         {
-            case TRS_HDL_CCCD_TX:
+            case (uint16_t)TRS_HDL_CCCD_TX:
             {
                 error=ble_trsps_TxCccd(p_conn, p_event->eventField.onWrite.writeValue);
             }
             break;
 
-            case TRS_HDL_CHARVAL_RX:
+            case (uint16_t)TRS_HDL_CHARVAL_RX:
             {
                 ble_trsps_RxValue(p_conn, p_event->eventField.onWrite.writeType,
                                   p_event->eventField.onWrite.writeDataLength,
@@ -707,20 +726,23 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
             }
             break;
 
-            case TRS_HDL_CHARVAL_CTRL:
+            case (uint16_t)TRS_HDL_CHARVAL_CTRL:
             {
                 ble_trsps_CtrlValue(p_conn, p_event->eventField.onWrite.writeDataLength, 
                     p_event->eventField.onWrite.writeValue);
             }
             break;
 
-            case TRS_HDL_CCCD_CTRL:
+            case (uint16_t)TRS_HDL_CCCD_CTRL:
             {
                 error=ble_trsps_CtrlCccd(p_conn, p_event->eventField.onWrite.writeValue);
             }
             break;
 
             default:
+            {
+                //Do nothing
+            }
             break;
         }
     }
@@ -732,20 +754,20 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
         {
             BLE_TRSPS_Event_T evtPara;
             evtPara.eventId = BLE_TRSPS_EVT_ERR_UNSPECIFIED;
-            if (bleTrspsProcess)
+            if (bleTrspsProcess != NULL)
             {
                 bleTrspsProcess(&evtPara);
             }
             return;
         }
-        if (!error)
+        if (error==0U)
         {
             p_conn->p_retryData = OSAL_Malloc(sizeof(GATTS_SendWriteRespParams_T));
             if (p_conn->p_retryData == NULL)
             {
                 BLE_TRSPS_Event_T evtPara;
                 evtPara.eventId = BLE_TRSPS_EVT_ERR_NO_MEM;
-                if (bleTrspsProcess)
+                if (bleTrspsProcess != NULL)
                 {
                     bleTrspsProcess(&evtPara);
                 }
@@ -767,7 +789,7 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
             {
                 BLE_TRSPS_Event_T evtPara;
                 evtPara.eventId = BLE_TRSPS_EVT_ERR_NO_MEM;
-                if (bleTrspsProcess)
+                if (bleTrspsProcess != NULL)
                 {
                     bleTrspsProcess(&evtPara);
                 }
@@ -787,7 +809,7 @@ static void ble_trsps_GattsWriteProcess(GATT_Event_T *p_event)
     }
 }
 
-void ble_trsps_GattEventProcess(GATT_Event_T *p_event)
+static void ble_trsps_GattEventProcess(GATT_Event_T *p_event)
 {
     BLE_TRSPS_ConnList_T *p_conn = NULL;
 
@@ -803,7 +825,9 @@ void ble_trsps_GattEventProcess(GATT_Event_T *p_event)
         {
             p_conn = ble_trsps_GetConnListByHandle(p_event->eventField.onUpdateMTU.connHandle);
             if (p_conn == NULL)
+            {
                 break;
+            }
             p_conn->attMtu = p_event->eventField.onUpdateMTU.exchangedMTU;
         }
         break;
@@ -815,11 +839,14 @@ void ble_trsps_GattEventProcess(GATT_Event_T *p_event)
         break;
 
         default:
-            break;
+        {
+            //Do nothing
+        }
+        break;
     }
 }
 
-void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
+static void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
 {
     switch(p_event->eventId)
     {
@@ -834,7 +861,7 @@ void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
                 {
                     BLE_TRSPS_Event_T evtPara;
                     evtPara.eventId = BLE_TRSPS_EVT_ERR_UNSPECIFIED;
-                    if (bleTrspsProcess)
+                    if (bleTrspsProcess != NULL)
                     {
                         bleTrspsProcess(&evtPara);
                     }
@@ -855,9 +882,9 @@ void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
             if (p_conn != NULL)
             {
                 // Flush all queued data.
-                while (p_conn->inputQueue.usedNum > 0)
+                while (p_conn->inputQueue.usedNum > 0U)
                 {
-                    if (p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet)
+                    if (p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet != NULL)
                     {
                         OSAL_Free(p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet);
                         p_conn->inputQueue.packetList[p_conn->inputQueue.readIndex].p_packet = NULL;
@@ -865,12 +892,14 @@ void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
 
                     p_conn->inputQueue.readIndex++;
                     if (p_conn->inputQueue.readIndex >= BLE_TRSPS_INIT_CREDIT)
+                    {
                         p_conn->inputQueue.readIndex = 0;
+                    }
 
                     p_conn->inputQueue.usedNum --;
                 }
                 // Free retry data
-                if (p_conn->p_retryData)
+                if (p_conn->p_retryData != NULL)
                 {
                     ble_trsps_FreeRetryData(p_conn);
                 }
@@ -886,6 +915,9 @@ void ble_trsps_GapEventProcess(BLE_GAP_Event_T *p_event)
         break;
        
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }
@@ -907,6 +939,9 @@ void BLE_TRSPS_BleEventHandler(STACK_Event_T *p_stackEvent)
         break;
 
         default:
+        {
+            //Do nothing
+        }
         break;
     }
 }

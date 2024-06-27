@@ -428,9 +428,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    RTC_Initialize();
-
     TC0_TimerInitialize();
+
+    RTC_Initialize();
 
     NVM_Initialize();
 
@@ -438,9 +438,9 @@ void SYS_Initialize ( void* data )
 
 	TRNG_Initialize();
 
-    SERCOM0_USART_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM0_USART_Initialize();
 
 
 
@@ -473,10 +473,6 @@ void SYS_Initialize ( void* data )
 
     osalAPIList.OSAL_MemAlloc = OSAL_Malloc;
     osalAPIList.OSAL_MemFree = OSAL_Free;
-
-    // Set Power mode of the system
-    PMU_Set_Mode(PMU_MODE_BUCK_PWM);
-
 
 
 /*******************************************************************************
@@ -528,6 +524,7 @@ void SYS_Initialize ( void* data )
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 
     // Retrieve BLE calibration data
+    (void)memset(&btSysCfg, 0, sizeof(BT_SYS_Cfg_T));
     btSysCfg.addrValid = IB_GetBdAddr(&btSysCfg.devAddr[0]);
     btSysCfg.rssiOffsetValid =IB_GetRssiOffset(&btSysCfg.rssiOffset);
 
@@ -538,9 +535,11 @@ void SYS_Initialize ( void* data )
 
 
     //Configure BLE option
+    (void)memset(&btOption, 0, sizeof(BT_SYS_Option_T));
     btOption.hciMode = false;
     btOption.cmnMemSize = EXT_COMMON_MEMORY_SIZE;
     btOption.p_cmnMemAddr = s_btMem;
+    btOption.deFeatMask = 0;
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);

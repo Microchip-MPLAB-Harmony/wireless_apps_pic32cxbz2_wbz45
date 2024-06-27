@@ -66,11 +66,11 @@
 // *****************************************************************************
 /* Transparent Service Declaration */
 static uint8_t s_svcUuidTrs[] = {UUID_MCHP_PROPRIETARY_SERVICE_16};
-static const uint16_t s_svcUuidTrsLen = sizeof (s_svcUuidTrs);
+static const uint16_t s_svcUuidTrsLen = (uint16_t)sizeof (s_svcUuidTrs);
 
 /* Transparent Tx Characteristic Declaration */
 static uint8_t s_charTransTx[] = {(ATT_PROP_WRITE_REQ | ATT_PROP_NOTIFY), UINT16_TO_BYTES(TRS_HDL_CHARVAL_TX), UUID_MCHP_TRANS_TX_16};
-static const uint16_t s_charTransTxLen = sizeof (s_charTransTx);
+static const uint16_t s_charTransTxLen = (uint16_t)sizeof (s_charTransTx);
 
 /* Transparent Tx Characteristic Value */
 static uint8_t s_chUuidTransTx[] = {UUID_MCHP_TRANS_TX_16};
@@ -79,11 +79,11 @@ static uint16_t s_transTxValLen = 1;
 
 /* Transparent Tx Client Characteristic Configuration Descriptor */
 static uint8_t s_descCccTransTx[] = {UINT16_TO_BYTES(0x0000)};
-static const uint16_t s_descCccTransTxLen = sizeof (s_descCccTransTx);
+static const uint16_t s_descCccTransTxLen = (uint16_t)sizeof (s_descCccTransTx);
 
 /* Transparent Rx Characteristic Declaration */
 static uint8_t s_charTransRx[] = {(ATT_PROP_WRITE_REQ | ATT_PROP_WRITE_CMD), UINT16_TO_BYTES(TRS_HDL_CHARVAL_RX), UUID_MCHP_TRANS_RX_16};
-static const uint16_t s_charTransRxLen = sizeof (s_charTransRx);
+static const uint16_t s_charTransRxLen = (uint16_t)sizeof (s_charTransRx);
 
 /* Transparent Rx Characteristic Value */
 static uint8_t s_chUuidTransRx[] = {UUID_MCHP_TRANS_RX_16};
@@ -92,7 +92,7 @@ static uint16_t s_transRxValLen = 1;
 
 /* Transparent Ctrl Point Characteristic Declaration */
 static uint8_t s_charTransCtrl[] = {(ATT_PROP_WRITE_CMD | ATT_PROP_WRITE_REQ | ATT_PROP_NOTIFY), UINT16_TO_BYTES(TRS_HDL_CHARVAL_CTRL), UUID_MCHP_TRANS_CTRL_16};
-static const uint16_t s_charTransCtrlLen = sizeof (s_charTransCtrl);
+static const uint16_t s_charTransCtrlLen = (uint16_t)sizeof (s_charTransCtrl);
 
 /* Transparent Ctrl Point Characteristic Value */
 static uint8_t s_chUuidTransCtrl[] = {UUID_MCHP_TRANS_CTRL_16};
@@ -101,7 +101,7 @@ static uint16_t s_transCtrlValLen = 1;
 
 /* Transparent Ctrl Point Client Characteristic Configuration Descriptor */
 static uint8_t s_descCccTransCtrl[] = {UINT16_TO_BYTES(0x0000)};
-static const uint16_t s_descCccTransCtrlLen = sizeof (s_descCccTransCtrl);
+static const uint16_t s_descCccTransCtrlLen = (uint16_t)sizeof (s_descCccTransCtrl);
 
 /* Attribute list for Transparent service */
 static GATTS_Attribute_T s_trsList[] = {
@@ -110,7 +110,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_gattUuidPrimSvc,
         (uint8_t *) s_svcUuidTrs,
         (uint16_t *) & s_svcUuidTrsLen,
-        sizeof (s_svcUuidTrs),
+        (uint16_t)sizeof (s_svcUuidTrs),
         0,
         PERMISSION_READ
     },
@@ -119,7 +119,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charTransTx,
         (uint16_t *) & s_charTransTxLen,
-        sizeof (s_charTransTx),
+        (uint16_t)sizeof (s_charTransTx),
         0,
         PERMISSION_READ
     },
@@ -138,7 +138,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_descUuidCcc,
         (uint8_t *) s_descCccTransTx,
         (uint16_t *) & s_descCccTransTxLen,
-        sizeof (s_descCccTransTx),
+        (uint16_t)sizeof (s_descCccTransTx),
         (SETTING_MANUAL_WRITE_RSP | SETTING_CCCD),
         (PERMISSION_READ | PERMISSION_WRITE)
     },
@@ -147,7 +147,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charTransRx,
         (uint16_t *) & s_charTransRxLen,
-        sizeof (s_charTransRx),
+        (uint16_t)sizeof (s_charTransRx),
         0,
         PERMISSION_READ
     },
@@ -165,7 +165,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_gattUuidChar,
         (uint8_t *) s_charTransCtrl,
         (uint16_t *) & s_charTransCtrlLen,
-        sizeof (s_charTransCtrl),
+        (uint16_t)sizeof (s_charTransCtrl),
         0,
         PERMISSION_READ
     },
@@ -183,7 +183,7 @@ static GATTS_Attribute_T s_trsList[] = {
         (uint8_t *) g_descUuidCcc,
         (uint8_t *) s_descCccTransCtrl,
         (uint16_t *) & s_descCccTransCtrlLen,
-        sizeof (s_descCccTransCtrl),
+        (uint16_t)sizeof (s_descCccTransCtrl),
         (SETTING_MANUAL_WRITE_RSP | SETTING_CCCD),
         (PERMISSION_READ | PERMISSION_WRITE)
     }
@@ -191,8 +191,8 @@ static GATTS_Attribute_T s_trsList[] = {
 
 static const GATTS_CccdSetting_T s_trsCccdSetting[] = 
 {
-    {TRS_HDL_CCCD_TX, (NOTIFICATION)},
-    {TRS_HDL_CCCD_CTRL, (NOTIFICATION)}
+    {(uint16_t)TRS_HDL_CCCD_TX, (NOTIFICATION)},
+    {(uint16_t)TRS_HDL_CCCD_CTRL, (NOTIFICATION)}
 };
 
 /* Transparent Service structure */
@@ -201,8 +201,8 @@ static GATTS_Service_T s_svcTrs =
     NULL,
     (GATTS_Attribute_T *) s_trsList,
     (GATTS_CccdSetting_T const *)s_trsCccdSetting,
-    TRS_START_HDL,
-    TRS_END_HDL,
+    (uint16_t)TRS_START_HDL,
+    (uint16_t)TRS_END_HDL,
     2
 };
 
@@ -214,14 +214,14 @@ static GATTS_Service_T s_svcTrs =
 
 uint16_t BLE_TRS_Add(void) 
 {
-    return GATTS_AddService(&s_svcTrs, (TRS_END_HDL - TRS_START_HDL + 1));
+    return GATTS_AddService(&s_svcTrs, (uint8_t)((uint16_t)TRS_END_HDL - (uint16_t)TRS_START_HDL + 1U));
 }
 
 uint16_t BLE_TRS_PermissionConfig(uint16_t attrHdl, uint8_t permissions)
 {
-    if (attrHdl >= TRS_HDL_SVC && attrHdl <= TRS_HDL_CCCD_CTRL)
+    if (attrHdl >= (uint16_t)TRS_HDL_SVC && attrHdl <= (uint16_t)TRS_HDL_CCCD_CTRL)
     {
-        s_trsList[attrHdl - TRS_START_HDL].permissions |= permissions;
+        s_trsList[attrHdl - (uint16_t)TRS_START_HDL].permissions |= permissions;
 
         return MBA_RES_SUCCESS;
     }

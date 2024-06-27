@@ -78,6 +78,7 @@
                 <itemPath>../src/config/MTD/driver/thread/inc/openthread-core-pic32cx-config.h</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/inc/user_row.h</itemPath>
                 <itemPath>../src/config/MTD/driver/thread/inc/openthread-mbedtls-config.h</itemPath>
+                <itemPath>../src/config/MTD/driver/thread/inc/ot_tasks.h</itemPath>
               </logicalFolder>
               <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
                 <logicalFolder name="examples" displayName="examples" projectFiles="true">
@@ -679,7 +680,6 @@
           </logicalFolder>
           <itemPath>../src/config/MTD/configuration.h</itemPath>
           <itemPath>../src/config/MTD/device_vectors.h</itemPath>
-          <itemPath>../src/config/MTD/device_sleep.h</itemPath>
           <itemPath>../src/config/MTD/FreeRTOSConfig.h</itemPath>
           <itemPath>../src/config/MTD/framework_defs.h</itemPath>
           <itemPath>../src/config/MTD/definitions.h</itemPath>
@@ -1492,7 +1492,6 @@
               <itemPath>../src/config/MTD/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <itemPath>../src/config/MTD/device_sleep.c</itemPath>
           <itemPath>../src/config/MTD/freertos_hooks.c</itemPath>
           <itemPath>../src/config/MTD/startup_xc32.c</itemPath>
           <itemPath>../src/config/MTD/device_deep_sleep.c</itemPath>
@@ -1648,11 +1647,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
       </packs>
       <ScriptingSettings>
@@ -1706,7 +1705,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN;configCHECK_HANDLER_INSTALLATION=0"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>

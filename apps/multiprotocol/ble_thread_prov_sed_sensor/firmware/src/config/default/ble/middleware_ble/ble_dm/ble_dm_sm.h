@@ -68,7 +68,7 @@ void BLE_DM_Sm(STACK_Event_T *p_stackEvent);
 
 uint16_t BLE_DM_SmConfig(bool autoAccept);
 
-uint16_t BLE_DM_SmPairing(uint16_t connHandle, uint8_t repairing);
+uint16_t BLE_DM_SmPairing(uint16_t connHandle, bool repairing);
 
 void BLE_DM_SmInit(void);
 

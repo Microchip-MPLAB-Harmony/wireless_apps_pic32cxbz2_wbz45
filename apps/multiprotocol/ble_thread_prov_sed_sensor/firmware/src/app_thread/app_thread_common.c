@@ -113,7 +113,7 @@ otError APP_ThreadInit(otStateChangedCallback stateChangedCallback)
 }
 
 otError APP_ThreadSetNwParameters(APP_ProvNwData_T *provNwData)
-{ 
+{
     otError error = OT_ERROR_NONE;  
     DEVICE_DeepSleepWakeSrc_T wakeupSrc;
     DEVICE_GetDeepSleepWakeUpSrc(&wakeupSrc);

@@ -54,7 +54,7 @@ void app_idle_task( void )
         OSAL_CRIT_Leave(OSAL_CRIT_TYPE_HIGH, IntState);
 
 
-        if (BT_RF_Suspended)
+        if (BT_RF_Suspended && otIsIdle())
         {
             if (PDS_Items_Pending)
             {
@@ -62,7 +62,6 @@ void app_idle_task( void )
             }
             else if ((RF_Cal_Needed) && (BT_RF_Suspended == BT_SYS_RF_SUSPENDED_NO_SLEEP))
             {
-            
                PHY_TrxStatus_t trxStatus = PHY_GetTrxStatus();
                OSAL_CRITSECT_DATA_TYPE intStatus;
                if (trxStatus == PHY_TRX_SLEEP)
@@ -77,8 +76,6 @@ void app_idle_task( void )
                {
                    RF_Timer_Cal(WSS_ENABLE_BLE_ZB);
                }
-            
-
             }
             BT_SYS_RfSuspendReq(0);
         }

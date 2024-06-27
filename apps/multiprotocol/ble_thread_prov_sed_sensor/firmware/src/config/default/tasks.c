@@ -90,8 +90,6 @@ static void lAPP_Tasks(  void *pvParameters  )
 #define TASK_BLE_STACK_SIZE (2 *1024 / sizeof(portSTACK_TYPE))
 #define TASK_BLE_PRIORITY (tskIDLE_PRIORITY + 3)
 
-extern void taskOpenThread(void *pvParam);
-
 extern TaskHandle_t taskHandleOpenThread;
 
 

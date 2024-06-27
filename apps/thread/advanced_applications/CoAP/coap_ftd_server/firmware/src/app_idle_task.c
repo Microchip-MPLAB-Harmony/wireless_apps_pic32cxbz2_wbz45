@@ -45,7 +45,7 @@ void app_idle_task( void )
 
     if (PDS_Items_Pending || RF_Cal_Needed)
     {
-        if (1) // TODO: Modify to evaluate to true only if application is idle
+        if (otIsIdle())
         {
             if (PDS_Items_Pending)
             {
@@ -53,7 +53,6 @@ void app_idle_task( void )
             }
             else if (RF_Cal_Needed)
             {
-            
                PHY_TrxStatus_t trxStatus = PHY_GetTrxStatus();
                OSAL_CRITSECT_DATA_TYPE intStatus;
                if (trxStatus == PHY_TRX_SLEEP)
@@ -68,8 +67,6 @@ void app_idle_task( void )
                {
                    RF_Timer_Cal(WSS_ENABLE_ZB);
                }
-            
-
             }
         }
     }

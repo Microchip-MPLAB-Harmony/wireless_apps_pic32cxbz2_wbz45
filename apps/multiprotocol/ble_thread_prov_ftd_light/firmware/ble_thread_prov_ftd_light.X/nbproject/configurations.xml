@@ -6,7 +6,6 @@
                    projectFiles="true">
       <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
         <itemPath>../src/app_ble/app_ble_utility.h</itemPath>
-        <itemPath>../src/app_ble/app_ble_log_handler.h</itemPath>
         <itemPath>../src/app_ble/app_ble_dsadv.h</itemPath>
         <itemPath>../src/app_ble/app_ble_handler.h</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.h</itemPath>
@@ -32,13 +31,11 @@
                 <itemPath>../src/config/default/ble/lib/include/ble_gap.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/stack_mgr.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys.h</itemPath>
-                <itemPath>../src/config/default/ble/lib/include/hci.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/ble_smp.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/att_uuid.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys_log.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/mba_error_defs.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/host_hci_defs.h</itemPath>
-                <itemPath>../src/config/default/ble/lib/include/bt_sys_pta.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/ble_l2cap.h</itemPath>
               </logicalFolder>
             </logicalFolder>
@@ -52,9 +49,6 @@
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.h</itemPath>
-              </logicalFolder>
-              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
-                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.h</itemPath>
               </logicalFolder>
               <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.h</itemPath>
@@ -135,6 +129,7 @@
                 <itemPath>../src/config/default/driver/thread/inc/flash_config.h</itemPath>
                 <itemPath>../src/config/default/driver/thread/inc/openthread_stack_config.h</itemPath>
                 <itemPath>../src/config/default/driver/thread/inc/openthread-mbedtls-config.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/ot_tasks.h</itemPath>
               </logicalFolder>
               <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
                 <logicalFolder name="examples" displayName="examples" projectFiles="true">
@@ -1086,7 +1081,6 @@
                    projectFiles="true">
       <logicalFolder name="app_ble" displayName="app_ble" projectFiles="true">
         <itemPath>../src/app_ble/app_ble_utility.c</itemPath>
-        <itemPath>../src/app_ble/app_ble_log_handler.c</itemPath>
         <itemPath>../src/app_ble/app_ble_handler.c</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.c</itemPath>
         <itemPath>../src/app_ble/app_ble.c</itemPath>
@@ -1113,9 +1107,6 @@
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_conn.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm.c</itemPath>
-              </logicalFolder>
-              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
-                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.c</itemPath>
               </logicalFolder>
               <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.c</itemPath>
@@ -1779,14 +1770,14 @@
         <targetDevice>WBZ451</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pkob4hybrid</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1840,7 +1831,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN;configCHECK_HANDLER_INSTALLATION=0"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>
@@ -2058,8 +2049,6 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1000000-2001ffff"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/wspace/BLE_Thread_Combo_App/ble_thread_prov_ftd/ble_thread_prov_ftd.X/debug/default/ble_thread_prov_ftd_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

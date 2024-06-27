@@ -169,7 +169,7 @@ typedef struct BLE_DM_EvtSecurityStart_T
 typedef struct BLE_DM_EvtSecuritySuccess_T
 {
     BLE_DM_SecurityProc_T           procedure;              /**< The procedure that has finished successfully. */
-    uint8_t                         bonded;                 /**< The pairing procedure is bonded or not.*/
+    bool                            bonded;                 /**< The pairing procedure is bonded or not. True means it's bonded. */
 } BLE_DM_EvtSecuritySuccess_T;
 
 
@@ -214,7 +214,7 @@ typedef struct BLE_DM_ConnConfig_T
     uint16_t                        maxAcceptConnInterval;          /**< Maximum acceptable connection interval. */
     uint16_t                        minAcceptPeripheralLatency;     /**< Minimum acceptable Peripheral latency. */
     uint16_t                        maxAcceptPeripheralLatency;     /**< Maximum acceptable Peripheral latency. */
-    bool                            autoReplyUpdateRequest;         /**< Set true to enable automatic reply when receiving BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ or BLE_GAP_EVT_REMOTE_CONN_PARAM_REQUEST. Otherwise set false. */
+    bool                            autoReplyUpdateRequest;         /**< Set true to enable automatic reply when receiving BLE_L2CAP_EVT_CONN_PARA_UPD_REQ or BLE_GAP_EVT_REMOTE_CONN_PARAM_REQUEST. Otherwise set false. */
 } BLE_DM_ConnConfig_T;
 
 /**@brief The structure contains information about configuration used for BLE_DM module. */
@@ -229,14 +229,14 @@ typedef struct BLE_DM_PairedDevInfo_T
 {
     BLE_GAP_Addr_T                  remoteAddr;                    /**< Paired device bluetooth address. */
     uint8_t                         remoteIrk[16];                 /**< Paired device BLE identity resolving key. */
-    BLE_GAP_Addr_T                  localAddr;                    /**< Local device bluetooth address. */
+    BLE_GAP_Addr_T                  localAddr;                     /**< Local device bluetooth address. */
     uint8_t                         localIrk[16];                  /**< Local device BLE identity resolving key. */
     uint8_t                         rv[8];                         /**< Paired device BLE rand value */
     uint8_t                         ediv[2];                       /**< Paired device BLE encrypted diversifier. */
     uint8_t                         ltk[16];                       /**< Paired device BLE Link key. */
-    uint8_t                         lesc:1;                        /**< Paired device using LE secure connection. */
-    uint8_t                         auth:1;                        /**< Paired device using authenticated pairing method. */
-    uint8_t                         encryptKeySize:6;              /**< Paired device BLE encrpytion key size. */
+    unsigned int                    lesc:1;                        /**< Paired device using LE secure connection. */
+    unsigned int                    auth:1;                        /**< Paired device using authenticated pairing method. */
+    unsigned int                    encryptKeySize:6;              /**< Paired device BLE encrpytion key size. */
 }BLE_DM_PairedDevInfo_T;
 
 /**@brief The structure contains information about connection parameter update. */
@@ -309,14 +309,14 @@ uint16_t BLE_DM_Config(BLE_DM_Config_T *p_config);
  *        It is up to the remote Central then to initiate pairing or encryption procedure.
  *
  * @param[in] connHandle    Connection handle associated with this connection.
- * @param[in] repairing     Whether to force a pairing procedure even if there is an existing
- *                          pairing record. This argument is only for the Central role.
+ * @param[in] repairing     Whether to force a pairing procedure even if there is an existing pairing record.
+ *                          This argument is only for the Central role. Set true to enable repairing, otherwise set false.
  *
  * @retval MBA_RES_SUCCESS      Successfully build configuration.
  * @retval MBA_RES_OOM          Internal memory allocation failure.
  * @retval MBA_RES_INVALID_PARA The connHandle is invalid.
 */
-uint16_t BLE_DM_ProceedSecurity(uint16_t connHandle, uint8_t repairing);
+uint16_t BLE_DM_ProceedSecurity(uint16_t connHandle, bool repairing);
 
 /**@brief Set filter accept list.
  * 

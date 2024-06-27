@@ -8,6 +8,9 @@
 extern "C" {
 #endif
 
+#define HPA_FEM_MODE_DISABLE            0
+#define HPA_FEM_MODE_ENABLE             1
+
 /** Wireless Subsystem Enable Flag */
 typedef enum 
 {
@@ -96,6 +99,15 @@ void SYS_ClkGen_Config(void);
 *@retval None
 */
 void RF_SetIdleMode(void);
+
+// *****************************************************************************
+/**
+*@brief This routine will enable the FEM module control.
+*
+*@param None
+*@retval None
+*/
+void  RF_HpaInit();
 
 #ifdef __cplusplus
 }

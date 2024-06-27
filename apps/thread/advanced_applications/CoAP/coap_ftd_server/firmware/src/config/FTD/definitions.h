@@ -49,8 +49,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "crypto/crypto.h"
-#include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/sercom/usart/plib_sercom0_usart.h"
+#include "peripheral/evsys/plib_evsys.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -81,10 +81,11 @@
 #include "peripheral/cmcc/plib_cmcc.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "peripheral/rcon/plib_rcon.h"
-#include "peripheral/nvm/plib_nvm.h"
 #include "system/time/sys_time.h"
+#include "peripheral/nvm/plib_nvm.h"
 #include "platform-pic32cx.h"
 #include "openthread-system.h"
+#include "ot_tasks.h"
 #include "driver/IEEE_802154_PHY/phy/inc/phy.h"
 #include "driver/IEEE_802154_PHY/phy/inc/phy_tasks.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"

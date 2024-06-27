@@ -442,7 +442,7 @@ typedef union
    Remarks:
     None 
  */
-#define MINOR_NUM                 "2"
+#define MINOR_NUM                 "3"
 
 /* Patch Number
  
@@ -487,9 +487,9 @@ typedef union
 
 
 Example:
-  802.15.4-PHY v1.2.0 is represented as 0x01240000
+  802.15.4-PHY v1.3.0 is represented as 0x01340000
 
-|0000       |0001        | 0010        | 01        | 0000           | 00000000000000|
+|0000       |0001        | 0011        | 01        | 0000           | 00000000000000|
 |-----------|------------|-------------|-----------|----------------|---------------|
 |Reserved   | Stack Major| Stack Minor | Qualifier | Build Iteration| Reserved      |
 */
@@ -504,7 +504,7 @@ Example:
    Remarks:
     None 
 */
-#define PHY_VERSION_VALUE      (0x01240000)
+#define PHY_VERSION_VALUE      (0x01340000)
 
 // *****************************************************************************
 // *****************************************************************************

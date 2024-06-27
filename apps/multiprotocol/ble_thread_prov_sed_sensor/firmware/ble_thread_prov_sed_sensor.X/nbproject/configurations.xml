@@ -9,7 +9,6 @@
         <itemPath>../src/app_ble/app_ble_utility.h</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.h</itemPath>
         <itemPath>../src/app_ble/app_ble_dsadv.h</itemPath>
-        <itemPath>../src/app_ble/app_ble_log_handler.h</itemPath>
         <itemPath>../src/app_ble/app_ble.h</itemPath>
       </logicalFolder>
       <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
@@ -33,13 +32,11 @@
                 <itemPath>../src/config/default/ble/lib/include/gatt.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/gap_defs.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/ble_smp.h</itemPath>
-                <itemPath>../src/config/default/ble/lib/include/hci.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys_log.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/bt_sys.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/ble_gap.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/ble_l2cap.h</itemPath>
                 <itemPath>../src/config/default/ble/lib/include/stack_mgr.h</itemPath>
-                <itemPath>../src/config/default/ble/lib/include/bt_sys_pta.h</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="middleware_ble"
@@ -52,9 +49,6 @@
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_internal.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.h</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.h</itemPath>
-              </logicalFolder>
-              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
-                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.h</itemPath>
               </logicalFolder>
               <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.h</itemPath>
@@ -135,6 +129,7 @@
                 <itemPath>../src/config/default/driver/thread/inc/openthread_stack_config.h</itemPath>
                 <itemPath>../src/config/default/driver/thread/inc/flash_config.h</itemPath>
                 <itemPath>../src/config/default/driver/thread/inc/openthread-core-pic32cx-config-check.h</itemPath>
+                <itemPath>../src/config/default/driver/thread/inc/ot_tasks.h</itemPath>
               </logicalFolder>
               <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
                 <logicalFolder name="examples" displayName="examples" projectFiles="true">
@@ -750,7 +745,6 @@
           <itemPath>../src/config/default/interrupts.h</itemPath>
           <itemPath>../src/config/default/device_vectors.h</itemPath>
           <itemPath>../src/config/default/device.h</itemPath>
-          <itemPath>../src/config/default/device_sleep.h</itemPath>
           <itemPath>../src/config/default/device_deep_sleep.h</itemPath>
         </logicalFolder>
       </logicalFolder>
@@ -1049,7 +1043,6 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/falcon.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app_error_defs.h</itemPath>
-      <itemPath>../src/app_thread.h</itemPath>
       <itemPath>../src/app_ble_conn_handler.h</itemPath>
       <itemPath>../src/app_idle_task.h</itemPath>
       <itemPath>../src/app.h</itemPath>
@@ -1059,6 +1052,7 @@
       <itemPath>../src/app_thread_udp.h</itemPath>
       <itemPath>../src/app_ble_sensor.h</itemPath>
       <itemPath>../src/app_timer.h</itemPath>
+      <itemPath>../src/app_thread.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1078,12 +1072,11 @@
         <itemPath>../src/app_ble/app_ble_handler.c</itemPath>
         <itemPath>../src/app_ble/app_ble_utility.c</itemPath>
         <itemPath>../src/app_ble/app_trsps_handler.c</itemPath>
-        <itemPath>../src/app_ble/app_ble_log_handler.c</itemPath>
         <itemPath>../src/app_ble/app_ble.c</itemPath>
       </logicalFolder>
       <logicalFolder name="app_prov" displayName="app_prov" projectFiles="true">
-        <itemPath>../src/app_prov/app_prov_thread.c</itemPath>
         <itemPath>../src/app_prov/app_prov.c</itemPath>
+        <itemPath>../src/app_prov/app_prov_thread.c</itemPath>
       </logicalFolder>
       <logicalFolder name="app_thread" displayName="app_thread" projectFiles="true">
         <itemPath>../src/app_thread/app_thread_common.c</itemPath>
@@ -1103,9 +1096,6 @@
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_dds.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_info.c</itemPath>
                 <itemPath>../src/config/default/ble/middleware_ble/ble_dm/ble_dm_sm.c</itemPath>
-              </logicalFolder>
-              <logicalFolder name="ble_log" displayName="ble_log" projectFiles="true">
-                <itemPath>../src/config/default/ble/middleware_ble/ble_log/ble_log.c</itemPath>
               </logicalFolder>
               <logicalFolder name="ble_util" displayName="ble_util" projectFiles="true">
                 <itemPath>../src/config/default/ble/middleware_ble/ble_util/mw_aes.c</itemPath>
@@ -1606,7 +1596,6 @@
           <itemPath>../src/config/default/initialization.c</itemPath>
           <itemPath>../src/config/default/tasks.c</itemPath>
           <itemPath>../src/config/default/libc_syscalls.c</itemPath>
-          <itemPath>../src/config/default/device_sleep.c</itemPath>
           <itemPath>../src/config/default/device_deep_sleep.c</itemPath>
         </logicalFolder>
       </logicalFolder>
@@ -1737,7 +1726,6 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/falcon.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/coding.c</itemPath>
       </logicalFolder>
-      <itemPath>../src/app_thread.c</itemPath>
       <itemPath>../src/app_ble_conn_handler.c</itemPath>
       <itemPath>../src/app_idle_task.c</itemPath>
       <itemPath>../src/app.c</itemPath>
@@ -1747,6 +1735,7 @@
       <itemPath>../src/app_thread_udp.c</itemPath>
       <itemPath>../src/app_ble_sensor.c</itemPath>
       <itemPath>../src/app_timer.c</itemPath>
+      <itemPath>../src/app_thread.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -1761,14 +1750,14 @@
         <targetDevice>WBZ451</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pkob4hybrid</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1822,7 +1811,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN;configCHECK_HANDLER_INSTALLATION=0"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>

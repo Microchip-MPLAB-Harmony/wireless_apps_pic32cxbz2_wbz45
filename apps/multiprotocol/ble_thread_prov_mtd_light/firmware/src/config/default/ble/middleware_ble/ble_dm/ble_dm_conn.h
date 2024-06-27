@@ -89,7 +89,7 @@ void BLE_DM_Conn(STACK_Event_T *p_stackEvent);
 
 /**@brief Initialize configuration parameters of BLE_DM_CONN module.\n 
  *        User can configure automatic or manual reply when receive gap/l2cap connection parameters update requests. \n
- *        If user choose to reply manually, related events BLE_L2CAP_EVT_CONN_PARA_UPDATE_REQ or BLE_GAP_EVT_REMOTE_CONN_PARAM_REQUEST need to handle by user-self.
+ *        If user choose to reply manually, related events BLE_L2CAP_EVT_CONN_PARA_UPD_REQ or BLE_GAP_EVT_REMOTE_CONN_PARAM_REQUEST need to handle by user-self.
  *        Either accept or reject. Connection will be terminated if such requests are not handled properly. \n
  *        If automatic reply is adopted, related parameters min/max acceptable connection interval, min/max acceptable Peripheral latency need to be set properly.
  *        The BLE_DM_CONN module will accept or reject these requests based on the acceptable parameters range.

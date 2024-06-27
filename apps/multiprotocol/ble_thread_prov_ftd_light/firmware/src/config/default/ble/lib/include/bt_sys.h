@@ -107,12 +107,18 @@ extern "C" {
 #define BT_SYS_RF_SUSPENDED_WITH_SLEEP      (2U)          /**< BLE RF is allowed to suspended with ble sleep mode. */
 /**@} */ //BT_SYS_RF_SUSPEND
 
+/**@defgroup BT_SYS_FEAT_MASK Feature Mask
+ * @brief The definition of feature mask.
+ * @{ */
+#define BT_SYS_FEAT_PWR_CTRL                (1U)          /**< Power control. */
+/**@} */ //BT_SYS_FEAT_MASK
+
 /**@} */ //BT_SYS_DEFINES
 
 
 /**@addtogroup BT_SYS_ENUM Enumerations
  * @{ */
- 
+
 /**@defgroup BT_SYS_TRACE_FMT Trace format
  * @{ */
 /**@brief The definition of trace format. */
@@ -146,8 +152,8 @@ typedef enum BT_SYS_ErrCode_T{
 typedef struct BT_SYS_Cfg_T
 {
     int8_t      	antennaGain;                        /**< Antenna gain. */
-    uint8_t     	addrValid:1;                        /**< Set true if devAddr field is valid. */
-    uint8_t     	rssiOffsetValid:1;                  /**< Set true if rssiOffset field is valid. */
+    unsigned int  	addrValid:1;                        /**< Set true if devAddr field is valid. */
+    unsigned int   	rssiOffsetValid:1;                  /**< Set true if rssiOffset field is valid. */
     uint8_t     	devAddr[BT_SYS_DEV_ADDR_LEN];       /**< Device address. */
     int8_t      	rssiOffset;                         /**< RSSI offset. */
 } BT_SYS_Cfg_T;
@@ -158,7 +164,8 @@ typedef struct BT_SYS_Option_T
     uint32_t        cmnMemSize;                     	/**< Common memory size. */
     uint8_t         *p_cmnMemAddr;                  	/**< Common memory address. */
     uint32_t        *p_sramVecorTable;              	/**< Vector table. */
-    uint8_t			hciMode:1;							/**< HCI mode option. Set TRUE to enable HCI mode. */
+    unsigned int	hciMode:1;							/**< HCI mode option. Set TRUE to enable HCI mode. */
+    uint32_t        deFeatMask;                         /**< Features to be disabled. See @ref BT_SYS_FEAT_MASK. */
 } BT_SYS_Option_T;
 
 /**@brief Trace event additional information. */
@@ -175,6 +182,13 @@ typedef void (*BT_SYS_TraceEventCb_T)(BT_SYS_TraceInfo_T *p_traceInfo, uint8_t l
 
 /**@brief BT system error callback type.*/
 typedef void(*BT_SYS_ErrCb_T)(BT_SYS_ErrCode_T errCode);
+
+
+/**@brief BT system HPA CPS callback type.*/
+typedef void(*BT_SYS_HpaCpsCb_T)(bool bypass);
+
+/**@brief BT system HPA CTX callback type.*/
+typedef void(*BT_SYS_HpaCtxCb_T)(bool active);
 
 /**@} */ //BT_SYS_STRUCTS
 
@@ -268,6 +282,15 @@ void BT_SYS_TraceEnable(BT_SYS_TraceFmt_T fmt, uint32_t traceMask, BT_SYS_TraceE
  *
  */
 void BT_SYS_ErrRegister(BT_SYS_ErrCb_T errHandler);
+
+
+/**@brief Initialize BT system HPA with a callback function.
+ *
+ * @param[in] hpaCb                             BT system HPA callback function.
+ * @param[in] hpaCtxCb                        BT system HPA CTX callback function.
+ *
+ */
+void BT_SYS_HpaInit(BT_SYS_HpaCpsCb_T hpaCb,  BT_SYS_HpaCtxCb_T hpaCtxCb);
 
 
 /**@brief Hook Bluetooth task.

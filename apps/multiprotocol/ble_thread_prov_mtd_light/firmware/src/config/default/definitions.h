@@ -92,6 +92,7 @@
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "ble/lib/include/bt_sys.h"
+#include <string.h>
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -127,6 +128,7 @@
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
 #include "platform-pic32cx.h"
 #include "openthread-system.h"
+#include "ot_tasks.h"
 #include "peripheral/tcc/plib_tcc0.h"
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_uart_definitions.h"

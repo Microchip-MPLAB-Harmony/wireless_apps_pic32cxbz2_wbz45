@@ -80,6 +80,7 @@
 #define APP_IDLE_NVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL << 25UL )
 
 
+
 /*
  * The number of SysTick increments that make up one tick period.
  */
@@ -115,7 +116,7 @@ void app_idle_task( void )
 
     if (PDS_Items_Pending || RF_Cal_Needed)
     {
-        if (1) // TODO: Modify to evaluate to true only if application is idle
+        if (otIsIdle())
         {
             if (PDS_Items_Pending)
             {
@@ -123,7 +124,6 @@ void app_idle_task( void )
             }
             else if (RF_Cal_Needed)
             {
-            
                PHY_TrxStatus_t trxStatus = PHY_GetTrxStatus();
                OSAL_CRITSECT_DATA_TYPE intStatus;
                if (trxStatus == PHY_TRX_SLEEP)
@@ -138,8 +138,6 @@ void app_idle_task( void )
                {
                    RF_Timer_Cal(WSS_ENABLE_ZB);
                }
-            
-
             }
         }
     }
@@ -223,27 +221,6 @@ static void app_idle_setRtcTimeout(TickType_t expectedIdleTick, uint32_t current
     }
 }
 
-///* Clear RTC compare value and disable interrupt. */
-//static void app_idle_DisableRtcInt(void)
-//{
-//    RTC_Timer32Compare0Set (0);
-//    RTC_Timer32InterruptDisable(RTC_MODE0_INTENCLR_CMP0_Msk);
-//}
-//
-///* Calculate the difference of RTC counter value before system enters sleep and system wakes up. */
-//static uint32_t app_idle_RtcCntOffset(uint32_t prev, uint32_t current)
-//{
-//    if (((int32_t )(current -prev)) >= 0)
-//    {
-//        return (current -prev);
-//    }
-//    else
-//    {
-//        uint32_t complement = (APP_IDLE_MAX_32_BIT_NUMBER - prev);
-//
-//        return (complement + current + 1);
-//    }
-//}
 
 /*
  * Setup the systick timer to generate the tick interrupts at the required
@@ -313,11 +290,11 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
     /* Allow system to enter sleep mode */
     if(isSystemCanSleep)
     {
-        uint32_t ulCompleteTickPeriods = 0;
+        //uint32_t ulCompleteTickPeriods = 0;
         TickType_t xModifiableIdleTime = 0;
         uint32_t ulRtcCntBeforeSleep = 0;
-        uint32_t ulRtcCntAfterSleep = 0;
-        uint32_t ulRtcCntPassed = 0;
+        //uint32_t ulRtcCntAfterSleep = 0;
+        //uint32_t ulRtcCntPassed = 0;
 
         /* Make sure the SysTick reload value does not overflow the counter. */
         if( xExpectedIdleTime > xMaximumPossibleSuppressedTicksRtc )
@@ -364,12 +341,8 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             PMU_ConfigCurrentSensor(false);
         }
 
+
         /* Enter system sleep mode */
-        (void)ulCompleteTickPeriods;
-        (void)xModifiableIdleTime;
-        (void)ulRtcCntBeforeSleep;
-        (void)ulRtcCntAfterSleep;
-        (void)ulRtcCntPassed;
     }
 }
 

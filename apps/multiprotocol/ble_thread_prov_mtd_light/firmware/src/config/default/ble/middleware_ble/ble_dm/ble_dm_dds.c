@@ -116,23 +116,23 @@ static BLE_DM_MainPairedDevInfo_T s_mainPairedInfo;
 static BLE_DM_ExtPairedDevInfo_T s_extPairedInfo;
 
 
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_1, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_2, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_3, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_4, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_5, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_6, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_7, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_8, sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_1, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_2, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_3, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_4, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_5, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_6, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_7, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_ID_8, (uint16_t)sizeof(BLE_DM_MainPairedDevInfo_T), &s_mainPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
 
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_1, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_2, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_3, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_4, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_5, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_6, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_7, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
-PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_8, sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_1, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_2, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_3, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_4, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_5, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_6, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_7, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
+PDS_DECLARE_FILE(PDS_BLE_ITEM_EXT_ID_8, (uint16_t)sizeof(BLE_DM_ExtPairedDevInfo_T), &s_extPairedInfo,FILE_INTEGRITY_CONTROL_MARK);
 
 
 static BLE_DM_DdsWriteCompleteCb_T s_dmDdsCb;
@@ -187,29 +187,29 @@ static bool ble_dm_DdsCheckResolveAddress(uint8_t *p_remoteIrk, uint8_t *p_remot
 uint16_t BLE_DM_DdsGetPairedDevice(uint8_t devId, BLE_DM_PairedDevInfo_T * p_pairedDevInfo)
 {
     if (devId >= BLE_DM_MAX_PAIRED_DEVICE_NUM
-        || PDS_IsAbleToRestore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) == false)
+        || PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) == false)
     {
         return MBA_RES_INVALID_PARA;
     }
 
-    if (PDS_Restore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
+    if (PDS_Restore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
     {
-        if (PDS_IsAbleToRestore(BLE_DM_DDS_FILE_EXT_ITEM_START + devId) == true)
+        if (PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_EXT_ITEM_START + devId) == true)
         {
-            if (PDS_Restore(BLE_DM_DDS_FILE_EXT_ITEM_START + devId) == false)
+            if (PDS_Restore((uint16_t)BLE_DM_DDS_FILE_EXT_ITEM_START + devId) == false)
             {
                 return MBA_RES_FAIL;
             }
 
-            (void)memcpy(&p_pairedDevInfo->localAddr, &s_extPairedInfo, offsetof(BLE_DM_ExtPairedDevInfo_T, reserved));
+            (void)memcpy(&p_pairedDevInfo->localAddr, &s_extPairedInfo.localAddr, offsetof(BLE_DM_ExtPairedDevInfo_T, reserved));
         }
         else
         {
             (void)memset(&p_pairedDevInfo->localAddr, 0x00, offsetof(BLE_DM_ExtPairedDevInfo_T, reserved));
         }
 
-        (void)memcpy(p_pairedDevInfo, &s_mainPairedInfo, offsetof(BLE_DM_PairedDevInfo_T, localAddr));
-        (void)memcpy(p_pairedDevInfo->rv, s_mainPairedInfo.rv, sizeof(BLE_DM_PairedDevInfo_T) - offsetof(BLE_DM_PairedDevInfo_T, rv));
+        (void)memcpy(&p_pairedDevInfo->remoteAddr, &s_mainPairedInfo.remoteAddr, offsetof(BLE_DM_PairedDevInfo_T, localAddr));
+        (void)memcpy(p_pairedDevInfo->rv, s_mainPairedInfo.rv, sizeof(BLE_DM_MainPairedDevInfo_T) - offsetof(BLE_DM_MainPairedDevInfo_T, rv));
 
         return MBA_RES_SUCCESS;
     }
@@ -226,14 +226,14 @@ uint16_t BLE_DM_DdsSetPairedDevice(uint8_t devId, BLE_DM_PairedDevInfo_T *p_pair
         return MBA_RES_INVALID_PARA;
     }
 
-    (void)memcpy(&s_extPairedInfo, &p_pairedDevInfo->localAddr, offsetof(BLE_DM_ExtPairedDevInfo_T, reserved));
+    (void)memcpy(&s_extPairedInfo.localAddr, &p_pairedDevInfo->localAddr, offsetof(BLE_DM_ExtPairedDevInfo_T, reserved));
 
-    if (PDS_Store(BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
+    if (PDS_Store((uint16_t)BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
     {
-        (void)memcpy(&s_mainPairedInfo, p_pairedDevInfo, offsetof(BLE_DM_PairedDevInfo_T, localAddr));
-        (void)memcpy(s_mainPairedInfo.rv, p_pairedDevInfo->rv, sizeof(BLE_DM_PairedDevInfo_T) - offsetof(BLE_DM_PairedDevInfo_T, rv));
+        (void)memcpy(&s_mainPairedInfo.remoteAddr, &p_pairedDevInfo->remoteAddr, offsetof(BLE_DM_PairedDevInfo_T, localAddr));
+        (void)memcpy(s_mainPairedInfo.rv, p_pairedDevInfo->rv, sizeof(BLE_DM_MainPairedDevInfo_T) - offsetof(BLE_DM_MainPairedDevInfo_T, rv));
 
-        if (PDS_Store(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
+        if (PDS_Store((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
         {
             return MBA_RES_SUCCESS;
         }
@@ -254,7 +254,7 @@ uint8_t BLE_DM_DdsGetFreeDeviceId(void)
 
     for (devId = 0; devId < BLE_DM_MAX_PAIRED_DEVICE_NUM; devId++)
     {
-        if (!PDS_IsAbleToRestore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
+        if (!PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
         {
             break;
         }
@@ -279,21 +279,23 @@ uint8_t BLE_DM_DdsGetDeviceId(BLE_GAP_Addr_T *p_bdAddr)
 
     if (result!= MBA_RES_SUCCESS)
     {
-        return result;
+        return BLE_DM_MAX_PAIRED_DEVICE_NUM;
     }
     
     for (devId = 0; devId < BLE_DM_MAX_PAIRED_DEVICE_NUM; devId++)
     {
-        if (PDS_IsAbleToRestore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
+        if (PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
         {
-            if (PDS_Restore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
+            if (PDS_Restore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId))
             {
-                if (PDS_IsAbleToRestore(BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
+                if (PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
                 {
-                    if (PDS_Restore(BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
+                    if (PDS_Restore((uint16_t)BLE_DM_DDS_FILE_EXT_ITEM_START + devId))
                     {
-                        if (memcmp(&s_extPairedInfo.localAddr, &addr, sizeof(addr)) != 0)
+                        if (memcmp(&s_extPairedInfo.localAddr, &addr, (uint16_t)sizeof(BLE_GAP_Addr_T)) != 0)
+                        {
                             continue;
+                        }
                     }
                     else
                     {
@@ -329,7 +331,7 @@ uint16_t BLE_DM_DdsDeletePairedDevice(uint8_t devId)
         return MBA_RES_INVALID_PARA;
     }
 
-    if (PDS_Delete(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) == PDS_SUCCESS)
+    if (PDS_Delete((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) == PDS_SUCCESS)
     {
         return MBA_RES_SUCCESS;
     }
@@ -345,7 +347,7 @@ uint16_t BLE_DM_DdsDeleteAllPairedDevice(void)
 
     for (devId = 0; devId < BLE_DM_MAX_PAIRED_DEVICE_NUM; devId++)
     {
-        if (PDS_Delete(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) != PDS_SUCCESS)
+        if (PDS_Delete((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId) != PDS_SUCCESS)
 		{
             return MBA_RES_FAIL;
 		}
@@ -356,16 +358,16 @@ uint16_t BLE_DM_DdsDeleteAllPairedDevice(void)
 
 bool BLE_DM_DdsChkDeviceId(uint8_t devId)
 {
-    return PDS_IsAbleToRestore(BLE_DM_DDS_FILE_MAIN_ITEM_START + devId);
+    return PDS_IsAbleToRestore((uint16_t)BLE_DM_DDS_FILE_MAIN_ITEM_START + devId);
 }
 
 static void ble_dm_DdsWriteCompleteCallback(PDS_MemId_t memoryId)
 {
-    if ((memoryId >= PDS_BLE_ITEM_ID_1) && (memoryId <= PDS_BLE_ITEM_ID_8))
+    if ((memoryId >= (uint16_t)PDS_BLE_ITEM_ID_1) && (memoryId <= (uint16_t)PDS_BLE_ITEM_ID_8))
     {
-        if (s_dmDdsCb)
+        if (s_dmDdsCb!=NULL)
         {
-            s_dmDdsCb(memoryId-PDS_BLE_ITEM_ID_1);
+            s_dmDdsCb(memoryId-(uint16_t)PDS_BLE_ITEM_ID_1);
         }
     }
 }

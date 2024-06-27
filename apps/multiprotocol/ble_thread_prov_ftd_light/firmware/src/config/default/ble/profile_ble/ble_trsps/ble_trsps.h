@@ -87,10 +87,10 @@ extern "C" {
 /**@defgroup BLE_TRSPS_STATUS TRSPS Status
  * @brief The definition of BLE transparent service status.
  * @{ */
-#define BLE_TRSPS_STATUS_CTRL_DISABLED          0x00    /**< Local ble transparent service control characteristic CCCD is closed. */
-#define BLE_TRSPS_STATUS_CTRL_OPENED            0x01    /**< Local ble transparent service control characteristic CCCD is enable. */
-#define BLE_TRSPS_STATUS_TX_DISABLED            0x00    /**< Local ble transparent service TX characteristic CCCD is closed. */
-#define BLE_TRSPS_STATUS_TX_OPENED              0x01    /**< Local ble transparent service TX characteristic CCCD is enable. */
+#define BLE_TRSPS_STATUS_CTRL_DISABLED          (0x00U)    /**< Local ble transparent service control characteristic CCCD is closed. */
+#define BLE_TRSPS_STATUS_CTRL_OPENED            (0x01U)    /**< Local ble transparent service control characteristic CCCD is enable. */
+#define BLE_TRSPS_STATUS_TX_DISABLED            (0x00U)    /**< Local ble transparent service TX characteristic CCCD is closed. */
+#define BLE_TRSPS_STATUS_TX_OPENED              (0x01U)    /**< Local ble transparent service TX characteristic CCCD is enable. */
 /** @} */
 
 /**@} */ //BLE_TRPS_DEFINES
@@ -102,7 +102,7 @@ extern "C" {
 /**@brief Enumeration type of BLE transparent profile callback events. */
 typedef enum BLE_TRSPS_EventId_T
 {
-    BLE_TRSPS_EVT_NULL = 0x00,
+    BLE_TRSPS_EVT_NULL = 0x00U,
     BLE_TRSPS_EVT_CTRL_STATUS,                          /**< Transparent Profile Control Channel status update event. See @ref BLE_TRSPS_EvtCtrlStatus_T for event details. */
     BLE_TRSPS_EVT_TX_STATUS,                            /**< Transparent Profile Data Channel transmit status event. See @ref BLE_TRSPS_EvtTxStatus_T for event details. */
     BLE_TRSPS_EVT_CBFC_ENABLED,                         /**< Transparent Profile Credit based flow control enable notification event. See @ref BLE_TRSPS_EvtCbfcEnabled_T for event details. */
@@ -171,7 +171,7 @@ typedef union
 /**@brief BLE Transparent profile server callback event. */
 typedef struct  BLE_TRSPS_Event_T
 {
-    uint8_t                   eventId;                        /**< Event ID.*/
+    BLE_TRSPS_EventId_T       eventId;                        /**< Event ID.*/
     BLE_TRSPS_EventField_T    eventField;                     /**< Event field. */
 } BLE_TRSPS_Event_T;
 
@@ -214,14 +214,6 @@ void BLE_TRSPS_EventRegister(BLE_TRSPS_EventCb_T bleTranServHandler);
  *
  */
 uint16_t BLE_TRSPS_Init(void);
-
-
-/**@brief Change UUIDs of transparent service and characteristics.
- *
- * @param[in] p_bleTranServUuids            Pointer to the UUIDs see @ref BLE_TRSPS_Uuids_T.
- *
- */
-void BLE_TRSPS_ChangeUuids(BLE_TRSPS_Uuids_T *p_bleTranServUuids);
 
 
 /**@brief Send vendor command.

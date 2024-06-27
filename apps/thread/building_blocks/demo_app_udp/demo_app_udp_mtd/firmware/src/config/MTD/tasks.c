@@ -76,8 +76,6 @@ static void _PHY_Tasks(  void *pvParameters  )
 
 
 
-extern void taskOpenThread(void *pvParam);
-
 extern TaskHandle_t taskHandleOpenThread;
 
 

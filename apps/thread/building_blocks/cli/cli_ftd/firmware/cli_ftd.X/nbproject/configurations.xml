@@ -68,6 +68,7 @@
                 <itemPath>../src/config/FTD/driver/thread/inc/platform-pic32cx.h</itemPath>
                 <itemPath>../src/config/FTD/driver/thread/inc/flash_config.h</itemPath>
                 <itemPath>../src/config/FTD/driver/thread/inc/openthread-core-pic32cx-config-check.h</itemPath>
+                <itemPath>../src/config/FTD/driver/thread/inc/ot_tasks.h</itemPath>
               </logicalFolder>
               <logicalFolder name="openthread" displayName="openthread" projectFiles="true">
                 <logicalFolder name="examples" displayName="examples" projectFiles="true">
@@ -1650,12 +1651,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <languageToolchainVersion>4.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.8.0"/>
-        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.3.238"/>
+        <pack name="PIC32CX-BZ_DFP" vendor="Microchip" version="1.4.243"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1708,7 +1709,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="ENABLE_LARGE_BUFFER;ENABLE_QUEUE_CAPACITY;HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN;configCHECK_HANDLER_INSTALLATION=0"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fcommon"/>
