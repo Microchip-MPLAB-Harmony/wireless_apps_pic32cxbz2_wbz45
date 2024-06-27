@@ -2,7 +2,7 @@
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 # IEEE 802.15.4 Standalone PHY based P2P PHY Application
 
-Documentation describing steps to test and develop the precompiled IEEE 802.15.4 P2P PHY Application examples
+Documentation describing steps to test and develop the precompiled IEEE 802.15.4 P2P PHY Application examples.
 
 -P2P PHY Application is built on top of the Standalone IEEE 802.15.4 Physical Layer for PIC32CX-BZ2 platform devices.
 -The application demonstrates the usage of Standalone 15.4 PHY Component, which provides interface to access the 802.15.4(zigbee) subsystem of PIC32CX-BZ2 devices through which user can enables

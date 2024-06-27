@@ -71,6 +71,8 @@ void lSYS_CMD_Tasks(  void *pvParameters  )
 }
 
 
+#define PHY_RTOS_TASK_PRIORITY            3
+
 /* Handle for the APP_Tasks. */
 TaskHandle_t xPHY_Tasks;
 
@@ -137,7 +139,7 @@ void SYS_Tasks ( void )
                 "PHY_Tasks",
                 1024,
                 NULL,
-                1,
+                PHY_RTOS_TASK_PRIORITY,
                 &xPHY_Tasks);
 
 

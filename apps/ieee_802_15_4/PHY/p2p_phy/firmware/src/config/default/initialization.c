@@ -268,16 +268,16 @@ static const SYS_TIME_INIT sysTimeInitData =
 static const SYS_CONSOLE_UART_PLIB_INTERFACE sysConsole0UARTPlibAPI =
 {
     .read_t = (SYS_CONSOLE_UART_PLIB_READ)SERCOM0_USART_Read,
-	.readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
-	.readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
+    .readCountGet = (SYS_CONSOLE_UART_PLIB_READ_COUNT_GET)SERCOM0_USART_ReadCountGet,
+    .readFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_READ_FREE_BUFFFER_COUNT_GET)SERCOM0_USART_ReadFreeBufferCountGet,
     .write_t = (SYS_CONSOLE_UART_PLIB_WRITE)SERCOM0_USART_Write,
-	.writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
-	.writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
+    .writeCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_COUNT_GET)SERCOM0_USART_WriteCountGet,
+    .writeFreeBufferCountGet = (SYS_CONSOLE_UART_PLIB_WRITE_FREE_BUFFER_COUNT_GET)SERCOM0_USART_WriteFreeBufferCountGet,
 };
 
 static const SYS_CONSOLE_UART_INIT_DATA sysConsole0UARTInitData =
 {
-    .uartPLIB = &sysConsole0UARTPlibAPI,    
+    .uartPLIB = &sysConsole0UARTPlibAPI,
 };
 
 static const SYS_CONSOLE_INIT sysConsole0Init =
@@ -403,7 +403,7 @@ void SYS_Initialize ( void* data )
     PCHE_Setup();
 
   
-    CLK_Initialize();
+    CLOCK_Initialize();
     /* Configure Prefetch, Wait States */
     PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
@@ -456,7 +456,7 @@ void SYS_Initialize ( void* data )
 
 
     // Initialize RF System
-    SYS_Load_Cal(WSS_ENABLE_ZB);
+    SYS_Load_Cal(WSS_ENABLE_NONE);
  
     // Set up OSAL for RF Stack Library usage
     osalAPIList.OSAL_CRIT_Enter      = OSAL_CRIT_Enter;
@@ -482,7 +482,6 @@ void SYS_Initialize ( void* data )
 
 
 
-
     SYS_CMD_Initialize((SYS_MODULE_INIT*)&sysCmdInit);
 
     /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
@@ -493,13 +492,13 @@ void SYS_Initialize ( void* data )
     /* MISRAC 2012 deviation block end */
     /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
      H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
+        sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
    /* MISRAC 2012 deviation block end */
 
     /* Initialization for IEEE_802154_PHY */
-	OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
-	
-	PHY_Init();
+        OSAL_SEM_Create(&semPhyInternalHandler, OSAL_SEM_TYPE_COUNTING, 20, 0);
+
+    PHY_Init();
     
     /* End of Initialization for IEEE_802154_PHY */
 

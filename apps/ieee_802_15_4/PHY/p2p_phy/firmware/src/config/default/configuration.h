@@ -87,11 +87,11 @@ extern "C" {
 
 /* Command System Service RTOS Configurations*/
 #define SYS_CMD_RTOS_STACK_SIZE                256
-#define SYS_CMD_RTOS_TASK_PRIORITY             1
+#define SYS_CMD_RTOS_TASK_PRIORITY             2
 
 /* TIME System Service Configuration Options */
 #define SYS_TIME_INDEX_0                            (0)
-#define SYS_TIME_MAX_TIMERS                         (5)
+#define SYS_TIME_MAX_TIMERS                         (7)
 #define SYS_TIME_HW_COUNTER_WIDTH                   (16)
 #define SYS_TIME_HW_COUNTER_PERIOD                  (0xFFFFU)
 #define SYS_TIME_HW_COUNTER_HALF_PERIOD             (SYS_TIME_HW_COUNTER_PERIOD>>1)
@@ -101,7 +101,7 @@ extern "C" {
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			(1U)
 #define SYS_CONSOLE_UART_MAX_INSTANCES 	   			(1U)
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		(0U)
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(1000U)
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(200U)
 
 
 #define SYS_CONSOLE_INDEX_0                       0
