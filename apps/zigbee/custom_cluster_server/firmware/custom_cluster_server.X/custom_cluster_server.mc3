@@ -18560,14 +18560,6 @@
          <hash>5d50b08c07ef32b4b93ba2a2586e500bfe075674c79ef2bc339ea9d467206b5b</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\device_sleep.c</file>
-         <hash>ad98e33a891aa253c45dd015729f40110e6ac46e41b4ca598a86d4818849b8b0</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\device_sleep.h</file>
-         <hash>3f5a822e4cd519457e18c78ed8f998c24056b17da7438aab02d6c70370cf9da5</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\device_vectors.h</file>
          <hash>a160a5680e97b92a0d40634e7cbfe9ede0effd6da5fee80a0d1ec63bd5e9bb52</hash>
       </entry>
