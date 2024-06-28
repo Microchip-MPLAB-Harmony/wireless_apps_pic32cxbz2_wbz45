@@ -4,27 +4,27 @@
 	"content": {
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_legacy_scan",
-		"version": "1.0.0",
+		"version": "3.3.0",
 		"displayName": "BLE Legacy Scan Application",
 		"projectName": "legacy_scan",
 		"shortDescription": "This example application users to enable BLE Scanning on WBZ451 Curiosity board using MPLAB Code Configurator(MCC). BLE Scanning is scanning for devices that are advertising. In BLE a central or observer always starts with scanning.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.15"
+			"semverRange": ">=6.20"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.21"
+				"semverRange": ">=4.40"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "1.2.230"
+			"semverRange": "1.4.243"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.3.7"
+			"semverRange": ">=5.7.0"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

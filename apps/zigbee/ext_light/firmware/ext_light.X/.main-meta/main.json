@@ -4,27 +4,27 @@
 	"content": {
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ext_light_app",
-		"version": "1.0.0",
+		"version": "3.3.0",
 		"displayName": "Extended Light Application",
 		"projectName": "ext_light",
 		"shortDescription": "This example application implements Zigbee Lighting and Occupancy (ZLO) devices and Green power device for operation on a Zigbee network.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.15"
+			"semverRange": ">=6.20"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.21"
+				"semverRange": ">=4.40"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.2.230"
+			"semverRange": "^1.4.243"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.3.7"
+			"semverRange": ">=5.7.0"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",

@@ -4,27 +4,27 @@
 	"content": {
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ble_zigbee_light_prov_app",
-		"version": "1.0.0",
+		"version": "3.3.0",
 		"displayName": "BLE Zigbee Light Provisioning Application",
 		"projectName": "ble_zigbee_light_prov",
 		"shortDescription": "This application demonstrates the multi-protocol (concurrent operation of both Zigbee and BLE stacks) functionality of PIC32CXBZ family of devices and modules. The Zigbee commissioning over BLE uses Bluetooth Low Energy (BLE) link to exchange Zigbee commission data and run both Zigbee and BLE tasks simultaneously under FreeRTOS. The local zigbee lights (on board RGB LED) can be controlled over BLE or from Zigbee network. ",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.15"
+			"semverRange": ">=6.20"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.21"
+				"semverRange": ">=4.40"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.2.230"
+			"semverRange": "^1.4.243"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.3.7"
+			"semverRange": ">=5.7.0"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",
