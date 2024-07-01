@@ -433,8 +433,6 @@ void SYS_Initialize ( void* data )
 
     TC0_TimerInitialize();
 
-    RTC_Initialize();
-
     NVM_Initialize();
 
 	TRNG_Initialize();

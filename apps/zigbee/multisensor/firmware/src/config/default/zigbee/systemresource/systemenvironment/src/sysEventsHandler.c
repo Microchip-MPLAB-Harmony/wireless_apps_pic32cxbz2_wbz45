@@ -88,20 +88,22 @@ multiple events by calling this function several times
 ******************************************************************************/
 void SYS_SubscribeToEvent(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 {
-  const int pos = id / evWordNBits;
-  const sysEvWord_t mask = 1U << (id % evWordNBits);
+  const unsigned int pos = id / evWordNBits;
+  const sysEvWord_t mask = (1UL << ((uint32_t)id % evWordNBits));
 
-  SYS_E_ASSERT_FATAL((id <  SYS_MAX_EVENTS), SYS_ASSERT_WRONG_EVENT_SUBSCRIBE);
+  SYS_E_ASSERT_FATAL((id <  SYS_MAX_EVENTS), (uint16_t)SYS_ASSERT_WRONG_EVENT_SUBSCRIBE);
 
   // Stop processing, if receiver is already subscribed.
   if (SYS_IsEventSubscriber(id, recv))
+  {
     return;
+  }
 
   if (!isQueueElem(&eventReceivers, recv))
   {
     // Clear events mask (we're not in queue and therefore not subscribed to any event)
-    memset(recv->service.evmask, 0U, sizeof(recv->service.evmask));
-    putQueueElem(&eventReceivers, recv);
+    (void)memset(recv->service.evmask, 0, sizeof(recv->service.evmask));
+    (void)putQueueElem(&eventReceivers, recv);
   }
 
   // Update receiver's mask and fast query mask
@@ -117,23 +119,25 @@ void SYS_SubscribeToEvent(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 ******************************************************************************/
 void SYS_UnsubscribeFromEvent(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 {
-  const int pos = id / evWordNBits;
-  const sysEvWord_t mask = 1U << (id % evWordNBits);
+  const unsigned int pos = id / evWordNBits;
+  const sysEvWord_t mask = (1UL << ((uint32_t)id % evWordNBits));
   bool more_subscribers = false;
 
-  SYS_E_ASSERT_FATAL((id < SYS_MAX_EVENTS), SYS_ASSERT_WRONG_EVENT_SUBSCRIBE);
+  SYS_E_ASSERT_FATAL((id < SYS_MAX_EVENTS), (uint16_t)SYS_ASSERT_WRONG_EVENT_SUBSCRIBE);
 
   // Stop processing, if receiver wasn't subscribed.
   if (!SYS_IsEventSubscriber(id, recv))
+  {
     return;
+  }
 
   // Update receiver's mask
   recv->service.evmask[pos] &= ~mask;
 
   // Look if there is more subscribers for event
-  for (const SYS_EventReceiver_t *hnd = getQueueElem(&eventReceivers); hnd; hnd = getNextQueueElem(hnd))
+  for (SYS_EventReceiver_t *hnd = getQueueElem(&eventReceivers); (hnd != NULL) ; hnd = getNextQueueElem(hnd))
   {
-    if (hnd->service.evmask[pos] & mask)
+    if ((hnd->service.evmask[pos] & mask) > 0U)
     {
       more_subscribers = true;
       break;
@@ -142,7 +146,9 @@ void SYS_UnsubscribeFromEvent(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 
   // No more subscribers for event. Update fast query mask.
   if (!more_subscribers)
+  {
     subscribed[pos] &= ~mask;
+  }
 
 // Dequeuing receiver is dangerous since user could unsubscribe and modify queue
 // while being called by PostEvent's event delivery loop. Disabled for now.
@@ -165,19 +171,21 @@ void SYS_UnsubscribeFromEvent(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 ******************************************************************************/
 void SYS_PostEvent(SYS_EventId_t id, SYS_EventData_t data)
 {
-  const int pos = id / evWordNBits;
-  const sysEvWord_t mask = 1U << (id % evWordNBits);
+  const unsigned int pos = id / evWordNBits;
+  const sysEvWord_t mask = (1UL << ((uint32_t)id % evWordNBits));
 
-  SYS_E_ASSERT_FATAL((id <  SYS_MAX_EVENTS), SYS_ASSERT_WRONG_EVENT_POST);
+  SYS_E_ASSERT_FATAL((id <  SYS_MAX_EVENTS), (uint16_t)SYS_ASSERT_WRONG_EVENT_POST);
 #ifndef ZAPPSI_NP
-  if (!(subscribed[pos] & mask))  // There is no one listening
-    return;
-#endif
-  for (const SYS_EventReceiver_t *hnd = getQueueElem(&eventReceivers); hnd; hnd = getNextQueueElem(hnd))
+  if ((subscribed[pos] & mask) == 0U)  // There is no one listening
   {
-    if (hnd->service.evmask[pos] & mask)
+    return;
+  }
+#endif
+  for (SYS_EventReceiver_t *hnd = getQueueElem(&eventReceivers); (hnd != NULL); hnd = getNextQueueElem(hnd))
+  {
+    if ((hnd->service.evmask[pos] & mask) > 0U)
     {
-      SYS_E_ASSERT_FATAL(hnd->func, SYS_POSTEVENT_NULLCALLBACK0);
+      SYS_E_ASSERT_FATAL((hnd->func != NULL), (uint16_t)SYS_POSTEVENT_NULLCALLBACK0);
       hnd->func(id, data);
     }
   }
@@ -209,7 +217,8 @@ void SYS_PostEvent(SYS_EventId_t id, SYS_EventData_t data)
 ******************************************************************************/
 bool SYS_IsEventDeliverable(SYS_EventId_t id)
 {
-  return subscribed[id / evWordNBits] & (1U << (id % evWordNBits));
+  uint32_t eventDeliverable = (subscribed[id / evWordNBits]) & (1UL << ((uint32_t)id % evWordNBits));
+  return (eventDeliverable > 0U) ? true : false ;
 }
 
 /**************************************************************************//**
@@ -222,10 +231,12 @@ bool SYS_IsEventDeliverable(SYS_EventId_t id)
 ******************************************************************************/
 bool SYS_IsEventSubscriber(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 {
-  const int pos = id / evWordNBits;
-  const sysEvWord_t mask = 1U << (id % evWordNBits);
+  const unsigned int pos = id / evWordNBits;
+  const sysEvWord_t mask = (1UL << ((uint32_t)id % evWordNBits));
 
-  return recv->service.evmask[pos] & mask;
+  uint32_t eventSubscriber = recv->service.evmask[pos] & mask;
+
+  return (eventSubscriber > 0U) ? true : false ;
 }
 
 /**************************************************************************//**
@@ -236,8 +247,8 @@ bool SYS_IsEventSubscriber(SYS_EventId_t id, SYS_EventReceiver_t *recv)
 ******************************************************************************/
 void SYS_ClearEvents(void)
 {
-  int pos;
-  for(pos = 0; pos < SYS_EVENTS_MASK_SIZE; pos++)
+  uint8_t pos;
+  for(pos = 0U; pos < SYS_EVENTS_MASK_SIZE; pos++)
   {
   	subscribed[pos] = 0x0;
   }

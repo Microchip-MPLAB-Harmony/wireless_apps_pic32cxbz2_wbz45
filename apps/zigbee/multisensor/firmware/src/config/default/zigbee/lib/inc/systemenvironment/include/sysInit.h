@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYS_INIT_H
-#define _SYS_INIT_H
+#ifndef SYS_INIT_H
+#define SYS_INIT_H
 
 /******************************************************************************
                    Includes section
@@ -66,5 +66,5 @@ void SYS_InitZclLayer(void);
 ******************************************************************************/
 void SYS_InitZsiMem(void);
 
-#endif  // _SYS_INIT_H
+#endif  // SYS_INIT_H
 //eof sysinit.h

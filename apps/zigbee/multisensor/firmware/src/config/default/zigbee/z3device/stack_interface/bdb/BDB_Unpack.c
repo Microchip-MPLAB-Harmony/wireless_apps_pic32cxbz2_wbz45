@@ -103,7 +103,7 @@ BdbEventSubscriber_t s_BDB_EventsLocalCallback =
 ******************************************************************************/
 void BDB_Init_Unpack(void *req)
 {
-  BDB_InitDone_t initCompleted = (BDB_InitDone_t)req;
+  BDB_InitDone_t initCompleted = req;
   BDB_Init(initCompleted);
 }
 
@@ -114,7 +114,7 @@ void BDB_Init_Unpack(void *req)
 void BDB_InvokeCommissioning_Unpack(void *req)
 {
   BDB_InvokeCommissioningReq_t *invokeCommReq = (BDB_InvokeCommissioningReq_t*)req;
-  BDB_InvokeCommissioning(invokeCommReq);
+  (void)BDB_InvokeCommissioning(invokeCommReq);
 }
 
 /**************************************************************************//**
@@ -273,7 +273,7 @@ void BDB_SetToulinkRole_Unpack(void *req)
 ******************************************************************************/
 void BDB_ResetVia_TouchlinkCluster_Unpack(void *req)
 {
-  BDB_ResetVia_TouchlinkCluster((ResetTargetCallback_t)req);
+  BDB_ResetVia_TouchlinkCluster(req);
 }
 #endif //#if BDB_TOUCHLINK_INITIATOR_SUPPORT == 1
 #endif //#if BDB_TOUCHLINK_SUPPORT == 1
@@ -289,8 +289,8 @@ void bdbEvent_Connected(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Connected_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Connected_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -305,8 +305,8 @@ void bdbEvent_Disconnected(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_Disconnected_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_Disconnected_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -321,10 +321,10 @@ void bdbEvent_IdentifyStartIndication (uint16_t uValue)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_IdentifyStartIndication_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_IdentifyStartIndication_ID;
     cbParams.parameters = (void *)&uValue;
-    cbParams.paramSize = sizeof(uValue);
+    cbParams.paramSize = (uint8_t)sizeof(uValue);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -337,8 +337,8 @@ void bdbEvent_IdentifyStopIndication(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_IdentifyStopIndication_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_IdentifyStopIndication_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -353,8 +353,8 @@ void bdbEvent_UpdateNetworkIndication(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_UpdateNetworkIndication_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_UpdateNetworkIndication_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -369,8 +369,8 @@ void bdbEvent_QeryingCompleted(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_QeryingCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_QeryingCompleted_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -389,10 +389,10 @@ void bdbEvent_JoinNetworkIndication(uint16_t groupIdFirst, uint16_t groupIdLast)
 
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_JoinNetworkIndication_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_JoinNetworkIndication_ID;
     cbParams.parameters = (void *)&joinNwkParam;
-    cbParams.paramSize = sizeof(joinNwkParam);
+    cbParams.paramSize = (uint8_t)sizeof(joinNwkParam);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -405,10 +405,10 @@ void bdbEvent_TouchlinkCompleted(BDB_CommissioningStatus_t status)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_TouchlinkCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_TouchlinkCompleted_ID;
     cbParams.parameters = (void *)&status;
-    cbParams.paramSize = sizeof(status);
+    cbParams.paramSize = (uint8_t)sizeof(status);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -420,10 +420,10 @@ void bdbEvent_NetworkFormationCompleted(BDB_CommissioningStatus_t status)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_NetworkFormationCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_NetworkFormationCompleted_ID;
     cbParams.parameters = (void *)&status;
-    cbParams.paramSize = sizeof(status);
+    cbParams.paramSize = (uint8_t)sizeof(status);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -436,10 +436,10 @@ void bdbEvent_NetworkSteeringCompleted(BDB_CommissioningStatus_t status)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_NetworkSteeringCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_NetworkSteeringCompleted_ID;
     cbParams.parameters = (void *)&status;
-    cbParams.paramSize = sizeof(status);
+    cbParams.paramSize = (uint8_t)sizeof(status);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -452,10 +452,10 @@ void bdbEvent_FindingBindingCompleted(BDB_CommissioningStatus_t status)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_FindingBindingCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_FindingBindingCompleted_ID;
     cbParams.parameters = (void *)&status;
-    cbParams.paramSize = sizeof(status);
+    cbParams.paramSize = (uint8_t)sizeof(status);
     fnAppGenericCB(&cbParams);
   }
 }
@@ -468,8 +468,8 @@ void bdbEvent_ResetToFactoryDefaults(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_ResetToFactoryDefaults_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_ResetToFactoryDefaults_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -484,8 +484,8 @@ void bdbEvent_Querying(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_Querying_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_Querying_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -500,8 +500,8 @@ void bdbEvent_Scanning(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_Scanning_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_Scanning_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -516,8 +516,8 @@ void bdbEvent_Identifying(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_Identifying_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_Identifying_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -532,8 +532,8 @@ void bdbEvent_Joining(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_Joining_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_Joining_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -548,8 +548,8 @@ void bdbEvent_ScanIndication(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_ScanIndication_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_ScanIndication_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -565,8 +565,8 @@ void bdbEvent_SteeringNetwork(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_SteeringNetwork_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_SteeringNetwork_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -581,8 +581,8 @@ void bdbEvent_TclkProcedureOngoing(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_TclkProcedureOngoing_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_TclkProcedureOngoing_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -597,8 +597,8 @@ void bdbEvent_TclkProcedureCompleted(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_TclkProcedureCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_TclkProcedureCompleted_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -613,8 +613,8 @@ void bdbEvent_AddingBindingLinks(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_AddingBindingLinks_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_AddingBindingLinks_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -629,8 +629,8 @@ void bdbEvent_FindingBindingInitiatorModeCompleted(void)
 {
   if (NULL != fnAppGenericCB)
   {
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_Event_FindingBindingInitiatorModeCompleted_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_Event_FindingBindingInitiatorModeCompleted_ID;
     cbParams.parameters = (void *)NULL;
     cbParams.paramSize = 0;
     fnAppGenericCB(&cbParams);
@@ -644,10 +644,10 @@ void BDB_InvokeCommissioningConfirm(BDB_InvokeCommissioningConfCallback_t callba
     BDB_CommissioningConfCB_t bdbConfCb;
     bdbConfCb.callbackFn = callbackFn;
     bdbConfCb.confirm = conf;
-    cbParams.eModuleID = ZIGBEE_BDB;
-    cbParams.uCallBackID = BDB_CommissioningConfCallback_ID;
+    cbParams.eModuleID = (uint8_t)ZIGBEE_BDB;
+    cbParams.uCallBackID = (uint32_t)BDB_CommissioningConfCallback_ID;
     cbParams.parameters = (void *)&bdbConfCb;
-    cbParams.paramSize = sizeof(BDB_CommissioningConfCB_t);
+    cbParams.paramSize = (uint8_t)sizeof(BDB_CommissioningConfCB_t);
     fnAppGenericCB(&cbParams);
   }
 }

@@ -93,7 +93,7 @@
   #define APP_COMMISSIONING_FINDING_AND_BINDING 0
 #endif
 
-//Table 4 â?? Bits of the bdbCommissioningMode attribute
+//Table 4 ? Bits of the bdbCommissioningMode attribute
 //5.3.2 bdbCommissioningMode attribute
 #define BDB_COMMISSIONING_TOUCHLINK       0U //(1)
 #define BDB_COMMISSIONING_NWK_STEERING    1U // (2)

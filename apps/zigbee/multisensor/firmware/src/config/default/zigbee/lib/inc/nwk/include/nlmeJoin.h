@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_JOIN_H
-#define _NLME_JOIN_H
+#if !defined NLME_JOIN_H
+#define NLME_JOIN_H
 
 /******************************************************************************
                                Includes section
@@ -139,6 +139,6 @@ void NWK_JoinReq(NWK_JoinReq_t *const req);
  ******************************************************************************/
 extern void NWK_JoinInd(NWK_JoinInd_t *ind);
 
-#endif /* _NLME_JOIN_H */
+#endif /* NLME_JOIN_H */
 /** eof nlmeJoin.h */
 

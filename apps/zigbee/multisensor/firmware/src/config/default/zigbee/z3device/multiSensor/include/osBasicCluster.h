@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OSBASICCLUSTER_H
-#define _OSBASICCLUSTER_H
+#ifndef OSBASICCLUSTER_H
+#define OSBASICCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -68,6 +68,6 @@ void osBasicClusterInit(void);
 void osBasicResetToFactoryDefaultsCommand(APS_AddrMode_t mode,ShortAddr_t addr, Endpoint_t ep, Endpoint_t srcEp);
 
 
-#endif // _OSBASICCLUSTER_H
+#endif // OSBASICCLUSTER_H
 
 // eof osBasicCluster.h

@@ -18,8 +18,8 @@
  *   WARNING: CHANGING THIS FILE MAY AFFECT CORE FUNCTIONALITY OF THE STACK.  *
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
-#ifndef _OFDMEMORYDRIVER_H
-#define _OFDMEMORYDRIVER_H
+#ifndef OFDMEMORYDRIVER_H
+#define OFDMEMORYDRIVER_H
 
 #if APP_USE_OTAU == 1
 
@@ -174,4 +174,4 @@ been erased by OFD_EraseImage().
 void OFD_Read(uint32_t address, uint8_t *data, uint16_t size, OFD_Callback_t cb);
 #endif // APP_USE_OTAU == 1
 
-#endif /* _OFDMEMORYDRIVER_H */
+#endif /* OFDMEMORYDRIVER_H */

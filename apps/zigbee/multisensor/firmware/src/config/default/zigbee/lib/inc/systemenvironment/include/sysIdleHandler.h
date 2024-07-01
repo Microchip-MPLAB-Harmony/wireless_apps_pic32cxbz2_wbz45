@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _SYS_IDLE_HANDLER_H_
-#define _SYS_IDLE_HANDLER_H_
+#ifndef SYS_IDLE_HANDLER_H_
+#define SYS_IDLE_HANDLER_H_
 /******************************************************************************
                    Prototypes section
 ******************************************************************************/
@@ -78,5 +78,5 @@ bool SYS_IsSleepWhenIdleEnabled(void);
 
 #endif /* _SLEEP_WHEN_IDLE_ */
 
-#endif /* _SYS_IDLE_HANDLER_H_ */
+#endif /* SYS_IDLE_HANDLER_H_ */
 // eof sysIdleHandler.c

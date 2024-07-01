@@ -94,7 +94,9 @@ ZCL_OtauClusterCommands_t otauClientCommands =
 
 DECLARE_QUEUE(zclOtauServerDiscoveryQueue);
 ExtAddr_t otauUnauthorizedServers[OTAU_MAX_UNAUTHORIZED_SERVERS];
-
+#if defined _PIC32CX_BZ3_
+bool eraseStatus;
+#endif
 /******************************************************************************
                         Static variables section
 ******************************************************************************/
@@ -265,12 +267,32 @@ static bool OFD_EraseImage(void )
     }
     return true;
 }
+
+#if defined _PIC32CX_BZ3_
+/***************************************************************************//**
+\brief get status of chip erase
+******************************************************************************/
+bool getEraseStatus(void)
+{
+  return eraseStatus;
+}
+#endif
+
 /***************************************************************************//**
 \brief Start erase image area
 ******************************************************************************/
 void otauStartErase(void)
 {
-	
+#if defined _PIC32CX_BZ3_
+  DRV_HANDLE *handle = getSstHandle();
+  
+  //close SST handle everytime before SST initialize to prevent multiple initializations in negative scenarios.
+  DRV_SST26_Close(*handle);
+  //Initialze SST Driver
+  *handle = DRV_SST26_Open(sysObj.drvSST26, DRV_IO_INTENT_READWRITE);
+   //Erase the entire chip before writing to external flash
+  eraseStatus = DRV_SST26_ChipErase(*handle);
+#else //_PIC32CX_BZ2_
   if(OTAU_CHECK_STATE(otauStateMachine,OTAU_START_DOWNLOAD_STATE))
   {
     uint8_t flashErased[64];
@@ -295,6 +317,7 @@ void otauStartErase(void)
     zclRestartOtauClient();
   }
   return;
+#endif  
 }
 
 /***************************************************************************//**
@@ -732,7 +755,10 @@ bool OFD_Write(OFD_MemoryAccessParam_t *accessParam)
 #if defined _PIC32CX_BZ3_ 
     ZCL_OtauClientMem_t *clientMem = zclGetOtauClientMem();
     if (OFD_IMAGE_START_ADDRESS == clientMem->ofdParam.offset)
+    {
       memset(&otauClientBuff.buff, 0xff , DRV_SST26_PAGE_SIZE);
+      otauClientBuff.end=0;
+    }
     status = otauCacheExternalFlashPage(&otauClientBuff, (uint8_t *)pData, (uint32_t *)pAddress, size);
 #else
     if ((uint32_t)pAddress % NVM_QUAD_WORD_SIZE)

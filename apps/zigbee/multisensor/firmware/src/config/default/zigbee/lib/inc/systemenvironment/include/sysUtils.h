@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _SYSUTILS_H
-#define _SYSUTILS_H
+#ifndef SYSUTILS_H
+#define SYSUTILS_H
 // DOM-IGNORE-END
 
 /*************************************************************************
@@ -132,8 +132,10 @@ INLINE void * SYS_ByteMemcpy(void *dst, const void *src, uint16_t size)
   uint8_t *dst_ = (uint8_t *) dst;
   const uint8_t *src_ = (const uint8_t *) src;
 
-  while(size--)
+  while((size--) != 0U)
+  {
     *(dst_++) = *(src_++);
+  }
   return dst;
 }
 
@@ -172,7 +174,7 @@ void sysStopUpdatingRandSeed(void);
  ***********************************************************************/
 static inline uint16_t SYS_GetRandomNumber(void)
 {
-  uint16_t result = rand();
+  uint16_t result = (uint16_t)rand();
   return result;
 }
 
@@ -215,13 +217,13 @@ int SYS_GetRandomSequence(uint8_t *buffer, unsigned long size);
 
   \return  calculated CRC value
  ***********************************************************************/
-INLINE uint16_t SYS_Crc16Ccitt(uint16_t initValue, uint8_t byte)
+INLINE uint16_t SYS_Crc16Ccitt(uint16_t initValue, uint8_t byte_)
 {
-  byte ^= initValue & 0xffU;
-  byte ^= byte << 4U;
+  byte_ ^= (uint8_t)(initValue & 0xffU);
+  byte_ ^= byte_ << 4U;
 
-  return ((((uint16_t)byte << 8) | ((initValue & 0xff00U) >> 8))
-          ^ (uint8_t)(byte >> 4) ^ ((uint16_t)byte << 3));
+  return ((((uint16_t)byte_ << 8) | ((initValue & 0xff00U) >> 8))
+          ^ (uint8_t)(byte_ >> 4) ^ ((uint16_t)byte_ << 3));
 }
 
 INLINE void memcpy4ByteAligned(void* outbuf, void* inbuf, uint16_t length)
@@ -232,14 +234,17 @@ INLINE void memcpy4ByteAligned(void* outbuf, void* inbuf, uint16_t length)
   uint32_t* src = (uint32_t* )inbuf;
   uint32_t* dst = (uint32_t* )outbuf;
    
-  mod_size = (length % 4);
+  mod_size = (uint8_t)(length % 4U);
 
   // total_length is in multiple of 4
-  if (mod_size !=0)
-    size  = length + 4 - mod_size; 
+  if (mod_size !=0U)
+  {
+    size  = (uint8_t)(length + 4U - mod_size);
+  }
   else 
-    size  = length;
-  
+  {
+      size  = (uint8_t)length;
+  }
   size  = size >> 2;
   for (k = 0; k < size; k++)
   {
@@ -263,7 +268,7 @@ INLINE uint32_t SYS_calculateDifference(uint32_t subtrahend, uint32_t minuend)
 {
     uint32_t difference = 0U;
     
-    if (((int32_t )(minuend -subtrahend)) >= 0)
+    if (((minuend -subtrahend)) >= 0U)
     {
         difference = (minuend -subtrahend);
     }
@@ -271,7 +276,7 @@ INLINE uint32_t SYS_calculateDifference(uint32_t subtrahend, uint32_t minuend)
     {
         uint32_t complement = (UINT32_MAX - subtrahend);
 
-        difference = complement + minuend + 1;
+        difference = complement + minuend + 1U;
     }
     
     return difference;
@@ -289,5 +294,5 @@ INLINE uint32_t SYS_calculateDifference(uint32_t subtrahend, uint32_t minuend)
 bool SYS_GetBitCloudRevision(uint8_t *strVersion, uint32_t *intVersion);
 #endif // _MAC2_
 
-#endif // _SYSUTILS_H
+#endif // SYSUTILS_H
 /** eof sysUtils.h */

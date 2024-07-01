@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _OSGROUPSCLUSTER_H
-#define _OSGROUPSCLUSTER_H
+#ifndef OSGROUPSCLUSTER_H
+#define OSGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -62,7 +62,7 @@ extern PROGMEM_DECLARE(ZCL_GroupsClusterCommands_t osGroupsCommands);
 void osGroupsClusterInit(void);
 
 
-#endif // _OSGROUPSCLUSTER_H
+#endif // OSGROUPSCLUSTER_H
 
 // eof msGroupsCluster.h
 

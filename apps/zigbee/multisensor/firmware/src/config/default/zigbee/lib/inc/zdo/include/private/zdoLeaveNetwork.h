@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _ZDOLEAVENETWORK_H
-#define _ZDOLEAVENETWORK_H
+#ifndef ZDOLEAVENETWORK_H
+#define ZDOLEAVENETWORK_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -130,6 +130,6 @@ ZDO_PRIVATE void zdoLeaveNetworkFree(void);
  ******************************************************************************/
 ZDO_PRIVATE void zdoLeaveNetworkReset(void);
 
-#endif // _ZDOLEAVENETWORK_H
+#endif // ZDOLEAVENETWORK_H
 
 // eof zdoLeaveNetwork.h

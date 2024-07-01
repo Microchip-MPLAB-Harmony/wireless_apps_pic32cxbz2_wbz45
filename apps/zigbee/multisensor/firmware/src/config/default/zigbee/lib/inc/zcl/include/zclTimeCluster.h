@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _ZCLTIMECLUSTER_H
-#define _ZCLTIMECLUSTER_H
+#ifndef ZCLTIMECLUSTER_H
+#define ZCLTIMECLUSTER_H
 
 /*!
 This cluster provides a basic interface to a real-time clock. The clock time may be
@@ -434,6 +434,6 @@ typedef struct PACK
 } ZCL_TimeClusterClientAttributes_t;
 
 END_PACK
-#endif // #ifndef _ZCLTIMECLUSTER_H
+#endif // #ifndef ZCLTIMECLUSTER_H
 
 //eof zclTimeCluster.h

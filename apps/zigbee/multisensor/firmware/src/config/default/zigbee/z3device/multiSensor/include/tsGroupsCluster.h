@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _TSGROUPSCLUSTER_H
-#define _TSGROUPSCLUSTER_H
+#ifndef TSGROUPSCLUSTER_H
+#define TSGROUPSCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -61,7 +61,7 @@ extern ZCL_GroupsClusterCommands_t tsGroupsCommands;
 void tsGroupsClusterInit(void);
 
 
-#endif // _TSGROUPSCLUSTER_H
+#endif // TSGROUPSCLUSTER_H
 
 // eof tsGroupsCluster.h
 

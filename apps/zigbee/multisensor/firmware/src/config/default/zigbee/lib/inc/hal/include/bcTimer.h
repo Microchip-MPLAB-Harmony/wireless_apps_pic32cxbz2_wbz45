@@ -44,8 +44,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _MNHALTIMER_H
-#define _MNHALTIMER_H
+#ifndef MNHALTIMER_H
+#define MNHALTIMER_H
 
 /******************************************************************************
                    Includes section
@@ -70,11 +70,11 @@ typedef enum
     void (*callback)(void) - pointer to timer callback function (set by user). \n
     next - pointer to next cell of list \n
     intervalLeft - absolute fired time */
-typedef struct _Timer_t
+typedef struct Timer_t
 {
   struct
   {
-    struct _Timer_t *next;
+    struct Timer_t *next;
     uint32_t sysTimeLabel;
   } service;
   uint32_t interval;
@@ -94,7 +94,7 @@ typedef struct _Timer_t
 \param[in]
   sysTime - current time, used for sorting.
 ******************************************************************************/
-void halAddTimer(BC_Timer_t **head, BC_Timer_t *timer, uint32_t sysTime);
+void halAddTimer(BC_Timer_t **head, BC_Timer_t *newTimer, uint32_t sysTime);
 
 /**************************************************************************//**
 \brief Removes timer from the timers list.
@@ -118,6 +118,6 @@ BC_Timer_t* halRemoveTimer(BC_Timer_t **head, BC_Timer_t *prev, BC_Timer_t *p);
 ******************************************************************************/
 BC_Timer_t *halFindPrevTimer(BC_Timer_t **head,  BC_Timer_t *p);
 
-#endif /* _MNHALTIMER_H */
+#endif /* MNHALTIMER_H */
 
 // eof bcTimer.h

@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#ifndef _TASKMANAGER_H
-#define _TASKMANAGER_H
+#ifndef TASKMANAGER_H
+#define TASKMANAGER_H
 // DOM-IGNORE-END
 
 /**************************************************************************
@@ -223,14 +223,14 @@ INLINE void SYS_PostTask(SYS_TaskId_t taskId)
 {
 //\cond internal
 
-  if(!(SYS_taskFlag & taskId)) // Post the task only if its not set already
+  if(!(bool)(SYS_taskFlag & (uint16_t)taskId)) // Post the task only if its not set already
   {
 ATOMIC_SECTION_ENTER
-     SYS_taskFlag |= taskId;
+     SYS_taskFlag |= (uint16_t)taskId;
 ATOMIC_SECTION_LEAVE
 
 #ifdef _USE_RTOS_
-    zos->OSAL_SEM_Post(&semStackInternalHandler);
+    (void)zos->OSAL_SEM_Post(&semStackInternalHandler);
 #endif
   }
 
@@ -241,11 +241,11 @@ INLINE void SYS_PostTaskFromISR(SYS_TaskId_t taskId)
 {
 //\cond internal
 
-  if(!(SYS_taskFlag & taskId)) // Post the task only if its not set already
+  if(!(bool)(SYS_taskFlag & (uint16_t)taskId)) // Post the task only if its not set already
   {
-     SYS_taskFlag |= taskId;
+     SYS_taskFlag |= (uint16_t)taskId;
 #ifdef _USE_RTOS_
-     zos->OSAL_SEM_PostISR(&semStackInternalHandler);
+     (void)zos->OSAL_SEM_PostISR(&semStackInternalHandler);
 #endif
   }
 
@@ -259,7 +259,7 @@ INLINE void SYS_PostTaskFromISR(SYS_TaskId_t taskId)
  **************************************************************************/
 INLINE void SYS_DisableTask(SYS_TaskId_t taskId)
 {
-  SYS_taskMask &= ~taskId;
+  SYS_taskMask &= (~(uint16_t)taskId);
 }
 
 /**************************************************************//**
@@ -269,7 +269,7 @@ INLINE void SYS_DisableTask(SYS_TaskId_t taskId)
  *************************************************************************/
 INLINE void SYS_EnableTask(SYS_TaskId_t taskId)
 {
-  SYS_taskMask |= taskId;
+  SYS_taskMask |= (uint16_t)taskId;
 }
 
 /*****************************************************************//**

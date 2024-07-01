@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _CLUSTERS_H
-#define _CLUSTERS_H
+#ifndef CLUSTERS_H
+#define CLUSTERS_H
 
 #include <zcl/include/zcl.h>
 #include <systemenvironment/include/sysEndian.h>
@@ -111,7 +111,7 @@ command in the commands structure instance of a cluster
 A commands structure consists of fields, one per each command supported by the cluster.
 */
 #define DEFINE_COMMAND(cname, cid, coptions, cind) \
-  .cname = {.id = cid, .options = coptions, cind}
+  .cname = {.id = (cid), .options = coptions, (cind)}
 
 /*! \brief Fills the field corresponding to an attribute of the array type in
 the attributes structure instance of a cluster
@@ -171,9 +171,9 @@ the attributes structure instance of a cluster
 
 
 /* Bits for declaring properties bitmask of attribute */
-#define ZCL_READWRITE_ATTRIBUTE  0U //!< Attribute can be read and written remotely
+#define ZCL_READWRITE_ATTRIBUTE  (0U) //!< Attribute can be read and written remotely
 #define ZCL_REPORTABLE_ATTRIBUTE 1U //!< Attribute can be reported
-#define ZCL_READONLY_ATTRIBUTE   2U //!< Attribute can not be written by remote nodes
+#define ZCL_READONLY_ATTRIBUTE   (2U) //!< Attribute can not be written by remote nodes
 #define ZCL_REPORTING_CONFIGURED 4U //!< Attribute is configured for reporting
 #define ZCL_ON_CHANGE_REPORT     8U //!< Attribute should be reported using minimum reporting time
 #define ZCL_BOUNDARY_CHECK      16U //!< Attribute whose value needs to be checked for boundary check
@@ -309,4 +309,4 @@ typedef struct
 } zclClusterImage_t;
 //\endcond
 #endif //APP_CLUSTERS_IN_FLASH == 1
-#endif // _CLUSTERS_H
+#endif // CLUSTERS_H

@@ -79,6 +79,7 @@
 #define APP_IDLE_NVIC_PENDSVCLEAR_BIT            ( 1UL << 27UL )
 #define APP_IDLE_NVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL << 25UL )
 
+
 /* 
  * Max sleep allowed - user can configure this value
  */
@@ -138,7 +139,7 @@ void app_idle_task( void )
               }
               else
               {
-                RF_Timer_Cal(WSS_ENABLE_ZB);
+                   RF_Timer_Cal(WSS_ENABLE_ZB);
               }
             }
         }
@@ -199,7 +200,7 @@ static void app_idle_setRtcTimeout(TickType_t expectedIdleTick, uint32_t current
        2. RTC Clock : RTC_Timer32FrequencyGet
        3. expectedIdleTime (ms) * RTC clock (32 kHz) = compareValue value
     */
-    compareValue = (expectedIdleTick * RTC_Timer32FrequencyGet() + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
+    compareValue = ((uint64_t)expectedIdleTick * RTC_Timer32FrequencyGet() + (configTICK_RATE_HZ / 2)) / configTICK_RATE_HZ;
 
 
     /* Give a compensation value to eliminate the offset between RTC and system timer
@@ -375,6 +376,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             /* Disable current sensor to improve current consumption. */
             PMU_ConfigCurrentSensor(false);
         }
+
 
         /* Enter system sleep mode */
 		ZB_BackupStackParams(xExpectedIdleTime);

@@ -80,7 +80,7 @@ void SYS_StartTimer(SYS_Timer_t *const sysTimer)
   if (SYS_TIMER_STOPPED == sysTimer->state)
   {
     sysTimer->state = SYS_TIMER_STARTED;
-    HAL_StartAppTimer(&sysTimer->timer);
+    (void)HAL_StartAppTimer(&sysTimer->timer);
   }
 }
 
@@ -96,7 +96,7 @@ void SYS_StopTimer(SYS_Timer_t *const sysTimer)
   if (SYS_TIMER_STARTED == sysTimer->state)
   {
     sysTimer->state = SYS_TIMER_STOPPED;
-    HAL_StopAppTimer(&sysTimer->timer);
+    (void)HAL_StopAppTimer(&sysTimer->timer);
   }
 }
 

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#if !defined _NLME_START_ROUTER_H
-#define _NLME_START_ROUTER_H
+#if !defined NLME_START_ROUTER_H
+#define NLME_START_ROUTER_H
 
 /******************************************************************************
                               Includes section
@@ -88,6 +88,6 @@ typedef struct _NWK_StartRouterReq_t
  ******************************************************************************/
 void NWK_StartRouterReq(NWK_StartRouterReq_t *const req);
 
-#endif /* _NLME_START_ROUTER_H */
+#endif /* NLME_START_ROUTER_H */
 /** eof nlmeStartRouter.h */
 

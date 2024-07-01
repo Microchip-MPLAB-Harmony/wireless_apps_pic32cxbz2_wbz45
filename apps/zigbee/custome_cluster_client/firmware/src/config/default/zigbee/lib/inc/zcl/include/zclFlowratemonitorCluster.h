@@ -51,12 +51,14 @@
 /******************************************************************************
                     Define(s) section
 ******************************************************************************/
-
+    
 //ATTRIBUTE DEFINITION SECTION
+
+
 #define FLOWRATEMONITOR_CLUSTER_ID                                                     0xfc00
 
 #define ZCL_FLOWRATEMONITOR_SERVER_ATTRIBUTES_AMOUNT                      7
-#define ZCL_FLOWRATEMONITOR_SERVER_COMMANDS_AMOUNT                        0
+#define ZCL_FLOWRATEMONITOR_SERVER_COMMANDS_AMOUNT                        0 
 
 #define ZCL_FLOWRATEMONITOR_CLIENT_ATTRIBUTES_AMOUNT                      1
 #define ZCL_FLOWRATEMONITOR_CLIENT_COMMANDS_AMOUNT                        0

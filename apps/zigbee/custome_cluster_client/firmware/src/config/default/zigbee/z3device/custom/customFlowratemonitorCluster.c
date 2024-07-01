@@ -58,6 +58,11 @@
 *******************************************************************************/
 
 static void customFlowratemonitorReportInd(ZCL_Addressing_t *addressing, uint8_t reportLength, uint8_t *reportPayload);
+void customFlowratemonitorInit(void);
+
+
+
+
 
 /******************************************************************************
                     Global variables
@@ -70,36 +75,32 @@ ZCL_FlowratemonitorClusterClientAttributes_t flowratemonitorClientClusterAttribu
     ZCL_DEFINE_FLOWRATEMONITOR_CLUSTER_CLIENT_ATTRIBUTES()
 };
 
-//backup attributes
-
 //Custom Cluster Commands
-PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorClusterCommands) =
+PROGMEM_DECLARE (ZCL_FlowratemonitorClusterCommands_t flowratemonitorClientClusterCommands) =
 {
- 
-ZCL_DEFINE_FLOWRATEMONITOR_CLUSTER_COMMANDS( )  
 
-
+ZCL_DEFINE_FLOWRATEMONITOR_CLUSTER_COMMANDS( )        
 
 };
+
 
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
+
 /**************************************************************************//**
 \brief Initialization function for the cluster
 ******************************************************************************/
 void customFlowratemonitorInit(void)
 {    
     /* Executes only for Reportable Client. */
-    ZCL_Cluster_t *clientCluster = ZCL_GetCluster(APP_ENDPOINT_CUSTOM, FLOWRATEMONITOR_CLUSTER_ID, ZCL_CLUSTER_SIDE_CLIENT);
+    ZCL_Cluster_t *cluster = ZCL_GetCluster(APP_ENDPOINT_CUSTOM, FLOWRATEMONITOR_CLUSTER_ID, ZCL_CLUSTER_SIDE_CLIENT);
 
-    if (clientCluster)
+    if (cluster)
     {
-        clientCluster->ZCL_ReportInd = customFlowratemonitorReportInd;
-        clientCluster->ZCL_DefaultRespInd = ZCL_CommandZclDefaultResp;
+        cluster->ZCL_ReportInd = customFlowratemonitorReportInd;
+        cluster->ZCL_DefaultRespInd = ZCL_CommandZclDefaultResp;
     }
-
-    /* Executes for non Reportable Client */
 
 
     // Fill definition here
@@ -123,11 +124,5 @@ static void customFlowratemonitorReportInd(ZCL_Addressing_t *addressing, uint8_t
 
   APP_Zigbee_Handler(eventItem);
 }
-
-
-
-
-
-
 
 

@@ -40,8 +40,8 @@
 // DOM-IGNORE-END
 
 
-#ifndef _ZCLINT_H
-#define _ZCLINT_H
+#ifndef ZCLINT_H
+#define ZCLINT_H
 
 #include <zcl/include/zcl.h>
 #include <zcl/include/clusters.h>
@@ -64,4 +64,4 @@ END_PACK
 
 ZclAttribute_t *zclGetNextAttribute(Endpoint_t endpoint, ClusterId_t clusterId, uint8_t clusterMask, ZclAttribute_t *currentAttribute);
 
-#endif // _ZCL_INT_H
+#endif // ZCL_INT_H

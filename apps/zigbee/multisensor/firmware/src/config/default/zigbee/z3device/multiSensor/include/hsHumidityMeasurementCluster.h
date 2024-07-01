@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _HSHUMIDITYMEASUREMENTCLUSTER_H
-#define _HSHUMIDITYMEASUREMENTCLUSTER_H
+#ifndef HSHUMIDITYMEASUREMENTCLUSTER_H
+#define HSHUMIDITYMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -96,6 +96,6 @@ void hsBackupHsAttributes(void);
 ******************************************************************************/
 void hsRestoreHsAttributes(void);
 
-#endif // _HSHUMIDITYMEASUREMENTCLUSTER_H
+#endif // HSHUMIDITYMEASUREMENTCLUSTER_H
 
 // eof hsHumidityMeasurementCluster.h

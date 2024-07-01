@@ -71,7 +71,6 @@
     HAL_Sleep_t localSleepParam;
   #endif
 #endif
-static HAL_AppTimer_t simulateSleepTimer;
 HAL_WakeUpCallback_t wakeupCallback;
 
 static void simulateSleepTimerFired(void)
@@ -135,7 +134,9 @@ void SYS_Sleep(HAL_Sleep_t *sleepParam)
 void SYS_EnterSleep(void)
 {
   if (ZDO_IsStackSleeping())
+  {
     PHY_PrepareSleep();
+  }
 }
 
 /**************************************************************************//**
@@ -165,7 +166,7 @@ void SYS_WakeUpSleep(void)
 \param[in]
   none
 ******************************************************************************/
-void SYS_StopStackTimerBeforeSleep()
+void SYS_StopStackTimerBeforeSleep(void)
 {
   halStopAppClock();
 }

@@ -327,7 +327,7 @@ uint32_t N_Util_TimerElapsed(uint32_t startValue)
 {
     uint16_t start = (uint16_t)startValue;
     uint32_t elapsed32 = (uint32_t)(TCNT5 - start);
-    elapsed32 = elapsed32 * (1000000ul / (CPU_CLK_HZ / 1024ul)); // using prescaler
+    elapsed32 = elapsed32 * (1000000UL / (CPU_CLK_HZ / 1024UL)); // using prescaler
     return elapsed32;
 }
 
@@ -360,13 +360,13 @@ uint32_t N_Util_TimerElapsed(uint32_t startValue)
     uint32_t operating_Freq_Hz;
     uint64_t elapsed32 = (startValue - SYSTICK_CVR_s.current) & 0x00FFFFFFuL;
     operating_Freq_Hz = System_Gclk_Get_Hz();
-    if(operating_Freq_Hz >= 1000000ul)
+    if(operating_Freq_Hz >= 1000000UL)
     {
-      elapsed32 /= (operating_Freq_Hz / 1000000ul);
+      elapsed32 /= (operating_Freq_Hz / 1000000UL);
     }
     else
     {
-      elapsed32 *= (1000000ul / operating_Freq_Hz);
+      elapsed32 *= (1000000UL / operating_Freq_Hz);
     }
     return elapsed32;
 }

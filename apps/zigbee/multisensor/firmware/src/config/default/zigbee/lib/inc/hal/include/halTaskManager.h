@@ -44,8 +44,8 @@
  *   EXPERT USERS SHOULD PROCEED WITH CAUTION.                                *
  ******************************************************************************/
 
-#ifndef _HALTASKHANDLER_H
-#define _HALTASKHANDLER_H
+#ifndef HALTASKHANDLER_H
+#define HALTASKHANDLER_H
 
 /******************************************************************************
                    Includes section
@@ -78,8 +78,9 @@ typedef void (* HalTask_t)(void);
 /******************************************************************************
                    External variables section
 ******************************************************************************/
-extern volatile HalTaskBitMask_t halTaskFlags;
-extern volatile HalTaskBitMask_t halAcceptedTasks;
+extern  HalTaskBitMask_t halTaskFlags;
+extern uint16_t halAcceptedTasks;
+
 
 /******************************************************************************
                    Inline static functions section
@@ -93,14 +94,14 @@ extern volatile HalTaskBitMask_t halAcceptedTasks;
 INLINE void halPostTask(HalTaskIds_t id)
 {
   ATOMIC_SECTION_ENTER
-  halTaskFlags |= ((HalTaskBitMask_t)1 << id);
+  halTaskFlags |= ((HalTaskBitMask_t)1 << (uint16_t)id);
   ATOMIC_SECTION_LEAVE
   SYS_PostTask(HAL_TASK_ID);
 }
 
 INLINE void halPostTaskFromISR(HalTaskIds_t id)
 {
-  halTaskFlags |= ((HalTaskBitMask_t)1 << id);
+  halTaskFlags |= ((HalTaskBitMask_t)1 << (uint16_t)id);
   SYS_PostTaskFromISR(HAL_TASK_ID);
 }
 
@@ -113,7 +114,7 @@ INLINE void halPostTaskFromISR(HalTaskIds_t id)
 INLINE void halClearTask(HalTaskIds_t id)
 {
   ATOMIC_SECTION_ENTER
-  halTaskFlags &= ~((HalTaskBitMask_t)1 << id);
+  halTaskFlags &= ~((HalTaskBitMask_t)1 << (uint16_t)id);
   ATOMIC_SECTION_LEAVE
 }
 
@@ -136,6 +137,6 @@ INLINE void HAL_ReleaseAllHeldTasks(void)
   SYS_PostTask(HAL_TASK_ID);
 }
 
-#endif  /*_HALTASKHANDLER_H*/
+#endif  /*HALTASKHANDLER_H*/
 
 // eof halTaskManager.h

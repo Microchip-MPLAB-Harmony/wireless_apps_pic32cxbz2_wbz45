@@ -1,9 +1,9 @@
 format_version: v1.0
 configName: default
-folderName: Combo_MultiSensor_Sleep_Test
-frameworkPath: D:\Harmony_WBZ_RTP_Repo
+folderName: ble_zigbee_multisensor
+frameworkPath: D:\h3
 processor: WBZ451
-projectName: Combo_MultiSensor_Sleep_Test
+projectName: ble_zigbee_multisensor
 settings:
   PackageFilter: ''
   FORCE_OPTIMIZATION: 'false'
@@ -11,4 +11,4 @@ settings:
   TRUSTZONE: 'false'
   CMSISPath: dev_packs\arm\CMSIS\5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.2.230\WBZ451\atdf\WBZ451.atdf
+  DFPPath: dev_packs\Microchip\PIC32CX-BZ_DFP\1.4.243\WBZ451\atdf\WBZ451.atdf

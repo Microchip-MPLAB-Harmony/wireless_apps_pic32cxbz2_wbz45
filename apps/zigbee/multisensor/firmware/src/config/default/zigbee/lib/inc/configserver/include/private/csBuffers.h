@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _CSBUFFERS_H_
-#define _CSBUFFERS_H_
+#ifndef CSBUFFERS_H_
+#define CSBUFFERS_H_
 
 /******************************************************************************
                     Includes section
@@ -190,5 +190,5 @@ typedef struct _CS_StackBuffers_t
 
 } CS_StackBuffers_t;
 
-#endif /* _CSBUFFERS_H_ */
+#endif /* CSBUFFERS_H_ */
 /* eof csBuffers.h */

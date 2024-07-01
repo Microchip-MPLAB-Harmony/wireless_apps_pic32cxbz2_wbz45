@@ -1281,7 +1281,7 @@ void Cluster_Event_Handler(APP_Zigbee_Event_t event)
         break;
         
         //Custom Clusters       
-                 case CMD_ZCL_REPORTING_FLOWRATEMONITOR:
+        case CMD_ZCL_REPORTING_FLOWRATEMONITOR:
         {
             /*Report Indication */
             //Access - > event.eventData.zclEventData.addressing;

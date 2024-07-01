@@ -41,8 +41,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _NWK_IB_H
-#define _NWK_IB_H
+#if !defined NWK_IB_H
+#define NWK_IB_H
 // DOM-IGNORE-END
 
 /******************************************************************************
@@ -251,6 +251,6 @@ NWK_PRIVATE void nwkSetParentShortAddr(ShortAddr_t addr);
 
 #endif /* _ROUTER_ or _ENDDEVICE_ */
 
-#endif  /* _NWK_IB_H */
+#endif  /* NWK_IB_H */
 /**  eof nwkIB.h */
 

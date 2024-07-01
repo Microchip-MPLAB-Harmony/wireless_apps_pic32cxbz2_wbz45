@@ -42,8 +42,8 @@
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
-#if !defined _APSME_REMOVE_DEVICE_H
-#define _APSME_REMOVE_DEVICE_H
+#if !defined APSME_REMOVE_DEVICE_H
+#define APSME_REMOVE_DEVICE_H
 // DOM-IGNORE-END
 
 // DOM-IGNORE-BEGIN
@@ -176,6 +176,6 @@ void APS_RemoveDeviceReq(APS_RemoveDeviceReq_t *req);
 void APS_RemoveDeviceInd(APS_RemoveDeviceInd_t *ind);
 
 #endif /* _SECURITY_ */
-#endif /* _APSME_REMOVE_DEVICE_H */
+#endif /* APSME_REMOVE_DEVICE_H */
 /** eof apsmeRemoveDevice.h } */
 

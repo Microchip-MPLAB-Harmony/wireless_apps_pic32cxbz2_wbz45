@@ -90,12 +90,14 @@ static ZCL_DeviceEndpoint_t osEndpoint =
 static ClusterId_t osClientClusterToBindIds[] =
 {
   IDENTIFY_CLUSTER_ID,
-  GROUPS_CLUSTER_ID
+  GROUPS_CLUSTER_ID,
+
 };
 
 static ClusterId_t osServerClusterToBindIds[] =
 {
   OCCUPANCY_SENSING_CLUSTER_ID,
+
 };
 
 static AppBindReq_t osBindReq =

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MSILLUMINANCEMEASUREMENTCLUSTER_H
-#define _MSILLUMINANCEMEASUREMENTCLUSTER_H
+#ifndef MSILLUMINANCEMEASUREMENTCLUSTER_H
+#define MSILLUMINANCEMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
@@ -101,6 +101,6 @@ void lsBackupLsAttributes(void);
 ******************************************************************************/
 void lsRestoreLsAttributes(void);
 
-#endif // _MSILLUMINANCEMEASUREMENTCLUSTER_H
+#endif // MSILLUMINANCEMEASUREMENTCLUSTER_H
 
 // eof msilluminanceMeasureCluster.h

@@ -48,8 +48,8 @@
  * Table 2.24, page 61. The securityrelated AIB attributes are described in
  * sub-clause 4.4.10, page 489.
  **/
-#if !defined _APS_AIB_H
-#define _APS_AIB_H
+#if !defined APS_AIB_H
+#define APS_AIB_H
 // DOM-IGNORE-END
 /******************************************************************************
                                Includes section
@@ -104,13 +104,13 @@ typedef struct _APS_TCSecurityPolicy_t
   struct PACK
   {
     LITTLE_ENDIAN_OCTET(7, (
-    uint8_t allowJoins : 1,
-    uint8_t allowRejoins : 1,
-    uint8_t useWhiteList : 1,
-    uint8_t updateTCLKRequired : 1,
-    uint8_t allowRemoteTCPolicyChange : 1,
-    uint8_t allowInstallCodes : 1,
-    uint8_t reserved : 2
+    BitField_t allowJoins : 1,
+    BitField_t allowRejoins : 1,
+    BitField_t useWhiteList : 1,
+    BitField_t updateTCLKRequired : 1,
+    BitField_t allowRemoteTCPolicyChange : 1,
+    BitField_t allowInstallCodes : 1,
+    BitField_t reserved : 2
     ))
   }flags;
 
@@ -258,6 +258,6 @@ void APS_UpdateSecurityPolicy(const APS_SecurityPolicyId_t spid,
 #ifdef _PARENT_ANNCE_
 uint32_t APS_GetParentAnnounceTimer(void);
 #endif /* _PARENT_ANNCE_ */
-#endif /* _APS_AIB_H */
+#endif /* APS_AIB_H */
 /** eof apsAIB.h */
 

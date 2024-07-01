@@ -64,7 +64,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#define HAL_NUMBER_OF_TICKS_IN_USEC     (APB_CLK_HZ/RTIMER_FREQUENCY_PRESCALER/1000000ul)
+#define HAL_NUMBER_OF_TICKS_IN_USEC     (APB_CLK_HZ/RTIMER_FREQUENCY_PRESCALER/1000000UL)
 
 /******************************************************************************
                    Define(s) section
@@ -92,169 +92,33 @@
 /******************************************************************************
                         Prototypes section.
 ******************************************************************************/
-//void TC0_halMacTimerHandler(void);
-
-  /******************************************************************************
-   Polling the Sync. flag for Software Reset 
-   Parameters:
-     none
-   Returns:
-     none
-   *****************************************************************************/
-INLINE void rTimerSWRSTSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_SWRST_Msk);
-}
-
-
-/******************************************************************************
- Polling the Sync. flag for CTRLB register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCTRLBSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk);
-}
-
-
-/******************************************************************************
- Polling the Sync. flag for Count register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCountSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_COUNT_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for CC register 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerCC1Sync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Enable 
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerEnableSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_ENABLE_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for Clock Domain
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rTimerClockSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_STATUS_Msk);
-}
-
-
-
-
 /******************************************************************************
                    Global variables section
 ******************************************************************************/
-static RTimerDescr_t __rtimer;
+static RTimerDescr_t rtimer;
 
-bool rTimerIntervalComplete = true;
+static bool rTimerIntervalComplete = true;
 static uint16_t nextCycleCnt;
-void setRTimerNextCycleCnt(uint16_t count);
+void setRTimerNextCycleCnt(uint16_t remCnt);
 void rTimerLoadCnt(HAL_RTimerMode_t mode, uint16_t per);
 /******************************************************************************
                     Prototypes section
 ******************************************************************************/
-/******************************************************************************
-  Initializes Rtimer and RF ext. interrupts.
-******************************************************************************/
-void ZB_HAL_InitMacIsr(void);
 
 /******************************************************************************
   MAC timer handler.
 ******************************************************************************/
 
 /******************************************************************************
-  Redirect interrupt event depending on the TrxState.
-  Parameters: none.
-  Returns: none.
-******************************************************************************/
-void phyDispatcheRTimerEvent(void);
-
-/******************************************************************************
                     Implementations section
 ******************************************************************************/
-/******************************************************************************
- Polling the Sync. flag for register access
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void rRtimerSync(void)
-{
-  //while (TCC2_16_STATUS_s.syncbusy);
-}
-/******************************************************************************
- Polling the Sync. flag for CTRLB SyncBusy register access
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halrTimerCTRLBSync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk);
-
-}
-/******************************************************************************
- Polling the Sync. flag for CC1 register access
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halrTimerCC1Sync(void)
-{
-  while(TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk);
-}
-
-/******************************************************************************
- Polling the Sync. flag for CNT register access
- Parameters:
-   none
- Returns:
-   none
- *****************************************************************************/
-INLINE void halrTimerCountSync(void)
-{
-  while (TC0_SYNCBUSY & TC_SYNCBUSY_COUNT_Msk);
-}
 /******************************************************************************
   Initializes Rtimer.
 ******************************************************************************/
 void ZB_HAL_InitMacIsr(void)
 {
 
-  __rtimer.mode = HAL_RTIMER_STOPPED_MODE;
+  rtimer.mode = HAL_RTIMER_STOPPED_MODE;
 
   /* Configure the generic clk settings for enabling TC4 and TC5 */
   //GCLK_CLKCTRL = GCLK_CLKCTRL_ID((uint32_t)GCLK_TCC2_GCLK_TC5) | GCLK_CLKCTRL_GEN(GCLK_GEN_3) | GCLK_CLKCTRL_CLKEN;
@@ -271,9 +135,13 @@ void ZB_HAL_InitMacIsr(void)
  *****************************************************************************/
 void setRTimerNextCycleCnt(uint16_t remCnt)
 {
+  uint16_t tcCnt = 0;
   TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-  halrTimerCTRLBSync();
-  uint16_t tcCnt = TC0_16COUNT;
+  while((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+  {
+    /* Wait for Write Synchronization */
+  }
+  tcCnt = TC0_16COUNT;
 	
   if(remCnt <tcCnt)
   {
@@ -285,15 +153,21 @@ void setRTimerNextCycleCnt(uint16_t remCnt)
  if(loadCnt > TOP_TIMER_COUNTER_VALUE)
  {
    TC0_CC1 = TC_COUNT16_CC_CC(TOP_TIMER_COUNTER_VALUE);
-   halrTimerCC1Sync();
-   loadCnt = loadCnt - TOP_TIMER_COUNTER_VALUE;
+   while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk) == TC_SYNCBUSY_CC1_Msk)
+   {
+     /* Wait for Write Synchronization */
+   }
+   loadCnt = (uint16_t)(loadCnt - TOP_TIMER_COUNTER_VALUE);
    nextCycleCnt = loadCnt;
  }
  else
  {
    rTimerIntervalComplete = true;
    TC0_CC1 = TC_COUNT16_CC_CC(loadCnt);
-   halrTimerCC1Sync();
+   while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk) == TC_SYNCBUSY_CC1_Msk)
+   {
+     /* Wait for Write Synchronization */
+   }
  }
   TC0_INTENSET=TC_INTENSET_MC1(1);
   TC0_INTFLAG=TC_INTFLAG_MC1(1);
@@ -301,27 +175,36 @@ void setRTimerNextCycleCnt(uint16_t remCnt)
 
 void rTimerLoadCnt(HAL_RTimerMode_t mode, uint16_t per)
 {
-  __rtimer.period    = (uint16_t)((uint32_t)per * HAL_NUMBER_OF_TICKS_IN_USEC);
-  __rtimer.mode      = mode;
+  rtimer.period    = (uint16_t)((uint32_t)per * HAL_NUMBER_OF_TICKS_IN_USEC);
+  rtimer.mode      = mode;
   TC0_CTRLBSET |= TC_CTRLBCLR_CMD_READSYNC;
-  halrTimerCTRLBSync();
+  while ((TC0_SYNCBUSY & TC_SYNCBUSY_CTRLB_Msk) == TC_SYNCBUSY_CTRLB_Msk)
+  {
+     /* Wait for Write Synchronization */
+  }
 
   uint16_t tcCount = TC0_16COUNT;
-  uint32_t totalCC1 = tcCount + __rtimer.period;
+  uint32_t totalCC1 = (uint16_t)(tcCount + rtimer.period);
   if(totalCC1 > TOP_TIMER_COUNTER_VALUE)
    {
     rTimerIntervalComplete = false;
-    uint16_t firstCycleCC1 = TOP_TIMER_COUNTER_VALUE;
+    uint16_t firstCycleCC1 = (uint16_t)(TOP_TIMER_COUNTER_VALUE);
     TC0_CC1 = TC_COUNT16_CC_CC(firstCycleCC1);
-    halrTimerCC1Sync();
-    uint16_t countInFirstCycle = TOP_TIMER_COUNTER_VALUE - tcCount;
-    nextCycleCnt = (__rtimer.period - countInFirstCycle);
+    while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk) == TC_SYNCBUSY_CC1_Msk)
+    {
+      /* Wait for Write Synchronization */
+    }
+    uint16_t countInFirstCycle = (uint16_t)(TOP_TIMER_COUNTER_VALUE - tcCount);
+    nextCycleCnt = (rtimer.period - countInFirstCycle);
 	
   }
   else
   {
     TC0_CC1 = TC_COUNT16_CC_CC(totalCC1);
-    halrTimerCC1Sync();
+    while ((TC0_SYNCBUSY & TC_SYNCBUSY_CC1_Msk) == TC_SYNCBUSY_CC1_Msk)
+    {
+      /* Wait for Write Synchronization */
+    }
   }
 }
 /******************************************************************************
@@ -333,9 +216,10 @@ void rTimerLoadCnt(HAL_RTimerMode_t mode, uint16_t per)
 bool HAL_StartRtimer(HAL_RTimerMode_t mode, uint16_t period)
 {
   
-  if (HAL_RTIMER_STOPPED_MODE != __rtimer.mode)
+  if (HAL_RTIMER_STOPPED_MODE != rtimer.mode)
+  {
     return false;
-
+  }
   rTimerLoadCnt(mode, period);
   TC0_INTENSET = TC_INTENSET_MC1(1);
   TC0_INTFLAG = TC_INTFLAG_MC1(1);
@@ -348,9 +232,8 @@ bool HAL_StartRtimer(HAL_RTimerMode_t mode, uint16_t period)
 void HAL_StopRtimer(void)
 {
   TC0_INTENCLR = TC_INTENSET_MC1(1);  // disabling interrupt MC0
-  rRtimerSync();
 
-  __rtimer.mode = HAL_RTIMER_STOPPED_MODE;
+  rtimer.mode = HAL_RTIMER_STOPPED_MODE;
 }
 
 /******************************************************************************
@@ -358,10 +241,14 @@ void HAL_StopRtimer(void)
 ******************************************************************************/
 bool HAL_IsRtimerStopped(void)
 {
-  if (__rtimer.mode == HAL_RTIMER_STOPPED_MODE)
+  if (rtimer.mode == HAL_RTIMER_STOPPED_MODE)
+  {
     return true;
+  }
   else
+  {
     return false;
+  }
 }
 
 /******************************************************************************
@@ -377,14 +264,13 @@ void halMacTimerHandler(void)
   SYS_E_ASSERT_FATAL((stack_left>stack_threshold),MAC_TIMER_ISR_STACK_OVERFLOW);
 #endif //(_STATS_ENABLED_)
 
-    if (HAL_RTIMER_ONE_SHOT_MODE == __rtimer.mode)
+    if (HAL_RTIMER_ONE_SHOT_MODE == rtimer.mode)
     {
-     __rtimer.mode = HAL_RTIMER_STOPPED_MODE;
+     rtimer.mode = HAL_RTIMER_STOPPED_MODE;
     }
     TC0_INTENCLR = TC_INTENSET_MC1(1); // disabling interrupt MC1
 		
-		
-    rRtimerSync();
+
     if(rTimerIntervalComplete)
     {
       phyDispatcheRTimerEvent();
@@ -393,9 +279,9 @@ void halMacTimerHandler(void)
     {
       setRTimerNextCycleCnt(nextCycleCnt);
     }
-    if (HAL_RTIMER_REPEAT_MODE == __rtimer.mode)
+    if (HAL_RTIMER_REPEAT_MODE == rtimer.mode)
     {
-      rTimerLoadCnt(HAL_RTIMER_REPEAT_MODE, __rtimer.period);
+      rTimerLoadCnt(HAL_RTIMER_REPEAT_MODE, rtimer.period);
       TC0_INTENSET = TC_INTENSET_MC1(1);
       TC0_INTFLAG = TC_INTFLAG_MC1(1);
     }

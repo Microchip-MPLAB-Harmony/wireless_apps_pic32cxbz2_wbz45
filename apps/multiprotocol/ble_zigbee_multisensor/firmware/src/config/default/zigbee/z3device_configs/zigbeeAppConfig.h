@@ -132,10 +132,10 @@
 #define ZCL_COMMANDS_IN_CONSOLE 0
 
 // Enable or disable extra client or server clusters
-#define ZLO_EXTRA_CLUSTERS_SUPPORT 1
+#define ZLO_EXTRA_CLUSTERS_SUPPORT 0
 
 // Enable or disable optional attributes support for clusters
-#define ZLO_CLUSTER_ENHANCEMENTS 1
+#define ZLO_CLUSTER_ENHANCEMENTS 0
 
 // Enable/disable ZDO specific commands in console
 #define ZDO_COMMANDS_IN_CONSOLE 0
@@ -239,7 +239,7 @@
 #if (ZB_COMMISSIONING_ON_STARTUP != 0)
 #define APP_COMMISSIONING_FORMING 0U
   
-#define APP_COMMISSIONING_TOUCHLINK 0U
+#define APP_COMMISSIONING_TOUCHLINK 1U
 
 #define APP_COMMISSIONING_STEERING 1U
 

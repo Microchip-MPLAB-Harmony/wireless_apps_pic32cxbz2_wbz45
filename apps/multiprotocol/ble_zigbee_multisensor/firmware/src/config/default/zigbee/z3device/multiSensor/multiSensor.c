@@ -234,7 +234,6 @@ void APP_BackupZCLAttributes(void)
 #ifdef APP_SENSOR_TYPE_HUMIDITY_SENSOR
     hsBackupHsAttributes();
 #endif
-
 }
 /**************************************************************************//**
 \brief Restore ZCL attributes
@@ -255,10 +254,7 @@ static void APP_RestoreZCLAttributes(void)
 
 #ifdef APP_SENSOR_TYPE_HUMIDITY_SENSOR
     hsRestoreHsAttributes();
-#endif
-
-
-
+#endif    
        
 }
 #if ZB_COMMISSIONING_ON_STARTUP == 1  

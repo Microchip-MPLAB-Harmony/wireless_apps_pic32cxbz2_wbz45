@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _MACMEM_H
-#define _MACMEM_H
+#ifndef MACMEM_H
+#define MACMEM_H
 
 /******************************************************************************
                     Includes section
@@ -68,6 +68,6 @@ typedef struct
                     Prototypes section
 ******************************************************************************/
 
-#endif /*_MACMEM_H*/
+#endif /*MACMEM_H*/
 
 // eof macMem.h

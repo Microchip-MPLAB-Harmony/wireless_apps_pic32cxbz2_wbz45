@@ -51,7 +51,6 @@
 #include "crypto/crypto.h"
 #include "ble/lib/include/bt_sys.h"
 #include <string.h>
-#include "peripheral/evsys/plib_evsys.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -76,6 +75,7 @@
 *******************************************************************************/
 #include "driver/pds/include/pds.h"
 #include "driver/pds/include/pds_config.h"
+#include "peripheral/evsys/plib_evsys.h"
 #include "zigbee/z3device_configs/stackConfig.h"
 #include "zigbee/z3device_configs/zigbeeAppConfig.h"
 #include "zigbee/z3device/common/include/zgb_task.h"
