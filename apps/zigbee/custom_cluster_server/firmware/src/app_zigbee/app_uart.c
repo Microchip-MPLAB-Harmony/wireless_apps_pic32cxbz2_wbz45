@@ -53,8 +53,16 @@
 // Section: Macros
 // *****************************************************************************
 // *****************************************************************************
-#define APP_TX_BUFFER_LENGTH   250
-#define APP_RX_READ_LENGTH     1
+#define APP_TX_BUFFER_LENGTH   250U
+#define APP_RX_READ_LENGTH     1U
+
+#ifndef APP_USE_ISD_CONSOLE_TUNNELING
+#ifdef OTAU_SERVER
+#define APP_USE_ISD_CONSOLE_TUNNELING 1
+#else
+#define APP_USE_ISD_CONSOLE_TUNNELING 0
+#endif
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -94,7 +102,7 @@ typedef struct
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
-APP_UART_DATA appUart;
+static APP_UART_DATA appUart;
 
 static void APP_USARTBufferEventHandler(
     DRV_USART_BUFFER_EVENT bufferEvent,
@@ -102,6 +110,11 @@ static void APP_USARTBufferEventHandler(
     uintptr_t context);
 extern void consoleRx(uint8_t data);
 void APP_UartHandler(void);
+void APP_UartInit(void);
+bool APP_IsUartReadyToSleep(void);
+void APP_UartWriteBuffer(void* buffer, uint8_t length);
+void APP_UartWriteBufferSend(void* buffer, uint8_t length);
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Functions
@@ -161,6 +174,7 @@ static void APP_USARTBufferEventHandler(
             break;
 
         default:
+			/* TODO: default code. */
             break;
     }
 }
@@ -187,8 +201,8 @@ void APP_UartHandler(void)
     }
     if((appUart.writeInProgressStatus == false) && (appUart.txPointOfWrite != appUart.txPointOfRead))
     {
-        uint16_t poW;
-        uint16_t poR;
+        uint8_t poW;
+        uint8_t poR;
         uint8_t tempWriteCount = 0;
         poW = appUart.txPointOfWrite;
         poR = appUart.txPointOfRead;
@@ -197,7 +211,9 @@ void APP_UartHandler(void)
         {
           appUart.writeBufferToDrvUsart[tempWriteCount++] = appUart.writeBuffer[poR++];
           if (poR == APP_TX_BUFFER_LENGTH)
+		  {
             poR = 0;
+		  }
 
           appUart.txPointOfRead = poR;
         }
@@ -231,7 +247,9 @@ void APP_UartWriteBuffer(void* buffer, uint8_t length)
       old = poW;
 
       if (++poW == APP_TX_BUFFER_LENGTH)
+	  {
         poW = 0;
+	  }
 
       if (poW == poR)
       { // Buffer full.
@@ -246,13 +264,14 @@ void APP_UartWriteBuffer(void* buffer, uint8_t length)
 
 size_t fwrite(const void *ptr, size_t size, size_t nelem, FILE *stream)
 {
-    APP_UartWriteBuffer((void*)ptr, nelem);
-    APP_UartWriteBuffer("\n", 1);
+    APP_UartWriteBuffer((void*)ptr, (uint8_t)((uint32_t)nelem & (uint32_t)0x000000FF));
+	char linefeed = '\n';
+    APP_UartWriteBuffer((void *)&linefeed, 1);
     APP_UartHandler(); 
 	return nelem;
 }
 
-int printf(const char *format, ...)
+int uartprintf(const char *format, ...)
 {
     int ret;
     char s[APP_TX_BUFFER_LENGTH];
@@ -260,7 +279,7 @@ int printf(const char *format, ...)
     va_start(ap, format);
     ret = vsprintf(s, format, ap);
     va_end(ap);
-    APP_UartWriteBuffer((void*)s, ret);
+    APP_UartWriteBuffer((void*)s, (uint8_t)((uint32_t)ret & (uint32_t)0x000000FF));
     APP_UartHandler();
 	return ret;
 }

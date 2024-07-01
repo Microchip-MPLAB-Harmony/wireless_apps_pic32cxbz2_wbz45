@@ -271,6 +271,19 @@ void appDeviceTaskHandler(void)
 static void customFindingBindingFinishedForACluster(Endpoint_t ResponentEp, ClusterId_t clusterId)
 {
 
+  ZCL_Cluster_t *serverCluster;
+  switch(clusterId)
+  {
+
+
+
+
+    default:
+       ZCL_StartReporting();
+      break;
+
+  }
+
 }
 
 #if (ZB_COMMISSIONING_ON_STARTUP == 1)

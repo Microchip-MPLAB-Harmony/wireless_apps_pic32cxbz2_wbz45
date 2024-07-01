@@ -54,10 +54,11 @@
 #include <zllplatform/ZLL/N_LinkTarget/include/N_LinkTarget.h>
 #include <configserver/include/private/csSIB.h>
 #include <z3device/common/include/z3Device.h>
+#include <nwk/include/nwk.h>
 #include <z3device/stack_interface/nwk/include/nwk_api.h>
 #include <z3device/stack_interface/bdb/include/bdb_api.h>
 
-#define N_Connection_AssociateDiscovery N_Connection_AssociateDiscovery_Impl
+#include <zllplatform/ZLL/N_DeviceInfo/include/N_DeviceInfo.h>
 #include <zllplatform/ZLL/N_Connection/include/N_Connection.h>
 #if APP_ZGP_DEVICE_TYPE >= APP_ZGP_DEVICE_TYPE_PROXY_BASIC
 #include <zgp/GPInfrastructure/highZgp/include/zgpInfraDevice.h>
@@ -81,13 +82,6 @@
 #ifdef OTAU_CLIENT
 #include <zcl/include/zclOtauClient.h>
 #endif
-/******************************************************************************
-                 External variables section
-******************************************************************************/
-extern DescModeManagerMem_t descModeMem;
-extern const ConsoleCommand_t helpCmds[];
-extern const ConsoleCommand_t commissioningHelpCmds[];
-extern const ConsoleCommand_t zclHelpCmds[];
 
 /******************************************************************************
                     Prototypes section
@@ -116,6 +110,7 @@ static void processUnBindReqCmd(const ScanValue_t *args);
 static void processUnBindReqCmdWithSrcAddrDestEndpoint(const ScanValue_t *args);
 #if BDB_TOUCHLINK_SUPPORT == 1 
 static void processSendBeaconReqCmd(const ScanValue_t *args);
+static void assocDiscoveryConf(NWK_NetworkDiscoveryConf_t *conf);
 #endif
 #ifdef OTAU_SERVER
 static void processSetAbortUpgradeEndReq(const ScanValue_t *args);
@@ -154,7 +149,8 @@ void processSetImageKey (const ScanValue_t *args);
 
 #endif
 extern SIB_t csSIB;
-
+void fbTimerFired(void);
+void aTimerFired(void);
 /******************************************************************************
                     Local variables section
 ******************************************************************************/
@@ -258,6 +254,23 @@ BDB_SetTargetType_t appSetTargetType;
   bool doFindAndBind = false;
 #endif
 ScanValue_t localVar;
+
+#if BDB_TOUCHLINK_SUPPORT == 1
+typedef struct _N_Cmi_NwkDiscovery_t
+{
+  NWK_NetworkDiscoveryReq_t request;
+
+} N_Cmi_NwkDiscovery_t;
+
+static N_Cmi_NwkDiscovery_t nwkDiscovery =
+{
+  .request =
+  {
+    .NWK_NetworkDiscoveryConf = assocDiscoveryConf,
+  },
+
+};
+#endif
 /******************************************************************************
                         Definitions section
 ******************************************************************************/
@@ -265,12 +278,10 @@ ScanValue_t localVar;
 /******************************************************************************
                         external variables section
 ******************************************************************************/
-extern bool fbRole;
-extern uint8_t srcEp;
+
 #ifdef OTAU_SERVER
 extern bool abortUpgradeEndRequest;
 #endif
-extern BDB_CommissioningMode_t autoCommissionsEnableMask;
 /******************************************************************************
                     Implementation section
 ******************************************************************************/
@@ -297,11 +308,11 @@ void processHelpCmd(const ScanValue_t *args)
 {
   if (NULL == cmdForHelpCmd)
   {
-    appSnprintf("Commands: \r\n");
+    (void)appSnprintf("Commands: \r\n");
     if (ZCL_COMMANDS_IN_CONSOLE==1 || COMMISSIONING_COMMANDS_IN_CONSOLE==1 || ZDO_COMMANDS_IN_CONSOLE==1)
     {
       cmdForHelpCmd = (ConsoleCommand_t *)helpCmds+1;
-      HAL_StartAppTimer(&helpCmdHandlingTimer);
+      (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
     }
   }
   (void)args;
@@ -316,10 +327,10 @@ void processZdoHelpCmd(const ScanValue_t *args)
 {
   if (NULL == cmdForHelpCmd)
   {
-    appSnprintf("Commands: \r\n");
+    (void)appSnprintf("Commands: \r\n");
     cmdForHelpCmd = (ConsoleCommand_t *)zdoHelpCmds;
 
-    HAL_StartAppTimer(&helpCmdHandlingTimer);
+    (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
   }
   (void)args;
 }
@@ -333,10 +344,10 @@ void processCommissioningHelpCmd(const ScanValue_t *args)
 {
   if (NULL == cmdForHelpCmd)
   {
-    appSnprintf("Commands: \r\n");
+    (void)appSnprintf("Commands: \r\n");
     cmdForHelpCmd = (ConsoleCommand_t *)commissioningHelpCmds;
 
-    HAL_StartAppTimer(&helpCmdHandlingTimer);
+    (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
   }
   (void)args;
 }
@@ -350,10 +361,10 @@ void processZclHelpCmd(const ScanValue_t *args)
 {
   if (NULL == cmdForHelpCmd)
   {
-    appSnprintf("Commands: \r\n");
+    (void)appSnprintf("Commands: \r\n");
     cmdForHelpCmd = (ConsoleCommand_t *)zclHelpCmds;
 
-    HAL_StartAppTimer(&helpCmdHandlingTimer);
+    (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
   }
   (void)args;
 }
@@ -365,14 +376,16 @@ void processZclHelpCmd(const ScanValue_t *args)
 ******************************************************************************/
 void helpCmdHandlingTimerFired(void)
 {
-  appSnprintf("%s\r\n", cmdForHelpCmd->name);
+  (void)appSnprintf("%s\r\n", cmdForHelpCmd->name);
   cmdForHelpCmd++;
-  if (cmdForHelpCmd->name)
+  if (cmdForHelpCmd->name != NULL)
   {
-    HAL_StartAppTimer(&helpCmdHandlingTimer);
+    (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
   }
   else
+  {
     cmdForHelpCmd = NULL;
+  }
 }
 
 /**************************************************************************//**
@@ -380,7 +393,7 @@ void helpCmdHandlingTimerFired(void)
 ******************************************************************************/
 void consoleTx(char chr)
 {
-  appSnprintf(&chr);
+  (void)appSnprintf(&chr);
 }
 
 /**************************************************************************//**
@@ -390,7 +403,7 @@ void consoleTx(char chr)
 ******************************************************************************/
 void consoleTxStr(const char *str)
 {
-  appSnprintf(str);
+  (void)appSnprintf(str);
 }
 
 /**************************************************************************//**
@@ -402,14 +415,20 @@ void consoleTxStr(const char *str)
 ******************************************************************************/
 APS_AddrMode_t determineAddressMode(const ScanValue_t *arg)
 {
-  if (!memcmp("-g", arg->str, 2))
+  if (0 == strncmp("-g", arg->str, 2))
+  {
     return APS_GROUP_ADDRESS;
+  }
 
-  if (!memcmp("-b", arg->str, 2))
+  if (0 == strncmp("-b", arg->str, 2))
+  {
     return APS_NO_ADDRESS;
+  }
 
-  if (!memcmp("-e", arg->str, 2))
+  if (0 == strncmp("-e", arg->str, 2))
+  {
     return APS_EXT_ADDRESS;
+  }
 
   return APS_SHORT_ADDRESS;
 }
@@ -422,7 +441,7 @@ APS_AddrMode_t determineAddressMode(const ScanValue_t *arg)
 ******************************************************************************/
 void processSetAllowStealCmd(const ScanValue_t *args)
 {
-  N_LinkTarget_AllowStealing(args[0].uint8);
+  N_LinkTarget_AllowStealing((args[0].uint8 > 0U));
 }
 #endif //BDB_COMMANDS_IN_CONSOLE == 1
 
@@ -484,7 +503,7 @@ static void processMacBanNodeCmd(const ScanValue_t *args)
   extAddr |= args[1].uint32;
 
   MAC_BanNode(args[2].uint16, extAddr, args[3].uint8, args[4].int8);
-  appSnprintf("Done\r\n");
+  (void)appSnprintf("Done\r\n");
 }
 
 /**************************************************************************//**
@@ -496,7 +515,7 @@ static void processMacResetBanTableCmd(const ScanValue_t *args)
 {
 
   MAC_ResetBanTable();
-  appSnprintf("Done\r\n");
+  (void)appSnprintf("Done\r\n");
   (void)args;
 }
 #endif
@@ -539,9 +558,9 @@ static void processNwkAddrRequestCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void processNwkLeaveReqCmd(const ScanValue_t *args)
 {
-  ExtAddr_t extAddr = ((uint64_t)args[0].uint32 << 32);
+  ExtAddr_t extAddr = ((uint64_t)args[0].uint32 << 32); 
   extAddr |= args[1].uint32;
-  nwkLeaveCommand(extAddr, args[2].uint8, args[3].uint8);
+  nwkLeaveCommand(extAddr, (args[2].uint8 > 0U), (args[3].uint8 > 0U) );
 }
 
 /**************************************************************************//**
@@ -573,7 +592,7 @@ static void processMgmtSendLeaveReqCmd(const ScanValue_t *args)
 {
   ExtAddr_t extAddr = ((uint64_t)args[1].uint32 << 32);
   extAddr |= args[2].uint32;
-  zdpMgmtLeaveReq(args[0].uint16, extAddr, args[3].uint8, args[4].uint8);
+  zdpMgmtLeaveReq(args[0].uint16, extAddr, (args[3].uint8 > 0U) , (args[4].uint8 > 0U) );
 }
 
 /**************************************************************************//**
@@ -583,7 +602,7 @@ static void processMgmtSendLeaveReqCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void zdoPermitJoiningResponse(ZDO_ZdpResp_t *resp)
 {
-  appSnprintf("setPermitJoinRsp %d\r\n", resp->respPayload.status);
+  (void)appSnprintf("setPermitJoinRsp %d\r\n", resp->respPayload.status);
 }
 
 /**************************************************************************//**
@@ -608,16 +627,16 @@ static void processMgmtSendPermitJoinCmd(const ScanValue_t *args)
 }
 
 #if BDB_TOUCHLINK_SUPPORT == 1
+
 /**************************************************************************//**
-\brief assocDiscoveryDone Callback
+\brief assocDiscovery Confirmation
 
-\param[in] result - result of action
+\param[in] conf - Discovery confirmation
 ******************************************************************************/
-static void assocDiscoveryDone(N_Connection_Result_t result)
+static void assocDiscoveryConf(NWK_NetworkDiscoveryConf_t *conf)
 {
-  (void)result;
+(void)conf;
 }
-
 /**************************************************************************//**
 \brief Processes Send Beacon Request command
 
@@ -625,8 +644,9 @@ static void assocDiscoveryDone(N_Connection_Result_t result)
 ******************************************************************************/
 static void processSendBeaconReqCmd(const ScanValue_t *args)
 {
-   N_Beacon_t beacon;
-   N_Connection_AssociateDiscovery(&beacon, N_Connection_AssociateDiscoveryMode_AnyPan, NULL, assocDiscoveryDone);
+   nwkDiscovery.request.scanDuration = (uint8_t)N_Beacon_Order_60ms;  
+   nwkDiscovery.request.scanChannels = N_DeviceInfo_GetPrimaryChannelMask();
+   NWK_NetworkDiscoveryReq(&nwkDiscovery.request);
 
  (void) args;
 }
@@ -640,7 +660,7 @@ static void processSendBeaconReqCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void zdoupdateResponse(ZDO_ZdpResp_t *resp)
 {
-  appSnprintf( "Update Done %d\r\n", resp->respPayload.status);
+  (void)appSnprintf( "Update Done %d\r\n", resp->respPayload.status);
 }
 
 /**************************************************************************//**
@@ -661,7 +681,7 @@ static void processSendNwkUpdateReqCmd(const ScanValue_t *args)
   mgmtupdatereq->scanChannels = 1UL << args[0].uint8;
   mgmtupdatereq->scanDuration = args[1].uint8;
   mgmtupdatereq->nwkManagerAddr = 0;
-  mgmtupdatereq->nwkUpdateId = NWK_GetUpdateId() + 1;
+  mgmtupdatereq->nwkUpdateId = NWK_GetUpdateId() + 1U;
   mgmtupdatereq->scanCount = 0;
 
   ZDO_ZdpReq(&descModeMem.zdpReq);
@@ -724,7 +744,7 @@ static void processSetAbortUpgradeEndReq(const ScanValue_t *args)
 ******************************************************************************/
 void processSetTLRole(const ScanValue_t *args)
 {
-  BDB_SetToulinkRole(args[0].uint8);
+  BDB_SetToulinkRole( (args[0].uint8 > 0U));
   (void)args;
 }
 #endif
@@ -737,7 +757,7 @@ void processSetTLRole(const ScanValue_t *args)
 ******************************************************************************/
 void processSetAllowTLResetToFNCmd(const ScanValue_t *args)
 {
-  BDB_SetAllowTLResetToFN(args[0].uint8);
+  BDB_SetAllowTLResetToFN((args[0].uint8 > 0U));
 }
 #endif
 
@@ -793,7 +813,7 @@ void processsetGlobalKeyCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void zdoPermitJoinResponse(ZDO_ZdpResp_t *resp)
 {
-  appSnprintf("setPermitJoinRsp %d\r\n", resp->respPayload.status);
+  (void)appSnprintf("setPermitJoinRsp %d\r\n", resp->respPayload.status);
 }
 
 /**************************************************************************//**
@@ -823,7 +843,7 @@ void processSetPermitJoinCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void Callback_Commissioning(BDB_InvokeCommissioningConf_t *conf)
 {
-  appSnprintf("CommissioningStatus = %d\r\n", conf->status);
+  (void)appSnprintf("CommissioningStatus = %d\r\n", conf->status);
 }
 
 /**************************************************************************//**
@@ -835,17 +855,27 @@ static bool checkCommModeBits(BDB_CommissioningMode_t mode)
 {
   uint8_t noOfCommModeBitSet = 0;
 
-  if(mode & 0x01)
+  if( (mode & 0x01U) > 0U)
+  {
     noOfCommModeBitSet++;
-  if(mode & 0x02)
+  }
+  if( (mode & 0x02U) > 0U)
+  {
     noOfCommModeBitSet++;
-  if(mode & 0x04)
+  }
+  if( (mode & 0x04U) > 0U)
+  {
+    noOfCommModeBitSet++; 
+  }
+  if( (mode & 0x08U) > 0U)
+  {
     noOfCommModeBitSet++;
-  if(mode & 0x08)
-    noOfCommModeBitSet++;
+  }
   
-  if(noOfCommModeBitSet > 1)
+  if(noOfCommModeBitSet > 1U)
+  {
    return true;
+  }
   
   return false;
 }
@@ -856,11 +886,11 @@ static bool checkCommModeBits(BDB_CommissioningMode_t mode)
 ******************************************************************************/
 void processInvokeCommissioningCmd(const ScanValue_t *args)
 {
-  memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
+  (void)memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
   autoCommissionsEnableMask = args[0].uint8;
   if(checkCommModeBits(autoCommissionsEnableMask))
   {
-    appSnprintf("User cannot invoke more than one commissioning at a time");
+    (void)appSnprintf("User cannot invoke more than one commissioning at a time");
     return;
   }
   AppbdbCommissioningreq.mode = determineCommissionMode();
@@ -908,7 +938,7 @@ void processInvokeCommissioningCmd(const ScanValue_t *args)
 
 static void Callback_FormAndSteerFB(BDB_InvokeCommissioningConf_t *conf)
 {
-  appSnprintf("CommissioningStatus = %d\r\n", conf->status);
+  (void)appSnprintf("CommissioningStatus = %d\r\n", conf->status);
 }
 
 /**************************************************************************//**
@@ -916,13 +946,13 @@ static void Callback_FormAndSteerFB(BDB_InvokeCommissioningConf_t *conf)
 ******************************************************************************/
 void fbTimerFired(void)
 {
-  if(autoCommissionsEnableMask == 0x08)
+  if(autoCommissionsEnableMask == 0x08U)
   {
-    memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
+    (void)memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
     AppbdbCommissioningreq.mode = determineCommissionMode();
     AppbdbCommissioningreq.initiatorReq = NULL;
     const AppBindReq_t *appBindReqLocal = deviceBindReqs[0];
-#if BDB_FINDINGBINDING_INITIATOR_TARGET_PARALLEL_EXECUTION != 1
+
 if((APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COMBINED_INTERFACE) || (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COLOR_SCENE_CONTROLLER))
 {
   AppbdbCommissioningreq.initiatorReq = &AppinitiatorReq;
@@ -935,7 +965,7 @@ if((APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COMBINED_INTERFACE) || (APP_Z3_DEVICE_
   AppbdbCommissioningreq.initiatorReq->serverClustersList=appBindReqLocal->remoteClients;
   AppbdbCommissioningreq.initiatorReq->callback = appBindReqLocal->callback;
 }
-#endif
+
   }
     AppbdbCommissioningreq.BDB_InvokeCommissioningConf = Callback_FormAndSteerFB;
     BDB_InvokeCommissioning(&AppbdbCommissioningreq);
@@ -948,14 +978,16 @@ if((APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_COMBINED_INTERFACE) || (APP_Z3_DEVICE_
 ******************************************************************************/
 static void Callback_FormAndSteer1(BDB_InvokeCommissioningConf_t *conf)
 {
-  if(autoCommissionsEnableMask == 0x00)
-    appSnprintf("CommissioningStatus = %d\r\n", conf->status);
+  if(autoCommissionsEnableMask == 0x00U)
+  {
+    (void)appSnprintf("CommissioningStatus = %d\r\n", conf->status);
+  }
   else
   {
      fbTimer.interval = 5;
      fbTimer.mode     = TIMER_ONE_SHOT_MODE;
      fbTimer.callback = fbTimerFired;
-     HAL_StartAppTimer(&fbTimer);
+     (void)HAL_StartAppTimer(&fbTimer);
   }
 
 }
@@ -971,7 +1003,7 @@ void aTimerFired(void)
     localVar.uint8 = 2;
   }
   autoCommissionsEnableMask = localVar.uint8;
-  memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
+  (void)memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
   AppbdbCommissioningreq.mode = determineCommissionMode();
   AppbdbCommissioningreq.BDB_InvokeCommissioningConf = Callback_FormAndSteer1;
   BDB_InvokeCommissioning(&AppbdbCommissioningreq);
@@ -987,7 +1019,7 @@ static void Callback_FormAndSteer(BDB_InvokeCommissioningConf_t *conf)
   aTimer.interval = 5;
   aTimer.mode     = TIMER_ONE_SHOT_MODE;
   aTimer.callback = aTimerFired;
-  HAL_StartAppTimer(&aTimer);
+  (void)HAL_StartAppTimer(&aTimer);
 }
 
 /**************************************************************************//**
@@ -1000,7 +1032,7 @@ void processFormAndSteerCmd(const ScanValue_t *args)
   doFindAndBind = false;
   localVar.uint8 = 4;
   autoCommissionsEnableMask = localVar.uint8;
-  memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
+  (void)memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
   AppbdbCommissioningreq.mode = determineCommissionMode();
   AppbdbCommissioningreq.initiatorReq = NULL;
   AppbdbCommissioningreq.BDB_InvokeCommissioningConf = Callback_FormAndSteer;
@@ -1017,7 +1049,7 @@ void processFormSteerAndFBCmd(const ScanValue_t *args)
   doFindAndBind = true;
   localVar.uint8 = 4;
   autoCommissionsEnableMask = localVar.uint8;
-  memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
+  (void)memset(&AppbdbCommissioningreq,0,sizeof(BDB_InvokeCommissioningReq_t));
   AppbdbCommissioningreq.mode = determineCommissionMode();
   AppbdbCommissioningreq.BDB_InvokeCommissioningConf = Callback_FormAndSteer;
   BDB_InvokeCommissioning(&AppbdbCommissioningreq);
@@ -1030,17 +1062,14 @@ void processFormSteerAndFBCmd(const ScanValue_t *args)
 ******************************************************************************/
 void processGetExtAddrCmd(const ScanValue_t *args)
 {
-  ExtAddr_t ieeeAddr;
-  uint8_t* extAddr;
-  memcpy(&ieeeAddr, MAC_GetExtAddr(), sizeof(ExtAddr_t));
-  extAddr = (uint8_t*)&ieeeAddr;
+  ExtAddr_t ieeeAddr;    
+  (void)memcpy(&ieeeAddr, MAC_GetExtAddr(), sizeof(ExtAddr_t));
+  
+  (void)appSnprintf("%08x", (uint32_t)( (ieeeAddr & 0xffffffff00000000)>>32 ) );
+  (void)appSnprintf("%08x", (uint32_t)(ieeeAddr & 0x00000000ffffffff) );
 
-  appSnprintf("%08x", *((uint32_t*)&extAddr[4]));
-  appSnprintf("%08x", *((uint32_t*)&extAddr[0]));
-
-  appSnprintf("\r\n");
-  (void)args; /*Do nothing, just to avoid compiler warning*/
-  (void)extAddr; /*Do nothing, just to avoid compiler warning*/
+  (void)appSnprintf("\r\n");
+  (void)args; /*Do nothing, just to avoid compiler warning*/  
 }
 
 /**************************************************************************//**
@@ -1051,7 +1080,7 @@ void processGetExtAddrCmd(const ScanValue_t *args)
 void processGetNetworkAddressCmd(const ScanValue_t *args)
 {
   (void)args;
-  appSnprintf("%04x\r\n", NWK_GetShortAddr());
+  (void)appSnprintf("%04x\r\n", NWK_GetShortAddr());
 }
 
 /**************************************************************************//**
@@ -1063,7 +1092,7 @@ void processGetChannelCmd(const ScanValue_t *args)
 {
   uint8_t currentChannel;
   CS_ReadParameter(CS_RF_CURRENT_CHANNEL_ID, &currentChannel); 
-  appSnprintf("%03d\r\n", currentChannel);
+  (void)appSnprintf("%03d\r\n", currentChannel);
   (void)args;
 }
 
@@ -1159,12 +1188,12 @@ void processSetCCAModeAndThresholdCmd(const ScanValue_t *args)
     
   phySetReq.attr.phyPib.ccaMode = (PHY_CcaMode_t)args[0].uint8;
   phySetReq.id = (PHY_SetPibId_t)PHY_PIB_CCA_MODE_ID;
-  PHY_SetReq(&phySetReq);
+  (void)PHY_SetReq(&phySetReq);
 
   phySetReq.attr.macPib.ccaEdThres = (uint8_t)args[1].uint8;
   phySetReq.id = (PHY_SetPibId_t)MAC_PIB_CCA_ED_THRES;
-  PHY_SetReq(&phySetReq);
-  appSnprintf("Done\r\n");
+  (void)PHY_SetReq(&phySetReq);
+  (void)appSnprintf("Done\r\n");
 
 }
 
@@ -1178,11 +1207,11 @@ void processGetCCAModeAndThresholdCmd(const ScanValue_t *args)
   
   regVal = phyReadRegister(PHY_CC_CCA_REG);
    
-  appSnprintf("CCA Mode = %d\r\n", (regVal & 0x60)>>5);
+  (void)appSnprintf("CCA Mode = %d\r\n", (regVal & 0x60U)>>5U);
   
   regVal = phyReadRegister(CCA_THRESH_REG);
 
-  appSnprintf("ED threshold = %d\r\n", regVal & 0xf);
+  (void)appSnprintf("ED threshold = %d\r\n", regVal & 0xfU);
 }
 
 #endif //#if COMMISSIONING_COMMANDS_IN_CONSOLE == 1
@@ -1200,16 +1229,17 @@ void processSetOtauQueryInterval(const ScanValue_t *args)
 }
 void processGetFirmwareVersion(const ScanValue_t *args)
 {
-  appSnprintf("Firmware Version 0x%04x\r\n",csSIB.csOtauFileVersion);
+  (void)appSnprintf("Firmware Version 0x%04x\r\n",csSIB.csOtauFileVersion);
 }
 
 void processGetImageUpgradeStatus(const ScanValue_t *args)
 {
-  appSnprintf("Image Ugrade Status %d\r\n",otauClientAttributes.imageUpgradeStatus.value);
+  (void)appSnprintf("Image Ugrade Status %d\r\n",otauClientAttributes.imageUpgradeStatus.value);
 }
 void processSetMinBlockPeriod(const ScanValue_t *args)
 {
   otauClientAttributes.minimumBlockPeriod.value = args[0].uint16;
+  PDS_Store(OTAU_MIN_BLOCK_PERIOD_ATTR_MEM_ID);
 }
 
 #ifdef OTAU_PRIVILEGED_CONSOLE_CMDS
@@ -1361,8 +1391,15 @@ void processDisableDefaultResponseBitCmd(const ScanValue_t *args)
   switch (args[0].uint8)
   {
     case ZCL_FRAME_CONTROL_DISABLE_DEFAULT_RESPONSE:
+      setZclDefaultResponseBit(args[0].uint8);
+      break;
+
     case ZCL_FRAME_CONTROL_ENABLE_DEFAULT_RESPONSE:
       setZclDefaultResponseBit(args[0].uint8);
+      break;
+
+    default:
+      ;// TODO
       break;
   }
 }
@@ -1376,9 +1413,13 @@ void processDisableDefaultResponseBitCmd(const ScanValue_t *args)
 static void setTypeDone(BDB_LinkTarget_Status_t status)
 {
   if(status == BDB_LinkTarget_Status_Ok)
-    appSnprintf("Done\r\n");
+  {
+    (void)appSnprintf("Done\r\n");
+  }
   else
-    appSnprintf("NotDone\r\n");
+  {
+    (void)appSnprintf("NotDone\r\n");
+  }
 }
 /**************************************************************************//**
 \brief Processes Set Target Type command
@@ -1387,7 +1428,7 @@ static void setTypeDone(BDB_LinkTarget_Status_t status)
 ******************************************************************************/
 void processSetTargetTypeCmd(const ScanValue_t *args)
 {
-  memset(&appSetTargetType,0,sizeof(BDB_SetTargetType_t));
+  (void)memset(&appSetTargetType,0,sizeof(BDB_SetTargetType_t));
   appSetTargetType.targetType = args[0].uint8;
   appSetTargetType.BDB_SetTargetTypeConf = setTypeDone;
 
@@ -1402,7 +1443,7 @@ void processSetTargetTypeCmd(const ScanValue_t *args)
 ******************************************************************************/
 static void ResetTargetCallback(ResetTargetStatus_t status)
 {
-  appSnprintf("Status = %d\r\n", status);
+  (void)appSnprintf("Status = %d\r\n", status);
 }
 
 /**************************************************************************//**
@@ -1430,9 +1471,9 @@ void processOtauHelpCmd(const ScanValue_t *args)
 {
   if (NULL == cmdForHelpCmd)
   {
-    appSnprintf("Commands: \r\n");
+    (void)appSnprintf("Commands: \r\n");
     cmdForHelpCmd = (ConsoleCommand_t *)otauHelpCmds;
-    HAL_StartAppTimer(&helpCmdHandlingTimer);
+    (void)HAL_StartAppTimer(&helpCmdHandlingTimer);
   }
   (void)args;
 }
