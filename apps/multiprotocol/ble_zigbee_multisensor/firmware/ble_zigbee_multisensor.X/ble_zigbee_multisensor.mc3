@@ -7121,6 +7121,18 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ZIGBEE_MULTI_SENSOR" name="DEVICE_DEEP_SLEEP_ENABLED"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ZIGBEE_MULTI_SENSOR&gt;
+  &lt;ZIGBEE_MULTI_SENSOR dnOrder=&quot;0&quot; id=&quot;DEVICE_DEEP_SLEEP_ENABLED&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ZIGBEE_MULTI_SENSOR&quot; value=&quot;true&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/ZIGBEE_MULTI_SENSOR&gt;
+&lt;/ZIGBEE_MULTI_SENSOR&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ZIGBEE_MULTI_SENSOR" name="DEVICE_NAME"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ZIGBEE_MULTI_SENSOR&gt;
   &lt;ZIGBEE_MULTI_SENSOR dnOrder=&quot;0&quot; id=&quot;DEVICE_NAME&quot;&gt;
@@ -15006,6 +15018,32 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="DEVICE_DEEP_SLEEP_C"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;DEVICE_DEEP_SLEEP_C&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="DEVICE_DEEP_SLEEP_H"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;DEVICE_DEEP_SLEEP_H&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="DEVICE_SLEEP_C"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;DEVICE_SLEEP_C&quot;&gt;
@@ -15046,7 +15084,14 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="ENABLE_DEEP_SLEEP"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;ENABLE_DEEP_SLEEP&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;readOnly&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/pic32cx_bz2_devsupport&gt;
 &lt;/pic32cx_bz2_devsupport&gt;
 </value>
@@ -15119,6 +15164,28 @@
   &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;WSS_ENABLE_MODE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;WSS_ENABLE_BLE_ZB&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="ZB_DEEP_SLEEP_SUPPORTED"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;ZB_DEEP_SLEEP_SUPPORTED&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/pic32cx_bz2_devsupport&gt;
+&lt;/pic32cx_bz2_devsupport&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="pic32cx_bz2_devsupport" name="ZB_SLEEP_SUPPORTED"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;pic32cx_bz2_devsupport&gt;
+  &lt;pic32cx_bz2_devsupport dnOrder=&quot;0&quot; id=&quot;ZB_SLEEP_SUPPORTED&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;pic32cx_bz2_devsupport&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/pic32cx_bz2_devsupport&gt;
 &lt;/pic32cx_bz2_devsupport&gt;
@@ -16432,6 +16499,19 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;rtc&gt;
   &lt;rtc dnOrder=&quot;0&quot; id=&quot;RTC_MODULE_SELECTION&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/rtc&gt;
+&lt;/rtc&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="rtc" name="RTC_SYS_INIT"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;rtc&gt;
+  &lt;rtc dnOrder=&quot;0&quot; id=&quot;RTC_SYS_INIT&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;false&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
   &lt;/rtc&gt;
 &lt;/rtc&gt;
 </value>
@@ -19204,10 +19284,6 @@
          <hash>fd84fad800b1a9a0e8e27a0a5771de6235ee83ab5c53b8c722c80ecb503cfb5f</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\sys_int_mapping.h</file>
-         <hash>5abf8528dabc1b17378f5d137870597037214fddf33880fa40e9263352da3008</hash>
-      </entry>
-      <entry>
          <file>..\src\app_zigbee\app_zigbee.c</file>
          <hash>a86d2777107a03cb82d694dee8382fc770f537c4c79e8b9336073bae36953e77</hash>
       </entry>
@@ -19504,10 +19580,6 @@
          <hash>dae20c2a4b465e3ddac4804ef6cd3b641efe54736a9c4fae7b149d5e7b0b71f5</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\system.h</file>
-         <hash>2b75f8e370e5cb2c54f70da7351ee149f0d5a7673e700f39b373099716b31b55</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nwkCommon.h</file>
          <hash>636748cf4778f47712d81d1511c31ee2f99dac39ba4f8a750e1bb99459a17ad0</hash>
       </entry>
@@ -19548,10 +19620,6 @@
          <hash>6da2738e5896a38994e22aa38ac576dcb5c832aeb41c06deacf914d3fbefe994</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\system_common.h</file>
-         <hash>c9f34bd226f8efab12f5766e77f8355996cd0430b50e0f6ee30258664c494984</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionRouter_Bindings.h</file>
          <hash>1e2812252bf4ad2d96bcd231d28332569e96ce839be817de2105b7cf307a8dde</hash>
       </entry>
@@ -19562,10 +19630,6 @@
       <entry>
          <file>..\src\config\default\driver\device_support\pic32cx_bz2_device_support.a</file>
          <hash>c67200e02b5265ab7c52cdc5b2cde7fa965789cd30969b5520e2e7eb26b445f0</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\system\debug\sys_debug.h</file>
-         <hash>4162d9e1fab93b8b33f6c8a24726f5dc287ea05c31e3ab984c3c920c725d0882</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -19630,10 +19694,6 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\memory.h</file>
          <hash>6c136e5b4ef349437256727bcc2b02432a8b2b4fb2eb242c4daa99503cedb947</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\system\system_module.h</file>
-         <hash>96c74368801b0a7aaa25aec3ec2cb0d483250385f103ffc1ff64089b4ca2c6d9</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nlmeLeave.h</file>
@@ -19852,10 +19912,6 @@
          <hash>ec9ba6d8690f41be428a6004d5c6434facf8c7e5fb0ab6a18a8ae30df7f17c90</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\src\sys_int.c</file>
-         <hash>4281667cc2b84c9e4be1f0dfb3f7d42b77d36c5dcf6513d29ff40262f746cfc6</hash>
-      </entry>
-      <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_int.c</file>
          <hash>7249bf8061bd51c292951fe134ec087165dcee153847e09d619e252800494308</hash>
       </entry>
@@ -19986,14 +20042,6 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\eccsi.c</file>
          <hash>af139ad54ce90a0fb8daeff553ec9ce104bdeab70e17931c9589bfde40decf2e</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\driver\driver.h</file>
-         <hash>042fdd289460dbddb8e805850af7e3ac9aea95468e37414959781ebc5b2f454d</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\driver\driver_common.h</file>
-         <hash>5217965f6720b4fdf717e99ce9df4f2c9fbd82bbbc9655847166d1eefa806fee</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ge_448.h</file>
@@ -20900,10 +20948,6 @@
          <hash>995991862870ca8f244a0b788532607b458ce51164b1b3b71479eca292a95ca2</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\sys_int.h</file>
-         <hash>dc104ae181fd5309e1bb42896246644fae95915a8e639b23ecfccc8840850274</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionEnddevice_Init.h</file>
          <hash>83c4a770e7557cd38d4de0c7789e3cdd178227e4bf49aabc48c7268a381c051a</hash>
       </entry>
@@ -20993,7 +21037,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>1d86bbe6edb62186fc105cc96d907989691f0ca825427e69a1f92d14f3541627</hash>
+         <hash>309efd1d0afc81cdc418121628bf3ff6004be72eca63e9a6abba9df8603fda8a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\chacha20_poly1305.h</file>
@@ -21781,7 +21825,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>72cffb193f5b76e81d9bf7edd85231cd03742724542de3687c93c2710e7f1156</hash>
+         <hash>fdc434ffc631ceb994ead1fc2b7a4d151f71fc848e9d0d57d1911caf7762a86b</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>

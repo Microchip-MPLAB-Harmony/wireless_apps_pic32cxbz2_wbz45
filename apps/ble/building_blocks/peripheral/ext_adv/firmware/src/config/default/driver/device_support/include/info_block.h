@@ -10,8 +10,12 @@ extern "C" {
 // *****************************************************************************
 /**
 *@brief This routine will get Bluetooth Device Address from IB. If there exists
-*       BDADDR IB, then it will return the BDADDR stored in IB. Otherwise, it
-*       returns FAILS (1)
+*       BDADDR IB, then it returns BDADDR stored in IB by p_Addr pointer and returns true (1).
+        Otherwise, it returns false (0).
+
+        Note: this API is to provide Bluetooth Device Address from IB and used as initial value
+        of Bluetooth Device Address in BLE stack.
+        BLE application should use BLE_GAP_GetDeviceAddr API to get current Bluetooth Device Address.
 *
 *@param[out] uint8_t *  "p_Addr" - the pointer to the memory stores BDADDR
 *
@@ -23,8 +27,8 @@ bool IB_GetBdAddr(uint8_t * p_bdAddr);
 // *****************************************************************************
 /**
 *@brief This routine will get ZB MAC Address from IB. If there exists
-*       MAC_ADDR IB, then it will return the MAC_ADDR stored in IB. Otherwise, it
-*       returns FAILS (1))
+*       MAC_ADDR IB, then it returns the MAC_ADDR stored in IB by p_Addr pointer and returns true (1).
+        Otherwise, it returns false (0).
 *
 *@param[out] uint8_t *  "p_Addr" - the pointer to the memory stores MAC_ADDR
 *
@@ -78,19 +82,6 @@ bool IB_GetRssiOffset(int8_t * p_rssiOffset);
 *@retval A boolean value, True means vaild antenna gain IB
 */
 bool IB_GetAntennaGain(int8_t * p_antennaGain);
-
-// *****************************************************************************
-/**
-*@brief This routine will load all settings from the Info Block into the appropriate
-*       sub-systems for proper chip operation.
-*       NOTE: This is done automatically by SYS_Load_Cal(uint8_t wssEnable)
-*
-*@param None
-*
-*@retval uint8_t      0 is success
-*                     1 is fail
-*/
-uint8_t InformationBlockLoad(uint8_t checkIb, uint8_t * checkIbExist, wssEnable_t wssEnable);
 
 #ifdef __cplusplus
 }

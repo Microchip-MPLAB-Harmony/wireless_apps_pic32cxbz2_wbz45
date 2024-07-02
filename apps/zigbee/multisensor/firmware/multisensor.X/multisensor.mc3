@@ -1430,7 +1430,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;538&quot; canvasWidth=&quot;917&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;539&quot; canvasWidth=&quot;917&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;FreeRTOS&quot; x=&quot;183&quot; y=&quot;103&quot;/&gt;
@@ -1443,7 +1443,7 @@
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;lib_crypto&quot; x=&quot;598&quot; y=&quot;143&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;600&quot; y=&quot;16&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;nvm&quot; x=&quot;7&quot; y=&quot;426&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;pdsSystem&quot; x=&quot;169&quot; y=&quot;380&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;pdsSystem&quot; x=&quot;167&quot; y=&quot;381&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;9&quot; y=&quot;188&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;rtc&quot; x=&quot;206&quot; y=&quot;302&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;tc0&quot; x=&quot;780&quot; y=&quot;20&quot;/&gt;
@@ -5782,10 +5782,6 @@
          <hash>bd932ec53039ab14baced49166d8826d27cd545475d406062ee0755da916f5ab</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\cache\sys_cache.h</file>
-         <hash>b4b3a4e7434759c9bbcd3c6a0ab97558eb2a007f083a4eb76dbedcb2e2c3d86b</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\bdb\include\bdbSecurity.h</file>
          <hash>740bb38d2419b2333f95781f891a3fb1c2048439d17aaeee4020799a453c4853</hash>
       </entry>
@@ -5952,10 +5948,6 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</file>
          <hash>7e803c56d906662c895be765e27a2b9ae883e55c74863cf3862bf16971be92e4</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\system\cache\sys_cache.c</file>
-         <hash>da28c09b0da0fdd6fb7064631c15c9197c78df33fcd17d742baef909830a320e</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\fuses.h</file>
@@ -6502,10 +6494,6 @@
          <hash>fd84fad800b1a9a0e8e27a0a5771de6235ee83ab5c53b8c722c80ecb503cfb5f</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\sys_int_mapping.h</file>
-         <hash>5abf8528dabc1b17378f5d137870597037214fddf33880fa40e9263352da3008</hash>
-      </entry>
-      <entry>
          <file>..\src\app_zigbee\app_zigbee.c</file>
          <hash>a86d2777107a03cb82d694dee8382fc770f537c4c79e8b9336073bae36953e77</hash>
       </entry>
@@ -6786,10 +6774,6 @@
          <hash>dae20c2a4b465e3ddac4804ef6cd3b641efe54736a9c4fae7b149d5e7b0b71f5</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\system.h</file>
-         <hash>2b75f8e370e5cb2c54f70da7351ee149f0d5a7673e700f39b373099716b31b55</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nwkCommon.h</file>
          <hash>636748cf4778f47712d81d1511c31ee2f99dac39ba4f8a750e1bb99459a17ad0</hash>
       </entry>
@@ -6830,10 +6814,6 @@
          <hash>6da2738e5896a38994e22aa38ac576dcb5c832aeb41c06deacf914d3fbefe994</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\system_common.h</file>
-         <hash>c9f34bd226f8efab12f5766e77f8355996cd0430b50e0f6ee30258664c494984</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionRouter_Bindings.h</file>
          <hash>1e2812252bf4ad2d96bcd231d28332569e96ce839be817de2105b7cf307a8dde</hash>
       </entry>
@@ -6844,10 +6824,6 @@
       <entry>
          <file>..\src\config\default\driver\device_support\pic32cx_bz2_device_support.a</file>
          <hash>c67200e02b5265ab7c52cdc5b2cde7fa965789cd30969b5520e2e7eb26b445f0</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\system\debug\sys_debug.h</file>
-         <hash>4162d9e1fab93b8b33f6c8a24726f5dc287ea05c31e3ab984c3c920c725d0882</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -6912,10 +6888,6 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\memory.h</file>
          <hash>6c136e5b4ef349437256727bcc2b02432a8b2b4fb2eb242c4daa99503cedb947</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\system\system_module.h</file>
-         <hash>96c74368801b0a7aaa25aec3ec2cb0d483250385f103ffc1ff64089b4ca2c6d9</hash>
       </entry>
       <entry>
          <file>..\src\config\default\zigbee\lib\inc\nwk\include\nlmeLeave.h</file>
@@ -7122,10 +7094,6 @@
          <hash>ec9ba6d8690f41be428a6004d5c6434facf8c7e5fb0ab6a18a8ae30df7f17c90</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\src\sys_int.c</file>
-         <hash>4281667cc2b84c9e4be1f0dfb3f7d42b77d36c5dcf6513d29ff40262f746cfc6</hash>
-      </entry>
-      <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_int.c</file>
          <hash>7249bf8061bd51c292951fe134ec087165dcee153847e09d619e252800494308</hash>
       </entry>
@@ -7256,14 +7224,6 @@
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\eccsi.c</file>
          <hash>af139ad54ce90a0fb8daeff553ec9ce104bdeab70e17931c9589bfde40decf2e</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\driver\driver.h</file>
-         <hash>042fdd289460dbddb8e805850af7e3ac9aea95468e37414959781ebc5b2f454d</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\default\driver\driver_common.h</file>
-         <hash>5217965f6720b4fdf717e99ce9df4f2c9fbd82bbbc9655847166d1eefa806fee</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ge_448.h</file>
@@ -8106,10 +8066,6 @@
          <hash>995991862870ca8f244a0b788532607b458ce51164b1b3b71479eca292a95ca2</hash>
       </entry>
       <entry>
-         <file>..\src\config\default\system\int\sys_int.h</file>
-         <hash>dc104ae181fd5309e1bb42896246644fae95915a8e639b23ecfccc8840850274</hash>
-      </entry>
-      <entry>
          <file>..\src\config\default\zigbee\lib\inc\zllplatform\ZLL\N_Connection\include\N_ConnectionEnddevice_Init.h</file>
          <hash>83c4a770e7557cd38d4de0c7789e3cdd178227e4bf49aabc48c7268a381c051a</hash>
       </entry>
@@ -8195,7 +8151,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>ed1f36dd974a8782dbfbbf276031b6be0860b75ddccf22e61b361731c4193710</hash>
+         <hash>0bf568b0c282caac6f8c4321adec1d9be2e68a72038066e1181975396af35409</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\chacha20_poly1305.h</file>
@@ -8947,7 +8903,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>a0ec8628287284d4eb6f73f1a554947ea6fdb2937f7d988d0a135472d28a4896</hash>
+         <hash>5d1d000552ae8a4c1ede94e7e7a66328e436de2cae643f5bdb0714c7ee9d960f</hash>
       </entry>
       <entry>
          <file>..\src\packs\WBZ451_DFP\instance\tc3.h</file>

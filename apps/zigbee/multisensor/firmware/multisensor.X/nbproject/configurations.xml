@@ -36,8 +36,6 @@
                 <itemPath>../src/config/default/driver/pds/include/pds_config.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <itemPath>../src/config/default/driver/driver.h</itemPath>
-            <itemPath>../src/config/default/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal.h</itemPath>
@@ -78,21 +76,6 @@
             <logicalFolder name="trng" displayName="trng" projectFiles="true">
               <itemPath>../src/config/default/peripheral/trng/plib_trng.h</itemPath>
             </logicalFolder>
-          </logicalFolder>
-          <logicalFolder name="system" displayName="system" projectFiles="true">
-            <logicalFolder name="cache" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/default/system/cache/sys_cache.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="debug" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/default/system/int/sys_int_mapping.h</itemPath>
-              <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
-            </logicalFolder>
-            <itemPath>../src/config/default/system/system_module.h</itemPath>
-            <itemPath>../src/config/default/system/system_common.h</itemPath>
-            <itemPath>../src/config/default/system/system.h</itemPath>
           </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="lib" displayName="lib" projectFiles="true">
@@ -1154,14 +1137,6 @@
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="system" displayName="system" projectFiles="true">
-            <logicalFolder name="cache" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/default/system/cache/sys_cache.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
-            </logicalFolder>
-          </logicalFolder>
           <logicalFolder name="zigbee" displayName="zigbee" projectFiles="true">
             <logicalFolder name="systemresource"
                            displayName="systemresource"
@@ -1654,7 +1629,6 @@
       </C32Global>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UpdateOptions"
@@ -1668,7 +1642,6 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
@@ -1703,7 +1676,6 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
-        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
@@ -1712,7 +1684,6 @@
       </Tool>
       <pkob4hybrid>
         <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UpdateOptions"
@@ -1726,7 +1697,6 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
@@ -1759,7 +1729,6 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
-        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
