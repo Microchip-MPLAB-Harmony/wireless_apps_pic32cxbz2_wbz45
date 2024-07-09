@@ -1,65 +1,65 @@
 {
-	"metaDataVersion": "1.0.0",
-	"category": "com.microchip.ide.project",
-	"content": {
-		"metaDataVersion": "1.3.0",
-		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_uart_hello_world",
-		"version": "3.3.0",
-		"displayName": "UART Peripheral Application",
-		"projectName": "uart_hello_world",
-		"shortDescription": "This example application enables UART functionality on WBZ451 Curiosity board using MPLAB Code Configurator.",
-		"ide": {
-			"name": "MPLABX",
-			"semverRange": ">=6.20"
-		},
-		"compiler": [
-			{
-				"name": "XC32",
-				"semverRange": ">=4.40"
-			}
-		],
-		"dfp": {
-			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.4.243"
-		},
-		"configurator": {
-			"name": "MCC",
-			"semverRange": ">=5.7.0"
-		},
-		"device": {
-			"metaDataVersion": "1.0.0",
-			"category": "com.microchip.portal.contentRef",
-			"content": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.device",
-				"name": "WBZ451",
-				"versionRange": "*"
-			}
-		},
-		"author": "Microchip",
-		"peripherals": [
-			"UART",
-			"GPIO"
-		],
-		"keywords": [
-			"MCC",
-			"Harmony",
-			"PIC32CX1012BZ20548",
-			"WBZ451",
-			"PIC32CXBZ2 Family",
-			"wireless",
-			"BLE"
-		],
-		"additionalData": {
-			"longDescription": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.portal.fileRef",
-				"content": {
-					"metaDataVersion": "1.0.0",
-					"fileName": "./../../readme.md",
-					"mimeType": "text/markdown"
-				}
-			}
-		}
-	}
+    "metaDataVersion": "1.0.0",
+    "category": "com.microchip.ide.project",
+    "content": {
+        "metaDataVersion": "1.3.0",
+        "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_uart_hello_world",
+        "version": "3.3.0",
+        "displayName": "UART Peripheral Application",
+        "projectName": "uart_hello_world",
+        "shortDescription": "This example application enables UART functionality on WBZ451 Curiosity board using MPLAB Code Configurator.",
+        "ide": {
+            "name": "MPLABX",
+            "semverRange": ">=6.20"
+        },
+        "compiler": [
+            {
+                "name": "XC32",
+                "semverRange": ">=4.40"
+            }
+        ],
+        "dfp": {
+            "name": "PIC32CXBZ2_DFP",
+            "semverRange": "^1.4.243"
+        },
+        "configurator": {
+            "name": "MCC",
+            "semverRange": ">=5.5.1"
+        },
+        "device": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.contentRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.device",
+                "name": "WBZ451",
+                "versionRange": "*"
+            }
+        },
+        "author": "Microchip",
+        "peripherals": [
+            "UART",
+            "GPIO"
+        ],
+        "keywords": [
+            "MCC",
+            "Harmony",
+            "PIC32CX1012BZ20548",
+            "WBZ451",
+            "PIC32CXBZ2 Family",
+            "wireless",
+            "BLE"
+        ],
+        "additionalData": {
+            "longDescription": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./../../readme.md",
+                    "mimeType": "text/markdown"
+                }
+            }
+        }
+    }
 }

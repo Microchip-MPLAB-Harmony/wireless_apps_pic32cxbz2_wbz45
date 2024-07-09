@@ -1,66 +1,66 @@
 {
-	"metaDataVersion": "1.0.0",
-	"category": "com.microchip.ide.project",
-	"content": {
-		"metaDataVersion": "1.3.0",
-		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_central_trp_uart_codedPhy",
-		"version": "3.3.0",
-		"displayName": "BLE Central Transparent UART Application with coded PHY",
-		"projectName": "central_trp_uart_codedPhy",
-		"shortDescription": "This example application enables user to create a central device and send/receive characters between 2 connected BLE devices over Microchip proprietary Transparent UART Profile with coded PHY which enables much wider range between 2 devices. Central device will be WBZ45x Device and peripheral device should be WBZ45x Device with coded PHY enabled as well.",
-		"ide": {
-			"name": "MPLABX",
-			"semverRange": ">=6.20"
-		},
-		"compiler": [
-			{
-				"name": "XC32",
-				"semverRange": ">=4.40"
-			}
-		],
-		"dfp": {
-			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.4.243"
-		},
-		"configurator": {
-			"name": "MCC",
-			"semverRange": ">=5.7.0"
-		},
-		"device": {
-			"metaDataVersion": "1.0.0",
-			"category": "com.microchip.portal.contentRef",
-			"content": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.device",
-				"name": "WBZ451",
-				"versionRange": "*"
-			}
-		},
-		"author": "Microchip",
-		"peripherals": [
-			"UART",
-			"GPIO"
-		],
-		"keywords": [
-			"MCC",
-			"Harmony",
-			"PIC32CX1012BZ20548",
-			"WBZ451",
-			"PIC32CXBZ2 Family",
-			"wireless",
-			"BLE ",
-			"Transparent"
-		],
-		"additionalData": {
-			"longDescription": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.portal.fileRef",
-				"content": {
-					"metaDataVersion": "1.0.0",
-					"fileName": "./../../readme.md",
-					"mimeType": "text/markdown"
-				}
-			}
-		}
-	}
+    "metaDataVersion": "1.0.0",
+    "category": "com.microchip.ide.project",
+    "content": {
+        "metaDataVersion": "1.3.0",
+        "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_central_trp_uart_codedPhy",
+        "version": "3.3.0",
+        "displayName": "BLE Central Transparent UART Application with coded PHY",
+        "projectName": "central_trp_uart_codedPhy",
+        "shortDescription": "This example application enables user to create a central device and send/receive characters between 2 connected BLE devices over Microchip proprietary Transparent UART Profile with coded PHY which enables much wider range between 2 devices. Central device will be WBZ45x Device and peripheral device should be WBZ45x Device with coded PHY enabled as well.",
+        "ide": {
+            "name": "MPLABX",
+            "semverRange": ">=6.20"
+        },
+        "compiler": [
+            {
+                "name": "XC32",
+                "semverRange": ">=4.40"
+            }
+        ],
+        "dfp": {
+            "name": "PIC32CXBZ2_DFP",
+            "semverRange": "^1.4.243"
+        },
+        "configurator": {
+            "name": "MCC",
+            "semverRange": ">=5.5.1"
+        },
+        "device": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.contentRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.device",
+                "name": "WBZ451",
+                "versionRange": "*"
+            }
+        },
+        "author": "Microchip",
+        "peripherals": [
+            "UART",
+            "GPIO"
+        ],
+        "keywords": [
+            "MCC",
+            "Harmony",
+            "PIC32CX1012BZ20548",
+            "WBZ451",
+            "PIC32CXBZ2 Family",
+            "wireless",
+            "BLE ",
+            "Transparent"
+        ],
+        "additionalData": {
+            "longDescription": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./../../readme.md",
+                    "mimeType": "text/markdown"
+                }
+            }
+        }
+    }
 }

@@ -1,66 +1,66 @@
 {
-	"metaDataVersion": "1.0.0",
-	"category": "com.microchip.ide.project",
-	"content": {
-		"metaDataVersion": "1.3.0",
-		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_legacy_adv_pathloss",
-		"version": "3.3.0",
-		"displayName": "BLE Legacy Advertisment and Pathloss Application",
-		"projectName": "Legacy_ADV_Pathloss",
-		"shortDescription": "This example application users to enable 'sleep/standby' mode with BLE Advertisements on WBZ451 Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the advertisement interval will be set to 1 sec.The advertisement interval will dictate the application sleep time MCU32 to team about the nameing conversion for applications.",
-		"ide": {
-			"name": "MPLABX",
-			"semverRange": ">=6.20"
-		},
-		"compiler": [
-			{
-				"name": "XC32",
-				"semverRange": ">=4.40"
-			}
-		],
-		"dfp": {
-			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.4.243"
-		},
-		"configurator": {
-			"name": "MCC",
-			"semverRange": ">=5.7.0"
-		},
-		"device": {
-			"metaDataVersion": "1.0.0",
-			"category": "com.microchip.portal.contentRef",
-			"content": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.device",
-				"name": "WBZ451",
-				"versionRange": "*"
-			}
-		},
-		"author": "Microchip",
-		"peripherals": [
-			"UART",
-			"GPIO"
-		],
-		"keywords": [
-			"MCC",
-			"Harmony",
-			"PIC32CX1012BZ20548",
-			"WBZ451",
-			"PIC32CXBZ2 Family",
-			"wireless",
-			"BLE",
-			"Leacy Advertisment"
-		],
-		"additionalData": {
-			"longDescription": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.portal.fileRef",
-				"content": {
-					"metaDataVersion": "1.0.0",
-					"fileName": "./../../readme.md",
-					"mimeType": "text/markdown"
-				}
-			}
-		}
-	}
+    "metaDataVersion": "1.0.0",
+    "category": "com.microchip.ide.project",
+    "content": {
+        "metaDataVersion": "1.3.0",
+        "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_legacy_adv_pathloss",
+        "version": "3.3.0",
+        "displayName": "BLE Legacy Advertisment and Pathloss Application",
+        "projectName": "Legacy_ADV_Pathloss",
+        "shortDescription": "This example application users to enable 'sleep/standby' mode with BLE Advertisements on WBZ451 Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the advertisement interval will be set to 1 sec.The advertisement interval will dictate the application sleep time MCU32 to team about the nameing conversion for applications.",
+        "ide": {
+            "name": "MPLABX",
+            "semverRange": ">=6.20"
+        },
+        "compiler": [
+            {
+                "name": "XC32",
+                "semverRange": ">=4.40"
+            }
+        ],
+        "dfp": {
+            "name": "PIC32CXBZ2_DFP",
+            "semverRange": "^1.4.243"
+        },
+        "configurator": {
+            "name": "MCC",
+            "semverRange": ">=5.5.1"
+        },
+        "device": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.contentRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.device",
+                "name": "WBZ451",
+                "versionRange": "*"
+            }
+        },
+        "author": "Microchip",
+        "peripherals": [
+            "UART",
+            "GPIO"
+        ],
+        "keywords": [
+            "MCC",
+            "Harmony",
+            "PIC32CX1012BZ20548",
+            "WBZ451",
+            "PIC32CXBZ2 Family",
+            "wireless",
+            "BLE",
+            "Leacy Advertisment"
+        ],
+        "additionalData": {
+            "longDescription": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./../../readme.md",
+                    "mimeType": "text/markdown"
+                }
+            }
+        }
+    }
 }
