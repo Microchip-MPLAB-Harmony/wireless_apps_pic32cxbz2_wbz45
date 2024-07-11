@@ -46,6 +46,7 @@
 #include "definitions.h"
 #include "app_thread/app_thread_common.h"
 #include "app_thread.h"
+#include "app_thread_udp.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -55,6 +56,7 @@
 
 static otDeviceRole s_appthreadstate = OT_DEVICE_ROLE_DISABLED;
 extern bool otIsIdle(void);
+extern APP_DATA appData;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -64,11 +66,17 @@ extern bool otIsIdle(void);
 
 static void APP_ThreadRoleChangeHandler(otChangedFlags aFlags)
 {
+    static bool deviceattached = false;
     switch(aFlags)
     {
         case OT_DEVICE_ROLE_CHILD:
         {
-            /* TODO: implement your application code.*/
+            SYS_CONSOLE_MESSAGE("[THREAD] Device enabled as Child\r\n");
+            APP_Thread_UdpInitData();
+            APP_Msg_T appMsg;
+            appMsg.msgId = APP_UDP_SEND_TEMPDATA;
+            OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
+            deviceattached = true;
         }
         break;
 
@@ -86,13 +94,18 @@ static void APP_ThreadRoleChangeHandler(otChangedFlags aFlags)
 
         case OT_DEVICE_ROLE_DETACHED:
         {
-            /* TODO: implement your application code.*/
+            if(deviceattached)
+            {
+               SYS_CONSOLE_MESSAGE("[THREAD] Device is Detached\r\n");
+               deviceattached = false;
+            }
         }
         break;
 
         case OT_DEVICE_ROLE_DISABLED:
         {
-            /* TODO: implement your application code.*/
+            SYS_CONSOLE_MESSAGE("[THREAD] Device state is disabled. Reset the device!!!!\r\n");
+            deviceattached = false;
         }
         break;
 
@@ -129,7 +142,7 @@ otChangedFlags APP_ThreadGetDeviceRole(void)
 void APP_ThreadResetToFactoryNew(void)
 {
     APP_Msg_T appMsg;
-    //appMsg.msgId = APP_THREAD_FACTORY_RESET;
+    appMsg.msgId = APP_THREAD_FACTORY_RESET;
     OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
 }
 
@@ -147,11 +160,18 @@ void APP_ThreadAppStackInit(APP_ProvNwData_T *provNwData)
   }
   if(error != OT_ERROR_NONE)
   {
-      /* TODO: implement your application code.*/
+    APP_Msg_T appMsg;
+    appMsg.msgId = APP_THREAD_PROV_COMPLTE;
+    appMsg.msgData[0] =  false;
+    OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
   }
   else
   {
-    /* TODO: implement your application code.*/  
+    SYS_CONSOLE_MESSAGE("[THREAD] Commissioned, Wait.. for the Device Role.\r\n");
+    APP_Msg_T appMsg;
+    appMsg.msgId = APP_THREAD_PROV_COMPLTE;
+    appMsg.msgData[0] =  true;
+    OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);  
   }
   /* TODO: implement any initialization for application code.*/
 }
@@ -160,10 +180,13 @@ void APP_ThreadDeviceSleep(void)
 {
     if(otIsIdle())
     {
+       vQueueDelete(appData.appQueue);
        DEVICE_EnterDeepSleep(false, APP_THREAD_DEVICE_SLEEP_PERIOD);
     }
     else
     {
-		/* TODO: implement your application code.*/
+		APP_Msg_T sleepReq;
+        sleepReq.msgId = APP_TIMER_SED_TIMEOUT_MSG;      
+        OSAL_QUEUE_Send(&appData.appQueue, &sleepReq, 0);
     }
 }
