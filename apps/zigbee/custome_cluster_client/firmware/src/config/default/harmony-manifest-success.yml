@@ -4,7 +4,7 @@
 
 
 project: custome_cluster_client
-creation_date: 2024-07-17T17:32:23.624+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-07-18T04:09:38.127+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.5.1
@@ -19,7 +19,7 @@ modules:
     - {name: "core", version: "v3.13.4"}
     - {name: "dev_packs", version: "v3.18.1"}
     - {name: "wolfssl", version: "v5.4.0"}
-    - {name: "wireless_zigbee", version: "v6.1.0"}
+    - {name: "wireless_zigbee", version: "v6.1.0_InternalValidation"}
     - {name: "bsp", version: "v3.20.1"}
     - {name: "crypto", version: "v3.8.1"}
     - {name: "CMSIS-FreeRTOS", version: "v10.5.1"}

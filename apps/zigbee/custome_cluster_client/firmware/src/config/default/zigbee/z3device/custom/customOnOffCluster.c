@@ -118,11 +118,6 @@ ZCL_OnOffClusterClientAttributes_t customOnOffClusterClientAttributes =
 {
   ZCL_DEFINE_ONOFF_CLUSTER_CLIENT_ATTRIBUTES()
 };
-
-//###########################################################################
-
-
-
 /******************************************************************************
                     Local variables
 ******************************************************************************/
@@ -650,9 +645,6 @@ static void customOnOffReportInd(ZCL_Addressing_t *addressing, uint8_t reportLen
 
   APP_Zigbee_Handler(eventItem);
 }
-
-/*********************************************************************************
-*********************************************************************************/
 #endif // APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_CUSTOM_DEVICE
 
 // eof customOnOffCluster.c

@@ -68,7 +68,6 @@ ZCL_OccupancySensingClusterClientAttributes_t customOccupancySensingClusterClien
 {
   ZCL_DEFINE_OCCUPANCY_SENSING_CLUSTER_CLIENT_ATTRIBUTES()
 };
-//###########################################################################
 /*******************************************************************************
                    Types section
 *******************************************************************************/
@@ -428,10 +427,6 @@ static void customOccupancySensorReportInd(ZCL_Addressing_t *addressing, uint8_t
   eventItem.eventData.zclEventData.payload = reportPayload;
   APP_Zigbee_Handler(eventItem);
 }
-
-/*********************************************************************************
-*********************************************************************************/
-
 
 #endif // APP_DEVICE_TYPE_CUSTOM_DEVICE
 
