@@ -490,7 +490,6 @@ void SYS_Initialize ( void* data )
     osalAPIList.OSAL_MemFree = OSAL_Free;
 
 
-
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *

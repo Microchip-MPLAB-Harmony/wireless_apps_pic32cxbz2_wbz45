@@ -1239,7 +1239,6 @@ void processGetImageUpgradeStatus(const ScanValue_t *args)
 void processSetMinBlockPeriod(const ScanValue_t *args)
 {
   otauClientAttributes.minimumBlockPeriod.value = args[0].uint16;
-  PDS_Store(OTAU_MIN_BLOCK_PERIOD_ATTR_MEM_ID);
 }
 
 #ifdef OTAU_PRIVILEGED_CONSOLE_CMDS

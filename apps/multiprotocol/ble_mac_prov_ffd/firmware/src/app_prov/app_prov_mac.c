@@ -44,13 +44,6 @@
 // *****************************************************************************
 #include "app_prov.h"
 
-#include "app_trsps_handler.h"
-
-#include <string.h>
-#include "stdint.h"
-#include "ble_trsps/ble_trsps.h"
-#include "osal/osal_freertos_extend.h"
-#include "definitions.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -73,20 +66,12 @@
 // *****************************************************************************
 void APP_Prov_StartCommissioning(APP_ProvNwData_T *provNwData)
 {
-    
     /*Todo*/
-    APP_Msg_T   appMsg;
-    (void)memcpy((void*)appMsg.msgData,(const void*)provNwData,sizeof(APP_ProvNwData_T)); 
-    appMsg.msgId = (uint8_t)APP_MSG_MAC_PROV;
-    (void)OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);       
 }
 
 void APP_Prov_ResetToFactoryNew(void)
 {
-     APP_Msg_T   appMsg;
-    appMsg.msgId = (uint8_t)APP_MSG_MAC_FACTORY_RESET;
-    (void)OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);      
-    
+    /*Todo*/
 }
 
 
