@@ -199,10 +199,10 @@ int Crypt_ECC_HandleReq(int devId, wc_CryptoInfo* info, void* ctx)
         return CRYPTOCB_UNAVAILABLE;
     }
 
-    //if (info->pk.type == WC_PK_TYPE_ECDSA_SIGN)
-    //{
-        //return Crypt_ECC_HandleEccSignReq(devId, info, ctx);
-    //}
+    if (info->pk.type == WC_PK_TYPE_ECDSA_SIGN)
+    {
+        return Crypt_ECC_HandleEccSignReq(devId, info, ctx);
+    }
     
     if (info->pk.type == WC_PK_TYPE_ECDSA_VERIFY)
     {
@@ -344,7 +344,7 @@ int Crypt_ECC_HandleEccVerifyReq(int devId, wc_CryptoInfo* info, void* ctx)
         return ret;
     }
 
-    memset(&PUKCLParam, 0, sizeof(PUKCL_PARAM));
+        memset(&PUKCLParam, 0, sizeof(PUKCL_PARAM));
     
     mp_clear(&scratchLI);
     mp_read_radix(&scratchLI, info->pk.eccverify.key->dp->Gx, MP_RADIX_HEX);
@@ -403,12 +403,12 @@ int Crypt_ECC_HandleEccVerifyReq(int devId, wc_CryptoInfo* info, void* ctx)
     if (ret == PUKCL_OK)
     {
         *info->pk.eccverify.res = 1;
-        //return 0;
+        return 0;
     }
     else if (ret ==  PUKCL_WRONG_SIGNATURE)
     {
         *info->pk.eccverify.res = 0;
-        //return 0;        
+        return 0;        
     }
     
     return ret;
