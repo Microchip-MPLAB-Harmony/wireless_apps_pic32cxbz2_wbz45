@@ -214,7 +214,7 @@ static void APP_BleConfigBasic(void)
     
 
     // Configure advertising parameters
-    BLE_GAP_SetAdvTxPowerLevel(15,&advTxPower);      /* Advertising TX Power */
+    BLE_GAP_SetAdvTxPowerLevel(9,&advTxPower);      /* Advertising TX Power */
     
     (void)memset(&advParam, 0, sizeof(BLE_GAP_AdvParams_T));
     advParam.intervalMin = 32;     /* Advertising Interval Min */

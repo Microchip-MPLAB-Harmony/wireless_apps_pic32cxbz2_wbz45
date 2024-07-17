@@ -429,7 +429,6 @@ void SYS_Initialize ( void* data )
 
 
 
-
     // Create BLE Stack Message QUEUE
     OSAL_QUEUE_Create(&bleRequestQueueHandle, QUEUE_LENGTH_BLE, QUEUE_ITEM_SIZE_BLE);
 

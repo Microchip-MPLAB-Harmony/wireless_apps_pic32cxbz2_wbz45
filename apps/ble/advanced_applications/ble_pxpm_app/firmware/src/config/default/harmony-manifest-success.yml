@@ -4,23 +4,23 @@
 
 
 project: ble_pxpm_app
-creation_date: 2024-06-26T23:26:10.438+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-07-17T11:28:05.642+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
-mcc_version: v5.5.0
-mcc_core_version: v5.7.0
+mcc_version: v5.5.1
+mcc_core_version: v5.7.1
 mplabx_version: v6.20        # if MPLAB X plugin only
 harmony_version: v1.4.1
 compiler: XC32 4.40
 
 modules:
-    - {name: "wireless_pic32cxbz_wbz", version: "Branch_v1.4.0-rc1"}
-    - {name: "csp", version: "Branch_v3.19.0"}
-    - {name: "core", version: "Branch_v3.13.3"}
+    - {name: "csp", version: "Branch_v3.19.1"}
+    - {name: "wireless_pic32cxbz_wbz", version: "v1.4.0"}
+    - {name: "core", version: "Branch_v3.13.4"}
     - {name: "wireless_ble", version: "Branch_v1.3.0"}
     - {name: "CMSIS_5", version: "5.9.0"}
     - {name: "wolfssl", version: "Branch_v5.4.0"}
-    - {name: "bsp", version: "Branch_v3.20.0"}
+    - {name: "bsp", version: "Branch_v3.20.1"}
     - {name: "crypto", version: "Branch_v3.8.1"}
     - {name: "CMSIS-FreeRTOS", version: "Branch_v10.5.1"}
 

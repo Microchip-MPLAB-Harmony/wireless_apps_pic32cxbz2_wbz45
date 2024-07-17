@@ -398,9 +398,9 @@ void SYS_Initialize ( void* data )
 
     EVSYS_Initialize();
 
-    TC0_TimerInitialize();
-
     RTC_Initialize();
+
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 
@@ -464,7 +464,6 @@ void SYS_Initialize ( void* data )
 
     osalAPIList.OSAL_MemAlloc = OSAL_Malloc;
     osalAPIList.OSAL_MemFree = OSAL_Free;
-
 
 
 

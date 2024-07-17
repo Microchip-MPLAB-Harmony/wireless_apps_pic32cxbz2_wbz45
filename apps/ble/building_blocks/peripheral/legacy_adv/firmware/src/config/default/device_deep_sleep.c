@@ -420,8 +420,12 @@ bool DEVICE_ClearDeepSleepReg(void)
     if ((RCON_REGS->RCON_RCON & RCON_RCON_DPSLP_Msk) == RCON_RCON_DPSLP_Msk)
     {
         s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_OTHER;
-
-        if ((DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_INT0_Msk) != 0U)
+        
+        if ((DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_MCLR_Msk) != 0U)
+        {
+            s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_MCLR;
+        }
+        else if ((DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_INT0_Msk) != 0U)
         {
             s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_INT0;
         }
@@ -432,10 +436,6 @@ bool DEVICE_ClearDeepSleepReg(void)
         else if ((DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_DSWDT_Msk) != 0U)
         {
             s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_DSWDT;
-        }
-        else if ((DSCON_REGS->DSCON_DSWAKE & DSCON_DSWAKE_MCLR_Msk) != 0U)
-        {
-            s_wakeUpSrc = DEVICE_DEEP_SLEEP_WAKE_MCLR;
         }
         else 
         {
