@@ -198,6 +198,10 @@ PROGMEM_DECLARE(ZCL_ColorControlClusterCommands_t customColorControlClusterClien
 {
   ZCL_COLOR_CONTROL_CLUSTER_COMMANDS_FOR_COLOR_SCENE_CONTROLLER()
 };
+
+/****************************************************************************
+*****************************************************************************/
+
 /******************************************************************************
                     Local variables
 ******************************************************************************/
@@ -2633,6 +2637,10 @@ static void customColorControlReportInd(ZCL_Addressing_t *addressing, uint8_t re
 
   APP_Zigbee_Handler(event);
 }
+
+/*********************************************************************************
+*********************************************************************************/
+
 #endif // APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_CUSTOM_DEVICE
 
 // eof customColorControlCluster.c

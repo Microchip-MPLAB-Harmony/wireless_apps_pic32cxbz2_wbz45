@@ -311,6 +311,9 @@ static void customFindingBindingFinishedForACluster(Endpoint_t ResponentEp, Clus
       ZCL_startReporting();
 #endif
       break;
+    default:
+      break;
+
   }
 
 }

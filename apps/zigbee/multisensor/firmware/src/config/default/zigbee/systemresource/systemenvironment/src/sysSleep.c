@@ -62,7 +62,12 @@
     extern HAL_UsartDescriptor_t sysUsartDescriptor;
   #endif
 #endif
-
+/*********************************************************************************
+                     Prototypes section
+**********************************************************************************/
+#if (APP_ENABLE_CONSOLE == 1)
+extern bool APP_IsUartReadyToSleep (void);
+#endif
 /*********************************************************************************
                      Global variables section
 **********************************************************************************/
@@ -133,7 +138,7 @@ void SYS_Sleep(HAL_Sleep_t *sleepParam)
 ******************************************************************************/
 void SYS_EnterSleep(void)
 {
-  if (ZDO_IsStackSleeping())
+  if (SYS_CheckStackSleep())
   {
     PHY_PrepareSleep();
   }
@@ -147,7 +152,11 @@ void SYS_EnterSleep(void)
 ******************************************************************************/
 bool SYS_CheckStackSleep(void)
 {
-    return ZDO_IsStackSleeping();
+    return (ZDO_IsStackSleeping()
+#if (APP_ENABLE_CONSOLE == 1)
+            &&(APP_IsUartReadyToSleep())
+#endif
+);
 }
 
 /**************************************************************************//**
@@ -158,7 +167,11 @@ bool SYS_CheckStackSleep(void)
 ******************************************************************************/
 void SYS_WakeUpSleep(void)
 {
-  PHY_RestoreFromSleep();
+#if (APP_ENABLE_CONSOLE == 1)
+  if(APP_IsUartReadyToSleep())
+#endif      
+    PHY_RestoreFromSleep();
+
 }
 /**************************************************************************//**
 \brief To Stop Stack Timer before Sleep.

@@ -424,9 +424,9 @@ void SYS_Initialize ( void* data )
 
     SERCOM0_USART_Initialize();
 
-    TC0_TimerInitialize();
-
     RTC_Initialize();
+
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 

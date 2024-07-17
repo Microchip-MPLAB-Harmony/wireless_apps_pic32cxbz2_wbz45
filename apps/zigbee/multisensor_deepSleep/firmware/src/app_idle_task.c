@@ -79,6 +79,7 @@
 #define APP_IDLE_NVIC_PENDSVCLEAR_BIT            ( 1UL << 27UL )
 #define APP_IDLE_NVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL << 25UL )
 
+
 /* 
  * Max sleep allowed - user can configure this value
  */
@@ -138,11 +139,8 @@ void app_idle_task( void )
               }
               else
               {
-            
                    RF_Timer_Cal(WSS_ENABLE_ZB);
-            
               }
-
             }
         }
     }
@@ -378,6 +376,7 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             /* Disable current sensor to improve current consumption. */
             PMU_ConfigCurrentSensor(false);
         }
+
 
         /* Enter system sleep mode */
 		ZB_BackupStackParams(xExpectedIdleTime);

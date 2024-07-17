@@ -99,6 +99,9 @@ ZCL_LevelControlClusterClientAttributes_t customLevelControlClusterClientAttribu
 {
   ZCL_DEFINE_LEVEL_CONTROL_CLUSTER_CLIENT_ATTRIBUTES()
 };
+
+//###########################################################################
+
 /******************************************************************************
                     Local variables
 ******************************************************************************/
@@ -796,6 +799,10 @@ static void customLevelReportInd(ZCL_Addressing_t *addressing, uint8_t reportLen
 
   APP_Zigbee_Handler(eventItem);
 }
+
+
+/*********************************************************************************
+*********************************************************************************/
 
 #endif // APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_CUSTOM_DEVICE
 

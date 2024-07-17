@@ -266,6 +266,12 @@ SYSTEM_OBJECTS sysObj;
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+#define QUEUE_LENGTH_ZIGBEE (16)
+
+#define QUEUE_ITEM_SIZE_ZIGBEE (sizeof(void *))
+
+OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
+
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -291,12 +297,6 @@ SYSTEM_OBJECTS sysObj;
 
 OSAL_API_LIST_TYPE     osalAPIList;
 
-
-#define QUEUE_LENGTH_ZIGBEE (16)
-
-#define QUEUE_ITEM_SIZE_ZIGBEE (sizeof(void *))
-
-OSAL_QUEUE_HANDLE_TYPE zigbeeRequestQueueHandle;
 
 
 
@@ -435,6 +435,8 @@ void SYS_Initialize ( void* data )
 
     TC0_TimerInitialize();
 
+    RTC_Initialize();
+
     TC3_CompareInitialize();
 
     TC2_CompareInitialize();
@@ -502,7 +504,6 @@ void SYS_Initialize ( void* data )
 
     osalAPIList.OSAL_MemAlloc = OSAL_Malloc;
     osalAPIList.OSAL_MemFree = OSAL_Free;
-
 
 
 

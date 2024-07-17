@@ -551,6 +551,10 @@ static void otauImageBlockReq(void)
   memcpy(&tmpOtauReq->firmwareVersion,&clientMem->newFirmwareVersion,sizeof(ZCL_OtauFirmwareVersion_t));
   tmpOtauReq->fileOffset                            = clientMem->imageAuxParam.requestFileOffset;
   tmpOtauReq->maxDataSize                           = clientMem->imageAuxParam.requestBlockSize;
+  if(otauClientAttributes.minimumBlockPeriod.value == 0U)
+  {
+      PDS_Restore(OTAU_MIN_BLOCK_PERIOD_ATTR_MEM_ID);
+  }
   tmpOtauReq->minimumBlockPeriod                    = otauClientAttributes.minimumBlockPeriod.value;
   ZCL_CommandReq(tmpZclReq);
   otauRestartBlockRxTimer();

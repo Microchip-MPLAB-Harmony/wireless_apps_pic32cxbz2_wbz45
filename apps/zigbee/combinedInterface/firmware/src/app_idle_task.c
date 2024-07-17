@@ -55,10 +55,7 @@ void app_idle_task( void )
             }
             else if (RF_Cal_Needed)
             {
-            
                    RF_Timer_Cal(WSS_ENABLE_ZB);
-            
-
             }
         }
     }

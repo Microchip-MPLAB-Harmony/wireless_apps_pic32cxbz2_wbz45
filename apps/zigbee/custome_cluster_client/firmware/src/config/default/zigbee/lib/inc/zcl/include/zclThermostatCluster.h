@@ -124,7 +124,7 @@ to factory defaults.
 *******************************************************************************/
 
 #define ZCL_THERMOSTAT_CLUSTER_SETPOINT_RAISE_LOWER_COMMAND_ID            0x00
-#define ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
+
 /***************************************************************************//**
 \brief Thermostat Cluster attributes default definitions
 *******************************************************************************/
@@ -170,30 +170,7 @@ to factory defaults.
     DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_VERSION_ATTRIBUTE_ID, ZCL_U16BIT_DATA_TYPE_ID) 
       
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-#define ZCL_DEFINE_THERMOSTAT_CLUSTER_SERVER_OPTIONAL_ATTRIBUTES(reportMin, reportMax) \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(outdoorTemperature, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_OUTDOOR_TEMPERATURE_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(occupancy, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_OCUPANCY_SERVER_ATTRIBUTE_ID, ZCL_8BIT_BITMAP_DATA_TYPE_ID,0x0,0x1),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(absMinHeatSetpointLimit, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_ABS_MIN_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(absMaxHeatSetpointLimit, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_ABS_MAX_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(absMinCoolSetpointLimit, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_ABS_MIN_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(absMaxCoolSetpointLimit, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_ABS_MAX_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF),\
-    DEFINE_REPORTABLE_ATTRIBUTE_WITH_BOUNDARY(PICoolingDemand, ZCL_READONLY_ATTRIBUTE , ZCL_THERMOSTAT_CLUSTER_PI_COOLING_DEMAND_SERVER_ATTRIBUTE_ID, ZCL_U8BIT_DATA_TYPE_ID, reportMin, reportMax, 0x00, 0x64),\
-    DEFINE_REPORTABLE_ATTRIBUTE_WITH_BOUNDARY(PIHeatingDemand, ZCL_READONLY_ATTRIBUTE , ZCL_THERMOSTAT_CLUSTER_PI_HEATING_DEMAND_SERVER_ATTRIBUTE_ID, ZCL_U8BIT_DATA_TYPE_ID, reportMin, reportMax, 0x00, 0x64),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(hvacSystemTypeConfiguration, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_HVAC_SYSTEM_TYPE_CONFIG_SERVER_ATTRIBUTE_ID, ZCL_8BIT_BITMAP_DATA_TYPE_ID, 0x00, 0x3F),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(localTemperatureCalibration, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_LOCAL_TEMPERATURE_CALIBRATION_SERVER_ATTRIBUTE_ID, ZCL_S8BIT_DATA_TYPE_ID, 0xE7, 0x19),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(unOccupiedCoolingSetpoint, ZCL_READWRITE_ATTRIBUTE | ZCL_CHECK_OTHER_ATTR, ZCL_THERMOSTAT_CLUSTER_UNOCCUPIED_COOLING_SETPOINT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, \
-                              ZCL_THERMOSTAT_CLUSTER_MIN_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_THERMOSTAT_CLUSTER_MAX_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(unOccupiedHeatingSetpoint, ZCL_READWRITE_ATTRIBUTE | ZCL_CHECK_OTHER_ATTR, ZCL_THERMOSTAT_CLUSTER_UNOCCUPIED_HEATING_SETPOINT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID,\
-                              ZCL_THERMOSTAT_CLUSTER_MIN_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_THERMOSTAT_CLUSTER_MAX_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID),  \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(minHeatSetpointLimit, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_MIN_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(maxHeatSetpointLimit, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_MAX_HEAT_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(minCoolSetpointLimit, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_MIN_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(maxCoolSetpointLimit, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_MAX_COOL_SETPOINT_LIMIT_SERVER_ATTRIBUTE_ID, ZCL_S16BIT_DATA_TYPE_ID, 0x954D, 0x7FFF), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(minSetpointDeadBand, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_MIN_SETPOINT_DEADBAND_SERVER_ATTRIBUTE_ID, ZCL_S8BIT_DATA_TYPE_ID, 0x0a, 0x19), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(remoteSensing, ZCL_READWRITE_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_REMOTE_SENSING_SERVER_ATTRIBUTE_ID, ZCL_8BIT_BITMAP_DATA_TYPE_ID, 0x00, 0x07), \
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(alarmMask, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_ALARM_MASK_SERVER_ATTRIBUTE_ID, ZCL_8BIT_BITMAP_DATA_TYPE_ID, 0x00, 0x07),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(thermostatRunningMode, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_THERMOSTAT_RUNNING_MODE_SERVER_ATTRIBUTE_ID, ZCL_8BIT_ENUM_DATA_TYPE_ID, 0x00, 0x04),\
-    DEFINE_ATTRIBUTE_WITH_BOUNDARY(thermostatRunningState, ZCL_READONLY_ATTRIBUTE, ZCL_THERMOSTAT_CLUSTER_THERMOSTAT_RUNNING_STATE_SERVER_ATTRIBUTE_ID, ZCL_16BIT_BITMAP_DATA_TYPE_ID, 0x00, 0x7f)
+#define ZCL_DEFINE_THERMOSTAT_CLUSTER_SERVER_OPTIONAL_ATTRIBUTES(reportMin, reportMax) 
 #endif /*ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES*/
 /***************************************************************************//**
 \brief Thermostat Cluster define commands macros
@@ -423,123 +400,6 @@ typedef struct PACK
     int16_t maxVal;
   } localTemperature;                  //! <Attr ID 0x0000>
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } outdoorTemperature;                 //! <Attr ID 0x0001>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    struct PACK                           
-    {
-      LITTLE_ENDIAN_OCTET(2,(
-        BitField_t occupied    :1, //!<Occupied bit 0 (1 - Occupied, 0 - Not Occupied)
-        BitField_t reserved    :7
-      ))
-    } value;
-    uint8_t minVal;
-    uint8_t maxVal;
-  } occupancy;                           //! <Attr ID 0x0002>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } absMinHeatSetpointLimit;            //! <Attr ID 0x0003>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } absMaxHeatSetpointLimit;            //! <Attr ID 0x0004>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } absMinCoolSetpointLimit;            //! <Attr ID 0x0005>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } absMaxCoolSetpointLimit;            //! <Attr ID 0x0006>
-      struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint8_t value;
-    ZCL_ReportTime_t reportCounter;     //!<For internal use only
-    ZCL_ReportTime_t minReportInterval; //!<Minimum reporting interval field value
-    ZCL_ReportTime_t maxReportInterval; //!<Maximum reporting interval field value
-    uint8_t reportableChange;           //!<Reporting change field value
-    ZCL_ReportTime_t timeoutPeriod;     //!<Timeout period field value
-    uint8_t lastReportedValue;          //!<Last reported value
-    uint8_t minVal;
-    uint8_t maxVal;
-  } PICoolingDemand;                  //! <Attr ID 0x0007>
-    struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint8_t value;
-    ZCL_ReportTime_t reportCounter;     //!<For internal use only
-    ZCL_ReportTime_t minReportInterval; //!<Minimum reporting interval field value
-    ZCL_ReportTime_t maxReportInterval; //!<Maximum reporting interval field value
-    uint8_t reportableChange;           //!<Reporting change field value
-    ZCL_ReportTime_t timeoutPeriod;     //!<Timeout period field value
-    uint8_t lastReportedValue;          //!<Last reported value
-    uint8_t minVal;
-    uint8_t maxVal;
-  } PIHeatingDemand;                  //! <Attr ID 0x0008>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    struct PACK 
-    {
-      LITTLE_ENDIAN_OCTET(5,(
-        BitField_t coolingStage    :2,
-        BitField_t heatingStage    :2,
-        BitField_t heatingType        :1,
-        BitField_t heatingFuelSource  :1,
-        BitField_t reserved        :2
-      ))
-    } value;
-    uint8_t minVal;
-    uint8_t maxVal;
-  } hvacSystemTypeConfiguration;        //! <Attr ID 0x0009>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int8_t value;
-    int8_t minVal;
-    int8_t maxVal;
-  } localTemperatureCalibration;        //! <Attr ID 0x0010>
 #endif
   struct PACK
   {
@@ -561,86 +421,6 @@ typedef struct PACK
   } occupiedHeatingSetpoint;            //! <Attr ID 0x0012>
 
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    ZCL_AttributeId_t minVal;
-    ZCL_AttributeId_t maxVal;
-  } unOccupiedCoolingSetpoint;          //! <Attr ID 0x0013>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    ZCL_AttributeId_t minVal;
-    ZCL_AttributeId_t maxVal;
-  } unOccupiedHeatingSetpoint;          //! <Attr ID 0x0014>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } minHeatSetpointLimit;               //! <Attr ID 0x0015>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } maxHeatSetpointLimit;               //! <Attr ID 0x0016>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } minCoolSetpointLimit;               //! <Attr ID 0x0017>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int16_t value;
-    int16_t minVal;
-    int16_t maxVal;
-  } maxCoolSetpointLimit;               //! <Attr ID 0x0018>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    int8_t value;
-    int8_t minVal;
-    int8_t maxVal;
-  } minSetpointDeadBand;                //! <Attr ID 0x0019>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    struct PACK 
-    {
-      LITTLE_ENDIAN_OCTET(4,(
-        BitField_t localTemperature    :1,
-        BitField_t outdoorTemperature  :1,
-        BitField_t occupancySense      :1,        
-        BitField_t reserved            :5
-      ))
-    } value;
-    uint8_t minVal;
-    uint8_t maxVal;
-  } remoteSensing;                      //! <Attr ID 0x001a>
 #endif /* ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES*/
   struct PACK
   {
@@ -662,41 +442,6 @@ typedef struct PACK
   } systemMode;                         //! <Attr ID 0x001c>
 
 #ifdef ZCL_THERMOSTAT_CLUSTER_INCLUDE_OPTIONAL_ATTRIBUTES
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    struct PACK 
-    {
-      LITTLE_ENDIAN_OCTET(4,(
-        BitField_t initFailure    :1,
-        BitField_t hardwareFailure  :1,
-        BitField_t selfCalibrationFailure      :1,
-        BitField_t reserved            :5
-      ))
-    } value;
-    uint8_t minVal;
-    uint8_t maxVal;
-  } alarmMask;                          //! <Attr ID 0x001d>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint8_t value;
-    uint8_t minVal;
-    uint8_t maxVal;
-  } thermostatRunningMode;              //! <Attr ID 0x001e>
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint16_t value;
-    uint16_t minVal;
-    uint16_t maxVal;
-  } thermostatRunningState;              //! <Attr ID 0x0029>  
  #endif
 } ZCL_ThermostatClusterServerAttributes_t;
 

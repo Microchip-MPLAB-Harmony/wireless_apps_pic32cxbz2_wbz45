@@ -229,21 +229,21 @@ INLINE uint16_t SYS_Crc16Ccitt(uint16_t initValue, uint8_t byte_)
 INLINE void memcpy4ByteAligned(void* outbuf, void* inbuf, uint16_t length)
 {
   static uint8_t mod_size;
-  static uint8_t size;
+  static uint16_t size;
   static uint16_t k;
   uint32_t* src = (uint32_t* )inbuf;
   uint32_t* dst = (uint32_t* )outbuf;
    
-  mod_size = (uint8_t)(length % 4U);
+  mod_size = (length % 4U);
 
   // total_length is in multiple of 4
   if (mod_size !=0U)
   {
-    size  = (uint8_t)(length + 4U - mod_size);
+    size  = (length + 4U - mod_size);
   }
   else 
   {
-      size  = (uint8_t)length;
+      size  = length;
   }
   size  = size >> 2;
   for (k = 0; k < size; k++)

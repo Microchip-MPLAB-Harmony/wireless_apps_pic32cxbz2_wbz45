@@ -480,7 +480,7 @@ void otauSomeDefaultResponse(ZCL_Request_t *req, ZCL_Addressing_t *addressing, u
   ZCL_DefaultResp_t *defaultResp = (ZCL_DefaultResp_t*)payload;
   ZCL_Request_t *tmpZclReq = &clientMem->reqMem.zclCommandReq;
 
-  appOtauPrintf("OTAU: DefaultResp->Req:%d, Status 0x%02x\r\n", tmpZclReq->id, defaultResp->statusCode);
+  /* Default responses. */
   switch(tmpZclReq->id)
   {
     case UPGRADE_END_REQUEST_ID:

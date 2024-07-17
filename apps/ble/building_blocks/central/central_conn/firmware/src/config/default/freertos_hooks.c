@@ -38,6 +38,7 @@
 // DOM-IGNORE-END
 #include "FreeRTOS.h"
 #include "task.h"
+#include "definitions.h"
 
 void vApplicationIdleHook( void );
 void vApplicationTickHook( void );
@@ -146,6 +147,7 @@ void vApplicationTickHook( void )
     added here, but the tick hook is called from an interrupt context, so
     code must not attempt to block, and only the interrupt safe FreeRTOS API
     functions can be used (those that end in FromISR()). */
+	app_idle_task();
 }
 
 /*-----------------------------------------------------------*/

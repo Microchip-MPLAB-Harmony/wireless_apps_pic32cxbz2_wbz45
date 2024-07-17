@@ -76,7 +76,7 @@ Function:
  
   Precondition:
     otSysInit(0U,0U),OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T))
-	should have been called before calling this function
+    should have been called before calling this function
 
   Parameters:
     pvParam : Pointer to open thread Instance 
@@ -125,11 +125,11 @@ Function:
 
   Returns:
     true: if thread stack is Idle
-	false: if thread stack is not Idle.
+    false: if thread stack is not Idle.
 
   Example:
     <code>
-	if(otIsIdle())
+    if(otIsIdle())
     {
        SERCOM0_USART_Disable();
        DEVICE_EnterDeepSleep(false, DEVICE_SLEEP_TIME);

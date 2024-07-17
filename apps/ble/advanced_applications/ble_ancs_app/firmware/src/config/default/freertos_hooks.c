@@ -38,6 +38,7 @@
 // DOM-IGNORE-END
 #include "FreeRTOS.h"
 #include "task.h"
+#include "definitions.h"
 
 void vApplicationIdleHook( void );
 void vApplicationTickHook( void );

@@ -456,7 +456,6 @@ void SYS_Initialize ( void* data )
 
 
 
-
 	// Create ZIGBEE Stack Message QUEUE
     (void)OSAL_QUEUE_Create(&zigbeeRequestQueueHandle, QUEUE_LENGTH_ZIGBEE, QUEUE_ITEM_SIZE_ZIGBEE);
 
