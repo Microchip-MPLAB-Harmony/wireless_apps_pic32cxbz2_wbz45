@@ -55,7 +55,6 @@
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/cmcc/plib_cmcc.h"
-#include "peripheral/tc/plib_tc0.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *
@@ -80,10 +79,11 @@
 *******************************************************************************/
 #include "osal/osal.h"
 #include "application.h"
-#include "peripheral/rcon/plib_rcon.h"
+#include "peripheral/tc/plib_tc0.h"
 #include "peripheral/tc/plib_tc3.h"
-#include "peripheral/nvm/plib_nvm.h"
+#include "peripheral/rcon/plib_rcon.h"
 #include "system/time/sys_time.h"
+#include "peripheral/nvm/plib_nvm.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"

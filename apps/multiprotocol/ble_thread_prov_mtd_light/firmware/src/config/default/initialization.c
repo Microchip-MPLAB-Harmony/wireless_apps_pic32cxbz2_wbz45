@@ -416,6 +416,8 @@ void SYS_Initialize ( void* data )
 
     TC0_TimerInitialize();
 
+    RTC_Initialize();
+
     TC3_CompareInitialize();
 
     TC2_CompareInitialize();
@@ -426,9 +428,9 @@ void SYS_Initialize ( void* data )
 
 	TRNG_Initialize();
 
-    EVSYS_Initialize();
-
     SERCOM0_USART_Initialize();
+
+    EVSYS_Initialize();
 
     EIC_Initialize();
 

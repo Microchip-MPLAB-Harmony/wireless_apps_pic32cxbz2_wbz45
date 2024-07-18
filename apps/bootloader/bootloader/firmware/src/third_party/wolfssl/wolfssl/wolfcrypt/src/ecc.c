@@ -3847,6 +3847,7 @@ int wc_ecc_get_curve_size_from_id(int curve_id)
     return ecc_sets[curve_idx].size;
 }
 
+#if 0
 /* Returns the curve index that corresponds to a given curve name in
  * ecc_sets[] of ecc.c
  *
@@ -3915,6 +3916,7 @@ int wc_ecc_get_curve_id_from_name(const char* curveName)
 
     return ecc_sets[curve_idx].id;
 }
+#endif
 
 /* Compares a curve parameter (hex, from ecc_sets[]) to given input
  * parameter for equality.
@@ -5262,26 +5264,26 @@ static int _ecc_make_key_ex(WC_RNG* rng, int keysize, ecc_key* key,
         }
 
         /* generate k */
-        if (err == MP_OKAY) {
-            err = wc_ecc_gen_k(rng, key->dp->size, &key->k, curve->order);
-        }
+        //if (err == MP_OKAY) {
+        //    err = wc_ecc_gen_k(rng, key->dp->size, &key->k, curve->order);
+        //}
 
         /* generate public key from k */
-        if (err == MP_OKAY) {
-            err = ecc_make_pub_ex(key, curve, NULL, rng);
-        }
+        //if (err == MP_OKAY) {
+        //    err = ecc_make_pub_ex(key, curve, NULL, rng);
+        //}
 
-        if (err == MP_OKAY
-        #ifdef WOLFSSL_ASYNC_CRYPT
-            || err == WC_PENDING_E
-        #endif
-        ) {
-            key->type = ECC_PRIVATEKEY;
-        }
-        else {
+        //if (err == MP_OKAY
+        //#ifdef WOLFSSL_ASYNC_CRYPT
+        //    || err == WC_PENDING_E
+        //#endif
+        //) {
+        //    key->type = ECC_PRIVATEKEY;
+        //}
+        //else {
             /* cleanup these on failure case only */
             mp_forcezero(&key->k);
-        }
+        //}
 
         /* cleanup allocations */
         wc_ecc_curve_free(curve);
@@ -7477,6 +7479,8 @@ int wc_ecc_verify_hash(const byte* sig, word32 siglen, const byte* hash,
     #endif
 #endif
 
+#if 0
+
 #ifndef WOLF_CRYPTO_CB_ONLY_ECC
 
 #if defined(WOLFSSL_ASYNC_CRYPT) && defined(WC_ASYNC_ENABLE_ECC)
@@ -7589,6 +7593,8 @@ int wc_ecc_verify_hash(const byte* sig, word32 siglen, const byte* hash,
     (void)r;
     (void)err;
 #endif /* WOLF_CRYPTO_CB_ONLY_ECC */
+
+#endif
 
     return err;
 }

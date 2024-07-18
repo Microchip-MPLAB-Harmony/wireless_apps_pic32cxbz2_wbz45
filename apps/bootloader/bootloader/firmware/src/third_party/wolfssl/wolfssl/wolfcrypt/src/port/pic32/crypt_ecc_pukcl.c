@@ -199,10 +199,10 @@ int Crypt_ECC_HandleReq(int devId, wc_CryptoInfo* info, void* ctx)
         return CRYPTOCB_UNAVAILABLE;
     }
 
-    if (info->pk.type == WC_PK_TYPE_ECDSA_SIGN)
-    {
-        return Crypt_ECC_HandleEccSignReq(devId, info, ctx);
-    }
+//    if (info->pk.type == WC_PK_TYPE_ECDSA_SIGN)
+//    {
+//        return Crypt_ECC_HandleEccSignReq(devId, info, ctx);
+//    }
     
     if (info->pk.type == WC_PK_TYPE_ECDSA_VERIFY)
     {

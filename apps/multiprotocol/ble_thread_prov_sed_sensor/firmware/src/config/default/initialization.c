@@ -428,9 +428,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    TC0_TimerInitialize();
-
     RTC_Initialize();
+
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 
@@ -438,9 +438,9 @@ void SYS_Initialize ( void* data )
 
 	TRNG_Initialize();
 
-    EVSYS_Initialize();
-
     SERCOM0_USART_Initialize();
+
+    EVSYS_Initialize();
 
 
 
@@ -543,7 +543,6 @@ void SYS_Initialize ( void* data )
 
     // Initialize BLE Stack
     BT_SYS_Init(&bleRequestQueueHandle, &osalAPIList, &btOption, &btSysCfg);
-    CRYPT_WCCB_Initialize();
     
     /*Open Thread System Initialization*/
     otSysInit(0U,0U);
@@ -551,6 +550,7 @@ void SYS_Initialize ( void* data )
     /* Creation of openthread Task Queue */
     OSAL_QUEUE_Create(&OTQueue, OT_TASK_QUEUE_SIZE, sizeof(OT_Msg_T));
 
+    CRYPT_WCCB_Initialize();
 
     /* MISRAC 2012 deviation block end */
     APP_Initialize();
