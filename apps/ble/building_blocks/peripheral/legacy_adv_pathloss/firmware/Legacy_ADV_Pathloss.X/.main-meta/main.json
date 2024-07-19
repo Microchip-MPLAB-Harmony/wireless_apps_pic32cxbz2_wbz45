@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_legacy_adv_pathloss",
-        "version": "3.3.0",
+        "version": "3.2.0",
         "displayName": "BLE Legacy Advertisment and Pathloss Application",
         "projectName": "Legacy_ADV_Pathloss",
         "shortDescription": "This example application users to enable 'sleep/standby' mode with BLE Advertisements on WBZ451 Curiosity board using MPLAB Code Configurator(MCC) In this basic application example the advertisement interval will be set to 1 sec.The advertisement interval will dictate the application sleep time MCU32 to team about the nameing conversion for applications.",

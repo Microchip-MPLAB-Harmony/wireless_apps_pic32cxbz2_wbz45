@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_two_set_adv",
-        "version": "3.3.0",
+        "version": "3.2.0",
         "displayName": "BLE Peripheral multiple sets advertising Application",
         "projectName": "two_set_adv",
         "shortDescription": "This example application demonstrates the functionality of BLE multiple sets advertising Application on WBZ451 Curiosity Board.Refer to Section 4.4.2.10 Advertising Sets, BLUETOOTH CORE SPECIFICATION Version 5.4 | Vol 6, Part B",

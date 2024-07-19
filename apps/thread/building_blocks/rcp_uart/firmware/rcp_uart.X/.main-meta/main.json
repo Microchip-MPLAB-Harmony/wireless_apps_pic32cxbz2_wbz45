@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_rcp_uart",
-        "version": "3.3.0",
+        "version": "3.2.0",
         "displayName": "Thread RCP UART Application",
         "projectName": "rcp_uart",
         "shortDescription": "This application help users to configure WBZ451 Curiosity board as OpenThread Radio Co-Processor.",

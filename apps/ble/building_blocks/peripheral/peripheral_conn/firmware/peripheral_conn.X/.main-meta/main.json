@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_peripheral_conn",
-        "version": "3.3.0",
+        "version": "3.2.0",
         "displayName": "BLE Peripheral Connection Application",
         "projectName": "peripheral_conn",
         "shortDescription": "This example application used to enable advertisements and connection on WBZ451 Curiosity board using MPLAB Code Configurator(MCC) BLE Advertisement is Broadcasting of small packets to peer devices.",

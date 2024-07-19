@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ext_adv",
-        "version": "3.3.0",
+        "version": "3.2.0",
         "displayName": "BLE Peripheral Extended Advertisment Application",
         "projectName": "ext_adv",
         "shortDescription": "This example application users enable Extended Advertisements (1M, 2M, coded PHY -- 125kbps) on WBZ451 Curiosity Board. This example (ext_adv) enables users to send application data using extended advertisements.",
