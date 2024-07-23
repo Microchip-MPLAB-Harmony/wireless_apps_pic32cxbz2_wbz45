@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_peripheral_trp_uartcodedPhy",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "BLE Peripheral Transparent UART Application with coded PHY",
         "projectName": "peripheral_trp_uartcodedPhy",
         "shortDescription": "This example application enables user to create a peripheral device and send/receive characters between 2 connected BLE devices over Microchip proprietary Transparent UART Profile with coded PHY which enables much wider range between 2 devices. Peripheral device will be WBZ45x Device and Central device should be WBZ45x Device with coded PHY enabled as well.",

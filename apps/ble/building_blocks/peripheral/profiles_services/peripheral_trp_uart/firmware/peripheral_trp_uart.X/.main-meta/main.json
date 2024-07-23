@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_peripheral_trp_uart",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "BLE Peripheral Transparent UART Application",
         "projectName": "peripheral_trp_uart",
         "shortDescription": "This example application users create a peripheral device and send/receive characters between 2 connected BLE devices over Microchip proprietary Transparent UART Profile. Peripheral device will be WBZ45x Device and Central device can either be a Smartphone with Light Blue App or another WBZ45x Device.",

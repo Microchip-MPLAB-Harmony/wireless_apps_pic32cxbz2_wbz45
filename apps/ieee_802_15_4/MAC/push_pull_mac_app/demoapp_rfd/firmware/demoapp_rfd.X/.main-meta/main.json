@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_demoapp_rfd",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "15.4 Star MAC RFD End Device Application",
         "projectName": "demoapp_rfd",
         "shortDescription": "Demonstrates the bidirectional capabilities of 802.15.4 MAC(End Devices).",

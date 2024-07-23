@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_deep_sleep_adv",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "BLE Peripheral Deep Sleep Advertisment Application",
         "projectName": "ble_deep_sleep_adv",
         "shortDescription": "This example application demonstrates the functionality of Deep Sleep Advertisements on WBZ451 Curiosity Board. The WBZ451 device will be put to deep sleep mode upon power on reset followed by periodic deep sleep + advertisement upon device wake up through INT0(Button interrupt).",

@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ext_scan_adv",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "Extended Scan and Advertisment Application",
         "projectName": "scan_ext_adv",
         "shortDescription": "This example application used to enable scanning of Extended Advertisements (ADV_EXT_IND, ADV_AUX_IND) on WBZ451 Curiosity board. For a successful scan of Extended Advertisement user needs to have a broadcaster transmitting these Advertisements. In BLE a central or observer always starts with scanning.",

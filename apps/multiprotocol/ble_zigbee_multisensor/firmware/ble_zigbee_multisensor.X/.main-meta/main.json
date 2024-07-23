@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ble_zigbee_multisensor",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "Zigbee and BLE Multisensor Application",
         "projectName": "ble_zigbee_multisensor",
         "shortDescription": "This example application demonstrates the functionality of Zigbee and BLE multiple sensor application based on WBZ451 Curiosity Board.",

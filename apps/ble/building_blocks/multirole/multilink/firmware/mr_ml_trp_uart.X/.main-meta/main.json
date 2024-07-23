@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_mr_ml_trp_uart",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "BLE MultiRole MultiLink Transparent UART Application",
         "projectName": "mr_ml_trp_uart",
         "shortDescription": "This example application demonstrates the functionality of BLE multil-role multi-link support on WBZ451 Curiosity Board. Multilink device will send/receive characters between connected BLE devices over Microchip proprietary Transparent UART Profile.The multilink central will enable users to connect multiple peripheral devices and also another central device.",

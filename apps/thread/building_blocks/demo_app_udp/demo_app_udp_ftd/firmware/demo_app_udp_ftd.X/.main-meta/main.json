@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_demo_app_udp_ftd",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "displayName": "Thread FTD Standalone UDP Application",
         "projectName": "demo_app_udp_ftd",
         "shortDescription": "Demo application UDP exhibits the basic Network formation for a FTD, configuring the different network parameters for sending and receiving UDP packets",
