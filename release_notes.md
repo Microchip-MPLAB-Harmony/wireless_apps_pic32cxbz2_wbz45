@@ -26,7 +26,7 @@ Following table provides number of Wireless examples available for different dev
 - Certain iPhone models are experiencing crashes with the MBD App following the completion of the commissioning process when running on iOS.
 
 ### Limitations
-- None
+- None.
 
 ### Additional Notes
 - UDP and CoAP demo applications are tested for a duration of 1 hour.
