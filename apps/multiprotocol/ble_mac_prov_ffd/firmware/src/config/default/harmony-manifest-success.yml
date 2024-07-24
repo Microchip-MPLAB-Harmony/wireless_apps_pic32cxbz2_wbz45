@@ -4,28 +4,28 @@
 
 
 project: ble_mac_prov_ffd
-creation_date: 2024-07-18T00:05:50.263+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-07-19T16:01:55.765+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
-mcc_version: v5.5.1
-mcc_core_version: v5.7.1
+mcc_version: v5.5.0
+mcc_core_version: v5.7.0
 mplabx_version: v6.20        # if MPLAB X plugin only
 harmony_version: v1.5.2
 compiler: XC32 4.40
 
 modules:
-    - {name: "csp", version: "Branch_v3.19.1"}
+    - {name: "csp", version: "v3.19.1"}
     - {name: "wireless_pic32cxbz_wbz", version: "v1.4.0"}
-    - {name: "wireless_system_pic32cxbz_wbz", version: "Branch_v1.6.0"}
-    - {name: "wolfssl", version: "Branch_v5.4.0"}
-    - {name: "wireless_15_4_mac", version: "Branch_v1.1.0"}
-    - {name: "crypto", version: "Branch_v3.8.1"}
-    - {name: "CMSIS-FreeRTOS", version: "Branch_v10.5.1"}
-    - {name: "core", version: "Branch_v3.13.4"}
-    - {name: "wireless_ble", version: "Branch_v1.3.0"}
+    - {name: "wireless_system_pic32cxbz_wbz", version: "v1.6.0"}
+    - {name: "wolfssl", version: "v5.4.0"}
+    - {name: "wireless_15_4_mac", version: "v1.1.0"}
+    - {name: "crypto", version: "v3.8.1"}
+    - {name: "CMSIS-FreeRTOS", version: "v10.5.1"}
+    - {name: "core", version: "v3.13.4"}
+    - {name: "wireless_ble", version: "v1.3.0"}
     - {name: "CMSIS_5", version: "5.9.0"}
-    - {name: "wireless_15_4_phy", version: "Branch_v1.3.0-r"}
-    - {name: "bsp", version: "Branch_v3.20.1"}
+    - {name: "wireless_15_4_phy", version: "v1.3.0"}
+    - {name: "bsp", version: "v3.20.1"}
 
 packs:
     - {name: "PIC32CX-BZ_DFP", version: "1.4.243"}

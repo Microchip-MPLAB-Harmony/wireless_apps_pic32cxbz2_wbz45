@@ -1,4 +1,4 @@
-<config configName="default" projectName="ble_mac_prov_ffd" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.1">
+<config configName="default" projectName="ble_mac_prov_ffd" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.0">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -6481,6 +6481,17 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ble_prov" name="MAC_DEVICE_CONFIG"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ble_prov&gt;
+  &lt;ble_prov dnOrder=&quot;0&quot; id=&quot;MAC_DEVICE_CONFIG&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ble_prov&quot; value=&quot;0&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/ble_prov&gt;
+&lt;/ble_prov&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ble_prov" name="THREAD_DEVICE_CONFIG"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ble_prov&gt;
   &lt;ble_prov dnOrder=&quot;0&quot; id=&quot;THREAD_DEVICE_CONFIG&quot;&gt;
@@ -6531,7 +6542,7 @@
         &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;37&quot; y=&quot;271&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;17&quot; id=&quot;nvm&quot; x=&quot;489&quot; y=&quot;94&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;18&quot; id=&quot;pdsSystem&quot; x=&quot;647&quot; y=&quot;58&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;19&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;289&quot; y=&quot;169&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;19&quot; id=&quot;pic32cx_bz2_devsupport&quot; x=&quot;290&quot; y=&quot;169&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;20&quot; id=&quot;sercom0&quot; x=&quot;1&quot; y=&quot;150&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;21&quot; id=&quot;sys_console&quot; x=&quot;144&quot; y=&quot;84&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;22&quot; id=&quot;sys_time&quot; x=&quot;1000&quot; y=&quot;14&quot;/&gt;
@@ -17055,7 +17066,7 @@
       </entry>
       <entry>
          <file>..\src\app_prov\app_prov_mac.c</file>
-         <hash>30ff3f193a6e76c42d601299cde877ec90a1597518767b39e690df8d019eb556</hash>
+         <hash>6c13759a44b6c63c1bb852bcb8d01c3b02f07ccb7fb4017129a1d96b0c1b2220</hash>
       </entry>
       <entry>
          <file>..\src\app_timer\app_timer.c</file>
@@ -17239,7 +17250,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>4553f166a7c2a235625c864d8336e3aa68ed9a9f79657797e0049c9f5d0452a7</hash>
+         <hash>e03d35a0978b864be2c2ddf09d3f96c820f609b4f4c515b572be4a579687cbcc</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>

@@ -1,4 +1,4 @@
-<config configName="default" projectName="ble_mac_prov_rfd" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.1">
+<config configName="default" projectName="ble_mac_prov_rfd" configVersion="1.1" device="WBZ451" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.0">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -6452,6 +6452,17 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ble_prov" name="MAC_DEVICE_CONFIG"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ble_prov&gt;
+  &lt;ble_prov dnOrder=&quot;0&quot; id=&quot;MAC_DEVICE_CONFIG&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;ble_prov&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/ble_prov&gt;
+&lt;/ble_prov&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ble_prov" name="THREAD_DEVICE_CONFIG"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ble_prov&gt;
   &lt;ble_prov dnOrder=&quot;0&quot; id=&quot;THREAD_DEVICE_CONFIG&quot;&gt;
@@ -6487,7 +6498,7 @@
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;BSP_WBZ451_Curiosity&quot; x=&quot;30&quot; y=&quot;220&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;FreeRTOS&quot; x=&quot;640&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;HarmonyCore&quot; x=&quot;800&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;IEEE_802154_MAC&quot; x=&quot;439&quot; y=&quot;321&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;IEEE_802154_MAC&quot; x=&quot;437&quot; y=&quot;304&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;IEEE_802154_PHY&quot; x=&quot;232&quot; y=&quot;212&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;PROFILE_TRSP&quot; x=&quot;870&quot; y=&quot;360&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;SERVICE_TRS&quot; x=&quot;710&quot; y=&quot;120&quot;/&gt;
@@ -14043,7 +14054,7 @@
       </entry>
       <entry>
          <file>..\src\app_prov\app_prov_mac.c</file>
-         <hash>30ff3f193a6e76c42d601299cde877ec90a1597518767b39e690df8d019eb556</hash>
+         <hash>6c13759a44b6c63c1bb852bcb8d01c3b02f07ccb7fb4017129a1d96b0c1b2220</hash>
       </entry>
       <entry>
          <file>..\src\app_trps\app_trps.c</file>
@@ -14219,7 +14230,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\definitions.h</file>
-         <hash>b057adc4bdd0973f5f7b0a42398a1b9e71e476ad1fb9b92d9b11a9453353f6d7</hash>
+         <hash>27efa5b32a72ac04042e236d2dff33f28355b1a5bffd1e2a8d4665b1bde7923b</hash>
       </entry>
       <entry>
          <file>..\src\config\default\device.h</file>
@@ -14595,7 +14606,7 @@
       </entry>
       <entry>
          <file>..\src\config\default\initialization.c</file>
-         <hash>8b36afbc66b13e299b190c6c16171bf1ae434f4d42aa0145fe04ac2e1cfe6285</hash>
+         <hash>717dde5d145ca4062c9a99b4df36d8729a9434c0973b254fd4b73b7fd1702fe3</hash>
       </entry>
       <entry>
          <file>..\src\config\default\interrupts.c</file>

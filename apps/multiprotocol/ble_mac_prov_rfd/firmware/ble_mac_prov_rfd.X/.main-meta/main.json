@@ -1,73 +1,4 @@
 {
-<<<<<<< HEAD
-	"metaDataVersion": "1.0.0",
-	"category": "com.microchip.ide.project",
-	"content": {
-		"metaDataVersion": "1.3.0",
-		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ble_mac_prov_rfd",
-		"version": "3.3.0",
-		"displayName": "MAC BLE Combo Application",
-		"projectName": "ble_mac_prov_rfd",
-		"shortDescription": "This application showcases the provisioning of an 802.15.4 MAC Reduced Function Device (RFD) via Bluetooth Low Energy (BLE) through a mobile application. It utilizes Microchip's proprietary Transparent Service for BLE peripherals, which operates simultaneously with the 802.15.4 MAC protocol to establish connectivity with the mobile application.",
-		"ide": {
-			"name": "MPLABX",
-			"semverRange": ">=6.20"
-		},
-		"compiler": [
-			{
-				"name": "XC32",
-				"semverRange": ">=4.40.0"
-			}
-		],
-		"dfp": {
-			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.4.243"
-		},
-		"configurator": {
-			"name": "MCC",
-			"semverRange": ">=5.7.0"
-		},
-		"device": {
-			"metaDataVersion": "1.0.0",
-			"category": "com.microchip.portal.contentRef",
-			"content": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.device",
-				"name": "WBZ451",
-				"versionRange": "*"
-			}
-		},
-		"author": "Microchip",
-		"peripherals": [
-			"SERCOM",
-			"GPIO",
-			"TC"
-		],
-		"keywords": [
-			"MCC",
-			"Harmony",
-			"PIC32CX1012BZ20548",
-			"WBZ451",
-			"PIC32CXBZ2 Family",
-			"wireless",
-			"multiprotocol",
-			"ble_mac_prov_rfd",
-			"RFD"
-		],
-		"additionalData": {
-			"longDescription": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.portal.fileRef",
-				"content": {
-					"metaDataVersion": "1.0.0",
-					"fileName": "../../../readme.md",
-					"mimeType": "text/markdown"
-				}
-			}
-		}
-	}
-}
-=======
     "metaDataVersion": "1.0.0",
     "category": "com.microchip.ide.project",
     "content": {
@@ -135,4 +66,3 @@
         }
     }
 }
->>>>>>> 17a21567 ([WSCH-426] Updated the MCC plugin version to 5.5.1)
