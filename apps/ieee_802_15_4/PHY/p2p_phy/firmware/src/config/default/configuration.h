@@ -86,7 +86,7 @@ extern "C" {
 #define SYS_CMD_BUFFER_DMA_READY
 
 /* Command System Service RTOS Configurations*/
-#define SYS_CMD_RTOS_STACK_SIZE                256
+#define SYS_CMD_RTOS_STACK_SIZE                512
 #define SYS_CMD_RTOS_TASK_PRIORITY             2
 
 /* TIME System Service Configuration Options */
@@ -101,7 +101,7 @@ extern "C" {
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			(1U)
 #define SYS_CONSOLE_UART_MAX_INSTANCES 	   			(1U)
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		(0U)
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(200U)
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(500U)
 
 
 #define SYS_CONSOLE_INDEX_0                       0

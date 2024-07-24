@@ -66,10 +66,10 @@
 
 #define NUMBER_OF_LARGE_STACK_BUFS	(10U)
 
-#define NUMBER_OF_SMALL_STACK_BUFS	(3U)
+#define NUMBER_OF_SMALL_STACK_BUFS	(0U)
 
 /** Defines the number of additional large buffers used by the application */
-#define NUMBER_OF_LARGE_APP_BUFS    (0U)
+#define NUMBER_OF_LARGE_APP_BUFS    (10U)
 
 /** Defines the number of additional small buffers used by the application */
 #define NUMBER_OF_SMALL_APP_BUFS    (0U)

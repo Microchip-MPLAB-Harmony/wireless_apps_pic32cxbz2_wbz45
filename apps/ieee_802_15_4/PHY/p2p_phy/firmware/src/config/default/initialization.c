@@ -456,7 +456,7 @@ void SYS_Initialize ( void* data )
 
 
     // Initialize RF System
-    SYS_Load_Cal(WSS_ENABLE_NONE);
+    SYS_Load_Cal(WSS_ENABLE_ZB);
  
     // Set up OSAL for RF Stack Library usage
     osalAPIList.OSAL_CRIT_Enter      = OSAL_CRIT_Enter;

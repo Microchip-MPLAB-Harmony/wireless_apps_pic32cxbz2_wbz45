@@ -134,7 +134,7 @@ void vApplicationIdleHook( void )
     important that vApplicationIdleHook() is permitted to return to its calling
     function, because it is the responsibility of the idle task to clean up
     memory allocated by the kernel to any task that has since been deleted. */
-	app_idle_task();
+    app_idle_task();
 }
 
 /*-----------------------------------------------------------*/
