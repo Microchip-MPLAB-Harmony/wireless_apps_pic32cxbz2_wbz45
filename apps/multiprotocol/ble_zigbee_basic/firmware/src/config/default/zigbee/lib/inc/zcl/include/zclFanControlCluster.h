@@ -116,8 +116,7 @@ to factory defaults.
                                    ZCL_FAN_CONTROL_CL_FAN_SEQUENCE_OPERATION_SER_ATTR_MIN_VAL,\
                                    ZCL_FAN_CONTROL_CL_FAN_SEQUENCE_OPERATION_SER_ATTR_MAX_VAL)
 
-#define ZCL_DEFINE_FAN_CONTROL_CLUSTER_CLIENT_ATTRIBUTES() \
-  DEFINE_ATTRIBUTE(clusterVersion, ZCL_READONLY_ATTRIBUTE, ZCL_FAN_CONTROL_CLUSTER_VERSION_ATTRIBUTE_ID, ZCL_U16BIT_DATA_TYPE_ID) 
+#define ZCL_DEFINE_FAN_CONTROL_CLUSTER_CLIENT_ATTRIBUTES() 
 /**
  * \brief Fan Control Cluster definition macros
 */
@@ -240,13 +239,6 @@ typedef struct PACK
 
 typedef struct PACK
 {
-  struct PACK
-  {
-    ZCL_AttributeId_t id;
-    uint8_t type;
-    uint8_t properties;
-    uint16_t value;
-  } clusterVersion;
 } ZCL_FanControlClusterClientAttributes_t;
 
 END_PACK

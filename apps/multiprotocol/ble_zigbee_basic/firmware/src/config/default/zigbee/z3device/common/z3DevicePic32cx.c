@@ -93,7 +93,7 @@
   #define APP_COMMISSIONING_FINDING_AND_BINDING 0
 #endif
 
-//Table 4 ? Bits of the bdbCommissioningMode attribute
+//Table 4 â?? Bits of the bdbCommissioningMode attribute
 //5.3.2 bdbCommissioningMode attribute
 #define BDB_COMMISSIONING_TOUCHLINK       0U //(1)
 #define BDB_COMMISSIONING_NWK_STEERING    1U // (2)
@@ -528,14 +528,6 @@ static void TouchlinkCompleted(BDB_CommissioningStatus_t status)
   else if(!(bool)touchlinkAttempts)
   {
     commissioningReq.mode = storeCommMode; 
-    if (commissioningReq.mode == BDB_COMMISSIONING_FINDING_BINDING)
-    {
-        findAndBind = true;
-    }
-    else
-    {
-        findAndBind = false;
-    }
     (void)HAL_StartAppTimer(&joinRetryTimer);
   }
   else
@@ -686,6 +678,7 @@ static void handleSteeringFailure(void)
     if ((bool)joinInterval && (bool)joinAttempts)
     {     
       (void)HAL_StartAppTimer(&joinRetryTimer);
+      commissioningInProgress = true;
     }
     else if (!(bool)joinInterval && (bool)joinAttempts)
     {
@@ -923,6 +916,7 @@ static void commissioningDone(BDB_InvokeCommissioningConf_t *conf)
       event.eventGroup = EVENT_ZIGBEE;
       event.eventId = EVENT_COMMISSIONING_FAILURE;
       event.eventData.value = (uint8_t)(conf->status);
+      commissioningInProgress = true;
       APP_Zigbee_Handler(event);
       /* If the router device couldn't find any target during touchlinking, let it continue as Target */
       setTouchlinkTargetType();

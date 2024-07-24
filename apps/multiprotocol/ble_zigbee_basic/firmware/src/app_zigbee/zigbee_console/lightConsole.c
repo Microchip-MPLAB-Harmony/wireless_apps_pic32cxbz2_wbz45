@@ -70,6 +70,7 @@
 #include <z3device/clusters/include/onOffCluster.h>
 #include <z3device/clusters/include/commissioningCluster.h>
 
+
 /******************************************************************************
                     Defines section
 ******************************************************************************/
@@ -103,6 +104,9 @@ static void processIdentifyQueryCmd(const ScanValue_t *args);
 static void processTriggerEffectCmd(const ScanValue_t *args);
 static void processReadOnOffAttrVal(const ScanValue_t *args);
 static void processSendEndpointInfoCmd(const ScanValue_t *args);
+
+
+
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
 
 /******************************************************************************
@@ -203,7 +207,9 @@ PROGMEM_DECLARE(ConsoleCommand_t zclHelpCmds)[]=
   {"identifyQuery", "sdd", processIdentifyQueryCmd, "[addrMode][addr][ep]\r\n"},
   {"triggerEffect", "sdddd", processTriggerEffectCmd, "->Send TriggerEffect command: triggerEffect [addrMode][addr][ep][effectId][effectVariant]"},
   {"sendEndpointInfo", "dd", processSendEndpointInfoCmd, "[shortAddr][dstEp]\r\n"},
-#endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
+
+    
+  #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
   {0,0,0,0},
 };
 
@@ -445,6 +451,8 @@ static void processSendEndpointInfoCmd(const ScanValue_t *args)
 {
   commissioningSendEndpointInformation(args[0].uint16, args[1].uint8, srcEp);
 }
+
+
 #endif // #if ZCL_COMMANDS_IN_CONSOLE == 1
 
 #endif // APP_ENABLE_CONSOLE == 1

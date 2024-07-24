@@ -182,7 +182,7 @@ void APP_Tasks ( void )
             //BLE_GAP_SetScanningEnable(true, BLE_GAP_SCAN_FD_ENABLE, BLE_GAP_SCAN_MODE_OBSERVER, 1000);
             
             BLE_GAP_ExtScanningEnable_T extScan;
-            extScan.duration = 0x0;
+            extScan.duration = 0x2710;      //Scan upto 100Sec 
             extScan.enable =  true;
             extScan.filterDuplicates = BLE_GAP_SCAN_FD_DISABLE;
             extScan.period = 0x0000;

@@ -193,7 +193,7 @@ void CLOCK_Initialize( void )
     /* Peripheral Module Disable Configuration */
 
 
-    CFG_REGS->CFG_PMD1 = 0x200101ccU;
+    CFG_REGS->CFG_PMD1 = 0x200001ccU;
     CFG_REGS->CFG_PMD3 = 0x3e3eU;
 
 

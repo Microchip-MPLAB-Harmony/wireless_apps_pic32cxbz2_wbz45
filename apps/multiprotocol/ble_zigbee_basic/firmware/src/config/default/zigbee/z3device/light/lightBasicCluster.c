@@ -81,7 +81,7 @@ static uint8_t swBuild[] = {15, 97, 98, 99, 100, 101, 102, 103, 104} ;//'a','b',
 static uint8_t productURL[] = {31, 11, 119, 119, 46, 109, 105, 99, 114, 111, 99, 104, 105, 112}; //www.microchip.com
 static uint8_t productCode[]= {31, 88, 89, 90, 49, 50, 51,}; //XYZ123
 static uint8_t dateCode[]= {15, 50, 48, 49, 53, 48, 57, 48, 49 }; //20150901
-static uint8_t modelIdentifier[] = {90, 76, 79, 68, 101, 118, 105, 99, 101}; //ZLODevice
+static uint8_t modelIdentifier[] = {31, 90, 76, 79, 68, 101, 118, 105, 99, 101}; //ZLODevice
 static uint8_t manufacturerName[] = {31, 77, 105, 99 ,114 ,111 ,99 ,104 ,105, 112, 32}; //Microchip
 
 /******************************************************************************

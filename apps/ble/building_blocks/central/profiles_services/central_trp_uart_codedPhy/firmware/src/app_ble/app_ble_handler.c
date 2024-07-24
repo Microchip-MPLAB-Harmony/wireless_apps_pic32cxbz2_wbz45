@@ -205,7 +205,7 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event) {
         case BLE_GAP_EVT_EXT_ADV_REPORT:
         {
             /* TODO: implement your application code.*/
-            SYS_CONSOLE_PRINT("*");
+            //SYS_CONSOLE_PRINT("*");
             if ((p_event->eventField.evtExtAdvReport.addr.addr[0] == 0xA1 && p_event->eventField.evtExtAdvReport.addr.addr[1] == 0xA2) ||
                     (p_event->eventField.evtExtAdvReport.addr.addr[0] == 0xB1 && p_event->eventField.evtExtAdvReport.addr.addr[1] == 0xB2) ||
                     (p_event->eventField.evtExtAdvReport.addr.addr[0] == 0xC1 && p_event->eventField.evtExtAdvReport.addr.addr[1] == 0xC2)) {
@@ -217,14 +217,6 @@ void APP_BleGapEvtHandler(BLE_GAP_Event_T *p_event) {
                 SYS_CONSOLE_PRINT_PHY(p_event->eventField.evtExtAdvReport.secPhy);
 
                 //SYS_CONSOLE_PRINT_extEVENT(p_event->eventField.evtExtAdvReport.eventType);
-
-                // found so disable ext scanning
-                BLE_GAP_ExtScanningEnable_T extScan;
-                extScan.duration = 0x2710; //100 Seconds scan
-                extScan.enable = true; 
-                extScan.filterDuplicates = BLE_GAP_SCAN_FD_DISABLE;
-                extScan.period = 0x0000;
-                BLE_GAP_SetExtScanningEnable(BLE_GAP_SCAN_MODE_OBSERVER, &extScan);
 
                 SYS_CONSOLE_PRINT("\r\next Initiating Connection...\r\n");
 

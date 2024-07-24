@@ -163,7 +163,9 @@ void APP_Tasks ( void )
             BLE_BUTTON_LED_Add();
             APP_Button_Init();
             SYS_CONSOLE_PRINT("[BLE] Device Initialized. Ready for connection. \r\n");
-            
+            RGB_LED_RED_On();
+            RGB_LED_GREEN_On();
+            RGB_LED_BLUE_On();
             if (appInitialized)
             {
 
