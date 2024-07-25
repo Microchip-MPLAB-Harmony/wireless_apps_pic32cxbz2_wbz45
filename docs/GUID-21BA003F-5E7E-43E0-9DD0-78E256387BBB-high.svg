@@ -1,0 +1,1731 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="148.83754mm"
+   height="235.60652mm"
+   id="svg810"
+   sodipodi:docname="OOBE_HPA_Flow=GUID-21BA003F-5E7E-43E0-9DD0-78E256387BBB=1=en-US=Source.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata408">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     id="namedview812"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     units="mm"
+     inkscape:document-units="mm"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-bottom="2"
+     fit-margin-right="2"
+     inkscape:zoom="0.75394617"
+     inkscape:cx="156.77981"
+     inkscape:cy="495.17618"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg810" />
+  <desc
+     id="desc2">title%20Zigbee%20Commissioning%20through%20BLE%0A%0Aparticipant%20%22Combined%20Interface%22%20as%20CI%0Aparticipant%20%22Combo%20Light%22%20as%20CL%0Aparticipant%20%22Microchip%20Bluetooth%20Data%20(MBD)%20App%22%20as%20MBD%0A%0A%0A%0A%0A%0ACL-%3ECL%3ABLE%20Advertisement%20Started%0AMBD-%3EMBD%3ABLE%20Provisioning%0AMBD-%3EMBD%3ADevice%20Type%20Selection%0AMBD-%3EMBD%3AScan%20for%20Device%0ACL%3C-%3EMBD%3AConnected%20to%20CL%20(Device%20State%3A%20Not%20Commissioned)%0AMBD-%3EMBD%3AProvision%0AMBD-%3EMBD%3AChannel%20Map%0AMBD-%3EMBD%3AStart%20Commission%0A%0ACI-%3ECI%3ACommand%3E%3E%20resetToFN%0Anote%20over%20CI%3ACommissioning%20Procedure%20Started%20(for%20180s)%0ACI-%3ECI%3ACommissioning%20Sequence%0Anote%20over%20CI%3AFormation-%3EFind%20%26%20Bind%0ACL-%3ECL%3AJoined%20to%20a%20Network%0Anote%20over%20CI%2CMBD%3ANetwork%20Established%20(Combo%20Light%20Joined%20to%20Combined%20Interface)%0AMBD-%3EMBD%3ARestart%20MBD%20App%0AMBD-%3EMBD%3ABLE%20Sensor%0AMBD-%3EMBD%3ADevice%20Type%20Selection%0AMBD-%3EMBD%3AScan%20and%20Connect%0AMBD-%3ECL%3ALight%20Control%20Command%20(BLE)%0ACL-%3ECL%3AUpdates%20the%20RGB%20LED%0ACL-%3ECI%3ARGB%20LED%20Status%20Update%20(Zigbee)%0ACI-%3ECL%3ALight%20Control%20Command%20(Zigbee%20Network)%0ACL-%3ECL%3AUpdates%20the%20RGB%20LED%0ACL-%3EMBD%3ARGB%20LED%20Status%20Update%20(BLE)%0A</desc>
+  <defs
+     id="defs4" />
+  <g
+     id="g6"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g8"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g10"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g12"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g14"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g16"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g18"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g20"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g22"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g24"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g26"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g28"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g30"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g32"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g34"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g36"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g38"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g40"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g42"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g44"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g46"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g48"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g50"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g52"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g54"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g56"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g58"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g60"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g62"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g64"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g66"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g68"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g70"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g72"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g74"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g76"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g78"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g80"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g82"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g84"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g86"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g88"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g90"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g92"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g94"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g96"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g98"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g100"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g102"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g104"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g106"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g108"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g110"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g112"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g114"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g116"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g118"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g120"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g122"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g124"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g126"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g128"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g130"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g132"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g134"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g136"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g138"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g140"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g142"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g144"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g146"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g148"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g150"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g152"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g154"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g156"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g158"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g160"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g162"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g164"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g166"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g168"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g170"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g172"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g174"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g176"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g178"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g180"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g182"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g184"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g186"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g188"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g190"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g192"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g194"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g196"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g198"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g200"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g202"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g204"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g206"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g208"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g210"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g212"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g214"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g216"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g218"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g220"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g222"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g224"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g226"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g228"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g230"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g232"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g234"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g236"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g238"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g240"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g242"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g244"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g246"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g248"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g250"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g252"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g254"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g256"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g258"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g260"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g262"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g264"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g266"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g268"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g270"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g272"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g274"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g276"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g278"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g280"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g282"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g284"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g286"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g288"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g290"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g292"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g294"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g296"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g298"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g300"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g302"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g304"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g306"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g308"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g310"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g312"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g314"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g316"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g318"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g320"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g322"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g324"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g326"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g328"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g330"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g332"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g334"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g336"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g338"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g340"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g342"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g344"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g346"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g348"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g350"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g352"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g354"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g356"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g358"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g360"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g362"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g364"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g366"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g368"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g370"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g372"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g374"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g376"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g378"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g380"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g382"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g384"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g386"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g388"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g390"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g392"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g394"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g396"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g402"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)" />
+  <g
+     id="g442"
+     transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+    <path
+       style="fill:none;stroke:none"
+       inkscape:connector-curvature="0"
+       d=""
+       id="path412" />
+    <path
+       style="fill:none;stroke:none"
+       inkscape:connector-curvature="0"
+       d=""
+       id="path422" />
+    <path
+       style="fill:none;stroke:none"
+       inkscape:connector-curvature="0"
+       d=""
+       id="path432" />
+    <g
+       id="g440" />
+  </g>
+  <g
+     id="g5767">
+    <g
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)"
+       id="g400">
+      <rect
+         x="0"
+         y="0"
+         width="1339"
+         height="2154"
+         id="rect398"
+         style="fill:#ffffff;stroke:none" />
+    </g>
+    <g
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)"
+       id="g410">
+      <path
+         d="M 225.19111,125.19734 V 2154.5322"
+         stroke-miterlimit="10"
+         id="path404"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:16.4319, 7.12047;paint-order:fill stroke markers" />
+      <path
+         d="M 627.50122,125.19734 V 2154.5322"
+         stroke-miterlimit="10"
+         id="path406"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:16.4319, 7.12047;paint-order:fill stroke markers" />
+      <path
+         d="M 1115.9042,125.19734 V 2154.5322"
+         stroke-miterlimit="10"
+         id="path408"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:16.4319, 7.12047;paint-order:fill stroke markers" />
+    </g>
+    <g
+       id="g416"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+      <path
+         d="m 120.59066,67.73512 h 209.20089 v 57.46222 H 120.59066 Z"
+         stroke-miterlimit="10"
+         id="path414"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:3.41782999;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    </g>
+    <g
+       id="g420"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+      <text
+         font-size="18.6667px"
+         font-style="normal"
+         font-weight="normal"
+         text-decoration="normal"
+         x="143.76781"
+         y="103.83592"
+         dominant-baseline="alphabetic"
+         xml:space="preserve"
+         id="text418"
+         style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Combined Interface</text>
+    </g>
+    <g
+       id="g426"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+      <path
+         d="m 551.42376,67.73512 h 152.15492 v 57.46222 H 551.42376 Z"
+         stroke-miterlimit="10"
+         id="path424"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:3.41782999;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    </g>
+    <g
+       id="g430"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+      <text
+         font-size="18.6667px"
+         font-style="normal"
+         font-weight="normal"
+         text-decoration="normal"
+         x="574.60089"
+         y="103.83592"
+         dominant-baseline="alphabetic"
+         xml:space="preserve"
+         id="text428"
+         style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Combo Light</text>
+    </g>
+    <g
+       id="g436"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)">
+      <path
+         d="m 939.75712,67.73512 h 352.29408 v 57.46222 H 939.75712 Z"
+         stroke-miterlimit="10"
+         id="path434"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:3.41782999;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    </g>
+    <text
+       font-size="18.6667px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="967.85687"
+       y="103.83592"
+       dominant-baseline="alphabetic"
+       xml:space="preserve"
+       id="text438"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66683388px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none"
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)"><tspan
+         y="103.83592"
+         x="967.85687"
+         id="tspan5552"
+         sodipodi:role="line">Microchip Bluetooth® Data App</tspan></text>
+    <g
+       transform="matrix(0.40628922,0,0,0.40628922,7.5590551,7.5590551)"
+       id="g806">
+      <g
+         id="g446">
+        <text
+           font-size="27.1515px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="440.64542"
+           y="29.927933"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text444"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.15143204px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none"><tspan
+             y="29.927933"
+             x="440.64542"
+             id="tspan5550"
+             sodipodi:role="line">Zigbee® Commissioning through BLE</tspan></text>
+      </g>
+      <g
+         id="g454">
+        <g
+           id="g450">
+          <rect
+             x="652.77893"
+             y="167.92018"
+             width="231.47621"
+             height="27.769846"
+             id="rect448"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="655.98309"
+           y="187.14546"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text452"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">BLE Advertisement Started</text>
+      </g>
+      <g
+         id="g462">
+        <path
+           d="m 627.50122,195.69002 h 85.44568 v 27.76985 h -67.85811"
+           stroke-miterlimit="10"
+           id="path456"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g460">
+          <path
+             d="m 645.3024,214.55928 -17.80118,8.90059 17.80118,8.90059 z"
+             id="path458"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g470">
+        <g
+           id="g466">
+          <rect
+             x="1141.1819"
+             y="255.502"
+             width="148.50853"
+             height="27.769846"
+             id="rect464"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="274.72726"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text468"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">BLE Provisioning</text>
+      </g>
+      <g
+         id="g478">
+        <path
+           d="m 1115.9042,283.27184 h 85.4457 v 27.76985 h -67.8581"
+           stroke-miterlimit="10"
+           id="path472"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g476">
+          <path
+             d="m 1133.7054,302.1411 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path474"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g486">
+        <g
+           id="g482">
+          <rect
+             x="1141.1819"
+             y="343.08383"
+             width="191.03107"
+             height="27.769846"
+             id="rect480"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="362.30911"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text484"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Device Type Selection</text>
+      </g>
+      <g
+         id="g494">
+        <path
+           d="m 1115.9042,370.85367 h 85.4457 v 27.76984 h -67.8581"
+           stroke-miterlimit="10"
+           id="path488"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g492">
+          <path
+             d="m 1133.7054,389.72292 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path490"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g502">
+        <g
+           id="g498">
+          <rect
+             x="1141.1819"
+             y="430.66565"
+             width="138.12164"
+             height="27.769846"
+             id="rect496"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="449.89093"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text500"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Scan for Device</text>
+      </g>
+      <g
+         id="g510">
+        <path
+           d="m 1115.9042,458.43549 h 85.4457 v 27.76984 h -67.8581"
+           stroke-miterlimit="10"
+           id="path504"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g508">
+          <path
+             d="m 1133.7054,477.30474 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path506"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g518">
+        <g
+           id="g514">
+          <rect
+             x="652.77893"
+             y="518.24744"
+             width="437.8476"
+             height="27.769846"
+             id="rect512"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="655.98309"
+           y="537.47272"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text516"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Connected to CL (Device State: Not Commissioned)</text>
+      </g>
+      <g
+         id="g530">
+        <path
+           d="M 645.08879,546.01731 H 1098.3166"
+           stroke-miterlimit="10"
+           id="path520"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g528">
+          <path
+             d="m 1098.103,537.11672 17.8012,8.90059 -17.8012,8.90059 z"
+             id="path522"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+          <g
+             id="g526">
+            <path
+               d="m 645.3024,537.11672 -17.80118,8.90059 17.80118,8.90059 z"
+               id="path524"
+               inkscape:connector-curvature="0"
+               style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+          </g>
+        </g>
+      </g>
+      <g
+         id="g538">
+        <g
+           id="g534">
+          <rect
+             x="1141.1819"
+             y="578.05945"
+             width="83.153038"
+             height="27.769846"
+             id="rect532"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="597.28473"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text536"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Provision</text>
+      </g>
+      <g
+         id="g546">
+        <path
+           d="m 1115.9042,605.82928 h 85.4457 v 27.76985 h -67.8581"
+           stroke-miterlimit="10"
+           id="path540"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g544">
+          <path
+             d="m 1133.7054,624.69854 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path542"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g554">
+        <g
+           id="g550">
+          <rect
+             x="1141.1819"
+             y="665.64124"
+             width="117.40252"
+             height="27.769846"
+             id="rect548"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="684.86652"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text552"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Channel Map</text>
+      </g>
+      <g
+         id="g562">
+        <path
+           d="m 1115.9042,693.4111 h 85.4457 v 27.76985 h -67.8581"
+           stroke-miterlimit="10"
+           id="path556"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g560">
+          <path
+             d="m 1133.7054,712.28036 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path558"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g570">
+        <g
+           id="g566">
+          <rect
+             x="1141.1819"
+             y="753.22308"
+             width="153.64734"
+             height="27.769846"
+             id="rect564"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="772.44836"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text568"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Start Commission</text>
+      </g>
+      <g
+         id="g578">
+        <path
+           d="m 1115.9042,780.99292 h 85.4457 v 27.76985 h -67.8581"
+           stroke-miterlimit="10"
+           id="path572"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g576">
+          <path
+             d="m 1133.7054,799.86218 -17.8012,8.90059 17.8012,8.90059 z"
+             id="path574"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g586">
+        <g
+           id="g582">
+          <rect
+             x="250.46878"
+             y="840.80487"
+             width="205.52724"
+             height="27.769846"
+             id="rect580"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="253.673"
+           y="860.03015"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text584"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Command&gt;&gt; resetToFN</text>
+      </g>
+      <g
+         id="g594">
+        <path
+           d="m 225.19111,868.57474 h 85.44567 v 27.76985 h -67.85811"
+           stroke-miterlimit="10"
+           id="path588"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g592">
+          <path
+             d="m 242.99229,887.444 -17.80118,8.90059 17.80118,8.90059 z"
+             id="path590"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <path
+         d="M 10.68071,928.38672 H 420.47622 L 439.7015,947.612 v 29.90598 H 10.68071 v -49.13126 m 409.79551,0 V 947.612 h 19.22528"
+         stroke-miterlimit="10"
+         id="path596"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+      <g
+         id="g600">
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="40.586697"
+           y="958.29272"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text598"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Commissioning Procedure Started (for 180s)</text>
+      </g>
+      <g
+         id="g608">
+        <g
+           id="g604">
+          <rect
+             x="250.46878"
+             y="1009.5601"
+             width="223.18492"
+             height="27.769846"
+             id="rect602"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="253.673"
+           y="1028.7854"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text606"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Commissioning Sequence</text>
+      </g>
+      <g
+         id="g616">
+        <path
+           d="m 225.19111,1037.33 h 85.44567 v 27.7698 h -67.85811"
+           stroke-miterlimit="10"
+           id="path610"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g614">
+          <path
+             d="m 242.99229,1056.1992 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path612"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <path
+         d="M 96.500198,1097.1419 H 334.65674 l 19.22527,19.2253 v 29.906 H 96.500198 v -49.1313 m 238.156542,0 v 19.2253 h 19.22527"
+         stroke-miterlimit="10"
+         id="path618"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+      <g
+         id="g622">
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="126.40619"
+           y="1127.048"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text620"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Formation-&gt;Find &amp; Bind</text>
+      </g>
+      <g
+         id="g630">
+        <g
+           id="g626">
+          <rect
+             x="652.77893"
+             y="1178.3153"
+             width="171.3233"
+             height="27.769846"
+             id="rect624"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="655.98309"
+           y="1197.5406"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text628"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Joined to a Network</text>
+      </g>
+      <g
+         id="g638">
+        <path
+           d="m 627.50122,1206.0852 h 85.44568 v 27.7698 h -67.85811"
+           stroke-miterlimit="10"
+           id="path632"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g636">
+          <path
+             d="m 645.3024,1224.9544 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path634"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <path
+         d="m 205.96583,1265.8972 h 909.93837 l 19.2253,19.2252 v 29.906 H 205.96583 v -49.1312 m 909.93837,0 v 19.2252 h 19.2253"
+         stroke-miterlimit="10"
+         id="path640"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+      <g
+         id="g644">
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="399.3219"
+           y="1295.8031"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text642"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Network Established (Combo Light Joined to Combined Interface)</text>
+      </g>
+      <g
+         id="g652">
+        <g
+           id="g648">
+          <rect
+             x="1141.1819"
+             y="1347.0706"
+             width="151.5882"
+             height="27.769846"
+             id="rect646"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="1366.2958"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text650"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Restart MBD App</text>
+      </g>
+      <g
+         id="g660">
+        <path
+           d="m 1115.9042,1374.8404 h 85.4457 v 27.7698 h -67.8581"
+           stroke-miterlimit="10"
+           id="path654"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g658">
+          <path
+             d="m 1133.7054,1393.7096 -17.8012,8.9006 17.8012,8.9006 z"
+             id="path656"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g668">
+        <g
+           id="g664">
+          <rect
+             x="1141.1819"
+             y="1434.6523"
+             width="105.98602"
+             height="27.769846"
+             id="rect662"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="1453.8777"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text666"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">BLE Sensor</text>
+      </g>
+      <g
+         id="g676">
+        <path
+           d="m 1115.9042,1462.4222 h 85.4457 v 27.7699 h -67.8581"
+           stroke-miterlimit="10"
+           id="path670"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g674">
+          <path
+             d="m 1133.7054,1481.2915 -17.8012,8.9006 17.8012,8.9005 z"
+             id="path672"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g684">
+        <g
+           id="g680">
+          <rect
+             x="1141.1819"
+             y="1522.2341"
+             width="191.03107"
+             height="27.769846"
+             id="rect678"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="1541.4595"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text682"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Device Type Selection</text>
+      </g>
+      <g
+         id="g692">
+        <path
+           d="m 1115.9042,1550.004 h 85.4457 v 27.7699 h -67.8581"
+           stroke-miterlimit="10"
+           id="path686"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g690">
+          <path
+             d="m 1133.7054,1568.8733 -17.8012,8.9006 17.8012,8.9006 z"
+             id="path688"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g700">
+        <g
+           id="g696">
+          <rect
+             x="1141.1819"
+             y="1609.816"
+             width="159.94327"
+             height="27.769846"
+             id="rect694"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="1144.3861"
+           y="1629.0413"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text698"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Scan and Connect</text>
+      </g>
+      <g
+         id="g708">
+        <path
+           d="m 1115.9042,1637.5859 h 85.4457 v 27.7698 h -67.8581"
+           stroke-miterlimit="10"
+           id="path702"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g706">
+          <path
+             d="m 1133.7054,1656.4551 -17.8012,8.9006 17.8012,8.9006 z"
+             id="path704"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g716">
+        <g
+           id="g712">
+          <rect
+             x="743.52765"
+             y="1697.3978"
+             width="256.35013"
+             height="27.769846"
+             id="rect710"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="746.73187"
+           y="1716.623"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text714"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Light Control Command (BLE)</text>
+      </g>
+      <g
+         id="g724">
+        <path
+           d="M 1115.9042,1725.1677 H 645.08879"
+           stroke-miterlimit="10"
+           id="path718"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g722">
+          <path
+             d="m 645.3024,1716.2671 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path720"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g732">
+        <g
+           id="g728">
+          <rect
+             x="652.77893"
+             y="1757.2098"
+             width="194.13808"
+             height="27.769846"
+             id="rect726"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="655.98309"
+           y="1776.4351"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text730"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Updates the RGB LED</text>
+      </g>
+      <g
+         id="g740">
+        <path
+           d="m 627.50122,1784.9796 h 85.44568 v 27.7699 h -67.85811"
+           stroke-miterlimit="10"
+           id="path734"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g738">
+          <path
+             d="m 645.3024,1803.8489 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path736"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g748">
+        <g
+           id="g744">
+          <rect
+             x="283.1283"
+             y="1844.7916"
+             width="286.43573"
+             height="27.769846"
+             id="rect742"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="286.33252"
+           y="1864.0168"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text746"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">RGB LED Status Update (Zigbee)</text>
+      </g>
+      <g
+         id="g756">
+        <path
+           d="M 627.50122,1872.5615 H 242.77867"
+           stroke-miterlimit="10"
+           id="path750"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g754">
+          <path
+             d="m 242.99229,1863.6609 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path752"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g764">
+        <g
+           id="g760">
+          <rect
+             x="250.46878"
+             y="1904.6036"
+             width="351.75476"
+             height="27.769846"
+             id="rect758"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="253.673"
+           y="1923.8289"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text762"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Light Control Command (Zigbee Network)</text>
+      </g>
+      <g
+         id="g772">
+        <path
+           d="M 225.19111,1932.3734 H 609.91365"
+           stroke-miterlimit="10"
+           id="path766"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g770">
+          <path
+             d="m 609.70004,1923.4729 17.80118,8.9005 -17.80118,8.9006 z"
+             id="path768"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g780">
+        <g
+           id="g776">
+          <rect
+             x="652.77893"
+             y="1964.4155"
+             width="194.13808"
+             height="27.769846"
+             id="rect774"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="655.98309"
+           y="1983.6409"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text778"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">Updates the RGB LED</text>
+      </g>
+      <g
+         id="g788">
+        <path
+           d="m 627.50122,1992.1854 h 85.44568 v 27.7699 h -67.85811"
+           stroke-miterlimit="10"
+           id="path782"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g786">
+          <path
+             d="m 645.3024,2011.0547 -17.80118,8.9006 17.80118,8.9006 z"
+             id="path784"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+      <g
+         id="g796">
+        <g
+           id="g792">
+          <rect
+             x="739.37744"
+             y="2051.9973"
+             width="264.65054"
+             height="27.769846"
+             id="rect790"
+             style="fill:#ffffff;stroke:none" />
+        </g>
+        <text
+           font-size="18.6667px"
+           font-style="normal"
+           font-weight="normal"
+           text-decoration="normal"
+           x="742.58167"
+           y="2071.2227"
+           dominant-baseline="alphabetic"
+           xml:space="preserve"
+           id="text794"
+           style="font-style:normal;font-weight:normal;font-size:18.66670036px;font-family:sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">RGB LED Status Update (BLE)</text>
+      </g>
+      <g
+         id="g804">
+        <path
+           d="M 627.50122,2079.7672 H 1098.3166"
+           stroke-miterlimit="10"
+           id="path798"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1.78012002;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+        <g
+           id="g802">
+          <path
+             d="m 1098.103,2070.8666 17.8012,8.9006 -17.8012,8.9006 z"
+             id="path800"
+             inkscape:connector-curvature="0"
+             style="fill:#000000;stroke:none;paint-order:stroke fill markers" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

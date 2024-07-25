@@ -1,1 +1,0 @@
-define({"topics":[{"title":"<ph>13.2.1.1<\/ph>\nAPP_BLE_LinkState_T","href":"GUID-D337D190-6F61-4EA0-AEE9-CA58B5C83335.html","attributes":{"data-id":"app-ble-linkstate-t"},"menu":{"hasChildren":false},"tocID":"app-ble-linkstate-t-d1785e1408","topics":[]}]});

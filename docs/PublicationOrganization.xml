@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<publication>
+   <title>PIC32CXBZ2 Application Developer's Guide</title>
+   <urls>
+      <url>
+         <loc>GUID-7663617B-0DD1-45FA-86B5-EB0778A5A424.html</loc>
+         <lastmod>2024-06-27T09:40:33</lastmod>
+         <title> Introduction</title>
+         <description>This document provides detailed information on the evaluation process, setting up the development environment, and application examples. It is designed to assist users in creating products using ...</description>
+         <urls/>
+      </url>
+      <url>
+         <loc>GUID-4A40968E-8B6E-4C84-93B9-D31419BBBDA6.html</loc>
+         <lastmod>2023-09-05T03:49:55</lastmod>
+         <title>1 Getting Started with WBZ451 Curiosity Board</title>
+         <description>This section covers the evaluation board features and running the preprogrammed demo example.</description>
+         <urls>
+            <url>
+               <loc>GUID-53253F80-1A8A-41EE-8A9D-C0ECBD08A6F9.html</loc>
+               <lastmod>2023-09-21T06:38:57</lastmod>
+               <title>1.1 Hardware</title>
+               <description>The WBZ451 Curiosity Board is an efficient and modular development platform that supports rapid prototyping and demonstrates the features, capabilities and interfaces of Microchip's Bluetooth Low ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-38587445-E9CF-4BF1-9ECF-2B8E6F85BA2B.html</loc>
+               <lastmod>2023-09-21T06:43:03</lastmod>
+               <title>1.2 Pre-programmed BLE and Zigbee Application Demo Software</title>
+               <description>The WBZ451 Curiosity Board is equipped with pre-programmed software that demonstrates two commonly used BLE and Zigbee use case in a single application. These applications include BLE Sensor ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-3533318C-9ECB-4770-AD96-1D2DC7C659F6.html</loc>
+               <lastmod>2023-09-26T08:45:03</lastmod>
+               <title>1.3 BLE Demo Experience</title>
+               <description>The demo consists of the WBZ451 Curiosity board with accompanying ble_senor_app firmware, the Microchip Bluetooth Data (MBD) Smartphone App. The MBD app has the capability to scan for BLE ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-3F360AE8-2799-450C-BE42-EABFBF27D5E9.html</loc>
+               <lastmod>2023-09-26T10:49:29</lastmod>
+               <title>1.4 ZigBee Demo Experience</title>
+               <description>The demo consists of the WBZ451 Curiosity board with accompanying ble_zigbee_light_prov (Zigbee Router/Zigbee Lights) Firmware, the Amazon Echo or Combined Interface firmware. The Amazon Echo or ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-6AB1EDE7-A7E2-4798-8037-4C6D797DA147.html</loc>
+               <lastmod>2023-09-28T11:32:49</lastmod>
+               <title>1.5 Multiprotocol (BLE and ZigBee)Demo Experience</title>
+               <description>The demo consists of the WBZ451 Curiosity board with the accompanying ble_zigbee_light_prov firmware, and the Microchip Bluetooth Data (MBD) Smartphone App. Users can provision the zigbee device over ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-B7A921CE-929D-46FD-B74E-95E78116593A.html</loc>
+               <lastmod>2023-09-19T05:44:36</lastmod>
+               <title>1.6 Developing an Application</title>
+               <description>The WBZ451 Curiosity Board is a fully functioning MCU for prototyping and developing the next BLE/Zigbee application. After completing the experimentation with the preprogrammed demo, it is ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-2AD37FE2-1915-4E34-9A05-79E3810726D7.html</loc>
+         <lastmod>2023-09-22T06:03:45</lastmod>
+         <title>2 Getting Started with Software Development</title>
+         <description>This section gives a detailed information on the steps to install IDE, compiler, tool chain, BLE, Zigbee stacks and application examples on the PC.</description>
+         <urls>
+            <url>
+               <loc>GUID-ADEE8A84-C5AF-4C14-BE2C-88F9B1C42E97.html</loc>
+               <lastmod>2023-09-22T02:46:39</lastmod>
+               <title>2.1 Installing IDE and Compiler</title>
+               <description>Click on the following links to install the MPLAB x IDE and the compiler.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-3504C96C-3B1A-40E5-AF97-A3270CA7EC77.html</loc>
+               <lastmod>2023-09-26T11:59:08</lastmod>
+               <title>2.2 Installing Device Family Part Pack</title>
+               <description>The Device Family Part Pack installation handles thePIC32CXBZ2Device Support.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-A55E9342-CE44-4A91-86BB-FEC6706FCD1C.html</loc>
+               <lastmod>2023-09-26T12:07:51</lastmod>
+               <title>2.3 Installing the MCC Plugin</title>
+               <description>This section gives information on installing the MPLAB Code Configurator Plugin.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-5DEB6FE0-1234-4A15-A805-E451B3E73825.html</loc>
+               <lastmod>2023-09-29T03:59:16</lastmod>
+               <title>2.4 Install Harmony 3 Dependencies</title>
+               <description>This section describes in detail on how to install the correct versions of the required Harmony 3 component dependencies. The following table summarizes the components and versions that will be ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-B86E8493-D00D-46EF-8624-D412342147F0.html</loc>
+               <lastmod>2024-06-25T15:39:11</lastmod>
+               <title>2.5 Creating a New MCC Harmony Project</title>
+               <description>MPLAB X IDE Start-up ScreenTo create a new project, open MPLAB X IDE and click on File&gt;New ProjectNew ProjectIn the “New Project” pop-up, click on Microchip Embedded&gt;Application Project(s)&gt;NextChoose ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-EA74172C-595E-4A34-B359-D42EE443F0EC.html</loc>
+               <lastmod>2023-09-29T06:40:33</lastmod>
+               <title>2.6 Running a Precompiled Application Example</title>
+               <description>This section gives a detail explanation on how to open, build and program an existing application example.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-FAC65B28-B78E-48AF-BCFE-2D63DC274CDB.html</loc>
+               <lastmod>2023-09-26T12:33:29</lastmod>
+               <title>2.7 Developing an Application</title>
+               <description>This section gives a detail explanation on stack, peripherals and other documentation.</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46.html</loc>
+         <lastmod>2024-07-24T03:42:22</lastmod>
+         <title>3 Getting Started with Bluetooth Low Energy Applications</title>
+         <description>This section provides details on documentation describing the steps to test and develop the precompiled BLE application examples.</description>
+         <urls>
+            <url>
+               <loc>GUID-17DABF04-E5D8-4201-A746-2FC244450A19.html</loc>
+               <lastmod>2023-09-26T12:38:53</lastmod>
+               <title>3.1 Building Block Examples</title>
+               <description>This section covers PIC32CXBZ2 Application Building Blocks. Building blocks are compact training modules revolving around implementing a particular BLE functionality/feature on PIC32CXBZ2 and WBZ451 ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C.html</loc>
+                     <lastmod>2023-09-26T12:42:00</lastmod>
+                     <title>3.1.1 Central</title>
+                     <description>BLE Central devices discover and listen to BLE devices that are advertising. These devices are capable of establishing connection to peripherals. Central devices are also capable of establishing ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-897B75C0-387F-4AF8-B353-1F97A3B0BEC8.html</loc>
+                           <lastmod>2024-07-19T04:25:34</lastmod>
+                           <title>3.1.1.1 </title>
+                           <description>Getting Started Getting Started with Central Building Blocks FreeRTOS and BLE Stack Setup Adding UART Legacy ScanIntroductionThis section gives a detail information on creating a new MCC Harmony ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-950762E2-DD5E-41CD-AAB4-895439CCFBC4.html</loc>
+                           <lastmod>2024-07-19T05:43:39</lastmod>
+                           <title>3.1.1.2 BLE Legacy Scan</title>
+                           <description>Getting Started Getting Started with Central Building Blocks Adding UART Legacy Scan BLE ConnectionIntroductionThis section helps users to enable the BLE Scanning on the WBZ451 Curiosity board using ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-8C3372E5-CAB6-4923-9B59-E97022E1252D.html</loc>
+                           <lastmod>2024-07-24T06:27:30</lastmod>
+                           <title>3.1.1.3 BLE Scanning Extended Advertisements</title>
+                           <description>Getting Started Getting Started with Central Building Blocks Adding UART Extended Advertisements IntroductionThis section describes in detail the scanning of Extended Advertisements (ADV_EXT_IND, ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-7C948236-7D8E-45CA-9511-AB244B44BE64.html</loc>
+                           <lastmod>2024-07-23T10:30:19</lastmod>
+                           <title>3.1.1.4 BLE Connection</title>
+                           <description>Getting Started Getting Started with Central Building BlocksLegacy Scan BLE Connection Introduction This section helps users to enable scan and connect functionality on the BLE Central Device ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-7A350957-2010-468F-AF8D-0635373EF79D.html</loc>
+                           <lastmod>2024-07-24T08:56:19</lastmod>
+                           <title>3.1.1.5 BLE Transparent UART</title>
+                           <description>Getting Started Getting Started with Central Building BlocksBLE Connection BLE Multilink Transparent UARTIntroductionThis section enables users create a central device and send/receive characters ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-741308A7-A912-4C74-BF94-D5C44132003D.html</loc>
+                           <lastmod>2024-07-23T06:18:24</lastmod>
+                           <title>3.1.1.6 BLE Multilink Transparent UART</title>
+                           <description>Getting Started Getting Started with Central Building Blocks BLE Multilink Transparent UARTIntroductionThis section helps users to create a multilink central device and send/receive characters ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-166BBEFA-5E5E-4280-8D3F-B6753D754FC9.html</loc>
+                           <lastmod>2024-06-25T12:45:08</lastmod>
+                           <title>3.1.1.7 BLE Transparent UART Central with LE Coded Phy</title>
+                           <description>Getting Started Getting Started with Central Building BlocksBLE Connection BLE Transparent UARTBLE Multilink Transparent UARTIntroductionThis document enables users create a central device and ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-B3B46369-F5B4-401B-8405-658BE34988F4.html</loc>
+                     <lastmod>2023-11-14T08:34:45</lastmod>
+                     <title>3.1.2 Peripheral</title>
+                     <description>BLE Peripheral devices send advertisement packets and accept connection requests from another central device. Connected BLE devices, enable bi-directional data transfer using the profiles and ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-AB1A02BF-4F9B-4058-90D9-02BFB3136682.html</loc>
+                           <lastmod>2024-07-19T12:12:54</lastmod>
+                           <title>3.1.2.1 </title>
+                           <description>Getting Started Getting Started with Peripheral Building Blocks FreeRTOS BLE Stack and App Initialize –&gt; Adding UARTIntroduction This document will help users create a new MCC Harmony project, ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-820CEA03-90AE-484F-87C9-9CF2CE652702.html</loc>
+                           <lastmod>2024-07-19T11:57:51</lastmod>
+                           <title>3.1.2.2 BLE Legacy Advertisements</title>
+                           <description>Getting Started Getting Started with Peripheral Building Blocks FreeRTOS BLE Stack and App Initialize –&gt; BLE Legacy Advertisements Introduction This document will help users enable BLE Advertisements ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-9A3C4C97-E09F-4FF9-878C-3873892445F4.html</loc>
+                           <lastmod>2024-07-24T10:44:47</lastmod>
+                           <title>3.1.2.3 BLE Extended Advertisements</title>
+                           <description>Getting StartedGetting Started with Peripheral Building BlocksAdding UART -&gt; BLE Extended AdvertisementsIntroduction This document will help users enable Extended Advertisements (1M, 2M, Coded PHY - ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-3D0C03E0-8EFC-455C-970B-17EBE5CB8F78.html</loc>
+                           <lastmod>2024-06-18T07:03:16</lastmod>
+                           <title>3.1.2.4 BLE Deep Sleep Advertising</title>
+                           <description>Getting Started Getting Started with Peripheral Building BlocksIntroductionThis section helps users to enable the Deep sleep mode with BLE Advertisements on the WBZ451 Curiosity board using MPLAB ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-F9A0C390-C124-49A7-9F22-157D20BFBE5D.html</loc>
+                           <lastmod>2024-07-18T13:39:29</lastmod>
+                           <title>3.1.2.5 BLE Connection</title>
+                           <description>Getting Started Getting Started with Peripheral Building BlocksBLE Legacy Advertisements -&gt; BLE ConnectionIntroduction This document will help users enable advertisements and connection on the WBZ451 ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-07EC83B7-CC28-4C55-8634-4B7F56A9DB36.html</loc>
+                           <lastmod>2024-07-25T07:47:06</lastmod>
+                           <title>3.1.2.6 BLE Transparent UART</title>
+                           <description>Getting Started Getting Started with Peripheral Building BlocksBLE Connection -&gt; BLE Transparent UARTIntroductionThis section helps users to create a peripheral device and send/receive characters ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-0F3193BF-C61D-4DDB-9E98-7F0A444269A8.html</loc>
+                           <lastmod>2024-07-24T09:18:17</lastmod>
+                           <title>3.1.2.7 BLE Custom Service</title>
+                           <description>Getting StartedGetting Started with Peripheral Building BlocksBLE Connection –&gt; BLE Custom ServiceIntroductionThis document will help users create a peripheral device with custom profile and control. ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00.html</loc>
+                           <lastmod>2024-07-24T10:51:01</lastmod>
+                           <title>3.1.2.8 BLE Transparent UART Peripheral with LE Coded Phy</title>
+                           <description>Getting Started Getting Started with Peripheral Building BlocksBLE Connection -&gt; BLE Transparent UART with LE Coded PHY Introduction This document will help users create a peripheral device and ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-89AA2FEC-7B43-4ACA-8796-F9874F650839.html</loc>
+                           <lastmod>2024-07-25T05:55:54</lastmod>
+                           <title>3.1.2.9 BLE Multiple Advertising Sets</title>
+                           <description>Getting Started Getting Started with Peripheral Building BlocksFreeRTOS BLE App Initialize -&gt; BLE Multiple Advertising Sets Introduction This document will help users enable BLE Multiple Advertising ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-02FE54CD-CC0E-45F0-8525-0043B54B828B.html</loc>
+                           <lastmod>2024-07-25T07:16:25</lastmod>
+                           <title>3.1.2.10 Path Loss Feature in Legacy Advertisements</title>
+                           <description>Getting Started Getting Started with Peripheral Building Blocks BLE Sleep Mode Legacy Advertisements --&gt; Path Loss Feature in Legacy Advertisements Introduction This document will help users to ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93.html</loc>
+                     <lastmod>2024-06-27T04:21:21</lastmod>
+                     <title>3.1.3 BLE Multirole Multilink Transparent UART</title>
+                     <description>Getting Started Getting Started with Peripheral Building Blocks Getting Started with Central Building BlocksIntroductionThis document helps users create a multirole multilink device and send/receive ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6.html</loc>
+                     <lastmod>2023-09-25T04:19:26</lastmod>
+                     <title>3.1.4 Chip Peripherals</title>
+                     <description>This section describes Application examples that showcase BLE Stack Initialization and Chip Peripheral running.</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-E1A0E9CA-311E-4F53-9C27-160173609975.html</loc>
+                           <lastmod>2024-06-26T07:04:13</lastmod>
+                           <title>3.1.4.1 UART Hello World</title>
+                           <description>Getting Started Getting Started with Peripheral Building Blocks Getting Started with Central Building BlocksBLE Peripheral Developers: FreeRTOS and BLE Stack Setup --&gt; Adding UART --&gt; Legacy ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-92137358-930E-4654-9431-E8BA0E260468.html</loc>
+               <lastmod>2022-07-12T05:24:49</lastmod>
+               <title>3.2 Advanced Applications</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-D3F1BF46-F275-409B-A344-4DB9EAABC5E9.html</loc>
+                     <lastmod>2024-06-20T04:18:05</lastmod>
+                     <title>3.2.1 BLE Sensor App</title>
+                     <description>WBZ451 Curiosity BoardDevice: PIC32CX1012BZ25048(MCU) on WBZ451 ModuleOn-Board: Analog Temperature Sensor, RGB LED, User Button, User LED, USB-UART converter WBZ451 Curiosity Board Hardware Block ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-D320EA38-86CE-4C0B-8093-60C59E1F03AE.html</loc>
+                           <lastmod>2023-09-22T05:37:52</lastmod>
+                           <title>3.2.1.1 Protocol Exchange</title>
+                           <description>The communication protocol exchange between mobile app (BLE central) and WBZ451 module (BLE peripheral) is explained here. 1. BLE Sensor Data in Advertising Beacon: Advertisement Data:Service UUID: ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-BAAA9A7D-DCB6-4ADB-820A-68D1E8B81B09.html</loc>
+                     <lastmod>2024-06-14T05:04:45</lastmod>
+                     <title>3.2.2 BLE Throughput</title>
+                     <description>This section describes in detail the example ofPIC32CXBZ2BLE Throughput evaluation using Microchip MBD App and the factors affecting the BLE throughput.</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-29BC2FFF-0880-4C19-B05C-F91600A37BDE.html</loc>
+                     <lastmod>2024-07-03T05:29:07</lastmod>
+                     <title>3.2.3 BLE ANCS Application</title>
+                     <description>Getting Started Getting Started with Peripheral Building Blocks Introduction This section helps users to enable BLE ANCS (Apple Notification Center Service) profile on the WBZ451 Curiosity Board ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-B51A7AA8-2302-4E79-BEDE-C8F59798E175.html</loc>
+                     <lastmod>2024-07-17T06:39:08</lastmod>
+                     <title>3.2.4 BLE Proximity Monitor</title>
+                     <description>Introduction This section guides users configuration, programming, and validation of a BLE Proximity Monitor utilizing the WBZ451 Curiosity board, and also outlines the necessary hardware and ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-8C986E79-5555-4A4C-9DB5-C3FCA75BA685.html</loc>
+                     <lastmod>2024-07-25T07:03:52</lastmod>
+                     <title>3.2.5 BLE Proximity Reporter</title>
+                     <description>Introduction The Proximity Reporter application provides comprehensive guidance on setting up, programming, and testing a BLE Proximity Reporter using the WBZ451 Curiosity board. This document ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-B6B6735C-6E59-4B8D-92D9-A3B748BA2570.html</loc>
+                     <lastmod>2024-07-25T04:37:07</lastmod>
+                     <title>3.2.6 BLE ANPC Application</title>
+                     <description>Getting StartedGetting Started with Peripheral Building Blocks Introduction This section helps users to enable the BLE Alert Notification Profile Client (ANPC) on the WBZ451 Curiosity board using the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-AE02F963-50D5-43AA-BE10-11F75D6C3BA4.html</loc>
+                     <lastmod>2024-07-18T09:55:45</lastmod>
+                     <title>3.2.7 BLE ANPS Application</title>
+                     <description>Getting StartedGetting Started with Peripheral Building Blocks Introduction This section helps users enable the BLE Alert Notification Profile Server (ANPS) on the WBZ451 Curiosity board using the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-67C1A32A-0376-41E0-8EFC-4EBBCCE76225.html</loc>
+                     <lastmod>2024-07-03T05:38:09</lastmod>
+                     <title>3.2.8 BLE HID over GATT Profile Service</title>
+                     <description>Getting Started Getting Started with Peripheral Building BlocksIntroduction The HID over GATT profile defines the procedures and features to be used by BLE HID devices using GATT and Bluetooth HID ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-71834715-4833-43ED-A1ED-A2A72DDE48BC.html</loc>
+               <lastmod>2024-06-26T07:16:53</lastmod>
+               <title>3.3 BLE Virtual Sniffer</title>
+               <description>This document explains how to use the MPLAB Code Configurator(MCC) framework to add BLE Virtual Sniffer system service component for capturing the BLE HCI packets and feed it to the sniffer tool for ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-29D584B4-2DB5-4161-B8E2-E5528BE98008.html</loc>
+               <lastmod>2023-10-26T11:14:37</lastmod>
+               <title>3.4 Three-Wire PTA Coexistence Design</title>
+               <description>PIC32CXBZ2 provides the Three-Wire Packet Traffic Arbitration (PTA) WLAN coexistence solution.This coexistence solution provides three pins to exchange coordinating information between BT and WLAN. ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-668A6CB2-F1FB-438D-9E1E-D67AC3C1C132.html</loc>
+         <lastmod>2024-06-27T06:32:04</lastmod>
+         <title>4 Getting Started with Zigbee Applications</title>
+         <description>This document gives an overview of few key Zigbee 3.0 protocol concepts and guidance on implementing these features on PIC32CX-BZ/WBZ using Microchip software. The document describes how the protocol ...</description>
+         <urls>
+            <url>
+               <loc>GUID-B70D4611-9448-4ACC-99C6-308B8EC2BEB7.html</loc>
+               <lastmod>2023-11-09T06:08:26</lastmod>
+               <title>4.1 Zigbee Project Generation</title>
+               <description>There are different zigbee device types supported in Microchip Zigbee framework. Few sample application projects are available as reference &lt;Harmony Content ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-BA19A3F8-CCEB-44C2-B5BF-C203DD6A8D41.html</loc>
+               <lastmod>2024-06-27T06:46:29</lastmod>
+               <title>4.2 Zigbee Console Commands</title>
+               <description>The ZigBee application support includes implementation of a serial console that allows control and monitoring of the ZigBee device over a serial connection using a terminal program (HyperTerminal, ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-7E62A1F7-3B35-4B5A-86DA-F5694100F9E8.html</loc>
+               <lastmod>2023-10-13T05:04:36</lastmod>
+               <title>4.3 Zigbee Commisioning Procedure</title>
+               <description>Commissioning is the process of initializing the devices to join a network and to work together. The Zigbee Base Device Behaviour specification specifies the procedures for the following commissioning mechanisms which are executed in the order as provided below.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-C8CD15B7-2156-4EF8-8D55-C879C829A34B.html</loc>
+               <lastmod>2023-10-13T05:11:35</lastmod>
+               <title>4.4 Zigbee Network Security Models</title>
+               <description>To satisfy a wide range of applications while maintaining low cost and power, Zigbee offers two network architectures and corresponding security models: distributed and centralized.They differ in how ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-E7EBE9A5-6B89-4D7A-9620-AE652F4FB0A8.html</loc>
+               <lastmod>2023-10-13T05:21:35</lastmod>
+               <title>4.5 Zigbee Green Power</title>
+               <description>Green Power is a feature of Zigbee, that allows for energy-harvesting technology to be used directly with the Zigbee stack. Green Power is the global wireless standard for large installations, when changing batteries and accessing devices becomes costly.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-285C63CD-E7E3-492F-B820-5C6C5CB3F36E.html</loc>
+               <lastmod>2023-10-13T05:22:36</lastmod>
+               <title>4.6 ZigBee OTA Sniffer</title>
+               <description>This section provides details on how to configure and use supported sniffing tools along with Microchip MCU-based sniffer hardware platforms. Introduction In Zigbee® networking, a sniffing tool (for ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-ACC1C69A-65C7-45E5-94FD-81BF5B29E381.html</loc>
+               <lastmod>2023-10-16T10:04:52</lastmod>
+               <title>4.7 ZigBee Applications</title>
+               <description>This section describes steps to test and develop the precompiled Zigbee application examples.</description>
+               <urls>
+                  <url>
+                     <loc>GUID-F5F71ECD-98A9-49B0-8147-68A25191BEAD.html</loc>
+                     <lastmod>2024-07-20T07:30:11</lastmod>
+                     <title>4.7.1 Zigbee Application Demo: Light Control and Monitoring Using Combined Interface</title>
+                     <description>WBZ451 Curiosity Board Device: PIC32CX1012BZ25048 (MCU) on WBZ451 Module On-Board: RGB LED, User Button and UART-USB Converter Introduction This section describes the demo steps for Light control and ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-6A3E9676-3271-4BA6-BD4F-AAC9661E51B6.html</loc>
+                     <lastmod>2024-07-20T06:04:13</lastmod>
+                     <title>4.7.2 Zigbee Application Demo: Light Control and Monitoring using Alexa Echo Plus</title>
+                     <description>WBZ451 Curiosity Board Devices (Device): | PIC32CX1012BZ25048(MCU) on WBZ451 Module | Peripherals (Used, On-Board): | RGB LED | User Button| UART-USB Converter| IntroductionThis page describes the ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-C2DEF3F0-6C32-42AC-92DA-A8985F52BAB2.html</loc>
+                           <lastmod>2024-06-24T07:12:39</lastmod>
+                           <title>4.7.2.1 </title>
+                           <description>For more details on code generation, refer to 14.2 MPLAB Code Configurator(MCC) Code</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-0074A01A-72F5-4EC8-9051-36756788BCCA.html</loc>
+                           <lastmod>2024-06-27T06:52:57</lastmod>
+                           <title>4.7.2.2 </title>
+                           <description>After generating the code from MCC tool by clicking Generate, below is the project folder</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-AAA042D1-8A40-492E-9B1D-64C5A1BCD47E.html</loc>
+                           <lastmod>2024-06-25T10:33:55</lastmod>
+                           <title>4.7.2.3 Zigbee Stack Initialization and Application Callback Registration</title>
+                           <description>The RF System, ZIGBEE, PERIPHERAL initialization routine executed during program initialization can be found in SYS_Initialize() of initialization.c file.Zigbee Stack provides various APIs for ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-C2F09AB7-2011-4B61-ABCA-267175FBD013.html</loc>
+                           <lastmod>2024-06-27T06:58:46</lastmod>
+                           <title>4.7.2.4 </title>
+                           <description>app.c file is autogenerated and has a state machine for application callback handling from Zigbee</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-DFF93BEC-58A1-445A-94D6-8AF445335A93.html</loc>
+                           <lastmod>2024-06-25T10:38:18</lastmod>
+                           <title>4.7.2.5 </title>
+                           <description>Build Project, upon building project user action is required as mentioned 14.1 User Action. definitions.h in all the files where UART will be used to print debug information.definitions.h is not ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-B8CC1EE7-5EF7-488E-9E60-0285BEB5B306.html</loc>
+                           <lastmod>2024-06-25T10:38:45</lastmod>
+                           <title>4.7.2.6 </title>
+                           <description>Build the project after doing all the above changes and program on Curiosity</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-07AD46F8-182D-4FBA-AA80-D58BEEDC78AB.html</loc>
+                     <lastmod>2024-07-20T06:50:52</lastmod>
+                     <title>4.7.3 Zigbee Centralized Network Formation by Combined Interface</title>
+                     <description>WBZ451 Curiosity BoardDevices (Device): | PIC32CX1012BZ25048(MCU) on WBZ451 Module |Peripherals (Used, On-Board): | User Button| UART-USB Converter|IntroductionThis section describes the Zigbee ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-9C2686A3-A714-4BD6-958D-EE2058A28568.html</loc>
+                           <lastmod>2024-06-27T06:52:38</lastmod>
+                           <title>4.7.3.1 </title>
+                           <description>For more details on code generation, refer to 14.2 MPLAB Code Configurator(MCC) Code</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-0074A01A-72F5-4EC8-9051-36756788BCCA_2.html</loc>
+                           <lastmod>2024-06-27T06:52:57</lastmod>
+                           <title>4.7.3.2 </title>
+                           <description>After generating the code from MCC tool by clicking Generate, below is the project folder</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-AAA042D1-8A40-492E-9B1D-64C5A1BCD47E_2.html</loc>
+                           <lastmod>2024-06-25T10:33:55</lastmod>
+                           <title>4.7.3.3 Zigbee Stack Initialization and Application Callback Registration</title>
+                           <description>The RF System, ZIGBEE, PERIPHERAL initialization routine executed during program initialization can be found in SYS_Initialize() of initialization.c file.Zigbee Stack provides various APIs for ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-C2F09AB7-2011-4B61-ABCA-267175FBD013_2.html</loc>
+                           <lastmod>2024-06-27T06:58:46</lastmod>
+                           <title>4.7.3.4 </title>
+                           <description>app.c file is autogenerated and has a state machine for application callback handling from Zigbee</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-E5EBEA5F-F29F-4807-B356-8781FF405AF5.html</loc>
+                           <lastmod>2024-06-25T10:50:07</lastmod>
+                           <title>4.7.3.5 </title>
+                           <description>Build Project, upon building project user action is required as mentioned 14.1 User Action. definitions.h in all the files where UART will be used to print debug information.definitions.h is not ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-B8CC1EE7-5EF7-488E-9E60-0285BEB5B306_2.html</loc>
+                           <lastmod>2024-06-25T10:38:45</lastmod>
+                           <title>4.7.3.6 </title>
+                           <description>Build the project after doing all the above changes and program on Curiosity</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-0A5556D0-B6B7-4DD8-BEF1-D9B2B95F01ED.html</loc>
+                     <lastmod>2024-06-27T06:57:27</lastmod>
+                     <title>4.7.4 Zigbee Application Demo: Multi-Sensor with Low Power Functionality</title>
+                     <description>WBZ451 Curiosity BoardDevices (Device): | PIC32CX1012BZ25048(MCU) on WBZ451 Module |Peripherals (Used, On-Board): | UART-USB Converter|IntroductionThis tutorial will help users to create a low power ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-80B94CED-8DB0-4CE7-8BF4-0859D3AFB6D4.html</loc>
+                           <lastmod>2024-06-25T05:38:53</lastmod>
+                           <title>4.7.4.1 </title>
+                           <description>Now all the required components have been added to the project and necessary configuration modification is made. The next step is to generate the application code.For more details on code generation, ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-02421554-EDF5-4481-A417-2311B9EEEA15.html</loc>
+                           <lastmod>2024-06-27T06:58:00</lastmod>
+                           <title>4.7.4.2 </title>
+                           <description>After generating the code from MCC tool by clicking Generate, below is the project folder</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-AAA042D1-8A40-492E-9B1D-64C5A1BCD47E_3.html</loc>
+                           <lastmod>2024-06-25T10:33:55</lastmod>
+                           <title>4.7.4.3 Zigbee Stack Initialization and Application Callback Registration</title>
+                           <description>The RF System, ZIGBEE, PERIPHERAL initialization routine executed during program initialization can be found in SYS_Initialize() of initialization.c file.Zigbee Stack provides various APIs for ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-C2F09AB7-2011-4B61-ABCA-267175FBD013_3.html</loc>
+                           <lastmod>2024-06-27T06:58:46</lastmod>
+                           <title>4.7.4.4 </title>
+                           <description>app.c file is autogenerated and has a state machine for application callback handling from Zigbee</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-6649A1BA-2937-4D2E-8137-95ED45EF0915.html</loc>
+                           <lastmod>2024-06-25T11:02:44</lastmod>
+                           <title>4.7.4.5 </title>
+                           <description>This section talks about the mandatory code modifications that need to be incorporated in order to implement the sleep mode functionality.Includedefinitions.h in all the files where UART will be used ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-6A0FE6BA-3E94-4325-85CD-8CF84B323ABD.html</loc>
+                     <lastmod>2024-06-25T14:42:09</lastmod>
+                     <title>4.7.5 Zigbee Application Demo: MultiSensor with Deep Sleep Functionality</title>
+                     <description>WBZ451 Curiosity BoardDevice: PIC32CX1012BZ25048 (MCU) on WBZ451 Module On-Board: UART-USB Converter Introduction This section helps users to create a low power enabled Multisensor end device ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-1B31E36F-0D33-4F00-A8BD-C1892AD9AEEC.html</loc>
+                     <lastmod>2024-07-20T07:47:43</lastmod>
+                     <title>4.7.6 Zigbee Custom Device Example: Light Control with Occupancy Sensing</title>
+                     <description>IntroductionWireless_zigbee MCC component(Wireless-Drivers-Zigbee) provides device type as Custom Device, this allows user to customize the combination of clusters to build a Zigbee custom ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-4622B1FE-27F2-4D0E-8416-0AD3CA8CB35D.html</loc>
+                     <lastmod>2024-07-20T08:13:41</lastmod>
+                     <title>4.7.7 Zigbee Custom Cluster Example</title>
+                     <description>IntroductionZigbee specification supports custom cluster, which is also called manufacturer defined cluster. Due to not all application are defined as standard Zigbee clusters, user can use this ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-2A54CAC1-1370-4448-8768-E6C7B8CFCA23.html</loc>
+         <lastmod>2023-10-19T06:08:56</lastmod>
+         <title>5 Getting Started with Multiprotocol Applications</title>
+         <description>This section describes steps to test and develop the precompiled BLE and Zigbee coexistence application examples.</description>
+         <urls>
+            <url>
+               <loc>GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064.html</loc>
+               <lastmod>2024-06-22T13:23:13</lastmod>
+               <title>5.1 Multiprotocol (BLE+ZIGBEE) Concurrent Application</title>
+               <description>This application demonstrates on creating Multiprotocol (BLE and ZIGBEE) example project using MCC. This step by step procedure helps user to generate the Multiprotocol project from scratch and ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-707BAEEE-0EFF-428F-AFEC-C2E6C5E65BA9.html</loc>
+               <lastmod>2024-06-27T08:34:21</lastmod>
+               <title>5.2 Multiprotocol Application Demo: Zigbee Light and Zigbee Commissioning through BLE</title>
+               <description>WBZ451 Curiosity BoardDevice: PIC32CX1012BZ25048 (MCU) on WBZ451 Module On-Board: Analog Temperature Sensor, RGB LED, User Button, User LED and UART-USB ConverterWBZ451 Curiosity BoardHardware Block ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-CD3623AD-850D-4926-AE66-031692156BAB.html</loc>
+               <lastmod>2024-06-26T09:56:38</lastmod>
+               <title>5.3 Multiprotocol Device Firmware Upgrade over BLE Link</title>
+               <description>The multiprotocol device firmware can be upgraded through Bluetooth Low Energy(BLE) link. The BLE OTA profile, service and the exchange between BLE OTAU Target device and OTAU Manager (Mobile app) ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-998705A8-0286-429C-B35C-0F5E95D94A3D.html</loc>
+               <lastmod>2024-06-26T09:59:04</lastmod>
+               <title>5.4 Zigbee Commissioning through BLE - Protocol Exchange</title>
+               <description>Protocol Exchange This section explains the communication protocol exchange between BLE Provisioner mobile app/ BLE sensor mobile app (BLE central) and WBZ451 Module (BLE peripheral). 1. Advertising ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43.html</loc>
+               <lastmod>2024-06-24T17:57:24</lastmod>
+               <title>5.5 BLE ZigBee Provisioning Low Power Application Demo: Zigbee Multi-Sensor and Zigbee Commissioning through BLE</title>
+               <description>This section helps users to create a low power enabled multiprotocol (BLE+ZIGBEE) example project using MCC. The step by step procedure helps users to generate a Zigbee Multi-Sensor application and ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-D19D67C4-1BF4-4BC6-A40B-826A1ADD4233.html</loc>
+               <lastmod>2024-07-05T10:46:33</lastmod>
+               <title>5.6 Multiprotocol BLE Provisioning MCC Component</title>
+               <description>Overview The BLE provisioning component facilitates the users in selecting a combo application. Additionally, based on the selected combo application option, the user can select the device role and ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-E849D12C-B4EB-4C56-A459-A6B4E5CE8C3A.html</loc>
+               <lastmod>2024-05-09T04:56:54</lastmod>
+               <title>5.7 BLE Thread Light Provisioning FTD and MTD Demo Applications</title>
+               <description>This application demonstrates the multiprotocol functionality of the PIC32CXBZ2 family of devices and modules, which allows for the concurrent operation of both THREAD and BLE stacks. Thread ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-FE5DA906-7F7E-4C7F-8AAF-FD5E80CAF1E6.html</loc>
+               <lastmod>2024-06-27T04:54:21</lastmod>
+               <title>5.8 BLE Thread Sensor Provisioning SED Demo Application</title>
+               <description>This application demonstrates the multiprotocol functionality of the PIC32CXBZ2 family of devices and modules, which allows for the concurrent operation of both Thread and BLE stacks. Thread ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-4125F29B-9CDF-469C-B480-1E4BFC8A3792.html</loc>
+               <lastmod>2024-07-24T13:23:54</lastmod>
+               <title>5.9 Full Function Device Demo for BLE and MAC Provisioning</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-A8F98DBF-929D-4519-B0E7-BA92A62608A8.html</loc>
+                     <lastmod>2024-07-24T12:46:42</lastmod>
+                     <title>5.9.1 FFD Project Creation</title>
+                     <description>Developing the Application from Scratch using MCC Create a new MCC Harmony Project. For more details, refer to From the “Device Resources” field, go to Harmony&gt;Wireless&gt;Drivers&gt;IEEE 802.15.4&gt;IEEE ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-1E32B71B-42B8-402D-91C6-0414251C5CA4.html</loc>
+                     <lastmod>2024-07-18T13:55:58</lastmod>
+                     <title>5.9.2 FFD Project Verification</title>
+                     <description>Procedure For ProvisioningConnect the FFD device to the USB port. We can know the status of the device via the debug prints produced on the tera term tool. From the below image:BLE advertising has ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-16CCD2B4-A210-437A-8857-28D8A48DD7DA.html</loc>
+               <lastmod>2024-07-24T13:23:42</lastmod>
+               <title>5.10 Reduced Function Device Demo for BLE and MAC Provisioning</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-3AF8925B-8153-4968-A472-49D772EF1284.html</loc>
+                     <lastmod>2024-07-18T13:33:43</lastmod>
+                     <title>5.10.1 RFD project Creation</title>
+                     <description>Create a new MCC Harmony Project. For more details, refer to 2.5 Creating a New MCC Harmony ProjectMAC ComponentThe MAC component is available on Device Resources-&gt; Libraries-&gt;Harmony-&gt; Wireless -&gt; ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-0EE2C1FF-3EC7-4C1F-A40D-AA237D9E3889.html</loc>
+                     <lastmod>2024-07-25T05:03:53</lastmod>
+                     <title>5.10.2 RFD Project Verification</title>
+                     <description>RFD waits for provisioning parameters. For guidance on the commissioning process, refer to the FFD Project Verification section.Upon successful commissioning, the RFD will be integrated into the ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-3E242310-437D-4F50-9E63-3C9EF144CD18.html</loc>
+         <lastmod>2024-06-27T07:33:30</lastmod>
+         <title>6 Getting Started with IEEE 802.15.4 P2P Phy Application</title>
+         <description>This document provides setup details and configuration for P2P PHY Application. This is an application built on top of Standalone IEEE 802.15.4 PHY layer. It enables two PIC32CXBZ2 devices to ...</description>
+         <urls>
+            <url>
+               <loc>GUID-FD0DA0D6-A339-4EA1-A3DC-A090B3F44E05.html</loc>
+               <lastmod>2023-09-21T05:35:25</lastmod>
+               <title>6.1 Reference Documentation</title>
+               <description>Standalone 802.15.4 PHY API Guide.WBZ451 Curiosity Board User Guide.IEEE Std</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-6E27C8C5-A17B-4C9E-8527-CE32F3C68405.html</loc>
+               <lastmod>2023-10-20T05:44:25</lastmod>
+               <title>6.2 Software Requirement</title>
+               <description>Software ToolsSoftware Tools &amp; Device Specific Support PackagesVersionMPLAB X IDE v6.05PIC32CX-BZ2 DFP(WBZ451)v1.1.218XC32 COMPILER v4.20MCC (Plugin in MPLAB X IDE)v5.2.2MCC Core (Plugin in MPLAB X ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-F073AA25-D5B2-4CEB-8C81-6DAA9F12BB7A.html</loc>
+               <lastmod>2023-03-03T05:12:39</lastmod>
+               <title>6.3 Hardware Requirements</title>
+               <description>Hardware Components No. of Items Required (minimum)WBZ451 Curiosity Board2Micro USB</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-D81BF788-CE6C-44D4-875D-89BFAC20D01F.html</loc>
+               <lastmod>2023-10-24T06:05:32</lastmod>
+               <title>6.4 Creating a New MCC Harmony Project</title>
+               <description>Create a new 32-bit MPLAB MCC Harmony Project.MCC Project CreationMCC Project CreationSelect the Framework Path (Framework path must match H3 Framework Dependencies listed in Software Requirements ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-3142F765-D7A3-4D0D-B73C-463BF59B0738.html</loc>
+               <lastmod>2023-10-24T05:59:06</lastmod>
+               <title>6.5 Operating Modes</title>
+               <description>In this userguide, the TeraTerm is used for providing Console inputs. On the Menu bar of Tera Term, Goto setup, select serial port and then set the baud rate to 115200 as illustrated in the following ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-637578B7-6092-40CF-88A5-FCF506D998C9.html</loc>
+               <lastmod>2023-10-24T03:05:54</lastmod>
+               <title>6.6 Command Table</title>
+               <description>User Commands that serve as a convenient method to utilize the API's in Standalone 15.4 PHY component and facilitates switch between different modes in application. This commands implementation can ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-844F1D7E-3A7A-4ECA-AEF5-92CE82D93D60.html</loc>
+         <lastmod>2024-07-24T12:56:06</lastmod>
+         <title>7 Full Function Device Demo for Push Pull Star Application</title>
+         <description/>
+         <urls>
+            <url>
+               <loc>GUID-40D5DE39-C2EB-4D2C-B142-68759C2841E1.html</loc>
+               <lastmod>2024-07-24T15:26:33</lastmod>
+               <title>7.1 FFD Project Creation with MAC Component</title>
+               <description>Developing the Application from Scratch using MCC Create a new MCC Harmony Project. For more details, refer to From the “Device Resources” field, go to Harmony&gt;Wireless&gt;Drivers&gt;IEEE 802.15.4&gt;IEEE ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-A5775D5F-7BAF-4CAA-94E6-E37F6A6A6F78.html</loc>
+               <lastmod>2024-07-24T05:29:12</lastmod>
+               <title>7.2 FFD Project Verification</title>
+               <description>LED indications :In the coordinator if the blue LED in RGB LED glows the coordinator is powered ON and ready.In the FFD the following are the different LED combinations indicating the following ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-AEBBFB07-3F6C-40E7-A1A2-9DE991DF53A5.html</loc>
+               <lastmod>2024-07-24T04:54:58</lastmod>
+               <title>7.3 FFD Project Configuration</title>
+               <description>Modify the following files to develop the Push Pull Star application.Files to be modified to create demoapp_ffd project :app.hdemo_app_ffd.happ.cdemo_app_ffd.cdemo_app_security.cusr_mac_callbacks.c ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-8A094FC6-AEE7-4DB0-AF08-EA00931DA854.html</loc>
+         <lastmod>2024-07-24T12:57:19</lastmod>
+         <title>8 Reduced Function Device Demo for Push Pull Star Application</title>
+         <description/>
+         <urls>
+            <url>
+               <loc>GUID-BCBD5227-2881-4FF8-9580-71AFC74F5D4E.html</loc>
+               <lastmod>2024-07-18T14:33:31</lastmod>
+               <title>8.1 RFD Project Creation with MAC Component</title>
+               <description>Create a new MCC Harmony Project. For more details, refer to 2.5 Creating a New MCC Harmony Project. Once Project graph is getting displayed for the created project, double click on the IEEE 802.15.4 ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-C321472E-285A-4F5E-A08A-52D928C5EC24.html</loc>
+               <lastmod>2024-07-15T09:50:37</lastmod>
+               <title>8.2 RFD Project Configuration</title>
+               <description>Please modify the following files to develop the Push Pull Star Application.Files to be modified to create demoapp_rfd project ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-E27F6F08-D76C-42E8-BE1A-552A8C7B5626.html</loc>
+               <lastmod>2024-07-15T09:50:41</lastmod>
+               <title>8.3 RFD Project Verification</title>
+               <description>LED indications :In the RFD the following are the different led combinations indicating the following activity:If the blue led is constantly ON and Red led BLINKS in RGB LED - it means the RFD is not ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-38BBA2DC-AE28-4500-BCC9-0FEFC317CF04.html</loc>
+         <lastmod>2024-07-24T05:37:54</lastmod>
+         <title>9 Getting Started with Thread Applications</title>
+         <description>This section provides details on documentation that describes the steps to develop the Thread application and test the demo application</description>
+         <urls>
+            <url>
+               <loc>GUID-7B76D0ED-C32B-48B0-AA3C-51B27787BF2B.html</loc>
+               <lastmod>2023-12-22T06:31:12</lastmod>
+               <title>9.1 Getting Started</title>
+               <description>Thread Applications are built on top of Thread stack and IEEE 802.15.4 Physical Layer for PIC32CX-BZ2 platform devices. The applications demonstrate the usage Thread stack, Thread Command line and ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-093B74A1-C86E-4262-9B69-08C12B489B6B.html</loc>
+               <lastmod>2024-01-02T19:53:20</lastmod>
+               <title>9.2 Advanced Applications</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-4BA60C8F-CD3D-49A5-9759-09298D826AC5.html</loc>
+                     <lastmod>2024-07-15T05:38:47</lastmod>
+                     <title>9.2.1 CoAP</title>
+                     <description>Documentation describing steps to test and develop the CoAP application examples on the Thread. The CoAP application examples are solutions that can be tested using more than one WBZ451 curiosity ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-E1EBEA5C-9A39-49B7-B003-36F042E4022C.html</loc>
+                           <lastmod>2023-12-11T09:17:37</lastmod>
+                           <title>9.2.1.1 Thread CoAP MCC Component Overview</title>
+                           <description>The Thread CoAP MCC component facilitates the user to select the device role in the CoAP communication based on RESTful architecture. The Thread CoAP MCC component in MPLAB Code Configurator is ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-F17082A1-DEA6-4431-8EE6-6269CA0F5749.html</loc>
+                           <lastmod>2024-01-05T15:18:44</lastmod>
+                           <title>9.2.1.2 Thread CoAP Component Configuration</title>
+                           <description>The Thread CoAP MCC component configuration facilitates the user to choose the Thread Device Role (FTD/MTD) and the CoAP Device Role (Server/Client). The chosen device role through the CoAP MCC ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-391AB696-C0AE-457E-8BF2-1732AFFAD02D.html</loc>
+                           <lastmod>2024-04-16T11:52:51</lastmod>
+                           <title>9.2.1.3 Project Generation with Thread CoAP MCC Component</title>
+                           <description>Getting Started Introduction Thread CoAP example solution application projects are available for reference at wireless_apps_pic32cxbz2_wbz45\apps\thread\advanced_applications\CoAP . These projects ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-31EEE20E-6A4D-4497-9FB0-79BE87F5FDD9.html</loc>
+                           <lastmod>2024-01-05T16:03:06</lastmod>
+                           <title>9.2.1.4 CoAP Demo Application</title>
+                           <description>This demo requires two WBZ451 Curiosity boards and a Serial terminal software (eg. Tera Term). Hex files for the demo are available as part of the Apps repository. Users can also generate hex files ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-B9333775-2F34-4B60-9429-E1B1B7F505FD.html</loc>
+         <lastmod>2024-07-25T06:54:21</lastmod>
+         <title>10 Adding Chip Peripherals</title>
+         <description>This section describes how to add analog/digital peripherals to the application</description>
+         <urls>
+            <url>
+               <loc>GUID-D79D28FC-6693-4FE3-B380-9F6983BCE151.html</loc>
+               <lastmod>2024-04-02T10:01:53</lastmod>
+               <title>10.1 USART with Direct Pin Enable</title>
+               <description>Direct Mode is a mode in which peripherals are running based on function priority for pins and not using Peripheral Pin Selection(PPS).</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-D2666558-1C41-4DC4-AB25-856CE215F5C8.html</loc>
+               <lastmod>2023-10-24T10:04:18</lastmod>
+               <title>10.2 USART with Peripheral Pin Select (PPS)</title>
+               <description>The Peripheral Pin Select (PPS) feature allows digital signals to be moved from their default pin location to another location. To enable a digital peripheral’s input and/or output signals, the appropriate PPS registers must be configured. This can be extremely handy for routing circuit boards. There are cases where a change of I/O position can make a circuit board easier to route. Sometimes mistakes are found too late to fix so having the option to change a pinout mapping in software rather than creating a new printed circuit board can be very helpful.</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-CB9637B8-3D2B-4FD8-86FD-7A4407A9F78D.html</loc>
+               <lastmod>2023-10-24T10:00:34</lastmod>
+               <title>10.3 Clock</title>
+               <description>This section provides configuration information for PIC32CX -BZ2 and WBZ45 family devices.For details regarding the operation of the clock module, refer to the “Clock and Reset Unit(CRU)” chapter in ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-64131DE4-2C60-4116-A206-EF72A41E71CE.html</loc>
+         <lastmod>2023-11-09T04:27:47</lastmod>
+         <title>11 Flashing hex from MPLAB DISCOVER using MPLAB IPE</title>
+         <description>This section provides a detailed procedure of how to download an already existing application hex file from MPLAB DISCOVER and flash the hex file intoWBZ451Curiosity Board using MPLAB IPE.</description>
+         <urls/>
+      </url>
+      <url>
+         <loc>GUID-F9A40E74-7127-4C2C-B480-2746007AAEAE.html</loc>
+         <lastmod>2023-10-25T09:35:13</lastmod>
+         <title>12 Low Power Design</title>
+         <description>This section explains in detail on how to enable the low power modes –Sleep/Standby or Deep Sleep/Backup modes in the design.</description>
+         <urls>
+            <url>
+               <loc>GUID-994B6462-D0F1-4B8C-A97B-A9CBF20426C2.html</loc>
+               <lastmod>2024-04-02T10:03:58</lastmod>
+               <title>12.1 Low Power Design on PIC32CXBZ3 Devices</title>
+               <description>PIC32CXBZ3 examples and stacks supports Sleep and Deep Sleep low power modes as part of Harmony framework for WBZ451. Sleep and Deep Sleep Modes are synonymous to Standby and Backup Modes. Throughout ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-101C8B73-AD8E-4845-831A-DC498B147435.html</loc>
+               <lastmod>2022-08-19T01:25:03</lastmod>
+               <title>12.2 Low Power BLE Application Design</title>
+               <description>Low Power BLE Application Design</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-D7A53CEA-74B4-4CAA-A5D4-F69980188D1B.html</loc>
+         <lastmod>2023-10-25T09:27:39</lastmod>
+         <title>13 Firmware and OTA Updates</title>
+         <description>This section documents how to enable firmware updates in the design, whether it is serial or Over The Air (OTA)</description>
+         <urls>
+            <url>
+               <loc>GUID-399616BF-E65E-43B3-9831-4B19472A5EF0.html</loc>
+               <lastmod>2023-10-25T05:29:19</lastmod>
+               <title>13.1 Bootloader</title>
+               <description>IntroductionA bootloader is a small application that can be used to upgrade firmware on a target device without the need for an external programmer or debugger. For PIC32CXBZ2 standalone bootloader, ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-003E64BA-98A3-40EA-8417-ED7F09C14761.html</loc>
+               <lastmod>2022-07-20T04:16:10</lastmod>
+               <title>13.2 Device Firmware Upgrade Over Serial</title>
+               <description>Device Firmware Upgrade(DFU) over serial is the functionality in Bootloader that user uses it to load new image received over serial interface and write into the flash. PC GUI ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-908446A4-F490-4063-9096-66C4831F9BE4.html</loc>
+               <lastmod>2023-10-25T04:43:46</lastmod>
+               <title>13.3 Device Firmware Upgrade Over BLE</title>
+               <description>IntroductionOne of the highly important features of wirelessly-connected devices is the capability of Over-The-Air device firmware update (OTA DFU). The increasing demand by end-users for this ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-159581BB-D157-4A79-A4B0-7C9A9692449A.html</loc>
+                     <lastmod>2023-11-14T12:43:42</lastmod>
+                     <title>13.3.1 BLE OTA DFU Firmware Architecture</title>
+                     <description>The following figure illustrates the BLE OTA DFU Firmware Architecture of PIC32CXBZ2/WBZ451 device.BLE OTA DFU Firmware ArchitectureMCHP OTA Profile and Service Middleware:Defines and handles the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-F2D3E8B2-1470-4065-82A4-A313FCBAC126.html</loc>
+                     <lastmod>2023-10-25T04:39:07</lastmod>
+                     <title>13.3.2 Memory Management</title>
+                     <description>PIC32CXBZ2/WBZ451 family of devices has enough Embedded Flash memory to hold the new upgradable OTA image until new image is authenticated. The image is received in blocks over BLE link. If the image ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-DF914131-7CEA-4CF1-8F13-C5872AAB7DC6.html</loc>
+                     <lastmod>2023-10-25T04:36:34</lastmod>
+                     <title>13.3.3 Microchip Defined BLE OTA DFU Profile</title>
+                     <description>The BLE OTA DFU profile is a GATT based profile. It is designed to perform device firmware update over the air. In general mobile will perform the OTAU client role and the BLE device will be in ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-894A155C-558E-45FD-AA0C-1546AE00DE53.html</loc>
+                     <lastmod>2023-10-25T04:35:51</lastmod>
+                     <title>13.3.4 BLE OTA DFU Image File Definition</title>
+                     <description>#BLE OTA DFU Image File DefinitionBLE OTA DFU File contains the OTAU header and Upgradable Flash Image as shown in below figure. This file is loaded into OTAU Manager (Smart phone/ GATT client) to ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-03033848-F789-4EF6-845B-0C7594868889.html</loc>
+                     <lastmod>2023-10-25T04:24:11</lastmod>
+                     <title>13.3.5 BLE OTA DFU Image Distribution Procedure</title>
+                     <description>The following steps explain the BLE OTA DFU Image Distribution Procedure: Encrypted and Signed BLE OTAU bin file generation using signature and OTA configurator from MPLABX Tools device properties. ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-1DBEFA54-6B29-4BB3-8C75-9FD48DB81F3F.html</loc>
+                     <lastmod>2023-10-25T04:14:55</lastmod>
+                     <title>13.3.6 BLE OTA DFU Implementation</title>
+                     <description>The following steps explain how to add the BLE OTA DFU functionality in Microchip BLE</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-2624FC46-FF08-4D14-9FA0-25B260F81754.html</loc>
+                           <lastmod>2023-11-08T05:42:26</lastmod>
+                           <title>13.3.6.1 MCC Component and Code Generation</title>
+                           <description>PrerequisitesOpen any BLE application based on MCC (Example project/ Custom created project)Launch MPLABx Code Configurator (MCC)MPLABx Code ConfiguratorPull-in MCC ComponentsThe following steps ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-84A8D478-B715-4D83-8D8F-49E3F5AFE32C.html</loc>
+                           <lastmod>2023-11-14T12:36:11</lastmod>
+                           <title>13.3.6.2 OTA Application Development</title>
+                           <description>Compile MCC auto generated project:Compile the MCC auto generated project as the folloing.Addressing the mandatory error (if not already done): User action required in app_user_edits.c. Follow the ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-70714605-ACB2-451F-87F0-66F97057949F.html</loc>
+                           <lastmod>2023-10-25T05:45:05</lastmod>
+                           <title>13.3.6.3 Project Properties Configuration for Current/Running Firmware</title>
+                           <description>By following the previous steps, the BLE OTA capability is added into application project. Referring to Memory management, this belongs to "Firmware" in Slot0 section. Metatdata header and ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-D392EA5B-9A98-4F73-8F52-BD4C9445CD4F.html</loc>
+                           <lastmod>2023-10-25T05:49:13</lastmod>
+                           <title>13.3.6.4 Unified Image Generation</title>
+                           <description>Compile the project for no errors.MPLABX generated hex image will be available in project production folder dist\default\production. There are 3 new images created as an outcome of "SignFirmware" ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-436FCDB1-1B96-4B4C-802C-0C61967DA657.html</loc>
+                           <lastmod>2023-10-25T05:49:54</lastmod>
+                           <title>13.3.6.5 Programming the Current Application Image using MPLABX IDE</title>
+                           <description>Build the project after completing all the above changes and program on Curiosity board: Now the device (OTAU Target) is running the application with OTA capability, and able to be upgraded using ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-6816EA2C-EDCC-48EC-9D99-BF8EAF56C5A1.html</loc>
+                           <lastmod>2023-10-25T05:50:49</lastmod>
+                           <title>13.3.6.6 Upgradable image .bin file generation</title>
+                           <description>Referring to Project Properties Configuration for Current image, "SignFirmware" and "OTA" bin generation MPLABX script is added into OTA project. "OTA" window in project properties is used for OTA ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-5B01388B-241F-4BCF-9204-BE758BC2F97F.html</loc>
+                     <lastmod>2023-10-25T06:16:10</lastmod>
+                     <title>13.3.7 BLE OTA DFU Demo</title>
+                     <description>The following BLE OTA demo steps are common for any application implementing OTA functionality.BLE sensor application is the sample project which implements OTA functioanlity as explained in the ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-FC914BE3-2FDF-44C2-9611-A500FBF9A3A6.html</loc>
+               <lastmod>2023-10-25T09:23:03</lastmod>
+               <title>13.4 Device Firmware Upgrade Over Zigbee Link</title>
+               <description>Designers and providers of embedded wireless systems continue to be challenged by the rapid evolution of the ZigBee® standard. The continuous evolution of the standard requires that these systems ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-85366FA2-8437-418E-AD4C-9099D24AB295.html</loc>
+                     <lastmod>2022-10-17T04:42:04</lastmod>
+                     <title>13.4.1 Zigbee OTAU Firmware Architecture</title>
+                     <description>ZigBee Over-the-Air Upgrade (OTAU) relies on existing ZigBee services for service discovery and data transmission across the network. The main components of the architecture are:The OTAU client, ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-E1908801-D1CA-4E21-97D2-B8F7419AE88A.html</loc>
+                     <lastmod>2022-10-17T04:43:23</lastmod>
+                     <title>13.4.2 OTAU Basic Protocol and Control Flow</title>
+                     <description>Once UAP (OTAU Server) appears on the network (assuming it possesses the necessary security material to join it), it must be discovered by the OTAU clients (upgradeable nodes), that implement the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-D3DC88CA-D2C0-4FFF-B035-FE4E6DAE1D97.html</loc>
+                     <lastmod>2022-10-17T04:42:38</lastmod>
+                     <title>13.4.3 Memory Management</title>
+                     <description>Due to unpredictable and dynamic nature of network links in multi-hop wireless networks like ZigBee, the firmware image can only be transferred to the client using the best effort facilities for data ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-4CE8CC1D-B3B8-4218-B67B-279E2D29D12E.html</loc>
+                     <lastmod>2022-10-17T04:43:40</lastmod>
+                     <title>13.4.4 Zigbee OTAU Image File Definition</title>
+                     <description>Zigbee OTAU File contains the OTAU header and Upgradable Flash Image. This file is loaded into OTAU Server connected PC tool to send to OTAU Client over zigbee mesh network.• Flash Image: Meta-data ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-8AAF102A-1CE5-497A-A6F5-AB939178D89C.html</loc>
+                     <lastmod>2022-10-17T04:44:31</lastmod>
+                     <title>13.4.5 Zigbee OTAU - Image Distribution Procedure</title>
+                     <description>The Basic Networking for Image Transfer for zigbee node is shown in below figure.Step 1: Encrypted and Signed Zigbee OTAU bin (.zigbee) File generation using signature and OTA configurator in MPLABX ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-F05AF46A-7BBB-4175-9128-7552429BC260.html</loc>
+                     <lastmod>2022-10-17T05:34:43</lastmod>
+                     <title>13.4.6 OTA Implementation Details - OTAU Client Side</title>
+                     <description>Follow the below step to add the Zigbee OTAU Client functionality in any of the zigbee application.Pre-requisiteOpen any zigbee device type application based on MCC (Example project/ Custom created ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-EBCBA6AB-093F-4B8D-88F1-C98BE40F5156.html</loc>
+                           <lastmod>2022-10-17T05:38:43</lastmod>
+                           <title>13.4.6.1 Application Development</title>
+                           <description>Compile MCC auto generated projectCompile the MCC auto generated project as belowAddressing the mandatory error (if not already done): User action required in app_user_edits.c. Follow the steps ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-F4386E1E-9C89-4A53-8F6F-D6729E9DF217.html</loc>
+                           <lastmod>2022-10-17T05:38:39</lastmod>
+                           <title>13.4.6.2 Project Properties Configuration for Current Image</title>
+                           <description>By following the previous steps, the Zigbee OTA Client capability is added into application project. Referring to Memory management, this belongs to "Firmware" in Slot0 section. Metatdata header and ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-84753265-274F-4A53-9E2A-D432905E1E3C.html</loc>
+                           <lastmod>2022-10-17T05:38:32</lastmod>
+                           <title>13.4.6.3 Unified Image Generation</title>
+                           <description>Compile the project for no errors.MPLABX generated hex image will be available in project production folder dist\default\production. There are 3 new images created as an outcome of "SignFirmware" ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-E1668A2E-87A9-405D-9234-53C592A035DF.html</loc>
+                           <lastmod>2022-10-17T05:39:43</lastmod>
+                           <title>13.4.6.4 Programming the Current Application Image using MPLABX IDE</title>
+                           <description>Build the project after doing all the above changes and program on Curiosity boardNow the device is running the application with OTA</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-543C2332-73E4-4305-93D5-6649FE075F35.html</loc>
+                           <lastmod>2022-10-17T07:06:08</lastmod>
+                           <title>13.4.6.5 Upgradable image .zigbee file generation</title>
+                           <description>Referring to Project Properties Configuration for Current image , "SignFirmware" and "OTA" bin (.zigbee) generation MPLABX script is added into OTA project. "OTA" window in project properties is used ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-0B266078-AD33-4AB4-8C96-4F34D86C4BF3.html</loc>
+                     <lastmod>2022-10-17T06:20:34</lastmod>
+                     <title>13.4.7 OTA Implementation Details - OTAU Server</title>
+                     <description>Follow the below step to add the Zigbee OTAU Server capability in any of the zigbee application. Mostly Combined interface which is zigbee co-ordinator is considered for OTAU server.Pre-requisiteOpen ...</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-2E405D3D-C758-40B8-A1DC-24B16E0AC2C1.html</loc>
+                           <lastmod>2022-10-17T06:05:47</lastmod>
+                           <title>13.4.7.1 Application Development</title>
+                           <description>Compile MCC auto generated projectCompile the MCC auto generated project as belowAddressing the mandatory error (if not already done): User action required in app_user_edits.c. Follow the steps ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-8D2F1488-E176-4352-994E-9B8B96AA6369.html</loc>
+                           <lastmod>2022-10-17T06:06:07</lastmod>
+                           <title>13.4.7.2 Project Properties Configuration for Serial Bootloading</title>
+                           <description>By following the previous steps, the Zigbee OTA Server capability is added into application project.The below steps are needed if upgrading the server firmware through UART when Bootloader service is ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-7FCA82FF-EA4D-41F3-9141-12D317B414CB.html</loc>
+                           <lastmod>2022-10-17T06:09:22</lastmod>
+                           <title>13.4.7.3 Unified Image Generation for Serial Bootloading</title>
+                           <description>Compile the project for no errors.MPLABX generated hex image will be available in project production folder dist\default\production. There are 3 new images created as an outcome of "SignFirmware" ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-E1668A2E-87A9-405D-9234-53C592A035DF_2.html</loc>
+                           <lastmod>2022-10-17T05:39:43</lastmod>
+                           <title>13.4.7.4 Programming the Current Application Image using MPLABX IDE</title>
+                           <description>Build the project after doing all the above changes and program on Curiosity boardNow the device is running the application with OTA</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-217228C6-8E92-4C6F-8924-F7B0F8B2314C.html</loc>
+                     <lastmod>2022-10-17T06:47:49</lastmod>
+                     <title>13.4.8 Zigbee OTAU Demo</title>
+                     <description>Hardware RequiredToolQtyWBZ451 Curiosity Board 2Micro USB cable2PC1PC GUI Tool1. MicrochipUtilityTool (download link, please always download the latest version on Microchip web)Demo stepsTo perform ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-A3F96AEA-7517-4859-9799-149B152B5BC4.html</loc>
+               <lastmod>2023-10-25T03:05:22</lastmod>
+               <title>13.5 Microchip Utility Tool</title>
+               <description>Microchip Utility Tool is windows based GUI Tool used for firmware upgrade.</description>
+               <urls>
+                  <url>
+                     <loc>GUID-4F84E615-EC93-4752-AF4D-B9477527B4FA.html</loc>
+                     <lastmod>2023-11-09T06:26:33</lastmod>
+                     <title>13.5.1 Introduction</title>
+                     <description>Microchip Utility Tool works with Microchip PIC32CX_BZ3/WBZ35 device family. This tool Works on windows platform and provides the following functionalities. The tool communicates with the device over ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-95F50FC6-4CEE-4EA3-BB70-939637997C8B.html</loc>
+                     <lastmod>2023-10-25T09:21:41</lastmod>
+                     <title>13.5.2 Tool Description</title>
+                     <description>Zigbee OTAU Tab The following figure provides details of this tab. Description of each button and text box is provided in the following figure:Figure 1: Zigbee OTAU TabThe previous Figure 1 shows ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-1F6A4D91-48E2-4ACF-B566-CFD184B6FF5C.html</loc>
+                     <lastmod>2023-11-09T04:33:52</lastmod>
+                     <title>13.5.3 Zigbee Over The Air Update Demo</title>
+                     <description>This section discusses the Zigbee Over the Air Update(OTAU).</description>
+                     <urls>
+                        <url>
+                           <loc>GUID-A40B634A-339D-4B50-9146-1FA15512D537.html</loc>
+                           <lastmod>2023-10-25T09:12:07</lastmod>
+                           <title>13.5.3.1 ISD Protocol</title>
+                           <description>Zigbee server communicates with the PC Tools using ISD protocol</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-E24160FD-C371-4A9C-99F3-CB7C84DFD5C6.html</loc>
+                     <lastmod>2023-10-25T09:03:42</lastmod>
+                     <title>13.5.4 </title>
+                     <description>This section explains Boot loading over the serial port. Hardware RequirementsOne WBZ451 Curiosity BoardUSB CablesPCSoftware RequirementsMPLABX IDE/IPEMicrochipUtilityTool.exeBootload enabled ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-931E0477-A4B1-4887-BC2C-370DC398B29C.html</loc>
+                     <lastmod>2023-10-25T09:02:07</lastmod>
+                     <title>13.5.5 Programming using IPECMD.exe</title>
+                     <description>Image(*.hex) file can be programmed into the device</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-E1A30ECC-1212-4B25-AE72-7EAF982C6D50.html</loc>
+         <lastmod>2022-07-13T23:17:28</lastmod>
+         <title>14 Wireless System Services API</title>
+         <description>Wireless system services abstracts out the complexities of a networked system design and simplifies development for common BLE use cases like Over the Air Firmware Update and also provides debug ...</description>
+         <urls>
+            <url>
+               <loc>GUID-CDA62122-6D5D-4CDC-B1B7-3EB02C26552C.html</loc>
+               <lastmod>2023-10-25T03:07:44</lastmod>
+               <title>14.1 BLE_OTA</title>
+               <description>BLE OTA service component generates the example code implementation needed for handling BLE OTA application callback and OTA timeouts. Refer to OTA Application Development document for the usage of ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-4A2BABB9-3C7D-45F1-BAD5-C7978B7429B5.html</loc>
+                     <lastmod>2022-07-14T01:46:03</lastmod>
+                     <title>14.1.1 BLE_OTA Enums</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-222AEAB9-376D-4929-9BD2-5C490840C896.html</loc>
+                     <lastmod>2022-07-14T01:46:10</lastmod>
+                     <title>14.1.2 BLE_OTA Functions</title>
+                     <description/>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-159FB68F-FBE7-4DF3-AFE3-09B4E8767F48.html</loc>
+               <lastmod>2023-10-25T09:39:32</lastmod>
+               <title>14.2 BLE_Conn_Handler</title>
+               <description>The example code implementation for handling BLE connected and disconnected events in BLE GAP event callback from application. They support APIs and are generated when the BLE OTA service component ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-974C2B95-A6F2-42E5-9AFC-57AB0C5507FF.html</loc>
+                     <lastmod>2022-07-14T01:47:02</lastmod>
+                     <title>14.2.1 BLE_Conn_Handler Enums</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-0E14539E-032F-4959-9669-CF515777EC50.html</loc>
+                     <lastmod>2022-07-14T01:47:02</lastmod>
+                     <title>14.2.2 BLE_Conn_Handler Functions</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-FFB256C1-978B-428C-BBA5-5FDCC2A63E5E.html</loc>
+                     <lastmod>2022-07-14T01:47:02</lastmod>
+                     <title>14.2.3 BLE_Conn_Handler Structures</title>
+                     <description/>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-3095456E-3B15-42F9-BCDA-E5E1337D0AA1.html</loc>
+               <lastmod>2022-07-14T01:47:02</lastmod>
+               <title>14.3 APP_TRPS</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-55B35426-69EB-4BCC-8F95-F6647E69BD46.html</loc>
+                     <lastmod>2022-07-14T01:47:02</lastmod>
+                     <title>14.3.1 APP_TRPS Defines</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-BDEA426A-51E9-4C3D-B8B0-FAAC0279AD65.html</loc>
+                     <lastmod>2022-07-14T01:47:04</lastmod>
+                     <title>14.3.2 APP_TRPS Enums</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-95651E94-1B2F-4659-8B0B-FD1795A0ED6A.html</loc>
+                     <lastmod>2022-07-14T01:47:03</lastmod>
+                     <title>14.3.3 APP_TRPS Functions</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-84FD86A5-5EF7-4B41-B2AE-4FE3C18C13BB.html</loc>
+                     <lastmod>2022-07-14T01:47:03</lastmod>
+                     <title>14.3.4 APP_TRPS Structures</title>
+                     <description/>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-2262C95D-85A7-48DD-A78C-F57E5917141B.html</loc>
+               <lastmod>2022-07-15T17:34:25</lastmod>
+               <title>14.4 APP_ERROR_DEF</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-8BBF5057-BBDA-491E-8DFE-7DFEF244DD81.html</loc>
+                     <lastmod>2022-07-15T17:34:25</lastmod>
+                     <title>14.4.1 APP_ERROR_DEF Defines</title>
+                     <description/>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-37C0393D-F38C-4BC7-BF76-B5B7F01A9CF8.html</loc>
+               <lastmod>2022-07-25T15:30:51</lastmod>
+               <title>14.5 APP_Timer</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-A8FBF1F1-80DD-42AA-82E8-3935CBABFB82.html</loc>
+                     <lastmod>2022-07-15T17:34:56</lastmod>
+                     <title>14.5.1 APP_Timer Defines</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-5DBE9129-D654-406C-9A3F-460A39626F1F.html</loc>
+                     <lastmod>2022-07-15T17:34:56</lastmod>
+                     <title>14.5.2 APP_Timer Enums</title>
+                     <description/>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-BBDEFB96-FD29-4302-927D-CD4E2CDFBCD8.html</loc>
+                     <lastmod>2022-07-15T17:34:56</lastmod>
+                     <title>14.5.3 App_Timer Functions</title>
+                     <description/>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+            <url>
+               <loc>GUID-ABAB7167-0F22-4DE9-8CCB-24CDD499365D.html</loc>
+               <lastmod>2023-10-25T03:45:29</lastmod>
+               <title>14.6 Application Timer Service</title>
+               <description>Introduction The application timer service can be used to provide timer service required for the application functionality. Application timer service provides one shot or periodic timeout events for ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-7190D043-D2F7-4691-ACEC-7134AD39FD98.html</loc>
+               <lastmod>2023-03-06T08:50:36</lastmod>
+               <title>14.7 15_4_P2P_Phy_App</title>
+               <description/>
+               <urls>
+                  <url>
+                     <loc>GUID-4A6BAE4C-4665-4BF5-A625-D048BD590CEF.html</loc>
+                     <lastmod>2024-04-01T12:32:05</lastmod>
+                     <title>14.7.1 15_4_P2P_Phy_App Defines</title>
+                     <description>C #define CHANNEL_TRANSMIT_RECEIVE 11U #define SRC_ADDR 0x1U #define IEEE_ADDR 0x1U #define SRC_PAN_ID 0xcafeU #define MAXBE 5U #define MINBE 3U #define CSMA_BACKOFF 4U #define FRAME_RETRY 3U #define ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-8BA13BF9-A9CF-47CE-A8CB-4A902FC8B206.html</loc>
+                     <lastmod>2024-04-01T12:32:32</lastmod>
+                     <title>14.7.2 15_4_P2P_Phy_App Enums</title>
+                     <description/>
+                     <urls>
+                        <url>
+                           <loc>GUID-738DF609-9803-4FA9-91E5-25D8E08FF8B2.html</loc>
+                           <lastmod>2024-04-01T12:34:09</lastmod>
+                           <title>14.7.2.1 APP_Mode_T</title>
+                           <description>C typedef enum APP_Mode_T { APP_DATA_MODE, APP_CONTINUOUS_DATA_TEST_MODE, APP_PER_TEST_MODE, APP_PROMISCUOUS_MODE, APP_THROUGHPUT_TEST_MODE, APP_LOOP_BACK_MODE, APP_CMD_TASK_SUSPEND, ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-A5A9AB06-7BDA-49F9-83B7-4496976A5B5B.html</loc>
+                           <lastmod>2024-04-01T12:34:20</lastmod>
+                           <title>14.7.2.2 APP_TEST_Mode_T</title>
+                           <description>C typedef enum APP_TEST_MODE_T { PER_TEST_MODE, PERIOD_TEST_MODE, CONT_TEST_MODE, PROM_TEST_MODE, THROUGHPUT_TEST_MODE, }APP_TEST_MODE_T; Description The definition of different application Test ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-72B8AB89-595F-4CE8-9D3D-9D54C8D092C9.html</loc>
+                           <lastmod>2024-04-01T12:34:31</lastmod>
+                           <title>14.7.2.3 APP_OP_STATE_T</title>
+                           <description>C typedef enum { APP_STATE_TX_SUCCESS, APP_STATE_TX_IN_PROGRESS, APP_STATE_TX_FAILURE, APP_STATE_TX_ACK, APP_STATE_TX_NO_ACK, APP_STATE_RX_SUCCESS, APP_CCA_CHANNEL_ACCESS_SUCCESS, ...</description>
+                           <urls/>
+                        </url>
+                     </urls>
+                  </url>
+                  <url>
+                     <loc>GUID-ECDD91F4-F6E0-414E-9BAF-26E216410F51.html</loc>
+                     <lastmod>2024-04-01T12:33:23</lastmod>
+                     <title>14.7.3 15_4_P2P_Phy_App Functions</title>
+                     <description>C void app_P2P_Phy_TransmitFrame(uint8_t *payload, uint8_t payloadLength, uint8_t devIndex, uint8_t msduHandle, bool unicast, bool ackReq, bool frameRetry); Description This function is used to ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-769877FB-8190-4D79-A21B-67B2A76CD688.html</loc>
+                     <lastmod>2024-04-01T12:33:41</lastmod>
+                     <title>14.7.4 15_4_P2P_Phy_App Structures</title>
+                     <description/>
+                     <urls>
+                        <url>
+                           <loc>GUID-8F4088F1-5CA1-4E03-A205-A2BD9CD6A829.html</loc>
+                           <lastmod>2024-04-01T12:50:26</lastmod>
+                           <title>14.7.4.1 DEVICE_TABLE</title>
+                           <description>C typedef struct { uint64_t ieeeAddr; uint16_t shortAddr; int8_t rssiVal; uint8_t lqi; uint64_t txPacketCnt; uint64_t rxPacketCnt; bool valid; }DEVICE_TABLE; Description The structure contains the ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-1EB023D2-F2C1-4E5A-A47F-CF04918F28E2.html</loc>
+                           <lastmod>2024-04-01T12:50:51</lastmod>
+                           <title>14.7.4.2 APP_NWK_PARAM</title>
+                           <description>C typedef struct { uint8_t channel; uint8_t channelPage; uint16_t srcPanId; uint16_t dstPanId; uint16_t srcAddress; uint64_t extendedSrcAddress; uint8_t srcAddrMode; uint16_t dstAddress; uint64_t ...</description>
+                           <urls>
+                              <url>
+                                 <loc>GUID-EFC7A6D6-20AE-4722-8342-33C1B0633869.html</loc>
+                                 <lastmod>2024-04-01T12:51:14</lastmod>
+                                 <title>14.7.4.2.1 CCA</title>
+                                 <description>C typedef struct { uint8_t ccaMode; PHY_Retval_t ccaStatus; }CCA; Description The structure contains the information about Clear Channel Assessment (CCA) Mode and the status striucture holding the ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-650C54A5-5839-41AE-89A4-9C04D89C5714.html</loc>
+                                 <lastmod>2024-04-01T12:51:35</lastmod>
+                                 <title>14.7.4.2.2 CSMA</title>
+                                 <description>C typedef struct { PHY_CSMAMode_t csmaMode; uint8_t csmaBackoff; }CSMA; Description The structure contains the information about CSMA parameters like CSMA Mode and CSMA retries. To update &amp; read back ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-F8C09A37-7D47-49DF-B9CF-7BAA4112B301.html</loc>
+                                 <lastmod>2024-04-01T12:51:49</lastmod>
+                                 <title>14.7.4.2.3 ED_SCAN</title>
+                                 <description>C typedef struct { uint8_t edscanDurationSYMBOLS; PHY_Retval_t edStatus; }ED_SCAN; Description The structure contains the information about the Energy Detection (ED) Scan duration and status holding ...</description>
+                                 <urls/>
+                              </url>
+                           </urls>
+                        </url>
+                        <url>
+                           <loc>GUID-2D8ADA07-6DC1-4E27-A58B-1876F4FE03C7.html</loc>
+                           <lastmod>2024-04-01T12:52:31</lastmod>
+                           <title>14.7.4.3 APP_STATES_PARAM</title>
+                           <description>C typedef struct { APP_OP_STATE_T appOpStates; uint8_t appOpModes; }APP_STATES_PARAM; Description The structure contains the information about different application modes and operating states. Please ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-C3DCAEFB-F548-4E77-9887-8689398F94A1.html</loc>
+                           <lastmod>2024-04-01T12:52:51</lastmod>
+                           <title>14.7.4.4 SYSTIMER_FLAGS</title>
+                           <description>C typedef struct { SYS_TIME_RESULT timerStartPeriodicTestMode, timerStartDataMode, timerStopPeriodicTestMode, timerStopDataMode; SYS_TIME_HANDLE sysTimerPeriodicTestModeHandle, ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-ABC53259-394B-44F5-B0C2-A92BBA5206FE.html</loc>
+                           <lastmod>2024-04-01T12:53:20</lastmod>
+                           <title>14.7.4.5 MODE_SWITCH_FLAGS</title>
+                           <description>C typedef struct { bool enterDataMode; bool enterPeriodicTestMode; bool enterContTestMode; bool enterThroughputTestMode; bool throughputTimerCallback; bool enterPerTestMode; bool perTestMode; ...</description>
+                           <urls/>
+                        </url>
+                        <url>
+                           <loc>GUID-25E9E0F6-C673-40B9-9EC3-914570527168.html</loc>
+                           <lastmod>2024-04-01T12:54:19</lastmod>
+                           <title>14.7.4.6 APP_MODE_PARAMS</title>
+                           <description>C typedef struct { uint64_t nPacketsSent; uint64_t nBytesSent; uint64_t nPacketsRcvdAck; bool isModeActive; }APP_MODE_PARAMS; Description The structure contains the information about the no. of ...</description>
+                           <urls>
+                              <url>
+                                 <loc>GUID-6E91C3E4-2A6D-42A7-BBD3-CA4B6B18892A.html</loc>
+                                 <lastmod>2024-04-01T12:54:39</lastmod>
+                                 <title>14.7.4.6.1 APPL_DATA_MODE</title>
+                                 <description>APP_MODE_PARAMS C typedef struct { APP_MODE_PARAMS devPerformanceParam; }APPL_DATA_MODE; Description The structure contains the information about the no. of packets transmitted, no. of bytes sent and ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-C0D2B156-B4B8-471B-BB7D-06FDA8C13D3C.html</loc>
+                                 <lastmod>2024-04-01T12:55:47</lastmod>
+                                 <title>14.7.4.6.2 APPL_CNT_TEST_MODE</title>
+                                 <description>APP_MODE_PARAMS C typedef struct { APP_MODE_PARAMS devPerformanceParam; }APPL_CNT_TEST_MODE; Description The structure contains the information about the no. of packets transmitted, no. of bytes sent ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-8B4E6F25-6A3E-4E2D-A0EE-0449E4863420.html</loc>
+                                 <lastmod>2024-04-01T12:56:18</lastmod>
+                                 <title>14.7.4.6.3 APPL_PERIOD_TEST_MODE</title>
+                                 <description>APP_MODE_PARAMS C typedef struct { APP_MODE_PARAMS devPerformanceParam; }APPL_PERIOD_TEST_MODE; Description The structure contains the information about the no. of packets transmitted, no. of bytes ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-2E5C58CA-0968-45C9-92CB-D867494C3BC0.html</loc>
+                                 <lastmod>2024-04-01T12:56:33</lastmod>
+                                 <title>14.7.4.6.4 APPL_PER_TEST_MODE</title>
+                                 <description>APP_MODE_PARAMS C typedef struct { APP_MODE_PARAMS devPerformanceParam; }APPL_PER_TEST_MODE; Description The structure contains the information about the no. of packets transmitted, no. of bytes sent ...</description>
+                                 <urls/>
+                              </url>
+                              <url>
+                                 <loc>GUID-AC2A32B8-1F5D-4CFC-8E0B-B83A52E8CD45.html</loc>
+                                 <lastmod>2024-04-01T12:57:06</lastmod>
+                                 <title>14.7.4.6.5 APPL_THROUGHPUT_TEST_MODE</title>
+                                 <description>APP_MODE_PARAMS C typedef struct { APP_MODE_PARAMS devPerformanceParam; }APPL_THROUGHPUT_TEST_MODE; Description The structure contains the information about the no. of packets transmitted, no. of ...</description>
+                                 <urls/>
+                              </url>
+                           </urls>
+                        </url>
+                     </urls>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-5FC6D5A2-B8C3-4AD8-AC31-0AABE237A2F7.html</loc>
+         <lastmod>2023-10-25T09:25:44</lastmod>
+         <title>15 Support Documentation</title>
+         <description>This section has documentation that is generic and used as supporting document with the application example documentation.</description>
+         <urls>
+            <url>
+               <loc>GUID-99583057-8B1A-42F2-84E8-CFC7717FA5D1.html</loc>
+               <lastmod>2024-04-02T07:51:28</lastmod>
+               <title>15.1 User Action</title>
+               <description>This document explains the code edits needed after a user generates a code using MPLAB Code Configurator.Developers are required to call API - app_idle_task() in vApplicationIdleHook(). This is ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-9C28F407-4879-4174-9963-2CF34161398E.html</loc>
+               <lastmod>2023-10-25T08:56:43</lastmod>
+               <title>15.2 MPLAB Code Configurator(MCC) Code Generation</title>
+               <description>Generate a codeSelect GenerateMerge StrategyFor more details on Merge Strategy and its understanding, refer to MCC Merge Window Select "Close" the merge window to maintain the modifications made for ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-F8FE2886-8A2C-4FC0-9956-C094CE44D162.html</loc>
+               <lastmod>2023-10-25T08:54:02</lastmod>
+               <title>15.3 Importing Existing App Example Configuration</title>
+               <description>To implement a similar application based on the existing application examples provided by Microchip, choose to import the configuration so that the start is from a known and valid ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-58FF8D49-65D8-4C82-8D7C-3E924A3ADF7B.html</loc>
+         <lastmod>2024-07-24T06:42:31</lastmod>
+         <title>16 Porting Guide</title>
+         <description>This chapter provides the steps that helps the user to port an existing project created for WBZ451. Before starting the porting process, ensure the peripherals and pin configurations in the WBZ451 ...</description>
+         <urls>
+            <url>
+               <loc>GUID-BA0204D8-EFF0-4932-830D-73E2A72614A0.html</loc>
+               <lastmod>2023-10-25T08:47:54</lastmod>
+               <title>16.1 Porting Guide for WBZ451 to PIC32CX1012BZ25048</title>
+               <description>This document provides the steps to port an existing project created for WBZ451 to</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-A1E48517-2E8D-4E14-B1BB-B3541DB0DA27.html</loc>
+               <lastmod>2023-10-25T08:41:44</lastmod>
+               <title>16.2 Porting Guide for WBZ451 to WBZ450</title>
+               <description>IntroductionThis document provides the steps that helps the user to port an existing project created for WBZ451 to WBZ450. Before starting the porting process, ensure the peripherals and pin ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-46EE83C8-F03C-4248-97FC-42334F801ADE.html</loc>
+               <lastmod>2024-06-21T09:02:26</lastmod>
+               <title>16.3 toApplication Migration</title>
+               <description>Migrating applications from the WBZ451 to the WBZ451H is a crucial process that requires careful adherence to specific steps and environment configurations. The following sections provide more ...</description>
+               <urls>
+                  <url>
+                     <loc>GUID-07DF7CE7-DD86-4C29-A3EA-86BA72286A73.html</loc>
+                     <lastmod>2024-06-26T20:54:20</lastmod>
+                     <title>16.3.1 Packaging and Footprint Comparison BetweenandModules</title>
+                     <description>This chapter provides details about the package dimensions and the differences in footprints between the WBZ451 and the WBZ451H modules. While the WBZ451H module is longer than the WBZ451 module, the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-FB90ED79-F003-4B7B-8025-87F3B639C1A1.html</loc>
+                     <lastmod>2024-06-26T20:54:20</lastmod>
+                     <title>16.3.2 MPLAB® X IDE Version</title>
+                     <description>To ensure full compatibility and prevent issues during the migration process, the users are required to utilize the specific version of the MPLAB X IDE as mentioned in this user guide. The following ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-55E7DC15-0A66-4E2A-966B-A25EAE993255.html</loc>
+                     <lastmod>2024-06-26T20:55:47</lastmod>
+                     <title>16.3.3 Environment Setup</title>
+                     <description>The following steps outline how to set up the environment:The user must extract the EV79Y91A package folder.Inside the EV79Y91A package folder, locate the install.sh script.Double-click the ...</description>
+                     <urls/>
+                  </url>
+                  <url>
+                     <loc>GUID-DB7E9BB4-A15E-43BE-BC01-01D0C9A25E7B.html</loc>
+                     <lastmod>2024-07-03T15:04:04</lastmod>
+                     <title>16.3.4 Application Selection</title>
+                     <description>The following steps help the user to migrate from the WBZ451 module to the WBZ451H module.Run the MPLAB X IDE tool.In the opening widow of the MPLAB X IDE, the user must locate the WBZ451 application ...</description>
+                     <urls/>
+                  </url>
+               </urls>
+            </url>
+         </urls>
+      </url>
+      <url>
+         <loc>GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html</loc>
+         <lastmod>2022-04-04T12:20:47</lastmod>
+         <title> Microchip Information</title>
+         <description/>
+         <urls>
+            <url>
+               <loc>GUID-7551DC67-D79D-4F0C-B56F-7B17E12400E0.html</loc>
+               <lastmod>2022-07-05T07:23:16</lastmod>
+               <title> The Microchip Website</title>
+               <description>Microchip provides online support via our website at . This website is used to make files and information easily available to customers. Some of the content available includes:Product Support – Data ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-CDA512D8-0DE4-4672-8716-04CAC681CB38.html</loc>
+               <lastmod>2022-07-05T07:27:49</lastmod>
+               <title> Product Change Notification Service</title>
+               <description>Microchip’s product change notification service helps keep customers current on Microchip products. Subscribers will receive email notification whenever there are changes, updates, revisions or ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-F05182E4-B102-4775-A746-1FF37F465312.html</loc>
+               <lastmod>2022-07-05T07:29:30</lastmod>
+               <title> Customer Support</title>
+               <description>Users of Microchip products can receive assistance through several channels:Distributor or RepresentativeLocal Sales OfficeEmbedded Solutions Engineer (ESE)Technical Support Customers should contact ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-E8251634-7B15-4073-A103-5A5F128B8699.html</loc>
+               <lastmod>2021-09-15T14:48:25</lastmod>
+               <title> Microchip Devices Code Protection Feature</title>
+               <description>Note the following details of the code protection feature on Microchip products:Microchip products meet the specifications contained in their particular Microchip Data Sheet.Microchip believes that ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-125F1A93-76CC-4BD7-BACA-01844FBD5F4F.html</loc>
+               <lastmod>2021-09-14T20:44:40</lastmod>
+               <title> Legal Notice</title>
+               <description>This publication and the information herein may be used only with Microchip products, including to design, test, and integrate Microchip products with your application. Use of this information in any ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-21750586-F9F2-4E33-87FB-8F2994BF4744.html</loc>
+               <lastmod>2022-06-03T22:10:37</lastmod>
+               <title> Trademarks</title>
+               <description>The Microchip name and logo, the Microchip logo, Adaptec, AVR, AVR logo, AVR Freaks, BesTime, BitCloud, CryptoMemory, CryptoRF, dsPIC, flexPWR, HELDO, IGLOO, JukeBlox, KeeLoq, Kleer, LANCheck, ...</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-07985EED-D525-413B-AEFE-78B563328687.html</loc>
+               <lastmod>2022-07-05T07:33:24</lastmod>
+               <title> Quality Management System</title>
+               <description>For information regarding Microchip’s Quality Management Systems, please visit</description>
+               <urls/>
+            </url>
+            <url>
+               <loc>GUID-02A694CF-88A5-4ADA-8785-7EEEC62D66EA.html</loc>
+               <lastmod>2022-07-05T07:34:52</lastmod>
+               <title> Worldwide Sales and Service</title>
+               <description>AMERICASASIA/PACIFICASIA/PACIFICEUROPE Corporate Office 2355 West Chandler Blvd. Chandler, AZ 85224-6199 Tel: 480-792-7200 Fax: 480-792-7277 Technical Support: Web Address: Atlanta Duluth, GA Tel: ...</description>
+               <urls/>
+            </url>
+         </urls>
+      </url>
+   </urls>
+</publication>

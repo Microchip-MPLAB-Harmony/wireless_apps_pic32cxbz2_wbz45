@@ -1,1 +1,0 @@
-define({"topics":[{"title":"<ph>4.1.4.1<\/ph>\nUART Hello World","href":"GUID-E1A0E9CA-311E-4F53-9C27-160173609975.html","attributes":{"data-id":"GUID-E1A0E9CA-311E-4F53-9C27-160173609975"},"menu":{"hasChildren":false},"tocID":"GUID-E1A0E9CA-311E-4F53-9C27-160173609975-d1766e406","topics":[]}]});

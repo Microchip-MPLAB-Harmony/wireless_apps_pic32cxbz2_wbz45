@@ -1,4 +1,4 @@
-setTimeout(function() {
+define(["require", "config"], function() {
     require(['options'], function(options){
         
         const jsModules = [
@@ -17,4 +17,4 @@ setTimeout(function() {
             require(jsModules);
         }
     });
-}, 1000);
+});

@@ -1,0 +1,1 @@
+define({"topics":[{"title":"<ph>9.2.1<\/ph>\nCoAP","href":"GUID-4BA60C8F-CD3D-49A5-9759-09298D826AC5.html","attributes":{"data-id":"GUID-4BA60C8F-CD3D-49A5-9759-09298D826AC5"},"menu":{"hasChildren":false},"tocID":"GUID-4BA60C8F-CD3D-49A5-9759-09298D826AC5-d2080e1016","next":"GUID-4BA60C8F-CD3D-49A5-9759-09298D826AC5-d2080e1016"}]});
