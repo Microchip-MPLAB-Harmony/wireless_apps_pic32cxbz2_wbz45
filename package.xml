@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Package name="wireless_apps_pic32cxbz2_wbz45">
     <Dependencies>
-        <Dependency name="bsp" version="v3.20.0"/>
-        <Dependency name="CMSIS-FreeRTOS" version="v11.1.0"/>
+        <Dependency name="bsp" version="v3.20.1"/>
+        <Dependency name="CMSIS-FreeRTOS" version="v10.5.1"/>
         <Dependency name="core" version="v3.13.4"/>
         <Dependency name="crypto" version="v3.8.1"/>
-        <Dependency name="csp" version="v3.19.0"/>
+        <Dependency name="csp" version="v3.19.1"/>
         <Dependency name="wireless_ble" version="v1.3.0"/>
         <Dependency name="wireless_zigbee" version="v6.1.0_release"/>		
         <Dependency name="wireless_system_pic32cxbz_wbz" version="v1.6.0"/>
-        <Dependency name="wireless_pic32cxbz_wbz" version="WSGREL-49"/>
+        <Dependency name="wireless_pic32cxbz_wbz" version="v1.4.0"/>
         <Dependency name="wolfssl" version="v5.4.0"/>
         <Dependency name="wireless_15_4_phy" version="v1.3.0"/>
-        <Dependency name="wireless_thread" version="v1.2.0-rc.1"/>
-        <Dependency name="wireless_15_4_mac" version="v1.1.0-rc.1"/>	
+        <Dependency name="wireless_thread" version="v1.2.0"/>
+        <Dependency name="wireless_15_4_mac" version="v1.1.0"/>	
         <Dependency name="openthread" version="thread-reference-20230706"/>
 </Dependencies>
 </Package>

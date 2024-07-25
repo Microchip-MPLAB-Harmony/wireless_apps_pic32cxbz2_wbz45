@@ -3,6 +3,40 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.3.0**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board     |       9             |
+
+### New Features
+- BLE Alert Notification Sever and Client
+- BLE Proximity Monitor and Receiver
+
+### Bug fixes and Improvements
+- None
+
+### Known Issues
+- None
+
+### Limitations
+- None
+
+### Additional Notes
+- None
+
+### Development Tools
+
+- [MPLAB® X IDE v6.20](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator (MCC) `v5.7.1`
+- [MPLAB® XC32 C/C++ Compiler v4.40](https://www.microchip.com/mplab/compilers)
+- **DFP 1.4.243 or above version**
+
 ## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.2.0**
 
 ### Development kit and demo application support
@@ -26,7 +60,7 @@ Following table provides number of Wireless examples available for different dev
 - Certain iPhone models are experiencing crashes with the MBD App following the completion of the commissioning process when running on iOS.
 
 ### Limitations
-- None.
+- None
 
 ### Additional Notes
 - UDP and CoAP demo applications are tested for a duration of 1 hour.
