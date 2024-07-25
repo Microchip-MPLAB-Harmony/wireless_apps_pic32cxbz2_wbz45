@@ -1,9 +1,14 @@
-# Advanced Applications
+# Advanced_applications
 
--   **[BLE Sensor App](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-D3F1BF46-F275-409B-A344-4DB9EAABC5E9)**  
+Refer the BLE Advanced application document link
 
--   **[BLE Throughput](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-BAAA9A7D-DCB6-4ADB-820A-68D1E8B81B09)**  
-This document is to illustrate the example of PIC32CXBZ2 BLE throughput evaluation using Microchip MBD APP. At the same time, the factors affecting the BLE throughput are also discussed.
+-   **[ble_ancs_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_ANCS_APP&version=latest&redirect=true)**  
+-   **[ble_anpc_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_ANPC_APP&version=latest&redirect=true)**
+-   **[ble_anps_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_ANPS_APP&version=latest&redirect=true)**
+-   **[ble_hogps_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_HID_GATT_PROF_SER&version=latest&redirect=true)**
+-   **[ble_pxpm_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_PROXIMTY_MON&version=latest&redirect=true)**
+-   **[ble_pxpr_app](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_PROXIMTY_REPO&version=latest&redirect=true)**
+-   **[ble_sensor](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_SENSR_APP&version=latest&redirect=true)**
+-   **[ble_throughput](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_THRUPUT&version=latest&redirect=true)**
 
-**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46)
-
+**Parent topic:**[Building Block Examples](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)**

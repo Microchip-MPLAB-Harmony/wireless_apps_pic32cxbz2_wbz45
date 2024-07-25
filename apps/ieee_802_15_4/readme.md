@@ -1,18 +1,11 @@
-![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
-![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
-# PHY and MAC Applications
+# ieee_802_15_4 PHY and MAC Applications
 
 Documentation describing steps to test and develop the precompiled PHY and MAC application examples.
 
 The ieee 802.15.4 Application examples are divided into PHY and MAC application examples.
+# MAC - This application showcases the utilization of the Standalone 802.15.4-MAC Component, which offers an interface for accessing the 802.15.4 MAC layer. This allows users to leverage the various functionalities available within the MAC layer.
+-   **Refer the push_pull_mac_app demoapp_ffd applications document link (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_FFD_PUSH_PULL_STR&version=latest&redirect=true)**
+-   **Refer the push_pull_mac_app demoapp_rfd applications document link (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_RFD_PUSH_PULL_STR&version=latest&redirect=true)**
 
-1.  PHY - The application demonstrates the usage of Standalone 15.4 PHY Component, which provides interface to access the 802.15.4(zigbee) subsystem of PIC32CX-BZ2 devices through which user can enables various functionaities of the transceiver.
-
-2.  MAC - This application showcases the utilization of the Standalone 802.15.4-MAC Component, which offers an interface for accessing the 802.15.4 MAC layer. This allows users to leverage the various functionalities available within the MAC layer.
-
-
--   **[PHY](PHY/readme.md)**  
-
--   **[MAC](MAC/readme.md)**  
-
-
+# P2P PHY Application
+-   **Refer the P2P PHY Application document link (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword= BZ2_P2P_PHY_APP%20&version=latest&redirect=true)**

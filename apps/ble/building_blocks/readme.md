@@ -8,21 +8,30 @@ New MPLAB Code Configurator users are recommended to go through the **[overview]
 
 Building blocks are divided into 3 categories based on the device roles and features users are interested in developing. This segregation is important as users interested in developing only a certain type of device would be provided only the training modules and necessary reference examples related to the device type.
 
-1.  [Peripheral Building Blocks](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-B3B46369-F5B4-401B-8405-658BE34988F4)
+# Central 
+-   **[central_conn](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_CONNECT&version=latest&redirect=true)**
+-   **[legacy_scan](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_LEGCY_SCN&version=latest&redirect=true)**
+-   **[scan_ext_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_SCAN_EXT_ADV&version=latest&redirect=true)**
+-   **[central_trp_uart](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZE_BLE_TRANSP_UART&version=latest&redirect=true)**
+-   **[central_trp_uart_codedPhy](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_TRANSP_UART_CENTRL&version=latest&redirect=true)**
+-   **[multilink](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_TRANSP_UART&version=latest&redirect=true)**
 
-2.  [Central Building Blocks](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C)
+# Peripheral
+-   **[deep_sleep_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_LEGCY_ADV&version=latest&redirect=true)**  
+-   **[ext_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_EXTD_ADV&version=latest&redirect=true)**
+-   **[legacy_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_LEGCY_ADV&version=latest&redirect=true)**
+-   **[Legacy_ADV_Pathloss](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_LEGC_ADV_LOSS&version=latest&redirect=true)**
+-   **[peripheral_conn](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_CONNECT&version=latest&redirect=true)**
+-   **[two_set_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_MULTI_ADV_SET&version=latest&redirect=true)**
+-   **[custom_service](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_CUS_SER&version=latest&redirect=true)**
+-   **[peripheral_trp_uart](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**
+-   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**  
 
-3.  [Multirole Building Blocks](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93)
+# BLE Multirole Multilink Transparent UART  
+-   **[BLE Multirole Multilink Transparent UART] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_ROLLNK_TRANS_UART&version=latest&redirect=true)**
 
+# Chip Peripherals 
+-   **[BLE Multirole Multilink Transparent UART] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_CHIP_PERIPH_UART&version=latest&redirect=true)**
 
--   **[Central](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-E8C0DDA5-3AD0-42A4-B4EF-BCB02811BF8C)**  
-
--   **[Peripheral](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-B3B46369-F5B4-401B-8405-658BE34988F4)**  
-
--   **[BLE Multirole Multilink Transparent UART](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-59D44A45-F1F0-46AF-A611-9720C8CE7E93)**  
-
--   **[Chip Peripherals](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-CB26EBC2-7D3B-454B-98D1-C29A3223ADE6)**  
-Application Examples that showcase BLE Stack Init + Chip Peripheral running
-
-**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-3CC3561E-252E-43B9-BC8A-47DD108A0A46)
+**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 

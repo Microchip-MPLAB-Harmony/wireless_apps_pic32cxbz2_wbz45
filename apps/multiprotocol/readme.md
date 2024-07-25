@@ -1,20 +1,24 @@
-[![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
+# Multiprotocol (BLE+Zigbee) Applications
 
-# Multiprotocol(BLE+Zigbee) Applications
+Refer the Multiprotocol (BLE+Zigbee) applications document link
 
-The following the precompiled Multiprotocol(BLE+Zigbee) application examples
-- [ble_zigbee_basic - Simple steps to bring the multiprotocol base project from H3 project generation](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-11ABDEE6-3F90-4086-AC19-BB2607CA8064) 
-- [ble_zigbee_light_prov - Zigbee light control and Zigbee commissioning over BLE](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-707BAEEE-0EFF-428F-AFEC-C2E6C5E65BA9)
-- [ble_zigbee_multisensor - Zigbee Multisensor device and zigbee commissioning over BLE](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-3D00CE26-A97E-44F4-9A17-A9CC112DAF43)
-- [ble_zigbee_light_prov_wbz450 - Zigbee light control and Zigbee commissioning over BLE on WBZ450](https://onlinedocs.microchip.com/pr/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-2/index.html?GUID-707BAEEE-0EFF-428F-AFEC-C2E6C5E65BA9)
-
-# Multiprotocol(BLE+Thread) Applications
-
-- [ble_thread_prov_ftd_light - FTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
-- [ble_thread_prov_mtd_light - MTD Light control and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
-- [ble_thread_prov_sed_sensor - SED Sensor device and Thread commissioning over BLE](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+-   **[ble_zigbee_basic](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_ZB_CONCUR_APP&version=latest&redirect=true)**  
+-   **[ble_zigbee_light_prov](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_ZB_COMMISON_BLE&version=latest&redirect=true)**
+-   **[ble_zigbee_light_prov_wbz450](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_ZB_COMMISON_BLE&version=latest&redirect=true)**
+-   **[ble_zigbee_multisensor](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_ZB_BLE_PROV_LOW_POW&version=latest&redirect=true)**
 
 # Multiprotocol (BLE+MAC) Applications
+Refer the Multiprotocol (BLE+MAC) applications document link
 
-- [ble_mac_prov_ffd](https://onlinedocs.microchip.com/g/GUID-8AB5EA84-1FD5-4C42-A9D2-EED8598EF122-en-US-1/index.html)
-- [ble_mac_prov_rfd](https://onlinedocs.microchip.com/g/GUID-8AB5EA84-1FD5-4C42-A9D2-EED8598EF122-en-US-1/index.html)
+-   **[FFD Demo](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_FFD_BLE_MAC_PROV&version=latest&redirect=true)**
+-   **[RFD Demo](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_RFD_BLE_MAC_PROV&version=latest&redirect=true)**
+
+
+# Multiprotocol (BLE+Thread) Applications
+Refer the Multiprotocol (BLE+Zigbee) applications document link
+
+-   **[BLE Thread Light Provisioning FTD](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_TRD_LIT_PROV_FTD_MTD&version=latest&redirect=true)**
+-   **[BLE Thread Light Provisioning MTD](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_TRD_LIT_PROV_FTD_MTD&version=latest&redirect=true)**
+-   **[BLE Thread SED Provisioning] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_TRD_SENS_PROV_SED&version=latest&redirect=true)**
+
+**Parent topic:**[Building Block Examples](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)**
