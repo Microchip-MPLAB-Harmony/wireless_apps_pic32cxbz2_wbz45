@@ -4,18 +4,18 @@
 
 
 project: ble_zigbee_basic
-creation_date: 2024-07-19T16:54:34.031+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-07-25T10:49:03.428+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
-mcc_version: v5.5.1
-mcc_core_version: v5.7.1
+mcc_version: v5.5.0
+mcc_core_version: v5.7.0
 mplabx_version: v6.20        # if MPLAB X plugin only
 harmony_version: v1.3.1
 compiler: XC32 4.40
 
 modules:
-    - {name: "wireless_pic32cxbz_wbz", version: "v1.4.0"}
     - {name: "csp", version: "v3.19.1"}
+    - {name: "wireless_pic32cxbz_wbz", version: "v1.4.0"}
     - {name: "core", version: "v3.13.4"}
     - {name: "wireless_ble", version: "v1.3.0"}
     - {name: "dev_packs", version: "v3.18.1"}

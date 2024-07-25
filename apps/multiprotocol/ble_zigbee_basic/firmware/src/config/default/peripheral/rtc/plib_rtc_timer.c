@@ -78,9 +78,6 @@ void RTC_Initialize(void)
         /* Wait for Synchronization after writing Compare Value */
     }
 
-    RTC_REGS->MODE0.RTC_INTENSET = 0x100U;
-
-    RTC_REGS->MODE0.RTC_EVCTRL = 0x100U;
 }
 
 

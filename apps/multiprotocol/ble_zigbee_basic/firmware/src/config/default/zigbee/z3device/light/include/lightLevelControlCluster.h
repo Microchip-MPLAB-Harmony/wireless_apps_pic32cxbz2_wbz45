@@ -51,15 +51,15 @@
 /******************************************************************************
                     Defines section
 ******************************************************************************/
-#define UPDATE_TIMER_INTERVAL              100U // 1/10th of a second as per specification
-#define MIN_LIGHT_LEVEL                      1U
-#define MAX_LIGHT_LEVEL                    254U
-#define MIN_TRANSITION_TIME                  1U
-#define DIMMABLE_LIGHT_HUE_LEVEL            35U
-#define DIMMABLE_LIGHT_SATURATION_LEVEL     35U
+#define UPDATE_TIMER_INTERVAL               100 // 1/10th of a second as per specification
+#define MIN_LIGHT_LEVEL                      1
+#define MAX_LIGHT_LEVEL                     255
+#define MIN_TRANSITION_TIME                  1
+#define DIMMABLE_LIGHT_HUE_LEVEL            35
+#define DIMMABLE_LIGHT_SATURATION_LEVEL     35
 
-#define LEVEL_CONTROL_VAL_MIN_REPORT_PERIOD 10U
-#define LEVEL_CONTROL_VAL_MAX_REPORT_PERIOD 80U
+#define LEVEL_CONTROL_VAL_MIN_REPORT_PERIOD 10
+#define LEVEL_CONTROL_VAL_MAX_REPORT_PERIOD 80
 
 /******************************************************************************
                     Externals
@@ -98,7 +98,6 @@ void setLevel(bool wOnOff, bool execIfOff, uint8_t level);
 \brief Display current level value.
 ******************************************************************************/
 void levelControlDisplayLevel(uint8_t currLevel);
-
 
 /**************************************************************************//**
 \brief Set Extension Field Set
