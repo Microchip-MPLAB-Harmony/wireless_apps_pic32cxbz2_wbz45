@@ -3,7 +3,7 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
-## Harmony 3 Thread® Application examples for PIC32CXBZ family  **v3.3.0**
+## Harmony 3 Wireless BLE, Zigbee, Thread, IEEE 802.15.4 PHY and IEEE 802.15.4 MAC Application example for PIC32CXBZ family  **v3.3.0**
 
 ### Development kit and demo application support
 
