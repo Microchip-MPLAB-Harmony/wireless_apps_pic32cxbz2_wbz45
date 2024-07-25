@@ -4,27 +4,27 @@
 	"content": {
 		"metaDataVersion": "1.3.0",
 		"name": "com.microchip.mcu32.mplabx.project.wireless_apps_pic32cxbz2_wbz45_ble_zigbee_basic",
-		"version": "1.0.0",
+		"version": "3.3.0",
 		"displayName": "Multiprotocol (BLE+ZIGBEE) Concurrent Application",
 		"projectName": "ble_zigbee_basic",
 		"shortDescription": "This application demonstrates the Zigbee On/Off light joining to Zigbee gateway (Combined Interface) and the Microchip Proprietary Transparent Service based BLE peripheral running concurrently with zigbee protocol connects with mobile app.",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=6.15"
+			"semverRange": ">=6.20"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=4.21"
+				"semverRange": ">=4.40"
 			}
 		],
 		"dfp": {
 			"name": "PIC32CXBZ2_DFP",
-			"semverRange": "^1.2.230"
+			"semverRange": "^1.4.243"
 		},
 		"configurator": {
 			"name": "MCC",
-			"semverRange": ">=5.3.7"
+			"semverRange": ">=5.5.1"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",
