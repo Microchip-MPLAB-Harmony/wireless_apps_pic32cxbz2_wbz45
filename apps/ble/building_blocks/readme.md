@@ -28,10 +28,10 @@ Building blocks are divided into 3 categories based on the device roles and feat
 -   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**  
 
 # BLE Multirole Multilink Transparent UART  
--   **[BLE Multirole Multilink Transparent UART] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_ROLLNK_TRANS_UART&version=latest&redirect=true)**
+-   **[BLE Multirole Multilink Transparent UART](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_ROLLNK_TRANS_UART&version=latest&redirect=true)**
 
 # Chip Peripherals 
--   **[BLE Multirole Multilink Transparent UART] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_CHIP_PERIPH_UART&version=latest&redirect=true)**
+-   **[BLE Multirole Multilink Transparent UART](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_CHIP_PERIPH_UART&version=latest&redirect=true)**
 
 **Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 

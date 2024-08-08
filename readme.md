@@ -25,11 +25,11 @@ release notes, training materials, and interface reference information.
 | Folder     | Description                                               |
 | ---        | ---                                                       |
 | apps       | [Example applications for PIC32CXB2/WBZ45x devices](./apps/readme.md)         |
-| docs       | [Wireless Application Example help documentation]((https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)  
+| docs       | [Wireless Application Example help documentation](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)  
 
 # Examples applications
 
-The following applications are provided to demonstrate the typical use case of BLE, Zigbee and Multiprotocol(BLE + Zigbee) with PIC32CX_BZ2/WBZ45x devices.
+The following applications are provided to demonstrate the typical use case of BLE, Zigbee, Thread, IEEE 802.15.4 PHY, IEEE 802.15.4 MAC and Multiprotocol(BLE + Zigbee) with PIC32CX_BZ2/WBZ45x devices.
 
 ## BLE
 
@@ -46,13 +46,13 @@ The following applications are provided to demonstrate the typical use case of B
         * [Profiles and Services](apps/ble/building_blocks/peripheral/profiles_services/readme.md)		
         * [Transparent UART](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md)
 		* [peripheral_trp_uart_codedPhy](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md)		
-	* [BLE Central Code PHY transparent UART](apps/ble/building_blockscentral/profiles_services/central_trp_uart_codedPhy/readme.md)
+	* [BLE Central Code PHY transparent UART](apps/ble/building_blocks/central/profiles_services/central_trp_uart_codedPhy/readme.md)
     * [Central](apps/ble/building_blocks/central/readme.md)
         * [Connection](apps/ble/building_blocks/central/central_conn/readme.md)
         * [Legacy Scan](apps/ble/building_blocks/central/legacy_scan/readme.md)
         * [Profiles and Services](apps/ble/building_blocks/central/profiles_services/readme.md)
         * [Transparent UART](apps/ble/building_blocks/central/profiles_services/central_trp_uart/readme.md)
-		* [BLE Central Code PHY transparent UART](apps/ble/building_blockscentral/profiles_services/central_trp_uart_codedPhy/readme.md)
+		* [BLE Central Code PHY transparent UART](apps/ble/building_blocks/central/profiles_services/central_trp_uart_codedPhy/readme.md)
         * [Transparent UART Multilink](apps/ble/building_blocks/central/profiles_services/multilink/readme.md)
         * [Scan Extended Advertisement](apps/ble/building_blocks/central/scan_ext_adv/readme.md)
 	* [UART](apps/ble/building_blocks/chip_peripherals/uart_hello_world/readme.md)
@@ -100,18 +100,18 @@ The following applications are provided to demonstrate the typical use case of B
 ## Thread
 
 ### Thread Building Blocks
-* [Building Blocks](apps/thread//building_blocks/readme.md)
-    * [cli](apps/thread//building_blocks/cli/readme.md)
+* [Building Blocks](apps/thread/building_blocks/readme.md)
+    * [cli](apps/thread/building_blocks/cli/readme.md)
 		* [Thread cli_ftd](apps/thread/building_blocks/cli/cli_ftd/readme.md)
 		* [Thread cli_mtd](apps/thread/building_blocks/cli/cli_mtd/readme.md)		
-    * [demo_app_udp](apps/thread//building_blocks/demo_app_udp/readme.md)
+    * [demo_app_udp](apps/thread/building_blocks/demo_app_udp/readme.md)
 		* [Thread demo_app_udp_ftd](apps/thread/building_blocks/demo_app_udp/demo_app_udp_ftd/readme.md)
 		* [Thread demo_app_udp_mtd](apps/thread/building_blocks/demo_app_udp/demo_app_udp_mtd/readme.md)
-	* [rcp_uart](apps/thread//building_blocks/rcp_uart/readme.md)
+	* [rcp_uart](apps/thread/building_blocks/rcp_uart/readme.md)
 
 ### Thread Advanced Applications
 * [Advanced Applications](apps/thread/advanced_applications/readme.md)
-	* [CoAP](apps/thread//building_blocks/cli/readme.md)	
+	* [CoAP](apps/thread/building_blocks/cli/readme.md)	
 		* [Thread CoAP coap_ftd_client](apps/thread/advanced_applications/CoAP/coap_ftd_client/readme.md)
 		* [Thread CoAP coap_ftd_server](apps/thread/advanced_applications/CoAP/coap_ftd_server/readme.md)
 		* [Thread CoAP coap_sed_client](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md)
