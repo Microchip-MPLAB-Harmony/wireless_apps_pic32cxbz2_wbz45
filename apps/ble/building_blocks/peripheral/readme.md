@@ -10,6 +10,6 @@ Refer the BLE Peripherals application document link
 -   **[two_set_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_MULTI_ADV_SET&version=latest&redirect=true)**
 -   **[custom_service](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_CUS_SER&version=latest&redirect=true)**
 -   **[peripheral_trp_uart](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**
--   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**
+-   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-5/GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00.html)**
 
 **Parent topic:**[Building Block Examples](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)**
