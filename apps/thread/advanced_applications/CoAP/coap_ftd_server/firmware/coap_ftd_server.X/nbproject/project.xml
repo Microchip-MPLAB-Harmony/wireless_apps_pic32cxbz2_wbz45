@@ -10,6 +10,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../../../coap_sed_client/firmware/src</sourceRootElem>
+                <sourceRootElem>../src</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

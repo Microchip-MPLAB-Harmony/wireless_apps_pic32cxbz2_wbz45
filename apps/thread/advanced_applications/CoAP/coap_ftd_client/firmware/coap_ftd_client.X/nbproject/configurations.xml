@@ -986,7 +986,7 @@
       <itemPath>../src/app_config.h</itemPath>
       <itemPath>../src/app_key.h</itemPath>
       <itemPath>../src/app_timer.h</itemPath>
-      <itemPath>../../../coap_sed_server/firmware/src/app_led.h</itemPath>
+      <itemPath>../src/app_led.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

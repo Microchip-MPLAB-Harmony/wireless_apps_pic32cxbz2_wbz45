@@ -984,9 +984,9 @@
       <itemPath>../src/stack_config.h</itemPath>
       <itemPath>../src/app_config.h</itemPath>
       <itemPath>../src/app_idle_task.h</itemPath>
-      <itemPath>../../../coap_sed_client/firmware/src/app_error_defs.h</itemPath>
-      <itemPath>../../../coap_sed_client/firmware/src/app_led.h</itemPath>
-      <itemPath>../../../coap_sed_client/firmware/src/app_timer.h</itemPath>
+      <itemPath>../src/app_error_defs.h</itemPath>
+      <itemPath>../src/app_led.h</itemPath>
+      <itemPath>../src/app_timer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1622,12 +1622,13 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/app_user_edits.c</itemPath>
       <itemPath>../src/app_idle_task.c</itemPath>
-      <itemPath>../../../coap_sed_client/firmware/src/app_led.c</itemPath>
-      <itemPath>../../../coap_sed_client/firmware/src/app_timer.c</itemPath>
+      <itemPath>../src/app_led.c</itemPath>
+      <itemPath>../src/app_timer.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../../../coap_sed_client/firmware/src</Elem>
+    <Elem>../src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
