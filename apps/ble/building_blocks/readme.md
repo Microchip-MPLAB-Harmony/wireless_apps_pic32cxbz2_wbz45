@@ -17,7 +17,7 @@ Building blocks are divided into 3 categories based on the device roles and feat
 -   **[multilink](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_TRANSP_UART&version=latest&redirect=true)**
 
 # Peripheral
--   **[deep_sleep_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_LEGCY_ADV&version=latest&redirect=true)**  
+-   **[deep_sleep_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_DP_SLP_ADV&version=latest&redirect=true)**  
 -   **[ext_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_EXTD_ADV&version=latest&redirect=true)**
 -   **[legacy_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_SLP_LEGCY_ADV&version=latest&redirect=true)**
 -   **[Legacy_ADV_Pathloss](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_LEGC_ADV_LOSS&version=latest&redirect=true)**
@@ -25,13 +25,13 @@ Building blocks are divided into 3 categories based on the device roles and feat
 -   **[two_set_adv](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_MULTI_ADV_SET&version=latest&redirect=true)**
 -   **[custom_service](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_CUS_SER&version=latest&redirect=true)**
 -   **[peripheral_trp_uart](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART&version=latest&redirect=true)**
--   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C-en-US-5/GUID-50CDA49F-936D-4722-80BB-2DD7BDDD9B00.html)**  
+-   **[peripheral_trp_uart_codedPhy](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_PERIPH_BLE_TRANSP_UART_CPHY&version=latest&redirect=true)**  
 
 # BLE Multirole Multilink Transparent UART  
 -   **[BLE Multirole Multilink Transparent UART](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_MULTI_ROLLNK_TRANS_UART&version=latest&redirect=true)**
 
 # Chip Peripherals 
--   **[BLE Multirole Multilink Transparent UART](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_CHIP_PERIPH_UART&version=latest&redirect=true)**
+-   **[uart_hello_world] (https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_CHIP_PERIPH_UART&version=latest&redirect=true)**
 
 **Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 

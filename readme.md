@@ -90,6 +90,9 @@ The following applications are provided to demonstrate the typical use case of B
     * [MULTIPROTOCOL ble_thread_prov_mtd_light](apps/multiprotocol/ble_thread_prov_mtd_light/readme.md)
 	* [MULTIPROTOCOL ble_thread_prov_sed_sensor](apps/multiprotocol/ble_thread_prov_sed_sensor/readme.md)
 
+## Bootloader Applications
+* [Bootloader](apps/bootloader/bootloader/readme.md)
+
 ## ieee_802_15_4 Applications
 * [ieee_802_15_4](apps/ieee_802_15_4/readme.md)
 	* [IEEE_802_15_4 demoapp_ffd](apps/ieee_802_15_4/MAC/push_pull_mac_app/demoapp_ffd/readme.md)
@@ -116,5 +119,5 @@ The following applications are provided to demonstrate the typical use case of B
 		* [Thread CoAP coap_sed_client](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md)
 		* [Thread CoAP coap_sed_server](apps/thread/advanced_applications/CoAP/coap_sed_server/readme.md)		
 	
-**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/oxy/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 
