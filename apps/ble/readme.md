@@ -46,5 +46,5 @@ Refer the BLE Advanced application document link
 -   **[ble_sensor](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_SENSR_APP&version=latest&redirect=true)**
 -   **[ble_throughput](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=BZ2_BLE_THRUPUT&version=latest&redirect=true)**
 
-**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+**Parent topic:**[PIC32CXBZ2 APPLICATION DEVELOPER GUIDE](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 

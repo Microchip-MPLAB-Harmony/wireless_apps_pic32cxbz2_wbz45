@@ -45,7 +45,7 @@ The following applications are provided to demonstrate the typical use case of B
         * [Custom Service](apps/ble/building_blocks/peripheral/profiles_services/custom_service/readme.md)
         * [Profiles and Services](apps/ble/building_blocks/peripheral/profiles_services/readme.md)		
         * [Transparent UART](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md)
-		* [peripheral_trp_uart_codedPhy](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uart/readme.md)	
+		* [peripheral_trp_uart_codedPhy](apps/ble/building_blocks/peripheral/profiles_services/peripheral_trp_uartcodedPhy/readme.md)	
     * [Central](apps/ble/building_blocks/central/readme.md)
         * [Connection](apps/ble/building_blocks/central/central_conn/readme.md)
         * [Legacy Scan](apps/ble/building_blocks/central/legacy_scan/readme.md)
@@ -119,5 +119,5 @@ The following applications are provided to demonstrate the typical use case of B
 		* [Thread CoAP coap_sed_client](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md)
 		* [Thread CoAP coap_sed_server](apps/thread/advanced_applications/CoAP/coap_sed_server/readme.md)		
 	
-**Parent topic:**[BLE Applications](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+**Parent topic:**[PIC32CXBZ2 APPLICATION DEVELOPER GUIDE](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
 
