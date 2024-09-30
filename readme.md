@@ -120,6 +120,14 @@ The following applications are provided to demonstrate the typical use case of B
 		* [Thread CoAP coap_sed_server](apps/thread/advanced_applications/CoAP/coap_sed_server/readme.md)		
 	
 **Parent topic:**[PIC32CXBZ2 APPLICATION DEVELOPER GUIDE](https://onlinedocs.microchip.com/g/GUID-A5330D3A-9F51-4A26-B71D-8503A493DF9C)
+____
+
+
+[![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/blob/master/mplab_harmony_license.md)
+[![Latest release](https://img.shields.io/github/release/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/releases/latest)
+[![Latest release date](https://img.shields.io/github/release-date/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/releases/latest)
+[![Commit activity](https://img.shields.io/github/commit-activity/y/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45.svg)](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/graphs/commit-activity)
+[![Contributors](https://img.shields.io/github/contributors-anon/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45.svg)]()
 
 ____
 
