@@ -3,6 +3,39 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Harmony 3 Wireless BLE, Zigbee, Thread, IEEE 802.15.4 PHY and IEEE 802.15.4 MAC Application example for PIC32CXBZ family  **v3.3.1**
+
+### Development kit and demo application support
+
+Following table provides number of Wireless examples available for different development kits.
+
+| Development Kits           | MPLABx applications |
+|:--------------------------:|:-------------------:|
+| WBZ451 Curiosity Board     |       9             |
+
+### New Features
+- None
+
+### Bug fixes and Improvements
+- Perma link updated and fixed thread link issues
+
+### Known Issues
+- None
+
+### Limitations
+- None
+
+### Additional Notes
+- None
+
+### Development Tools
+
+- [MPLAB® X IDE v6.20](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator (MCC) `v5.7.1`
+- [MPLAB® XC32 C/C++ Compiler v4.40](https://www.microchip.com/mplab/compilers)
+- **DFP 1.4.243 or above version**# Microchip MPLAB® Harmony 3 Release Notes
+
 ## Harmony 3 Wireless BLE, Zigbee, Thread, IEEE 802.15.4 PHY and IEEE 802.15.4 MAC Application example for PIC32CXBZ family  **v3.3.0**
 
 ### Development kit and demo application support

@@ -113,7 +113,7 @@ The following applications are provided to demonstrate the typical use case of B
 
 ### Thread Advanced Applications
 * [Advanced Applications](apps/thread/advanced_applications/readme.md)
-	* [CoAP](apps/thread/building_blocks/cli/readme.md)	
+	* [CoAP](apps/thread/advanced_applications/readme.md)	
 		* [Thread CoAP coap_ftd_client](apps/thread/advanced_applications/CoAP/coap_ftd_client/readme.md)
 		* [Thread CoAP coap_ftd_server](apps/thread/advanced_applications/CoAP/coap_ftd_server/readme.md)
 		* [Thread CoAP coap_sed_client](apps/thread/advanced_applications/CoAP/coap_sed_client/readme.md)
