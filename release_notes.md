@@ -11,7 +11,7 @@ Following table provides number of Wireless examples available for different dev
 
 | Development Kits           | MPLABx applications |
 |:--------------------------:|:-------------------:|
-| WBZ451 Curiosity Board     |       9             |
+| WBZ451 Curiosity Board     |       0             |
 
 ### New Features
 - None
